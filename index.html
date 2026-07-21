@@ -718,20 +718,27 @@ function renderLogs(){
 // ---- Fuente de datos remota: Google Sheet del Drive publicado como CSV ----
 // Pega aquí la URL "Archivo → Compartir → Publicar en la web → CSV" de tu hoja de resultados
 // y el dashboard se actualizará solo cada vez que lo abras. Vacío = usa el snapshot local.
+// registro.csv lo mantiene al d\u00eda un GitHub Action (carga diaria desde la hoja del Drive).
+// Mismo origen que el dashboard => sin CORS. Si no existe o falla, prueba la hoja en vivo y, por \u00faltimo, el snapshot.
+const LOCAL_CSV_URL = "registro.csv";
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1Ha71dPwJkPevqCK_ulfJwgMn8Khm3cjHxx4EbN36uBs/gviz/tq?tqx=out:csv&gid=1091441461";
-async function loadRemote(){
-  if(!SHEET_CSV_URL) return false;
+async function tryCSV(url){
   try{
-    const res=await fetch(SHEET_CSV_URL,{cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP '+res.status);
+    const res=await fetch(url,{cache:'no-store'});
+    if(!res.ok) return null;
     const parsed=parseCSV(await res.text());
-    if(parsed.length){MATCHES=parsed;return true;}
-    return false;
-  }catch(e){console.warn('No se pudo leer el Sheet remoto:',e);return false;}
+    return parsed.length?parsed:null;
+  }catch(e){return null;}
+}
+async function loadRemote(){
+  let p=await tryCSV(LOCAL_CSV_URL);   if(p){MATCHES=p;return 'local';}
+  if(SHEET_CSV_URL){p=await tryCSV(SHEET_CSV_URL); if(p){MATCHES=p;return 'sheet';}}
+  return false;
 }
 function updateSource(remote){
   const el=$('srcInfo');if(!el)return;
-  el.innerHTML=`<span class="dot ${remote?'on':''}"></span>${remote?'Google Sheet (Drive)':'snapshot local'} \u00b7 ${MATCHES.length} partidas`;
+  const label=remote==='sheet'?'Google Sheet (Drive)':remote==='local'?'registro.csv (auto)':'snapshot local';
+  el.innerHTML=`<span class="dot ${remote?'on':''}"></span>${label} \u00b7 ${MATCHES.length} partidas`;
 }
 function renderAuto(){
   const D=MATCHES;const sal=D.filter(d=>d.sr==='Salida'),rob=D.filter(d=>d.sr==='Robo');
