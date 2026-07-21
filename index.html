@@ -547,7 +547,7 @@ function renderLogs(){
 // ---- Fuente de datos remota: Google Sheet del Drive publicado como CSV ----
 // Pega aquí la URL "Archivo → Compartir → Publicar en la web → CSV" de tu hoja de resultados
 // y el dashboard se actualizará solo cada vez que lo abras. Vacío = usa el snapshot local.
-const SHEET_CSV_URL = "";
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1Ha71dPwJkPevqCK_ulfJwgMn8Khm3cjHxx4EbN36uBs/gviz/tq?tqx=out:csv&gid=1091441461";
 async function loadRemote(){
   if(!SHEET_CSV_URL) return false;
   try{
