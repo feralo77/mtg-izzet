@@ -14,5 +14,9 @@ registro_*.csv
 *Match_GameChat*
 1A7TNNOY.XNJ/
 
+# Python
+__pycache__/
+*.pyc
+
 # Sistema
 .DS_Store

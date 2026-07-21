@@ -174,7 +174,7 @@ def aggregate(games):
         fecha = next((g['ts'].strftime('%d/%m/%Y') for g in gs if g['ts']), '')
         hora = next((g['ts'] for g in gs if g['ts']), None)
         resultado = 'W' if jg>jp else ('L' if jp>jg else 'D')
-        matches.append({'fecha':fecha,'hora':hora,'local':local,'opp':opp,'resultado':resultado,
+        matches.append({'match_uuid':mid,'fecha':fecha,'hora':hora,'local':local,'opp':opp,'resultado':resultado,
                         'jg':jg,'jp':jp,'salida_robo':salida_robo,'mull_local':mull_local,
                         'mull_opp':mull_opp,'arquetipo':classify(cards),'opp_cards':cards,
                         'games':len(gs)})
@@ -189,7 +189,7 @@ def find_files(directory):
             if 'Match_GameLog' in f: out.append(os.path.join(root,f))
     return out
 
-def run_dir(directory, user, out_csv, lista):
+def run_dir(directory, user, out_csv, lista, reported_by):
     files = find_files(directory)
     if not files:
         print(f"No encontré *Match_GameLog* en: {directory}", file=sys.stderr); return 1
@@ -206,17 +206,18 @@ def run_dir(directory, user, out_csv, lista):
         except Exception as e:
             print(f"  ! {os.path.basename(fp)}: {e}", file=sys.stderr)
     matches = aggregate(games)
-    cols=["Fecha","Evento / Liga","Lista","Ronda","Mazo del Oponente","Arquetipo",
+    cols=["match_uuid","Fecha","Evento / Liga","Lista","Ronda","Mazo del Oponente","Arquetipo",
           "Resultado (W/L)","Juegos Ganados","Juegos Perdidos","Salida / Robo (G1)",
-          "Mulligans (Yo)","Mulligans (Rival)","Cartas Clave / MVP","Notas de Match / Sideboard"]
+          "Mulligans (Yo)","Mulligans (Rival)","Cartas Clave / MVP","Notas de Match / Sideboard",
+          "Reportado por","Fuente"]
     with open(out_csv,'w',newline='',encoding='utf-8') as fh:
         w=csv.writer(fh); w.writerow(cols)
         for m in matches:
             notas=f"rival={m['opp'] or '?'}"
             if m['opp_cards']: notas+=" | cartas: "+", ".join(m['opp_cards'][:10])
-            w.writerow([m['fecha'],'',lista,'', m['opp'] or '', m['arquetipo'],
+            w.writerow([m['match_uuid'],m['fecha'],'',lista,'', m['opp'] or '', m['arquetipo'],
                         m['resultado'],m['jg'],m['jp'],m['salida_robo'],
-                        m['mull_local'],m['mull_opp'],'',notas])
+                        m['mull_local'],m['mull_opp'],'',notas,reported_by,'log'])
     print(f"OK: {len(games)} games -> {len(matches)} matches -> {out_csv}\n")
     print(f"{'Fecha':<11}{'Rival':<14}{'Arquetipo':<24}{'Res':<4}{'G':<5}{'G1':<7}Cartas rival")
     for m in matches:
@@ -265,12 +266,14 @@ def selftest():
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--dir'); ap.add_argument('--user',default='feralo77'); ap.add_argument('--out',default='registro_mtgo.csv')
-    ap.add_argument('--lista',default='Stock'); ap.add_argument('--selftest',action='store_true')
+    ap.add_argument('--lista',default='Stock'); ap.add_argument('--reported-by',dest='reported_by',default=None,
+                    help='quién reporta estas partidas (por defecto, el --user)')
+    ap.add_argument('--selftest',action='store_true')
     a=ap.parse_args()
     if a.selftest: selftest(); return
     directory=a.dir or os.path.join(os.environ.get('USERPROFILE',os.path.expanduser('~')),
                                     'AppData','Local','Apps','2.0','Data')
-    sys.exit(run_dir(directory, a.user, a.out, a.lista))
+    sys.exit(run_dir(directory, a.user, a.out, a.lista, a.reported_by or a.user))
 
 if __name__=='__main__':
     main()
