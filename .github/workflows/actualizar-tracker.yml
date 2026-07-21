@@ -1,0 +1,25 @@
+name: Actualizar tracker desde los logs
+
+# Se hace solo: cada día lee los logs del Drive, corre el parser por jugador y
+# actualiza la pestaña "Registro-logs" del tracker. También se puede lanzar a mano.
+on:
+  schedule:
+    - cron: "0 6 * * *"      # cada día a las 06:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar dependencias
+        run: pip install --quiet google-api-python-client google-auth
+      - name: Parsear logs y actualizar el tracker
+        env:
+          GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SA_KEY }}
+          TRACKER_SHEET_ID: ${{ secrets.TRACKER_SHEET_ID }}
+          MTG_FOLDER_ID: ${{ secrets.MTG_FOLDER_ID }}
+        run: python automation/pipeline.py
