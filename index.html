@@ -7,38 +7,44 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#090b11; --panel:#111521; --panel2:#161b2a; --raise:#1b2233;
-    --bd:#222a3c; --bd2:#2e3852;
-    --tx:#e9edf6; --tx2:#93a0b8; --tx3:#5f6c85;
-    --u:#5b9dff; --u2:#8cc2ff; --r:#ff5a47; --r2:#ff8a3d;
-    --win:#37d07a; --winL:#5be093; --mid:#e8a13a; --loss:#ff5a47; --pur:#b98cff;
-    --gap:16px; --rad:14px;
-    --disp:'Chakra Petch',system-ui,sans-serif;
+  :root, :root[data-theme="dark"]{
+    --bg:#0b0d12; --panel:#12151d; --panel2:#171b25; --raise:#1c2130;
+    --bd:#232838; --bd2:#2e3446;
+    --tx:#e8ebf2; --tx2:#949db2; --tx3:#626b80;
+    --u:#5b9dff; --u2:#8cc2ff; --r:#ff6a52; --r2:#ff9a4d;
+    --win:#3fca82; --winL:#63dc9c; --mid:#e6a53f; --loss:#ff6a52; --pur:#b98cff;
+    --chart-grid:rgba(148,157,178,.13); --chart-tx:#8b93a6; --ring:#12151d; --barmut:#3a4356;
+    --shadow:none;
+    --gap:16px; --rad:12px;
+    --disp:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
     --body:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
   }
+  :root[data-theme="light"]{
+    --bg:#f5f6f8; --panel:#ffffff; --panel2:#f0f2f5; --raise:#eceff3;
+    --bd:#e4e8ee; --bd2:#d4dae3;
+    --tx:#1b2230; --tx2:#5a6474; --tx3:#8a93a3;
+    --u:#2f6fd6; --u2:#1f5fc0; --r:#dd5238; --r2:#d97a24;
+    --win:#1f9d57; --winL:#178048; --mid:#b97d16; --loss:#d84a34; --pur:#7c53c9;
+    --chart-grid:rgba(20,30,50,.09); --chart-tx:#5a6474; --ring:#ffffff; --barmut:#c3ccd8;
+    --shadow:0 1px 2px rgba(20,30,50,.05),0 6px 18px rgba(20,30,50,.06);
+    --gap:16px; --rad:12px;
+  }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:var(--body);color:var(--tx);line-height:1.55;min-height:100vh;padding:22px;
-    background:radial-gradient(900px 520px at 88% -10%,rgba(60,120,220,.20),transparent 60%),
-      radial-gradient(760px 520px at -8% 110%,rgba(220,70,55,.13),transparent 55%),var(--bg);
-    background-attachment:fixed}
-  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
-    background-image:linear-gradient(rgba(120,150,210,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,210,.04) 1px,transparent 1px);
-    background-size:48px 48px;-webkit-mask-image:radial-gradient(circle at 50% 22%,#000,transparent 82%);mask-image:radial-gradient(circle at 50% 22%,#000,transparent 82%)}
+  body{font-family:var(--body);color:var(--tx);line-height:1.55;min-height:100vh;padding:26px 22px;
+    background:var(--bg);transition:background .25s ease,color .25s ease}
   .wrap{max-width:1320px;margin:0 auto;position:relative;z-index:1}
   ::selection{background:rgba(91,157,255,.32)}
   /* Header */
   header.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
     margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--bd);animation:rise .5s ease both}
   .brand{display:flex;align-items:center;gap:14px}
-  .mark{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;flex:none;
-    background:linear-gradient(150deg,#101728,#1b1220);border:1px solid var(--bd2);
-    box-shadow:0 0 0 1px rgba(91,157,255,.14),0 10px 28px rgba(91,157,255,.16),inset 0 0 18px rgba(255,90,71,.10)}
-  .mark svg{filter:drop-shadow(0 0 6px rgba(124,196,255,.55))}
+  .mark{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;
+    background:linear-gradient(150deg,var(--panel2),var(--raise));border:1px solid var(--bd2);box-shadow:var(--shadow)}
+  .mark svg{filter:none}
   .title{font-family:var(--disp);font-weight:700;font-size:25px;letter-spacing:3.5px;line-height:1}
   .title .ember{color:var(--r2);background:linear-gradient(92deg,var(--u2),var(--r2));-webkit-background-clip:text;background-clip:text}
   @supports((-webkit-background-clip:text) or (background-clip:text)){.title .ember{color:transparent}}
@@ -50,20 +56,23 @@
   .btn{font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
     background:linear-gradient(180deg,var(--panel2),var(--panel));color:var(--tx);border:1px solid var(--bd2);
     border-radius:10px;padding:10px 15px;cursor:pointer;transition:.18s}
-  .btn:hover{border-color:var(--u);color:#fff;box-shadow:0 0 16px rgba(91,157,255,.22)}
+  .btn:hover{border-color:var(--u);color:var(--tx)}
+  .themebtn{font-family:var(--mono);font-size:11px;letter-spacing:.5px;background:var(--panel2);color:var(--tx2);
+    border:1px solid var(--bd2);border-radius:10px;padding:9px 13px;cursor:pointer;transition:.16s;display:flex;align-items:center;gap:7px}
+  .themebtn:hover{border-color:var(--u);color:var(--tx)}
   /* Tabs */
   .tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px;padding:6px;border:1px solid var(--bd);border-radius:14px;
-    background:linear-gradient(180deg,var(--panel),#0e1220)}
+    background:var(--panel)}
   .tab{font-family:var(--disp);font-size:12px;font-weight:500;letter-spacing:.7px;text-transform:uppercase;
     padding:9px 15px;border-radius:9px;color:var(--tx2);cursor:pointer;border:1px solid transparent;
     transition:.16s;white-space:nowrap}
   .tab:hover{color:var(--tx);background:var(--panel2)}
-  .tab.on{color:#fff;background:linear-gradient(180deg,rgba(91,157,255,.14),rgba(91,157,255,.03));
-    border-color:rgba(91,157,255,.45);box-shadow:0 0 18px rgba(91,157,255,.14),inset 0 -2px 0 var(--u)}
+  .tab.on{color:var(--tx);background:var(--panel2);
+    border-color:var(--bd2);box-shadow:inset 0 -2px 0 var(--u)}
   .tab.claude{color:var(--r2)}
-  .tab.claude:hover{color:#ffb08a}
-  .tab.claude.on{color:#fff;background:linear-gradient(180deg,rgba(255,90,71,.14),rgba(255,90,71,.03));
-    border-color:rgba(255,90,71,.45);box-shadow:0 0 18px rgba(255,90,71,.13),inset 0 -2px 0 var(--r)}
+  .tab.claude:hover{color:var(--r)}
+  .tab.claude.on{color:var(--tx);background:var(--panel2);
+    border-color:var(--bd2);box-shadow:inset 0 -2px 0 var(--r)}
   /* Author / insight banners */
   .author,.insight{border-radius:var(--rad);padding:14px 18px;margin-bottom:var(--gap);
     display:flex;gap:13px;align-items:flex-start;font-size:12.5px}
@@ -86,7 +95,7 @@
   .filters select:focus{outline:none;border-color:var(--u)}
   /* KPIs */
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
-  .kpi{background:linear-gradient(180deg,var(--panel),#0f1320);border:1px solid var(--bd);border-radius:var(--rad);
+  .kpi{background:var(--panel);border:1px solid var(--bd);border-radius:var(--rad);
     padding:16px 18px;position:relative;overflow:hidden;animation:rise .5s ease both}
   .kpi::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--u)}
   .kpi.g::after{background:var(--win)} .kpi.r::after{background:var(--loss)} .kpi.p::after{background:var(--pur)} .kpi.o::after{background:var(--mid)}
@@ -97,7 +106,7 @@
   .kpi:nth-child(4){animation-delay:.16s}.kpi:nth-child(5){animation-delay:.2s}.kpi:nth-child(6){animation-delay:.24s}
   /* Grid + panels */
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(370px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
-  .panel{background:linear-gradient(180deg,var(--panel),#0f1320);border:1px solid var(--bd);border-radius:var(--rad);padding:18px 20px}
+  .panel{background:var(--panel);border:1px solid var(--bd);border-radius:var(--rad);padding:18px 20px}
   .panel h3{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.4px;margin-bottom:14px;text-transform:uppercase}
   .panel h3 span{font-family:var(--body);color:var(--tx2);font-weight:400;font-size:11.5px;text-transform:none;letter-spacing:0}
   .cwrap{position:relative;height:288px} .full{grid-column:1/-1}
@@ -105,14 +114,14 @@
   table{width:100%;border-collapse:collapse;font-size:12.5px}
   th,td{padding:8px 10px;text-align:left;white-space:nowrap}
   th{font-family:var(--disp);color:var(--tx2);font-size:10px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--bd2);cursor:pointer;user-select:none}
-  td{border-bottom:1px solid #1a2130} tbody tr:hover{background:rgba(91,157,255,.05)}
+  td{border-bottom:1px solid var(--bd)} tbody tr:hover{background:rgba(91,157,255,.05)}
   td:nth-child(n+7){font-family:var(--mono)}
   .pill{font-family:var(--mono);padding:2px 9px;border-radius:6px;font-weight:600;font-size:11px}
   .pill.W{background:rgba(55,208,122,.16);color:var(--winL)} .pill.L{background:rgba(255,90,71,.16);color:var(--loss)}
   .tag{padding:2px 8px;border-radius:6px;background:var(--raise);color:var(--tx2);font-size:11px;font-family:var(--mono)}
   /* Decklist cards */
   .decks{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:var(--gap)}
-  .deck{background:linear-gradient(180deg,var(--panel),#0f1320);border:1px solid var(--bd);border-radius:var(--rad);padding:16px 18px}
+  .deck{background:var(--panel);border:1px solid var(--bd);border-radius:var(--rad);padding:16px 18px}
   .deck .dh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:4px}
   .deck .dn{font-family:var(--disp);font-weight:600;font-size:14px} .deck .dt{font-size:11px;color:var(--tx2);margin-bottom:10px}
   .deck .badge,.badge{font-family:var(--disp);font-size:9.5px;padding:2px 8px;border-radius:20px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
@@ -124,7 +133,7 @@
   .q{color:var(--tx2)}
   /* Sideboard matchup cards */
   .sb{display:grid;grid-template-columns:repeat(auto-fit,minmax(325px,1fr));gap:var(--gap)}
-  .mc{background:linear-gradient(180deg,var(--panel),#0f1320);border:1px solid var(--bd);border-radius:var(--rad);padding:15px 17px;border-left:4px solid var(--tx3)}
+  .mc{background:var(--panel);border:1px solid var(--bd);border-radius:var(--rad);padding:15px 17px;border-left:4px solid var(--tx3)}
   .mc.fav{border-left-color:var(--win)} .mc.des{border-left-color:var(--loss)} .mc.par{border-left-color:var(--mid)}
   .mc .mh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
   .mc .mn{font-family:var(--disp);font-weight:600;font-size:14px} .mc .mmeta{font-family:var(--mono);font-size:10.5px;color:var(--tx2)}
@@ -132,7 +141,7 @@
   .io{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;font-size:12px}
   .io .in{color:var(--winL)} .io .out{color:var(--loss)}
   .io .lbl{font-family:var(--disp);font-size:9.5px;color:var(--tx2);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:2px}
-  .mc .plan{font-size:12px;color:var(--tx);border-top:1px solid #1a2130;padding-top:8px}
+  .mc .plan{font-size:12px;color:var(--tx);border-top:1px solid var(--bd);padding-top:8px}
   /* Idea rows */
   .idea{background:var(--panel);border:1px solid var(--bd);border-left:2px solid var(--u);border-radius:11px;
     padding:12px 15px;margin-bottom:10px;display:flex;gap:11px;align-items:flex-start}
@@ -140,7 +149,18 @@
   .idea .n{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--u2);flex:none;min-width:16px}
   .idea .n:empty,.ic:empty{display:none}
   .note-lg{background:var(--panel2);border:1px dashed var(--bd2);border-radius:12px;padding:13px 16px;font-size:12.5px;color:var(--tx2);margin-bottom:var(--gap)}
-  .foot{color:var(--tx3);font-size:11px;font-family:var(--mono);text-align:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--bd)} .foot a{color:var(--u)}
+  .panel,.kpi,.deck,.mc,.note-lg,.tabs{box-shadow:var(--shadow)}
+  .scout{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--gap)}
+  .fieldrow{display:grid;grid-template-columns:1fr;gap:8px}
+  .field{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bd)}
+  .field:last-child{border-bottom:none}
+  .field .fk{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--u2);min-width:132px;flex:none}
+  .field .fv{font-size:12.5px;color:var(--tx2)}
+  .cov{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:700;padding:1px 7px;border-radius:20px;margin-left:6px}
+  .cov.ok{background:rgba(63,202,130,.16);color:var(--winL)} .cov.no{background:rgba(255,106,82,.16);color:var(--loss)} .cov.mid{background:rgba(230,165,63,.16);color:var(--mid)}
+  .lrow{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--bd);font-size:12.5px}
+  .lrow:last-child{border-bottom:none}
+  .lbar{height:7px;border-radius:4px;background:var(--u);flex:none}
   @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
   @media(max-width:640px){.cwrap{height:250px}.io{grid-template-columns:1fr}.title{font-size:21px}}
@@ -159,6 +179,7 @@
     <input type="file" id="csv" accept=".csv" style="display:none">
     <div class="srcbar">
       <span class="src" id="srcInfo"></span>
+      <button class="themebtn" id="themeBtn" title="Cambiar entre tema oscuro y claro"><span id="themeIcon"></span><span id="themeTxt">Claro</span></button>
       <button class="btn" onclick="document.getElementById('csv').click()">Cargar CSV</button>
     </div>
   </header>
@@ -194,13 +215,17 @@
       <div class="panel"><h3>Salida vs Robo <span>(WR match)</span></h3><div class="cwrap"><canvas id="chPD"></canvas></div></div>
     </div>
     <div class="panel full"><h3>Detalle de partidas <span>(clic en cabecera para ordenar)</span></h3><div style="overflow-x:auto"><table id="tbl"></table></div></div>
+    <div class="panel full" style="margin-top:16px"><h3>Lista × matchup <span>(tu récord V-D con cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
   </section>
 
   <!-- ===== LISTAS ===== -->
   <section class="view" id="v-lists">
+    <h3 style="margin:2px 2px 12px;font-size:15px">Tus versiones <span style="font-weight:400;color:var(--tx2);font-size:12px">— enlace directo y cómo va cada una (récord de tus partidas)</span></h3>
+    <div class="decks" id="myLists"></div>
+    <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(de tus partidas registradas)</span></h3><div id="wrByList"></div></div>
     <div class="note-lg" id="metaNote"></div>
     <div class="panel full" style="margin-bottom:16px"><h3>Metajuego del Pro Tour Ámsterdam <span>(Modern · 362 jugadores · 17-19 jul 2026)</span></h3><div class="cwrap"><canvas id="chMeta"></canvas></div></div>
-    <h3 style="margin:6px 2px 12px;font-size:15px">Listas analizadas</h3>
+    <h3 style="margin:6px 2px 12px;font-size:15px">Listas de referencia (Pro Tour)</h3>
     <div class="decks" id="decks"></div>
     <div class="panel full" style="margin-top:16px"><h3>Comparativa main deck: tu Stock vs las 3 del Pro Tour <span>(nº de copias)</span></h3><div style="overflow-x:auto"><table id="cmp"></table></div></div>
   </section>
@@ -293,22 +318,26 @@
     <div class="sb" id="sbDefCards"></div>
   </section>
 
-  <!-- ===== LOGS MTGO (demo del parser · autor: Claude) ===== -->
+  <!-- ===== LOGS MTGO (panel real del parser · autor: Claude) ===== -->
   <section class="view" id="v-logs">
-    <div class="author"><span class="ic"></span><div><b>Demo del lector de partidas de MTGO</b> · Claude, 21-jul-2026. Magic Online guarda un fichero por cada partida que juegas. El parser los lee y saca solo, sin que apuntes nada a mano: <b>resultado, games, salida/robo, mulligans</b> y <b>las cartas del rival</b> — y con esas cartas <b>adivina qué mazo llevaba</b>. Abajo tienes un ejemplo real de lo que produce.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Qué nos dan los logs de MTGO</b> · Claude, 21-jul-2026. Magic Online guarda un fichero por cada partida. El parser los lee y saca solo, sin apuntar nada a mano. Aquí ves <b>qué campos extrae</b> (y cuáles no vienen), un <b>scouting de rivales</b> a partir de esos datos, y un <b>ejemplo real</b> de la salida.</div></div>
 
     <div class="grid">
-      <div class="panel"><h3>Cómo funciona (la idea)</h3>
-        <div class="idea"><span class="n">1</span><div>Juegas en <b>MTGO</b>. Él solo escribe un fichero de registro por partida en tu ordenador (no hay que activar nada).</div></div>
-        <div class="idea"><span class="n">2</span><div>El <b>parser</b> (un pequeño programa) lee esos ficheros y los junta por partida.</div></div>
-        <div class="idea"><span class="n">3</span><div>Genera un <b>CSV</b> con las columnas exactas de tu Registro.</div></div>
-        <div class="idea"><span class="n">4</span><div>Cargas ese CSV aquí (botón <b>⟳ Cargar datos</b>) y todo el dashboard se actualiza. Cero copiar a mano.</div></div>
+      <div class="panel"><h3>Qué información sacan los logs <span>(por partida, automático)</span></h3>
+        <div class="fieldrow" id="fieldList"></div>
       </div>
-      <div class="panel"><h3>Estado del parser (a día de hoy)</h3>
-        <div class="idea"><span class="n"></span><div><b>Autotest OK.</b> La lógica de decodificar el fichero y de clasificar el mazo rival funciona sobre datos de prueba.</div></div>
-        <div class="idea"><span class="n"></span><div><b>Falta la prueba de fuego:</b> ese autotest usa datos que el propio parser se fabrica. Para confirmar que lee de verdad los ficheros de MTGO necesito <b>un fichero real tuyo</b>. Déjalo en local y lo valido.</div></div>
-        <div class="idea"><span class="n"></span><div>Todavía no rellena <b>liga ni ronda</b> (no vienen en el log): se ponen a mano o se deducen por fecha en una versión 2.</div></div>
+      <div class="panel"><h3>Cómo se usa <span>(el flujo)</span></h3>
+        <div class="idea"><span class="n">1</span><div>Juegas en <b>MTGO</b>: él solo escribe un fichero por partida en tu ordenador (no hay que activar nada).</div></div>
+        <div class="idea"><span class="n">2</span><div>El <b>parser</b> lee esos ficheros y genera un <b>CSV</b> con las columnas de tu Registro.</div></div>
+        <div class="idea"><span class="n">3</span><div>Ese CSV alimenta el dashboard (botón <b>Cargar CSV</b> o, cuando publiques la hoja, automático).</div></div>
+        <div class="idea"><span class="n">4</span><div><b>merge_registro.py</b> añade lo que el log no sabe (Liga, Ronda, Lista, Notas) sin re-teclear las partidas.</div></div>
+        <div class="idea"><span class="n"></span><div><b>Próximo salto</b> (idea de mymtgo): sacar también las <b>manos de salida</b> y el turno a turno para un detalle por juego.</div></div>
       </div>
+    </div>
+
+    <div class="panel full" style="margin-bottom:16px"><h3>Scouting de rivales <span>· a quién te has enfrentado, con qué mazo y tu récord (idea traída de mymtgo)</span></h3>
+      <div style="overflow-x:auto"><table id="scoutTbl"></table></div>
+      <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">Sale solo de la columna <b>Rival</b> del log. Cuantas más partidas cargues, más útil para preparar la ronda cuando repites oponente en el MoL.</div>
     </div>
 
     <div class="panel full"><h3>Ejemplo de salida del parser <span>· 5 partidas · el rival y su mazo, detectados solos</span></h3>
@@ -317,7 +346,6 @@
     </div>
   </section>
 
-  <div class="foot" id="foot"></div>
 </div>
 
 <script>
@@ -343,6 +371,7 @@ let MATCHES = [
  {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:3,op:"Grixis Reanimator",aq:"Grixis Reanimator",r:"W",jg:1,jp:0,sr:"Robo",my:0,mr:1,mvp:"",nt:""},
  {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:4,op:"Dimir",aq:"Dimir Frog",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"Lista con namor y 2000 counter",nt:""},
  {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:5,op:"UW",aq:"Azorius Control",r:"W",jg:2,jp:0,sr:"Robo",my:0,mr:0,mvp:"A XISPAS",nt:""},
+ {f:"20/07/2026",ev:"Liga 5",li:"2.0",rd:1,op:"Breach",aq:"Through the Breach",r:"W",jg:2,jp:1,sr:"Salida",my:0,mr:1,mvp:"",nt:"Estreno de la lista 2.0"},
 ];
 
 // PT Amsterdam metagame (magic.gg breakdown)
@@ -364,9 +393,32 @@ const LISTS = [
  {name:"Edel — PT Ámsterdam",badge:"pt",tag:"UR Cutter Prowess · variante Stormchaser",url:"",
   main:[["Criaturas","4 DRC · 4 Swiftspear · 4 Slickshot"],["Hechizos","4 Cori-Steel Cutter · 4 Bolt · 4 Lava Dart · 4 Preordain · 2 Expressive Iteration · 2 Mutagenic Growth · 2 Violent Urge · 4 Mishra's Bauble · <span class='new'>2 Stormchaser's Talent</span> · <span class='new'>2 Boomerang Basics</span>"],["Tierras (18)","2 Arid Mesa · 2 Bloodstained Mire · 1 Fiery Islet · 1 Island · 3 Mountain · 4 Scalding Tarn · 3 Steam Vents · 1 Thundering Falls · 1 Wooded Foothills"]],
   side:"4 Consign to Memory · 4 Unholy Heat · 2 Meltdown · 2 Spell Snare · 1 Spell Pierce · 1 Murktide Regent · 1 Surgical Extraction"},
- {name:"Variante Stormchaser (propuesta)",badge:"you",tag:"a testear: la tech nueva del PT sobre tu base",url:"",
-  main:[["Cambios","<span class='new'>+2 Stormchaser's Talent · +2 Boomerang Basics</span> · −1 Flashback · −2 Expressive Iteration (→2) · −1 Mutagenic Growth (→2)"],["Idea","Amenazas más pegajosas y triggers de prowess baratos; ataca tus peores matchups (espejo, control) y tu debilidad en el robo."]],
-  side:"Tu SB + 1 Spell Snare (recorta 2º Tormod's Crypt o Into the Flood Maw según meta local)"},
+];
+
+// ===== Tus versiones de lista (las que vas pasando) · resultado calculado de tus partidas =====
+const MYLISTS = [
+ {key:"Stock",name:"Stock",deck:"7881695",url:"https://www.mtggoldfish.com/deck/7881695#online",
+  desc:"Tu base clásica (Preordain + Expressive Iteration, 1 Violent Urge + 1 Flashback). Verificada en mtggoldfish."},
+ {key:"PT",name:"PT",deck:"7881694",url:"https://www.mtggoldfish.com/deck/7881694#online",
+  desc:"La variante que preparaste para el Pro Tour. La jugaste en la Liga 4."},
+ {key:"2.0",name:"2.0",deck:"7881798",url:"https://www.mtggoldfish.com/deck/7881798#online",
+  desc:"Tu versión nueva, estrenada en la Liga 5. Contenido de la lista pendiente de detallar (mtggoldfish bloquea la descarga automática: pásame el texto y lo incrusto)."},
+];
+
+// ===== Qué información sacan los logs de MTGO (inventario de campos del parser) =====
+const PARSER_FIELDS = [
+ ["Resultado (W/L)","ok","Quién ganó el match. Siempre presente."],
+ ["Marcador (games)","ok","Juegos ganados y perdidos, p. ej. 2-1. Siempre."],
+ ["Salida / Robo (G1)","ok","Si empezaste o robaste en el primer juego. Siempre."],
+ ["Mulligans (yo / rival)","ok","Cuántas manos rechazasteis cada uno. Siempre."],
+ ["Rival (usuario MTGO)","ok","El nick del oponente. Siempre — base del scouting."],
+ ["Cartas del rival vistas","ok","Todas las cartas que te enseñó durante el match. Siempre."],
+ ["match_uuid","ok","Identificador único de cada partida (evita duplicados al fusionar). Siempre."],
+ ["Fecha","ok","Cuándo se jugó. Siempre."],
+ ["Arquetipo del rival","mid","Se DEDUCE de las cartas vistas con una heurística. Bien en mazos conocidos; puede fallar en listas raras."],
+ ["Evento / Liga · Ronda","no","No viene en el log. Se pone a mano o por el complemento (merge_registro.py)."],
+ ["Tu lista jugada","no","No viene en el log. Se etiqueta a mano (Stock / PT / 2.0)."],
+ ["Manos de salida / turno a turno","no","El log lo tiene, el parser aún no lo extrae. Mejora futura (idea de mymtgo)."],
 ];
 
 const CMP = [
@@ -469,7 +521,9 @@ const LOGDEMO = [
 ];
 
 // ================= LÓGICA =================
-Chart.defaults.color='#8b97a7';Chart.defaults.font.family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif";Chart.defaults.borderColor='#1e2632';
+Chart.defaults.font.family="'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif";
+function cssv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+function applyChartTheme(){Chart.defaults.color=cssv('--chart-tx')||'#8b97a7';Chart.defaults.borderColor=cssv('--chart-grid')||'#1e2632';}
 const C={W2_0:'#2ea043',W2_1:'#56d364',W1_0:'#3fb950',L1_2:'#e0873a',L0_2:'#f85149',blue:'#58a6ff',red:'#f85149',grn:'#3fb950'};
 const PIE=['#58a6ff','#f85149','#3fb950','#e0873a','#bc8cff','#d6a534','#56d364','#8b97a7','#79c0ff','#ff7b72','#a5d6ff','#ffa657','#d2a8ff','#7ee787'];
 let charts={};
@@ -483,6 +537,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   $('v-'+t.dataset.v).classList.add('on');
   if(t.dataset.v==='lists')renderMeta();
+  if(t.dataset.v==='stats')render();
 });
 
 function uniq(f){return [...new Set(MATCHES.map(d=>d[f]))];}
@@ -519,7 +574,7 @@ function chartEvo(D){const lg=[...new Set(D.map(d=>d.ev))].sort();const wr=lg.ma
   charts.evo=new Chart($('chEvo'),{type:'line',data:{labels:lg,datasets:[{data:wr,borderColor:C.blue,backgroundColor:'rgba(88,166,255,.15)',fill:true,tension:.3,pointRadius:5,pointBackgroundColor:C.blue}]},
     options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.y}%`}}}}});}
 function chartPie(D){const m={};D.forEach(d=>m[d.aq]=(m[d.aq]||0)+1);const r=Object.entries(m).sort((a,b)=>b[1]-a[1]);
-  charts.pie=new Chart($('chPie'),{type:'doughnut',data:{labels:r.map(x=>x[0]),datasets:[{data:r.map(x=>x[1]),backgroundColor:PIE,borderColor:'#0a0e14',borderWidth:2}]},
+  charts.pie=new Chart($('chPie'),{type:'doughnut',data:{labels:r.map(x=>x[0]),datasets:[{data:r.map(x=>x[1]),backgroundColor:PIE,borderColor:cssv('--ring'),borderWidth:2}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'58%',animation:{duration:400},plugins:{legend:{position:'right',labels:{usePointStyle:true,boxWidth:8,font:{size:10}}},tooltip:{callbacks:{label:c=>{const t=c.dataset.data.reduce((a,b)=>a+b,0);return `${c.label}: ${c.parsed} (${pct(c.parsed,t)}%)`;}}}}}});}
 function chartPD(D){const s=D.filter(d=>d.sr==='Salida'),r=D.filter(d=>d.sr==='Robo');
   charts.pd=new Chart($('chPD'),{type:'bar',data:{labels:['Salida','Robo'],datasets:[{data:[pct(s.filter(d=>d.r==='W').length,s.length),pct(r.filter(d=>d.r==='W').length,r.length)],backgroundColor:[C.grn,C.red],borderRadius:6}]},
@@ -530,7 +585,7 @@ function table(D){const cols=[['f','Fecha'],['ev','Liga'],['li','Lista'],['rd','
   const val=(d,k)=>k==='g'?`${d.jg}-${d.jp}`:k==='mull'?`${d.my}/${d.mr}`:d[k];
   const s=[...D].sort((a,b)=>{let x=sortCol==='rd'?a.rd:val(a,sortCol),y=sortCol==='rd'?b.rd:val(b,sortCol);return (x>y?1:x<y?-1:0)*sortDir;});
   let h='<thead><tr>'+cols.map(c=>`<th data-k="${c[0]}">${c[1]}${sortCol===c[0]?(sortDir>0?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>';
-  h+=s.map(d=>`<tr><td>${d.f}</td><td><span class="tag">${d.ev}</span></td><td>${d.li}</td><td>${d.rd}</td><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.jg}-${d.jp}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td>${d.by||'—'}</td><td style="white-space:normal;color:#8b97a7">${[d.mvp,d.nt].filter(Boolean).join(' · ')}</td></tr>`).join('')+'</tbody>';
+  h+=s.map(d=>`<tr><td>${d.f}</td><td><span class="tag">${d.ev}</span></td><td>${d.li}</td><td>${d.rd}</td><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.jg}-${d.jp}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td>${d.by||'—'}</td><td style="white-space:normal;color:var(--tx2)">${[d.mvp,d.nt].filter(Boolean).join(' · ')}</td></tr>`).join('')+'</tbody>';
   const t=$('tbl');t.innerHTML=h;t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(sortCol===k)sortDir*=-1;else{sortCol=k;sortDir=1;}table(filtered());});}
 
 function render(){const D=filtered();
@@ -538,19 +593,85 @@ function render(){const D=filtered();
   kpis(D);insight(D);destroy();if(D.length){chartSR(D);chartArq(D);chartEvo(D);chartPie(D);chartPD(D);}table(D);renderAuto();}
 
 // ---- Listas tab ----
-let metaDone=false;
 function renderMeta(){
-  if(!metaDone){
-    charts.meta=new Chart($('chMeta'),{type:'bar',data:{labels:META.map(m=>m[0]),datasets:[{data:META.map(m=>m[1]),backgroundColor:META.map((m,i)=>m[0]==='Izzet Prowess'?C.blue:'#3a4658'),borderRadius:5}]},
-      options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>v+'%'}},x:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'%'}}}}});
-    metaDone=true;
-  }
+  if(charts.meta)charts.meta.destroy();
+  charts.meta=new Chart($('chMeta'),{type:'bar',data:{labels:META.map(m=>m[0]),datasets:[{data:META.map(m=>m[1]),backgroundColor:META.map((m,i)=>m[0]==='Izzet Prowess'?C.blue:cssv('--barmut')),borderRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>v+'%'}},x:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'%'}}}}});
+}
+// ---- Tus versiones de lista: resultado de cada una ----
+function listStats(key){
+  const D=MATCHES.filter(d=>d.li===key);
+  const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
+  const gw=D.reduce((a,d)=>a+d.jg,0),gl=D.reduce((a,d)=>a+d.jp,0);
+  const mm={};D.forEach(d=>{(mm[d.aq]=mm[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
+  return {D,W,L,n:W+L,gw,gl,wr:pct(W,W+L),mm};
+}
+function renderMyLists(){
+  $('myLists').innerHTML=MYLISTS.map(l=>{
+    const s=listStats(l.key);
+    const best=Object.entries(s.mm).filter(([k,v])=>v.w>v.l).map(([k])=>k);
+    const worst=Object.entries(s.mm).filter(([k,v])=>v.l>v.w).map(([k])=>k);
+    const recTxt=s.n?`${s.W}-${s.L}`:'sin partidas';
+    const wrTxt=s.n?`${s.wr}%`:'—';
+    return `<div class="deck">
+      <div class="dh"><span class="dn">${l.name}</span><span class="badge you">deck ${l.deck}</span></div>
+      <div class="dt">${l.desc}</div>
+      <div class="io" style="grid-template-columns:1fr 1fr;margin:10px 0">
+        <div><span class="lbl">Récord</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${recTxt}</span></div>
+        <div><span class="lbl">Win rate</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${wrTxt}</span> <span class="q" style="font-size:11px">${s.n?`· ${s.gw}-${s.gl} juegos`:''}</span></div>
+      </div>
+      ${s.n?`<div style="font-size:12px"><span style="color:var(--winL);font-weight:600">Ganas:</span> ${best.join(', ')||'—'}<br><span style="color:var(--loss);font-weight:600">Pierdes:</span> ${worst.join(', ')||'—'}</div>`:''}
+      <div style="margin-top:10px"><a href="${l.url}" target="_blank">Abrir lista en mtggoldfish →</a></div>
+    </div>`;
+  }).join('');
+}
+// ---- Lista x matchup + win rate por lista ----
+function renderLxM(){
+  const keys=MYLISTS.map(l=>l.key);
+  const aqs=[...new Set(MATCHES.map(d=>d.aq))].filter(a=>a&&a!=='N/A (bye/concede)').sort();
+  const cell=(aq,key)=>{const D=MATCHES.filter(d=>d.aq===aq&&d.li===key);if(!D.length)return '<td style="text-align:center;color:var(--tx3)">·</td>';
+    const w=D.filter(d=>d.r==='W').length,l=D.filter(d=>d.r==='L').length,wr=pct(w,w+l);
+    const c=wr>=60?'var(--winL)':wr>=40?'var(--mid)':'var(--loss)';
+    return `<td style="text-align:center;font-family:var(--mono)"><span style="color:${c};font-weight:700">${w}-${l}</span></td>`;};
+  let h='<thead><tr><th>Matchup</th>'+keys.map(k=>`<th style="text-align:center">${k}</th>`).join('')+'</tr></thead><tbody>';
+  h+=aqs.map(aq=>`<tr><td>${aq}</td>${keys.map(k=>cell(aq,k)).join('')}</tr>`).join('')+'</tbody>';
+  $('lxm').innerHTML=h;
+  $('wrByList').innerHTML=MYLISTS.map(l=>{const s=listStats(l.key),w=s.n?s.wr:0;
+    return `<div class="lrow"><div style="min-width:54px;font-weight:600">${l.name}</div><div class="lbar" style="width:${Math.max(w*1.6,6)}px;background:${w>=50?'var(--win)':'var(--loss)'}"></div><div style="font-family:var(--mono);color:var(--tx2)">${s.n?`${s.wr}% · ${s.W}-${s.L}`:'sin partidas registradas'}</div></div>`;
+  }).join('');
+}
+// ---- Logs: qué información dan + scouting de rivales (idea de mymtgo/client) ----
+function renderFields(){
+  $('fieldList').innerHTML=PARSER_FIELDS.map(f=>{const cls=f[1],lab=cls==='ok'?'siempre':cls==='mid'?'parcial':'no viene';
+    return `<div class="field"><div class="fk">${f[0]}<span class="cov ${cls}">${lab}</span></div><div class="fv">${f[2]}</div></div>`;}).join('');
+}
+function renderScout(){
+  const m={};
+  MATCHES.forEach(d=>{if(!d.op||d.op==='NA'||d.op==='—')return;const k=d.op;
+    m[k]=m[k]||{op:d.op,decks:{},w:0,l:0,n:0};
+    m[k].decks[d.aq]=(m[k].decks[d.aq]||0)+1;
+    if(d.r==='W')m[k].w++;else if(d.r==='L')m[k].l++;m[k].n++;});
+  const rows=Object.values(m).sort((a,b)=>b.n-a.n||(b.w-b.l)-(a.w-a.l));
+  const hh=['Rival','Mazo(s) visto(s)','Enfr.','Tu récord','WR'];
+  $('scoutTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
+    rows.map(r=>{const deck=Object.entries(r.decks).sort((a,b)=>b[1]-a[1]).map(([k,v])=>v>1?`${k} (${v})`:k).join(', ');const wr=pct(r.w,r.w+r.l);
+      return `<tr><td><b>${r.op}</b></td><td style="white-space:normal">${deck}</td><td>${r.n}</td><td>${r.w}-${r.l}</td><td><span class="pill ${wr>=50?'W':'L'}">${wr}%</span></td></tr>`;}).join('')+'</tbody>';
+}
+// ---- Tema (oscuro / claro) ----
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  try{localStorage.setItem('mtg-theme',t);}catch(e){}
+  $('themeTxt').textContent=t==='light'?'Oscuro':'Claro';
+  $('themeIcon').textContent=t==='light'?'◑':'◐';
+  applyChartTheme();
+  const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
+  if(v==='stats')render();else if(v==='lists')renderMeta();
 }
 function renderLists(){
-  $('metaNote').innerHTML="He analizado <b>12 listas</b>: las <b>3 del Pro Tour Ámsterdam</b> (Detecnik, Chin, Edel) + el <b>consenso de 9 listas top</b> de finales de junio/julio (tu proyecto). Tu <b>Stock</b> (main) es muy parecida a la de Chin y tu <b>sideboard ya está adaptado al PT</b> (2 Spell Snare, Surgical Extraction). Lo único que aún no pruebas es el paquete <span style='color:#56d364;font-weight:700'>Stormchaser's Talent + Boomerang Basics</span>.";
+  $('metaNote').innerHTML="He analizado <b>12 listas</b>: las <b>3 del Pro Tour Ámsterdam</b> (Detecnik, Chin, Edel) + el <b>consenso de 9 listas top</b> de finales de junio/julio (tu proyecto). Tu <b>Stock</b> (main) es muy parecida a la de Chin y tu <b>sideboard ya está adaptado al PT</b> (2 Spell Snare, Surgical Extraction). Lo único que aún no pruebas es el paquete <span style='color:var(--winL);font-weight:700'>Stormchaser's Talent + Boomerang Basics</span>.";
   $('decks').innerHTML=LISTS.map(l=>`<div class="deck"><div class="dh"><span class="dn">${l.name}</span><span class="badge ${l.badge}">${l.badge==='you'?'TÚ':'PRO TOUR'}</span></div><div class="dt">${l.tag}</div><div class="cl">${l.main.map(s=>`<div class="sec">${s[0]}</div><div>${s[1]}</div>`).join('')}<div class="sec">Sideboard</div><div>${l.side}</div>${l.url?`<div style="margin-top:8px"><a href="${l.url}" target="_blank">Ver lista completa</a></div>`:''}</div></div>`).join('');
   const hh=['Carta','Stock','Detecnik','Chin','Edel'];
-  $('cmp').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+CMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td style="text-align:center${x!=='—'&&x!==r[1]?';color:#56d364;font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
+  $('cmp').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+CMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td style="text-align:center${x!=='—'&&x!==r[1]?';color:var(--winL);font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
 }
 // ---- Sideboard tab ----
 function renderSB(){
@@ -568,8 +689,8 @@ function renderSB(){
 // ---- La 75 Definitiva (Claude) ----
 function renderDefCmp(){
   const hh=['Carta',' Definitiva','JAJC 1º 9-0','jvidarte 8º','runbad 5-0','SkyThZ 5-0×2','jeffleeph28 5-0','EthanBird burn','Dingo34 burn'];
-  $('defCmp').innerHTML='<thead><tr>'+hh.map((h,i)=>`<th${i===1?' style="color:#d6a534"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+
-    DEFCMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map((x,i)=>`<td style="text-align:center${i===0?';color:#d6a534;font-weight:800':String(x)!==String(r[1])?';color:#56d364;font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
+  $('defCmp').innerHTML='<thead><tr>'+hh.map((h,i)=>`<th${i===1?' style="color:var(--mid)"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+
+    DEFCMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map((x,i)=>`<td style="text-align:center${i===0?';color:var(--mid);font-weight:800':String(x)!==String(r[1])?';color:var(--winL);font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
 }
 function renderSBDef(){
   const wr={};MATCHES.forEach(d=>{(wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
@@ -587,11 +708,12 @@ function renderIdeas(){
   $('ideasList').innerHTML=IDEAS.map(i=>`<div class="idea"><span class="n">${i[0]}</span><div>${i[1]}</div></div>`).join('');
   $('ptList').innerHTML=PT.map(i=>`<div class="idea"><span class="n">${i[0]}</span><div>${i[1]}</div></div>`).join('');
 }
-// ---- Logs MTGO (demo del parser) ----
+// ---- Logs MTGO (ejemplo de salida del parser) ----
 function renderLogs(){
   const hh=['Rival','Mazo (auto)','Res','Games','G1','Mulls yo/riv','Cartas del rival vistas'];
   $('logTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
-    LOGDEMO.map(d=>`<tr><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.g}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td style="white-space:normal;color:#8b97a7">${d.cards}</td></tr>`).join('')+'</tbody>';
+    LOGDEMO.map(d=>`<tr><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.g}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td style="white-space:normal;color:var(--tx2)">${d.cards}</td></tr>`).join('')+'</tbody>';
+  renderFields();renderScout();
 }
 // ---- Fuente de datos remota: Google Sheet del Drive publicado como CSV ----
 // Pega aquí la URL "Archivo → Compartir → Publicar en la web → CSV" de tu hoja de resultados
@@ -645,17 +767,23 @@ function parseCSV(txt){
     .filter(d=>{if(!d.uid)return true;if(seen.has(d.uid))return false;seen.add(d.uid);return true;});
 }
 $('csv').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
-  rd.onload=()=>{try{const parsed=parseCSV(rd.result);if(parsed.length){MATCHES=parsed;initSelectors();render();renderSB();renderSBDef();updateSource(false);alert('Datos actualizados: '+parsed.length+' partidas cargadas.');}else alert('No se detectaron filas válidas. Exporta el Registro como CSV.');}catch(err){alert('Error al leer el CSV: '+err.message);}};
+  rd.onload=()=>{try{const parsed=parseCSV(rd.result);if(parsed.length){MATCHES=parsed;initSelectors();render();renderMyLists();renderLxM();renderSB();renderSBDef();renderLogs();updateSource(false);alert('Datos actualizados: '+parsed.length+' partidas cargadas.');}else alert('No se detectaron filas válidas. Exporta el Registro como CSV.');}catch(err){alert('Error al leer el CSV: '+err.message);}};
   rd.readAsText(f,'utf-8');});
 
 function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los matchups');fillSel('fBy','by','Todos los reporteros');}
 
 // init
 (async function(){
+  let saved='dark';try{saved=localStorage.getItem('mtg-theme')||'dark';}catch(e){}
+  document.documentElement.setAttribute('data-theme',saved);
+  applyChartTheme();
+  $('themeTxt').textContent=saved==='light'?'Oscuro':'Claro';
+  $('themeIcon').textContent=saved==='light'?'\u25d1':'\u25d0';
+  $('themeBtn').onclick=()=>setTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');
+
   const remote = await loadRemote();
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();renderLists();renderSB();renderIdeas();renderDefCmp();renderSBDef();renderLogs();
-  $('foot').innerHTML='Tu tracker del MoL \u00b7 datos por CSV o Google Sheet publicado \u00b7 meta: Pro Tour Amsterdam (magic.gg / mtgtop8) \u00b7 pesta\u00f1as La 75 Definitiva, Plan SB y Logs MTGO por Claude \u00b7 21-jul-2026';
+  initSelectors();renderMyLists();renderLxM();renderLists();renderSB();renderIdeas();renderDefCmp();renderSBDef();renderLogs();
   render();
   updateSource(remote);
 })();
