@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Izzet Prowess · Centro de mando MTGO</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0e14; --card:#141a24; --card2:#1a212e; --bd:#2a3444;
+    --tx:#e6edf3; --tx2:#8b97a7; --blue:#58a6ff; --red:#f85149; --org:#e0873a;
+    --grn:#3fb950; --grnL:#56d364; --yel:#d6a534; --pur:#bc8cff;
+    --gap:16px; --rad:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;
+    background:radial-gradient(1200px 700px at 78% -12%, #16233f 0%, var(--bg) 52%) fixed;
+    color:var(--tx);line-height:1.55;padding:20px;min-height:100vh}
+  .wrap{max-width:1300px;margin:0 auto}
+  header.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:22px;
+    background:linear-gradient(135deg,#1f6feb,#8957e5 60%,#f85149);box-shadow:0 4px 18px rgba(88,166,255,.35)}
+  .title{font-size:23px;font-weight:800;letter-spacing:.2px}
+  .sub{color:var(--tx2);font-size:12.5px}
+  /* Tabs */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;background:var(--card);
+    padding:6px;border:1px solid var(--bd);border-radius:14px}
+  .tab{padding:9px 16px;border-radius:9px;font-size:13.5px;font-weight:600;color:var(--tx2);cursor:pointer;
+    border:1px solid transparent;transition:.15s;white-space:nowrap}
+  .tab:hover{color:var(--tx);background:var(--card2)}
+  .tab.on{color:#fff;background:linear-gradient(135deg,#1f6feb33,#f8514922);border-color:var(--blue)}
+  .tab.claude{color:var(--yel);border-color:#d6a53455}
+  .tab.claude:hover{color:#ffd77a;background:var(--card2)}
+  .tab.claude.on{color:#ffd77a;background:linear-gradient(135deg,#d6a53426,#f8514915);border-color:var(--yel)}
+  .badge.claude{background:rgba(214,165,52,.2);color:var(--yel)}
+  .author{background:linear-gradient(135deg,#2a2210,#161d2e);border:1px solid var(--yel);border-radius:var(--rad);
+    padding:13px 17px;margin-bottom:var(--gap);font-size:12.5px;display:flex;gap:12px;align-items:flex-start}
+  .author .ic{font-size:19px} .author b{color:var(--yel)}
+  .dl{font-size:12.5px;line-height:1.6}
+  .dl .sec{color:var(--tx2);font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;margin:9px 0 3px}
+  .dl .chg{color:var(--grnL);font-weight:700} .dl .cut{color:var(--red);text-decoration:line-through;opacity:.75}
+  .chip{display:inline-block;padding:1px 8px;border-radius:20px;font-size:10.5px;font-weight:700;margin-left:6px}
+  .chip.in{background:rgba(63,185,80,.18);color:var(--grnL)} .chip.out{background:rgba(248,81,73,.18);color:var(--red)}
+  .view{display:none;animation:fade .25s ease} .view.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  /* Filters */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:var(--gap)}
+  .filters .fg label{font-size:10.5px;color:var(--tx2);display:block;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+  .filters select{background:var(--card2);color:var(--tx);border:1px solid var(--bd);border-radius:9px;padding:8px 11px;font-size:13px;min-width:130px}
+  .btn{background:var(--card2);color:var(--tx);border:1px solid var(--bd);border-radius:9px;padding:8px 13px;font-size:13px;cursor:pointer;font-weight:600}
+  .btn:hover{border-color:var(--blue)}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
+  .kpi{background:var(--card);border:1px solid var(--bd);border-radius:var(--rad);padding:15px 17px;position:relative;overflow:hidden}
+  .kpi::after{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--blue)}
+  .kpi.g::after{background:var(--grn)} .kpi.r::after{background:var(--red)} .kpi.p::after{background:var(--pur)} .kpi.o::after{background:var(--org)}
+  .kpi .lab{font-size:10.5px;color:var(--tx2);text-transform:uppercase;letter-spacing:.6px}
+  .kpi .val{font-size:29px;font-weight:800;margin-top:3px}
+  .kpi .note{font-size:12px;color:var(--tx2)}
+  .insight{background:linear-gradient(135deg,#2a1c10,#161d2e);border:1px solid var(--org);border-radius:var(--rad);
+    padding:15px 19px;margin-bottom:var(--gap);display:flex;gap:13px;align-items:flex-start}
+  .insight .ic{font-size:20px} .insight b{color:var(--org)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(370px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
+  .panel{background:var(--card);border:1px solid var(--bd);border-radius:var(--rad);padding:17px 19px}
+  .panel h3{font-size:13.5px;font-weight:700;margin-bottom:13px}
+  .panel h3 span{color:var(--tx2);font-weight:500;font-size:11.5px}
+  .cwrap{position:relative;height:285px} .full{grid-column:1/-1}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{padding:8px 10px;text-align:left;white-space:nowrap}
+  th{color:var(--tx2);font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--bd);cursor:pointer;user-select:none}
+  td{border-bottom:1px solid #1e2632} tbody tr:hover{background:#1a2230}
+  .pill{padding:2px 9px;border-radius:20px;font-weight:700;font-size:11px}
+  .pill.W{background:rgba(63,185,80,.18);color:var(--grnL)} .pill.L{background:rgba(248,81,73,.18);color:var(--red)}
+  .tag{padding:2px 8px;border-radius:6px;background:#21293a;color:var(--tx2);font-size:11px}
+  /* Decklist cards */
+  .decks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--gap)}
+  .deck{background:var(--card);border:1px solid var(--bd);border-radius:var(--rad);padding:16px 18px}
+  .deck .dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .deck .dn{font-weight:700;font-size:14.5px} .deck .dt{font-size:11px;color:var(--tx2);margin-bottom:10px}
+  .deck .badge{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700}
+  .badge.you{background:rgba(88,166,255,.2);color:var(--blue)} .badge.pt{background:rgba(224,135,58,.2);color:var(--org)}
+  .cl{font-size:12px;line-height:1.5;color:var(--tx)} .cl .sec{color:var(--tx2);font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;margin:8px 0 3px}
+  .cl .new{color:var(--grnL);font-weight:700} .cl a{color:var(--blue);text-decoration:none;font-size:12px}
+  .q{color:var(--tx2)}
+  /* Sideboard cards */
+  .sb{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--gap)}
+  .mc{background:var(--card);border:1px solid var(--bd);border-radius:var(--rad);padding:15px 17px;border-left:4px solid var(--tx2)}
+  .mc.fav{border-left-color:var(--grn)} .mc.des{border-left-color:var(--red)} .mc.par{border-left-color:var(--yel)}
+  .mc .mh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+  .mc .mn{font-weight:700;font-size:14px} .mc .mmeta{font-size:11px;color:var(--tx2)}
+  .mc .wr{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;background:#21293a}
+  .io{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0;font-size:12px}
+  .io .in{color:var(--grnL)} .io .out{color:var(--red)}
+  .io .lbl{font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:2px}
+  .mc .plan{font-size:12px;color:var(--tx);border-top:1px solid #1e2632;padding-top:8px}
+  .idea{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:13px 16px;margin-bottom:10px;display:flex;gap:11px}
+  .idea .n{font-size:17px} .idea b{color:var(--blue)}
+  .note-lg{background:var(--card2);border:1px dashed var(--bd);border-radius:12px;padding:13px 16px;font-size:12.5px;color:var(--tx2);margin-bottom:var(--gap)}
+  .foot{color:var(--tx2);font-size:11.5px;text-align:center;margin-top:10px} .foot a{color:var(--blue)}
+  @media(max-width:640px){.cwrap{height:250px}.io{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="logo">⚡</div>
+      <div><div class="title">Izzet Prowess · Centro de mando</div>
+      <div class="sub" id="subtitle">Modern · MTGO</div></div>
+    </div>
+    <input type="file" id="csv" accept=".csv" style="display:none">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="sub" id="srcInfo"></span>
+      <button class="btn" onclick="document.getElementById('csv').click()">⟳ Cargar datos (CSV)</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <div class="tab on" data-v="stats">📊 Estadísticas</div>
+    <div class="tab" data-v="lists">🃏 Listas &amp; Opciones</div>
+    <div class="tab" data-v="sb">🔄 Plan de Sideboard</div>
+    <div class="tab" data-v="ideas">💡 Ideas</div>
+    <div class="tab" data-v="logs">🧾 Logs MTGO</div>
+    <div class="tab claude" data-v="def">⭐ La 75 Definitiva</div>
+    <div class="tab claude" data-v="sbdef">🧭 Plan SB Definitivo</div>
+  </nav>
+
+  <!-- ===== ESTADÍSTICAS ===== -->
+  <section class="view on" id="v-stats">
+    <div class="filters">
+      <div class="fg"><label>Lista</label><select id="fLista"></select></div>
+      <div class="fg"><label>Liga / Evento</label><select id="fLiga"></select></div>
+      <div class="fg"><label>Salida / Robo</label><select id="fSR"></select></div>
+      <div class="fg"><label>Matchup</label><select id="fArq"></select></div>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="insight" id="insight"></div>
+    <div class="grid"><div class="panel full"><h3>Cómo acaban las rondas — Salida vs Robo <span>(nº de matches por resultado)</span></h3><div class="cwrap"><canvas id="chSR"></canvas></div></div></div>
+    <div class="grid">
+      <div class="panel"><h3>Win rate por matchup <span>(V-D · orden por WR)</span></h3><div class="cwrap"><canvas id="chArq"></canvas></div></div>
+      <div class="panel"><h3>Evolución por liga <span>(WR match %)</span></h3><div class="cwrap"><canvas id="chEvo"></canvas></div></div>
+    </div>
+    <div class="grid">
+      <div class="panel"><h3>Reparto de rivales <span>(% del total)</span></h3><div class="cwrap"><canvas id="chPie"></canvas></div></div>
+      <div class="panel"><h3>Salida vs Robo <span>(WR match)</span></h3><div class="cwrap"><canvas id="chPD"></canvas></div></div>
+    </div>
+    <div class="panel full"><h3>Detalle de partidas <span>(clic en cabecera para ordenar)</span></h3><div style="overflow-x:auto"><table id="tbl"></table></div></div>
+  </section>
+
+  <!-- ===== LISTAS ===== -->
+  <section class="view" id="v-lists">
+    <div class="note-lg" id="metaNote"></div>
+    <div class="panel full" style="margin-bottom:16px"><h3>Metajuego del Pro Tour Ámsterdam <span>(Modern · 362 jugadores · 17-19 jul 2026)</span></h3><div class="cwrap"><canvas id="chMeta"></canvas></div></div>
+    <h3 style="margin:6px 2px 12px;font-size:15px">Listas analizadas</h3>
+    <div class="decks" id="decks"></div>
+    <div class="panel full" style="margin-top:16px"><h3>Comparativa main deck: tu Stock vs las 3 del Pro Tour <span>(nº de copias)</span></h3><div style="overflow-x:auto"><table id="cmp"></table></div></div>
+  </section>
+
+  <!-- ===== SIDEBOARD ===== -->
+  <section class="view" id="v-sb">
+    <div class="note-lg">Regla de oro: <b>nunca diluyas la masa crítica de amenazas</b> (12 criaturas + 4 Cori-Steel Cutter). Decide antes de la partida: ¿race puro o disrupción + daño sostenido? · El WR real sale de tus partidas registradas.</div>
+    <div class="sb" id="sbCards"></div>
+  </section>
+
+  <!-- ===== IDEAS ===== -->
+  <section class="view" id="v-ideas">
+    <div class="grid">
+      <div class="panel"><h3>💡 Pruebas pendientes</h3><div id="ideasList"></div></div>
+      <div class="panel"><h3>📌 Conclusiones del Pro Tour</h3><div id="ptList"></div></div>
+    </div>
+    <div class="panel full"><h3>🎯 Tus tendencias (auto)</h3><div id="autoInsights"></div></div>
+  </section>
+
+  <!-- ===== LA 75 DEFINITIVA (autor: Claude) ===== -->
+  <section class="view" id="v-def">
+    <div class="author"><span class="ic">✍️</span><div><b>Autor de esta pestaña: Claude</b> · 20-jul-2026. Síntesis de <b>tus 2 variantes</b> (Stock y PT), las <b>3 listas del Pro Tour</b> y las <b>7 mejores listas de la última semana (16–20 jul)</b>: <b>JAJC — 1º y 9-0 en el Modern Challenge 32 del 19-jul</b> (el enlace que me pasaste), jvidarte (top 8 del mismo Challenge), las ligas 5-0 de runbad, SkyThZ (×2), jeffleeph28 y Dingo34, y el top 8 del Last Chance de EthanBird. Fuentes: mtggoldfish (decks 7880532, 7880526, 7880129, 7879906, 7881476, 7879644, 7881600) vía mtgo.com.</div></div>
+
+    <div class="grid">
+      <div class="panel"><h3>📣 Veredicto de la semana post-PT</h3>
+        <div class="idea"><span class="n">🪦</span><div><b>El paquete Stormchaser/Boomerang NO ha sobrevivido.</b> En las 7 listas top de la semana: 0 Boomerang Basics y solo 1 Stormchaser's Talent (como 1-of en la variante burn). La build clásica lo ha ganado todo. Descarta la "Variante Stormchaser (propuesta)" de la pestaña Listas.</div></div>
+        <div class="idea"><span class="n">🎯</span><div><b>Tu Stock estaba a 2 cartas del campeón.</b> JAJC (1º, 9-0) juega tu mismo main con <b>−1 Flashback / +1 Violent Urge</b>… y tu manabase EXACTA (3 Mesa, 3 Tarn, 3 Foothills, 3 Vents, 2 Islet, 1 Falls, 3 Mountain). Tu duda de la Bloodstained Mire queda resuelta: no hace falta.</div></div>
+        <div class="idea"><span class="n">⚖️</span><div><b>El slot 30 sigue partido:</b> JAJC y runbad juegan 2ª Violent Urge sin Flashback; jvidarte, jeffleeph28 y SkyThZ mantienen 1 Flashback. La Definitiva sigue al campeón: la Urge es mejor en el espejo (primera fuerza), donde vas 0-2.</div></div>
+        <div class="idea"><span class="n">🔥</span><div><b>Ha nacido una variante "burn"</b> (EthanBird y Dingo34, mismas 75): 2 Assault Strobe + 3 Monstrous Rage en el main, 0 Violent Urge y las Expressive Iteration al sideboard. Tres resultados top en 3 días — vigílala, pero aún sin muestra para copiarla.</div></div>
+      </div>
+      <div class="panel"><h3>🏆 Resultados analizados <span>(16–20 jul · arquetipo "Izzet Cutter")</span></h3>
+        <div style="overflow-x:auto"><table>
+          <thead><tr><th>Jugador</th><th>Evento</th><th>Resultado</th><th>Build</th></tr></thead>
+          <tbody>
+            <tr><td><b>JAJC</b></td><td>Challenge 32 · 19-jul</td><td><span class="pill W">1º · 9-0</span></td><td>Clásica (2 Urge, 0 Flashback)</td></tr>
+            <tr><td>jvidarte</td><td>Challenge 32 · 19-jul</td><td>8º · 4-3</td><td>Clásica (1 Flashback, 3 Growth)</td></tr>
+            <tr><td>jeffleeph28</td><td>Liga · 20-jul</td><td><span class="pill W">5-0</span></td><td>Clásica (1 Flashback, 1 Urge)</td></tr>
+            <tr><td>runbad</td><td>Liga · 19-jul</td><td><span class="pill W">5-0</span></td><td>Clásica (= main JAJC)</td></tr>
+            <tr><td>SkyThZ</td><td>Liga · 18 y 19-jul</td><td><span class="pill W">5-0 ×2</span></td><td>Clásica (1 Heat main)</td></tr>
+            <tr><td>Dingo34</td><td>Liga · 18-jul</td><td><span class="pill W">5-0</span></td><td>Burn (Strobe + Monstrous Rage)</td></tr>
+            <tr><td>EthanBird</td><td>Last Chance + Liga · 20-jul</td><td>8º y 5-0</td><td>Burn (Strobe + Monstrous Rage)</td></tr>
+          </tbody>
+        </table></div>
+        <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">~27 apariciones del arquetipo en resultados publicados en solo 5 días: el mazo más representado del post-PT.</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="panel"><h3>⭐ La 75 Definitiva — Main (60) <span>· cambios vs tu Stock marcados</span></h3>
+        <div class="dl">
+          <div class="sec">Criaturas (12)</div>
+          <div>4 Dragon's Rage Channeler · 4 Monastery Swiftspear · 4 Slickshot Show-Off</div>
+          <div class="sec">Hechizos (30)</div>
+          <div>4 Cori-Steel Cutter · 4 Mishra's Bauble · 4 Lightning Bolt · 4 Lava Dart · 4 Preordain · 4 Expressive Iteration · 4 Mutagenic Growth · <span class="chg">2 Violent Urge</span><span class="chip in">+1</span> · <span class="cut">1 Flashback</span><span class="chip out">fuera</span></div>
+          <div class="sec">Tierras (18) — tu manabase actual, sin cambios</div>
+          <div>3 Arid Mesa · 3 Scalding Tarn · 3 Wooded Foothills · 3 Steam Vents · 2 Fiery Islet · 1 Thundering Falls · 3 Mountain</div>
+          <div class="sec">= main del campeón JAJC, carta por carta</div>
+        </div>
+      </div>
+      <div class="panel"><h3>Sideboard Definitivo (15) <span>· 4 entran / 4 salen vs tu SB</span></h3>
+        <div class="dl">
+          <div><span class="chg">4 Consign to Memory</span><span class="chip in">+1</span> · 3 Unholy Heat · <span class="chg">2 Tormod's Crypt</span><span class="chip in">+2</span> · 2 Meltdown · 2 Spell Pierce · <span class="chg">1 Spell Snare</span><span class="chip out">−1</span> · <span class="chg">1 Mystical Dispute</span><span class="chip in">+1</span></div>
+          <div class="sec">Salen</div>
+          <div class="cut">1 Assault Strobe · 1 Surgical Extraction · 1 Prismari Charm · 2ª Spell Snare</div>
+          <div class="sec">Por qué</div>
+          <div style="font-size:12px">
+          · <b>4ª Consign</b>: la juegan JAJC y SkyThZ; tú ya la querías testear; trabaja vs ~30% del meta.<br>
+          · <b>Tormod's Crypt vuelve por Surgical</b>: 5 de 7 listas de la semana llevan Crypt, 0 llevan Surgical. Coste 0 = clave cuando vas en el robo.<br>
+          · <b>Mystical Dispute</b>: la tech del campeón. Ataca directamente tu 0-2 en el espejo, Dimir Frog y el control azul.<br>
+          · <b>Snare a 1</b>: consenso de la semana 0-2 copias (mediana 1); el hueco lo paga la Dispute.<br>
+          · <b>Strobe fuera</b>: se ha mudado al main de la variante burn; en la clásica es win-more. Si quieres el plan race de JAJC: 1 Unholy Heat ↔ 1 Assault Strobe.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel full"><h3>Comparativa de slots flexibles — Definitiva vs las 7 listas de la semana <span>(nº de copias · verde = distinto de la Definitiva)</span></h3>
+      <div style="overflow-x:auto"><table id="defCmp"></table></div>
+    </div>
+
+    <div class="grid" style="margin-top:16px">
+      <div class="panel full"><h3>🎲 Y tu agujero en el robo (36% WR)</h3>
+        <div class="idea"><span class="n">🛡️</span><div>La Definitiva ya ayuda: la <b>2ª Violent Urge</b> (primera fuerza = bloqueos que matan) y <b>Crypt/Dispute a coste 0-1</b> son cartas que valen medio turno cuando vas por detrás. En el robo, mulliganea más agresivo hacia manos con interacción T1 (Bolt/Dart) o Cutter T2 — tus 6 barridos 0-2 fueron todos en el robo.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLAN SB DEFINITIVO (autor: Claude) ===== -->
+  <section class="view" id="v-sbdef">
+    <div class="author"><span class="ic">✍️</span><div><b>Autor de esta pestaña: Claude</b> · 20-jul-2026. Plan reescrito para el <b>Sideboard Definitivo</b>: <b>4 Consign · 3 Unholy Heat · 2 Tormod's Crypt · 2 Meltdown · 2 Spell Pierce · 1 Spell Snare · 1 Mystical Dispute</b>. Los IN/OUT parten del main Definitivo (sin Flashback, 2 Violent Urge). Regla de oro intacta: <b>nunca diluyas la masa crítica de amenazas</b> (12 criaturas + 4 Cutter). Tu WR real aparece en cada tarjeta.</div></div>
+    <div class="sb" id="sbDefCards"></div>
+  </section>
+
+  <!-- ===== LOGS MTGO (demo del parser · autor: Claude) ===== -->
+  <section class="view" id="v-logs">
+    <div class="author"><span class="ic">🧾</span><div><b>Demo del lector de partidas de MTGO</b> · Claude, 21-jul-2026. Magic Online guarda un fichero por cada partida que juegas. El parser los lee y saca solo, sin que apuntes nada a mano: <b>resultado, games, salida/robo, mulligans</b> y <b>las cartas del rival</b> — y con esas cartas <b>adivina qué mazo llevaba</b>. Abajo tienes un ejemplo real de lo que produce.</div></div>
+
+    <div class="grid">
+      <div class="panel"><h3>Cómo funciona (la idea)</h3>
+        <div class="idea"><span class="n">1️⃣</span><div>Juegas en <b>MTGO</b>. Él solo escribe un fichero de registro por partida en tu ordenador (no hay que activar nada).</div></div>
+        <div class="idea"><span class="n">2️⃣</span><div>El <b>parser</b> (un pequeño programa) lee esos ficheros y los junta por partida.</div></div>
+        <div class="idea"><span class="n">3️⃣</span><div>Genera un <b>CSV</b> con las columnas exactas de tu Registro.</div></div>
+        <div class="idea"><span class="n">4️⃣</span><div>Cargas ese CSV aquí (botón <b>⟳ Cargar datos</b>) y todo el dashboard se actualiza. Cero copiar a mano.</div></div>
+      </div>
+      <div class="panel"><h3>Estado del parser (a día de hoy)</h3>
+        <div class="idea"><span class="n">✅</span><div><b>Autotest OK.</b> La lógica de decodificar el fichero y de clasificar el mazo rival funciona sobre datos de prueba.</div></div>
+        <div class="idea"><span class="n">⚠️</span><div><b>Falta la prueba de fuego:</b> ese autotest usa datos que el propio parser se fabrica. Para confirmar que lee de verdad los ficheros de MTGO necesito <b>un fichero real tuyo</b>. Déjalo en local y lo valido.</div></div>
+        <div class="idea"><span class="n">🔧</span><div>Todavía no rellena <b>liga ni ronda</b> (no vienen en el log): se ponen a mano o se deducen por fecha en una versión 2.</div></div>
+      </div>
+    </div>
+
+    <div class="panel full"><h3>Ejemplo de salida del parser <span>· 5 partidas · el rival y su mazo, detectados solos</span></h3>
+      <div style="overflow-x:auto"><table id="logTbl"></table></div>
+      <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">El <b>mazo del rival</b> no viene escrito en el log: el parser lo deduce de las cartas que le vio (columna derecha). Por ejemplo, "Grixis Frog/Reanimator" salió de ver <i>Psychic Frog</i> + <i>Unearth</i> juntos.</div>
+    </div>
+  </section>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+// ================= DATOS =================
+let MATCHES = [
+ {f:"11/07/2026",ev:"Liga 1",li:"Stock",rd:1,op:"Loki",aq:"Azorius Loki",r:"W",jg:2,jp:0,sr:"Salida",my:0,mr:0,mvp:"",nt:""},
+ {f:"11/07/2026",ev:"Liga 1",li:"Stock",rd:2,op:"Devoted",aq:"Devoted Combo",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"",nt:"Soy un paquete"},
+ {f:"11/07/2026",ev:"Liga 1",li:"Stock",rd:3,op:"Affinity",aq:"Izzet Affinity",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"",nt:"Paliza"},
+ {f:"11/07/2026",ev:"Liga 1",li:"Stock",rd:4,op:"Broodscale",aq:"Broodscale",r:"W",jg:2,jp:1,sr:"Robo",my:0,mr:0,mvp:"",nt:""},
+ {f:"11/07/2026",ev:"Liga 1",li:"Stock",rd:5,op:"Dimir",aq:"Dimir Frog",r:"W",jg:2,jp:0,sr:"Salida",my:0,mr:0,mvp:"",nt:"Se estanca en la segunda"},
+ {f:"11/07/2026",ev:"Liga 2",li:"Stock",rd:1,op:"Broodscale",aq:"Broodscale",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"",nt:"No juego muy bien el match"},
+ {f:"11/07/2026",ev:"Liga 2",li:"Stock",rd:2,op:"NA",aq:"N/A (bye/concede)",r:"W",jg:1,jp:0,sr:"Salida",my:1,mr:1,mvp:"",nt:"Concede"},
+ {f:"11/07/2026",ev:"Liga 2",li:"Stock",rd:3,op:"Boros",aq:"Boros Energy",r:"W",jg:2,jp:1,sr:"Robo",my:0,mr:0,mvp:"Snare",nt:""},
+ {f:"12/07/2026",ev:"Liga 2",li:"Stock",rd:4,op:"Vivoras",aq:"Sultai Midrange",r:"L",jg:1,jp:2,sr:"Robo",my:0,mr:5,mvp:"",nt:"Tercera no tercera tierra"},
+ {f:"12/07/2026",ev:"Liga 2",li:"Stock",rd:5,op:"Izzet",aq:"Izzet Prowess",r:"L",jg:1,jp:2,sr:"Salida",my:0,mr:1,mvp:"",nt:"Me gana las 2 con el doble strike"},
+ {f:"13/07/2026",ev:"Liga 3",li:"Stock",rd:1,op:"MonoB Reanimator",aq:"Reanimator (MonoB)",r:"W",jg:2,jp:1,sr:"Salida",my:2,mr:1,mvp:"",nt:""},
+ {f:"14/07/2026",ev:"Liga 3",li:"Stock",rd:2,op:"Neoform",aq:"Neoform",r:"L",jg:1,jp:2,sr:"Robo",my:3,mr:2,mvp:"primera grisel al 2",nt:""},
+ {f:"18/07/2026",ev:"Liga 3",li:"Stock",rd:3,op:"Ponza",aq:"Boros Ponza",r:"W",jg:2,jp:0,sr:"Robo",my:0,mr:0,mvp:"",nt:""},
+ {f:"18/07/2026",ev:"Liga 3",li:"Stock",rd:4,op:"Gorys",aq:"Esper Goryo's",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"",nt:"No le quito bien el atraxa"},
+ {f:"18/07/2026",ev:"Liga 3",li:"Stock",rd:5,op:"Izzet",aq:"Izzet Prowess",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"",nt:""},
+ {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:1,op:"Sam",aq:"Sam Combo",r:"L",jg:1,jp:2,sr:"Robo",my:1,mr:0,mvp:"soy malo",nt:""},
+ {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:2,op:"Broodscale",aq:"Broodscale",r:"W",jg:2,jp:1,sr:"Salida",my:0,mr:0,mvp:"",nt:""},
+ {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:3,op:"Grixis Reanimator",aq:"Grixis Reanimator",r:"W",jg:1,jp:0,sr:"Robo",my:0,mr:1,mvp:"",nt:""},
+ {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:4,op:"Dimir",aq:"Dimir Frog",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"Lista con namor y 2000 counter",nt:""},
+ {f:"18/07/2026",ev:"Liga 4",li:"PT",rd:5,op:"UW",aq:"Azorius Control",r:"W",jg:2,jp:0,sr:"Robo",my:0,mr:0,mvp:"A XISPAS",nt:""},
+];
+
+// PT Amsterdam metagame (magic.gg breakdown)
+const META = [["Boros Energy",12.7],["Izzet Affinity",12.7],["Broodscale",11.6],["Eldrazi Tron",9.7],["Esper Goryo's",9.1],["Izzet Prowess",6.9],["Resto",27.3]];
+
+// Listas analizadas
+const LISTS = [
+ {name:"Stock (tu base)",badge:"you",tag:"tu lista actual (deck 7881695) · verificada en mtggoldfish",url:"https://www.mtggoldfish.com/deck/7881695#online",
+  main:[["Criaturas (12)","4 Dragon's Rage Channeler · 4 Monastery Swiftspear · 4 Slickshot Show-Off"],["Hechizos (30)","4 Preordain · 4 Expressive Iteration · 4 Lightning Bolt · 4 Lava Dart · 4 Mutagenic Growth · 1 Violent Urge · 1 Flashback · 4 Mishra's Bauble · 4 Cori-Steel Cutter"],["Tierras (18)","3 Arid Mesa · 3 Scalding Tarn · 3 Wooded Foothills · 3 Steam Vents · 2 Fiery Islet · 1 Thundering Falls · 3 Mountain"]],
+  side:"1 Assault Strobe · 3 Consign to Memory · 3 Unholy Heat · 2 Meltdown · 2 Spell Pierce · 2 Spell Snare · 1 Surgical Extraction · 1 Prismari Charm"},
+ {name:"PT (tu variante)",badge:"you",tag:"jugada en Liga 4",url:"https://www.mtggoldfish.com/deck/7881694#online",
+  main:[["Nota","Tu build para el prep del PT. Ábrela en el enlace para el detalle."]],side:"(ver enlace)"},
+ {name:"Detecnik — PT Ámsterdam",badge:"pt",tag:"UR Cutter Prowess · variante Stormchaser",url:"",
+  main:[["Criaturas","4 DRC · 4 Swiftspear · 3 Slickshot"],["Hechizos","4 Cori-Steel Cutter · 4 Bolt · 4 Lava Dart · 4 Preordain · 3 Expressive Iteration · 3 Mutagenic Growth · 1 Violent Urge · 4 Mishra's Bauble · <span class='new'>2 Stormchaser's Talent</span> · <span class='new'>2 Boomerang Basics</span>"],["Tierras (18)","1 Arid Mesa · 2 Bloodstained Mire · 1 Fiery Islet · 1 Island · 3 Mountain · 4 Scalding Tarn · 3 Steam Vents · 1 Thundering Falls · 2 Wooded Foothills"]],
+  side:"3 Consign to Memory · 3 Meltdown · 3 Unholy Heat · 2 Tormod's Crypt · 2 Spell Pierce · 1 Spell Snare · 1 Prismari Charm"},
+ {name:"Chin — PT Ámsterdam",badge:"pt",tag:"UR Cutter Prowess · versión clásica (≈ tu Stock)",url:"",
+  main:[["Criaturas","4 DRC · 4 Swiftspear · 4 Slickshot"],["Hechizos","4 Cori-Steel Cutter · 4 Bolt · 4 Lava Dart · 4 Preordain · 4 Expressive Iteration · 4 Mutagenic Growth · 2 Violent Urge · 4 Mishra's Bauble"],["Tierras (18)","2 Arid Mesa · 3 Bloodstained Mire · 1 Fiery Islet · 3 Mountain · 3 Scalding Tarn · 3 Steam Vents · 1 Thundering Falls · 2 Wooded Foothills"]],
+  side:"4 Consign to Memory · 3 Unholy Heat · 2 Meltdown · 2 Spell Pierce · 2 Tormod's Crypt · 1 Spell Snare · 1 Into the Flood Maw"},
+ {name:"Edel — PT Ámsterdam",badge:"pt",tag:"UR Cutter Prowess · variante Stormchaser",url:"",
+  main:[["Criaturas","4 DRC · 4 Swiftspear · 4 Slickshot"],["Hechizos","4 Cori-Steel Cutter · 4 Bolt · 4 Lava Dart · 4 Preordain · 2 Expressive Iteration · 2 Mutagenic Growth · 2 Violent Urge · 4 Mishra's Bauble · <span class='new'>2 Stormchaser's Talent</span> · <span class='new'>2 Boomerang Basics</span>"],["Tierras (18)","2 Arid Mesa · 2 Bloodstained Mire · 1 Fiery Islet · 1 Island · 3 Mountain · 4 Scalding Tarn · 3 Steam Vents · 1 Thundering Falls · 1 Wooded Foothills"]],
+  side:"4 Consign to Memory · 4 Unholy Heat · 2 Meltdown · 2 Spell Snare · 1 Spell Pierce · 1 Murktide Regent · 1 Surgical Extraction"},
+ {name:"Variante Stormchaser (propuesta)",badge:"you",tag:"a testear: la tech nueva del PT sobre tu base",url:"",
+  main:[["Cambios","<span class='new'>+2 Stormchaser's Talent · +2 Boomerang Basics</span> · −1 Flashback · −2 Expressive Iteration (→2) · −1 Mutagenic Growth (→2)"],["Idea","Amenazas más pegajosas y triggers de prowess baratos; ataca tus peores matchups (espejo, control) y tu debilidad en el robo."]],
+  side:"Tu SB + 1 Spell Snare (recorta 2º Tormod's Crypt o Into the Flood Maw según meta local)"},
+];
+
+const CMP = [
+ ["Slickshot Show-Off",4,3,4,4],["Expressive Iteration",4,3,4,2],["Mutagenic Growth",4,3,4,2],
+ ["Violent Urge",1,1,2,2],["Flashback",1,0,0,0],
+ ["Stormchaser's Talent","—",2,0,2],["Boomerang Basics","—",2,0,2],
+ ["SB: Spell Snare",2,1,1,2],["SB: Consign to Memory",3,3,4,4],["SB: Surgical Extraction",1,0,0,1],["SB: Tormod's Crypt","—",2,2,0],
+];
+
+const SBPLAN = [
+ {aq:"Boros Energy",meta:"11-16%",val:"par",vl:"Parejo",in:"+3 Unholy Heat, +1 Into the Flood Maw",out:"−2 Violent Urge, −1 Flashback, −1 Mutagenic Growth",plan:"Mata Guide of Souls y Ocelot Pride a vista: su lifegain te saca de rango. Race con removal; ojo Static Prison (Growth no salva del exilio)."},
+ {aq:"Izzet Affinity",meta:"8-10%",val:"par",vl:"Parejo/fav.",in:"+2 Meltdown, +3 Unholy Heat, +1 Into the Flood Maw",out:"−2 Violent Urge, −1 Flashback, −3 Mutagenic Growth",plan:"Meltdown en el turno de máximo valor; tokens de Munitions dañan al morir. Flood Maw a Kappa (paga ward). Traen Whipflare: no sobreextiendas monjes."},
+ {aq:"Izzet Prowess",meta:"7%",val:"par",vl:"Habilidad",in:"+3 Unholy Heat, +2 Spell Pierce, +1 Murktide, +1 Into the Flood Maw",out:"−4 Preordain, −2 Expressive Iteration, −1 Flashback",plan:"Gana quien controla la mesa, no quien más quema. Mata al portador en respuesta al equip de Cutter. Violent Urge se queda."},
+ {aq:"Grixis Reanimator",meta:"6-7%",val:"par",vl:"Parejo",in:"+2 Tormod's Crypt, +3 Unholy Heat, +1 Into the Flood Maw",out:"−2 Violent Urge, −1 Flashback, −2 Preordain, −1 Mutagenic Growth",plan:"No actives Crypt gratis: espera al Persist/Unearth en pila. Heat mata Frog y Oculus. Post-side traen Pyroclasm."},
+ {aq:"Broodscale",meta:"9-11%",val:"par",vl:"Parejo/fav.",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −1 Flashback, −2 Preordain",plan:"Removal al Broodscale CON el trigger de Blade en pila. Consign a Kozilek's Command y a Ballista. Eres medio turno más rápido."},
+ {aq:"Esper Goryo's",meta:"4-9%",val:"des",vl:"DESFAVORABLE",in:"+2 Tormod's Crypt, +3 Unholy Heat, +1 Into the Flood Maw, +2 Spell Pierce",out:"−3 Mutagenic Growth, −2 Violent Urge, −1 Flashback, −2 Preordain",plan:"Tu peor familia. Crypt corta Goryo's; Flood Maw devuelve la Atraxa a la mano. Mata antes de Solitude+Ephemerate."},
+ {aq:"Esper / Azorius Blink",meta:"4-6%",val:"des",vl:"DESFAVORABLE",in:"+3 Unholy Heat, +2 Spell Pierce, +1 Murktide, +1 Into the Flood Maw",out:"−3 Mutagenic Growth, −2 Violent Urge, −1 Flashback, −1 Preordain",plan:"Riddler+Ephemerate genera más cartas de las que quemas: ventana de 4-5 turnos. Pierce a Ephemerate/Wrath. Si abunda: Flood Maw → Mystical Dispute."},
+ {aq:"Eldrazi Tron / Ramp",meta:"7-10%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +1 Murktide",out:"−4 Lava Dart, −1 Violent Urge",plan:"Consign gana sola: trigger de Chalice, Kozilek's Command, Ugin, Devourer. Lava Dart no mata nada relevante. Race + counters."},
+ {aq:"Boros Ponza (LD)",meta:"3.5-4%",val:"par",vl:"Parejo",in:"+2 Spell Pierce, +1 Murktide",out:"−1 Flashback, −2 Lava Dart",plan:"Ganas con 2-3 tierras. Te mata Solitude/Wrath + High Noon. Pierce a High Noon/Wrath. Bajo High Noon: el hechizo que más daño genere."},
+ {aq:"Azorius Control",meta:"3-6%",val:"par",vl:"Parejo/desf.",in:"+2 Spell Pierce, +2 Consign to Memory, +1 Murktide",out:"−3 Lava Dart, −2 Violent Urge",plan:"Una amenaza + protección; no vuelques la mano al Wrath. Consign a Isochron Scepter (rompe el lock). Murktide cierra tras el barrido."},
+ {aq:"Ruby Storm",meta:"3-4%",val:"par",vl:"Parejo/fav.",in:"+4 Consign to Memory, +2 Spell Pierce",out:"−4 Lava Dart, −2 Violent Urge",plan:"Consign contrarresta el trigger de tormenta de Grapeshot. Pierce a Past in Flames. Bolt a Ral."},
+ {aq:"Amulet Titan",meta:"~3%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +2 Spell Pierce, +1 Into the Flood Maw",out:"−4 Lava Dart, −2 Violent Urge, −1 Mutagenic Growth",plan:"Race puro T3-4. Consign a triggers de Amulet/Titan; Flood Maw al Titan por tempo."},
+ {aq:"Golgari Yawgmoth",meta:"2.5%",val:"par",vl:"Parejo",in:"+3 Unholy Heat, +2 Tormod's Crypt, +2 Consign to Memory",out:"−3 Mutagenic Growth, −2 Violent Urge, −1 Flashback, −1 Preordain",plan:"Dorks y Yawgmoth mueren a vista. Crypt corta undying/Cauldron; Consign a Ballista/Cauldron."},
+ {aq:"Tameshi Belcher",meta:"2.3%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +2 Spell Pierce",out:"−4 Lava Dart, −2 Violent Urge",plan:"Consign contrarresta la activación del Belcher (fuente incolora). Race T3-4. Históricamente fuerte para prowess."},
+ {aq:"Living End",meta:"2%",val:"fav",vl:"Favorable",in:"+2 Tormod's Crypt, +3 Consign to Memory",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Consign al trigger de cascade: nunca lanzan Living End. Crypt tras resolver su End. Presiona: sus 3 primeros turnos son ciclar."},
+ {aq:"Dimir Frog",meta:"local",val:"par",vl:"A afinar",in:"+3 Unholy Heat, +2 Spell Pierce",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Frecuente en tu meta local. Heat mata Psychic Frog; Pierce a sus counters. Define IN/OUT con más muestra (vas 1-1)."},
+ {aq:"Sultai Midrange",meta:"local/emerg.",val:"par",vl:"A afinar",in:"+3 Unholy Heat, +2 Spell Pierce",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Midrange justo (Psychic Frog, removal, disrupción). Heat mata sus amenazas; presiona antes de que grindeen y te superen en cartas. Vas 0-1."},
+ {aq:"Azorius Loki",meta:"PT/emerg.",val:"par",vl:"A afinar",in:"+2 Spell Pierce, +2 Consign to Memory, +1 Murktide",out:"−3 Lava Dart, −2 Violent Urge",plan:"Control azorius con Mox (Opal/Amber) + Tamiyo. Trátalo como Azorius Control: amenaza + protección, Consign a las activaciones clave, no vuelques al Wrath. Vas 1-0."},
+ {aq:"Sam Combo",meta:"local/combo",val:"fav",vl:"A afinar",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Combo de criaturas (Chord of Calling, Birthing Ritual, Cauldron Familiar). Heat a las piezas; Consign a activaciones y a Cauldron. Race: eres más rápido. Vas 0-1."},
+];
+
+// ===== LA 75 DEFINITIVA (datos · autor: Claude, 20-jul-2026) =====
+// Columnas: [carta, Definitiva, JAJC(1º 9-0), jvidarte(8º), runbad(5-0), SkyThZ(5-0×2), jeffleeph28(5-0), EthanBird(burn), Dingo34(burn)]
+const DEFCMP = [
+ ["Expressive Iteration (main)",4,4,4,4,3,4,"0 (3 SB)","0 (4 SB)"],
+ ["Mutagenic Growth",4,4,3,4,3,4,4,4],
+ ["Violent Urge",2,2,2,2,2,1,0,0],
+ ["Flashback",0,0,1,0,1,1,0,0],
+ ["Unholy Heat main",0,0,0,0,1,0,0,0],
+ ["Assault Strobe main",0,0,0,0,0,0,2,2],
+ ["Monstrous Rage",0,0,0,0,0,0,3,3],
+ ["Stormchaser's Talent",0,0,0,0,0,0,1,1],
+ ["Boomerang Basics",0,0,0,0,0,0,0,0],
+ ["SB Consign to Memory",4,4,3,3,4,3,3,3],
+ ["SB Unholy Heat",3,2,3,3,3,3,4,3],
+ ["SB Tormod's Crypt",2,2,"1 (+1 Lantern)",2,2,2,0,0],
+ ["SB Meltdown",2,2,2,2,2,0,1,2],
+ ["SB Spell Pierce",2,2,2,2,2,2,1,0],
+ ["SB Spell Snare",1,1,0,1,0,2,3,3],
+ ["SB Mystical Dispute",1,1,0,0,0,0,0,0],
+ ["SB Murktide Regent",0,0,1,0,1,1,0,0],
+];
+
+// Plan de sideboard sobre la Definitiva (15: 4 Consign · 3 Heat · 2 Crypt · 2 Meltdown · 2 Pierce · 1 Snare · 1 Dispute)
+const SBDEF = [
+ {aq:"Boros Energy",meta:"11-16%",val:"par",vl:"Parejo",in:"+3 Unholy Heat",out:"−2 Violent Urge, −1 Mutagenic Growth",plan:"Mata Guide of Souls y Ocelot Pride a vista: su lifegain te saca de rango. Growth no salva de Static Prison (exilio). Sin Flashback en el main, el plan es más limpio: race con removal."},
+ {aq:"Izzet Affinity",meta:"8-10%",val:"par",vl:"Parejo/fav.",in:"+2 Meltdown, +3 Unholy Heat",out:"−2 Violent Urge, −3 Mutagenic Growth",plan:"Meltdown en su turno de máximo valor; ojo, los tokens de Munitions dañan al morir. Traen Whipflare: no sobreextiendas monjes. Heat mata Kappa y Emissary."},
+ {aq:"Izzet Prowess",meta:"7%",val:"par",vl:"Habilidad (vas 0-2)",in:"+3 Unholy Heat, +2 Spell Pierce, +1 Mystical Dispute, +1 Spell Snare",out:"−4 Preordain, −2 Expressive Iteration, −1 Mutagenic Growth",plan:"Gana quien controla la mesa. Dispute por 1 maná coge su Cutter, Slickshot o counter; Snare al Cutter en curva. Mata al portador en respuesta al equip. Las 2 Violent Urge se quedan: primera fuerza gana los bloqueos."},
+ {aq:"Grixis Reanimator",meta:"6-7%",val:"par",vl:"Parejo",in:"+2 Tormod's Crypt, +3 Unholy Heat",out:"−2 Violent Urge, −2 Preordain, −1 Mutagenic Growth",plan:"Crypt no se activa gratis: responde al Persist/Unearth en pila. Heat mata Frog y Oculus. Post-side traen Pyroclasm: cuenta el daño antes de volcar. Mismo plan vale para el Reanimator MonoB (vas 1-0)."},
+ {aq:"Broodscale",meta:"9-11%",val:"par",vl:"Parejo/fav.",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −2 Preordain, −1 Mutagenic Growth",plan:"Removal al Broodscale CON el trigger de Blade en pila. Consign a Kozilek's Command y Ballista. Eres medio turno más rápido: no regales tempo."},
+ {aq:"Esper Goryo's",meta:"4-9%",val:"des",vl:"DESFAVORABLE",in:"+2 Tormod's Crypt, +3 Unholy Heat, +2 Spell Pierce",out:"−3 Mutagenic Growth, −2 Violent Urge, −2 Preordain",plan:"Tu peor familia. Crypt corta Goryo's; Pierce a la reanimación o a Ephemerate. Mata antes de la cadena Solitude+Ephemerate. Growth sale: su removal exilia."},
+ {aq:"Esper / Azorius Blink",meta:"4-6%",val:"des",vl:"DESFAVORABLE",in:"+3 Unholy Heat, +2 Spell Pierce, +1 Mystical Dispute",out:"−3 Mutagenic Growth, −2 Violent Urge, −1 Preordain",plan:"Ventana de 4-5 turnos antes de que Riddler+Ephemerate te entierre. Dispute (su mazo es azul) y Pierce a Ephemerate/Wrath. La Dispute sustituye aquí al viejo plan de Murktide."},
+ {aq:"Eldrazi Tron / Ramp",meta:"7-10%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory",out:"−4 Lava Dart",plan:"Consign gana sola: trigger de Chalice, Kozilek's Command, Ugin, Devourer. Lava Dart no mata nada relevante. Presión máxima + counter."},
+ {aq:"Boros Ponza",meta:"3.5-4%",val:"par",vl:"Parejo",in:"+2 Spell Pierce",out:"−2 Lava Dart",plan:"Ganas con 2-3 tierras. Pierce a High Noon/Wrath. Bajo High Noon: lanza solo el hechizo del turno que más daño genere. Sin Murktide en el 15: cierra rápido, no alargues."},
+ {aq:"Azorius Control",meta:"3-6%",val:"par",vl:"Parejo/desf.",in:"+2 Spell Pierce, +2 Consign to Memory, +1 Mystical Dispute, +1 Spell Snare",out:"−3 Lava Dart, −2 Violent Urge, −1 Mutagenic Growth",plan:"Una amenaza + protección; no vuelques la mano al Wrath. Consign a Isochron Scepter (rompe el lock). Dispute cuesta 1 contra todo su mazo; Snare coge Counterspell, No More Lies y cualquier 2."},
+ {aq:"Ruby Storm",meta:"3-4%",val:"par",vl:"Parejo/fav.",in:"+4 Consign to Memory, +2 Spell Pierce",out:"−4 Lava Dart, −2 Violent Urge",plan:"Consign contrarresta el trigger de tormenta de Grapeshot. Pierce a Past in Flames. Bolt a Ral. Dispute NO entra: su mazo es rojo."},
+ {aq:"Amulet Titan",meta:"~3%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +2 Spell Pierce",out:"−4 Lava Dart, −2 Violent Urge",plan:"Race puro T3-4. Consign a los triggers de Amulet y del Titan (fetch de tierras). Pierce guarda el race: úsalo en su turno clave, no lo gastes pronto."},
+ {aq:"Golgari Yawgmoth",meta:"2.5%",val:"par",vl:"Parejo",in:"+3 Unholy Heat, +2 Tormod's Crypt, +2 Consign to Memory",out:"−3 Mutagenic Growth, −2 Violent Urge, −2 Preordain",plan:"Dorks y Yawgmoth mueren a vista. Crypt corta undying/Cauldron; Consign a Ballista/Cauldron y a la activación de Yawgmoth en pila."},
+ {aq:"Tameshi Belcher",meta:"2.3%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +2 Spell Pierce",out:"−4 Lava Dart, −2 Violent Urge",plan:"Consign contrarresta la activación del Belcher (fuente incolora). Race T3-4: históricamente fuerte para prowess."},
+ {aq:"Living End",meta:"2%",val:"fav",vl:"Favorable",in:"+2 Tormod's Crypt, +3 Consign to Memory",out:"−2 Violent Urge, −2 Mutagenic Growth, −1 Expressive Iteration",plan:"Consign al trigger de cascade: nunca lanzan Living End. Crypt tras resolver su End. Castiga sus 3 turnos de ciclar."},
+ {aq:"Dimir Frog",meta:"local",val:"par",vl:"A afinar (1-1)",in:"+3 Unholy Heat, +2 Spell Pierce, +1 Mystical Dispute",out:"−2 Violent Urge, −2 Mutagenic Growth, −2 Lava Dart",plan:"Frecuente en tu meta local. Heat mata Psychic Frog (y Namor); Dispute y Pierce cogen sus counters y su removal. Contra las listas con Namor y muchos counters (la que te ganó): juega tus amenazas alrededor de su maná abierto, una por turno."},
+ {aq:"Sultai Midrange",meta:"local",val:"par",vl:"A afinar (0-1)",in:"+3 Unholy Heat, +1 Spell Snare",out:"−2 Violent Urge, −2 Mutagenic Growth",plan:"Midrange justo (Frog, removal, disrupción). Heat a sus amenazas; Snare a su 2 clave. Presiona antes de que te superen en cartas: eres el beatdown."},
+ {aq:"Azorius Loki",meta:"emerg.",val:"par",vl:"A afinar (1-0)",in:"+2 Spell Pierce, +2 Consign to Memory, +1 Mystical Dispute",out:"−3 Lava Dart, −2 Violent Urge",plan:"Control azorius con Mox + Tamiyo. Consign a las activaciones clave (Scepter/Mox), Dispute barata contra todo, no vuelques al Wrath."},
+ {aq:"Devoted Combo",meta:"local",val:"par",vl:"A afinar (0-1)",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −2 Mutagenic Growth, −1 Expressive Iteration",plan:"Combo de dorks (Devoted Druid): CUALQUIER removal a la Druid al ver el mana raro. Consign a la activación en pila. Race + un removal reservado."},
+ {aq:"Neoform",meta:"local",val:"par",vl:"A afinar (0-1)",in:"+3 Unholy Heat, +2 Consign to Memory, +2 Spell Pierce",out:"−2 Violent Urge, −2 Mutagenic Growth, −2 Preordain, −1 Expressive Iteration",plan:"Te ganaron con Griselbrand T2: Pierce/Consign a Neoform, Heat al sacrificable. Mulligan a manos con interacción T1-2 SIEMPRE, sobre todo en el robo."},
+ {aq:"Sam Combo",meta:"local",val:"fav",vl:"A afinar (0-1)",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −2 Mutagenic Growth, −1 Expressive Iteration",plan:"Combo de criaturas (Chord, Birthing Ritual, Cauldron). Heat a las piezas; Consign a activaciones y Chord. Race: eres más rápido."},
+];
+
+const IDEAS = [
+ ["🧪","Testear la <b>variante Stormchaser</b> (+2 Stormchaser's Talent, +2 Boomerang Basics, −1 Flashback). Registrar como Lista = 'Stormchaser' para comparar en el Dashboard."],
+ ["🃏","Meter <b>1 Spell Snare</b> al sideboard (estándar en las 3 listas del PT). Recorta 2º Tormod's Crypt o Into the Flood Maw."],
+ ["⚔️","Si el <b>espejo</b> y el <b>Blink</b> aprietan (vas 0-2 en espejo): valorar Mystical Dispute en el slot flex."],
+ ["🔮","Evaluar 1 Unholy Heat main (3 de 9 listas top lo hacían) vs el slot de Flashback."],
+ ["🪦","¿Soul-Guide Lantern en vez de Tormod's Crypt? Lantern repone carta; Crypt es 0 maná."],
+];
+const PT = [
+ ["📊","Izzet Prowess = <b>6,9%</b> del PT (25 jugadores). Meta liderado por Boros Energy e Izzet Affinity (12,7%) y Broodscale (11,6%)."],
+ ["✨","<b>Boomerang Basics apareció en 10 listas</b> de Prowess: tech consolidada, no experimento."],
+ ["🚫","<b>Flashback cortado</b> en las 3 listas del PT: confirma tu duda del slot más discutido."],
+ ["🎯","<b>Spell Snare</b> ya es estándar en el sideboard del arquetipo."],
+];
+
+// ===== Demo del lector de logs de MTGO (salida real del parser · registro_mtgo_muestra.csv) =====
+const LOGDEMO = [
+ {op:"Jsph",aq:"Boros Ponza",r:"W",g:"2-0",sr:"Robo",my:0,mr:0,cards:"Path to Exile, High Noon, Erode, Demolition Field, Cleansing Wildfire, Solitude, Kaheera, Field of Ruin"},
+ {op:"kentaro_hokori",aq:"Esper Goryo's",r:"L",g:"0-2",sr:"Robo",my:0,mr:0,cards:"Goryo's Vengeance, Atraxa Grand Unifier, Ephemerate, Solitude, Thoughtseize, Prismatic Ending, Wrath of the Skies, Force of Negation"},
+ {op:"SeriousSquid",aq:"Dimir Frog",r:"L",g:"0-2",sr:"Robo",my:0,mr:0,cards:"Psychic Frog, Tamiyo, Namor, Force of Negation, Cryptic Command, Archmage's Charm, Fatal Push, Counterspell, Drown in the Loch"},
+ {op:"Jijito",aq:"Azorius Control",r:"W",g:"2-0",sr:"Robo",my:0,mr:0,cards:"Teferi Hero of Dominaria, Wrath of the Skies, Counterspell, Dress Down, Brainsurge, Consult the Star Charts, Wan Shi Tong, Solitude"},
+ {op:"Durrrr89",aq:"Grixis Frog/Reanimator",r:"W",g:"1-0",sr:"Robo",my:0,mr:0,cards:"Thoughtseize, Psychic Frog, Unearth"},
+];
+
+// ================= LÓGICA =================
+Chart.defaults.color='#8b97a7';Chart.defaults.font.family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif";Chart.defaults.borderColor='#1e2632';
+const C={W2_0:'#2ea043',W2_1:'#56d364',W1_0:'#3fb950',L1_2:'#e0873a',L0_2:'#f85149',blue:'#58a6ff',red:'#f85149',grn:'#3fb950'};
+const PIE=['#58a6ff','#f85149','#3fb950','#e0873a','#bc8cff','#d6a534','#56d364','#8b97a7','#79c0ff','#ff7b72','#a5d6ff','#ffa657','#d2a8ff','#7ee787'];
+let charts={};
+const $=id=>document.getElementById(id);
+const pct=(n,d)=>d?Math.round(n/d*100):0;
+const outcome=m=>`${m.jg}-${m.jp}`;
+
+// Tabs
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  $('v-'+t.dataset.v).classList.add('on');
+  if(t.dataset.v==='lists')renderMeta();
+});
+
+function uniq(f){return [...new Set(MATCHES.map(d=>d[f]))];}
+function fillSel(id,f,all){const s=$(id);s.innerHTML='';const o=new Option(all,'all');s.add(o);uniq(f).forEach(v=>s.add(new Option(v,v)));s.onchange=render;}
+function filtered(){const li=$('fLista').value,lg=$('fLiga').value,sr=$('fSR').value,aq=$('fArq').value;
+  return MATCHES.filter(d=>(li==='all'||d.li===li)&&(lg==='all'||d.ev===lg)&&(sr==='all'||d.sr===sr)&&(aq==='all'||d.aq===aq));}
+
+function kpis(D){
+  const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
+  const gw=D.reduce((a,d)=>a+d.jg,0),gl=D.reduce((a,d)=>a+d.jp,0);
+  const sal=D.filter(d=>d.sr==='Salida'),rob=D.filter(d=>d.sr==='Robo');
+  const sw=sal.filter(d=>d.r==='W').length,rw=rob.filter(d=>d.r==='W').length;
+  const cards=[['','Partidas',W+L,`${D.length} rondas`],['g','Récord',`${W}-${L}`,`WR ${pct(W,W+L)}%`],
+   ['','WR match',pct(W,W+L)+'%',`${W}V · ${L}D`],['p','WR games',pct(gw,gw+gl)+'%',`${gw}-${gl}`],
+   ['g','WR salida',pct(sw,sal.length)+'%',`${sw}-${sal.length-sw} · ${sal.length}m`],['r','WR robo',pct(rw,rob.length)+'%',`${rw}-${rob.length-rw} · ${rob.length}m`]];
+  $('kpis').innerHTML=cards.map(k=>`<div class="kpi ${k[0]}"><div class="lab">${k[1]}</div><div class="val">${k[2]}</div><div class="note">${k[3]}</div></div>`).join('');
+}
+function insight(D){
+  const sal=D.filter(d=>d.sr==='Salida'),rob=D.filter(d=>d.sr==='Robo');
+  const sw=sal.filter(d=>d.r==='W').length,rw=rob.filter(d=>d.r==='W').length;
+  const blow=D.filter(d=>d.jg===0&&d.jp===2),blowR=blow.filter(d=>d.sr==='Robo').length;
+  $('insight').innerHTML=`<div class="ic">💡</div><div><b>La salida lo cambia todo.</b> En salida ganas el <b>${pct(sw,sal.length)}%</b> (${sw}-${sal.length-sw}); en robo caes al <b>${pct(rw,rob.length)}%</b> (${rw}-${rob.length-rw}). De tus barridos 0-2, <b>${blowR} de ${blow.length}</b> fueron en el robo — jugando primero casi no te barren. Prioriza mulligan a manos rápidas y valora un plan más resiliente cuando vas segundo.</div>`;
+}
+function destroy(){Object.values(charts).forEach(c=>c&&c.destroy());charts={};}
+function chartSR(D){const cats=['Salida','Robo'],bk=['2-0','2-1','1-0','1-2','0-2'],cl=[C.W2_0,C.W2_1,C.W1_0,C.L1_2,C.L0_2];
+  charts.sr=new Chart($('chSR'),{type:'bar',data:{labels:cats,datasets:bk.map((b,i)=>({label:b,backgroundColor:cl[i],borderRadius:3,stack:'s',data:cats.map(c=>D.filter(d=>d.sr===c&&outcome(d)===b).length)}))},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{x:{stacked:true,ticks:{precision:0}},y:{stacked:true,grid:{display:false}}},plugins:{legend:{position:'top',labels:{usePointStyle:true,boxWidth:8}},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.x} match(es)`}}}}});}
+function chartArq(D){const m={};D.forEach(d=>{(m[d.aq]=m[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
+  let r=Object.entries(m).map(([k,v])=>({k,w:v.w,l:v.l,n:v.w+v.l,wr:pct(v.w,v.w+v.l)})).sort((a,b)=>b.wr-a.wr||b.n-a.n);
+  const col=x=>x.wr>=60?C.grn:x.wr>=45?C.W1_0:x.wr>=30?'#e0873a':C.red;
+  charts.arq=new Chart($('chArq'),{type:'bar',data:{labels:r.map(x=>`${x.k} (${x.w}-${x.l})`),datasets:[{data:r.map(x=>x.wr),backgroundColor:r.map(col),borderRadius:4}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{x:{max:100,ticks:{callback:v=>v+'%'}},y:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.x}%`}}}}});}
+function chartEvo(D){const lg=[...new Set(D.map(d=>d.ev))].sort();const wr=lg.map(l=>{const g=D.filter(d=>d.ev===l);return pct(g.filter(d=>d.r==='W').length,g.filter(d=>d.r!=='D').length);});
+  charts.evo=new Chart($('chEvo'),{type:'line',data:{labels:lg,datasets:[{data:wr,borderColor:C.blue,backgroundColor:'rgba(88,166,255,.15)',fill:true,tension:.3,pointRadius:5,pointBackgroundColor:C.blue}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.y}%`}}}}});}
+function chartPie(D){const m={};D.forEach(d=>m[d.aq]=(m[d.aq]||0)+1);const r=Object.entries(m).sort((a,b)=>b[1]-a[1]);
+  charts.pie=new Chart($('chPie'),{type:'doughnut',data:{labels:r.map(x=>x[0]),datasets:[{data:r.map(x=>x[1]),backgroundColor:PIE,borderColor:'#0a0e14',borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'58%',animation:{duration:400},plugins:{legend:{position:'right',labels:{usePointStyle:true,boxWidth:8,font:{size:10}}},tooltip:{callbacks:{label:c=>{const t=c.dataset.data.reduce((a,b)=>a+b,0);return `${c.label}: ${c.parsed} (${pct(c.parsed,t)}%)`;}}}}}});}
+function chartPD(D){const s=D.filter(d=>d.sr==='Salida'),r=D.filter(d=>d.sr==='Robo');
+  charts.pd=new Chart($('chPD'),{type:'bar',data:{labels:['Salida','Robo'],datasets:[{data:[pct(s.filter(d=>d.r==='W').length,s.length),pct(r.filter(d=>d.r==='W').length,r.length)],backgroundColor:[C.grn,C.red],borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.y}%`}}}}});}
+
+let sortCol='f',sortDir=1;
+function table(D){const cols=[['f','Fecha'],['ev','Liga'],['li','Lista'],['rd','Rnd'],['op','Rival'],['aq','Matchup'],['r','Res'],['g','Games'],['sr','G1'],['mull','Mulls'],['nt','Notas']];
+  const val=(d,k)=>k==='g'?`${d.jg}-${d.jp}`:k==='mull'?`${d.my}/${d.mr}`:d[k];
+  const s=[...D].sort((a,b)=>{let x=sortCol==='rd'?a.rd:val(a,sortCol),y=sortCol==='rd'?b.rd:val(b,sortCol);return (x>y?1:x<y?-1:0)*sortDir;});
+  let h='<thead><tr>'+cols.map(c=>`<th data-k="${c[0]}">${c[1]}${sortCol===c[0]?(sortDir>0?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>';
+  h+=s.map(d=>`<tr><td>${d.f}</td><td><span class="tag">${d.ev}</span></td><td>${d.li}</td><td>${d.rd}</td><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.jg}-${d.jp}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td style="white-space:normal;color:#8b97a7">${[d.mvp,d.nt].filter(Boolean).join(' · ')}</td></tr>`).join('')+'</tbody>';
+  const t=$('tbl');t.innerHTML=h;t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(sortCol===k)sortDir*=-1;else{sortCol=k;sortDir=1;}table(filtered());});}
+
+function render(){const D=filtered();
+  $('subtitle').textContent=`Modern · MTGO · ${D.length} rondas · ${MATCHES[0].f} → ${MATCHES[MATCHES.length-1].f}`;
+  kpis(D);insight(D);destroy();if(D.length){chartSR(D);chartArq(D);chartEvo(D);chartPie(D);chartPD(D);}table(D);renderAuto();}
+
+// ---- Listas tab ----
+let metaDone=false;
+function renderMeta(){
+  if(!metaDone){
+    charts.meta=new Chart($('chMeta'),{type:'bar',data:{labels:META.map(m=>m[0]),datasets:[{data:META.map(m=>m[1]),backgroundColor:META.map((m,i)=>m[0]==='Izzet Prowess'?C.blue:'#3a4658'),borderRadius:5}]},
+      options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>v+'%'}},x:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'%'}}}}});
+    metaDone=true;
+  }
+}
+function renderLists(){
+  $('metaNote').innerHTML="He analizado <b>12 listas</b>: las <b>3 del Pro Tour Ámsterdam</b> (Detecnik, Chin, Edel) + el <b>consenso de 9 listas top</b> de finales de junio/julio (tu proyecto). Tu <b>Stock</b> (main) es muy parecida a la de Chin y tu <b>sideboard ya está adaptado al PT</b> (2 Spell Snare, Surgical Extraction). Lo único que aún no pruebas es el paquete <span style='color:#56d364;font-weight:700'>Stormchaser's Talent + Boomerang Basics</span>.";
+  $('decks').innerHTML=LISTS.map(l=>`<div class="deck"><div class="dh"><span class="dn">${l.name}</span><span class="badge ${l.badge}">${l.badge==='you'?'TÚ':'PRO TOUR'}</span></div><div class="dt">${l.tag}</div><div class="cl">${l.main.map(s=>`<div class="sec">${s[0]}</div><div>${s[1]}</div>`).join('')}<div class="sec">Sideboard</div><div>${l.side}</div>${l.url?`<div style="margin-top:8px"><a href="${l.url}" target="_blank">🔗 ver lista completa</a></div>`:''}</div></div>`).join('');
+  const hh=['Carta','Stock','Detecnik','Chin','Edel'];
+  $('cmp').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+CMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td style="text-align:center${x!=='—'&&x!==r[1]?';color:#56d364;font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
+}
+// ---- Sideboard tab ----
+function renderSB(){
+  const wr={};MATCHES.forEach(d=>{(wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
+  const cls={fav:'fav',des:'des',par:'par'};
+  $('sbCards').innerHTML=SBPLAN.map(m=>{
+    const key=Object.keys(wr).find(k=>k===m.aq||m.aq.includes(k)||k.includes(m.aq.split(' ')[0]));
+    const rec=wr[m.aq];const w=rec?rec.w:0,l=rec?rec.l:0,n=w+l;
+    const wrTxt=n?`tú: ${w}-${l} (${pct(w,n)}%)`:'sin datos';
+    return `<div class="mc ${cls[m.val]}"><div class="mh"><span class="mn">${m.aq}</span><span class="mmeta">${m.meta} · ${m.vl}</span></div>
+      <div style="margin-bottom:6px"><span class="wr">${wrTxt}</span></div>
+      <div class="io"><div class="in"><span class="lbl">Entran</span>${m.in||'—'}</div><div class="out"><span class="lbl">Salen</span>${m.out||'—'}</div></div>
+      <div class="plan">${m.plan}</div></div>`;}).join('');
+}
+// ---- La 75 Definitiva (Claude) ----
+function renderDefCmp(){
+  const hh=['Carta','⭐ Definitiva','JAJC 1º 9-0','jvidarte 8º','runbad 5-0','SkyThZ 5-0×2','jeffleeph28 5-0','EthanBird burn','Dingo34 burn'];
+  $('defCmp').innerHTML='<thead><tr>'+hh.map((h,i)=>`<th${i===1?' style="color:#d6a534"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+
+    DEFCMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map((x,i)=>`<td style="text-align:center${i===0?';color:#d6a534;font-weight:800':String(x)!==String(r[1])?';color:#56d364;font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
+}
+function renderSBDef(){
+  const wr={};MATCHES.forEach(d=>{(wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
+  const cls={fav:'fav',des:'des',par:'par'};
+  $('sbDefCards').innerHTML=SBDEF.map(m=>{
+    const rec=wr[m.aq];const w=rec?rec.w:0,l=rec?rec.l:0,n=w+l;
+    const wrTxt=n?`tú: ${w}-${l} (${pct(w,n)}%)`:'sin datos';
+    return `<div class="mc ${cls[m.val]}"><div class="mh"><span class="mn">${m.aq}</span><span class="mmeta">${m.meta} · ${m.vl}</span></div>
+      <div style="margin-bottom:6px"><span class="wr">${wrTxt}</span></div>
+      <div class="io"><div class="in"><span class="lbl">Entran</span>${m.in||'—'}</div><div class="out"><span class="lbl">Salen</span>${m.out||'—'}</div></div>
+      <div class="plan">${m.plan}</div></div>`;}).join('');
+}
+// ---- Ideas tab ----
+function renderIdeas(){
+  $('ideasList').innerHTML=IDEAS.map(i=>`<div class="idea"><span class="n">${i[0]}</span><div>${i[1]}</div></div>`).join('');
+  $('ptList').innerHTML=PT.map(i=>`<div class="idea"><span class="n">${i[0]}</span><div>${i[1]}</div></div>`).join('');
+}
+// ---- Logs MTGO (demo del parser) ----
+function renderLogs(){
+  const hh=['Rival','Mazo (auto)','Res','Games','G1','Mulls yo/riv','Cartas del rival vistas'];
+  $('logTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
+    LOGDEMO.map(d=>`<tr><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.g}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td style="white-space:normal;color:#8b97a7">${d.cards}</td></tr>`).join('')+'</tbody>';
+}
+// ---- Fuente de datos remota: Google Sheet del Drive publicado como CSV ----
+// Pega aquí la URL "Archivo → Compartir → Publicar en la web → CSV" de tu hoja de resultados
+// y el dashboard se actualizará solo cada vez que lo abras. Vacío = usa el snapshot local.
+const SHEET_CSV_URL = "";
+async function loadRemote(){
+  if(!SHEET_CSV_URL) return false;
+  try{
+    const res=await fetch(SHEET_CSV_URL,{cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const parsed=parseCSV(await res.text());
+    if(parsed.length){MATCHES=parsed;return true;}
+    return false;
+  }catch(e){console.warn('No se pudo leer el Sheet remoto:',e);return false;}
+}
+function updateSource(remote){
+  const el=$('srcInfo');if(!el)return;
+  el.innerHTML=remote?`🟢 Datos: Google Sheet (Drive) · ${MATCHES.length} partidas`:`⚪ Datos: snapshot local · ${MATCHES.length} partidas`;
+}
+function renderAuto(){
+  const D=MATCHES;const sal=D.filter(d=>d.sr==='Salida'),rob=D.filter(d=>d.sr==='Robo');
+  const worst=[];const m={};D.forEach(d=>{(m[d.aq]=m[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
+  Object.entries(m).forEach(([k,v])=>{if(v.w+v.l>=2&&pct(v.w,v.w+v.l)<45)worst.push(`${k} (${v.w}-${v.l})`);});
+  $('autoInsights').innerHTML=`<div class="idea"><span class="n">🎲</span><div>Juegas mucho mejor en la salida (<b>${pct(sal.filter(d=>d.r==='W').length,sal.length)}%</b>) que en el robo (<b>${pct(rob.filter(d=>d.r==='W').length,rob.length)}%</b>).</div></div>
+   <div class="idea"><span class="n">⚠️</span><div>Matchups a revisar (≥2 partidas, WR&lt;45%): <b>${worst.join(', ')||'ninguno'}</b>.</div></div>
+   <div class="idea"><span class="n">📈</span><div>Cuantas más partidas registres en el Excel y recargues aquí por CSV, más fiables estos números (ahora ${D.filter(d=>d.r!=='D').length} matches).</div></div>`;
+}
+
+// ---- CSV loader ----
+function parseCSV(txt){
+  const lines=txt.split(/\r?\n/).filter(l=>l.trim());
+  const rows=lines.map(l=>{const out=[];let cur='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){cur+='"';i++;}else q=!q;}else if(c===','&&!q){out.push(cur);cur='';}else cur+=c;}out.push(cur);return out;});
+  const body=rows.slice(1); // drop header
+  const norm=s=>(s||'').trim();
+  return body.map(c=>{
+    // tolerant: detect if there is a Link column (15 cols) or not (13/14)
+    const hasLink=c.length>=15;
+    const g=i=>norm(c[i]);
+    let idx=hasLink?{li:2,rd:4,op:5,aq:6,r:7,jg:8,jp:9,sr:10,my:11,mr:12,mvp:13,nt:14}:{li:2,rd:3,op:4,aq:5,r:6,jg:7,jp:8,sr:9,my:10,mr:11,mvp:12,nt:13};
+    return {f:g(0),ev:g(1),li:g(idx.li),rd:+g(idx.rd)||g(idx.rd),op:g(idx.op),aq:g(idx.aq)||'Otros (¿?)',r:g(idx.r).toUpperCase(),jg:+g(idx.jg)||0,jp:+g(idx.jp)||0,sr:g(idx.sr),my:+g(idx.my)||0,mr:+g(idx.mr)||0,mvp:g(idx.mvp),nt:g(idx.nt)};
+  }).filter(d=>d.f&&(d.r==='W'||d.r==='L'||d.r==='D'));
+}
+$('csv').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
+  rd.onload=()=>{try{const parsed=parseCSV(rd.result);if(parsed.length){MATCHES=parsed;initSelectors();render();renderSB();renderSBDef();updateSource(false);alert('Datos actualizados: '+parsed.length+' partidas cargadas.');}else alert('No se detectaron filas válidas. Exporta el Registro como CSV.');}catch(err){alert('Error al leer el CSV: '+err.message);}};
+  rd.readAsText(f,'utf-8');});
+
+function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los matchups');}
+
+// init
+(async function(){
+  const remote = await loadRemote();
+  initSelectors();renderLists();renderSB();renderIdeas();renderDefCmp();renderSBDef();renderLogs();
+  $('foot').innerHTML='Tu tracker del MoL · datos por CSV/Google Sheet (botón “⟳ Cargar datos” o publicación del Drive) · meta: Pro Tour Ámsterdam (magic.gg / mtgtop8) · <span style="color:#d6a534">Pestañas ⭐ La 75 Definitiva, 🧭 Plan SB Definitivo y 🧾 Logs MTGO por Claude · 21-jul-2026</span>';
+  render();
+  updateSource(remote);
+})();
+</script>
+</body>
+</html>

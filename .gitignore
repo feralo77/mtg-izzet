@@ -1,0 +1,18 @@
+# === Datos locales y material sensible — NUNCA a un repo público ===
+# Contienen correos, IDs de Drive, chat y nombres de terceros.
+data/
+
+# Redundante por seguridad (por si algo cae fuera de data/)
+*.xlsx
+*.docx
+*.zip
+registro_*.csv
+*NOTAS_Y_HANDOFF*
+
+# Logs binarios de MTGO (chat y nombres de rivales)
+*Match_GameLog*
+*Match_GameChat*
+1A7TNNOY.XNJ/
+
+# Sistema
+.DS_Store
