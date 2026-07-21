@@ -186,6 +186,7 @@
 
   <nav class="tabs">
     <div class="tab on" data-v="stats">Estadisticas</div>
+    <div class="tab" data-v="play">Cómo juegas</div>
     <div class="tab" data-v="lists">Listas</div>
     <div class="tab" data-v="sb">Sideboard</div>
     <div class="tab" data-v="ideas">Ideas</div>
@@ -216,6 +217,21 @@
     </div>
     <div class="panel full"><h3>Detalle de partidas <span>(clic en cabecera para ordenar)</span></h3><div style="overflow-x:auto"><table id="tbl"></table></div></div>
     <div class="panel full" style="margin-top:16px"><h3>Lista × matchup <span>(tu récord V-D con cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
+  </section>
+
+  <!-- ===== CÓMO JUEGAS (datos de logs) ===== -->
+  <section class="view" id="v-play">
+    <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — de tus logs de MTGO: 20 partidas / 46 games (récord 10-10). Aquí no miras solo el resultado, sino CÓMO llegas a él: duración de la partida, tu motor de prowess y el Cori-Steel Cutter. Muestra del último volcado; se refresca al reprocesar los logs con el parser.</div></div>
+    <div class="kpis" id="playKpis"></div>
+    <div class="insight" id="playInsight"></div>
+    <div class="grid">
+      <div class="panel"><h3>Duración de partida vs victoria <span>(WR por turnos)</span></h3><div class="cwrap"><canvas id="chDur"></canvas></div></div>
+      <div class="panel"><h3>Salida vs Robo <span>(WR por game · muestra buena)</span></h3><div class="cwrap"><canvas id="chPD2"></canvas></div></div>
+    </div>
+    <div class="grid">
+      <div class="panel"><h3>Prowess disparado <span>(media por game · ganados vs perdidos)</span></h3><div class="cwrap"><canvas id="chProw"></canvas></div></div>
+      <div class="panel"><h3>Fichas de Monje del Cutter <span>(media por game)</span></h3><div class="cwrap"><canvas id="chMonk"></canvas></div></div>
+    </div>
   </section>
 
   <!-- ===== LISTAS ===== -->
@@ -531,6 +547,50 @@ const $=id=>document.getElementById(id);
 const pct=(n,d)=>d?Math.round(n/d*100):0;
 const outcome=m=>`${m.jg}-${m.jp}`;
 
+// ===== "Cómo juegas": datos por game del parser (20 partidas / 46 games, récord 10-10) =====
+const GAMES = [
+ {aq:'Izzet Affinity',sr:'Robo',w:1,t:4,pw:8,mk:0},{aq:'Izzet Affinity',sr:'Robo',w:1,t:5,pw:4,mk:0},{aq:'Golgari Yawgmoth',sr:'Robo',w:0,t:4,pw:5,mk:2},
+ {aq:'Golgari Yawgmoth',sr:'Salida',w:0,t:3,pw:1,mk:0},{aq:'Izzet Affinity',sr:'Robo',w:0,t:4,pw:2,mk:2},{aq:'Izzet Affinity',sr:'Salida',w:0,t:4,pw:1,mk:0},
+ {aq:'Broodscale',sr:'Robo',w:1,t:7,pw:19,mk:0},{aq:'Broodscale',sr:'Robo',w:0,t:7,pw:0,mk:0},{aq:'Broodscale',sr:'Salida',w:1,t:5,pw:2,mk:0},
+ {aq:'Azorius Control',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Azorius Control',sr:'Robo',w:1,t:4,pw:0,mk:1},{aq:'Broodscale',sr:'Robo',w:0,t:5,pw:15,mk:4},
+ {aq:'Broodscale',sr:'Salida',w:0,t:9,pw:5,mk:1},{aq:'¿? (revisar)',sr:'Salida',w:1,t:3,pw:0,mk:0},{aq:'Boros Energy',sr:'Robo',w:1,t:5,pw:13,mk:2},
+ {aq:'Boros Energy',sr:'Robo',w:0,t:7,pw:0,mk:0},{aq:'Boros Energy',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Grixis Reanimator',sr:'Robo',w:0,t:6,pw:1,mk:0},
+ {aq:'Grixis Reanimator',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Grixis Reanimator',sr:'Robo',w:0,t:6,pw:6,mk:0},{aq:'Izzet Prowess',sr:'Salida',w:0,t:3,pw:0,mk:1},
+ {aq:'Izzet Prowess',sr:'Salida',w:1,t:4,pw:5,mk:5},{aq:'Izzet Prowess',sr:'Robo',w:0,t:4,pw:1,mk:1},{aq:'Grixis Reanimator',sr:'Salida',w:0,t:5,pw:4,mk:2},
+ {aq:'Grixis Reanimator',sr:'Salida',w:1,t:5,pw:1,mk:0},{aq:'Grixis Reanimator',sr:'Robo',w:1,t:4,pw:10,mk:1},{aq:'Neoform',sr:'Robo',w:0,t:4,pw:3,mk:2},
+ {aq:'Neoform',sr:'Salida',w:1,t:3,pw:5,mk:3},{aq:'Neoform',sr:'Robo',w:0,t:7,pw:4,mk:0},{aq:'Boros Ponza',sr:'Robo',w:1,t:5,pw:1,mk:0},
+ {aq:'Boros Ponza',sr:'Robo',w:1,t:8,pw:7,mk:1},{aq:"Esper Goryo's",sr:'Robo',w:0,t:6,pw:0,mk:0},{aq:"Esper Goryo's",sr:'Salida',w:0,t:6,pw:1,mk:1},
+ {aq:'Izzet Prowess',sr:'Robo',w:0,t:3,pw:0,mk:0},{aq:'Izzet Prowess',sr:'Salida',w:0,t:7,pw:9,mk:1},{aq:'Boros Energy',sr:'Robo',w:0,t:4,pw:0,mk:1},
+ {aq:'Boros Energy',sr:'Salida',w:1,t:4,pw:3,mk:0},{aq:'Boros Energy',sr:'Robo',w:0,t:4,pw:1,mk:0},{aq:'Broodscale',sr:'Salida',w:0,t:6,pw:8,mk:1},
+ {aq:'Broodscale',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Broodscale',sr:'Robo',w:1,t:3,pw:0,mk:0},{aq:'Grixis Frog/Reanimator',sr:'Robo',w:1,t:4,pw:2,mk:1},
+ {aq:'Dimir Frog',sr:'Robo',w:0,t:12,pw:1,mk:0},{aq:'Dimir Frog',sr:'Salida',w:0,t:7,pw:6,mk:0},{aq:'Azorius Control',sr:'Robo',w:1,t:8,pw:13,mk:3},
+ {aq:'Azorius Control',sr:'Robo',w:1,t:9,pw:4,mk:0},
+];
+let playDone=false;
+function renderPlay(){
+  if(playDone) return; playDone=true;
+  const D=GAMES, N=D.length, avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10)/10:0;
+  const wins=D.filter(g=>g.w), losses=D.filter(g=>!g.w);
+  const sal=D.filter(g=>g.sr==='Salida'), rob=D.filter(g=>g.sr==='Robo');
+  const tw=avg(wins.map(g=>g.t)), tl=avg(losses.map(g=>g.t));
+  const pwW=avg(wins.map(g=>g.pw)), pwL=avg(losses.map(g=>g.pw));
+  const k=[['','Games',N,'de tus logs'],['g','WR por game',pct(wins.length,N)+'%',`${wins.length}-${losses.length}`],
+    ['o','Turnos ganados',tw,'vs '+tl+' en perdidos'],
+    ['g','WR salida',pct(sal.filter(g=>g.w).length,sal.length)+'%',sal.length+' games'],
+    ['r','WR robo',pct(rob.filter(g=>g.w).length,rob.length)+'%',rob.length+' games'],
+    ['p','Prowess ganados',pwW,'vs '+pwL+' en perdidos']];
+  $('playKpis').innerHTML=k.map(x=>`<div class="kpi ${x[0]}"><div class="lab">${x[1]}</div><div class="val">${x[2]}</div><div class="note">${x[3]}</div></div>`).join('');
+  const lng=D.filter(g=>g.t>=7);
+  $('playInsight').innerHTML=`<div class="ic"></div><div>Eres <b>tempo puro</b>: en games de 7+ turnos ganas el <b>${pct(lng.filter(g=>g.w).length,lng.length)}%</b> (${lng.length} games) y tus derrotas duran más (${tl} turnos) que tus victorias (${tw}). Y cuando tu motor dispara, ganas: <b>${pwW}</b> prowess de media en ganados vs <b>${pwL}</b> en perdidos. Prioriza manos rápidas y cerrar antes del turno 7 — sobre todo en el robo.</div>`;
+  const buck=[['1-4',g=>g.t<=4],['5-6',g=>g.t>=5&&g.t<=6],['7+',g=>g.t>=7]];
+  const bw=buck.map(b=>{const gg=D.filter(b[1]);return {wr:pct(gg.filter(g=>g.w).length,gg.length),n:gg.length};});
+  const barOpts=(pct100)=>({responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:pct100?{min:0,max:100,ticks:{callback:v=>v+'%'}}:{beginAtZero:true},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>(pct100?'WR '+c.parsed.y+'%':c.parsed.y)}}}});
+  new Chart($('chDur'),{type:'bar',data:{labels:buck.map((b,i)=>`${b[0]} turnos (${bw[i].n})`),datasets:[{data:bw.map(x=>x.wr),backgroundColor:bw.map(x=>x.wr>=55?C.grn:x.wr>=45?'#e0873a':C.red),borderRadius:5}]},options:barOpts(true)});
+  new Chart($('chPD2'),{type:'bar',data:{labels:['Salida','Robo'],datasets:[{data:[pct(sal.filter(g=>g.w).length,sal.length),pct(rob.filter(g=>g.w).length,rob.length)],backgroundColor:[C.grn,C.red],borderRadius:6}]},options:barOpts(true)});
+  new Chart($('chProw'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[pwW,pwL],backgroundColor:[C.grn,C.red],borderRadius:6}]},options:barOpts(false)});
+  new Chart($('chMonk'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[avg(wins.map(g=>g.mk)),avg(losses.map(g=>g.mk))],backgroundColor:[C.blue,'#3a4658'],borderRadius:6}]},options:barOpts(false)});
+}
+
 // Tabs
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
@@ -538,6 +598,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   $('v-'+t.dataset.v).classList.add('on');
   if(t.dataset.v==='lists')renderMeta();
   if(t.dataset.v==='stats')render();
+  if(t.dataset.v==='play')renderPlay();
 });
 
 function uniq(f){return [...new Set(MATCHES.map(d=>d[f]))];}
