@@ -1,0 +1,3 @@
+match_uuid,Fecha,Evento / Liga,Ronda,Lista,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por
+14118afe-5a86-4f62-96ad-a4e0018064d4,,Liga 5,1,Stock,,,,,,,,Ejemplo: solo relleno lo que el log NO sabe (Liga y Ronda). El resto lo pone el log al fusionar.,feralo77
+,21/07/2026,Torneo tienda,2,Stock,Pepe,Boros Energy,W,2,1,Salida,Cori-Steel Cutter,"Ejemplo de partida MANUAL (en papel, sin log): match_uuid vacío y relleno todo.",feralo77
