@@ -1,5 +1,5 @@
 match_uuid,Fecha,Evento / Liga,Lista,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente,Rival,Confianza
-94c9e75c-8c88-48c3-8be1-f98eefa840ee,09/07/2026,,,,Merfolk,Merfolk,L,0,2,Robo,0,1,,,4c_PolG,log,Tirifolix92,88%
+94c9e75c-8c88-48c3-8be1-f98eefa840ee,09/07/2026,,,,Dimir Merfolk,Dimir Merfolk,L,0,2,Robo,0,1,,,4c_PolG,log,Tirifolix92,100%
 5e4e366b-a7b1-48bd-a823-7c0a454d3287,09/07/2026,,,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,0,,,4c_PolG,log,porterops,100%
 19a8178f-63ef-4b53-a171-0a5714f5fda3,09/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,0,Salida,0,2,,,4c_PolG,log,Matts,42%
 46411b6d-7069-458c-991f-c7321dec3b00,09/07/2026,,,,Eldrazi,Eldrazi,L,1,2,Robo,0,4,,,4c_PolG,log,icy195,85%
@@ -33,7 +33,7 @@ ca5dcc9c-dffb-47ac-b2c6-1daae13b0ce5,13/07/2026,,,,Boros Energy,Boros Energy,L,1
 02eb2f17-6b45-40de-bfd6-8a7839b907f7,13/07/2026,,,,Boros Energy,Boros Energy,L,0,2,Salida,1,0,,,4c_PolG,log,yriel,95%
 59809b0a-9efa-404f-995a-d21a958561a5,13/07/2026,,,,Living End,Living End,L,0,2,Robo,0,0,,,4c_PolG,log,prizedamalgam,100%
 59467dd1-1288-4722-89b5-f6862b10360a,13/07/2026,,,,Izzet Prowess,Izzet Prowess,W,2,1,Robo,0,0,,,4c_PolG,log,JulianJohn,92%
-397c5889-d59c-4a8e-b573-5569cf872e38,13/07/2026,,,,Merfolk,Merfolk,W,2,1,Salida,0,0,,,4c_PolG,log,fart_sniffer_93,95%
+397c5889-d59c-4a8e-b573-5569cf872e38,13/07/2026,,,,Merfolk,Merfolk,W,2,1,Salida,0,0,,,4c_PolG,log,fart_sniffer_93,100%
 1cad81a1-6b14-4a2c-8831-a3947b16a441,13/07/2026,,,,Esper Goryo's,Esper Goryo's,L,0,2,Salida,0,0,,,4c_PolG,log,zutoSamuel,93%
 adf9d8f9-221b-49bd-8e9c-5b37946f14f4,13/07/2026,,,,Eldrazi,Eldrazi,W,2,1,Salida,1,0,,,4c_PolG,log,e0068,64%
 82ba98c8-1dd2-440e-b63e-ec635166f8c3,13/07/2026,,,,Azorius Control,Azorius Control,L,0,2,Robo,0,0,,,4c_PolG,log,Simunsorx,71%
@@ -81,7 +81,7 @@ fcc54cdf-e566-4400-9ef2-618f1818795b,21/07/2026,,,,Neoform,Neoform,W,2,0,Salida,
 f16cf142-496e-41f6-9afd-0de6047552ab,21/07/2026,,,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,1,,,4c_PolG,log,enrouki1,100%
 ,22/07/2026,Liga 1,Pol 1 NF,2,Boros Energy,Boros Energy,,,,,,,,revisar (sin log),4c_PolG,manual,Somedude127,
 ,22/07/2026,Liga 1,Pol 1 NF,3,Eldrazi PT,Eldrazi PT,,,,,,,,Mulligan agresivo para buscar cáliz / triniesfera,4c_PolG,manual,Tarmofaeries,
-,22/07/2026,Liga 1,Pol 1 NF,4,,,,,,,,,,revisar (sin log),4c_PolG,manual,,
+,22/07/2026,Liga 1,Pol 1 NF,4,Neoform,Neoform,,,,,,,,revisar (sin log),4c_PolG,manual,Jijito,
 ,22/07/2026,Liga 1,Pol 1 NF,5,,,,,,,,,,revisar (sin log),4c_PolG,manual,,
 f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,21/07/2026,Liga 5,2.0,2,MonoB Reanimator,Grixis Reanimator,L,1,2,Robo,0,0,Tendria que haber tirado mulligan en la tercera,,feralo77,log,eckschin,93%
 d5330261-a86d-4d6f-8db2-dc60547443a3,21/07/2026,Liga 5,2.0,3,MonoR Artifacts,MonoR Artifacts,L,0,2,Robo,0,0,Me cruje,,feralo77,log,CrusherBotBG,94%

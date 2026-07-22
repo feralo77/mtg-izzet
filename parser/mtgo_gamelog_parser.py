@@ -225,7 +225,11 @@ SIG = [
     ('Elves', [('Heritage Druid',3),('Llanowar Elves',2),('Elvish Visionary',2)]),
     ('Sam Combo', [('Samwise Gamgee',3),('Cauldron Familiar',3),('Marionette Apprentice',2)]),
     ('Cosmogoyf Combo', [('Cosmogoyf',3),('Thud',2),('Plunge into Darkness',2)]),
-    ('Merfolk', [('Svyelun of Sea and Sky',3),('Floodpits Drowner',2),('Mindspring Merfolk',2),('Namor the Sub-Mariner',2),('Harbinger of the Seas',1)]),
+    ('Merfolk', [('Mindspring Merfolk',3),('Floodpits Drowner',3),('Svyelun of Sea and Sky',1),('Harbinger of the Seas',1),('Collected Company',1)]),
+    # Dimir Merfolk: sirénidos con paquete de control azul-negro (contras duras, sin verde).
+    # Namor + Sink into Stupor + Stern Scolding lo separan del Merfolk verde y del Dimir Frog
+    # (que manda por Psychic Frog, peso 3, cuando lo lleva).
+    ('Dimir Merfolk', [('Namor the Sub-Mariner',2),('Svyelun of Sea and Sky',2),('Sink into Stupor',2),('Stern Scolding',2)]),
     ('Necrodominance', [('Necrodominance',3),('Soul Spike',2),('March of Wretched Sorrow',1)]),
     ('Oracle Combo', [("Thassa's Oracle",3),("Angel's Grace",3),('Spoils of the Vault',1)]),
     ('Eldrazi Ramp', [('Sowing Mycospawn',3),('Sire of Seven Deaths',2)]),
@@ -569,6 +573,8 @@ def selftest():
     assert classify(['Samwise Gamgee','Cauldron Familiar','Marionette Apprentice','Birthing Ritual']) == 'Sam Combo'
     assert classify(['Cosmogoyf','Thud','Plunge into Darkness','Duress']) == 'Cosmogoyf Combo'
     assert classify(['Svyelun of Sea and Sky','Floodpits Drowner','Mindspring Merfolk','Collected Company']) == 'Merfolk'
+    assert classify(['Namor the Sub-Mariner','Svyelun of Sea and Sky','Sink into Stupor','Stern Scolding','Cryptic Command']) == 'Dimir Merfolk'
+    assert classify(['Psychic Frog','Namor the Sub-Mariner','Disrupting Shoal','Cryptic Command','Counterspell']) == 'Dimir Frog'  # el Frog manda sobre Dimir Merfolk
     assert classify(['Necrodominance','Soul Spike','March of Wretched Sorrow','Sheoldred, the Apocalypse']) == 'Necrodominance'
     assert classify(["Thassa's Oracle","Angel's Grace",'Spoils of the Vault','Stock Up']) == 'Oracle Combo'
     assert classify(['Sowing Mycospawn','Sire of Seven Deaths',"Kozilek's Command",'Ancient Stirrings']) == 'Eldrazi Ramp'
