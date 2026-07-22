@@ -150,12 +150,12 @@ if (jugadores.length >= 2) {
   // Nucleo comun del main: cartas que TODOS llevan (al menos 1 copia)
   const comun = matrizMain.filter((r) => jugadores.every((j) => r.j[j.nick] > 0));
   const comunCopias = comun.reduce((s, r) => s + Math.min(...jugadores.map((j) => r.j[j.nick])), 0);
-  notas.push(`Núcleo común a los ${jugadores.length} jugadores: ${comun.length} cartas distintas (${comunCopias} copias) que todos llevan en el mazo principal.`);
-  // Cartas que solo un jugador lleva (exclusivas)
+  notas.push(`Núcleo común a las ${jugadores.length} listas: ${comun.length} cartas distintas (${comunCopias} copias) que todas llevan en el mazo principal.`);
+  // Cartas que solo una lista lleva (exclusivas)
   const exclusivas = matrizMain.filter((r) => jugadores.filter((j) => r.j[j.nick] > 0).length === 1);
-  if (exclusivas.length) notas.push(`Cartas de main que solo lleva un jugador: ${exclusivas.map((r) => r.n).slice(0, 12).join(', ')}${exclusivas.length > 12 ? '…' : ''}.`);
+  if (exclusivas.length) notas.push(`Cartas de main que solo lleva una lista: ${exclusivas.map((r) => r.n).slice(0, 12).join(', ')}${exclusivas.length > 12 ? '…' : ''}.`);
 } else {
-  notas.push('Solo hay una lista cargada: el comparador se llena en cuanto los compañeros dejen su .txt en la carpeta listas/.');
+  notas.push('Solo hay una lista cargada: el comparador se llena en cuanto haya más .txt en la carpeta listas/.');
 }
 
 // --- Escribir ---------------------------------------------------------------
