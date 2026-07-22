@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-mtgo_gamelog_parser.py  (v3 — extracción máxima)
+mtgo_gamelog_parser.py  (v4 — extracción máxima + clasificador con confianza)
 Decodifica los *Match_GameLog*.dat binarios de Magic Online, PARTE cada match en sus
 games y extrae el máximo de datos por game: turnos, tu curva de hechizos, disparos de
 prowess, fichas de Monje (Cori-Steel Cutter), objetivos de tu removal, manos, mulligans,
 descartes y la lista COMPLETA del rival (para clasificar el arquetipo mucho mejor).
 
-Genera 3 ficheros:
+Novedad v4 — clasificador de arquetipo con CONFIANZA (idea tomada del cliente
+open-source de MyMTGO, reimplementada aquí; NO es su código): cada arquetipo tiene
+firmas PONDERADAS (cartas casi únicas pesan más que las de reparto). El clasificador
+puntúa por (fuerza de la señal + cobertura de las cartas clave), penaliza cuando dos
+arquetipos empatan (ambigüedad) y baja la confianza si viste pocas cartas del rival
+(evidencia fina). Devuelve arquetipo + confianza 0-1 + alternativas; por debajo del
+umbral marca '¿? (revisar)' en vez de arriesgar una etiqueta dudosa.
+
+Genera 4 ficheros:
   1) <out>            -> CSV del Registro (match, compatible con el tracker/dashboard)
-  2) <out>.matches    -> detalle por MATCH (agregados ricos)
+  2) <out>.matches    -> detalle por MATCH (agregados ricos + confianza/alternativas)
   3) <out>.games      -> detalle por GAME (la granularidad más fina)
+  4) <out>.scouting   -> informe de scouting por arquetipo (récord + cartas más vistas)
 
 Cada .dat suele contener el MATCH ENTERO (todos los games). Agrupamos por match_uuid.
 Basado en el formato del cliente open-source de MyMTGO (github.com/mymtgo/client).
@@ -160,33 +169,84 @@ def extract_game(entries, local, opp, match_uuid):
             'prowess': prowess, 'monks': monks, 'activ': activ,
             'removal': removal, 'disc_local': disc.get(local, 0), 'disc_opp': disc.get(opp, 0)}
 
-# ---------- Clasificador de arquetipo por cartas del rival ----------
+# ---------- Clasificador de arquetipo por cartas del rival (con confianza) ----------
+# Firmas PONDERADAS por arquetipo: (carta, peso). El peso mide cuánto DISCRIMINA la
+# carta a favor de ESE arquetipo, no lo buena que es:
+#   3 = casi única del arquetipo (verla casi lo confirma; p.ej. Goblin Charbelcher)
+#   2 = indicador fuerte (a veces se salpica en otros mazos)
+#   1 = de reparto (aparece aquí pero también en otros arquetipos)
+# Cartas ubicuas (Lightning Bolt, Fatal Push...) NO se listan: no discriminan, así que
+# el modelo por firmas las ignora solo.
 SIG = [
-    ('Broodscale', ['Basking Broodscale','Blade of the Bloodchief',"Kozilek's Command"]),
-    ("Esper Goryo's", ["Goryo's Vengeance",'Atraxa','Ephemerate']),
-    ('Grixis Reanimator', ['Persist','Archon of Cruelty','Abhorrent Oculus']),
-    ('Dimir Frog', ['Psychic Frog']),
-    ('Boros Energy', ['Guide of Souls','Ocelot Pride','Ajani, Nacatl Pariah','Galvanic Discharge']),
-    ('Izzet Affinity', ['Kappa Cannoneer',"Urza's Saga",'Thought Monitor','Pinnacle Emissary','Mox Opal']),
-    ('Eldrazi', ['Thought-Knot Seer','Ugin','Chalice of the Void',"Kozilek, the Broodmother",'Devourer of Destiny']),
-    ('Amulet Titan', ['Amulet of Vigor','Primeval Titan']),
-    ('Golgari Yawgmoth', ['Yawgmoth, Thran Physician',"Agatha's Soul Cauldron"]),
-    ('Ruby Storm', ['Ruby Medallion','Grapeshot','Past in Flames']),
-    ('Living End', ['Living End','Shardless Agent']),
-    ('Tameshi Belcher', ['Goblin Charbelcher']),
-    ('Boros Ponza', ['High Noon','Erode','Demolition Field','Cleansing Wildfire','Magus of the Moon','Price of Freedom']),
-    ('Neoform', ['Neoform','Allosaurus Rider',"Summoner's Pact"]),
-    ('Izzet Prowess', ['Slickshot Show-Off','Cori-Steel Cutter','Monastery Swiftspear']),
-    ('Azorius Control', ['Counterspell','Wrath of the Skies','Teferi, Time Raveler']),
+    ('Broodscale', [('Basking Broodscale',3),('Blade of the Bloodchief',2),("Kozilek's Command",1)]),
+    ("Esper Goryo's", [("Goryo's Vengeance",3),('Atraxa',2),('Ephemerate',2)]),
+    ('Grixis Reanimator', [('Persist',3),('Archon of Cruelty',2),('Abhorrent Oculus',2)]),
+    ('Dimir Frog', [('Psychic Frog',3)]),
+    ('Boros Energy', [('Guide of Souls',2),('Ocelot Pride',3),('Ajani, Nacatl Pariah',3),('Galvanic Discharge',2)]),
+    ('Izzet Affinity', [('Kappa Cannoneer',3),("Urza's Saga",1),('Thought Monitor',2),('Pinnacle Emissary',2),('Mox Opal',2)]),
+    ('Eldrazi', [('Thought-Knot Seer',2),('Ugin',1),('Chalice of the Void',1),("Kozilek, the Broodmother",2),('Devourer of Destiny',2)]),
+    ('Amulet Titan', [('Amulet of Vigor',3),('Primeval Titan',2)]),
+    ('Golgari Yawgmoth', [('Yawgmoth, Thran Physician',3),("Agatha's Soul Cauldron",2)]),
+    ('Ruby Storm', [('Ruby Medallion',3),('Grapeshot',2),('Past in Flames',2)]),
+    ('Living End', [('Living End',3),('Shardless Agent',2)]),
+    ('Tameshi Belcher', [('Goblin Charbelcher',3)]),
+    ('Boros Ponza', [('High Noon',2),('Erode',2),('Demolition Field',1),('Cleansing Wildfire',2),('Magus of the Moon',2),('Price of Freedom',2)]),
+    ('Neoform', [('Neoform',3),('Allosaurus Rider',2),("Summoner's Pact",2)]),
+    ('Izzet Prowess', [('Slickshot Show-Off',2),('Cori-Steel Cutter',2),('Monastery Swiftspear',2)]),
+    ('Azorius Control', [('Counterspell',1),('Wrath of the Skies',2),('Teferi, Time Raveler',2)]),
 ]
-def classify(cards):
-    cset = set(cards); best=None; bestn=0
+
+# Parámetros del scoring (mismo espíritu que MyMTGO EstimateArchetypeLocally):
+SATURATION = 4.0        # peso de firma a partir del cual la señal satura a 1.0
+AMBIGUITY_GAP = 1.0     # si el 2º arquetipo (distinto) queda a menos de esto -> penalización
+AMBIGUITY_PENALTY = 0.7 # factor cuando hay empate ambiguo
+MIN_OBSERVED = 4        # cartas distintas del rival para evidencia plena
+LOW_CONFIDENCE = 0.35   # por debajo -> '¿? (revisar)' en vez de arriesgar etiqueta
+
+def classify_scored(cards):
+    """Devuelve (arquetipo, confianza 0-1, [(alternativa, confianza), ...])."""
+    cset = set(cards)
+    scored = []
     for name, sigs in SIG:
-        n = sum(1 for s in sigs if s in cset)
-        if n > bestn: best, bestn = name, n
-    if best == 'Dimir Frog' and (('Unearth' in cset) or ('Persist' in cset)):
-        return 'Grixis Frog/Reanimator'
-    return best or '¿? (revisar)'
+        matched_w = sum(w for c, w in sigs if c in cset)
+        if matched_w > 0:
+            total_w = sum(w for _c, w in sigs)
+            scored.append({'name': name, 'w': matched_w, 'total': total_w})
+    if not scored:
+        return '¿? (revisar)', 0.0, []
+    scored.sort(key=lambda s: s['w'], reverse=True)
+    best = scored[0]
+
+    signal = min(1.0, best['w'] / SATURATION)          # fuerza absoluta de la evidencia
+    coverage = best['w'] / best['total']               # cuánto de las cartas clave vimos
+    base = 0.75 * signal + 0.25 * coverage
+
+    # Ambigüedad: dos arquetipos DISTINTOS casi empatados -> menos confianza
+    for s in scored[1:]:
+        if s['name'] != best['name']:
+            if best['w'] - s['w'] < AMBIGUITY_GAP:
+                base *= AMBIGUITY_PENALTY
+            break
+
+    # Evidencia: si viste pocas cartas del rival, baja la confianza; salvo que hayas
+    # visto una firma casi única (peso>=3), que se sostiene sola.
+    evidence = min(1.0, len(cset) / MIN_OBSERVED)
+    if best['w'] >= 3:
+        evidence = max(evidence, 0.8)
+    conf = round(base * evidence, 2)
+
+    name = best['name']
+    if name == 'Dimir Frog' and (('Unearth' in cset) or ('Persist' in cset)):
+        name = 'Grixis Frog/Reanimator'
+    alts = [(s['name'], round(min(1.0, s['w'] / SATURATION), 2))
+            for s in scored[1:3] if s['name'] != best['name']]
+    if conf < LOW_CONFIDENCE:
+        return '¿? (revisar)', conf, alts
+    return name, conf, alts
+
+def classify(cards):
+    """Compatibilidad: solo el nombre del arquetipo (usa classify_scored por dentro)."""
+    return classify_scored(cards)[0]
 
 # ---------- Agregar games -> matches ----------
 def aggregate(games):
@@ -217,17 +277,46 @@ def aggregate(games):
         fecha = next((g['ts'].strftime('%d/%m/%Y') for g in gs if g['ts']), '')
         hora = next((g['ts'] for g in gs if g['ts']), None)
         resultado = 'W' if jg > jp else ('L' if jp > jg else 'D')
+        arquetipo, confianza, alternativas = classify_scored(opp_cards)
         matches.append({'match_uuid': mid, 'fecha': fecha, 'hora': hora, 'local': local, 'opp': opp,
             'resultado': resultado, 'jg': jg, 'jp': jp, 'salida_robo': sr, 'games_list': gs,
             'ngames': len(gs), 'turns_tot': sum(turns), 'turns_avg': round(sum(turns)/len(turns), 1) if turns else 0,
             'turns_min': min(turns) if turns else 0, 'turns_max': max(turns) if turns else 0,
             'mull_local': gs[0]['mull_local'] if gs else 0, 'mull_opp': gs[0]['mull_opp'] if gs else 0,
             'mull_local_tot': sum(g['mull_local'] for g in gs), 'mull_opp_tot': sum(g['mull_opp'] for g in gs),
-            'arquetipo': classify(opp_cards), 'opp_cards': opp_cards, 'my_cards': Counter(my_cards),
+            'arquetipo': arquetipo, 'confianza': confianza, 'alternativas': alternativas,
+            'opp_cards': opp_cards, 'my_cards': Counter(my_cards),
             'prowess': sum(g['prowess'] for g in gs), 'monks': sum(g['monks'] for g in gs),
             'activ': sum(g['activ'] for g in gs), 'removal': [r for g in gs for r in g['removal']]})
     matches.sort(key=lambda m: m['hora'] or datetime.min.replace(tzinfo=timezone.utc))
     return matches
+
+# ---------- Scouting: agregar cartas del rival por arquetipo ----------
+def scouting_report(matches):
+    """Por arquetipo: nº de matches, récord tuyo, turnos medios, confianza media y las
+    cartas del rival más vistas. Alimenta el panel de 'scouting de rivales' del dashboard.
+    (Idea tomada de AggregateGameLogCardStats de MyMTGO, reimplementada.)"""
+    by = defaultdict(lambda: {'matches': 0, 'w': 0, 'l': 0, 'd': 0, 'turns': [],
+                              'conf': [], 'cards': Counter()})
+    for m in matches:
+        r = by[m['arquetipo']]
+        r['matches'] += 1
+        r['w'] += 1 if m['resultado'] == 'W' else 0
+        r['l'] += 1 if m['resultado'] == 'L' else 0
+        r['d'] += 1 if m['resultado'] == 'D' else 0
+        if m['turns_avg']: r['turns'].append(m['turns_avg'])
+        r['conf'].append(m.get('confianza', 0))
+        for c in m['opp_cards']: r['cards'][c] += 1
+    rows = []
+    for arq, r in by.items():
+        rows.append({'arquetipo': arq, 'matches': r['matches'],
+            'record': f"{r['w']}-{r['l']}" + (f"-{r['d']}" if r['d'] else ''),
+            'wr': round(100 * r['w'] / (r['w'] + r['l']), 0) if (r['w'] + r['l']) else 0,
+            'turns_avg': round(sum(r['turns']) / len(r['turns']), 1) if r['turns'] else 0,
+            'conf_avg': round(sum(r['conf']) / len(r['conf']), 2) if r['conf'] else 0,
+            'top_cards': r['cards']})
+    rows.sort(key=lambda x: x['matches'], reverse=True)
+    return rows
 
 # ---------- CLI ----------
 def find_files(directory):
@@ -283,15 +372,17 @@ def run_dir(directory, user, out_csv, lista, reported_by):
                         m['resultado'], m['jg'], m['jp'], m['salida_robo'],
                         m['mull_local'], m['mull_opp'], '', '', reported_by, 'log'])
 
-    # 2) Detalle por MATCH (agregados ricos)
-    mcols = ["match_uuid","Fecha","Rival","Arquetipo","Resultado","Games","Salida/Robo G1",
+    # 2) Detalle por MATCH (agregados ricos + confianza/alternativas del arquetipo)
+    mcols = ["match_uuid","Fecha","Rival","Arquetipo","Confianza","Alternativas","Resultado","Games","Salida/Robo G1",
              "Turnos total","Turnos/game","Turno min","Turno max","Mulls yo","Mulls rival",
              "Prowess (yo)","Monje tokens (yo)","Activaciones (yo)","Removal (objetivos)",
              "Mis cartas (top)","Cartas rival (todas)","Reportado por"]
     with open(out_csv + ".matches.csv", 'w', newline='', encoding='utf-8') as fh:
         w = csv.writer(fh); w.writerow(mcols)
         for m in matches:
+            alts = "; ".join(f"{n} ({int(c*100)}%)" for n, c in m['alternativas'])
             w.writerow([m['match_uuid'], m['fecha'], m['opp'] or '', m['arquetipo'],
+                        f"{int(m['confianza']*100)}%", alts,
                         f"{m['jg']}-{m['jp']} {m['resultado']}", m['ngames'], m['salida_robo'],
                         m['turns_tot'], m['turns_avg'], m['turns_min'], m['turns_max'],
                         m['mull_local_tot'], m['mull_opp_tot'], m['prowess'], m['monks'], m['activ'],
@@ -314,13 +405,27 @@ def run_dir(directory, user, out_csv, lista, reported_by):
                             ", ".join(g['my_casts']), " | ".join(g['removal']),
                             ", ".join(dict.fromkeys(g['opp_casts']))])
 
+    # 4) Scouting por arquetipo (récord + cartas del rival más vistas)
+    scout = scouting_report(matches)
+    scols = ["Arquetipo","Matches","Récord","WR %","Turnos medios","Confianza media","Cartas del rival más vistas"]
+    with open(out_csv + ".scouting.csv", 'w', newline='', encoding='utf-8') as fh:
+        w = csv.writer(fh); w.writerow(scols)
+        for r in scout:
+            w.writerow([r['arquetipo'], r['matches'], r['record'], f"{int(r['wr'])}%",
+                        r['turns_avg'], f"{int(r['conf_avg']*100)}%", top_cards(r['top_cards'], 12)])
+
     ng = sum(m['ngames'] for m in matches)
     print(f"OK: {len(uniq)} ficheros -> {len(matches)} matches / {ng} games")
-    print(f"   -> {out_csv}  (+ .matches.csv  + .games.csv)\n")
-    print(f"{'Fecha':<11}{'Rival':<15}{'Arquetipo':<22}{'Res':<5}{'G1':<7}{'Turns':<7}{'Prow':<6}{'Monk':<5}")
+    print(f"   -> {out_csv}  (+ .matches.csv  + .games.csv  + .scouting.csv)\n")
+    print(f"{'Fecha':<11}{'Rival':<15}{'Arquetipo':<22}{'Conf':<6}{'Res':<5}{'G1':<7}{'Turns':<7}{'Prow':<6}{'Monk':<5}")
     for m in matches:
         print(f"{m['fecha']:<11}{(m['opp'] or '?')[:14]:<15}{m['arquetipo'][:21]:<22}"
-              f"{m['jg']}-{m['jp']:<3}{m['salida_robo']:<7}{m['turns_avg']:<7}{m['prowess']:<6}{m['monks']:<5}")
+              f"{str(int(m['confianza']*100))+'%':<6}{m['jg']}-{m['jp']:<3}{m['salida_robo']:<7}"
+              f"{m['turns_avg']:<7}{m['prowess']:<6}{m['monks']:<5}")
+    print(f"\nScouting por arquetipo (top {min(len(scout),8)}):")
+    for r in scout[:8]:
+        print(f"  {r['arquetipo'][:24]:<26}{r['matches']} match(es)  récord {r['record']:<8}"
+              f"conf.media {int(r['conf_avg']*100)}%  -> {top_cards(r['top_cards'], 5)}")
     return 0
 
 # ---------- Autotest ----------
@@ -366,7 +471,7 @@ def selftest():
     gs = [extract_game(gm, local, opp, p['match_uuid']) for gm in split_games(p['entries'])]
     m = aggregate(gs)[0]
     print("Autotest -> match agregado:")
-    for k in ('resultado','jg','jp','salida_robo','ngames','turns_max','prowess','monks','arquetipo','mull_opp_tot'):
+    for k in ('resultado','jg','jp','salida_robo','ngames','turns_max','prowess','monks','arquetipo','confianza','mull_opp_tot'):
         print(f"  {k}: {m[k]}")
     print("  mis cartas:", top_cards(m['my_cards']))
     assert m['ngames'] == 3, m['ngames']
@@ -376,8 +481,29 @@ def selftest():
     assert m['prowess'] == 1 and m['monks'] == 1, (m['prowess'], m['monks'])
     assert m['mull_opp_tot'] == 1 and m['mull_local_tot'] == 0
     assert m['arquetipo'] == 'Grixis Frog/Reanimator'
+    assert 0.0 < m['confianza'] <= 1.0, m['confianza']
     assert m['games_list'][0]['hand_opp'] == 6      # rival mulligan a 6
     assert 'Lightning Bolt->Psychic Frog' in m['removal']
+
+    # --- Clasificador con confianza ---
+    # (a) firma casi única (peso 3) se sostiene sola, con confianza decente
+    arq, conf, _ = classify_scored(['Goblin Charbelcher'])
+    assert arq == 'Tameshi Belcher' and conf >= LOW_CONFIDENCE, (arq, conf)
+    # (b) evidencia nula -> '¿? (revisar)'
+    arq0, conf0, _ = classify_scored(['Lightning Bolt', 'Fatal Push'])
+    assert arq0 == '¿? (revisar)' and conf0 == 0.0, (arq0, conf0)
+    # (c) muchas firmas fuertes -> confianza alta y sin ambigüedad
+    arqh, confh, altsh = classify_scored(['Ocelot Pride','Ajani, Nacatl Pariah','Guide of Souls','Galvanic Discharge'])
+    assert arqh == 'Boros Energy' and confh >= 0.85, (arqh, confh)
+    # (d) señal fuerte de un arquetipo con roce de otro -> gana el fuerte, baja algo la confianza
+    arqa, confa, altsa = classify_scored(['Amulet of Vigor','Primeval Titan','Counterspell'])
+    assert arqa == 'Amulet Titan', (arqa, altsa)
+
+    # --- Scouting ---
+    scout = scouting_report([m])
+    assert scout and scout[0]['arquetipo'] == 'Grixis Frog/Reanimator'
+    assert scout[0]['matches'] == 1 and scout[0]['record'] == '1-0'
+    assert 'Psychic Frog' in scout[0]['top_cards']
     print("Aserciones OK")
 
 def main():
