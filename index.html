@@ -95,6 +95,11 @@
     transition:transform .11s var(--ease),box-shadow .11s var(--ease)}
   .themebtn:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow)}
   .themebtn:active{transform:translate(0,0);box-shadow:0 0 0 var(--shadow-color)}
+  a.btn{text-decoration:none;display:inline-flex;align-items:center}
+  .srcbar select{font-family:var(--font-sans);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;
+    background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;
+    padding:9px 12px;box-shadow:var(--shadow-sm);cursor:pointer}
+  .secH{font-family:var(--font-display);font-weight:400;font-size:14px;text-transform:uppercase;letter-spacing:.02em;margin:18px 2px 12px}
   /* Tabs — estilo hq-tab (trazo, invertido en activo) */
   .tabs{display:flex;flex-wrap:wrap;margin-bottom:22px;border:var(--stroke) solid var(--border);
     background:var(--surface);box-shadow:var(--shadow);width:fit-content;max-width:100%}
@@ -214,11 +219,11 @@
         <div class="sub" id="subtitle">Modern &middot; MTGO</div>
       </div>
     </div>
-    <input type="file" id="csv" accept=".csv" style="display:none">
     <div class="srcbar">
       <span class="src" id="srcInfo"></span>
+      <select id="fPlayer" title="Filtra TODO el dashboard por jugador"></select>
       <button class="themebtn" id="themeBtn" title="Cambiar entre tema oscuro y claro"><span id="themeIcon"></span><span id="themeTxt">Claro</span></button>
-      <button class="btn" onclick="document.getElementById('csv').click()">Cargar CSV</button>
+      <a class="btn" href="https://github.com/feralo77/mtg-izzet/actions/workflows/actualizar-tracker.yml" target="_blank" rel="noopener" title="Abre GitHub Actions: pulsa 'Run workflow' y en ~1 minuto el robot relee las carpetas del Drive y refresca los datos">Actualizar datos</a>
     </div>
   </header>
 
@@ -226,8 +231,6 @@
     <div class="tab on" data-v="stats">Estadisticas</div>
     <div class="tab" data-v="play">Cómo juegas</div>
     <div class="tab" data-v="lists">Listas</div>
-    <div class="tab" data-v="ideas">Ideas</div>
-    <div class="tab" data-v="logs">Logs MTGO</div>
     <div class="tab claude" data-v="def">La 75 Definitiva</div>
     <div class="tab claude" data-v="sbdef">Plan SB</div>
     <div class="tab claude" data-v="meta">Meta · mtgtop8</div>
@@ -239,8 +242,7 @@
       <div class="fg"><label>Lista</label><select id="fLista"></select></div>
       <div class="fg"><label>Liga / Evento</label><select id="fLiga"></select></div>
       <div class="fg"><label>Salida / Robo</label><select id="fSR"></select></div>
-      <div class="fg"><label>Matchup</label><select id="fArq"></select></div>
-      <div class="fg"><label>Reportado por</label><select id="fBy"></select></div>
+      <div class="fg"><label>Mazo rival</label><select id="fArq"></select></div>
     </div>
     <div class="kpis" id="kpis"></div>
     <div class="insight" id="insight"></div>
@@ -254,42 +256,50 @@
       <div class="panel"><h3>Salida vs Robo <span>(WR match)</span></h3><div class="cwrap"><canvas id="chPD"></canvas></div></div>
     </div>
     <div class="panel full"><h3>Detalle de partidas <span>(clic en cabecera para ordenar)</span></h3><div style="overflow-x:auto"><table id="tbl"></table></div></div>
-    <div class="panel full" style="margin-top:16px"><h3>Lista × matchup <span>(tu récord V-D con cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
   </section>
 
-  <!-- ===== CÓMO JUEGAS (datos de logs) ===== -->
+  <!-- ===== CÓMO JUEGAS (análisis profundo de los logs) ===== -->
   <section class="view" id="v-play">
-    <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — de tus logs de MTGO: 20 partidas / 46 games (récord 10-10). Aquí no miras solo el resultado, sino CÓMO llegas a él: duración de la partida, tu motor de prowess y el Cori-Steel Cutter. Muestra del último volcado; se refresca al reprocesar los logs con el parser.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — análisis game a game de tus logs de MTGO. No solo el resultado: manos iniciales, mulligans, robos, tierras y a qué velocidad aterriza tu juego. Todo sale del log real de cada partida (el log cuenta cuántas cartas se mueven, no cuáles robas) y se refresca solo con cada carga de datos.</div></div>
     <div class="kpis" id="playKpis"></div>
     <div class="insight" id="playInsight"></div>
+    <div id="playDeep">
+      <h3 class="secH">Manos iniciales</h3>
+      <div class="grid">
+        <div class="panel"><h3>Mano conservada <span>(WR por tamaño de mano · nº de games)</span></h3><div class="cwrap"><canvas id="chHand"></canvas></div></div>
+        <div class="panel"><h3>Mulligans <span>(WR según quién mulliganea)</span></h3><div class="cwrap"><canvas id="chMull"></canvas></div></div>
+      </div>
+      <h3 class="secH">Robos y tierras</h3>
+      <div class="grid">
+        <div class="panel"><h3>Tierras en los turnos 1-3 <span>(WR según tu maná temprano)</span></h3><div class="cwrap"><canvas id="chLands"></canvas></div></div>
+        <div class="panel"><h3>Robos por game <span>(media · tú vs rival · ganados y perdidos)</span></h3><div class="cwrap"><canvas id="chDraws"></canvas></div></div>
+      </div>
+      <h3 class="secH">Tempo: cuándo aterriza tu juego</h3>
+      <div class="grid">
+        <div class="panel"><h3>Primera amenaza <span>(WR por turno de la primera criatura o Cutter)</span></h3><div class="cwrap"><canvas id="chThreat"></canvas></div></div>
+        <div class="panel"><h3>Cori-Steel Cutter <span>(WR según el turno en que cae)</span></h3><div class="cwrap"><canvas id="chCutter"></canvas></div></div>
+      </div>
+    </div>
+    <div class="note-lg" id="playOldNote" style="display:none">Los datos profundos (manos, robos, tierras, tempo) aparecerán con la próxima carga de datos: el games.csv publicado aún es del formato antiguo. Pulsa "Actualizar datos" arriba.</div>
+    <h3 class="secH">Motor y duración</h3>
     <div class="grid">
       <div class="panel"><h3>Duración de partida vs victoria <span>(WR por turnos)</span></h3><div class="cwrap"><canvas id="chDur"></canvas></div></div>
-      <div class="panel"><h3>Salida vs Robo <span>(WR por game · muestra buena)</span></h3><div class="cwrap"><canvas id="chPD2"></canvas></div></div>
+      <div class="panel"><h3>Salida vs Robo <span>(WR por game)</span></h3><div class="cwrap"><canvas id="chPD2"></canvas></div></div>
     </div>
     <div class="grid">
       <div class="panel"><h3>Prowess disparado <span>(media por game · ganados vs perdidos)</span></h3><div class="cwrap"><canvas id="chProw"></canvas></div></div>
       <div class="panel"><h3>Fichas de Monje del Cutter <span>(media por game)</span></h3><div class="cwrap"><canvas id="chMonk"></canvas></div></div>
     </div>
+    <div class="panel full" id="playTblPanel"><h3>Game a game <span>(todo lo que el log sabe de cada juego)</span></h3><div style="overflow-x:auto"><table id="playTbl"></table></div></div>
   </section>
 
   <!-- ===== LISTAS ===== -->
   <section class="view" id="v-lists">
-    <h3 style="margin:2px 2px 12px;font-size:15px">Tus versiones <span style="font-weight:400;color:var(--tx2);font-size:12px">— enlace directo y cómo va cada una (récord de tus partidas)</span></h3>
+    <div class="author"><span class="ic"></span><div><b>Tus listas</b> — las versiones que has ido jugando y su rendimiento real, cruzado con partidas y games. La síntesis carta a carta y el porqué de cada slot viven en <b>La 75 Definitiva</b>; el campo global, en <b>Meta · mtgtop8</b>.</div></div>
+    <h3 class="secH" style="margin-top:2px">Tus versiones</h3>
     <div class="decks" id="myLists"></div>
     <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(de tus partidas registradas)</span></h3><div id="wrByList"></div></div>
-    <div class="note-lg" id="metaNote"></div>
-    <div class="panel full" style="margin-bottom:16px"><h3>Metajuego del Pro Tour Ámsterdam <span>(Modern · 362 jugadores · 17-19 jul 2026)</span></h3><div class="cwrap"><canvas id="chMeta"></canvas></div></div>
-    <h3 style="margin:6px 2px 12px;font-size:15px">Tu lista al detalle</h3>
-    <div class="decks" id="decks"></div>
-  </section>
-
-  <!-- ===== IDEAS ===== -->
-  <section class="view" id="v-ideas">
-    <div class="grid">
-      <div class="panel"><h3>Pruebas pendientes</h3><div id="ideasList"></div></div>
-      <div class="panel"><h3>Conclusiones del Pro Tour</h3><div id="ptList"></div></div>
-    </div>
-    <div class="panel full"><h3>Tus tendencias (auto)</h3><div id="autoInsights"></div></div>
+    <div class="panel full"><h3>Lista × mazo rival <span>(tu récord V-D con cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
   </section>
 
   <!-- ===== LA 75 DEFINITIVA (autor: Claude) ===== -->
@@ -367,44 +377,19 @@
 
   <!-- ===== META (mtgtop8) · autor: Claude ===== -->
   <section class="view" id="v-meta">
-    <div class="author"><span class="ic"></span><div><b>Meta del arquetipo &middot; mtgtop8</b> — la "lista media" de UR / Izzet Prowess a partir de los resultados recientes, con varianzas, tendencia (se refresca solo cada 2 días) y cómo se compara con tu 75. Señal <b>direccional</b>: muestra de ~20 listas y meta <b>global</b>; pondéralo con tu meta local de Lleida. Fuente: <span id="metaFuente"></span>.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Meta del arquetipo &middot; mtgtop8</b> — la "lista media" de UR / Izzet Prowess a partir de los resultados recientes, con varianzas, tendencia (se refresca solo cada 2 días), cómo se compara con tu 75 y la <b>lectura del coach</b>: qué significa cada divergencia y cómo pesa en TU liga. Fuente: <span id="metaFuente"></span>.</div></div>
     <div class="kpis" id="metaKpis"></div>
     <div class="insight" id="metaSug"></div>
     <div class="panel full" style="margin-bottom:16px"><h3>Tu 75 vs el campo <span>&middot; qué juega el campo que tú no &middot; dónde te desvías</span></h3><div id="metaDeltas"></div></div>
+    <div class="panel full" style="margin-bottom:16px"><h3>Lectura del coach <span>&middot; qué significan las divergencias y cómo pesan en tu liga &middot; Claude, 22-jul-2026</span></h3><div id="metaCoach"></div></div>
+    <div class="panel full" style="margin-bottom:16px"><h3>Tu meta local vs el campo global <span>&middot; lo que de verdad te juegas (récords en vivo, cruzados con el Plan SB)</span></h3><div style="overflow-x:auto"><table id="metaLocal"></table></div>
+      <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">El sideboard se construye para lo que TE juegas, no para el top 8 de otros: esta tabla es tu meta real, ordenada por frecuencia, con el plan de la pestaña <b>Plan SB</b> al lado.</div></div>
     <div class="grid">
       <div class="panel"><h3>Lista media — Main <span>(consenso &middot; copias típicas &middot; rango)</span></h3><div id="metaMain"></div></div>
       <div class="panel"><h3>Sideboard <span>(fijas del consenso + slots en disputa)</span></h3><div id="metaSide"></div></div>
     </div>
     <div class="panel full" style="margin-bottom:16px"><h3>Tendencia <span>&middot; cambios respecto a la tirada anterior (cada 2 días)</span></h3><div id="metaTrend"></div></div>
     <div class="panel full"><h3>Agregado por carta <span>&middot; % de listas &middot; copias típicas &middot; rango min–max = varianza</span></h3><div style="overflow-x:auto"><table id="metaTbl"></table></div></div>
-  </section>
-
-  <!-- ===== LOGS MTGO (panel real del parser · autor: Claude) ===== -->
-  <section class="view" id="v-logs">
-    <div class="author"><span class="ic"></span><div><b>Qué nos dan los logs de MTGO</b> · Claude, 21-jul-2026. Magic Online guarda un fichero por cada partida. El parser los lee y saca solo, sin apuntar nada a mano. Aquí ves <b>qué campos extrae</b> (y cuáles no vienen), un <b>scouting de rivales</b> a partir de esos datos, y un <b>ejemplo real</b> de la salida.</div></div>
-
-    <div class="grid">
-      <div class="panel"><h3>Qué información sacan los logs <span>(por partida, automático)</span></h3>
-        <div class="fieldrow" id="fieldList"></div>
-      </div>
-      <div class="panel"><h3>Cómo se usa <span>(el flujo)</span></h3>
-        <div class="idea"><span class="n">1</span><div>Juegas en <b>MTGO</b>: él solo escribe un fichero por partida en tu ordenador (no hay que activar nada).</div></div>
-        <div class="idea"><span class="n">2</span><div>El <b>parser</b> lee esos ficheros y genera un <b>CSV</b> con las columnas de tu Registro.</div></div>
-        <div class="idea"><span class="n">3</span><div>Ese CSV alimenta el dashboard (botón <b>Cargar CSV</b> o, cuando publiques la hoja, automático).</div></div>
-        <div class="idea"><span class="n">4</span><div><b>merge_registro.py</b> añade lo que el log no sabe (Liga, Ronda, Lista, Notas) sin re-teclear las partidas.</div></div>
-        <div class="idea"><span class="n"></span><div><b>Próximo salto</b> (idea de mymtgo): sacar también las <b>manos de salida</b> y el turno a turno para un detalle por juego.</div></div>
-      </div>
-    </div>
-
-    <div class="panel full" style="margin-bottom:16px"><h3>Scouting de rivales <span>· a quién te has enfrentado, con qué mazo y tu récord (idea traída de mymtgo)</span></h3>
-      <div style="overflow-x:auto"><table id="scoutTbl"></table></div>
-      <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">Sale solo de la columna <b>Rival</b> del log. Cuantas más partidas cargues, más útil para preparar la ronda cuando repites oponente en el MoL.</div>
-    </div>
-
-    <div class="panel full"><h3>Ejemplo de salida del parser <span>· 5 partidas · el rival y su mazo, detectados solos</span></h3>
-      <div style="overflow-x:auto"><table id="logTbl"></table></div>
-      <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">El <b>mazo del rival</b> no viene escrito en el log: el parser lo deduce de las cartas que le vio (columna derecha). Por ejemplo, "Grixis Frog/Reanimator" salió de ver <i>Psychic Frog</i> + <i>Unearth</i> juntos.</div>
-    </div>
   </section>
 
 </div>
@@ -437,16 +422,6 @@ let MATCHES = [
  {f:"20/07/2026",ev:"Liga 5",li:"2.0",rd:1,op:"Breach",aq:"Through the Breach",r:"W",jg:2,jp:1,sr:"Salida",my:0,mr:1,mvp:"",nt:"Estreno de la lista 2.0"},
 ];
 
-// PT Amsterdam metagame (magic.gg breakdown)
-const META = [["Boros Energy",12.7],["Izzet Affinity",12.7],["Broodscale",11.6],["Eldrazi Tron",9.7],["Esper Goryo's",9.1],["Izzet Prowess",6.9],["Resto",27.3]];
-
-// Listas analizadas
-const LISTS = [
- {name:"Stock (tu base)",badge:"you",tag:"tu lista actual (deck 7881695) · verificada en mtggoldfish",url:"https://www.mtggoldfish.com/deck/7881695#online",
-  main:[["Criaturas (12)","4 Dragon's Rage Channeler · 4 Monastery Swiftspear · 4 Slickshot Show-Off"],["Hechizos (30)","4 Preordain · 4 Expressive Iteration · 4 Lightning Bolt · 4 Lava Dart · 4 Mutagenic Growth · 1 Violent Urge · 1 Flashback · 4 Mishra's Bauble · 4 Cori-Steel Cutter"],["Tierras (18)","3 Arid Mesa · 3 Scalding Tarn · 3 Wooded Foothills · 3 Steam Vents · 2 Fiery Islet · 1 Thundering Falls · 3 Mountain"]],
-  side:"1 Assault Strobe · 3 Consign to Memory · 3 Unholy Heat · 2 Meltdown · 2 Spell Pierce · 2 Spell Snare · 1 Surgical Extraction · 1 Prismari Charm"},
-];
-
 // ===== Tus versiones de lista (las que vas pasando) · resultado calculado de tus partidas =====
 const MYLISTS = [
  {key:"Stock",name:"Stock",deck:"7881695",url:"https://www.mtggoldfish.com/deck/7881695#online",
@@ -455,22 +430,6 @@ const MYLISTS = [
   desc:"La variante que preparaste para el Pro Tour. La jugaste en la Liga 4."},
  {key:"2.0",name:"2.0",deck:"7881798",url:"https://www.mtggoldfish.com/deck/7881798#online",
   desc:"Tu versión nueva, estrenada en la Liga 5."},
-];
-
-// ===== Qué información sacan los logs de MTGO (inventario de campos del parser) =====
-const PARSER_FIELDS = [
- ["Resultado (W/L)","ok","Quién ganó el match. Siempre presente."],
- ["Marcador (games)","ok","Juegos ganados y perdidos, p. ej. 2-1. Siempre."],
- ["Salida / Robo (G1)","ok","Si empezaste o robaste en el primer juego. Siempre."],
- ["Mulligans (yo / rival)","ok","Cuántas manos rechazasteis cada uno. Siempre."],
- ["Rival (usuario MTGO)","ok","El nick del oponente. Siempre — base del scouting."],
- ["Cartas del rival vistas","ok","Todas las cartas que te enseñó durante el match. Siempre."],
- ["match_uuid","ok","Identificador único de cada partida (evita duplicados al fusionar). Siempre."],
- ["Fecha","ok","Cuándo se jugó. Siempre."],
- ["Arquetipo del rival","mid","Se DEDUCE de las cartas vistas con una heurística. Bien en mazos conocidos; puede fallar en listas raras."],
- ["Evento / Liga · Ronda","no","No viene en el log. Se pone a mano o por el complemento (merge_registro.py)."],
- ["Tu lista jugada","no","No viene en el log. Se etiqueta a mano (Stock / PT / 2.0)."],
- ["Manos de salida / turno a turno","no","El log lo tiene, el parser aún no lo extrae. Mejora futura (idea de mymtgo)."],
 ];
 
 // ===== LA 75 DEFINITIVA (datos · autor: Claude, 20-jul-2026) =====
@@ -520,25 +479,6 @@ const SBDEF = [
  {aq:"Sam Combo",meta:"local",val:"fav",vl:"A afinar (0-1)",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −2 Mutagenic Growth, −1 Expressive Iteration",plan:"Combo de criaturas (Chord, Birthing Ritual, Cauldron). Heat a las piezas; Consign a activaciones y Chord. Race: eres más rápido."},
 ];
 
-const IDEAS = [
- ["","Vigilar la variante burn (2 Assault Strobe + 3 Monstrous Rage main): tres resultados top en 3 días post-PT. Aún sin muestra suficiente para copiarla."],
-];
-const PT = [
- ["","Izzet Prowess = <b>6,9%</b> del PT (25 jugadores). Meta liderado por Boros Energy e Izzet Affinity (12,7%) y Broodscale (11,6%)."],
- ["","<b>Boomerang Basics apareció en 10 listas</b> de Prowess: tech consolidada, no experimento."],
- ["","<b>Flashback cortado</b> en las 3 listas del PT: confirma tu duda del slot más discutido."],
- ["","<b>Spell Snare</b> ya es estándar en el sideboard del arquetipo."],
-];
-
-// ===== Demo del lector de logs de MTGO (salida real del parser · registro_mtgo_muestra.csv) =====
-const LOGDEMO = [
- {op:"Jsph",aq:"Boros Ponza",r:"W",g:"2-0",sr:"Robo",my:0,mr:0,cards:"Path to Exile, High Noon, Erode, Demolition Field, Cleansing Wildfire, Solitude, Kaheera, Field of Ruin"},
- {op:"kentaro_hokori",aq:"Esper Goryo's",r:"L",g:"0-2",sr:"Robo",my:0,mr:0,cards:"Goryo's Vengeance, Atraxa Grand Unifier, Ephemerate, Solitude, Thoughtseize, Prismatic Ending, Wrath of the Skies, Force of Negation"},
- {op:"SeriousSquid",aq:"Dimir Frog",r:"L",g:"0-2",sr:"Robo",my:0,mr:0,cards:"Psychic Frog, Tamiyo, Namor, Force of Negation, Cryptic Command, Archmage's Charm, Fatal Push, Counterspell, Drown in the Loch"},
- {op:"Jijito",aq:"Azorius Control",r:"W",g:"2-0",sr:"Robo",my:0,mr:0,cards:"Teferi Hero of Dominaria, Wrath of the Skies, Counterspell, Dress Down, Brainsurge, Consult the Star Charts, Wan Shi Tong, Solitude"},
- {op:"Durrrr89",aq:"Grixis Frog/Reanimator",r:"W",g:"1-0",sr:"Robo",my:0,mr:0,cards:"Thoughtseize, Psychic Frog, Unearth"},
-];
-
 // ================= LÓGICA =================
 Chart.defaults.font.family="'Space Grotesk','IBM Plex Mono',-apple-system,BlinkMacSystemFont,sans-serif";
 function cssv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
@@ -556,49 +496,72 @@ const pct=(n,d)=>d?Math.round(n/d*100):0;
 const outcome=m=>`${m.jg}-${m.jp}`;
 
 // ===== "Cómo juegas": datos por game. Fuente viva: games.csv (fetch, mismo patrón que
-// registro.csv). Este array es el SNAPSHOT DE ÚLTIMO RECURSO: solo se usa si games.csv falla. =====
-let GAMES = [
- {aq:'Izzet Affinity',sr:'Robo',w:1,t:4,pw:8,mk:0},{aq:'Izzet Affinity',sr:'Robo',w:1,t:5,pw:4,mk:0},{aq:'Golgari Yawgmoth',sr:'Robo',w:0,t:4,pw:5,mk:2},
- {aq:'Golgari Yawgmoth',sr:'Salida',w:0,t:3,pw:1,mk:0},{aq:'Izzet Affinity',sr:'Robo',w:0,t:4,pw:2,mk:2},{aq:'Izzet Affinity',sr:'Salida',w:0,t:4,pw:1,mk:0},
- {aq:'Broodscale',sr:'Robo',w:1,t:7,pw:19,mk:0},{aq:'Broodscale',sr:'Robo',w:0,t:7,pw:0,mk:0},{aq:'Broodscale',sr:'Salida',w:1,t:5,pw:2,mk:0},
- {aq:'Azorius Control',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Azorius Control',sr:'Robo',w:1,t:4,pw:0,mk:1},{aq:'Broodscale',sr:'Robo',w:0,t:5,pw:15,mk:4},
- {aq:'Broodscale',sr:'Salida',w:0,t:9,pw:5,mk:1},{aq:'¿? (revisar)',sr:'Salida',w:1,t:3,pw:0,mk:0},{aq:'Boros Energy',sr:'Robo',w:1,t:5,pw:13,mk:2},
- {aq:'Boros Energy',sr:'Robo',w:0,t:7,pw:0,mk:0},{aq:'Boros Energy',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Grixis Reanimator',sr:'Robo',w:0,t:6,pw:1,mk:0},
- {aq:'Grixis Reanimator',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Grixis Reanimator',sr:'Robo',w:0,t:6,pw:6,mk:0},{aq:'Izzet Prowess',sr:'Salida',w:0,t:3,pw:0,mk:1},
- {aq:'Izzet Prowess',sr:'Salida',w:1,t:4,pw:5,mk:5},{aq:'Izzet Prowess',sr:'Robo',w:0,t:4,pw:1,mk:1},{aq:'Grixis Reanimator',sr:'Salida',w:0,t:5,pw:4,mk:2},
- {aq:'Grixis Reanimator',sr:'Salida',w:1,t:5,pw:1,mk:0},{aq:'Grixis Reanimator',sr:'Robo',w:1,t:4,pw:10,mk:1},{aq:'Neoform',sr:'Robo',w:0,t:4,pw:3,mk:2},
- {aq:'Neoform',sr:'Salida',w:1,t:3,pw:5,mk:3},{aq:'Neoform',sr:'Robo',w:0,t:7,pw:4,mk:0},{aq:'Boros Ponza',sr:'Robo',w:1,t:5,pw:1,mk:0},
- {aq:'Boros Ponza',sr:'Robo',w:1,t:8,pw:7,mk:1},{aq:"Esper Goryo's",sr:'Robo',w:0,t:6,pw:0,mk:0},{aq:"Esper Goryo's",sr:'Salida',w:0,t:6,pw:1,mk:1},
- {aq:'Izzet Prowess',sr:'Robo',w:0,t:3,pw:0,mk:0},{aq:'Izzet Prowess',sr:'Salida',w:0,t:7,pw:9,mk:1},{aq:'Boros Energy',sr:'Robo',w:0,t:4,pw:0,mk:1},
- {aq:'Boros Energy',sr:'Salida',w:1,t:4,pw:3,mk:0},{aq:'Boros Energy',sr:'Robo',w:0,t:4,pw:1,mk:0},{aq:'Broodscale',sr:'Salida',w:0,t:6,pw:8,mk:1},
- {aq:'Broodscale',sr:'Salida',w:1,t:5,pw:0,mk:0},{aq:'Broodscale',sr:'Robo',w:1,t:3,pw:0,mk:0},{aq:'Grixis Frog/Reanimator',sr:'Robo',w:1,t:4,pw:2,mk:1},
- {aq:'Dimir Frog',sr:'Robo',w:0,t:12,pw:1,mk:0},{aq:'Dimir Frog',sr:'Salida',w:0,t:7,pw:6,mk:0},{aq:'Azorius Control',sr:'Robo',w:1,t:8,pw:13,mk:3},
- {aq:'Azorius Control',sr:'Robo',w:1,t:9,pw:4,mk:0},
-];
+// registro.csv). Este array es el SNAPSHOT DE ÚLTIMO RECURSO (regenerado 22-jul-2026,
+// 59 games reales): solo se usa si games.csv falla.
+let GAMES = [{"uid":"e374128a-368c-4536-aafc-cdc89ce9d702","gi":1,"aq":"Broodscale","sr":"Salida","w":0,"t":6,"pw":0,"mk":3,"mu":1,"mo":1,"hy":6,"hr":6,"dy":7,"dr":9,"ly":4,"l3":3,"t1":1,"ft":1,"ct":4,"sp":9,"by":"feralo77"},{"uid":"e374128a-368c-4536-aafc-cdc89ce9d702","gi":2,"aq":"Broodscale","sr":"Salida","w":0,"t":6,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":6,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"},{"uid":"dc40834c-85ad-4880-b63b-c17e91264235","gi":1,"aq":"Esper Goryo's","sr":"Robo","w":1,"t":5,"pw":3,"mk":2,"mu":0,"mo":1,"hy":7,"hr":6,"dy":5,"dr":4,"ly":5,"l3":3,"t1":0,"ft":2,"ct":4,"sp":8,"by":"feralo77"},{"uid":"dc40834c-85ad-4880-b63b-c17e91264235","gi":2,"aq":"Esper Goryo's","sr":"Robo","w":0,"t":5,"pw":2,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":10,"ly":4,"l3":3,"t1":1,"ft":1,"ct":2,"sp":10,"by":"feralo77"},{"uid":"dc40834c-85ad-4880-b63b-c17e91264235","gi":3,"aq":"Esper Goryo's","sr":"Salida","w":0,"t":4,"pw":2,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":11,"ly":3,"l3":3,"t1":0,"ft":3,"ct":3,"sp":5,"by":"feralo77"},{"uid":"d5330261-a86d-4d6f-8db2-dc60547443a3","gi":1,"aq":"¿? (revisar)","sr":"Robo","w":0,"t":6,"pw":10,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":5,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":12,"by":"feralo77"},{"uid":"d5330261-a86d-4d6f-8db2-dc60547443a3","gi":2,"aq":"¿? (revisar)","sr":"Salida","w":0,"t":4,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":5,"ly":2,"l3":2,"t1":1,"ft":1,"ct":4,"sp":5,"by":"feralo77"},{"uid":"f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c","gi":1,"aq":"Grixis Reanimator","sr":"Robo","w":1,"t":5,"pw":13,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":7,"dr":4,"ly":2,"l3":2,"t1":1,"ft":1,"ct":3,"sp":8,"by":"feralo77"},{"uid":"f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c","gi":2,"aq":"Grixis Reanimator","sr":"Robo","w":0,"t":5,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":4,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":7,"by":"feralo77"},{"uid":"f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c","gi":3,"aq":"Grixis Reanimator","sr":"Salida","w":0,"t":6,"pw":4,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":7,"dr":10,"ly":5,"l3":3,"t1":1,"ft":1,"ct":5,"sp":7,"by":"feralo77"},{"uid":"1c723cb8-94a5-49ed-8560-1a230db0c41c","gi":1,"aq":"¿? (revisar)","sr":"Salida","w":0,"t":4,"pw":4,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":5,"ly":3,"l3":2,"t1":1,"ft":1,"ct":3,"sp":7,"by":"feralo77"},{"uid":"1c723cb8-94a5-49ed-8560-1a230db0c41c","gi":2,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":5,"pw":5,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":8,"ly":3,"l3":2,"t1":1,"ft":2,"ct":0,"sp":10,"by":"feralo77"},{"uid":"1c723cb8-94a5-49ed-8560-1a230db0c41c","gi":3,"aq":"¿? (revisar)","sr":"Robo","w":1,"t":5,"pw":8,"mk":4,"mu":0,"mo":1,"hy":7,"hr":6,"dy":6,"dr":10,"ly":3,"l3":3,"t1":1,"ft":1,"ct":2,"sp":9,"by":"feralo77"},{"uid":"2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999","gi":1,"aq":"Azorius Control","sr":"Robo","w":1,"t":8,"pw":13,"mk":3,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":19,"ly":3,"l3":3,"t1":0,"ft":3,"ct":3,"sp":14,"by":"feralo77"},{"uid":"2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999","gi":2,"aq":"Azorius Control","sr":"Robo","w":1,"t":9,"pw":4,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":12,"dr":16,"ly":6,"l3":3,"t1":1,"ft":3,"ct":0,"sp":13,"by":"feralo77"},{"uid":"c8505bf6-1d70-4e4e-9cca-44f07c66febf","gi":1,"aq":"Dimir Frog","sr":"Robo","w":0,"t":12,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":14,"dr":19,"ly":5,"l3":3,"t1":1,"ft":1,"ct":3,"sp":12,"by":"feralo77"},{"uid":"c8505bf6-1d70-4e4e-9cca-44f07c66febf","gi":2,"aq":"Dimir Frog","sr":"Salida","w":0,"t":7,"pw":6,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":6,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"},{"uid":"bb7b0286-7f95-43a9-ba8e-a7846e11993a","gi":1,"aq":"Grixis Frog/Reanimator","sr":"Robo","w":1,"t":4,"pw":2,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":4,"dr":4,"ly":3,"l3":2,"t1":0,"ft":2,"ct":2,"sp":5,"by":"feralo77"},{"uid":"d816e48c-41ed-4a2d-b209-fc3ea83164b9","gi":1,"aq":"Broodscale","sr":"Salida","w":0,"t":6,"pw":8,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":7,"ly":2,"l3":1,"t1":1,"ft":1,"ct":6,"sp":8,"by":"feralo77"},{"uid":"d816e48c-41ed-4a2d-b209-fc3ea83164b9","gi":2,"aq":"Broodscale","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":1,"hy":7,"hr":6,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":1,"ct":2,"sp":7,"by":"feralo77"},{"uid":"d816e48c-41ed-4a2d-b209-fc3ea83164b9","gi":3,"aq":"Broodscale","sr":"Robo","w":1,"t":3,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":2,"ly":3,"l3":3,"t1":1,"ft":1,"ct":0,"sp":6,"by":"feralo77"},{"uid":"3ce63980-35b8-445a-ac25-c9f04ad0aa35","gi":1,"aq":"Boros Energy","sr":"Robo","w":0,"t":4,"pw":0,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":4,"dr":3,"ly":2,"l3":2,"t1":1,"ft":1,"ct":3,"sp":4,"by":"feralo77"},{"uid":"3ce63980-35b8-445a-ac25-c9f04ad0aa35","gi":2,"aq":"Boros Energy","sr":"Salida","w":1,"t":4,"pw":3,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":3,"dr":3,"ly":3,"l3":2,"t1":0,"ft":2,"ct":0,"sp":6,"by":"feralo77"},{"uid":"3ce63980-35b8-445a-ac25-c9f04ad0aa35","gi":3,"aq":"Boros Energy","sr":"Robo","w":0,"t":4,"pw":1,"mk":0,"mu":1,"mo":0,"hy":6,"hr":7,"dy":5,"dr":3,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":5,"by":"feralo77"},{"uid":"e6102623-accf-4ddc-b334-a80f72bb542e","gi":1,"aq":"Izzet Prowess","sr":"Robo","w":0,"t":3,"pw":0,"mk":0,"mu":1,"mo":0,"hy":6,"hr":7,"dy":4,"dr":4,"ly":2,"l3":2,"t1":1,"ft":2,"ct":0,"sp":2,"by":"feralo77"},{"uid":"e6102623-accf-4ddc-b334-a80f72bb542e","gi":2,"aq":"Izzet Prowess","sr":"Salida","w":0,"t":7,"pw":9,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":8,"ly":3,"l3":2,"t1":1,"ft":1,"ct":5,"sp":10,"by":"feralo77"},{"uid":"7a1d37f5-097e-4d5c-b98a-6cac99874573","gi":1,"aq":"Esper Goryo's","sr":"Robo","w":0,"t":6,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":6,"ly":5,"l3":3,"t1":1,"ft":2,"ct":0,"sp":7,"by":"feralo77"},{"uid":"7a1d37f5-097e-4d5c-b98a-6cac99874573","gi":2,"aq":"Esper Goryo's","sr":"Salida","w":0,"t":6,"pw":1,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":9,"dr":6,"ly":6,"l3":3,"t1":0,"ft":3,"ct":5,"sp":10,"by":"feralo77"},{"uid":"c0725c15-1759-408e-8b7c-b7c9c427edbd","gi":1,"aq":"Boros Ponza","sr":"Robo","w":1,"t":5,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":7,"dr":4,"ly":4,"l3":3,"t1":1,"ft":1,"ct":3,"sp":10,"by":"feralo77"},{"uid":"c0725c15-1759-408e-8b7c-b7c9c427edbd","gi":2,"aq":"Boros Ponza","sr":"Robo","w":1,"t":8,"pw":7,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":7,"ly":4,"l3":2,"t1":0,"ft":2,"ct":3,"sp":10,"by":"feralo77"},{"uid":"97933634-bc3e-4f9d-b425-a72418449d67","gi":1,"aq":"Neoform","sr":"Robo","w":0,"t":4,"pw":3,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":16,"ly":3,"l3":3,"t1":1,"ft":1,"ct":2,"sp":6,"by":"feralo77"},{"uid":"97933634-bc3e-4f9d-b425-a72418449d67","gi":2,"aq":"Neoform","sr":"Salida","w":1,"t":3,"pw":5,"mk":3,"mu":1,"mo":1,"hy":6,"hr":6,"dy":4,"dr":3,"ly":3,"l3":3,"t1":0,"ft":2,"ct":2,"sp":5,"by":"feralo77"},{"uid":"97933634-bc3e-4f9d-b425-a72418449d67","gi":3,"aq":"Neoform","sr":"Robo","w":0,"t":7,"pw":4,"mk":0,"mu":2,"mo":1,"hy":5,"hr":6,"dy":6,"dr":16,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":5,"by":"feralo77"},{"uid":"6b307f87-0c75-4eca-9302-56075da4dba4","gi":1,"aq":"Grixis Reanimator","sr":"Salida","w":0,"t":5,"pw":4,"mk":2,"mu":1,"mo":0,"hy":6,"hr":7,"dy":7,"dr":9,"ly":4,"l3":2,"t1":1,"ft":1,"ct":3,"sp":9,"by":"feralo77"},{"uid":"6b307f87-0c75-4eca-9302-56075da4dba4","gi":2,"aq":"Grixis Reanimator","sr":"Salida","w":1,"t":5,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":6,"ly":4,"l3":3,"t1":1,"ft":1,"ct":0,"sp":9,"by":"feralo77"},{"uid":"6b307f87-0c75-4eca-9302-56075da4dba4","gi":3,"aq":"Grixis Reanimator","sr":"Robo","w":1,"t":4,"pw":10,"mk":1,"mu":1,"mo":1,"hy":6,"hr":6,"dy":5,"dr":4,"ly":3,"l3":3,"t1":1,"ft":1,"ct":4,"sp":7,"by":"feralo77"},{"uid":"12341f9b-5f8f-46d6-83dc-45452ecc0109","gi":1,"aq":"Izzet Prowess","sr":"Salida","w":0,"t":3,"pw":0,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":2,"dr":4,"ly":2,"l3":2,"t1":1,"ft":1,"ct":3,"sp":4,"by":"feralo77"},{"uid":"12341f9b-5f8f-46d6-83dc-45452ecc0109","gi":2,"aq":"Izzet Prowess","sr":"Salida","w":1,"t":4,"pw":5,"mk":5,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":4,"ly":4,"l3":3,"t1":0,"ft":2,"ct":2,"sp":7,"by":"feralo77"},{"uid":"12341f9b-5f8f-46d6-83dc-45452ecc0109","gi":3,"aq":"Izzet Prowess","sr":"Robo","w":0,"t":4,"pw":1,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":5,"ly":3,"l3":3,"t1":1,"ft":2,"ct":3,"sp":5,"by":"feralo77"},{"uid":"2e4ceb70-379b-4be5-996b-2a7892581ae6","gi":1,"aq":"¿? (revisar)","sr":"Robo","w":0,"t":6,"pw":1,"mk":0,"mu":0,"mo":2,"hy":7,"hr":5,"dy":7,"dr":6,"ly":3,"l3":3,"t1":1,"ft":1,"ct":0,"sp":10,"by":"feralo77"},{"uid":"2e4ceb70-379b-4be5-996b-2a7892581ae6","gi":2,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":3,"hy":7,"hr":4,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":3,"ct":4,"sp":8,"by":"feralo77"},{"uid":"2e4ceb70-379b-4be5-996b-2a7892581ae6","gi":3,"aq":"¿? (revisar)","sr":"Robo","w":0,"t":6,"pw":6,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":8,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":9,"by":"feralo77"},{"uid":"b3c6bda6-ea72-42b4-994b-3dec7ec09c21","gi":1,"aq":"Boros Energy","sr":"Robo","w":1,"t":5,"pw":13,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":1,"ct":4,"sp":11,"by":"feralo77"},{"uid":"b3c6bda6-ea72-42b4-994b-3dec7ec09c21","gi":2,"aq":"Boros Energy","sr":"Robo","w":0,"t":7,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":10,"ly":5,"l3":3,"t1":0,"ft":2,"ct":0,"sp":9,"by":"feralo77"},{"uid":"b3c6bda6-ea72-42b4-994b-3dec7ec09c21","gi":3,"aq":"Boros Energy","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":6,"ly":4,"l3":3,"t1":1,"ft":1,"ct":0,"sp":10,"by":"feralo77"},{"uid":"477dc805-7cc1-4060-aace-f97412484124","gi":1,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":3,"pw":0,"mk":0,"mu":1,"mo":1,"hy":6,"hr":6,"dy":2,"dr":2,"ly":2,"l3":2,"t1":1,"ft":2,"ct":3,"sp":3,"by":"feralo77"},{"uid":"45370f5a-7496-4909-bc25-ef3c52e0373d","gi":1,"aq":"Broodscale","sr":"Robo","w":0,"t":5,"pw":15,"mk":4,"mu":0,"mo":0,"hy":7,"hr":7,"dy":7,"dr":3,"ly":4,"l3":3,"t1":1,"ft":1,"ct":2,"sp":11,"by":"feralo77"},{"uid":"45370f5a-7496-4909-bc25-ef3c52e0373d","gi":2,"aq":"Broodscale","sr":"Salida","w":0,"t":9,"pw":5,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":9,"ly":4,"l3":3,"t1":1,"ft":1,"ct":3,"sp":11,"by":"feralo77"},{"uid":"5f239dd1-82c8-4aa4-804b-ace012669679","gi":1,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":4,"ly":3,"l3":1,"t1":1,"ft":1,"ct":5,"sp":7,"by":"feralo77"},{"uid":"5f239dd1-82c8-4aa4-804b-ace012669679","gi":2,"aq":"¿? (revisar)","sr":"Robo","w":1,"t":4,"pw":0,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":3,"ly":3,"l3":3,"t1":0,"ft":2,"ct":3,"sp":4,"by":"feralo77"},{"uid":"b27b88d4-d70c-465f-b832-1fb1f6217358","gi":1,"aq":"Broodscale","sr":"Robo","w":1,"t":7,"pw":19,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":8,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":16,"by":"feralo77"},{"uid":"b27b88d4-d70c-465f-b832-1fb1f6217358","gi":2,"aq":"Broodscale","sr":"Robo","w":0,"t":7,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":9,"dr":7,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":14,"by":"feralo77"},{"uid":"b27b88d4-d70c-465f-b832-1fb1f6217358","gi":3,"aq":"Broodscale","sr":"Salida","w":1,"t":5,"pw":2,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":5,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"},{"uid":"e4b090d8-9bf0-4a39-bcfe-703f18c56740","gi":1,"aq":"Izzet Affinity","sr":"Robo","w":0,"t":4,"pw":2,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":3,"ct":3,"sp":5,"by":"feralo77"},{"uid":"e4b090d8-9bf0-4a39-bcfe-703f18c56740","gi":2,"aq":"Izzet Affinity","sr":"Salida","w":0,"t":4,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":3,"dr":6,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":4,"by":"feralo77"},{"uid":"0115af07-1f16-4850-8811-0e57e8a3d72b","gi":1,"aq":"Golgari Yawgmoth","sr":"Robo","w":0,"t":4,"pw":5,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":3,"ly":3,"l3":3,"t1":0,"ft":2,"ct":2,"sp":6,"by":"feralo77"},{"uid":"0115af07-1f16-4850-8811-0e57e8a3d72b","gi":2,"aq":"Golgari Yawgmoth","sr":"Salida","w":0,"t":3,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":2,"dr":3,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":4,"by":"feralo77"},{"uid":"29dc7612-bb7c-4974-9ac8-7a475aa6f8d6","gi":1,"aq":"Izzet Affinity","sr":"Robo","w":1,"t":4,"pw":8,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":5,"ly":3,"l3":3,"t1":1,"ft":1,"ct":2,"sp":8,"by":"feralo77"},{"uid":"29dc7612-bb7c-4974-9ac8-7a475aa6f8d6","gi":2,"aq":"Izzet Affinity","sr":"Robo","w":1,"t":5,"pw":4,"mk":0,"mu":0,"mo":1,"hy":7,"hr":6,"dy":6,"dr":10,"ly":3,"l3":3,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"}];
+let GAMES_DEEP = true;
 let playDone=false;
 function renderPlay(){
   if(playDone) return; playDone=true;
   Object.values(playCharts).forEach(c=>c&&c.destroy());playCharts={};
-  const D=GAMES, N=D.length, avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10)/10:0;
+  const D=G(), N=D.length, avg=(a,d=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**d)/10**d:0;
   const wins=D.filter(g=>g.w), losses=D.filter(g=>!g.w);
   const sal=D.filter(g=>g.sr==='Salida'), rob=D.filter(g=>g.sr==='Robo');
+  const wrOf=a=>pct(a.filter(g=>g.w).length,a.length);
   const tw=avg(wins.map(g=>g.t)), tl=avg(losses.map(g=>g.t));
   const pwW=avg(wins.map(g=>g.pw)), pwL=avg(losses.map(g=>g.pw));
-  const k=[['','Games',N,'de tus logs'],['g','WR por game',pct(wins.length,N)+'%',`${wins.length}-${losses.length}`],
-    ['o','Turnos ganados',tw,'vs '+tl+' en perdidos'],
-    ['g','WR salida',pct(sal.filter(g=>g.w).length,sal.length)+'%',sal.length+' games'],
-    ['r','WR robo',pct(rob.filter(g=>g.w).length,rob.length)+'%',rob.length+' games'],
-    ['p','Prowess ganados',pwW,'vs '+pwL+' en perdidos']];
+  const deep=GAMES_DEEP&&N>0&&D.some(g=>g.hy!==undefined);
+  $('playDeep').style.display=deep?'':'none';
+  $('playTblPanel').style.display=deep?'':'none';
+  $('playOldNote').style.display=deep?'none':'';
+
+  // KPIs
+  const mulled=D.filter(g=>g.mu>0);
+  const k=[['','Games',N,'de tus logs'],['g','WR por game',wrOf(D)+'%',`${wins.length}-${losses.length}`],
+    ['g','WR salida',wrOf(sal)+'%',sal.length+' games'],['r','WR robo',wrOf(rob)+'%',rob.length+' games']];
+  if(deep){
+    k.push(['p','Mano media',avg(D.map(g=>g.hy),2),'cartas al empezar']);
+    k.push(['o','Games con mulligan',pct(mulled.length,N)+'%',`WR ${wrOf(mulled)}% cuando muleas`]);
+  }else{
+    k.push(['o','Turnos ganados',tw,'vs '+tl+' en perdidos'],['p','Prowess ganados',pwW,'vs '+pwL+' en perdidos']);
+  }
   $('playKpis').innerHTML=k.map(x=>`<div class="kpi ${x[0]}"><div class="lab">${x[1]}</div><div class="val">${x[2]}</div><div class="note">${x[3]}</div></div>`).join('');
+
+  // Insight en vivo
   const lng=D.filter(g=>g.t>=7);
-  $('playInsight').innerHTML=`<div class="ic"></div><div>Eres <b>tempo puro</b>: en games de 7+ turnos ganas el <b>${pct(lng.filter(g=>g.w).length,lng.length)}%</b> (${lng.length} games) y tus derrotas duran más (${tl} turnos) que tus victorias (${tw}). Y cuando tu motor dispara, ganas: <b>${pwW}</b> prowess de media en ganados vs <b>${pwL}</b> en perdidos. Prioriza manos rápidas y cerrar antes del turno 7 — sobre todo en el robo.</div>`;
-  const buck=[['1-4',g=>g.t<=4],['5-6',g=>g.t>=5&&g.t<=6],['7+',g=>g.t>=7]];
-  const bw=buck.map(b=>{const gg=D.filter(b[1]);return {wr:pct(gg.filter(g=>g.w).length,gg.length),n:gg.length};});
+  let ins=`Eres <b>tempo puro</b>: en games de 7+ turnos ganas el <b>${pct(lng.filter(g=>g.w).length,lng.length)}%</b> (${lng.length} games) y tus derrotas duran más (${tl} turnos) que tus victorias (${tw}). Cuando tu motor dispara, ganas: <b>${pwW}</b> prowess de media en ganados vs <b>${pwL}</b> en perdidos.`;
+  if(deep){
+    const rmull=D.filter(g=>g.mo>0), cutE=D.filter(g=>g.ct>=1&&g.ct<=2), noCut=D.filter(g=>!g.ct);
+    ins+=` Con <b>Cutter en T1-2</b> ganas el <b>${wrOf(cutE)}%</b> (${cutE.length} games) frente al ${wrOf(noCut)}% sin Cutter — es tu carta de más impacto y merece mulligan agresivo hacia ella. Cuando el <b>rival mulliganea</b> subes al <b>${wrOf(rmull)}%</b>: castiga su mano corta cerrando rápido. Ojo a la muestra: cada barra lleva su nº de games; por debajo de ~10, señal solo direccional.`;
+  }
+  $('playInsight').innerHTML=`<div class="ic"></div><div>${ins}</div>`;
+
   const barOpts=(pct100)=>({responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:pct100?{min:0,max:100,ticks:{callback:v=>v+'%'}}:{beginAtZero:true},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>(pct100?'WR '+c.parsed.y+'%':c.parsed.y)}}}});
-  playCharts.dur=new Chart($('chDur'),{type:'bar',data:{labels:buck.map((b,i)=>`${b[0]} turnos (${bw[i].n})`),datasets:[{data:bw.map(x=>x.wr),backgroundColor:bw.map(x=>x.wr>=55?C.grn:x.wr>=45?C.L1_2:C.red),borderRadius:0}]},options:barOpts(true)});
-  playCharts.pd2=new Chart($('chPD2'),{type:'bar',data:{labels:['Salida','Robo'],datasets:[{data:[pct(sal.filter(g=>g.w).length,sal.length),pct(rob.filter(g=>g.w).length,rob.length)],backgroundColor:[C.grn,C.red],borderRadius:0}]},options:barOpts(true)});
+  const wrBar=(cv,groups)=>{const st=groups.map(b=>{const gg=D.filter(b[1]);return {lab:`${b[0]} (${gg.length})`,wr:wrOf(gg),n:gg.length};}).filter(x=>x.n>0);
+    return new Chart($(cv),{type:'bar',data:{labels:st.map(x=>x.lab),datasets:[{data:st.map(x=>x.wr),backgroundColor:st.map(x=>x.wr>=55?C.grn:x.wr>=45?C.L1_2:C.red),borderRadius:0}]},options:barOpts(true)});};
+
+  if(deep){
+    playCharts.hand=wrBar('chHand',[['Mano de 7',g=>g.hy===7],['Mull a 6',g=>g.hy===6],['Mull a 5-',g=>g.hy<=5&&g.hy>0]]);
+    playCharts.mull=wrBar('chMull',[['Nadie mullea',g=>!g.mu&&!g.mo],['Muleas tú',g=>g.mu>0&&!g.mo],['Mullea el rival',g=>g.mo>0&&!g.mu],['Ambos',g=>g.mu>0&&g.mo>0]]);
+    playCharts.lands=wrBar('chLands',[['0-1 tierras T1-3',g=>g.l3<=1],['2 tierras',g=>g.l3===2],['3+ tierras',g=>g.l3>=3]]);
+    playCharts.draws=new Chart($('chDraws'),{type:'bar',data:{labels:['Games ganados','Games perdidos'],datasets:[
+      {label:'Robas tú',data:[avg(wins.map(g=>g.dy)),avg(losses.map(g=>g.dy))],backgroundColor:C.blue,borderRadius:0},
+      {label:'Roba el rival',data:[avg(wins.map(g=>g.dr)),avg(losses.map(g=>g.dr))],backgroundColor:cssv('--barmut'),borderRadius:0}]},
+      options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{beginAtZero:true},x:{grid:{display:false}}},plugins:{legend:{position:'top',labels:{usePointStyle:true,boxWidth:8}}}}});
+    playCharts.threat=wrBar('chThreat',[['T1',g=>g.ft===1],['T2',g=>g.ft===2],['T3+',g=>g.ft>=3],['Sin amenaza',g=>!g.ft]]);
+    playCharts.cutter=wrBar('chCutter',[['Cutter T1-2',g=>g.ct>=1&&g.ct<=2],['Cutter T3+',g=>g.ct>=3],['Sin Cutter',g=>!g.ct]]);
+  }
+  playCharts.dur=wrBar('chDur',[['1-4 turnos',g=>g.t<=4],['5-6 turnos',g=>g.t>=5&&g.t<=6],['7+ turnos',g=>g.t>=7]]);
+  playCharts.pd2=new Chart($('chPD2'),{type:'bar',data:{labels:['Salida','Robo'],datasets:[{data:[wrOf(sal),wrOf(rob)],backgroundColor:[C.grn,C.red],borderRadius:0}]},options:barOpts(true)});
   playCharts.prow=new Chart($('chProw'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[pwW,pwL],backgroundColor:[C.grn,C.red],borderRadius:0}]},options:barOpts(false)});
   playCharts.monk=new Chart($('chMonk'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[avg(wins.map(g=>g.mk)),avg(losses.map(g=>g.mk))],backgroundColor:[C.blue,cssv('--barmut')],borderRadius:0}]},options:barOpts(false)});
+
+  // Tabla game a game
+  if(deep){
+    const hh=['Mazo rival','G','G1','Res','Mano','Mulls y/r','T1','1ª amenaza','Cutter','Tierras T1-3','Robos','Turnos','Prowess','Monjes'];
+    $('playTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
+      D.map(g=>`<tr><td>${g.aq}</td><td>${g.gi||''}</td><td>${g.sr||'?'}</td><td><span class="pill ${g.w?'W':'L'}">${g.w?'W':'L'}</span></td><td>${g.hy??'—'}</td><td>${g.mu??0}/${g.mo??0}</td><td>${g.t1?'Sí':'·'}</td><td>${g.ft?'T'+g.ft:'—'}</td><td>${g.ct?'T'+g.ct:'—'}</td><td>${g.l3??'—'}</td><td>${g.dy??'—'}</td><td>${g.t}</td><td>${g.pw}</td><td>${g.mk}</td></tr>`).join('')+'</tbody>';
+  }
 }
 
 // Tabs
@@ -606,16 +569,38 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   $('v-'+t.dataset.v).classList.add('on');
-  if(t.dataset.v==='lists')renderMeta();
+  if(t.dataset.v==='lists'){renderMyLists();renderLxM();}
   if(t.dataset.v==='stats')render();
   if(t.dataset.v==='play')renderPlay();
   if(t.dataset.v==='meta')renderMetaTab();
 });
 
-function uniq(f){return [...new Set(MATCHES.map(d=>d[f]))];}
+// ===== Filtro GLOBAL por jugador: todo el dashboard mira a M() (partidas) y G() (games) =====
+let PLAYER='all';
+const M=()=>PLAYER==='all'?MATCHES:MATCHES.filter(d=>(d.by||'—')===PLAYER);
+const G=()=>PLAYER==='all'?GAMES:GAMES.filter(g=>(g.by||'feralo77')===PLAYER);
+function initPlayer(){
+  const s=$('fPlayer');
+  const vals=[...new Set([...MATCHES.map(d=>d.by||''),...GAMES.map(g=>g.by||'')])].filter(v=>v&&v!=='—').sort();
+  const cur=s.value||'all';s.innerHTML='';
+  s.add(new Option('Todos los jugadores','all'));
+  vals.forEach(v=>s.add(new Option(v,v)));
+  s.value=vals.includes(cur)||cur==='all'?cur:'all';
+  s.onchange=()=>{PLAYER=s.value;refreshAll();};
+}
+function refreshAll(){
+  initSelectors();renderSBDef();playDone=false;
+  const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
+  if(v==='stats')render();
+  else if(v==='play')renderPlay();
+  else if(v==='lists'){renderMyLists();renderLxM();}
+  else if(v==='meta')renderMetaTab();
+}
+
+function uniq(f){return [...new Set(M().map(d=>d[f]))];}
 function fillSel(id,f,all){const s=$(id);s.innerHTML='';const o=new Option(all,'all');s.add(o);uniq(f).forEach(v=>s.add(new Option(v,v)));s.onchange=render;}
-function filtered(){const li=$('fLista').value,lg=$('fLiga').value,sr=$('fSR').value,aq=$('fArq').value,by=$('fBy')?$('fBy').value:'all';
-  return MATCHES.filter(d=>(li==='all'||d.li===li)&&(lg==='all'||d.ev===lg)&&(sr==='all'||d.sr===sr)&&(aq==='all'||d.aq===aq)&&(by==='all'||(d.by||'—')===by));}
+function filtered(){const li=$('fLista').value,lg=$('fLiga').value,sr=$('fSR').value,aq=$('fArq').value;
+  return M().filter(d=>(li==='all'||d.li===li)&&(lg==='all'||d.ev===lg)&&(sr==='all'||d.sr===sr)&&(aq==='all'||d.aq===aq));}
 
 function kpis(D){
   const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
@@ -653,34 +638,33 @@ function chartPD(D){const s=D.filter(d=>d.sr==='Salida'),r=D.filter(d=>d.sr==='R
     options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.y}%`}}}}});}
 
 let sortCol='f',sortDir=1;
-function table(D){const cols=[['f','Fecha'],['ev','Liga'],['li','Lista'],['rd','Rnd'],['op','Rival'],['aq','Matchup'],['r','Res'],['g','Games'],['sr','G1'],['mull','Mulls'],['by','Reportado'],['nt','Notas']];
+function table(D){const cols=[['f','Fecha'],['ev','Liga'],['li','Lista'],['rd','Rnd'],['aq','Mazo rival'],['r','Res'],['g','Games'],['sr','G1'],['mull','Mulls'],['by','Jugador']];
   const val=(d,k)=>k==='g'?`${d.jg}-${d.jp}`:k==='mull'?`${d.my}/${d.mr}`:d[k];
   const s=[...D].sort((a,b)=>{let x=sortCol==='rd'?a.rd:val(a,sortCol),y=sortCol==='rd'?b.rd:val(b,sortCol);return (x>y?1:x<y?-1:0)*sortDir;});
   let h='<thead><tr>'+cols.map(c=>`<th data-k="${c[0]}">${c[1]}${sortCol===c[0]?(sortDir>0?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>';
-  h+=s.map(d=>`<tr><td>${d.f}</td><td><span class="tag">${d.ev}</span></td><td>${d.li}</td><td>${d.rd}</td><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.jg}-${d.jp}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td>${d.by||'—'}</td><td style="white-space:normal;color:var(--tx2)">${[d.mvp,d.nt].filter(Boolean).join(' · ')}</td></tr>`).join('')+'</tbody>';
+  h+=s.map(d=>`<tr><td>${d.f}</td><td><span class="tag">${d.ev}</span></td><td>${d.li}</td><td>${d.rd}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.jg}-${d.jp}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td>${d.by||'—'}</td></tr>`).join('')+'</tbody>';
   const t=$('tbl');t.innerHTML=h;t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(sortCol===k)sortDir*=-1;else{sortCol=k;sortDir=1;}table(filtered());});}
 
-function render(){const D=filtered();
-  $('subtitle').textContent=`Modern · MTGO · ${D.length} rondas · ${MATCHES[0].f} → ${MATCHES[MATCHES.length-1].f}`;
-  kpis(D);insight(D);destroy();if(D.length){chartSR(D);chartArq(D);chartEvo(D);chartPie(D);chartPD(D);}table(D);renderAuto();}
+function render(){const D=filtered(),all=M();
+  $('subtitle').textContent=all.length?`Modern · MTGO · ${D.length} rondas · ${all[0].f} → ${all[all.length-1].f}`:'Modern · MTGO';
+  kpis(D);insight(D);destroy();if(D.length){chartSR(D);chartArq(D);chartEvo(D);chartPie(D);chartPD(D);}table(D);}
 
-// ---- Listas tab ----
-function renderMeta(){
-  if(charts.meta)charts.meta.destroy();
-  charts.meta=new Chart($('chMeta'),{type:'bar',data:{labels:META.map(m=>m[0]),datasets:[{data:META.map(m=>m[1]),backgroundColor:META.map((m,i)=>m[0]==='Izzet Prowess'?C.blue:cssv('--barmut')),borderRadius:0}]},
-    options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>v+'%'}},x:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'%'}}}}});
-}
 // ---- Tus versiones de lista: resultado de cada una ----
 function listStats(key){
-  const D=MATCHES.filter(d=>d.li===key);
+  const D=M().filter(d=>d.li===key);
   const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
   const gw=D.reduce((a,d)=>a+d.jg,0),gl=D.reduce((a,d)=>a+d.jp,0);
   const mm={};D.forEach(d=>{(mm[d.aq]=mm[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
   return {D,W,L,n:W+L,gw,gl,wr:pct(W,W+L),mm};
 }
 function renderMyLists(){
+  // por-lista también a nivel de GAME: se cruza games.csv con el registro por match_uuid
+  const li_by_uid={};M().forEach(d=>{if(d.uid)li_by_uid[d.uid]=d.li;});
   $('myLists').innerHTML=MYLISTS.map(l=>{
     const s=listStats(l.key);
+    const gg=G().filter(g=>g.uid&&li_by_uid[g.uid]===l.key);
+    const gw=gg.filter(g=>g.w).length;
+    const avg=(a,d=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**d)/10**d:0;
     const best=Object.entries(s.mm).filter(([k,v])=>v.w>v.l).map(([k])=>k);
     const worst=Object.entries(s.mm).filter(([k,v])=>v.l>v.w).map(([k])=>k);
     const recTxt=s.n?`${s.W}-${s.L}`:'sin partidas';
@@ -692,42 +676,26 @@ function renderMyLists(){
         <div><span class="lbl">Récord</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${recTxt}</span></div>
         <div><span class="lbl">Win rate</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${wrTxt}</span> <span class="q" style="font-size:11px">${s.n?`· ${s.gw}-${s.gl} juegos`:''}</span></div>
       </div>
+      ${gg.length?`<div style="font-size:12px;color:var(--tx2);margin-bottom:8px;font-family:var(--mono)">En los logs: ${gg.length} games (${gw}-${gg.length-gw}) · ${avg(gg.map(g=>g.t))} turnos · ${avg(gg.map(g=>g.pw))} prowess/game</div>`:''}
       ${s.n?`<div style="font-size:12px"><span style="color:var(--winL);font-weight:600">Ganas:</span> ${best.join(', ')||'—'}<br><span style="color:var(--loss);font-weight:600">Pierdes:</span> ${worst.join(', ')||'—'}</div>`:''}
       <div style="margin-top:10px"><a href="${l.url}" target="_blank">Abrir lista en mtggoldfish →</a></div>
     </div>`;
   }).join('');
 }
-// ---- Lista x matchup + win rate por lista ----
+// ---- Lista x mazo rival + win rate por lista ----
 function renderLxM(){
-  const keys=MYLISTS.map(l=>l.key);
-  const aqs=[...new Set(MATCHES.map(d=>d.aq))].filter(a=>a&&a!=='N/A (bye/concede)').sort();
-  const cell=(aq,key)=>{const D=MATCHES.filter(d=>d.aq===aq&&d.li===key);if(!D.length)return '<td style="text-align:center;color:var(--tx3)">·</td>';
+  const keys=[...new Set([...MYLISTS.map(l=>l.key),...M().map(d=>d.li)])].filter(k=>k&&k!=='—');
+  const aqs=[...new Set(M().map(d=>d.aq))].filter(a=>a&&a!=='N/A (bye/concede)').sort();
+  const cell=(aq,key)=>{const D=M().filter(d=>d.aq===aq&&d.li===key);if(!D.length)return '<td style="text-align:center;color:var(--tx3)">·</td>';
     const w=D.filter(d=>d.r==='W').length,l=D.filter(d=>d.r==='L').length,wr=pct(w,w+l);
     const cls=wr>=60?'hq-cell--good':wr>=40?'hq-cell--mid':'hq-cell--bad';
     return `<td style="text-align:center"><span class="hq-cell ${cls}">${w}-${l}</span></td>`;};
-  let h='<thead><tr><th>Matchup</th>'+keys.map(k=>`<th style="text-align:center">${k}</th>`).join('')+'</tr></thead><tbody>';
+  let h='<thead><tr><th>Mazo rival</th>'+keys.map(k=>`<th style="text-align:center">${k}</th>`).join('')+'</tr></thead><tbody>';
   h+=aqs.map(aq=>`<tr><td>${aq}</td>${keys.map(k=>cell(aq,k)).join('')}</tr>`).join('')+'</tbody>';
   $('lxm').innerHTML=h;
   $('wrByList').innerHTML=MYLISTS.map(l=>{const s=listStats(l.key),w=s.n?s.wr:0;
     return `<div class="lrow"><div style="min-width:54px;font-weight:600">${l.name}</div><div class="lbar" style="width:${Math.max(w*1.6,6)}px;background:${w>=50?'var(--win)':'var(--loss)'}"></div><div style="font-family:var(--mono);color:var(--tx2)">${s.n?`${s.wr}% · ${s.W}-${s.L}`:'sin partidas registradas'}</div></div>`;
   }).join('');
-}
-// ---- Logs: qué información dan + scouting de rivales (idea de mymtgo/client) ----
-function renderFields(){
-  $('fieldList').innerHTML=PARSER_FIELDS.map(f=>{const cls=f[1],lab=cls==='ok'?'siempre':cls==='mid'?'parcial':'no viene';
-    return `<div class="field"><div class="fk">${f[0]}<span class="cov ${cls}">${lab}</span></div><div class="fv">${f[2]}</div></div>`;}).join('');
-}
-function renderScout(){
-  const m={};
-  MATCHES.forEach(d=>{if(!d.op||d.op==='NA'||d.op==='—')return;const k=d.op;
-    m[k]=m[k]||{op:d.op,decks:{},w:0,l:0,n:0};
-    m[k].decks[d.aq]=(m[k].decks[d.aq]||0)+1;
-    if(d.r==='W')m[k].w++;else if(d.r==='L')m[k].l++;m[k].n++;});
-  const rows=Object.values(m).sort((a,b)=>b.n-a.n||(b.w-b.l)-(a.w-a.l));
-  const hh=['Rival','Mazo(s) visto(s)','Enfr.','Tu récord','WR'];
-  $('scoutTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
-    rows.map(r=>{const deck=Object.entries(r.decks).sort((a,b)=>b[1]-a[1]).map(([k,v])=>v>1?`${k} (${v})`:k).join(', ');const wr=pct(r.w,r.w+r.l);
-      return `<tr><td><b>${r.op}</b></td><td style="white-space:normal">${deck}</td><td>${r.n}</td><td>${r.w}-${r.l}</td><td><span class="pill ${wr>=50?'W':'L'}">${wr}%</span></td></tr>`;}).join('')+'</tbody>';
 }
 // ---- Tema (oscuro / claro) ----
 function setTheme(t){
@@ -738,11 +706,7 @@ function setTheme(t){
   applyChartTheme();
   Object.values(playCharts).forEach(c=>c&&c.destroy());playCharts={};playDone=false;
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
-  if(v==='stats')render();else if(v==='lists')renderMeta();else if(v==='play')renderPlay();
-}
-function renderLists(){
-  $('metaNote').innerHTML="Aquí quedan solo <b>tus listas</b> (decisión del 22-jul: fuera referencias externas). El análisis de las listas top y la síntesis de lista viven en la pestaña <b>La 75 Definitiva</b>; abajo, el metajuego del Pro Tour como contexto.";
-  $('decks').innerHTML=LISTS.map(l=>`<div class="deck"><div class="dh"><span class="dn">${l.name}</span><span class="badge ${l.badge}">${l.badge==='you'?'TÚ':'PRO TOUR'}</span></div><div class="dt">${l.tag}</div><div class="cl">${l.main.map(s=>`<div class="sec">${s[0]}</div><div>${s[1]}</div>`).join('')}<div class="sec">Sideboard</div><div>${l.side}</div>${l.url?`<div style="margin-top:8px"><a href="${l.url}" target="_blank">Ver lista completa</a></div>`:''}</div></div>`).join('');
+  if(v==='stats')render();else if(v==='play')renderPlay();
 }
 // ---- La 75 Definitiva (Claude) ----
 function renderDefCmp(){
@@ -751,7 +715,7 @@ function renderDefCmp(){
     DEFCMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map((x,i)=>`<td style="text-align:center${i===0?';color:var(--mid);font-weight:800':String(x)!==String(r[1])?';color:var(--winL);font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
 }
 function renderSBDef(){
-  const wr={};MATCHES.forEach(d=>{(wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
+  const wr={};M().forEach(d=>{(wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
   const cls={fav:'fav',des:'des',par:'par'};
   $('sbDefCards').innerHTML=SBDEF.map(m=>{
     const rec=wr[m.aq];const w=rec?rec.w:0,l=rec?rec.l:0,n=w+l;
@@ -760,18 +724,6 @@ function renderSBDef(){
       <div style="margin-bottom:6px"><span class="wr">${wrTxt}</span></div>
       <div class="io"><div class="in"><span class="lbl">Entran</span>${m.in||'—'}</div><div class="out"><span class="lbl">Salen</span>${m.out||'—'}</div></div>
       <div class="plan">${m.plan}</div></div>`;}).join('');
-}
-// ---- Ideas tab ----
-function renderIdeas(){
-  $('ideasList').innerHTML=IDEAS.map(i=>`<div class="idea"><span class="n">${i[0]}</span><div>${i[1]}</div></div>`).join('');
-  $('ptList').innerHTML=PT.map(i=>`<div class="idea"><span class="n">${i[0]}</span><div>${i[1]}</div></div>`).join('');
-}
-// ---- Logs MTGO (ejemplo de salida del parser) ----
-function renderLogs(){
-  const hh=['Rival','Mazo (auto)','Res','Games','G1','Mulls yo/riv','Cartas del rival vistas'];
-  $('logTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
-    LOGDEMO.map(d=>`<tr><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.g}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td style="white-space:normal;color:var(--tx2)">${d.cards}</td></tr>`).join('')+'</tbody>';
-  renderFields();renderScout();
 }
 // ===== META (mtgtop8) · autor: Claude — lista media, varianzas, tendencia y deltas vs tu 75 =====
 // El fichero vivo meta/prowess.json lo refresca una GitHub Action cada 2 dias (scripts/meta_mtgtop8.mjs).
@@ -785,13 +737,36 @@ async function renderMetaTab(){
     catch(e){META_DATA=META_SNAPSHOT;}
   }
   paintMeta(META_DATA);
+  renderCoach();renderMetaLocal();
+}
+// ---- Lectura del coach (autor: Claude, 22-jul-2026) ----
+function renderCoach(){
+  const rows=[
+    ["El núcleo está cerrado; la edición real vive en ~6 slots","El 84% del main es fijo en todo el campo: 4 DRC, 4 Swiftspear, 4 Slickshot, 4 Cutter, 4 Bolt, 4 Dart, 4 Bauble, 4 Preordain, 4 Growth. Ahí no se inventa. Lo que de verdad se discute son los slots de Violent Urge / Expressive Iteration, la manabase y el sideboard — todo lo de abajo va de eso."],
+    ["Bloodstained Mire (95% del campo, tú 0): la razón es delirium","No es una moda: cada fetch mete tierra al cementerio gratis y acelera el delirium de Dragon's Rage Channeler (con Bauble ya llevas artefacto). Tu manabase actual funciona, así que no es urgente — pero es un cambio de coste casi cero. Prueba 1-2 sobre Mountain y mide una cosa concreta: en cuántos games tu DRC pega como 3/3 en el turno 3."],
+    ["Murktide Regent (30% del sideboard del campo): la palanca para tu mirror","Vas 0-2 en el mirror y el campo ya encontró la respuesta: un top-end transformacional que sus Bolt y sus bloqueos no manejan. Post-side el mirror se alarga (los dos lleváis removal barato) y ahí un 8/8 volador por 2-3 manás decide solo. Si pruebas una copia, entra en el mirror, vs Dimir/Grixis Frog y vs midrange lento; nunca vs combo."],
+    ["Surgical Extraction (30%) vs tu Tormod's Crypt: quédate con la Crypt","El campo global se reparte; en TU meta la familia Goryo's/Reanimator es tu peor matchup y ahí Crypt es mejor: coste 0 (cuenta medio turno cuando vas al robo, tu agujero conocido) y se activa en respuesta al trigger de reanimación. No cambies por moda."],
+    ["Mystical Dispute (solo 15% del campo): tu liga la justifica","El dato global infravalora la Dispute porque el campo global juega menos azul que tu liga (Dimir Frog, Azorius, el propio mirror). Contra mazo azul cuesta 1: coge su Cutter, su Counterspell o su Frog a precio de saldo. Tu copia se queda mientras tu meta local sea así de azul."],
+    ["Cómo leer esta pestaña","La lista media es señal direccional (~20 listas top, meta global). El orden correcto de decisión: (1) tu récord real por mazo (tabla de abajo), (2) qué te vas a jugar la próxima liga, (3) el consenso global. Un slot del sideboard se gana el sitio contra un problema real y frecuente TUYO — no contra el top 8 de otros."],
+  ];
+  $('metaCoach').innerHTML=rows.map(r=>`<div class="idea"><span class="n"></span><div><b>${r[0]}.</b> ${r[1]}</div></div>`).join('');
+}
+// ---- Tu meta local vs el campo (récords en vivo + plan del SB) ----
+function renderMetaLocal(){
+  const m={};M().forEach(d=>{if(!d.aq||d.aq.startsWith('N/A'))return;(m[d.aq]=m[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
+  const sb={};SBDEF.forEach(s=>sb[s.aq]=s);
+  const rows=Object.entries(m).map(([aq,v])=>({aq,n:v.w+v.l,w:v.w,l:v.l,wr:pct(v.w,v.w+v.l),plan:sb[aq]}))
+    .sort((a,b)=>b.n-a.n||a.wr-b.wr).slice(0,12);
+  if(!rows.length){$('metaLocal').innerHTML='<tbody><tr><td style="color:var(--tx2)">Sin partidas registradas todavía.</td></tr></tbody>';return;}
+  $('metaLocal').innerHTML='<thead><tr><th>Mazo rival</th><th>Partidas</th><th>Tu récord</th><th>WR</th><th>Qué entra del sideboard (Plan SB)</th></tr></thead><tbody>'+
+    rows.map(r=>`<tr><td>${r.aq}</td><td>${r.n}</td><td style="font-family:var(--mono)">${r.w}-${r.l}</td><td><span class="hq-cell ${r.wr>=60?'hq-cell--good':r.wr>=40?'hq-cell--mid':'hq-cell--bad'}">${r.wr}%</span></td><td style="white-space:normal;color:var(--tx2)">${r.plan?r.plan.in:'—'}</td></tr>`).join('')+'</tbody>';
 }
 function paintMeta(j){
   const pM={},pS={};j.main.forEach(r=>pM[r.n]=r);j.side.forEach(r=>pS[r.n]=r);
   $('metaFuente').innerHTML=`<a href="${j.fuente}" target="_blank">mtgtop8</a> · ${j.mazos} listas${j.generado?` · ${j.generado}`:''}`;
   const k=[['','Mazos',j.mazos,'listas top recientes'],['g','Consenso núcleo',j.consenso+'%','del main es fijo'],['p','Lista media',j.listaMedia.totalMain,'cartas de consenso'],['o','SB en disputa',j.listaMedia.sideDisputa.length,'candidatos'],['r','Sugerencias',j.sugerencias.length,'vs tu 75']];
   $('metaKpis').innerHTML=k.map(x=>`<div class="kpi ${x[0]}"><div class="lab">${x[1]}</div><div class="val">${x[2]}</div><div class="note">${x[3]}</div></div>`).join('');
-  $('metaSug').innerHTML='<div class="ic"></div><div><b>Sugerencias por reglas</b> (datos, no coaching — el criterio de coach lo doy aparte en la conversación):'+(j.sugerencias.length?'<ul style="margin:8px 0 0 18px;line-height:1.75">'+j.sugerencias.map(s=>`<li>${s}</li>`).join('')+'</ul>':' tu 75 coincide con el consenso.')+'</div>';
+  $('metaSug').innerHTML='<div class="ic"></div><div><b>Sugerencias automáticas por reglas</b> (el porqué y el cuánto, en la Lectura del coach de abajo):'+(j.sugerencias.length?'<ul style="margin:8px 0 0 18px;line-height:1.75">'+j.sugerencias.map(s=>`<li>${s}</li>`).join('')+'</ul>':' tu 75 coincide con el consenso.')+'</div>';
   const rM=c=>{const a=pM[c.n]||{pct:'',min:c.q,max:c.q};return `<tr><td style="font-family:var(--mono);text-align:center">${c.q}</td><td>${c.n}</td><td style="font-family:var(--mono);color:var(--tx2)">${a.pct}%</td><td style="font-family:var(--mono);color:var(--tx3)">${a.min}–${a.max}</td></tr>`;};
   $('metaMain').innerHTML=`<table><thead><tr><th style="text-align:center">Cop</th><th>Carta</th><th>%</th><th>Rango</th></tr></thead><tbody>${j.listaMedia.main.map(rM).join('')}</tbody></table><div style="font-size:11px;color:var(--tx3);margin-top:6px">Suma consenso: ${j.listaMedia.totalMain} cartas · ${j.mazos} listas</div>`;
   const rSF=c=>{const a=pS[c.n]||{pct:''};return `<tr><td style="font-family:var(--mono);text-align:center">${c.q}</td><td>${c.n}</td><td style="font-family:var(--mono);color:var(--tx2)">${a.pct}%</td></tr>`;};
@@ -843,14 +818,6 @@ function updateSource(remote){
   const label=remote==='sheet'?'Google Sheet (Drive)':remote==='local'?'registro.csv (auto)':'snapshot local';
   el.innerHTML=`<span class="dot ${remote?'on':''}"></span>${label} \u00b7 ${MATCHES.length} partidas`;
 }
-function renderAuto(){
-  const D=MATCHES;const sal=D.filter(d=>d.sr==='Salida'),rob=D.filter(d=>d.sr==='Robo');
-  const worst=[];const m={};D.forEach(d=>{(m[d.aq]=m[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
-  Object.entries(m).forEach(([k,v])=>{if(v.w+v.l>=2&&pct(v.w,v.w+v.l)<45)worst.push(`${k} (${v.w}-${v.l})`);});
-  $('autoInsights').innerHTML=`<div class="idea"><span class="n"></span><div>Juegas mucho mejor en la salida (<b>${pct(sal.filter(d=>d.r==='W').length,sal.length)}%</b>) que en el robo (<b>${pct(rob.filter(d=>d.r==='W').length,rob.length)}%</b>).</div></div>
-   <div class="idea"><span class="n"></span><div>Matchups a revisar (≥2 partidas, WR&lt;45%): <b>${worst.join(', ')||'ninguno'}</b>.</div></div>
-   <div class="idea"><span class="n"></span><div>Cuantas más partidas registres en el Excel y recargues aquí por CSV, más fiables estos números (ahora ${D.filter(d=>d.r!=='D').length} matches).</div></div>`;
-}
 
 // ---- CSV loader (por NOMBRE de columna: robusto a orden y a columnas nuevas) ----
 function splitCSVLine(l){const out=[];let cur='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){cur+='"';i++;}else q=!q;}else if(c===','&&!q){out.push(cur);cur='';}else cur+=c;}out.push(cur);return out;}
@@ -884,15 +851,24 @@ function parseGamesCSV(txt){
   const norm=s=>(s||'').trim();
   const key=s=>norm(s).toLowerCase().replace(/\s+/g,' ');
   const header=splitCSVLine(lines[0]).map(key);
-  const AL={aq:['arquetipo','mazo'],sr:['salida / robo','salida/robo','g1'],
-    w:['ganado','ganada','win'],t:['turnos','turnos totales'],
-    pw:['prowess'],mk:['monjes','monje','monje tokens']};
+  const AL={uid:['match_uuid','match uuid'],gi:['game'],aq:['arquetipo','mazo'],
+    sr:['salida / robo','salida/robo','g1'],w:['ganado','ganada','win'],
+    t:['turnos','turnos totales'],pw:['prowess','prowess yo'],mk:['monjes','monje','monje yo','monje tokens'],
+    mu:['mulls yo'],mo:['mulls rival'],hy:['mano yo'],hr:['mano rival'],
+    dy:['robos yo'],dr:['robos rival'],ly:['tierras yo'],l3:['tierras t1-3'],
+    t1:['accion t1'],ft:['turno 1a amenaza'],ct:['turno cutter'],sp:['hechizos yo'],
+    by:['reportado por','reportado','usuario']};
   const col={};for(const k in AL){col[k]=header.findIndex(h=>AL[k].includes(h));}
+  GAMES_DEEP=col.hy>=0;   // ¿games.csv del formato profundo (manos/robos/tierras)?
   const truthy=v=>{const s=key(v);return (s==='1'||s==='sí'||s==='si'||s==='true'||s==='w')?1:0;};
   return lines.slice(1).map(splitCSVLine).map(c=>{
     const g=k=>col[k]>=0?norm(c[col[k]]):'';
-    return {aq:g('aq')||'¿? (revisar)',sr:g('sr'),w:truthy(g('w')),
-      t:+g('t')||0,pw:+g('pw')||0,mk:+g('mk')||0};
+    const n=k=>col[k]>=0?(+g(k)||0):undefined;
+    const o={uid:g('uid'),gi:n('gi'),aq:g('aq')||'¿? (revisar)',sr:g('sr'),w:truthy(g('w')),
+      t:+g('t')||0,pw:+g('pw')||0,mk:+g('mk')||0,by:g('by')||'feralo77'};
+    if(GAMES_DEEP){o.mu=n('mu');o.mo=n('mo');o.hy=n('hy');o.hr=n('hr');o.dy=n('dy');o.dr=n('dr');
+      o.ly=n('ly');o.l3=n('l3');o.t1=n('t1');o.ft=n('ft');o.ct=n('ct');o.sp=n('sp');}
+    return o;
   }).filter(g=>g.t||g.pw||g.mk);
 }
 async function loadGames(){
@@ -902,13 +878,22 @@ async function loadGames(){
     const parsed=parseGamesCSV(await res.text());
     if(parsed.length){GAMES=parsed;return true;}
   }catch(e){}
+  GAMES_DEEP=true;   // el snapshot incrustado es del formato profundo
   return false;
 }
-$('csv').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
-  rd.onload=()=>{try{const parsed=parseCSV(rd.result);if(parsed.length){MATCHES=parsed;initSelectors();render();renderMyLists();renderLxM();renderSBDef();renderLogs();updateSource(false);alert('Datos actualizados: '+parsed.length+' partidas cargadas.');}else alert('No se detectaron filas válidas. Exporta el Registro como CSV.');}catch(err){alert('Error al leer el CSV: '+err.message);}};
-  rd.readAsText(f,'utf-8');});
+// ---- Frescura: cuándo cargó datos el robot por última vez (último commit de registro.csv) ----
+async function freshness(){
+  try{
+    const r=await fetch('https://api.github.com/repos/feralo77/mtg-izzet/commits?path=registro.csv&per_page=1');
+    if(!r.ok) return;
+    const j=await r.json();if(!j.length) return;
+    const d=new Date(j[0].commit.committer.date), h=Math.round((Date.now()-d)/36e5);
+    const txt=h<1?'hace menos de 1 h':h<48?`hace ${h} h`:`hace ${Math.round(h/24)} días`;
+    $('srcInfo').innerHTML+=` · datos ${txt}`;
+  }catch(e){}
+}
 
-function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los matchups');fillSel('fBy','by','Todos los reporteros');}
+function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los mazos');}
 
 // init
 (async function(){
@@ -922,9 +907,10 @@ function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLig
   const remote = await loadRemote();
   await loadGames();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();renderMyLists();renderLxM();renderLists();renderIdeas();renderDefCmp();renderSBDef();renderLogs();
+  initSelectors();initPlayer();renderMyLists();renderLxM();renderDefCmp();renderSBDef();
   render();
   updateSource(remote);
+  freshness();
 })();
 </script>
 </body>
