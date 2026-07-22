@@ -206,10 +206,10 @@ SIG = [
     ('Dimir Frog', [('Psychic Frog',3)]),
     ('Boros Energy', [('Guide of Souls',2),('Ocelot Pride',3),('Ajani, Nacatl Pariah',3),('Galvanic Discharge',2)]),
     ('Izzet Affinity', [('Kappa Cannoneer',3),("Urza's Saga",1),('Thought Monitor',2),('Pinnacle Emissary',2),('Mox Opal',2)]),
-    ('Eldrazi', [('Thought-Knot Seer',2),('Ugin',1),('Chalice of the Void',1),("Kozilek, the Broodmother",2),('Devourer of Destiny',2)]),
+    ('Eldrazi', [('Thought-Knot Seer',2),('Ugin',1),('Chalice of the Void',1),("Kozilek, the Broodmother",2),('Devourer of Destiny',2),('Karn, the Great Creator',1),('Expedition Map',1)]),
     ('Amulet Titan', [('Amulet of Vigor',3),('Primeval Titan',2)]),
     ('Golgari Yawgmoth', [('Yawgmoth, Thran Physician',3),("Agatha's Soul Cauldron",2)]),
-    ('Ruby Storm', [('Ruby Medallion',3),('Grapeshot',2),('Past in Flames',2)]),
+    ('Ruby Storm', [('Ruby Medallion',3),('Grapeshot',2),('Past in Flames',2),('Manamorphose',2),('Pyretic Ritual',2),('Desperate Ritual',2),('Ral, Monsoon Mage',2),('Reckless Impulse',1)]),
     ('Living End', [('Living End',3),('Shardless Agent',2)]),
     ('Tameshi Belcher', [('Goblin Charbelcher',3)]),
     ('Boros Ponza', [('High Noon',2),('Erode',2),('Demolition Field',1),('Cleansing Wildfire',2),('Magus of the Moon',2),('Price of Freedom',2)]),
@@ -218,6 +218,18 @@ SIG = [
     ('Neoform', [('Neoform',3),('Allosaurus Rider',2),("Summoner's Pact",2)]),
     ('Izzet Prowess', [('Slickshot Show-Off',2),('Cori-Steel Cutter',2),('Monastery Swiftspear',2)]),
     ('Azorius Control', [('Counterspell',1),('Wrath of the Skies',2),('Teferi, Time Raveler',2)]),
+    # --- Firmas nuevas 2026-07-22: scouting de rivales de la liga (partidas de Pol + Fer). ---
+    # Cartas casi únicas del arquetipo -> peso 3; las compartidas (Kozilek's Command,
+    # Birthing Ritual, Spoils of the Vault, Ephemerate) se dejan bajas o en su dueño real.
+    ('Hollow One', [('Hollow One',3),('Burning Inquiry',3),('Blazing Rootwalla',2),('Marauding Mako',2)]),
+    ('Elves', [('Heritage Druid',3),('Llanowar Elves',2),('Elvish Visionary',2)]),
+    ('Sam Combo', [('Samwise Gamgee',3),('Cauldron Familiar',3),('Marionette Apprentice',2)]),
+    ('Cosmogoyf Combo', [('Cosmogoyf',3),('Thud',2),('Plunge into Darkness',2)]),
+    ('Merfolk', [('Svyelun of Sea and Sky',3),('Floodpits Drowner',2),('Mindspring Merfolk',2),('Namor the Sub-Mariner',2),('Harbinger of the Seas',1)]),
+    ('Necrodominance', [('Necrodominance',3),('Soul Spike',2),('March of Wretched Sorrow',1)]),
+    ('Oracle Combo', [("Thassa's Oracle",3),("Angel's Grace",3),('Spoils of the Vault',1)]),
+    ('Eldrazi Ramp', [('Sowing Mycospawn',3),('Sire of Seven Deaths',2)]),
+    ('GW Birthing Ritual', [('Birthing Ritual',2),('Brightglass Gearhulk',3),('Skyclave Apparition',1)]),
 ]
 
 # Parámetros del scoring (mismo espíritu que MyMTGO EstimateArchetypeLocally):
@@ -550,6 +562,22 @@ def selftest():
     # y la Affinity azul de verdad no se ve arrastrada por la firma nueva
     arqaf, _cf, _ = classify_scored(['Kappa Cannoneer','Thought Monitor','Mox Opal',"Urza's Saga"])
     assert arqaf == 'Izzet Affinity', arqaf
+    # (f) firmas nuevas 2026-07-22 (cartas reales del scouting de la liga: rivales de Pol + Fer)
+    assert classify(['Ral, Monsoon Mage','Manamorphose','Pyretic Ritual','Reckless Impulse','Desperate Ritual']) == 'Ruby Storm'
+    assert classify(['Hollow One','Burning Inquiry','Blazing Rootwalla','Marauding Mako','Faithless Looting']) == 'Hollow One'
+    assert classify(['Heritage Druid','Llanowar Elves','Elvish Visionary']) == 'Elves'
+    assert classify(['Samwise Gamgee','Cauldron Familiar','Marionette Apprentice','Birthing Ritual']) == 'Sam Combo'
+    assert classify(['Cosmogoyf','Thud','Plunge into Darkness','Duress']) == 'Cosmogoyf Combo'
+    assert classify(['Svyelun of Sea and Sky','Floodpits Drowner','Mindspring Merfolk','Collected Company']) == 'Merfolk'
+    assert classify(['Necrodominance','Soul Spike','March of Wretched Sorrow','Sheoldred, the Apocalypse']) == 'Necrodominance'
+    assert classify(["Thassa's Oracle","Angel's Grace",'Spoils of the Vault','Stock Up']) == 'Oracle Combo'
+    assert classify(['Sowing Mycospawn','Sire of Seven Deaths',"Kozilek's Command",'Ancient Stirrings']) == 'Eldrazi Ramp'
+    assert classify(['Birthing Ritual','Brightglass Gearhulk','Ephemerate','Guide of Souls','Solitude']) == 'GW Birthing Ritual'
+    # ...y las que ya iban no se rompen: Eldrazi colorless con Karn/Expedition Map sigue Eldrazi,
+    # y un Broodscale de verdad no se lo lleva Eldrazi Ramp por Kozilek's Command compartido.
+    assert classify(['Chalice of the Void','Karn, the Great Creator','Expedition Map','Trinisphere']) == 'Eldrazi'
+    assert classify(['Basking Broodscale','Blade of the Bloodchief',"Kozilek's Command"]) == 'Broodscale'
+    assert classify(['Cosmogoyf','Thud',"Spoils of the Vault"]) != 'Oracle Combo'  # Spoils compartido no confunde
 
     # --- Scouting ---
     scout = scouting_report([m])
