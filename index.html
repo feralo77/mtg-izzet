@@ -132,6 +132,20 @@
   .filters .fg label{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
   .filters select{font-family:var(--font-sans);font-weight:500;background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;padding:9px 12px;font-size:13px;min-width:140px;box-shadow:var(--shadow-sm)}
   .filters select:focus{outline:none;box-shadow:var(--shadow)}
+  /* Comparativa — segmented control (dimensión a comparar) */
+  .seg{display:inline-flex;flex-wrap:wrap;border:var(--stroke) solid var(--border);box-shadow:var(--shadow-sm);background:var(--surface)}
+  .seg .opt{font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:9px 14px;color:var(--text);cursor:pointer;border-right:var(--stroke) solid var(--border);transition:background .11s var(--ease);white-space:nowrap}
+  .seg .opt:last-child{border-right:none}
+  .seg .opt:hover{background:var(--surface-2)}
+  .seg .opt.on{background:var(--primary);color:var(--on-primary)}
+  .segwrap{display:flex;flex-direction:column;gap:5px;margin-bottom:var(--gap)}
+  .segwrap>label{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+  .cmp-note{font-size:11.5px;color:var(--text-muted);margin-top:8px;font-family:var(--font-mono)}
+  /* Celda "muestra pequeña" — atenúa filas con pocos datos */
+  tr.thin td{opacity:.62}
+  th.metric-on{color:var(--primary)}
+  .swatch{display:inline-block;width:10px;height:10px;border:var(--stroke) solid var(--border);vertical-align:middle;margin-right:6px}
   /* KPIs — tarjeta con barra lateral de dato */
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
   .kpi{background:var(--surface);border:var(--stroke) solid var(--border);
@@ -232,6 +246,7 @@
     <div class="tab" data-v="play">Cómo juegas</div>
     <div class="tab" data-v="lists">Listas</div>
     <div class="tab" data-v="scout">Scouting</div>
+    <div class="tab" data-v="cmp">Comparativa</div>
     <div class="tab claude" data-v="def">La 75 Definitiva</div>
     <div class="tab claude" data-v="sbdef">Plan SB</div>
     <div class="tab claude" data-v="meta">Meta · mtgtop8</div>
@@ -309,6 +324,46 @@
     <div class="kpis" id="scoutKpis"></div>
     <div class="panel full"><h3>Rival a rival <span>(más enfrentados primero)</span></h3><div style="overflow-x:auto"><table id="scoutTbl"></table></div>
       <div style="font-size:11.5px;color:var(--tx2);margin-top:8px" id="scoutNote"></div></div>
+  </section>
+
+  <!-- ===== COMPARATIVA (jugadores / listas / mazos rivales / salida-robo) ===== -->
+  <section class="view" id="v-cmp">
+    <div class="author"><span class="ic"></span><div><b>Comparativa</b> — pon lo que quieras codo con codo. Elige <b>por qué comparar</b> (jugador, tu versión de lista, mazo rival o salida/robo) y afina con los filtros: la tabla, las barras y el radar se rehacen al vuelo. Todo sale de tus partidas y de tus logs. La comparación entre <b>jugadores</b> usa a todos (ignora el filtro de jugador de la cabecera) y se llena sola cuando tus compañeros suban sus logs.</div></div>
+
+    <div class="segwrap"><label>Comparar por</label>
+      <div class="seg" id="cmpDim">
+        <div class="opt" data-d="by">Jugador</div>
+        <div class="opt on" data-d="li">Lista tuya</div>
+        <div class="opt" data-d="aq">Mazo rival</div>
+        <div class="opt" data-d="sr">Salida / Robo</div>
+      </div>
+    </div>
+    <div class="filters" id="cmpFilters">
+      <div class="fg" id="wf-liga"><label>Liga / Evento</label><select id="cfLiga"></select></div>
+      <div class="fg" id="wf-lista"><label>Lista</label><select id="cfLista"></select></div>
+      <div class="fg" id="wf-sr"><label>Salida / Robo</label><select id="cfSR"></select></div>
+      <div class="fg" id="wf-arq"><label>Mazo rival</label><select id="cfArq"></select></div>
+      <div class="fg" id="wf-player"><label>Jugador</label><select id="cfPlayer"></select></div>
+    </div>
+
+    <div class="kpis" id="cmpKpis"></div>
+
+    <div class="panel full" style="margin-bottom:16px"><h3>Tabla comparativa <span>(una fila por cada cosa · clic en cabecera para ordenar · verde ≥60% · ámbar 40-59% · rojo &lt;40%)</span></h3>
+      <div style="overflow-x:auto"><table id="cmpTbl"></table></div>
+      <div class="cmp-note" id="cmpTblNote"></div></div>
+
+    <div class="grid">
+      <div class="panel"><h3>Compara una métrica <span>(elige cuál abajo)</span></h3>
+        <div class="filters" style="margin-bottom:10px"><div class="fg"><label>Métrica</label><select id="cmpMetric"></select></div></div>
+        <div class="cwrap"><canvas id="chCmpBar"></canvas></div></div>
+      <div class="panel"><h3>Estilo de juego <span>(radar · perfil relativo entre los comparados)</span></h3>
+        <div class="cwrap"><canvas id="chCmpRadar"></canvas></div>
+        <div class="cmp-note" id="cmpRadarNote"></div></div>
+    </div>
+
+    <div class="panel full" id="cmpMxPanel"><h3>Matchups <span>(récord V-D de cada uno vs cada mazo rival · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3>
+      <div style="overflow-x:auto"><table id="cmpMx"></table></div>
+      <div class="cmp-note" id="cmpMxNote"></div></div>
   </section>
 
   <!-- ===== LA 75 DEFINITIVA (autor: Claude) ===== -->
@@ -582,6 +637,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   if(t.dataset.v==='stats')render();
   if(t.dataset.v==='play')renderPlay();
   if(t.dataset.v==='scout')renderScout();
+  if(t.dataset.v==='cmp')renderCmp();
   if(t.dataset.v==='meta')renderMetaTab();
 });
 
@@ -599,12 +655,13 @@ function initPlayer(){
   s.onchange=()=>{PLAYER=s.value;refreshAll();};
 }
 function refreshAll(){
-  initSelectors();renderSBDef();playDone=false;
+  initSelectors();initCmpSelectors();renderSBDef();playDone=false;
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
   if(v==='stats')render();
   else if(v==='play')renderPlay();
   else if(v==='lists'){renderMyLists();renderLxM();}
   else if(v==='scout')renderScout();
+  else if(v==='cmp')renderCmp();
   else if(v==='meta')renderMetaTab();
 }
 
@@ -755,6 +812,172 @@ function renderScout(){
     }).join('')+'</tbody>';
   $('scoutNote').textContent=SCOUT?'Récord y mazos: del registro en vivo. Cartas vistas: de scouting.csv (agregado de todos los jugadores).':'Las cartas vistas por rival aparecerán con la próxima carga de datos (scouting.csv).';
 }
+// ================= COMPARATIVA (jugadores / listas / mazos rivales / salida-robo) =================
+// Motor de comparación codo con codo. Reutiliza M()/G() y los mismos datos que el resto del
+// dashboard. Al comparar POR JUGADOR usa todos los jugadores (ignora el filtro global de cabecera);
+// en el resto respeta ese filtro. La tabla, las barras y el radar se rehacen con cada cambio.
+let cmpDim='li', cmpMetricKey='wrMatch', cmpCharts={}, cmpLastGroups=[], cmpSort={col:'n',dir:-1};
+const CMP_DIMS={by:{label:'Jugador',wf:'wf-player'},li:{label:'Lista tuya',wf:'wf-lista'},aq:{label:'Mazo rival',wf:'wf-arq'},sr:{label:'Salida / Robo',wf:'wf-sr'}};
+const cmean=(a,dec=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**dec)/10**dec:0;
+// Columnas de la tabla (grp res=resultados, play=cómo juega; deep=sólo con games profundos; bar=elegible en barras)
+const CMP_METRICS=[
+  {k:'matches',lab:'Partidas',kind:'int'},
+  {k:'rec',lab:'Récord',kind:'rec',sortK:'n'},
+  {k:'wrMatch',lab:'WR match',kind:'wr',hb:true,bar:true},
+  {k:'wrGames',lab:'WR games',kind:'wr',hb:true,bar:true},
+  {k:'wrSal',lab:'WR salida',kind:'wr',hb:true,bar:true},
+  {k:'wrRob',lab:'WR robo',kind:'wr',hb:true,bar:true},
+  {k:'mulls',lab:'Mull/part.',kind:'num'},
+  {k:'turns',lab:'Turnos',kind:'num',bar:true},
+  {k:'hand',lab:'Mano media',kind:'num',deep:true},
+  {k:'mullPct',lab:'% mulligan',kind:'wr'},
+  {k:'prow',lab:'Prowess/g',kind:'num',bar:true},
+  {k:'monk',lab:'Monjes/g',kind:'num',bar:true},
+  {k:'draws',lab:'Robos/g',kind:'num',deep:true,bar:true},
+  {k:'land3',lab:'Tierras T1-3',kind:'num',deep:true},
+  {k:'threat',lab:'1ª amenaza',kind:'num',deep:true},
+  {k:'cutter',lab:'Turno Cutter',kind:'num'},
+  {k:'wrLong',lab:'WR 7+ turnos',kind:'wr',hb:true,bar:true},
+  {k:'wrCutE',lab:'WR Cutter T1-2',kind:'wr',hb:true,bar:true},
+];
+function cmpValM(d,liByUid){return cmpDim==='by'?(d.by||'—'):cmpDim==='aq'?d.aq:cmpDim==='sr'?d.sr:d.li;}
+function cmpValG(g,liByUid){return cmpDim==='by'?(g.by||'feralo77'):cmpDim==='aq'?g.aq:cmpDim==='sr'?g.sr:(liByUid[g.uid]||'—');}
+function cmpBase(){
+  const mAll=cmpDim==='by'?MATCHES:M(), gAll=cmpDim==='by'?GAMES:G();
+  const fLg=$('cfLiga').value,fLi=$('cfLista').value,fSr=$('cfSR').value,fAq=$('cfArq').value,fPl=$('cfPlayer').value;
+  const liByUid={},evByUid={};mAll.forEach(d=>{if(d.uid){liByUid[d.uid]=d.li;evByUid[d.uid]=d.ev;}});
+  const mF=mAll.filter(d=>(cmpDim==='li'||fLi==='all'||d.li===fLi)&&(fLg==='all'||d.ev===fLg)&&(cmpDim==='sr'||fSr==='all'||d.sr===fSr)&&(cmpDim==='aq'||fAq==='all'||d.aq===fAq)&&(cmpDim==='by'||fPl==='all'||(d.by||'—')===fPl));
+  const gF=gAll.filter(g=>{const li=liByUid[g.uid],ev=evByUid[g.uid];
+    return (cmpDim==='li'||fLi==='all'||li===fLi)&&(fLg==='all'||ev===fLg)&&(cmpDim==='sr'||fSr==='all'||g.sr===fSr)&&(cmpDim==='aq'||fAq==='all'||g.aq===fAq)&&(cmpDim==='by'||fPl==='all'||(g.by||'feralo77')===fPl);});
+  return {mF,gF,liByUid};
+}
+function cmpGroupStats(D,GG){
+  const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
+  const gw=D.reduce((a,d)=>a+d.jg,0),gl=D.reduce((a,d)=>a+d.jp,0);
+  const sal=D.filter(d=>d.sr==='Salida'),rob=D.filter(d=>d.sr==='Robo');
+  const sw=sal.filter(d=>d.r==='W').length,rw=rob.filter(d=>d.r==='W').length;
+  const wins=GG.filter(g=>g.w),deep=GG.some(g=>g.hy!==undefined);
+  const cutE=GG.filter(g=>g.ct>=1&&g.ct<=2),lng=GG.filter(g=>g.t>=7),mull=GG.filter(g=>g.mu>0),ctP=GG.filter(g=>g.ct>0),ftP=GG.filter(g=>g.ft);
+  return {n:W+L,matches:D.length,W,L,rec:`${W}-${L}`,
+    wrMatch:(W+L)?pct(W,W+L):null,wrGames:(gw+gl)?pct(gw,gw+gl):null,
+    wrSal:sal.length?pct(sw,sal.length):null,salN:sal.length,
+    wrRob:rob.length?pct(rw,rob.length):null,robN:rob.length,
+    mulls:cmean(D.map(d=>d.my),2),
+    ng:GG.length,wrGame:GG.length?pct(wins.length,GG.length):null,
+    turns:GG.length?cmean(GG.map(g=>g.t)):null,prow:GG.length?cmean(GG.map(g=>g.pw)):null,monk:GG.length?cmean(GG.map(g=>g.mk)):null,
+    hand:deep?cmean(GG.map(g=>g.hy),2):null,mullPct:GG.length?pct(mull.length,GG.length):null,
+    draws:deep?cmean(GG.map(g=>g.dy)):null,land3:deep?cmean(GG.map(g=>g.l3),2):null,
+    threat:ftP.length&&deep?cmean(ftP.map(g=>g.ft),2):null,cutter:ctP.length?cmean(ctP.map(g=>g.ct),2):null,
+    wrLong:lng.length?pct(lng.filter(g=>g.w).length,lng.length):null,longN:lng.length,
+    wrCutE:cutE.length?pct(cutE.filter(g=>g.w).length,cutE.length):null,cutEN:cutE.length,deep};
+}
+function cmpGroups(){
+  const {mF,gF,liByUid}=cmpBase();
+  const keys=[...new Set([...mF.map(d=>cmpValM(d,liByUid)),...gF.map(g=>cmpValG(g,liByUid))])].filter(k=>k&&k!=='—'&&k!=='N/A (bye/concede)'&&k!=='NA');
+  return keys.map(key=>{
+    const D=mF.filter(d=>cmpValM(d,liByUid)===key),GG=gF.filter(g=>cmpValG(g,liByUid)===key);
+    return {key,D,GG,...cmpGroupStats(D,GG)};
+  }).sort((a,b)=>b.n-a.n||b.ng-a.ng);
+}
+function cmpSyncFilters(){
+  ['wf-lista','wf-sr','wf-arq','wf-player'].forEach(id=>{const e=$(id);if(e)e.style.display='';});
+  const e=$(CMP_DIMS[cmpDim].wf);if(e)e.style.display='none';
+  if(cmpDim==='by'){const p=$('wf-player');if(p)p.style.display='none';}
+}
+function cmpKpisRender(gr){
+  const el=$('cmpKpis');
+  if(!gr.length){el.innerHTML='<div class="kpi"><div class="lab">Sin datos</div><div class="val">—</div><div class="note">afina menos los filtros</div></div>';return;}
+  const best=(f,minN,nf)=>gr.filter(g=>f(g)!=null&&nf(g)>=minN).sort((a,b)=>f(b)-f(a))[0];
+  const bWR=best(g=>g.wrMatch,2,g=>g.n),bPr=best(g=>g.prow,3,g=>g.ng),bRb=best(g=>g.wrRob,2,g=>g.robN);
+  const k=[['','Comparados',gr.length,CMP_DIMS[cmpDim].label.toLowerCase()]];
+  if(bWR)k.push(['g','Mejor WR match',bWR.wrMatch+'%',`${bWR.key} · ${bWR.rec}`]);
+  if(bPr)k.push(['p','Más agresivo',bPr.prow,`${bPr.key} · prowess/game`]);
+  if(bRb)k.push(['o','Mejor en robo',bRb.wrRob+'%',`${bRb.key} · ${bRb.robN} matches`]);
+  el.innerHTML=k.map(x=>`<div class="kpi ${x[0]}"><div class="lab">${x[1]}</div><div class="val">${x[2]}</div><div class="note">${x[3]}</div></div>`).join('');
+}
+function cmpCell(g,m){
+  if(m.k==='rec')return `<td style="font-family:var(--mono)">${g.rec}</td>`;
+  const v=g[m.k];
+  if(v==null||v===''||(typeof v==='number'&&isNaN(v)))return `<td style="text-align:center;color:var(--tx3)">·</td>`;
+  if(m.kind==='wr'&&m.hb){const cls=v>=60?'hq-cell--good':v>=40?'hq-cell--mid':'hq-cell--bad';return `<td style="text-align:center"><span class="hq-cell ${cls}">${v}%</span></td>`;}
+  if(m.kind==='wr')return `<td style="text-align:center;font-family:var(--mono)">${v}%</td>`;
+  return `<td style="text-align:center;font-family:var(--mono)">${v}</td>`;
+}
+function cmpTable(gr){
+  cmpLastGroups=gr;
+  const anyDeep=gr.some(g=>g.deep),cols=CMP_METRICS.filter(m=>!m.deep||anyDeep),dimLab=CMP_DIMS[cmpDim].label,sk=cmpSort.col;
+  const sorted=[...gr].sort((a,b)=>{
+    if(sk==='key')return (a.key>b.key?1:a.key<b.key?-1:0)*cmpSort.dir;
+    let x=a[sk],y=b[sk];x=(x==null?-Infinity:x);y=(y==null?-Infinity:y);return (x>y?1:x<y?-1:0)*cmpSort.dir;});
+  const arr=k=>cmpSort.col===k?(cmpSort.dir>0?' ▲':' ▼'):'';
+  let h='<thead><tr>'+`<th data-k="key" class="${cmpSort.col==='key'?'metric-on':''}">${dimLab}${arr('key')}</th>`;
+  cols.forEach(m=>{const s=m.sortK||m.k;h+=`<th data-k="${s}" class="${cmpSort.col===s?'metric-on':''}">${m.lab}${arr(s)}</th>`;});
+  h+='</tr></thead><tbody>'+sorted.map(g=>`<tr${g.n<3?' class="thin"':''}><td><b>${g.key}</b></td>${cols.map(m=>cmpCell(g,m)).join('')}</tr>`).join('')+'</tbody>';
+  const t=$('cmpTbl');t.innerHTML=h;
+  t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(cmpSort.col===k)cmpSort.dir*=-1;else{cmpSort.col=k;cmpSort.dir=(k==='key'?1:-1);}cmpTable(cmpLastGroups);});
+  $('cmpTblNote').innerHTML='Filas atenuadas = menos de 3 partidas (señal débil). Clic en cualquier cabecera para ordenar.'+(anyDeep?'':' Los datos profundos (mano, robos, tierras, 1ª amenaza) aparecen con la próxima carga: el games.csv publicado aún es del formato anterior.');
+}
+function cmpBar(gr){
+  const m=CMP_METRICS.find(x=>x.k===cmpMetricKey)||CMP_METRICS.find(x=>x.k==='wrMatch'),isWR=m.kind==='wr';
+  const rows=gr.map(g=>({key:g.key,v:g[m.k]})).filter(x=>x.v!=null&&!isNaN(x.v)).sort((a,b)=>b.v-a.v).slice(0,14);
+  if(cmpCharts.bar){cmpCharts.bar.destroy();cmpCharts.bar=null;}
+  const cv=$('chCmpBar');if(!rows.length){cv.getContext('2d').clearRect(0,0,cv.width,cv.height);return;}
+  const col=v=>isWR?(v>=60?C.grn:v>=45?C.W2_1:v>=30?C.L1_2:C.red):C.blue;
+  cmpCharts.bar=new Chart(cv,{type:'bar',data:{labels:rows.map(x=>x.key),datasets:[{data:rows.map(x=>x.v),backgroundColor:rows.map(x=>col(x.v)),borderRadius:0}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{x:isWR?{min:0,max:100,ticks:{callback:v=>v+'%'}}:{beginAtZero:true},y:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>isWR?`${m.lab} ${c.parsed.x}%`:`${m.lab}: ${c.parsed.x}`}}}}});
+}
+function cmpNorm(vals,inv){
+  const good=vals.filter(v=>v!=null&&!isNaN(v));if(!good.length)return vals.map(()=>0);
+  const mn=Math.min(...good),mx=Math.max(...good);
+  return vals.map(v=>{if(v==null||isNaN(v))return 0;if(mx===mn)return 100;let t=(v-mn)/(mx-mn);if(inv)t=1-t;return Math.round(35+t*65);});
+}
+function cmpRadar(gr){
+  const cv=$('chCmpRadar');if(cmpCharts.radar){cmpCharts.radar.destroy();cmpCharts.radar=null;}
+  const ent=gr.filter(g=>g.ng>=3).sort((a,b)=>b.ng-a.ng).slice(0,6);
+  if(ent.length<2){cv.getContext('2d').clearRect(0,0,cv.width,cv.height);
+    $('cmpRadarNote').textContent='El radar necesita al menos 2 comparados con 3 o más games. '+(cmpDim==='by'?'Se llenará cuando tus compañeros suban sus logs.':'Afina menos los filtros o cambia la dimensión.');return;}
+  const axes=[{lab:'Agresividad',f:g=>g.prow,inv:false},{lab:'Amenaza rápida',f:g=>g.threat,inv:true},{lab:'Cutter pronto',f:g=>g.ng?pct(g.cutEN,g.ng):null,inv:false},{lab:'Aguante robo',f:g=>g.wrRob,inv:false},{lab:'Partidas largas',f:g=>g.wrLong,inv:false},{lab:'Cierre rápido',f:g=>g.turns,inv:true}];
+  const norm=axes.map(ax=>cmpNorm(ent.map(ax.f),ax.inv)),fill=c=>c&&c[0]==='#'?c+'33':c;
+  const ds=ent.map((g,i)=>({label:g.key,data:axes.map((ax,ai)=>norm[ai][i]),borderColor:PIE[i%PIE.length],backgroundColor:fill(PIE[i%PIE.length]),borderWidth:2,pointRadius:2}));
+  cmpCharts.radar=new Chart(cv,{type:'radar',data:{labels:axes.map(a=>a.lab),datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{r:{min:0,max:100,ticks:{display:false,stepSize:25},pointLabels:{font:{size:10}},grid:{color:cssv('--chart-grid')},angleLines:{color:cssv('--chart-grid')}}},plugins:{legend:{position:'top',labels:{usePointStyle:true,boxWidth:8,font:{size:10}}},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.r}/100`}}}}});
+  $('cmpRadarNote').textContent='Perfil relativo entre los comparados: 100 = el mejor en ese eje. "Amenaza rápida" y "Cierre rápido" premian jugar y ganar antes.';
+}
+function cmpMatrix(gr){
+  const panel=$('cmpMxPanel');
+  if(cmpDim!=='by'&&cmpDim!=='li'){panel.style.display='none';return;}
+  panel.style.display='';
+  const aqs=[...new Set(gr.flatMap(g=>g.D.map(d=>d.aq)))].filter(a=>a&&a!=='N/A (bye/concede)'&&a!=='NA');
+  const tot={};gr.forEach(g=>g.D.forEach(d=>{if(d.aq)tot[d.aq]=(tot[d.aq]||0)+1;}));
+  aqs.sort((a,b)=>(tot[b]||0)-(tot[a]||0)||a.localeCompare(b));
+  const cell=(g,aq)=>{const DD=g.D.filter(d=>d.aq===aq);if(!DD.length)return '<td style="text-align:center;color:var(--tx3)">·</td>';
+    const w=DD.filter(d=>d.r==='W').length,l=DD.filter(d=>d.r==='L').length,wr=pct(w,w+l);
+    const cls=wr>=60?'hq-cell--good':wr>=40?'hq-cell--mid':'hq-cell--bad';
+    return `<td style="text-align:center"><span class="hq-cell ${cls}">${w}-${l}</span></td>`;};
+  $('cmpMx').innerHTML=aqs.length?('<thead><tr><th>Mazo rival</th>'+gr.map(g=>`<th style="text-align:center">${g.key}</th>`).join('')+'</tr></thead><tbody>'+aqs.map(aq=>`<tr><td>${aq}</td>${gr.map(g=>cell(g,aq)).join('')}</tr>`).join('')+'</tbody>'):'';
+  $('cmpMxNote').textContent=aqs.length?`Récord V-D por matchup. Columnas = ${CMP_DIMS[cmpDim].label.toLowerCase()}. Verde ≥60%, ámbar 40-59%, rojo <40%.`:'Sin matchups en la selección actual.';
+}
+function renderCmp(){
+  cmpSyncFilters();
+  const gr=cmpGroups();
+  cmpKpisRender(gr);
+  cmpTable(gr);
+  Object.values(cmpCharts).forEach(c=>c&&c.destroy());cmpCharts={};
+  cmpBar(gr);cmpRadar(gr);cmpMatrix(gr);
+}
+function initCmpSelectors(){
+  const fill=(id,vals,allLbl)=>{const s=$(id);if(!s)return;const prev=s.value||'all';s.innerHTML='';s.add(new Option(allLbl,'all'));vals.forEach(v=>s.add(new Option(v,v)));s.value=[...vals,'all'].includes(prev)?prev:'all';s.onchange=renderCmp;};
+  const uni=f=>[...new Set(MATCHES.map(d=>d[f]).filter(v=>v&&v!=='—'&&v!=='N/A (bye/concede)'))].sort();
+  fill('cfLiga',uni('ev'),'Todas las ligas');fill('cfLista',uni('li'),'Todas las listas');
+  fill('cfSR',uni('sr'),'Salida + Robo');fill('cfArq',uni('aq'),'Todos los mazos');
+  fill('cfPlayer',[...new Set(MATCHES.map(d=>d.by||'').filter(v=>v&&v!=='—'))].sort(),'Todos los jugadores');
+  const ms=$('cmpMetric');if(ms){const prev=ms.value||cmpMetricKey;ms.innerHTML='';CMP_METRICS.filter(m=>m.bar).forEach(m=>ms.add(new Option(m.lab,m.k)));ms.value=CMP_METRICS.some(m=>m.bar&&m.k===prev)?prev:'wrMatch';cmpMetricKey=ms.value;ms.onchange=()=>{cmpMetricKey=ms.value;cmpBar(cmpLastGroups);};}
+}
+// Selector de dimensión (segmented) — se cablea una vez; el DOM ya existe a esta altura del script.
+document.querySelectorAll('#cmpDim .opt').forEach(o=>o.onclick=()=>{
+  document.querySelectorAll('#cmpDim .opt').forEach(x=>x.classList.remove('on'));o.classList.add('on');
+  cmpDim=o.dataset.d;cmpSort={col:'n',dir:-1};renderCmp();
+});
 // ---- Tema (oscuro / claro) ----
 function setTheme(t){
   document.documentElement.setAttribute('data-theme',t);
@@ -764,7 +987,7 @@ function setTheme(t){
   applyChartTheme();
   Object.values(playCharts).forEach(c=>c&&c.destroy());playCharts={};playDone=false;
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
-  if(v==='stats')render();else if(v==='play')renderPlay();
+  if(v==='stats')render();else if(v==='play')renderPlay();else if(v==='cmp')renderCmp();
 }
 // ---- La 75 Definitiva (Claude) ----
 function renderDefCmp(){
@@ -964,7 +1187,7 @@ function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLig
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initPlayer();renderMyLists();renderLxM();renderDefCmp();renderSBDef();
+  initSelectors();initCmpSelectors();initPlayer();renderMyLists();renderLxM();renderDefCmp();renderSBDef();
   render();
   updateSource(remote);
   freshness();
