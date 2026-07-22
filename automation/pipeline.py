@@ -51,7 +51,10 @@ REGISTRO_COLS = ["match_uuid", "Fecha", "Evento / Liga", "Lista", "Ronda",
                  "Mulligans (Rival)", "Cartas Clave / MVP", "Notas de Match / Sideboard",
                  "Reportado por", "Fuente"]
 GAMES_COLS = ["match_uuid", "Game", "Arquetipo", "Salida / Robo", "Ganado", "Turnos",
-              "Prowess", "Monjes", "Reportado por"]
+              "Prowess", "Monjes", "Mulls yo", "Mulls rival", "Mano yo", "Mano rival",
+              "Robos yo", "Robos rival", "Tierras yo", "Tierras T1-3", "Accion T1",
+              "Turno 1a amenaza", "Turno Cutter", "Hechizos yo", "Removal yo",
+              "Descartes yo", "Reportado por"]
 
 # ---------------------------------------------------------------- utilidades de datos
 def norm(s):
@@ -299,7 +302,18 @@ def _games_de_match(m, nick):
             'match_uuid': m['match_uuid'], 'Game': g.get('game_idx', ''),
             'Arquetipo': m['arquetipo'], 'Salida / Robo': sr,
             'Ganado': 1 if g['winner'] == 'local' else 0, 'Turnos': g['turns'],
-            'Prowess': g['prowess'], 'Monjes': g['monks'], 'Reportado por': nick,
+            'Prowess': g['prowess'], 'Monjes': g['monks'],
+            'Mulls yo': g.get('mull_local', 0), 'Mulls rival': g.get('mull_opp', 0),
+            'Mano yo': g.get('hand_local', 7), 'Mano rival': g.get('hand_opp', 7),
+            'Robos yo': g.get('draws_local', 0), 'Robos rival': g.get('draws_opp', 0),
+            'Tierras yo': g.get('lands_local', 0), 'Tierras T1-3': g.get('lands_t3', 0),
+            'Accion T1': 1 if g.get('t1_action') else 0,
+            'Turno 1a amenaza': g.get('first_threat_turn', 0),
+            'Turno Cutter': g.get('cutter_turn', 0),
+            'Hechizos yo': len(g.get('my_casts', [])),
+            'Removal yo': len(g.get('removal', [])),
+            'Descartes yo': g.get('disc_local', 0),
+            'Reportado por': nick,
         })
     return filas
 
