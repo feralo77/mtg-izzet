@@ -4,16 +4,16 @@ match_uuid,Game,Arquetipo,Salida / Robo,Ganado,Turnos,Prowess,Monjes,Mulls yo,Mu
 241c6d98-b967-4522-949e-2931767cb411,1,Living End,Robo,0,4,2,0,0,0,7,7,5,3,3,3,1,1,0,8,2,0,4c_PolG
 241c6d98-b967-4522-949e-2931767cb411,2,Living End,Salida,1,4,0,0,0,2,7,5,4,5,3,3,1,2,0,6,0,0,4c_PolG
 241c6d98-b967-4522-949e-2931767cb411,3,Living End,Robo,1,4,3,0,0,1,7,6,5,3,2,2,1,1,0,8,1,1,4c_PolG
-de67bc4c-a8f7-45a5-834c-f651b839bbf9,1,¿? (revisar),Salida,1,4,1,2,0,1,7,6,4,3,3,3,1,1,3,6,0,0,4c_PolG
-de67bc4c-a8f7-45a5-834c-f651b839bbf9,2,¿? (revisar),Robo,0,5,5,3,0,0,7,7,5,6,4,3,1,1,2,8,0,0,4c_PolG
-de67bc4c-a8f7-45a5-834c-f651b839bbf9,3,¿? (revisar),Salida,1,4,0,0,1,1,6,6,3,5,3,3,1,1,0,4,1,0,4c_PolG
-dd2aa23e-c93a-40a7-bbc9-add220569e4e,1,¿? (revisar),Robo,0,4,0,1,0,0,7,7,5,3,3,3,1,1,2,4,1,0,4c_PolG
-dd2aa23e-c93a-40a7-bbc9-add220569e4e,2,¿? (revisar),Salida,0,7,1,1,1,0,6,7,7,7,3,3,1,1,4,7,0,0,4c_PolG
-ff17944e-41ce-44e9-adbe-30b1461955f6,1,¿? (revisar),Salida,1,5,15,4,0,1,7,6,10,8,3,2,1,2,2,11,2,3,4c_PolG
-ff17944e-41ce-44e9-adbe-30b1461955f6,2,¿? (revisar),Robo,0,2,0,0,2,0,5,7,2,1,1,1,1,0,0,1,0,0,4c_PolG
-ff17944e-41ce-44e9-adbe-30b1461955f6,3,¿? (revisar),Salida,0,5,8,3,0,0,7,7,10,10,4,3,1,2,2,9,4,3,4c_PolG
-1aab62bd-3018-4bcb-bace-437886c88f11,1,¿? (revisar),Salida,1,3,2,0,1,0,6,7,3,3,3,3,1,1,0,4,1,0,4c_PolG
-1aab62bd-3018-4bcb-bace-437886c88f11,2,¿? (revisar),Robo,1,2,0,0,1,1,6,6,3,1,2,2,1,0,0,3,2,0,4c_PolG
+de67bc4c-a8f7-45a5-834c-f651b839bbf9,1,Oracle Combo,Salida,1,4,1,2,0,1,7,6,4,3,3,3,1,1,3,6,0,0,4c_PolG
+de67bc4c-a8f7-45a5-834c-f651b839bbf9,2,Oracle Combo,Robo,0,5,5,3,0,0,7,7,5,6,4,3,1,1,2,8,0,0,4c_PolG
+de67bc4c-a8f7-45a5-834c-f651b839bbf9,3,Oracle Combo,Salida,1,4,0,0,1,1,6,6,3,5,3,3,1,1,0,4,1,0,4c_PolG
+dd2aa23e-c93a-40a7-bbc9-add220569e4e,1,Eldrazi Ramp,Robo,0,4,0,1,0,0,7,7,5,3,3,3,1,1,2,4,1,0,4c_PolG
+dd2aa23e-c93a-40a7-bbc9-add220569e4e,2,Eldrazi Ramp,Salida,0,7,1,1,1,0,6,7,7,7,3,3,1,1,4,7,0,0,4c_PolG
+ff17944e-41ce-44e9-adbe-30b1461955f6,1,Hollow One,Salida,1,5,15,4,0,1,7,6,10,8,3,2,1,2,2,11,2,3,4c_PolG
+ff17944e-41ce-44e9-adbe-30b1461955f6,2,Hollow One,Robo,0,2,0,0,2,0,5,7,2,1,1,1,1,0,0,1,0,0,4c_PolG
+ff17944e-41ce-44e9-adbe-30b1461955f6,3,Hollow One,Salida,0,5,8,3,0,0,7,7,10,10,4,3,1,2,2,9,4,3,4c_PolG
+1aab62bd-3018-4bcb-bace-437886c88f11,1,Elves,Salida,1,3,2,0,1,0,6,7,3,3,3,3,1,1,0,4,1,0,4c_PolG
+1aab62bd-3018-4bcb-bace-437886c88f11,2,Elves,Robo,1,2,0,0,1,1,6,6,3,1,2,2,1,0,0,3,2,0,4c_PolG
 d43e65c2-eb56-41d8-9ace-80ef98332ec5,1,Grixis Reanimator,Salida,0,5,1,0,0,0,7,7,5,6,1,1,1,1,0,4,0,2,4c_PolG
 d43e65c2-eb56-41d8-9ace-80ef98332ec5,2,Grixis Reanimator,Salida,0,4,2,2,0,1,7,6,5,4,4,3,1,1,2,8,2,0,4c_PolG
 69a8c5b2-406d-4acd-8368-2716058b6d2e,1,Izzet Affinity,Robo,0,2,0,0,1,0,6,7,1,3,1,1,1,1,0,1,0,0,4c_PolG
@@ -21,8 +21,8 @@ d43e65c2-eb56-41d8-9ace-80ef98332ec5,2,Grixis Reanimator,Salida,0,4,2,2,0,1,7,6,
 0490d733-3ad7-4a16-9d43-b20dbb297c2f,1,Azorius Control,Salida,1,4,0,2,0,0,7,7,3,7,3,3,1,1,2,6,0,0,4c_PolG
 0490d733-3ad7-4a16-9d43-b20dbb297c2f,2,Azorius Control,Robo,0,6,1,0,1,0,6,7,7,6,3,3,0,2,3,11,2,0,4c_PolG
 0490d733-3ad7-4a16-9d43-b20dbb297c2f,3,Azorius Control,Salida,0,9,0,0,0,1,7,6,12,14,6,3,1,1,3,15,3,0,4c_PolG
-f16cf142-496e-41f6-9afd-0de6047552ab,1,¿? (revisar),Robo,0,4,0,0,0,1,7,6,6,3,3,3,1,1,0,5,0,1,4c_PolG
-f16cf142-496e-41f6-9afd-0de6047552ab,2,¿? (revisar),Salida,0,4,2,4,0,2,7,5,5,4,3,3,1,3,3,7,1,0,4c_PolG
+f16cf142-496e-41f6-9afd-0de6047552ab,1,Cosmogoyf Combo,Robo,0,4,0,0,0,1,7,6,6,3,3,3,1,1,0,5,0,1,4c_PolG
+f16cf142-496e-41f6-9afd-0de6047552ab,2,Cosmogoyf Combo,Salida,0,4,2,4,0,2,7,5,5,4,3,3,1,3,3,7,1,0,4c_PolG
 68f213b3-b4d0-4f47-b648-a781b7eab614,1,Boros Energy,Robo,0,6,1,1,0,0,7,7,7,5,4,3,0,2,3,9,3,0,4c_PolG
 68f213b3-b4d0-4f47-b648-a781b7eab614,2,Boros Energy,Salida,0,5,0,0,0,0,7,7,5,5,2,1,0,2,0,5,2,0,4c_PolG
 0768dca5-f42b-4f7b-b5aa-b9af70073696,1,Esper Goryo's,Robo,0,4,0,0,1,0,6,7,4,4,3,3,1,3,0,2,0,2,4c_PolG
@@ -42,26 +42,26 @@ bfd2e15f-1fb7-4aff-9589-139aa5c706f7,3,¿? (revisar),,0,6,8,2,1,0,6,7,10,0,4,3,1
 d5da430a-b292-4ccb-bc22-5fa0eda0945e,1,Ruby Storm,Robo,0,4,0,0,0,2,7,5,4,16,3,3,0,2,0,6,0,0,4c_PolG
 d5da430a-b292-4ccb-bc22-5fa0eda0945e,2,Ruby Storm,Salida,1,3,4,0,0,0,7,7,5,2,2,2,1,1,0,8,1,0,4c_PolG
 d5da430a-b292-4ccb-bc22-5fa0eda0945e,3,Ruby Storm,Robo,1,4,1,0,2,0,5,7,5,8,2,2,1,1,0,7,0,0,4c_PolG
-e899efbc-3b8b-4031-8c7c-005ee182c1e1,1,¿? (revisar),Salida,0,5,0,0,1,0,6,7,6,5,3,2,1,1,0,10,1,0,4c_PolG
-e899efbc-3b8b-4031-8c7c-005ee182c1e1,2,¿? (revisar),Salida,1,5,17,3,1,0,6,7,8,4,4,3,1,1,3,9,1,0,4c_PolG
-e899efbc-3b8b-4031-8c7c-005ee182c1e1,3,¿? (revisar),Robo,1,5,0,0,0,1,7,6,4,4,3,3,0,2,0,8,1,0,4c_PolG
+e899efbc-3b8b-4031-8c7c-005ee182c1e1,1,Eldrazi,Salida,0,5,0,0,1,0,6,7,6,5,3,2,1,1,0,10,1,0,4c_PolG
+e899efbc-3b8b-4031-8c7c-005ee182c1e1,2,Eldrazi,Salida,1,5,17,3,1,0,6,7,8,4,4,3,1,1,3,9,1,0,4c_PolG
+e899efbc-3b8b-4031-8c7c-005ee182c1e1,3,Eldrazi,Robo,1,5,0,0,0,1,7,6,4,4,3,3,0,2,0,8,1,0,4c_PolG
 09e0e9b8-95e3-49a6-b34b-0d294e1b9ab6,1,Neoform,Robo,0,3,0,0,1,0,6,7,2,2,2,2,1,1,2,2,0,0,4c_PolG
 09e0e9b8-95e3-49a6-b34b-0d294e1b9ab6,2,Neoform,Salida,0,6,0,0,1,1,6,6,8,5,1,1,1,0,0,5,0,0,4c_PolG
 c21dedf8-b250-492a-9d12-b67418dcaee4,1,Izzet Affinity,Robo,0,4,0,2,0,0,7,7,4,4,3,3,0,2,2,4,0,0,4c_PolG
 c21dedf8-b250-492a-9d12-b67418dcaee4,2,Izzet Affinity,Salida,1,4,8,2,0,1,7,6,4,3,3,3,1,1,3,9,3,0,4c_PolG
 c21dedf8-b250-492a-9d12-b67418dcaee4,3,Izzet Affinity,Robo,1,5,7,4,0,1,7,6,8,4,4,3,1,1,3,11,1,0,4c_PolG
-94a41a68-7667-4d65-bb03-276a257627fa,1,¿? (revisar),Salida,1,3,12,0,0,2,7,5,4,2,3,3,1,1,0,8,3,0,4c_PolG
-94a41a68-7667-4d65-bb03-276a257627fa,2,¿? (revisar),Robo,0,5,0,0,0,2,7,5,4,4,3,3,1,1,0,2,0,0,4c_PolG
-94a41a68-7667-4d65-bb03-276a257627fa,3,¿? (revisar),Salida,1,5,0,0,0,1,7,6,7,4,3,3,1,2,0,8,2,0,4c_PolG
+94a41a68-7667-4d65-bb03-276a257627fa,1,Eldrazi Ramp,Salida,1,3,12,0,0,2,7,5,4,2,3,3,1,1,0,8,3,0,4c_PolG
+94a41a68-7667-4d65-bb03-276a257627fa,2,Eldrazi Ramp,Robo,0,5,0,0,0,2,7,5,4,4,3,3,1,1,0,2,0,0,4c_PolG
+94a41a68-7667-4d65-bb03-276a257627fa,3,Eldrazi Ramp,Salida,1,5,0,0,0,1,7,6,7,4,3,3,1,2,0,8,2,0,4c_PolG
 1d1326e9-f7e8-4105-80d4-f9119cb6677f,1,Izzet Affinity,Robo,0,4,5,0,0,0,7,7,4,3,3,3,1,1,0,5,2,0,4c_PolG
 1d1326e9-f7e8-4105-80d4-f9119cb6677f,2,Izzet Affinity,Salida,0,6,3,2,0,0,7,7,6,5,5,3,0,4,4,6,1,0,4c_PolG
 abd74392-c692-42b4-90de-45c181dca0f5,1,¿? (revisar),Robo,0,5,10,2,0,1,7,6,7,4,3,3,1,2,3,8,2,0,4c_PolG
 abd74392-c692-42b4-90de-45c181dca0f5,2,¿? (revisar),Salida,0,6,3,1,0,0,7,7,8,6,6,3,1,2,2,7,2,0,4c_PolG
 e0c49e67-489a-438b-9017-4bb43b772096,1,¿? (revisar),Salida,1,3,8,2,0,0,7,7,3,2,3,3,1,1,2,7,2,0,4c_PolG
 e0c49e67-489a-438b-9017-4bb43b772096,2,¿? (revisar),Robo,1,12,6,0,0,1,7,6,14,14,7,3,1,1,0,17,4,0,4c_PolG
-61e93b47-fe2c-4d29-90a4-1616d4ef4864,1,¿? (revisar),Salida,0,6,1,0,1,0,6,7,8,14,5,3,1,1,6,8,1,1,4c_PolG
-61e93b47-fe2c-4d29-90a4-1616d4ef4864,2,¿? (revisar),Salida,1,7,10,7,0,0,7,7,8,7,4,3,1,4,4,13,1,0,4c_PolG
-61e93b47-fe2c-4d29-90a4-1616d4ef4864,3,¿? (revisar),Robo,0,9,0,0,0,0,7,7,13,14,6,3,0,2,7,13,1,1,4c_PolG
+61e93b47-fe2c-4d29-90a4-1616d4ef4864,1,Necrodominance,Salida,0,6,1,0,1,0,6,7,8,14,5,3,1,1,6,8,1,1,4c_PolG
+61e93b47-fe2c-4d29-90a4-1616d4ef4864,2,Necrodominance,Salida,1,7,10,7,0,0,7,7,8,7,4,3,1,4,4,13,1,0,4c_PolG
+61e93b47-fe2c-4d29-90a4-1616d4ef4864,3,Necrodominance,Robo,0,9,0,0,0,0,7,7,13,14,6,3,0,2,7,13,1,1,4c_PolG
 f696164a-4255-4f74-9310-cefddb09caf3,1,Esper Goryo's,Salida,1,6,3,0,1,0,6,7,7,5,2,2,1,1,0,10,3,1,4c_PolG
 f696164a-4255-4f74-9310-cefddb09caf3,2,Esper Goryo's,Robo,0,3,0,0,0,0,7,7,3,2,2,2,1,1,0,3,0,0,4c_PolG
 f696164a-4255-4f74-9310-cefddb09caf3,3,Esper Goryo's,Salida,1,5,4,2,0,1,7,6,5,8,4,3,1,4,4,9,0,0,4c_PolG
@@ -101,14 +101,14 @@ d662e25b-ddd4-4c41-9cc2-d89c651350f2,1,¿? (revisar),Robo,1,5,0,0,0,2,7,5,6,4,3,
 d662e25b-ddd4-4c41-9cc2-d89c651350f2,2,¿? (revisar),Robo,1,6,16,5,0,1,7,6,8,6,4,3,0,3,3,13,2,1,4c_PolG
 82ba98c8-1dd2-440e-b63e-ec635166f8c3,1,Azorius Control,Robo,0,10,0,0,0,0,7,7,13,25,5,3,1,1,4,14,3,0,4c_PolG
 82ba98c8-1dd2-440e-b63e-ec635166f8c3,2,Azorius Control,Salida,0,8,0,0,2,0,5,7,8,20,4,1,1,1,6,10,2,0,4c_PolG
-adf9d8f9-221b-49bd-8e9c-5b37946f14f4,1,¿? (revisar),Salida,0,4,0,0,1,0,6,7,4,3,2,2,0,3,0,7,3,0,4c_PolG
-adf9d8f9-221b-49bd-8e9c-5b37946f14f4,2,¿? (revisar),Salida,1,4,5,0,0,1,7,6,5,3,4,3,1,1,0,8,2,0,4c_PolG
-adf9d8f9-221b-49bd-8e9c-5b37946f14f4,3,¿? (revisar),Robo,1,4,8,5,0,2,7,5,5,3,3,3,0,2,2,6,1,0,4c_PolG
+adf9d8f9-221b-49bd-8e9c-5b37946f14f4,1,Eldrazi,Salida,0,4,0,0,1,0,6,7,4,3,2,2,0,3,0,7,3,0,4c_PolG
+adf9d8f9-221b-49bd-8e9c-5b37946f14f4,2,Eldrazi,Salida,1,4,5,0,0,1,7,6,5,3,4,3,1,1,0,8,2,0,4c_PolG
+adf9d8f9-221b-49bd-8e9c-5b37946f14f4,3,Eldrazi,Robo,1,4,8,5,0,2,7,5,5,3,3,3,0,2,2,6,1,0,4c_PolG
 1cad81a1-6b14-4a2c-8831-a3947b16a441,1,Esper Goryo's,Salida,0,5,0,0,0,0,7,7,7,6,5,3,1,1,0,9,0,1,4c_PolG
 1cad81a1-6b14-4a2c-8831-a3947b16a441,2,Esper Goryo's,Salida,0,7,4,0,0,0,7,7,8,17,3,3,1,1,0,11,3,0,4c_PolG
-397c5889-d59c-4a8e-b573-5569cf872e38,1,¿? (revisar),Salida,1,5,0,0,0,0,7,7,6,4,4,3,1,2,0,11,3,0,4c_PolG
-397c5889-d59c-4a8e-b573-5569cf872e38,2,¿? (revisar),Robo,0,5,4,0,0,2,7,5,7,5,4,3,1,1,0,4,0,0,4c_PolG
-397c5889-d59c-4a8e-b573-5569cf872e38,3,¿? (revisar),Salida,1,4,0,0,0,1,7,6,3,3,4,3,1,1,0,7,2,0,4c_PolG
+397c5889-d59c-4a8e-b573-5569cf872e38,1,Merfolk,Salida,1,5,0,0,0,0,7,7,6,4,4,3,1,2,0,11,3,0,4c_PolG
+397c5889-d59c-4a8e-b573-5569cf872e38,2,Merfolk,Robo,0,5,4,0,0,2,7,5,7,5,4,3,1,1,0,4,0,0,4c_PolG
+397c5889-d59c-4a8e-b573-5569cf872e38,3,Merfolk,Salida,1,4,0,0,0,1,7,6,3,3,4,3,1,1,0,7,2,0,4c_PolG
 59467dd1-1288-4722-89b5-f6862b10360a,1,Izzet Prowess,Robo,1,4,3,1,0,0,7,7,3,4,3,3,1,1,3,6,2,0,4c_PolG
 59467dd1-1288-4722-89b5-f6862b10360a,2,Izzet Prowess,Robo,0,4,0,0,1,1,6,6,4,4,3,3,1,2,0,6,2,0,4c_PolG
 59467dd1-1288-4722-89b5-f6862b10360a,3,Izzet Prowess,Salida,1,9,3,0,1,0,6,7,10,12,4,2,1,5,0,11,3,0,4c_PolG
@@ -135,24 +135,24 @@ d9cb71f7-6b37-4154-aa85-1c4e64bb0a4a,2,Boros Ponza,Robo,1,4,4,2,0,0,7,7,4,5,4,3,
 3b52e7d2-39e1-459a-b2a4-d66256101afa,2,¿? (revisar),Robo,1,3,9,2,0,0,7,7,3,2,3,3,1,1,2,6,2,0,4c_PolG
 5c1316e4-1356-4a81-9e45-b662f00bc2af,1,Broodscale,Salida,1,3,4,0,0,0,7,7,3,3,3,3,1,1,0,6,1,0,4c_PolG
 5c1316e4-1356-4a81-9e45-b662f00bc2af,2,Broodscale,Robo,1,5,9,2,2,0,5,7,7,4,4,3,1,1,4,8,0,0,4c_PolG
-cfbade0b-daed-403f-a55c-b5624e0a917d,1,¿? (revisar),Robo,0,4,4,0,0,1,7,6,5,3,3,3,1,1,0,6,1,0,4c_PolG
-cfbade0b-daed-403f-a55c-b5624e0a917d,2,¿? (revisar),Salida,1,5,16,2,0,0,7,7,6,4,3,2,1,1,3,9,3,0,4c_PolG
-cfbade0b-daed-403f-a55c-b5624e0a917d,3,¿? (revisar),Robo,0,14,18,0,0,1,7,6,18,14,7,3,1,1,0,23,10,0,4c_PolG
+cfbade0b-daed-403f-a55c-b5624e0a917d,1,Sam Combo,Robo,0,4,4,0,0,1,7,6,5,3,3,3,1,1,0,6,1,0,4c_PolG
+cfbade0b-daed-403f-a55c-b5624e0a917d,2,Sam Combo,Salida,1,5,16,2,0,0,7,7,6,4,3,2,1,1,3,9,3,0,4c_PolG
+cfbade0b-daed-403f-a55c-b5624e0a917d,3,Sam Combo,Robo,0,14,18,0,0,1,7,6,18,14,7,3,1,1,0,23,10,0,4c_PolG
 b6afde50-6862-4a83-8dac-de9a08a8bad4,1,Grixis Reanimator,Robo,0,6,4,2,0,0,7,7,6,6,5,3,0,2,2,9,2,0,4c_PolG
 b6afde50-6862-4a83-8dac-de9a08a8bad4,2,Grixis Reanimator,Salida,1,6,10,3,0,1,7,6,10,6,4,3,0,4,4,13,5,1,4c_PolG
 b6afde50-6862-4a83-8dac-de9a08a8bad4,3,Grixis Reanimator,Robo,1,5,4,2,0,1,7,6,5,5,3,3,1,1,3,9,1,0,4c_PolG
 a4c01001-0f1c-4b02-a66e-bdd3233ff158,1,Ruby Storm,Robo,1,4,0,1,0,1,7,6,4,9,3,3,1,1,3,7,2,0,4c_PolG
 a4c01001-0f1c-4b02-a66e-bdd3233ff158,2,Ruby Storm,Robo,0,3,5,0,0,0,7,7,4,6,2,2,1,1,0,5,0,0,4c_PolG
 a4c01001-0f1c-4b02-a66e-bdd3233ff158,3,Ruby Storm,Salida,0,5,1,1,0,1,7,6,5,12,3,3,1,3,3,6,3,0,4c_PolG
-ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,1,¿? (revisar),Salida,0,3,0,0,0,0,7,7,3,13,2,2,1,1,0,6,1,0,4c_PolG
-ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,2,¿? (revisar),Salida,1,3,0,0,0,0,7,7,2,2,3,3,0,3,0,6,2,0,4c_PolG
-ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,3,¿? (revisar),Robo,1,4,6,4,1,0,6,7,4,6,3,3,0,2,2,7,4,0,4c_PolG
+ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,1,Ruby Storm,Salida,0,3,0,0,0,0,7,7,3,13,2,2,1,1,0,6,1,0,4c_PolG
+ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,2,Ruby Storm,Salida,1,3,0,0,0,0,7,7,2,2,3,3,0,3,0,6,2,0,4c_PolG
+ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,3,Ruby Storm,Robo,1,4,6,4,1,0,6,7,4,6,3,3,0,2,2,7,4,0,4c_PolG
 0df787ad-a7df-4eca-a7d3-78f67bcc9704,1,Azorius Control,Salida,1,6,5,0,0,0,7,7,8,5,6,3,1,1,2,14,0,0,4c_PolG
 0df787ad-a7df-4eca-a7d3-78f67bcc9704,2,Azorius Control,Robo,1,12,5,4,0,1,7,6,14,14,6,2,1,2,2,16,2,0,4c_PolG
 6feaaca4-1e27-44c9-8f83-11d6f79d0f48,1,Azorius Control,Salida,1,6,0,2,0,1,7,6,7,5,4,3,0,2,2,11,2,0,4c_PolG
 6feaaca4-1e27-44c9-8f83-11d6f79d0f48,2,Azorius Control,Robo,1,6,0,2,0,1,7,6,6,6,4,3,1,1,3,9,0,0,4c_PolG
-76d5155d-ffc5-43c1-9510-1b2c27883f16,1,¿? (revisar),Salida,1,4,4,2,1,1,6,6,5,4,2,2,1,1,3,8,4,0,4c_PolG
-76d5155d-ffc5-43c1-9510-1b2c27883f16,2,¿? (revisar),Robo,1,5,8,1,0,0,7,7,8,4,4,3,0,2,2,12,6,0,4c_PolG
+76d5155d-ffc5-43c1-9510-1b2c27883f16,1,GW Birthing Ritual,Salida,1,4,4,2,1,1,6,6,5,4,2,2,1,1,3,8,4,0,4c_PolG
+76d5155d-ffc5-43c1-9510-1b2c27883f16,2,GW Birthing Ritual,Robo,1,5,8,1,0,0,7,7,8,4,4,3,0,2,2,12,6,0,4c_PolG
 0d961857-ede8-4aee-94c2-18506eb66105,1,Boros Energy,Salida,1,5,6,0,0,0,7,7,5,4,4,3,1,1,0,10,3,0,4c_PolG
 0d961857-ede8-4aee-94c2-18506eb66105,2,Boros Energy,Robo,1,7,6,2,0,0,7,7,10,6,6,3,0,2,3,15,3,0,4c_PolG
 c9769568-364b-46c6-a4ff-8928237c0896,1,Grixis Reanimator,Salida,1,4,0,0,1,1,6,6,3,4,2,2,1,1,0,7,1,1,4c_PolG
@@ -163,10 +163,10 @@ c9769568-364b-46c6-a4ff-8928237c0896,3,Grixis Reanimator,Salida,1,5,1,2,0,1,7,6,
 46411b6d-7069-458c-991f-c7321dec3b00,3,Eldrazi,Salida,0,4,1,0,0,0,7,7,3,4,4,3,1,1,0,3,0,0,4c_PolG
 19a8178f-63ef-4b53-a171-0a5714f5fda3,1,Izzet Affinity,Salida,1,2,2,0,0,2,7,5,3,2,2,2,1,1,0,4,0,0,4c_PolG
 19a8178f-63ef-4b53-a171-0a5714f5fda3,2,Izzet Affinity,Robo,1,7,31,5,0,1,7,6,12,12,7,3,0,4,5,17,2,0,4c_PolG
-5e4e366b-a7b1-48bd-a823-7c0a454d3287,1,¿? (revisar),Robo,0,3,0,0,0,0,7,7,2,2,2,2,1,1,0,2,0,0,4c_PolG
-5e4e366b-a7b1-48bd-a823-7c0a454d3287,2,¿? (revisar),Salida,0,8,4,3,0,2,7,5,10,8,5,3,0,2,5,11,4,1,4c_PolG
-94c9e75c-8c88-48c3-8be1-f98eefa840ee,1,¿? (revisar),Robo,0,10,2,0,0,1,7,6,9,12,6,3,0,5,5,14,4,1,4c_PolG
-94c9e75c-8c88-48c3-8be1-f98eefa840ee,2,¿? (revisar),Salida,0,4,0,0,0,1,7,6,4,3,2,2,1,1,0,4,0,0,4c_PolG
+5e4e366b-a7b1-48bd-a823-7c0a454d3287,1,Cosmogoyf Combo,Robo,0,3,0,0,0,0,7,7,2,2,2,2,1,1,0,2,0,0,4c_PolG
+5e4e366b-a7b1-48bd-a823-7c0a454d3287,2,Cosmogoyf Combo,Salida,0,8,4,3,0,2,7,5,10,8,5,3,0,2,5,11,4,1,4c_PolG
+94c9e75c-8c88-48c3-8be1-f98eefa840ee,1,Merfolk,Robo,0,10,2,0,0,1,7,6,9,12,6,3,0,5,5,14,4,1,4c_PolG
+94c9e75c-8c88-48c3-8be1-f98eefa840ee,2,Merfolk,Salida,0,4,0,0,0,1,7,6,4,3,2,2,1,1,0,4,0,0,4c_PolG
 e374128a-368c-4536-aafc-cdc89ce9d702,1,Broodscale,Salida,0,6,0,3,1,1,6,6,7,9,4,3,1,1,4,9,2,0,feralo77
 e374128a-368c-4536-aafc-cdc89ce9d702,2,Broodscale,Salida,0,6,0,0,0,0,7,7,6,6,5,3,1,1,0,8,2,0,feralo77
 dc40834c-85ad-4880-b63b-c17e91264235,1,Esper Goryo's,Robo,1,5,3,2,0,1,7,6,5,4,5,3,0,2,4,8,1,1,feralo77
@@ -188,9 +188,9 @@ bb7b0286-7f95-43a9-ba8e-a7846e11993a,1,Grixis Frog/Reanimator,Robo,1,4,2,1,0,1,7
 d816e48c-41ed-4a2d-b209-fc3ea83164b9,1,Broodscale,Salida,0,6,8,1,0,0,7,7,5,7,2,1,1,1,6,8,2,0,feralo77
 d816e48c-41ed-4a2d-b209-fc3ea83164b9,2,Broodscale,Salida,1,5,0,0,0,1,7,6,6,4,4,3,1,1,2,7,3,0,feralo77
 d816e48c-41ed-4a2d-b209-fc3ea83164b9,3,Broodscale,Robo,1,3,0,0,0,0,7,7,5,2,3,3,1,1,0,6,1,0,feralo77
-3ce63980-35b8-445a-ac25-c9f04ad0aa35,1,Boros Energy,Robo,0,4,0,1,0,1,7,6,4,3,2,2,1,1,3,4,1,0,feralo77
-3ce63980-35b8-445a-ac25-c9f04ad0aa35,2,Boros Energy,Salida,1,4,3,0,0,0,7,7,3,3,3,2,0,2,0,6,3,0,feralo77
-3ce63980-35b8-445a-ac25-c9f04ad0aa35,3,Boros Energy,Robo,0,4,1,0,1,0,6,7,5,3,2,2,1,1,0,5,1,0,feralo77
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,1,Sam Combo,Robo,0,4,0,1,0,1,7,6,4,3,2,2,1,1,3,4,1,0,feralo77
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,2,Sam Combo,Salida,1,4,3,0,0,0,7,7,3,3,3,2,0,2,0,6,3,0,feralo77
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,3,Sam Combo,Robo,0,4,1,0,1,0,6,7,5,3,2,2,1,1,0,5,1,0,feralo77
 e6102623-accf-4ddc-b334-a80f72bb542e,1,Izzet Prowess,Robo,0,3,0,0,1,0,6,7,4,4,2,2,1,2,0,2,0,0,feralo77
 e6102623-accf-4ddc-b334-a80f72bb542e,2,Izzet Prowess,Salida,0,7,9,1,0,0,7,7,8,8,3,2,1,1,5,10,4,0,feralo77
 7a1d37f5-097e-4d5c-b98a-6cac99874573,1,Esper Goryo's,Robo,0,6,0,0,0,0,7,7,10,6,5,3,1,2,0,7,0,2,feralo77

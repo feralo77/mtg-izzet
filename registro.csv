@@ -1,51 +1,50 @@
 match_uuid,Fecha,Evento / Liga,Lista,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente,Rival,Confianza
-94c9e75c-8c88-48c3-8be1-f98eefa840ee,09/07/2026,,,,¿? (revisar),¿? (revisar),L,0,2,Robo,0,1,,,4c_PolG,log,Tirifolix92,15%
-5e4e366b-a7b1-48bd-a823-7c0a454d3287,09/07/2026,,,,¿? (revisar),¿? (revisar),L,0,2,Robo,0,0,,,4c_PolG,log,porterops,0%
+94c9e75c-8c88-48c3-8be1-f98eefa840ee,09/07/2026,,,,Merfolk,Merfolk,L,0,2,Robo,0,1,,,4c_PolG,log,Tirifolix92,88%
+5e4e366b-a7b1-48bd-a823-7c0a454d3287,09/07/2026,,,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,0,,,4c_PolG,log,porterops,100%
 19a8178f-63ef-4b53-a171-0a5714f5fda3,09/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,0,Salida,0,2,,,4c_PolG,log,Matts,42%
-46411b6d-7069-458c-991f-c7321dec3b00,09/07/2026,,,,Eldrazi,Eldrazi,L,1,2,Robo,0,4,,,4c_PolG,log,icy195,66%
+46411b6d-7069-458c-991f-c7321dec3b00,09/07/2026,,,,Eldrazi,Eldrazi,L,1,2,Robo,0,4,,,4c_PolG,log,icy195,85%
 c9769568-364b-46c6-a4ff-8928237c0896,09/07/2026,,,,Grixis Reanimator,Grixis Reanimator,W,2,1,Salida,1,1,,,4c_PolG,log,BrentJ,47%
 0d961857-ede8-4aee-94c2-18506eb66105,09/07/2026,,,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,Blindside09,100%
-76d5155d-ffc5-43c1-9510-1b2c27883f16,09/07/2026,,,,¿? (revisar),¿? (revisar),W,2,0,Salida,1,1,,,4c_PolG,log,dough_shack,31%
+76d5155d-ffc5-43c1-9510-1b2c27883f16,09/07/2026,,,,GW Birthing Ritual,GW Birthing Ritual,W,2,0,Salida,1,1,,,4c_PolG,log,dough_shack,100%
 6feaaca4-1e27-44c9-8f83-11d6f79d0f48,09/07/2026,,,,Azorius Control,Azorius Control,W,2,0,Salida,0,1,,,4c_PolG,log,grenzos,100%
 0df787ad-a7df-4eca-a7d3-78f67bcc9704,09/07/2026,,,,Azorius Control,Azorius Control,W,2,0,Salida,0,0,,,4c_PolG,log,nobrawn,100%
-ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,09/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Salida,0,0,,,4c_PolG,log,Gianlook,0%
+ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,09/07/2026,,,,Ruby Storm,Ruby Storm,W,2,1,Salida,0,0,,,4c_PolG,log,Gianlook,89%
 a4c01001-0f1c-4b02-a66e-bdd3233ff158,09/07/2026,,,,Ruby Storm,Ruby Storm,L,1,2,Robo,0,1,,,4c_PolG,log,Monkmerlin,100%
 b6afde50-6862-4a83-8dac-de9a08a8bad4,09/07/2026,,,,Grixis Reanimator,Grixis Reanimator,W,2,1,Robo,0,0,,,4c_PolG,log,tetsugaku_zombie,93%
-cfbade0b-daed-403f-a55c-b5624e0a917d,09/07/2026,,,,¿? (revisar),¿? (revisar),L,1,2,Robo,0,1,,,4c_PolG,log,KapoUzumaki11,0%
+cfbade0b-daed-403f-a55c-b5624e0a917d,09/07/2026,,,,Sam Combo,Sam Combo,L,1,2,Robo,0,1,,,4c_PolG,log,KapoUzumaki11,100%
 5c1316e4-1356-4a81-9e45-b662f00bc2af,09/07/2026,,,,Broodscale,Broodscale,W,2,0,Salida,0,0,,,4c_PolG,log,Malox11,46%
-3b52e7d2-39e1-459a-b2a4-d66256101afa,11/07/2026,Liga 1,Pol 1,2,¿? (revisar),¿? (revisar),W,2,0,Salida,0,1,,,4c_PolG,log,Bob49,0%
+3b52e7d2-39e1-459a-b2a4-d66256101afa,10/07/2026,,,,¿? (revisar),¿? (revisar),W,2,0,Salida,0,1,,,4c_PolG,log,Bob49,0%
 d9cb71f7-6b37-4154-aa85-1c4e64bb0a4a,10/07/2026,,,,Boros Ponza,Boros Ponza,W,2,0,Robo,0,0,,,4c_PolG,log,FANELLACCIO,84%
-,11/07/2026,Liga 1,Pol 1,1,Broodscale,Broodscale,,,,,,,,revisar (sin log),4c_PolG,manual,NickDelRivalEnMTGO,
 29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,11/07/2026,Liga 1,Stock,1,Loki,Izzet Affinity,W,2,0,Robo,0,0,,,feralo77,log,MNeon,42%
 0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,2,Devoted,Golgari Yawgmoth,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log,zturchan,47%
 e4b090d8-9bf0-4a39-bcfe-703f18c56740,11/07/2026,Liga 1,Stock,3,Affinity,Izzet Affinity,L,0,2,Robo,0,0,,Paliza,feralo77,log,Dcal215,93%
 b27b88d4-d70c-465f-b832-1fb1f6217358,11/07/2026,Liga 1,Stock,4,Broodscale,Broodscale,W,2,1,Robo,0,0,,,feralo77,log,chylz,100%
 5f239dd1-82c8-4aa4-804b-ace012669679,11/07/2026,Liga 1,Stock,5,Dimir,Dimir Frog,W,2,0,Salida,0,0,,Se estanca en la segunda,feralo77,log,ilprofetaVDR,apunte
 45370f5a-7496-4909-bc25-ef3c52e0373d,11/07/2026,Liga 2,Stock,1,Broodscale,Broodscale,L,0,2,Robo,0,0,,No juego muy bien el match,feralo77,log,DB_BaaL,100%
-df74357a-29ef-4326-af53-700f3e193060,11/07/2026,Liga 1,Pol 1,3,Boros Ponza,Boros Ponza,L,0,2,Robo,0,0,,,4c_PolG,log,Snapcaster1288,93%
-5169dd19-7379-43a3-acab-4fb65ad49b3d,11/07/2026,Liga 1,Pol 1,4,Izzet Affinity,Izzet Affinity,W,2,1,Salida,0,1,,,4c_PolG,log,annihilator8,93%
+df74357a-29ef-4326-af53-700f3e193060,12/07/2026,,,,Boros Ponza,Boros Ponza,L,0,2,Robo,0,0,,,4c_PolG,log,Snapcaster1288,93%
+5169dd19-7379-43a3-acab-4fb65ad49b3d,12/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,1,Salida,0,1,,,4c_PolG,log,annihilator8,93%
 477dc805-7cc1-4060-aace-f97412484124,11/07/2026,Liga 2,Stock,2,¿? (revisar),¿? (revisar),W,1,0,Salida,1,1,,Concede,feralo77,log,Zorro7x4,0%
 b3c6bda6-ea72-42b4-994b-3dec7ec09c21,11/07/2026,Liga 2,Stock,3,Boros,Boros Energy,W,2,1,Robo,0,0,Snare,,feralo77,log,Cesc_95,100%
 2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,4,Vivoras,Sultai Midrange,L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log,Ciraris,apunte
 12341f9b-5f8f-46d6-83dc-45452ecc0109,12/07/2026,Liga 2,Stock,5,Izzet,Izzet Prowess,L,1,2,Salida,0,1,,Me gana las 2 con el doble strike,feralo77,log,beetea,92%
-3cb28fcf-16c3-4f3f-868f-6aa301955aa4,11/07/2026,Liga 1,Pol 1,5,Boros Energy,Boros Energy,W,2,1,Robo,0,0,,,4c_PolG,log,claudioh,88%
+3cb28fcf-16c3-4f3f-868f-6aa301955aa4,12/07/2026,,,,Boros Energy,Boros Energy,W,2,1,Robo,0,0,,,4c_PolG,log,claudioh,88%
 9a452380-38d2-4afe-95dd-41f5f2c6a482,13/07/2026,,,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,zecarlonxo,88%
 ca5dcc9c-dffb-47ac-b2c6-1daae13b0ce5,13/07/2026,,,,Boros Energy,Boros Energy,L,1,2,Robo,0,0,,,4c_PolG,log,Counter_Magic,100%
 02eb2f17-6b45-40de-bfd6-8a7839b907f7,13/07/2026,,,,Boros Energy,Boros Energy,L,0,2,Salida,1,0,,,4c_PolG,log,yriel,95%
 59809b0a-9efa-404f-995a-d21a958561a5,13/07/2026,,,,Living End,Living End,L,0,2,Robo,0,0,,,4c_PolG,log,prizedamalgam,100%
 59467dd1-1288-4722-89b5-f6862b10360a,13/07/2026,,,,Izzet Prowess,Izzet Prowess,W,2,1,Robo,0,0,,,4c_PolG,log,JulianJohn,92%
-397c5889-d59c-4a8e-b573-5569cf872e38,13/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Salida,0,0,,,4c_PolG,log,fart_sniffer_93,0%
+397c5889-d59c-4a8e-b573-5569cf872e38,13/07/2026,,,,Merfolk,Merfolk,W,2,1,Salida,0,0,,,4c_PolG,log,fart_sniffer_93,95%
 1cad81a1-6b14-4a2c-8831-a3947b16a441,13/07/2026,,,,Esper Goryo's,Esper Goryo's,L,0,2,Salida,0,0,,,4c_PolG,log,zutoSamuel,93%
-adf9d8f9-221b-49bd-8e9c-5b37946f14f4,13/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Salida,1,0,,,4c_PolG,log,e0068,16%
+adf9d8f9-221b-49bd-8e9c-5b37946f14f4,13/07/2026,,,,Eldrazi,Eldrazi,W,2,1,Salida,1,0,,,4c_PolG,log,e0068,64%
 82ba98c8-1dd2-440e-b63e-ec635166f8c3,13/07/2026,,,,Azorius Control,Azorius Control,L,0,2,Robo,0,0,,,4c_PolG,log,Simunsorx,71%
-d662e25b-ddd4-4c41-9cc2-d89c651350f2,13/07/2026,,,,¿? (revisar),¿? (revisar),W,2,0,Robo,0,2,,,4c_PolG,log,sekizou,0%
+d662e25b-ddd4-4c41-9cc2-d89c651350f2,13/07/2026,,,,¿? (revisar),¿? (revisar),W,2,0,Robo,0,2,,,4c_PolG,log,sekizou,15%
 9c63337c-f3af-473f-b686-74dcda18eb08,13/07/2026,,,,Golgari Yawgmoth,Golgari Yawgmoth,L,0,2,Salida,0,0,,,4c_PolG,log,Nytrox,47%
 6b307f87-0c75-4eca-9302-56075da4dba4,13/07/2026,Liga 3,Stock,1,MonoB Reanimator,Grixis Reanimator,W,2,1,Salida,1,0,,,feralo77,log,Zores,67%
 97933634-bc3e-4f9d-b425-a72418449d67,14/07/2026,Liga 3,Stock,2,Neoform,Neoform,L,1,2,Robo,0,0,primera grisel al 2,,feralo77,log,Asmodai02,100%
 523f5bd2-321c-4b38-8b54-0f427edbb672,15/07/2026,,,,Amulet Titan,Amulet Titan,L,0,2,Salida,0,0,,,4c_PolG,log,chagu,100%
 23f3ce8d-9ccd-44ae-9e94-60ae77d53f08,15/07/2026,,,,Golgari Yawgmoth,Golgari Yawgmoth,W,2,1,Salida,1,0,,,4c_PolG,log,Shade_Scorpion,47%
 ecd661ab-5399-497c-bc38-8799c8a607c4,15/07/2026,,,,Dimir Frog,Dimir Frog,W,2,0,Robo,0,1,,,4c_PolG,log,KangXiaotian,81%
-efcdfc72-d2e7-4c8d-b7a0-c0234af24c04,15/07/2026,,,,Eldrazi,Eldrazi,L,0,2,Salida,0,1,,,4c_PolG,log,midiowl,44%
+efcdfc72-d2e7-4c8d-b7a0-c0234af24c04,15/07/2026,,,,Eldrazi,Eldrazi,L,0,2,Salida,0,1,,,4c_PolG,log,midiowl,64%
 905d4baa-63b5-4e72-b5d6-0372d2738561,15/07/2026,,,,Ruby Storm,Ruby Storm,W,2,1,Salida,0,0,,,4c_PolG,log,Bachipandi21,100%
 e2ab0481-f981-4c01-ae47-e8c32563dd8d,15/07/2026,,,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,0,1,,,4c_PolG,log,Syparon,42%
 d3d67632-54c8-40d5-86fd-eb4c21a3b656,15/07/2026,,,,Izzet Prowess,Izzet Prowess,W,2,1,Robo,0,0,,,4c_PolG,log,Gobeli,100%
@@ -55,23 +54,23 @@ e6db5229-4b28-4478-9cfc-1c309f0157de,15/07/2026,,,,Grixis Frog/Reanimator,Grixis
 c0725c15-1759-408e-8b7c-b7c9c427edbd,18/07/2026,Liga 3,Stock,3,Ponza,Boros Ponza,W,2,0,Robo,0,0,,,feralo77,log,Jsph,93%
 7a1d37f5-097e-4d5c-b98a-6cac99874573,18/07/2026,Liga 3,Stock,4,Gorys,Esper Goryo's,L,0,2,Robo,0,0,,No le quito bien el atraxa,feralo77,log,kentaro_hokori,93%
 e6102623-accf-4ddc-b334-a80f72bb542e,18/07/2026,Liga 3,Stock,5,Izzet,Izzet Prowess,L,0,2,Robo,1,0,,,feralo77,log,101DeMoNS,100%
-3ce63980-35b8-445a-ac25-c9f04ad0aa35,18/07/2026,Liga 4,PT,1,Sam,Boros Energy,L,1,2,Robo,0,1,soy malo,,feralo77,log,TheeMacSheezy,64%
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,18/07/2026,Liga 4,PT,1,Sam,Sam Combo,L,1,2,Robo,0,1,soy malo,,feralo77,log,TheeMacSheezy,94%
 d816e48c-41ed-4a2d-b209-fc3ea83164b9,18/07/2026,Liga 4,PT,2,Broodscale,Broodscale,W,2,1,Salida,0,0,,,feralo77,log,InspiringPresence,100%
 bb7b0286-7f95-43a9-ba8e-a7846e11993a,18/07/2026,Liga 4,PT,3,Grixis Reanimator,Grixis Frog/Reanimator,W,1,0,Robo,0,1,,,feralo77,log,Durrrr89,65%
 c8505bf6-1d70-4e4e-9cca-44f07c66febf,18/07/2026,Liga 4,PT,4,Dimir,Dimir Frog,L,0,2,Robo,0,0,Lista con namor y 2000 counter,,feralo77,log,SeriousSquid,81%
 8dd0205b-553f-491d-8885-1ad1b3e471f4,19/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,1,Robo,0,1,,,4c_PolG,log,DurdleTurtleLoL,93%
 11840f79-f2f5-4806-b018-e707b60fbd32,19/07/2026,,,,Broodscale,Broodscale,L,0,2,Salida,1,0,,,4c_PolG,log,Bring_back_affinity,100%
 f696164a-4255-4f74-9310-cefddb09caf3,19/07/2026,,,,Esper Goryo's,Esper Goryo's,W,2,1,Salida,1,0,,,4c_PolG,log,MIKOTAM,93%
-61e93b47-fe2c-4d29-90a4-1616d4ef4864,19/07/2026,,,,¿? (revisar),¿? (revisar),L,1,2,Salida,1,0,,,4c_PolG,log,thegreatflow93,22%
+61e93b47-fe2c-4d29-90a4-1616d4ef4864,19/07/2026,,,,Necrodominance,Necrodominance,L,1,2,Salida,1,0,,,4c_PolG,log,thegreatflow93,100%
 2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999,18/07/2026,Liga 4,PT,5,UW,Azorius Control,W,2,0,Robo,0,0,A XISPAS,,feralo77,log,Jijito,71%
 e0c49e67-489a-438b-9017-4bb43b772096,19/07/2026,,,,¿? (revisar),¿? (revisar),W,2,0,Salida,0,0,,,4c_PolG,log,Hayek,0%
 abd74392-c692-42b4-90de-45c181dca0f5,19/07/2026,,,,¿? (revisar),¿? (revisar),L,0,2,Robo,0,1,,,4c_PolG,log,DB_Control4Daze,0%
 1d1326e9-f7e8-4105-80d4-f9119cb6677f,19/07/2026,,,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,0,0,,,4c_PolG,log,DeepDisherino,42%
-94a41a68-7667-4d65-bb03-276a257627fa,20/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Salida,0,2,,,4c_PolG,log,pastelZero,23%
+94a41a68-7667-4d65-bb03-276a257627fa,20/07/2026,,,,Eldrazi Ramp,Eldrazi Ramp,W,2,1,Salida,0,2,,,4c_PolG,log,pastelZero,47%
 c21dedf8-b250-492a-9d12-b67418dcaee4,20/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,1,Robo,0,0,,,4c_PolG,log,YeffPog,93%
 09e0e9b8-95e3-49a6-b34b-0d294e1b9ab6,20/07/2026,,,,Neoform,Neoform,L,0,2,Robo,1,0,,,4c_PolG,log,dolly_d84,100%
-e899efbc-3b8b-4031-8c7c-005ee182c1e1,20/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Salida,1,0,,,4c_PolG,log,ChJet,16%
-d5da430a-b292-4ccb-bc22-5fa0eda0945e,20/07/2026,,,,Ruby Storm,Ruby Storm,W,2,1,Robo,0,2,,,4c_PolG,log,Chazure,93%
+e899efbc-3b8b-4031-8c7c-005ee182c1e1,20/07/2026,,,,Eldrazi,Eldrazi,W,2,1,Salida,1,0,,,4c_PolG,log,ChJet,64%
+d5da430a-b292-4ccb-bc22-5fa0eda0945e,20/07/2026,,,,Ruby Storm,Ruby Storm,W,2,1,Robo,0,2,,,4c_PolG,log,Chazure,94%
 1c723cb8-94a5-49ed-8560-1a230db0c41c,20/07/2026,Liga 5,2.0,1,Through the Breach,Through the Breach,W,2,1,Salida,0,0,"Duros, la ultima a xispas",,feralo77,log,RoccoCocco,100%
 bfd2e15f-1fb7-4aff-9589-139aa5c706f7,20/07/2026,,,,¿? (revisar),¿? (revisar),L,1,2,Salida,2,0,,,4c_PolG,log,,0%
 48c7fa6e-e913-48da-b97e-39f1575c9f57,21/07/2026,,,,Amulet Titan,Amulet Titan,W,2,1,Salida,1,0,,,4c_PolG,log,neatpete8,100%
@@ -79,17 +78,21 @@ fbddc77c-c56c-4cc8-8748-9375c78c6325,21/07/2026,,,,Dimir Frog,Dimir Frog,W,2,1,R
 fcc54cdf-e566-4400-9ef2-618f1818795b,21/07/2026,,,,Neoform,Neoform,W,2,0,Salida,0,0,,,4c_PolG,log,kytk321,100%
 0768dca5-f42b-4f7b-b5aa-b9af70073696,21/07/2026,,,,Esper Goryo's,Esper Goryo's,W,2,1,Robo,1,0,,,4c_PolG,log,Th3L3gend27,93%
 68f213b3-b4d0-4f47-b648-a781b7eab614,21/07/2026,,,,Boros Energy,Boros Energy,L,0,2,Robo,0,0,,,4c_PolG,log,TOP_AI,88%
-f16cf142-496e-41f6-9afd-0de6047552ab,21/07/2026,,,,¿? (revisar),¿? (revisar),L,0,2,Robo,0,1,,,4c_PolG,log,enrouki1,0%
+f16cf142-496e-41f6-9afd-0de6047552ab,21/07/2026,,,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,1,,,4c_PolG,log,enrouki1,100%
+,22/07/2026,Liga 1,Pol 1 NF,2,Boros Energy,Boros Energy,,,,,,,,revisar (sin log),4c_PolG,manual,Somedude127,
+,22/07/2026,Liga 1,Pol 1 NF,3,Eldrazi PT,Eldrazi PT,,,,,,,,Mulligan agresivo para buscar cáliz / triniesfera,4c_PolG,manual,Tarmofaeries,
+,22/07/2026,Liga 1,Pol 1 NF,4,,,,,,,,,,revisar (sin log),4c_PolG,manual,,
+,22/07/2026,Liga 1,Pol 1 NF,5,,,,,,,,,,revisar (sin log),4c_PolG,manual,,
 f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,21/07/2026,Liga 5,2.0,2,MonoB Reanimator,Grixis Reanimator,L,1,2,Robo,0,0,Tendria que haber tirado mulligan en la tercera,,feralo77,log,eckschin,93%
 d5330261-a86d-4d6f-8db2-dc60547443a3,21/07/2026,Liga 5,2.0,3,MonoR Artifacts,MonoR Artifacts,L,0,2,Robo,0,0,Me cruje,,feralo77,log,CrusherBotBG,94%
 dc40834c-85ad-4880-b63b-c17e91264235,21/07/2026,Liga 5,2.0,4,Goryos,Esper Goryo's,L,1,2,Robo,0,1,hUMILADO,,feralo77,log,vinnyrussian123,93%
 0490d733-3ad7-4a16-9d43-b20dbb297c2f,22/07/2026,,,,Azorius Control,Azorius Control,L,1,2,Salida,0,0,,,4c_PolG,log,Galanator,71%
 69a8c5b2-406d-4acd-8368-2716058b6d2e,22/07/2026,,,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,1,0,,,4c_PolG,log,ipakers,93%
-e374128a-368c-4536-aafc-cdc89ce9d702,22/07/2026,Liga 5,2.0,5,Broodscale,Broodscale,L,0,2,Salida,1,1,,,feralo77,log,ls149950,69%
+e374128a-368c-4536-aafc-cdc89ce9d702,22/07/2026,Liga 5,2.0,5,Broodscale,Broodscale,L,0,2,Salida,1,1,,,feralo77,log,ls149950,48%
 d43e65c2-eb56-41d8-9ace-80ef98332ec5,22/07/2026,,,,Grixis Reanimator,Grixis Reanimator,L,0,2,Salida,0,0,,,4c_PolG,log,xITDxxP985x,47%
-1aab62bd-3018-4bcb-bace-437886c88f11,22/07/2026,,,,¿? (revisar),¿? (revisar),W,2,0,Salida,1,0,,,4c_PolG,log,Orpheus819,0%
-ff17944e-41ce-44e9-adbe-30b1461955f6,22/07/2026,,,,¿? (revisar),¿? (revisar),L,1,2,Salida,0,1,,,4c_PolG,log,Dudarudi,0%
-dd2aa23e-c93a-40a7-bbc9-add220569e4e,22/07/2026,,,,¿? (revisar),¿? (revisar),L,0,2,Robo,0,0,,,4c_PolG,log,Niroval,23%
-de67bc4c-a8f7-45a5-834c-f651b839bbf9,22/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Salida,0,1,,,4c_PolG,log,Boce,0%
+1aab62bd-3018-4bcb-bace-437886c88f11,22/07/2026,,,,Elves,Elves,W,2,0,Salida,1,0,,,4c_PolG,log,Orpheus819,80%
+ff17944e-41ce-44e9-adbe-30b1461955f6,22/07/2026,,,,Hollow One,Hollow One,L,1,2,Salida,0,1,,,4c_PolG,log,Dudarudi,100%
+dd2aa23e-c93a-40a7-bbc9-add220569e4e,22/07/2026,,,,Eldrazi Ramp,Eldrazi Ramp,L,0,2,Robo,0,0,,,4c_PolG,log,Niroval,100%
+de67bc4c-a8f7-45a5-834c-f651b839bbf9,22/07/2026,,,,Oracle Combo,Oracle Combo,W,2,1,Salida,0,1,,,4c_PolG,log,Boce,100%
 241c6d98-b967-4522-949e-2931767cb411,22/07/2026,,,,Living End,Living End,W,2,1,Robo,0,0,,,4c_PolG,log,TSTOB,100%
-43e1e1a1-fb2f-4f80-8ecf-352c7afbbfbb,22/07/2026,,,,Dimir Frog,Dimir Frog,L,0,2,Salida,0,0,,,4c_PolG,log,Ardonas,81%
+43e1e1a1-fb2f-4f80-8ecf-352c7afbbfbb,22/07/2026,Liga 1,Pol 1 NF,1,Zoo,Dimir Frog,L,0,2,Salida,0,0,,,4c_PolG,log,Ardonas,81%
