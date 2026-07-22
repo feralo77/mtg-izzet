@@ -1,21 +1,22 @@
-# Guía: dejar el tracker en automático (paso a paso)
+# Guía: dejar los datos en automático (paso a paso)
 
-Objetivo: que los logs de MTGO se conviertan solos en datos del tracker, sin que
-nadie toque nada más que dejar sus ficheros en su carpeta del Drive. Lo montas UNA
-vez (unos 15-20 min) y ya funciona cada día.
+Objetivo: que los logs de MTGO y tus apuntes se conviertan solos en los datos del
+dashboard, sin que nadie toque nada más que su carpeta del Drive. Lo montas UNA vez
+(unos 15-20 min) y ya funciona cada día.
 
-No hace falta saber programar. Sigue los pasos en orden. Si algo no cuadra, para y
-me lo dices.
+No hace falta saber programar. Sigue los pasos en orden. Si algo no cuadra, para y me
+lo dices.
 
 ---
 
 ## Antes de empezar: qué necesitas tener a mano
 - Tu cuenta de Google (la de tu Magic: `falonso2089`).
 - Acceso al repo de GitHub `feralo77/mtg-izzet` (tu cuenta `feralo77`).
-- Estos dos identificadores (cópialos cuando toque):
+- Estos identificadores (cópialos cuando toque):
   - **Carpeta MTG · Izzet**: `16WDaeVHuOtyTaJDrNlVlpgbcN39iVhY6`
-  - **Tracker (Google Sheet)**: su id lo copias de la barra del navegador con el
-    tracker abierto — es la ristra larga de la URL, entre `/d/` y `/edit`.
+  - **Tracker viejo (Google Sheet)**: su id lo copias de la barra del navegador con el
+    tracker abierto — es la ristra larga de la URL, entre `/d/` y `/edit`. Solo se usa
+    para leer tu histórico.
 
 ---
 
@@ -41,30 +42,30 @@ Es una cuenta especial que actúa sola, sin persona detrás. Gratis.
 
 ---
 
-## Paso 2 — Dar permiso al robot (compartir)
+## Paso 2 — Dar permiso al robot (compartir, SOLO lectura)
 
-El robot tiene que poder LEER los logs y ESCRIBIR en el tracker. Se lo das compartiendo,
-igual que compartes con una persona, pero usando el correo del robot del Paso 1.
+El robot solo necesita **LEER**. No escribe en ningún sitio de Google: sus resultados van
+al repo de GitHub. Le das permiso compartiendo, igual que con una persona, usando el correo
+del robot del Paso 1.
 
 1. En Drive, botón derecho sobre la carpeta **MTG · Izzet** → **Compartir** → pega el
    correo del robot → rol **Lector** → Enviar.
-2. Abre el **tracker** (la hoja "MTGO Tracker - Izzet Results") → **Compartir** → pega el
-   correo del robot → rol **Editor** → Enviar.
+2. (Solo para tu histórico) abre el **tracker viejo** → **Compartir** → pega el correo del
+   robot → rol **Lector** → Enviar. **Ya no hace falta darle Editor a nada.**
 
 ---
 
 ## Paso 3 — Guardar los secretos en GitHub
 
-Aquí le dices al automatismo quién es el robot y dónde escribir. Los "secretos" están
-cifrados; nadie los ve.
+Aquí le dices al automatismo quién es el robot y dónde leer. Los "secretos" están cifrados;
+nadie los ve.
 
 1. Ve a **github.com/feralo77/mtg-izzet** → **Settings** (Ajustes) → menú izquierdo
    **Secrets and variables** → **Actions** → botón **New repository secret**.
 2. Crea estos tres (Name exactamente así, y en Secret pegas el valor):
-   - Name: `GOOGLE_SA_KEY` · Secret: **todo el contenido** del fichero `.json` del Paso 1
-     (ábrelo con un editor de texto, selecciona todo, copia y pega).
-   - Name: `TRACKER_SHEET_ID` · Secret: el id del tracker (la ristra larga de la
-     URL de la hoja, entre `/d/` y `/edit`).
+   - Name: `GOOGLE_SA_KEY` · Secret: **todo el contenido** del fichero `.json` del Paso 1.
+   - Name: `TRACKER_SHEET_ID` · Secret: el id del tracker viejo (la ristra larga de su URL,
+     entre `/d/` y `/edit`).
    - Name: `MTG_FOLDER_ID` · Secret: `16WDaeVHuOtyTaJDrNlVlpgbcN39iVhY6`
 
 ---
@@ -74,23 +75,26 @@ cifrados; nadie los ve.
 Por cada compañero que vaya a aportar datos (el tuyo ya está: `feralo77`):
 
 1. Pídele su **nick de MTGO** y pásamelo: lo añado a la lista de jugadores.
-2. En Drive, dentro de **MTG · Izzet**, crea la subcarpeta **`Logs_<sunick>`**
-   (nick exacto) y compártela **solo con él**, como **Editor**.
-3. Envíale la plantilla `docs/Plantilla_Partidas_Liga.xlsx` y el mensaje que
-   tienes listo en [`../docs/instrucciones-companeros.md`](../docs/instrucciones-companeros.md).
+2. En Drive, dentro de **MTG · Izzet**, crea la subcarpeta **`Logs_<sunick>`** (nick exacto)
+   y compártela **solo con él**, como **Editor**. Dentro, crea su hoja de Google
+   **"Partidas — <sunick>"** con las columnas: Fecha · Evento / Liga · Ronda · Lista ·
+   Notas · Mazo rival (opcional).
+3. Envíale el mensaje que tienes listo en
+   [`../docs/instrucciones-companeros.md`](../docs/instrucciones-companeros.md): que deje
+   sus `.dat` en la carpeta y rellene una fila por partida en su hoja.
 
 ---
 
 ## Paso 5 — Encender y comprobar
 
 1. En **github.com/feralo77/mtg-izzet** → pestaña **Actions** → en la izquierda
-   "Actualizar tracker desde los logs" → botón **Run workflow** → Run.
-2. Espera un minuto y ábrelo: si sale verde, mira el tracker: aparecerá una pestaña
-   nueva **Registro-logs** con tus partidas de los logs.
+   "Actualizar datos desde las carpetas" → botón **Run workflow** → Run.
+2. Espera un minuto y ábrelo: si sale verde, el repo tendrá `registro.csv` y `games.csv`
+   actualizados (los verás en un commit automático). El dashboard ya los muestra.
 3. A partir de ahí va **solo cada día**. Cuando quieras forzarlo, repites el Run.
 
-Si el Run sale en rojo, entra en él, copia el mensaje de error y me lo pegas: casi
-siempre es un permiso del Paso 2 o un secreto mal pegado del Paso 3. Lo afinamos.
+Si el Run sale en rojo, entra en él, copia el mensaje de error y me lo pegas: casi siempre
+es un permiso del Paso 2 o un secreto mal pegado del Paso 3. Lo afinamos.
 
 ---
 
@@ -101,11 +105,11 @@ siempre es un permiso del Paso 2 o un secreto mal pegado del Paso 3. Lo afinamos
 Resumen de la tubería, por si lo quieres tener claro:
 
 ```
-Cada jugador deja sus .dat en  Drive/MTG · Izzet/Logs_<nick>/
-      │  (GitHub Action, cada día, con el "robot" de Google)
+Cada jugador, en  Drive/MTG · Izzet/Logs_<nick>/ :  .dat  +  hoja "Partidas — <nick>"
+      │  (GitHub Action, cada día, con el "robot" de Google en SOLO LECTURA)
       ▼
-  parser (solo TUS partidas · sin duplicados)  →  pestaña "Registro-logs" del tracker
+  parser (solo TUS partidas · sin duplicados)  +  emparejar con tus apuntes
       │
       ▼
-  el dashboard se actualiza solo
+  registro.csv  +  games.csv  (commiteados al repo)  →  el dashboard se actualiza solo
 ```

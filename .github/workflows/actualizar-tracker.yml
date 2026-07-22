@@ -1,14 +1,23 @@
-name: Actualizar tracker desde los logs
+name: Actualizar datos desde las carpetas
 
-# Se hace solo: cada día lee los logs del Drive, corre el parser por jugador y
-# actualiza la pestaña "Registro-logs" del tracker. También se puede lanzar a mano.
+# Flujo ÚNICO de datos (carpeta-céntrico). Cada día lee las carpetas Logs_<nick> del
+# Drive (logs + hoja "Partidas — <nick>"), empareja apuntes con partidas y regenera
+# registro.csv y games.csv, commiteándolos si cambian. El robot SOLO lee en Google.
+# También se puede lanzar a mano (Actions -> Run workflow), incluso desde una rama.
 on:
   schedule:
     - cron: "0 6 * * *"      # cada día a las 06:00 UTC
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-datos
+  cancel-in-progress: true
+
 jobs:
-  parse:
+  datos:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,9 +26,23 @@ jobs:
           python-version: "3.12"
       - name: Instalar dependencias
         run: pip install --quiet google-api-python-client google-auth
-      - name: Parsear logs y actualizar el tracker
+
+      - name: Parsear carpetas y regenerar registro.csv + games.csv
         env:
           GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SA_KEY }}
           TRACKER_SHEET_ID: ${{ secrets.TRACKER_SHEET_ID }}
           MTG_FOLDER_ID: ${{ secrets.MTG_FOLDER_ID }}
         run: python automation/pipeline.py
+
+      - name: Commitear si hay cambios
+        run: |
+          if [[ -n "$(git status --porcelain registro.csv games.csv)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add registro.csv games.csv
+            git commit -m "Datos: registro.csv y games.csv desde las carpetas"
+            git push
+            echo "Datos actualizados y subidos."
+          else
+            echo "Sin cambios en los datos."
+          fi

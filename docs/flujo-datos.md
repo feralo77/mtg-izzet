@@ -1,58 +1,55 @@
-# Flujo de datos — logs, complemento y multi-usuario
+# Flujo de datos — logs, apuntes y multi-usuario
 
-Cómo entran los resultados al dashboard sin teclear dos veces, y cómo se registra **quién** aporta cada partida.
+Cómo entran los resultados al dashboard sin teclear dos veces, y cómo se registra **quién**
+aporta cada partida. El montaje es **carpeta-céntrico**: la entrada son las carpetas
+`Logs_<nick>` del Drive; la salida son `registro.csv` y `games.csv` en el repo.
 
 ## Las dos fuentes
 
 | Fuente | Qué aporta | Cómo |
 |---|---|---|
-| **Logs de MTGO** (parser) | Lo automático: fecha, rival, **mazo detectado**, resultado, games, salida/robo (G1), mulligans, `match_uuid` | `mtgo_gamelog_parser.py` |
-| **Complemento** (hoja/Excel) | Lo que el log NO sabe: **Evento/Liga, Ronda, Lista, MVP, Notas** (y arquetipo corregido si hace falta) | a mano, poco |
+| **Logs de MTGO** (parser) | Lo automático: fecha, **mazo detectado**, resultado, games, salida/robo (G1), mulligans, turnos, prowess, monjes, `match_uuid` | `mtgo_gamelog_parser.py` |
+| **Apuntes** (hoja "Partidas — <nick>") | Lo que el log NO sabe: **Evento/Liga, Ronda, Lista, Notas** y, opcional, **Mazo rival** | a mano, poco |
 
-La clave que las une es **`match_uuid`**: el identificador único de cada partida que MTGO escribe en el log. Rellenas la metadata una vez por `match_uuid` y la fusión la pega a la fila automática. **Nunca reescribes lo que el log ya trae.**
+Las dos se cruzan por **fecha (hora de Madrid) + orden cronológico**: la fila n de un día
+se empareja con la partida n de ese día. Nunca reescribes lo que el log ya trae.
 
 ## Multi-usuario: quién reporta
 
-Cargaremos datos varias personas. Por eso cada fila lleva **`Reportado por`**:
-
-- El parser estampa quién corre el volcado: `--reported-by <nombre>` (por defecto, el `--user`).
-- El dashboard tiene un **filtro "Reportado por"** y una **columna** en el detalle.
-- **Anti-duplicados:** todo se **deduplica por `match_uuid`**. Si dos personas suben logs que se solapan, cada partida cuenta **una sola vez** (tanto en la fusión como en el dashboard).
+Cargan datos varias personas. Cada fila lleva **`Reportado por`** (el nick de la carpeta) y
+todo se **deduplica por `match_uuid`**: si dos personas suben logs que se solapan, cada
+partida cuenta **una sola vez**. El dashboard tiene filtro y columna "Reportado por".
 
 ## El pipeline
 
 ```
-   Logs .dat (MTGO)                Complemento (hoja)
-        │  parser                       │  a mano
-        ▼                               ▼
-  registro_mtgo.csv  ── merge_registro.py (por match_uuid) ──►  registro_completo.csv
-        (auto + match_uuid + Reportado por)                          │
-                                                                     ▼
-                                                     Google Sheet publicado (CSV)
-                                                                     │
-                                                                     ▼
-                                                          Dashboard (se lee solo)
+  Drive/MTG · Izzet/Logs_<nick>/ :  .dat  +  hoja "Partidas — <nick>"
+        │  (GitHub Action diaria · cuenta de servicio SOLO LECTURA)
+        ▼
+  automation/pipeline.py
+   · parser: logs -> partidas (solo las del jugador · dedupe por match_uuid)
+   · emparejar apuntes ↔ partidas por fecha (Madrid) + orden cronológico
+   · feralo77: el tracker viejo se lee (solo lectura) como apuntes históricos
+        │
+        ▼
+  registro.csv  +  games.csv  (commiteados al repo)  ->  Dashboard (se lee solo)
 ```
 
-## Paso a paso
+## Reglas de emparejamiento
 
-1. **Volcar tus logs** (cada persona, sus logs):
-   ```bash
-   python3 parser/mtgo_gamelog_parser.py --dir "<carpeta .dat>" --reported-by feralo77 --out registro_mtgo.csv
-   ```
-   Sale un CSV con `match_uuid` y `Reportado por`.
-
-2. **Rellenar el complemento** (`parser/plantilla_complemento.csv`): por cada `match_uuid`, pon solo Evento/Liga, Ronda, Lista, MVP, Notas. Para partidas **en papel** (sin log), deja `match_uuid` vacío y rellena la fila entera.
-
-3. **Fusionar**:
-   ```bash
-   python3 parser/merge_registro.py --logs registro_mtgo.csv --complemento complemento.csv --out registro_completo.csv
-   ```
-
-4. **Publicar**: vuelca `registro_completo.csv` a la hoja de Google que el dashboard lee (o cárgalo con el botón "Cargar CSV"). El dashboard se actualiza solo.
+1. Fechas de logs a **hora de Madrid** antes de cruzar (los `.dat` traen UTC).
+2. **Fecha + orden cronológico**: fila n ↔ partida n.
+3. "Mazo rival" del apunte desambigua contra el arquetipo detectado.
+4. Más partidas que filas → las sobrantes son **práctica** (`Fuente=log`, Evento vacío).
+5. Fila sin partida (papel o log perdido) → sale con `Fuente=manual` y nota de revisar
+   (aquí entra el bye/concede).
+6. Fila de ejemplo (Notas que empieza por "(ejemplo") → se ignora.
 
 ## Notas
 
-- El dashboard lee **por nombre de columna**, no por posición: añadir columnas nuevas no lo rompe.
-- El volcado de logs incluye **partidas de práctica** (no solo Liga). El complemento es donde marcas cuáles son de Liga (Evento/Ronda); el filtro "Liga / Evento" del dashboard separa lo uno de lo otro.
-- `match_uuid`, los logs y las hojas con datos personales **no se suben al repo** (van en `data/`, gitignored).
+- El dashboard lee **por nombre de columna**, no por posición: añadir columnas no lo rompe.
+- El volcado de logs incluye **partidas de práctica** (no solo Liga). El apunte es donde
+  marcas cuáles son de Liga (Evento/Ronda); el filtro "Liga / Evento" del dashboard las separa.
+- `match_uuid`, los logs crudos y las hojas con datos personales **no se suben al repo**.
+- **Privacidad**: en los ficheros publicados no aparece ningún nick de rival; "Mazo del
+  Oponente" lleva el nombre de mazo del apunte o, si no lo hay, el arquetipo detectado.
