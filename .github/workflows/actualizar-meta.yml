@@ -1,0 +1,44 @@
+name: Actualizar meta (mtgtop8 · cada 2 días)
+
+# Baja las listas recientes de UR / Izzet Prowess de mtgtop8 y regenera meta/prowess.json,
+# que alimenta la pestaña "Meta" del dashboard (lista media + varianzas + tendencia + deltas vs tu 75).
+# La TENDENCIA sale de comparar con la propia meta/prowess.json commiteada (la tirada anterior).
+# También se puede lanzar a mano desde la pestaña Actions (Run workflow).
+
+on:
+  schedule:
+    - cron: '0 7 */2 * *'   # 07:00 UTC en días impares del mes (~cada 2 días)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-meta
+  cancel-in-progress: true
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerar meta/prowess.json desde mtgtop8
+        run: node scripts/meta_mtgtop8.mjs --out meta --milista meta/mi-75.json --date "$(date +%F)"
+
+      - name: Commitear si hay cambios
+        run: |
+          if [[ -n "$(git status --porcelain meta/prowess.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add meta/prowess.json
+            git commit -m "Meta: actualización automática de la lista media (mtgtop8)"
+            git push
+            echo "meta/prowess.json actualizado y subido."
+          else
+            echo "Sin cambios en meta/prowess.json."
+          fi

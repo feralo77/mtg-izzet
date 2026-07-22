@@ -230,6 +230,7 @@
     <div class="tab" data-v="logs">Logs MTGO</div>
     <div class="tab claude" data-v="def">La 75 Definitiva</div>
     <div class="tab claude" data-v="sbdef">Plan SB</div>
+    <div class="tab claude" data-v="meta">Meta · mtgtop8</div>
   </nav>
 
   <!-- ===== ESTADÍSTICAS ===== -->
@@ -362,6 +363,20 @@
   <section class="view" id="v-sbdef">
     <div class="author"><span class="ic"></span><div><b>Autor de esta pestaña: Claude</b> · 20-jul-2026. Plan reescrito para el <b>Sideboard Definitivo</b>: <b>4 Consign · 3 Unholy Heat · 2 Tormod's Crypt · 2 Meltdown · 2 Spell Pierce · 1 Spell Snare · 1 Mystical Dispute</b>. Los IN/OUT parten del main Definitivo (sin Flashback, 2 Violent Urge). Regla de oro intacta: <b>nunca diluyas la masa crítica de amenazas</b> (12 criaturas + 4 Cutter). Tu WR real aparece en cada tarjeta.</div></div>
     <div class="sb" id="sbDefCards"></div>
+  </section>
+
+  <!-- ===== META (mtgtop8) · autor: Claude ===== -->
+  <section class="view" id="v-meta">
+    <div class="author"><span class="ic"></span><div><b>Meta del arquetipo &middot; mtgtop8</b> — la "lista media" de UR / Izzet Prowess a partir de los resultados recientes, con varianzas, tendencia (se refresca solo cada 2 días) y cómo se compara con tu 75. Señal <b>direccional</b>: muestra de ~20 listas y meta <b>global</b>; pondéralo con tu meta local de Lleida. Fuente: <span id="metaFuente"></span>.</div></div>
+    <div class="kpis" id="metaKpis"></div>
+    <div class="insight" id="metaSug"></div>
+    <div class="panel full" style="margin-bottom:16px"><h3>Tu 75 vs el campo <span>&middot; qué juega el campo que tú no &middot; dónde te desvías</span></h3><div id="metaDeltas"></div></div>
+    <div class="grid">
+      <div class="panel"><h3>Lista media — Main <span>(consenso &middot; copias típicas &middot; rango)</span></h3><div id="metaMain"></div></div>
+      <div class="panel"><h3>Sideboard <span>(fijas del consenso + slots en disputa)</span></h3><div id="metaSide"></div></div>
+    </div>
+    <div class="panel full" style="margin-bottom:16px"><h3>Tendencia <span>&middot; cambios respecto a la tirada anterior (cada 2 días)</span></h3><div id="metaTrend"></div></div>
+    <div class="panel full"><h3>Agregado por carta <span>&middot; % de listas &middot; copias típicas &middot; rango min–max = varianza</span></h3><div style="overflow-x:auto"><table id="metaTbl"></table></div></div>
   </section>
 
   <!-- ===== LOGS MTGO (panel real del parser · autor: Claude) ===== -->
@@ -594,6 +609,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   if(t.dataset.v==='lists')renderMeta();
   if(t.dataset.v==='stats')render();
   if(t.dataset.v==='play')renderPlay();
+  if(t.dataset.v==='meta')renderMetaTab();
 });
 
 function uniq(f){return [...new Set(MATCHES.map(d=>d[f]))];}
@@ -756,6 +772,51 @@ function renderLogs(){
   $('logTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
     LOGDEMO.map(d=>`<tr><td>${d.op}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.g}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td style="white-space:normal;color:var(--tx2)">${d.cards}</td></tr>`).join('')+'</tbody>';
   renderFields();renderScout();
+}
+// ===== META (mtgtop8) · autor: Claude — lista media, varianzas, tendencia y deltas vs tu 75 =====
+// El fichero vivo meta/prowess.json lo refresca una GitHub Action cada 2 dias (scripts/meta_mtgtop8.mjs).
+// Si no carga (p. ej. abierto en local sin ese fichero), cae a este snapshot embebido.
+const META_SNAPSHOT = {"generado":"2026-07-22","fuente":"https://mtgtop8.com/archetype?a=351&meta=54&f=MO","mazos":20,"consenso":84,"listaMedia":{"main":[{"n":"Dragon's Rage Channeler","q":4},{"n":"Lava Dart","q":4},{"n":"Lightning Bolt","q":4},{"n":"Mishra's Bauble","q":4},{"n":"Monastery Swiftspear","q":4},{"n":"Preordain","q":4},{"n":"Slickshot Show-Off","q":4},{"n":"Mutagenic Growth","q":4},{"n":"Steam Vents","q":3},{"n":"Mountain","q":3},{"n":"Cori-Steel Cutter","q":4},{"n":"Wooded Foothills","q":4},{"n":"Bloodstained Mire","q":4},{"n":"Fiery Islet","q":2},{"n":"Thundering Falls","q":1},{"n":"Expressive Iteration","q":4},{"n":"Arid Mesa","q":2},{"n":"Violent Urge","q":2},{"n":"Scalding Tarn","q":2}],"side":[{"n":"Unholy Heat","q":3},{"n":"Consign to Memory","q":4},{"n":"Meltdown","q":2},{"n":"Spell Pierce","q":2},{"n":"Tormod's Crypt","q":1},{"n":"Spell Snare","q":1}],"totalMain":63,"totalSide":13,"sideDisputa":[{"n":"Murktide Regent","pct":30,"q":1},{"n":"Surgical Extraction","pct":30,"q":1},{"n":"Prismari Charm","pct":20,"q":2},{"n":"Assault Strobe","pct":20,"q":1},{"n":"Expressive Iteration","pct":15,"q":4},{"n":"Thoughtseize","pct":15,"q":3},{"n":"Mystical Dispute","pct":15,"q":1},{"n":"Soul-Guide Lantern","pct":15,"q":1}]},"main":[{"n":"Dragon's Rage Channeler","decks":20,"pct":100,"avg":4,"typical":4,"min":4,"max":4},{"n":"Lava Dart","decks":20,"pct":100,"avg":4,"typical":4,"min":4,"max":4},{"n":"Lightning Bolt","decks":20,"pct":100,"avg":4,"typical":4,"min":4,"max":4},{"n":"Mishra's Bauble","decks":20,"pct":100,"avg":4,"typical":4,"min":4,"max":4},{"n":"Monastery Swiftspear","decks":20,"pct":100,"avg":4,"typical":4,"min":4,"max":4},{"n":"Preordain","decks":20,"pct":100,"avg":4,"typical":4,"min":4,"max":4},{"n":"Slickshot Show-Off","decks":20,"pct":100,"avg":3.9,"typical":4,"min":2,"max":4},{"n":"Mutagenic Growth","decks":20,"pct":100,"avg":3.55,"typical":4,"min":1,"max":4},{"n":"Steam Vents","decks":20,"pct":100,"avg":2.9,"typical":3,"min":2,"max":3},{"n":"Mountain","decks":20,"pct":100,"avg":2.7,"typical":3,"min":2,"max":3},{"n":"Cori-Steel Cutter","decks":19,"pct":95,"avg":4,"typical":4,"min":4,"max":4},{"n":"Wooded Foothills","decks":19,"pct":95,"avg":3.11,"typical":4,"min":2,"max":4},{"n":"Bloodstained Mire","decks":19,"pct":95,"avg":2.89,"typical":4,"min":1,"max":4},{"n":"Fiery Islet","decks":19,"pct":95,"avg":1.74,"typical":2,"min":1,"max":2},{"n":"Thundering Falls","decks":19,"pct":95,"avg":1,"typical":1,"min":1,"max":1},{"n":"Expressive Iteration","decks":17,"pct":85,"avg":3.65,"typical":4,"min":2,"max":4},{"n":"Arid Mesa","decks":16,"pct":80,"avg":2.31,"typical":2,"min":1,"max":4},{"n":"Violent Urge","decks":15,"pct":75,"avg":1.6,"typical":2,"min":1,"max":2},{"n":"Scalding Tarn","decks":13,"pct":65,"avg":2.31,"typical":2,"min":1,"max":4},{"n":"Stormchaser's Talent","decks":5,"pct":25,"avg":1.6,"typical":1,"min":1,"max":3},{"n":"Flashback","decks":5,"pct":25,"avg":1.2,"typical":1,"min":1,"max":2},{"n":"Unholy Heat","decks":5,"pct":25,"avg":1,"typical":1,"min":1,"max":1},{"n":"Monstrous Rage","decks":4,"pct":20,"avg":2.75,"typical":3,"min":2,"max":3},{"n":"Assault Strobe","decks":4,"pct":20,"avg":2,"typical":2,"min":2,"max":2},{"n":"Blood Crypt","decks":3,"pct":15,"avg":1,"typical":1,"min":1,"max":1},{"n":"Island","decks":3,"pct":15,"avg":1,"typical":1,"min":1,"max":1},{"n":"Boomerang Basics","decks":2,"pct":10,"avg":2.5,"typical":3,"min":2,"max":3},{"n":"Sacred Foundry","decks":2,"pct":10,"avg":1,"typical":1,"min":1,"max":1},{"n":"Coruscation Mage","decks":1,"pct":5,"avg":4,"typical":4,"min":4,"max":4},{"n":"Spirebluff Canal","decks":1,"pct":5,"avg":4,"typical":4,"min":4,"max":4},{"n":"Barbarian Ring","decks":1,"pct":5,"avg":2,"typical":2,"min":2,"max":2},{"n":"Flooded Strand","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"Snow-Covered Mountain","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"Surgical Extraction","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1}],"side":[{"n":"Unholy Heat","decks":20,"pct":100,"avg":3,"typical":3,"min":2,"max":4},{"n":"Consign to Memory","decks":19,"pct":95,"avg":3.26,"typical":4,"min":2,"max":4},{"n":"Meltdown","decks":18,"pct":90,"avg":1.83,"typical":2,"min":1,"max":3},{"n":"Spell Pierce","decks":17,"pct":85,"avg":1.65,"typical":2,"min":1,"max":3},{"n":"Tormod's Crypt","decks":14,"pct":70,"avg":1.43,"typical":1,"min":1,"max":2},{"n":"Spell Snare","decks":12,"pct":60,"avg":1.75,"typical":1,"min":1,"max":3},{"n":"Murktide Regent","decks":6,"pct":30,"avg":1.17,"typical":1,"min":1,"max":2},{"n":"Surgical Extraction","decks":6,"pct":30,"avg":1,"typical":1,"min":1,"max":1},{"n":"Prismari Charm","decks":4,"pct":20,"avg":1.5,"typical":2,"min":1,"max":2},{"n":"Assault Strobe","decks":4,"pct":20,"avg":1,"typical":1,"min":1,"max":1},{"n":"Expressive Iteration","decks":3,"pct":15,"avg":3.67,"typical":4,"min":3,"max":4},{"n":"Thoughtseize","decks":3,"pct":15,"avg":3.33,"typical":3,"min":3,"max":4},{"n":"Mystical Dispute","decks":3,"pct":15,"avg":1,"typical":1,"min":1,"max":1},{"n":"Soul-Guide Lantern","decks":3,"pct":15,"avg":1,"typical":1,"min":1,"max":1},{"n":"Eddymurk Crab","decks":2,"pct":10,"avg":1.5,"typical":2,"min":1,"max":2},{"n":"Kaito, Bane of Nightmares","decks":2,"pct":10,"avg":1.5,"typical":2,"min":1,"max":2},{"n":"Wear/Tear","decks":2,"pct":10,"avg":1.5,"typical":2,"min":1,"max":2},{"n":"Into the Flood Maw","decks":2,"pct":10,"avg":1,"typical":1,"min":1,"max":1},{"n":"Prismatic Ending","decks":1,"pct":5,"avg":3,"typical":3,"min":3,"max":3},{"n":"Redirect Lightning","decks":1,"pct":5,"avg":2,"typical":2,"min":2,"max":2},{"n":"Roiling Vortex","decks":1,"pct":5,"avg":2,"typical":2,"min":2,"max":2},{"n":"Abhorrent Oculus","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"Abrade","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"End of the Hunt","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"End the Festivities","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"Feed the Swarm","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"Flusterstorm","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"Hurkyl's Recall","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1},{"n":"Nihil Spellbomb","decks":1,"pct":5,"avg":1,"typical":1,"min":1,"max":1}],"tendencia":{"hayPrevio":false,"suben":[],"bajan":[],"nuevas":[],"fuera":[]},"deltas":{"lista":"La 75 Definitiva","campoJuegaYoNo":[{"n":"Bloodstained Mire","pct":95,"zona":"main"},{"n":"Murktide Regent","pct":30,"zona":"side"},{"n":"Surgical Extraction","pct":30,"zona":"side"}],"yoJuegoCampoNo":[{"n":"Mystical Dispute","mio":1,"pct":15,"zona":"side"}],"desviaciones":[{"n":"Wooded Foothills","mio":3,"campo":4,"pct":95,"zona":"main","menor":true},{"n":"Arid Mesa","mio":3,"campo":2,"pct":80,"zona":"main","menor":true},{"n":"Scalding Tarn","mio":3,"campo":2,"pct":65,"zona":"main","menor":true},{"n":"Tormod's Crypt","mio":2,"campo":1,"pct":70,"zona":"side","menor":false}]},"sugerencias":["El campo juega Bloodstained Mire (95% · main) y tu lista no lo lleva.","El campo juega Murktide Regent (30% · side) y tu lista no lo lleva.","El campo juega Surgical Extraction (30% · side) y tu lista no lo lleva.","Tormod's Crypt (side): tu 2, el consenso 1.","Llevas Mystical Dispute (side) pero solo el 15% del campo lo juega."]};
+const MLBL='font-family:var(--mono);font-size:9.5px;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;display:block;margin-bottom:3px';
+let META_DATA=null;
+async function renderMetaTab(){
+  if(!META_DATA){
+    try{const r=await fetch('meta/prowess.json',{cache:'no-store'});META_DATA=(r&&r.ok)?await r.json():META_SNAPSHOT;}
+    catch(e){META_DATA=META_SNAPSHOT;}
+  }
+  paintMeta(META_DATA);
+}
+function paintMeta(j){
+  const pM={},pS={};j.main.forEach(r=>pM[r.n]=r);j.side.forEach(r=>pS[r.n]=r);
+  $('metaFuente').innerHTML=`<a href="${j.fuente}" target="_blank">mtgtop8</a> · ${j.mazos} listas${j.generado?` · ${j.generado}`:''}`;
+  const k=[['','Mazos',j.mazos,'listas top recientes'],['g','Consenso núcleo',j.consenso+'%','del main es fijo'],['p','Lista media',j.listaMedia.totalMain,'cartas de consenso'],['o','SB en disputa',j.listaMedia.sideDisputa.length,'candidatos'],['r','Sugerencias',j.sugerencias.length,'vs tu 75']];
+  $('metaKpis').innerHTML=k.map(x=>`<div class="kpi ${x[0]}"><div class="lab">${x[1]}</div><div class="val">${x[2]}</div><div class="note">${x[3]}</div></div>`).join('');
+  $('metaSug').innerHTML='<div class="ic"></div><div><b>Sugerencias por reglas</b> (datos, no coaching — el criterio de coach lo doy aparte en la conversación):'+(j.sugerencias.length?'<ul style="margin:8px 0 0 18px;line-height:1.75">'+j.sugerencias.map(s=>`<li>${s}</li>`).join('')+'</ul>':' tu 75 coincide con el consenso.')+'</div>';
+  const rM=c=>{const a=pM[c.n]||{pct:'',min:c.q,max:c.q};return `<tr><td style="font-family:var(--mono);text-align:center">${c.q}</td><td>${c.n}</td><td style="font-family:var(--mono);color:var(--tx2)">${a.pct}%</td><td style="font-family:var(--mono);color:var(--tx3)">${a.min}–${a.max}</td></tr>`;};
+  $('metaMain').innerHTML=`<table><thead><tr><th style="text-align:center">Cop</th><th>Carta</th><th>%</th><th>Rango</th></tr></thead><tbody>${j.listaMedia.main.map(rM).join('')}</tbody></table><div style="font-size:11px;color:var(--tx3);margin-top:6px">Suma consenso: ${j.listaMedia.totalMain} cartas · ${j.mazos} listas</div>`;
+  const rSF=c=>{const a=pS[c.n]||{pct:''};return `<tr><td style="font-family:var(--mono);text-align:center">${c.q}</td><td>${c.n}</td><td style="font-family:var(--mono);color:var(--tx2)">${a.pct}%</td></tr>`;};
+  const rSD=c=>`<tr><td style="font-family:var(--mono);text-align:center;color:var(--tx3)">${c.q}</td><td style="color:var(--tx2)">${c.n}</td><td style="font-family:var(--mono);color:var(--mid)">${c.pct}%</td></tr>`;
+  const fijasN=j.listaMedia.side.reduce((s,c)=>s+c.q,0);
+  $('metaSide').innerHTML=`<table><thead><tr><th style="text-align:center">Cop</th><th>Carta</th><th>%</th></tr></thead><tbody>${j.listaMedia.side.map(rSF).join('')}</tbody></table><div style="${MLBL};margin:12px 0 4px">En disputa · ${fijasN} fijas + ${Math.max(15-fijasN,0)} a elegir</div><table><tbody>${j.listaMedia.sideDisputa.map(rSD).join('')}</tbody></table>`;
+  paintDeltas(j.deltas);paintTrend(j.tendencia);
+  const tr=r=>`<tr><td>${r.n}</td><td style="text-align:center">${r.pct}%</td><td style="text-align:center;font-family:var(--mono)">${r.typical}</td><td style="text-align:center;font-family:var(--mono);color:var(--tx2)">${r.avg}</td><td style="text-align:center;font-family:var(--mono);color:var(--tx3)">${r.min}–${r.max}</td></tr>`;
+  const sc=t=>`<tr><td colspan="5" style="font-family:var(--mono);color:var(--tx2);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding-top:14px">${t}</td></tr>`;
+  $('metaTbl').innerHTML=`<thead><tr><th>Carta</th><th style="text-align:center">%</th><th style="text-align:center">Típ</th><th style="text-align:center">Media</th><th style="text-align:center">Rango</th></tr></thead><tbody>${sc('Maindeck')}${j.main.map(tr).join('')}${sc('Sideboard')}${j.side.map(tr).join('')}</tbody>`;
+}
+function paintDeltas(d){
+  if(!d){$('metaDeltas').innerHTML='<div style="color:var(--tx2)">Sin lista de referencia. Crea <b>meta/mi-75.json</b> con tu 75.</div>';return;}
+  const tag=z=>`<span class="tag">${z}</span>`;
+  const A=d.campoJuegaYoNo.map(c=>`<div>· <b style="color:var(--winL)">${c.n}</b> — campo ${c.pct}% ${tag(c.zona)}</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
+  const Cc=d.yoJuegoCampoNo.map(c=>`<div>· <b>${c.n}</b> ${tag(c.zona)} — solo ${c.pct}% del campo</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
+  const B=d.desviaciones.filter(x=>!x.menor).map(c=>`<div>· <b>${c.n}</b> ${tag(c.zona)} — tú ${c.mio}, consenso ${c.campo}</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
+  const Bm=d.desviaciones.filter(x=>x.menor).map(c=>`${c.n} (${c.mio}/${c.campo})`).join(' · ');
+  $('metaDeltas').innerHTML=`<div class="io" style="grid-template-columns:1fr 1fr;gap:18px"><div><span style="${MLBL}">El campo juega y tú no · ${d.lista}</span><div style="font-size:12.5px;line-height:1.75">${A}</div></div><div><span style="${MLBL}">Tú juegas y el campo apenas</span><div style="font-size:12.5px;line-height:1.75">${Cc}</div></div></div><div style="margin-top:14px"><span style="${MLBL}">Desvíos de conteo</span><div style="font-size:12.5px;line-height:1.75">${B}</div>${Bm?`<div style="font-size:11px;color:var(--tx3);margin-top:5px">Manabase (ruido ±1, no accionable): ${Bm}</div>`:''}</div>`;
+}
+function paintTrend(t){
+  if(!t||!t.hayPrevio){$('metaTrend').innerHTML='<div style="color:var(--tx2)">Primera tirada: aún no hay con qué comparar. En la próxima (cada 2 días) verás aquí qué sube, qué baja y qué entra nuevo en el meta.</div>';return;}
+  const ln=(arr,label,color)=>arr.length?`<div style="margin-bottom:6px"><span style="${MLBL};color:${color}">${label}</span>${arr.map(x=>x.de!=null?`${x.n} ${x.de}%→${x.a}%`:x.pctPrev!=null?`${x.n} (era ${x.pctPrev}%)`:`${x.n} ${x.pct}%`).join(' · ')}</div>`:'';
+  const h=[ln(t.suben,'Suben','var(--winL)'),ln(t.bajan,'Bajan','var(--loss)'),ln(t.nuevas,'Nuevas en el meta','var(--u2)'),ln(t.fuera,'Desaparecen','var(--tx2)')].filter(Boolean).join('');
+  $('metaTrend').innerHTML=h||'<div style="color:var(--tx2)">Sin cambios relevantes desde la última tirada.</div>';
 }
 // ---- Fuente de datos remota: Google Sheet del Drive publicado como CSV ----
 // Pega aquí la URL "Archivo → Compartir → Publicar en la web → CSV" de tu hoja de resultados
