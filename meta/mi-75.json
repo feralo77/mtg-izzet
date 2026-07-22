@@ -1,0 +1,33 @@
+{
+  "nombre": "La 75 Definitiva",
+  "nota": "Lista de referencia de Fer (main del campeon JAJC). Si cambias tu 75, edita este fichero: los deltas y sugerencias del meta se calculan contra esto.",
+  "main": [
+    { "n": "Dragon's Rage Channeler", "q": 4 },
+    { "n": "Monastery Swiftspear", "q": 4 },
+    { "n": "Slickshot Show-Off", "q": 4 },
+    { "n": "Cori-Steel Cutter", "q": 4 },
+    { "n": "Mishra's Bauble", "q": 4 },
+    { "n": "Lightning Bolt", "q": 4 },
+    { "n": "Lava Dart", "q": 4 },
+    { "n": "Preordain", "q": 4 },
+    { "n": "Expressive Iteration", "q": 4 },
+    { "n": "Mutagenic Growth", "q": 4 },
+    { "n": "Violent Urge", "q": 2 },
+    { "n": "Arid Mesa", "q": 3 },
+    { "n": "Scalding Tarn", "q": 3 },
+    { "n": "Wooded Foothills", "q": 3 },
+    { "n": "Steam Vents", "q": 3 },
+    { "n": "Fiery Islet", "q": 2 },
+    { "n": "Thundering Falls", "q": 1 },
+    { "n": "Mountain", "q": 3 }
+  ],
+  "side": [
+    { "n": "Consign to Memory", "q": 4 },
+    { "n": "Unholy Heat", "q": 3 },
+    { "n": "Tormod's Crypt", "q": 2 },
+    { "n": "Meltdown", "q": 2 },
+    { "n": "Spell Pierce", "q": 2 },
+    { "n": "Spell Snare", "q": 1 },
+    { "n": "Mystical Dispute", "q": 1 }
+  ]
+}
