@@ -1,6 +1,6 @@
 {
-  "nombre": "La 75 Definitiva",
-  "nota": "Lista de referencia de Fer (main del campeon JAJC). Si cambias tu 75, edita este fichero: los deltas y sugerencias del meta se calculan contra esto.",
+  "nombre": "La 75 Definitiva v2 (22-jul-2026)",
+  "nota": "Lista de referencia de Fer, reconstruida el 22-jul sobre 60 listas de mtgtop8 (ventana de 28 dias) y su meta local (registro.csv). Clasica con 2 Violent Urge y Bloodstained Mire en la manabase. Sideboard ponderado a su meta: mirror 0-2 -> Murktide Regent; Esper Goryo's 0-2 -> 2 Tormod's Crypt; meta local lleno de mazos de trigger -> 4 Consign. Si cambias tu 75, edita este fichero: los deltas y sugerencias del meta se calculan contra esto.",
   "main": [
     { "n": "Dragon's Rage Channeler", "q": 4 },
     { "n": "Monastery Swiftspear", "q": 4 },
@@ -13,21 +13,23 @@
     { "n": "Expressive Iteration", "q": 4 },
     { "n": "Mutagenic Growth", "q": 4 },
     { "n": "Violent Urge", "q": 2 },
-    { "n": "Arid Mesa", "q": 3 },
-    { "n": "Scalding Tarn", "q": 3 },
-    { "n": "Wooded Foothills", "q": 3 },
     { "n": "Steam Vents", "q": 3 },
+    { "n": "Mountain", "q": 3 },
+    { "n": "Scalding Tarn", "q": 3 },
+    { "n": "Arid Mesa", "q": 2 },
+    { "n": "Wooded Foothills", "q": 2 },
+    { "n": "Bloodstained Mire", "q": 2 },
     { "n": "Fiery Islet", "q": 2 },
-    { "n": "Thundering Falls", "q": 1 },
-    { "n": "Mountain", "q": 3 }
+    { "n": "Thundering Falls", "q": 1 }
   ],
   "side": [
     { "n": "Consign to Memory", "q": 4 },
     { "n": "Unholy Heat", "q": 3 },
     { "n": "Tormod's Crypt", "q": 2 },
     { "n": "Meltdown", "q": 2 },
-    { "n": "Spell Pierce", "q": 2 },
+    { "n": "Spell Pierce", "q": 1 },
     { "n": "Spell Snare", "q": 1 },
+    { "n": "Murktide Regent", "q": 1 },
     { "n": "Mystical Dispute", "q": 1 }
   ]
 }

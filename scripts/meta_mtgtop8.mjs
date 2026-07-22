@@ -83,12 +83,47 @@ function aggregate(decks, zone, total) {
 
 function readJSON(p) { try { return existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : null; } catch { return null; } }
 
-// --- 1) ids del arquetipo ---------------------------------------------------
-console.error('Bajando pagina del arquetipo...');
-const arch = await get(ARCH_URL);
-const ids = [...new Set([...arch.matchAll(/[?&]d=(\d+)/g)].map((m) => m[1]))];
+// --- 1) ids del arquetipo (buscador con PAGINACION + ventana temporal) -------
+// La pagina de arquetipo (?a=351) esta capada a las ~20 listas mas recientes. El
+// buscador (POST /search con current_page) SI pagina hacia atras: 25 listas/pagina.
+// Asi el espectro es una ventana de semanas, no solo los ultimos 4 dias.
+const SEARCH_URL = 'https://mtgtop8.com/search';
+const WINDOW_DAYS = parseInt(arg('--days', '28'), 10);   // ventana temporal
+const MAX_DECKS   = parseInt(arg('--max', '60'), 10);    // tope de listas a agregar
+const endDate = stamp ? new Date(`${stamp}T12:00:00Z`) : new Date();
+const startDate = new Date(endDate.getTime() - WINDOW_DAYS * 864e5);
+const ddmmyyyy = (d) => `${String(d.getUTCDate()).padStart(2, '0')}/${String(d.getUTCMonth() + 1).padStart(2, '0')}/${d.getUTCFullYear()}`;
+
+async function searchIds() {
+  const body = (p) => `archetype_sel%5BMO%5D=351&format=MO`
+    + `&date_start=${encodeURIComponent(ddmmyyyy(startDate))}`
+    + `&date_end=${encodeURIComponent(ddmmyyyy(endDate))}&current_page=${p}`;
+  const acc = [];
+  for (let p = 1; p <= 12; p++) {
+    let txt;
+    try {
+      const r = await fetch(SEARCH_URL, { method: 'POST', headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded' }, body: body(p) });
+      if (!r.ok) break;
+      txt = await r.text();
+    } catch { break; }
+    const page = [...new Set([...txt.matchAll(/[?&]d=(\d+)/g)].map((m) => m[1]))];
+    const fresh = page.filter((id) => !acc.includes(id));
+    acc.push(...fresh);
+    if (!fresh.length || acc.length >= MAX_DECKS) break;   // sin mas paginas o alcanzado el tope
+    await sleep(150);
+  }
+  return acc.slice(0, MAX_DECKS);
+}
+
+console.error(`Buscando listas en mtgtop8 (ventana ${WINDOW_DAYS} dias hasta ${ddmmyyyy(endDate)}, tope ${MAX_DECKS})...`);
+let ids = await searchIds();
+if (!ids.length) {                              // fallback: pagina del arquetipo (20 recientes)
+  console.error('  buscador vacio -> pagina del arquetipo');
+  const arch = await get(ARCH_URL);
+  ids = [...new Set([...arch.matchAll(/[?&]d=(\d+)/g)].map((m) => m[1]))];
+}
 if (!ids.length) throw new Error('No se encontraron mazos (¿cambio el HTML de mtgtop8?)');
-console.error(`  ${ids.length} mazos`);
+console.error(`  ${ids.length} listas candidatas`);
 
 // --- 2) bajar y parsear -----------------------------------------------------
 const decks = [];
@@ -189,6 +224,7 @@ const out = {
   generado: stamp || null,
   fuente: ARCH_URL,
   mazos: N,
+  ventanaDias: WINDOW_DAYS,
   consenso,
   listaMedia: { main: listaMain, side: listaSide, totalMain, totalSide, sideDisputa },
   main: mainAgg,
