@@ -1,4 +1,4 @@
 {
   "_comment": "Nicks de MTGO de NUESTROS jugadores. El pipeline solo procesa las carpetas Logs_<nick> cuyo nick esté en esta lista, y de cada partida se queda con la del jugador (descarta partidas ajenas/espectadas). Fer añadirá los compañeros aquí.",
-  "players": ["feralo77"]
+  "players": ["feralo77", "4c_PolG", "Inkmaster"]
 }
