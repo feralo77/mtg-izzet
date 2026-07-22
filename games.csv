@@ -1,0 +1,58 @@
+match_uuid,Game,Arquetipo,Salida / Robo,Ganado,Turnos,Prowess,Monjes,Reportado por
+29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,1,Izzet Affinity,Robo,1,4,8,0,feralo77
+29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,2,Izzet Affinity,Robo,1,5,4,0,feralo77
+0115af07-1f16-4850-8811-0e57e8a3d72b,1,Golgari Yawgmoth,Robo,0,4,5,2,feralo77
+0115af07-1f16-4850-8811-0e57e8a3d72b,2,Golgari Yawgmoth,Salida,0,3,1,0,feralo77
+e4b090d8-9bf0-4a39-bcfe-703f18c56740,1,Izzet Affinity,Robo,0,4,2,2,feralo77
+e4b090d8-9bf0-4a39-bcfe-703f18c56740,2,Izzet Affinity,Salida,0,4,1,0,feralo77
+b27b88d4-d70c-465f-b832-1fb1f6217358,1,Broodscale,Robo,1,7,19,0,feralo77
+b27b88d4-d70c-465f-b832-1fb1f6217358,2,Broodscale,Robo,0,7,0,0,feralo77
+b27b88d4-d70c-465f-b832-1fb1f6217358,3,Broodscale,Salida,1,5,2,0,feralo77
+5f239dd1-82c8-4aa4-804b-ace012669679,1,¿? (revisar),Salida,1,5,0,0,feralo77
+5f239dd1-82c8-4aa4-804b-ace012669679,2,¿? (revisar),Robo,1,4,0,1,feralo77
+45370f5a-7496-4909-bc25-ef3c52e0373d,1,Broodscale,Robo,0,5,15,4,feralo77
+45370f5a-7496-4909-bc25-ef3c52e0373d,2,Broodscale,Salida,0,9,5,1,feralo77
+477dc805-7cc1-4060-aace-f97412484124,1,¿? (revisar),Salida,1,3,0,0,feralo77
+b3c6bda6-ea72-42b4-994b-3dec7ec09c21,1,Boros Energy,Robo,1,5,13,2,feralo77
+b3c6bda6-ea72-42b4-994b-3dec7ec09c21,2,Boros Energy,Robo,0,7,0,0,feralo77
+b3c6bda6-ea72-42b4-994b-3dec7ec09c21,3,Boros Energy,Salida,1,5,0,0,feralo77
+2e4ceb70-379b-4be5-996b-2a7892581ae6,1,¿? (revisar),Robo,0,6,1,0,feralo77
+2e4ceb70-379b-4be5-996b-2a7892581ae6,2,¿? (revisar),Salida,1,5,0,0,feralo77
+2e4ceb70-379b-4be5-996b-2a7892581ae6,3,¿? (revisar),Robo,0,6,6,0,feralo77
+12341f9b-5f8f-46d6-83dc-45452ecc0109,1,Izzet Prowess,Salida,0,3,0,1,feralo77
+12341f9b-5f8f-46d6-83dc-45452ecc0109,2,Izzet Prowess,Salida,1,4,5,5,feralo77
+12341f9b-5f8f-46d6-83dc-45452ecc0109,3,Izzet Prowess,Robo,0,4,1,1,feralo77
+6b307f87-0c75-4eca-9302-56075da4dba4,1,Grixis Reanimator,Salida,0,5,4,2,feralo77
+6b307f87-0c75-4eca-9302-56075da4dba4,2,Grixis Reanimator,Salida,1,5,1,0,feralo77
+6b307f87-0c75-4eca-9302-56075da4dba4,3,Grixis Reanimator,Robo,1,4,10,1,feralo77
+97933634-bc3e-4f9d-b425-a72418449d67,1,Neoform,Robo,0,4,3,2,feralo77
+97933634-bc3e-4f9d-b425-a72418449d67,2,Neoform,Salida,1,3,5,3,feralo77
+97933634-bc3e-4f9d-b425-a72418449d67,3,Neoform,Robo,0,7,4,0,feralo77
+c0725c15-1759-408e-8b7c-b7c9c427edbd,1,Boros Ponza,Robo,1,5,1,0,feralo77
+c0725c15-1759-408e-8b7c-b7c9c427edbd,2,Boros Ponza,Robo,1,8,7,1,feralo77
+7a1d37f5-097e-4d5c-b98a-6cac99874573,1,Esper Goryo's,Robo,0,6,0,0,feralo77
+7a1d37f5-097e-4d5c-b98a-6cac99874573,2,Esper Goryo's,Salida,0,6,1,1,feralo77
+e6102623-accf-4ddc-b334-a80f72bb542e,1,Izzet Prowess,Robo,0,3,0,0,feralo77
+e6102623-accf-4ddc-b334-a80f72bb542e,2,Izzet Prowess,Salida,0,7,9,1,feralo77
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,1,Boros Energy,Robo,0,4,0,1,feralo77
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,2,Boros Energy,Salida,1,4,3,0,feralo77
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,3,Boros Energy,Robo,0,4,1,0,feralo77
+d816e48c-41ed-4a2d-b209-fc3ea83164b9,1,Broodscale,Salida,0,6,8,1,feralo77
+d816e48c-41ed-4a2d-b209-fc3ea83164b9,2,Broodscale,Salida,1,5,0,0,feralo77
+d816e48c-41ed-4a2d-b209-fc3ea83164b9,3,Broodscale,Robo,1,3,0,0,feralo77
+bb7b0286-7f95-43a9-ba8e-a7846e11993a,1,Grixis Frog/Reanimator,Robo,1,4,2,1,feralo77
+c8505bf6-1d70-4e4e-9cca-44f07c66febf,1,Dimir Frog,Robo,0,12,1,0,feralo77
+c8505bf6-1d70-4e4e-9cca-44f07c66febf,2,Dimir Frog,Salida,0,7,6,0,feralo77
+2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999,1,Azorius Control,Robo,1,8,13,3,feralo77
+2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999,2,Azorius Control,Robo,1,9,4,0,feralo77
+1c723cb8-94a5-49ed-8560-1a230db0c41c,1,¿? (revisar),Salida,0,4,4,1,feralo77
+1c723cb8-94a5-49ed-8560-1a230db0c41c,2,¿? (revisar),Salida,1,5,5,0,feralo77
+1c723cb8-94a5-49ed-8560-1a230db0c41c,3,¿? (revisar),Robo,1,5,8,4,feralo77
+f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,1,Grixis Reanimator,Robo,1,5,13,1,feralo77
+f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,2,Grixis Reanimator,Robo,0,5,0,0,feralo77
+f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,3,Grixis Reanimator,Salida,0,6,4,1,feralo77
+d5330261-a86d-4d6f-8db2-dc60547443a3,1,¿? (revisar),Robo,0,6,10,0,feralo77
+d5330261-a86d-4d6f-8db2-dc60547443a3,2,¿? (revisar),Salida,0,4,0,0,feralo77
+dc40834c-85ad-4880-b63b-c17e91264235,1,Esper Goryo's,Robo,1,5,3,2,feralo77
+dc40834c-85ad-4880-b63b-c17e91264235,2,Esper Goryo's,Robo,0,5,2,0,feralo77
+dc40834c-85ad-4880-b63b-c17e91264235,3,Esper Goryo's,Salida,0,4,2,2,feralo77
