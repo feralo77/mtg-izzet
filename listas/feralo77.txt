@@ -1,4 +1,4 @@
-# feralo77 — La 75 Definitiva (referencia)
+# feralo77 · La 75 Definitiva v2 (22-jul-2026)
 4 Dragon's Rage Channeler
 4 Monastery Swiftspear
 4 Slickshot Show-Off
@@ -10,19 +10,20 @@
 4 Expressive Iteration
 4 Mutagenic Growth
 2 Violent Urge
-3 Arid Mesa
-3 Scalding Tarn
-3 Wooded Foothills
 3 Steam Vents
+3 Mountain
+3 Scalding Tarn
+2 Arid Mesa
+2 Wooded Foothills
+2 Bloodstained Mire
 2 Fiery Islet
 1 Thundering Falls
-3 Mountain
 
-Sideboard
 4 Consign to Memory
 3 Unholy Heat
 2 Tormod's Crypt
 2 Meltdown
-2 Spell Pierce
+1 Spell Pierce
 1 Spell Snare
+1 Murktide Regent
 1 Mystical Dispute
