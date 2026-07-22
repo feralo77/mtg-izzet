@@ -36,11 +36,11 @@ jobs:
 
       - name: Commitear si hay cambios
         run: |
-          if [[ -n "$(git status --porcelain registro.csv games.csv)" ]]; then
+          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add registro.csv games.csv
-            git commit -m "Datos: registro.csv y games.csv desde las carpetas"
+            git add registro.csv games.csv scouting.csv
+            git commit -m "Datos: registro.csv, games.csv y scouting.csv desde las carpetas"
             git push
             echo "Datos actualizados y subidos."
           else

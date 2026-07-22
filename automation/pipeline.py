@@ -18,9 +18,11 @@ Cada día, sin que nadie toque nada:
 El robot NO escribe en ningún Google Sheet: SOLO lee. Scopes: drive.readonly +
 spreadsheets.readonly. Por eso el 403 de escritura del flujo anterior desaparece por diseño.
 
-Privacidad: ningún nick de rival de MTGO sale en los ficheros. En "Mazo del Oponente"
-va el nombre de mazo legacy si el apunte lo trae; si no, el ARQUETIPO detectado por el
-parser. La columna "Arquetipo" lleva siempre el arquetipo detectado.
+Nicks de rivales: PÚBLICOS por decisión de Fer (2026-07-22). La columna "Rival" lleva
+el nick de MTGO del oponente (sale del log); "Mazo del Oponente" sigue llevando el
+nombre de mazo del apunte o el ARQUETIPO detectado, y "Confianza" la confianza del
+clasificador. Además se escribe scouting.csv (agregado por rival: récord, mazos,
+cartas vistas) para preparar la ronda cuando se repite oponente en la MoL.
 
 Variables de entorno (secretos de GitHub):
   GOOGLE_SA_KEY       JSON de la cuenta de servicio
@@ -32,7 +34,7 @@ Jugadores registrados: automation/jugadores.json  {"players": ["feralo77", ...]}
 """
 import os, sys, json, csv, tempfile
 from pathlib import Path
-from collections import defaultdict
+from collections import defaultdict, Counter
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
@@ -49,7 +51,9 @@ REGISTRO_COLS = ["match_uuid", "Fecha", "Evento / Liga", "Lista", "Ronda",
                  "Mazo del Oponente", "Arquetipo", "Resultado (W/L)", "Juegos Ganados",
                  "Juegos Perdidos", "Salida / Robo (G1)", "Mulligans (Yo)",
                  "Mulligans (Rival)", "Cartas Clave / MVP", "Notas de Match / Sideboard",
-                 "Reportado por", "Fuente"]
+                 "Reportado por", "Fuente", "Rival", "Confianza"]
+SCOUT_COLS = ["Rival", "Matches", "Récord", "WR %", "Mazo(s)", "Confianza media",
+              "Turnos medios", "Cartas más vistas", "Visto por"]
 GAMES_COLS = ["match_uuid", "Game", "Arquetipo", "Salida / Robo", "Ganado", "Turnos",
               "Prowess", "Monjes", "Mulls yo", "Mulls rival", "Mano yo", "Mano rival",
               "Robos yo", "Robos rival", "Tierras yo", "Tierras T1-3", "Accion T1",
@@ -268,6 +272,7 @@ def _fila_pareja(m, a, nick):
         'Salida / Robo (G1)': m['salida_robo'], 'Mulligans (Yo)': m['mull_local'],
         'Mulligans (Rival)': m['mull_opp'], 'Cartas Clave / MVP': a['mvp'],
         'Notas de Match / Sideboard': a['notas'], 'Reportado por': nick, 'Fuente': 'log',
+        'Rival': m.get('opp') or '', 'Confianza': f"{int(m.get('confianza', 0) * 100)}%",
     }
 
 def _fila_practica(m, nick):
@@ -279,6 +284,7 @@ def _fila_practica(m, nick):
         'Salida / Robo (G1)': m['salida_robo'], 'Mulligans (Yo)': m['mull_local'],
         'Mulligans (Rival)': m['mull_opp'], 'Cartas Clave / MVP': '',
         'Notas de Match / Sideboard': '', 'Reportado por': nick, 'Fuente': 'log',
+        'Rival': m.get('opp') or '', 'Confianza': f"{int(m.get('confianza', 0) * 100)}%",
     }
 
 def _fila_manual(a, nick):
@@ -291,6 +297,7 @@ def _fila_manual(a, nick):
         'Mulligans (Rival)': a['mull_opp'], 'Cartas Clave / MVP': a['mvp'],
         'Notas de Match / Sideboard': a['notas'] or 'revisar (sin log)',
         'Reportado por': a.get('reportado_por') or nick, 'Fuente': 'manual',
+        'Rival': '', 'Confianza': '',
     }
 
 def _games_de_match(m, nick):
@@ -414,6 +421,46 @@ def emparejar(matches, apuntes, nick):
                          'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
     return registro, games
 
+# ------------------------------------------------------------- scouting por rival
+def scouting_por_rival(matches_por_nick):
+    """Agrega por RIVAL (nick de MTGO): récord nuestro, mazos que le hemos visto,
+    confianza del clasificador, turnos medios y sus cartas más vistas. Alimenta
+    scouting.csv y la pestaña Scouting del dashboard (nicks públicos por decisión
+    de Fer, 2026-07-22)."""
+    by = {}
+    for nick, matches in matches_por_nick:
+        for m in matches:
+            opp = m.get('opp')
+            if not opp:
+                continue
+            r = by.setdefault(opp, {'n': 0, 'w': 0, 'l': 0, 'arqs': Counter(), 'conf': [],
+                                    'turns': [], 'cards': Counter(), 'vistos': set()})
+            r['n'] += 1
+            if m['resultado'] == 'W':
+                r['w'] += 1
+            elif m['resultado'] == 'L':
+                r['l'] += 1
+            r['arqs'][m['arquetipo']] += 1
+            r['conf'].append(m.get('confianza', 0))
+            if m.get('turns_avg'):
+                r['turns'].append(m['turns_avg'])
+            for c in m.get('opp_cards', []):
+                r['cards'][c] += 1
+            r['vistos'].add(nick)
+    filas = []
+    for opp, r in sorted(by.items(), key=lambda kv: (-kv[1]['n'], kv[0].lower())):
+        jugados = r['w'] + r['l']
+        filas.append({
+            'Rival': opp, 'Matches': r['n'], 'Récord': f"{r['w']}-{r['l']}",
+            'WR %': f"{round(100 * r['w'] / jugados)}%" if jugados else '',
+            'Mazo(s)': ", ".join(f"{a} ({k})" if k > 1 else a for a, k in r['arqs'].most_common()),
+            'Confianza media': f"{int(100 * sum(r['conf']) / len(r['conf']))}%" if r['conf'] else '',
+            'Turnos medios': round(sum(r['turns']) / len(r['turns']), 1) if r['turns'] else '',
+            'Cartas más vistas': P.top_cards(r['cards'], 12),
+            'Visto por': ", ".join(sorted(r['vistos'])),
+        })
+    return filas
+
 # ------------------------------------------------------------------------ escritura
 def escribir_csv(path, cols, filas):
     with open(path, 'w', newline='', encoding='utf-8') as fh:
@@ -446,7 +493,7 @@ def main():
     logs_folders = [f for f in list_children(drive, folder_id, only_folders=True)
                     if f['name'].startswith('Logs_')]
     tmp = Path(tempfile.mkdtemp())
-    registro_all, games_all = [], []
+    registro_all, games_all, scout_src = [], [], []
 
     for lf in logs_folders:
         nick = lf['name'][len('Logs_'):]
@@ -476,6 +523,7 @@ def main():
         reg, gm = emparejar(matches, apuntes, nick)
         registro_all += reg
         games_all += gm
+        scout_src.append((nick, matches))
         print(f"- {nick}: {len(gl)} ficheros -> {len(matches)} partidas · "
               f"apuntes: {len(sheet_apuntes)} hoja + {len(apuntes) - len(sheet_apuntes)} legacy "
               f"-> {len(reg)} filas de registro / {len(gm)} games")
@@ -493,10 +541,12 @@ def main():
 
     escribir_csv(REPO / 'registro.csv', REGISTRO_COLS, filas)
     escribir_csv(REPO / 'games.csv', GAMES_COLS, games_all)
+    scout = scouting_por_rival(scout_src)
+    escribir_csv(REPO / 'scouting.csv', SCOUT_COLS, scout)
     logs = sum(1 for f in filas if f['Fuente'] == 'log')
     manual = sum(1 for f in filas if f['Fuente'] == 'manual')
     print(f"OK: registro.csv -> {len(filas)} filas ({logs} log + {manual} manual) · "
-          f"games.csv -> {len(games_all)} games.")
+          f"games.csv -> {len(games_all)} games · scouting.csv -> {len(scout)} rivales.")
 
 if __name__ == '__main__':
     main()
