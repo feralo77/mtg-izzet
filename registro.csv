@@ -1,27 +1,27 @@
-match_uuid,Fecha,Evento / Liga,Lista,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente
-,11/07/2026,Liga 2,Stock,2,NA,NA,W,1,0,Salida,1,1,,Concede,feralo77,manual
-29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,11/07/2026,Liga 1,Stock,1,Loki,Izzet Affinity,W,2,0,Robo,0,0,,,feralo77,log
-0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,2,Devoted,Golgari Yawgmoth,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log
-e4b090d8-9bf0-4a39-bcfe-703f18c56740,11/07/2026,Liga 1,Stock,3,Affinity,Izzet Affinity,L,0,2,Robo,0,0,,Paliza,feralo77,log
-b27b88d4-d70c-465f-b832-1fb1f6217358,11/07/2026,Liga 1,Stock,4,Broodscale,Broodscale,W,2,1,Robo,0,0,,,feralo77,log
-5f239dd1-82c8-4aa4-804b-ace012669679,11/07/2026,Liga 1,Stock,5,Dimir,¿? (revisar),W,2,0,Salida,0,0,,Se estanca en la segunda,feralo77,log
-45370f5a-7496-4909-bc25-ef3c52e0373d,11/07/2026,Liga 2,Stock,1,Broodscale,Broodscale,L,0,2,Robo,0,0,,No juego muy bien el match,feralo77,log
-477dc805-7cc1-4060-aace-f97412484124,12/07/2026,,,,¿? (revisar),¿? (revisar),W,1,0,Salida,1,1,,,feralo77,log
-b3c6bda6-ea72-42b4-994b-3dec7ec09c21,11/07/2026,Liga 2,Stock,3,Boros,Boros Energy,W,2,1,Robo,0,0,Snare,,feralo77,log
-2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,4,Vivoras,¿? (revisar),L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log
-12341f9b-5f8f-46d6-83dc-45452ecc0109,12/07/2026,Liga 2,Stock,5,Izzet,Izzet Prowess,L,1,2,Salida,0,1,,Me gana las 2 con el doble strike,feralo77,log
-6b307f87-0c75-4eca-9302-56075da4dba4,13/07/2026,Liga 3,Stock,1,MonoB Reanimator,Grixis Reanimator,W,2,1,Salida,1,0,,,feralo77,log
-97933634-bc3e-4f9d-b425-a72418449d67,14/07/2026,Liga 3,Stock,2,Neoform,Neoform,L,1,2,Robo,0,0,primera grisel al 2,,feralo77,log
-c0725c15-1759-408e-8b7c-b7c9c427edbd,18/07/2026,Liga 3,Stock,3,Ponza,Boros Ponza,W,2,0,Robo,0,0,,,feralo77,log
-7a1d37f5-097e-4d5c-b98a-6cac99874573,18/07/2026,Liga 3,Stock,4,Gorys,Esper Goryo's,L,0,2,Robo,0,0,,No le quito bien el atraxa,feralo77,log
-e6102623-accf-4ddc-b334-a80f72bb542e,18/07/2026,Liga 3,Stock,5,Izzet,Izzet Prowess,L,0,2,Robo,1,0,,,feralo77,log
-3ce63980-35b8-445a-ac25-c9f04ad0aa35,18/07/2026,Liga 4,PT,1,Sam,Boros Energy,L,1,2,Robo,0,1,soy malo,,feralo77,log
-d816e48c-41ed-4a2d-b209-fc3ea83164b9,18/07/2026,Liga 4,PT,2,Broodscale,Broodscale,W,2,1,Salida,0,0,,,feralo77,log
-bb7b0286-7f95-43a9-ba8e-a7846e11993a,18/07/2026,Liga 4,PT,3,Grixis Reanimator,Grixis Frog/Reanimator,W,1,0,Robo,0,1,,,feralo77,log
-c8505bf6-1d70-4e4e-9cca-44f07c66febf,18/07/2026,Liga 4,PT,4,Dimir,Dimir Frog,L,0,2,Robo,0,0,Lista con namor y 2000 counter,,feralo77,log
-2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999,18/07/2026,Liga 4,PT,5,UW,Azorius Control,W,2,0,Robo,0,0,A XISPAS,,feralo77,log
-1c723cb8-94a5-49ed-8560-1a230db0c41c,20/07/2026,Liga 5,2.0,1,Through the Breach,¿? (revisar),W,2,1,Salida,0,0,"Duros, la ultima a xispas",,feralo77,log
-f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,21/07/2026,Liga 5,2.0,2,MonoB Reanimator,Grixis Reanimator,L,1,2,Robo,0,0,Tendria que haber tirado mulligan en la tercera,,feralo77,log
-d5330261-a86d-4d6f-8db2-dc60547443a3,21/07/2026,Liga 5,2.0,3,MonoR Artifacts,¿? (revisar),L,0,2,Robo,0,0,Me cruje,,feralo77,log
-dc40834c-85ad-4880-b63b-c17e91264235,21/07/2026,Liga 5,2.0,4,Goryos,Esper Goryo's,L,1,2,Robo,0,1,hUMILADO,,feralo77,log
-e374128a-368c-4536-aafc-cdc89ce9d702,22/07/2026,,,,Broodscale,Broodscale,L,0,2,Salida,1,1,,,feralo77,log
+match_uuid,Fecha,Evento / Liga,Lista,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente,Rival,Confianza
+,11/07/2026,Liga 2,Stock,2,NA,NA,W,1,0,Salida,1,1,,Concede,feralo77,manual,,
+29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,11/07/2026,Liga 1,Stock,1,Loki,Izzet Affinity,W,2,0,Robo,0,0,,,feralo77,log,MNeon,42%
+0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,2,Devoted,Golgari Yawgmoth,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log,zturchan,47%
+e4b090d8-9bf0-4a39-bcfe-703f18c56740,11/07/2026,Liga 1,Stock,3,Affinity,Izzet Affinity,L,0,2,Robo,0,0,,Paliza,feralo77,log,Dcal215,93%
+b27b88d4-d70c-465f-b832-1fb1f6217358,11/07/2026,Liga 1,Stock,4,Broodscale,Broodscale,W,2,1,Robo,0,0,,,feralo77,log,chylz,100%
+5f239dd1-82c8-4aa4-804b-ace012669679,11/07/2026,Liga 1,Stock,5,Dimir,¿? (revisar),W,2,0,Salida,0,0,,Se estanca en la segunda,feralo77,log,ilprofetaVDR,24%
+45370f5a-7496-4909-bc25-ef3c52e0373d,11/07/2026,Liga 2,Stock,1,Broodscale,Broodscale,L,0,2,Robo,0,0,,No juego muy bien el match,feralo77,log,DB_BaaL,100%
+477dc805-7cc1-4060-aace-f97412484124,12/07/2026,,,,¿? (revisar),¿? (revisar),W,1,0,Salida,1,1,,,feralo77,log,Zorro7x4,0%
+b3c6bda6-ea72-42b4-994b-3dec7ec09c21,11/07/2026,Liga 2,Stock,3,Boros,Boros Energy,W,2,1,Robo,0,0,Snare,,feralo77,log,Cesc_95,100%
+2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,4,Vivoras,¿? (revisar),L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log,Ciraris,31%
+12341f9b-5f8f-46d6-83dc-45452ecc0109,12/07/2026,Liga 2,Stock,5,Izzet,Izzet Prowess,L,1,2,Salida,0,1,,Me gana las 2 con el doble strike,feralo77,log,beetea,92%
+6b307f87-0c75-4eca-9302-56075da4dba4,13/07/2026,Liga 3,Stock,1,MonoB Reanimator,Grixis Reanimator,W,2,1,Salida,1,0,,,feralo77,log,Zores,67%
+97933634-bc3e-4f9d-b425-a72418449d67,14/07/2026,Liga 3,Stock,2,Neoform,Neoform,L,1,2,Robo,0,0,primera grisel al 2,,feralo77,log,Asmodai02,100%
+c0725c15-1759-408e-8b7c-b7c9c427edbd,18/07/2026,Liga 3,Stock,3,Ponza,Boros Ponza,W,2,0,Robo,0,0,,,feralo77,log,Jsph,93%
+7a1d37f5-097e-4d5c-b98a-6cac99874573,18/07/2026,Liga 3,Stock,4,Gorys,Esper Goryo's,L,0,2,Robo,0,0,,No le quito bien el atraxa,feralo77,log,kentaro_hokori,93%
+e6102623-accf-4ddc-b334-a80f72bb542e,18/07/2026,Liga 3,Stock,5,Izzet,Izzet Prowess,L,0,2,Robo,1,0,,,feralo77,log,101DeMoNS,100%
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,18/07/2026,Liga 4,PT,1,Sam,Boros Energy,L,1,2,Robo,0,1,soy malo,,feralo77,log,TheeMacSheezy,64%
+d816e48c-41ed-4a2d-b209-fc3ea83164b9,18/07/2026,Liga 4,PT,2,Broodscale,Broodscale,W,2,1,Salida,0,0,,,feralo77,log,InspiringPresence,100%
+bb7b0286-7f95-43a9-ba8e-a7846e11993a,18/07/2026,Liga 4,PT,3,Grixis Reanimator,Grixis Frog/Reanimator,W,1,0,Robo,0,1,,,feralo77,log,Durrrr89,65%
+c8505bf6-1d70-4e4e-9cca-44f07c66febf,18/07/2026,Liga 4,PT,4,Dimir,Dimir Frog,L,0,2,Robo,0,0,Lista con namor y 2000 counter,,feralo77,log,SeriousSquid,81%
+2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999,18/07/2026,Liga 4,PT,5,UW,Azorius Control,W,2,0,Robo,0,0,A XISPAS,,feralo77,log,Jijito,71%
+1c723cb8-94a5-49ed-8560-1a230db0c41c,20/07/2026,Liga 5,2.0,1,Through the Breach,¿? (revisar),W,2,1,Salida,0,0,"Duros, la ultima a xispas",,feralo77,log,RoccoCocco,23%
+f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,21/07/2026,Liga 5,2.0,2,MonoB Reanimator,Grixis Reanimator,L,1,2,Robo,0,0,Tendria que haber tirado mulligan en la tercera,,feralo77,log,eckschin,93%
+d5330261-a86d-4d6f-8db2-dc60547443a3,21/07/2026,Liga 5,2.0,3,MonoR Artifacts,¿? (revisar),L,0,2,Robo,0,0,Me cruje,,feralo77,log,CrusherBotBG,30%
+dc40834c-85ad-4880-b63b-c17e91264235,21/07/2026,Liga 5,2.0,4,Goryos,Esper Goryo's,L,1,2,Robo,0,1,hUMILADO,,feralo77,log,vinnyrussian123,93%
+e374128a-368c-4536-aafc-cdc89ce9d702,22/07/2026,,,,Broodscale,Broodscale,L,0,2,Salida,1,1,,,feralo77,log,ls149950,69%

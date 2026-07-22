@@ -5,7 +5,8 @@ Autotests del emparejamiento apuntes ↔ partidas (pipeline.py), con fixtures si
 No tocan Google: prueban la lógica pura. Ejecuta:  python3 automation/test_emparejamiento.py
 Casos: pareja básica, día con práctica intercalada (mid-secuencia), sesión de madrugada que
 cae el día siguiente (00:30 hora de Madrid), fila de papel (sin log), fila de ejemplo,
-bye/concede sin log, privacidad (sin nicks de rival) y que la hoja gana al tracker legacy.
+bye/concede sin log, nicks de rival públicos (columna Rival; decisión de Fer 2026-07-22),
+scouting por rival y que la hoja gana al tracker legacy.
 """
 import sys
 from pathlib import Path
@@ -144,13 +145,37 @@ def test_fila_ejemplo_ignorada():
     print("OK fila_ejemplo_ignorada")
 
 
-def test_privacidad_sin_nicks():
-    ms = [match('u1', utc(2026, 7, 13, 18, 0), 'Neoform', res='L', jg=1, jp=2, opp='SECRET_RIVAL_NICK')]
+def test_nicks_de_rival_publicos():
+    # Decisión de Fer (2026-07-22): el nick del rival SÍ sale, en su columna "Rival".
+    # "Mazo del Oponente" y "Arquetipo" siguen siendo nombres de mazo, nunca el nick.
+    ms = [match('u1', utc(2026, 7, 13, 18, 0), 'Neoform', res='L', jg=1, jp=2, opp='RIVAL_NICK')]
     aps = [apunte('13/07/2026', 'Liga 3', '2', mazo='Neoform', res='L', jg=1, jp=2)]
     reg, games = PL.emparejar(ms, aps, 'feralo77')
-    blob = str(rows(reg)) + str(games)
-    assert 'SECRET_RIVAL_NICK' not in blob, 'se ha filtrado un nick de rival'
-    print("OK privacidad_sin_nicks")
+    r = rows(reg)
+    assert r[0]['Rival'] == 'RIVAL_NICK', r[0]
+    assert r[0]['Mazo del Oponente'] == 'Neoform' and r[0]['Arquetipo'] == 'Neoform', r[0]
+    assert 'RIVAL_NICK' not in str(games), 'games.csv no lleva nicks (no los necesita)'
+    # una fila manual (sin log) no tiene nick
+    reg2, _ = PL.emparejar([], [apunte('14/07/2026', 'Liga 3', '3', mazo='Amulet Titan', res='W', jg=2, jp=0)], 'feralo77')
+    assert rows(reg2)[0]['Rival'] == ''
+    print("OK nicks_de_rival_publicos")
+
+
+def test_scouting_por_rival():
+    ms1 = [match('u1', utc(2026, 7, 13, 18, 0), 'Neoform', res='L', jg=1, jp=2, opp='Rivalote'),
+           match('u2', utc(2026, 7, 14, 18, 0), 'Neoform', res='W', jg=2, jp=0, opp='Rivalote')]
+    ms2 = [match('u3', utc(2026, 7, 15, 18, 0), 'Dimir Frog', res='W', jg=2, jp=1, opp='Rivalote')]
+    for m in ms1 + ms2:
+        m['confianza'] = 0.8
+        m['turns_avg'] = 5.0
+        m['opp_cards'] = ['Neoform', 'Allosaurus Rider']
+    filas = PL.scouting_por_rival([('feralo77', ms1), ('Inkmaster', ms2)])
+    assert len(filas) == 1 and filas[0]['Rival'] == 'Rivalote', filas
+    assert filas[0]['Matches'] == 3 and filas[0]['Récord'] == '2-1', filas[0]
+    assert 'Neoform (2)' in filas[0]['Mazo(s)'] and 'Dimir Frog' in filas[0]['Mazo(s)']
+    assert filas[0]['Visto por'] == 'Inkmaster, feralo77'
+    assert 'Neoform x3' in filas[0]['Cartas más vistas']
+    print("OK scouting_por_rival")
 
 
 def test_hoja_gana_legacy():
@@ -181,7 +206,8 @@ if __name__ == '__main__':
     test_fila_papel()
     test_bye_no_consume_match()
     test_fila_ejemplo_ignorada()
-    test_privacidad_sin_nicks()
+    test_nicks_de_rival_publicos()
+    test_scouting_por_rival()
     test_hoja_gana_legacy()
     test_norm_fecha_y_bye()
     print("\nTodos los autotests del emparejamiento OK")
