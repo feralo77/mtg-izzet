@@ -259,7 +259,7 @@
 
     <div class="grid">
       <div class="panel"><h3>Veredicto de la semana post-PT</h3>
-        <div class="idea"><span class="n"></span><div><b>El paquete Stormchaser/Boomerang NO ha sobrevivido.</b> En las 7 listas top de la semana: 0 Boomerang Basics y solo 1 Stormchaser's Talent (como 1-of en la variante burn). La build clásica lo ha ganado todo. Descarta la "Variante Stormchaser (propuesta)" de la pestaña Listas.</div></div>
+        <div class="idea"><span class="n"></span><div><b>El paquete Stormchaser/Boomerang NO ha sobrevivido.</b> En las 7 listas top de la semana: 0 Boomerang Basics y solo 1 Stormchaser's Talent (como 1-of en la variante burn). La build clásica lo ha ganado todo. La variante Stormchaser quedó descartada (y retirada de la pestaña Listas el 22-jul).</div></div>
         <div class="idea"><span class="n"></span><div><b>Tu Stock estaba a 2 cartas del campeón.</b> JAJC (1º, 9-0) juega tu mismo main con <b>−1 Flashback / +1 Violent Urge</b>… y tu manabase EXACTA (3 Mesa, 3 Tarn, 3 Foothills, 3 Vents, 2 Islet, 1 Falls, 3 Mountain). Tu duda de la Bloodstained Mire queda resuelta: no hace falta.</div></div>
         <div class="idea"><span class="n"></span><div><b>El slot 30 sigue partido:</b> JAJC y runbad juegan 2ª Violent Urge sin Flashback; jvidarte, jeffleeph28 y SkyThZ mantienen 1 Flashback. La Definitiva sigue al campeón: la Urge es mejor en el espejo (primera fuerza), donde vas 0-2.</div></div>
         <div class="idea"><span class="n"></span><div><b>Ha nacido una variante "burn"</b> (EthanBird y Dingo34, mismas 75): 2 Assault Strobe + 3 Monstrous Rage en el main, 0 Violent Urge y las Expressive Iteration al sideboard. Tres resultados top en 3 días — vigílala, pero aún sin muestra para copiarla.</div></div>
@@ -677,7 +677,7 @@ function setTheme(t){
   if(v==='stats')render();else if(v==='lists')renderMeta();
 }
 function renderLists(){
-  $('metaNote').innerHTML="He analizado <b>12 listas</b>: las <b>3 del Pro Tour Ámsterdam</b> (Detecnik, Chin, Edel) + el <b>consenso de 9 listas top</b> de finales de junio/julio (tu proyecto). Tu <b>Stock</b> (main) es muy parecida a la de Chin y tu <b>sideboard ya está adaptado al PT</b> (2 Spell Snare, Surgical Extraction). Lo único que aún no pruebas es el paquete <span style='color:var(--winL);font-weight:700'>Stormchaser's Talent + Boomerang Basics</span>.";
+  $('metaNote').innerHTML="Aquí quedan solo <b>tus listas</b> (decisión del 22-jul: fuera referencias externas). El análisis de las listas top y la síntesis de lista viven en la pestaña <b>La 75 Definitiva</b>; abajo, el metajuego del Pro Tour como contexto.";
   $('decks').innerHTML=LISTS.map(l=>`<div class="deck"><div class="dh"><span class="dn">${l.name}</span><span class="badge ${l.badge}">${l.badge==='you'?'TÚ':'PRO TOUR'}</span></div><div class="dt">${l.tag}</div><div class="cl">${l.main.map(s=>`<div class="sec">${s[0]}</div><div>${s[1]}</div>`).join('')}<div class="sec">Sideboard</div><div>${l.side}</div>${l.url?`<div style="margin-top:8px"><a href="${l.url}" target="_blank">Ver lista completa</a></div>`:''}</div></div>`).join('');
 }
 // ---- La 75 Definitiva (Claude) ----
