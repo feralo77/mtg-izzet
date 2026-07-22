@@ -90,6 +90,20 @@ def is_bye(mazo):
     return m in {'na', 'n/a', 'bye', 'concede', 'n/a (bye/concede)', 'bye/concede',
                  'bye / concede', 'sin rival'}
 
+# Nombres cortos que se usan en los apuntes -> arquetipo canónico del dashboard.
+# Se aplican cuando el clasificador no llega ('¿? (revisar)') y el apunte SÍ trae mazo.
+CANON = {
+    'dimir': 'Dimir Frog', 'vivoras': 'Sultai Midrange', 'gorys': "Esper Goryo's",
+    'goryos': "Esper Goryo's", 'breach': 'Through the Breach', 'sam': 'Sam Combo',
+    'loki': 'Azorius Loki', 'devoted': 'Devoted Combo', 'affinity': 'Izzet Affinity',
+    'izzet': 'Izzet Prowess', 'ponza': 'Boros Ponza', 'boros': 'Boros Energy',
+    'uw': 'Azorius Control', 'monob reanimator': 'Reanimator (MonoB)',
+    'monor artifacts': 'MonoR Artifacts',
+}
+
+def canon_mazo(s):
+    return CANON.get(key(s), norm(s))
+
 # ------------------------------------------------------------- clientes Google (lectura)
 def clients():
     from google.oauth2 import service_account
@@ -238,8 +252,12 @@ def apuntes_de_valores(values, origen, nick):
         if not any(norm(c) for c in cells):
             continue
         a = _apunte_from_row(header_keys, cells, origen, nick)
-        if key(a['notas']).startswith('(ejemplo'):   # fila de ejemplo -> ignorar
-            continue
+        # Fila con nota "(ejemplo...)": NO se descarta a ciegas — puede ser una fila real
+        # editada sobre la plantilla (caso real: Liga 5 R5 de Fer). Se marca y decide el
+        # emparejamiento: si casa con un log es real; si no, se tira (nunca crea manual).
+        if key(a['notas']).startswith('(ejemplo'):
+            a['es_ejemplo'] = True
+            a['notas'] = ''                          # el texto de plantilla no aporta
         if not a['fecha'] and not a['mazo_rival'] and not a['evento']:
             continue
         out.append(a)
@@ -262,8 +280,16 @@ def combinar_apuntes(base, override):
     return out
 
 # -------------------------------------------------------------------- emparejamiento
+def _mazo_apunte(m, a):
+    """El mazo del apunte, salvo que el usuario haya escrito ahí el NICK del rival
+    (error frecuente: la casilla es para el mazo) — en ese caso se ignora."""
+    mazo = a['mazo_rival']
+    if mazo and key(mazo) == key(m.get('opp') or ''):
+        return ''
+    return mazo
+
 def _fila_pareja(m, a, nick):
-    mazo = a['mazo_rival'] or m['arquetipo']       # nombre legacy o arquetipo, NUNCA el nick
+    mazo = _mazo_apunte(m, a) or m['arquetipo']    # nombre del apunte o arquetipo detectado
     return {
         'match_uuid': m['match_uuid'], 'Fecha': a['fecha'] or m['_fecha'], 'Evento / Liga': a['evento'],
         'Lista': a['lista'], 'Ronda': a['ronda'], 'Mazo del Oponente': mazo,
@@ -272,7 +298,7 @@ def _fila_pareja(m, a, nick):
         'Salida / Robo (G1)': m['salida_robo'], 'Mulligans (Yo)': m['mull_local'],
         'Mulligans (Rival)': m['mull_opp'], 'Cartas Clave / MVP': a['mvp'],
         'Notas de Match / Sideboard': a['notas'], 'Reportado por': nick, 'Fuente': 'log',
-        'Rival': m.get('opp') or '', 'Confianza': f"{int(m.get('confianza', 0) * 100)}%",
+        'Rival': m.get('opp') or '', 'Confianza': m.get('confianza_txt') or f"{int(m.get('confianza', 0) * 100)}%",
     }
 
 def _fila_practica(m, nick):
@@ -371,7 +397,7 @@ def emparejar(matches, apuntes, nick):
         m['_fecha'] = m['_madrid'].strftime('%d/%m/%Y') if m['_madrid'] else norm_fecha(m.get('fecha', ''))
 
     logs = sorted(matches, key=lambda m: m['_madrid'] or datetime.min.replace(tzinfo=timezone.utc))
-    byes = [a for a in apuntes if is_bye(a.get('mazo_rival'))]
+    byes = [a for a in apuntes if is_bye(a.get('mazo_rival')) and not a.get('es_ejemplo')]
     reales = [a for a in apuntes if not is_bye(a.get('mazo_rival'))]
 
     # Alineación por programación dinámica (Needleman-Wunsch): emparejar, saltar un log
@@ -401,14 +427,21 @@ def emparejar(matches, apuntes, nick):
         c = bt[i][j]
         if c == 'P':
             a, m = reales[i - 1], logs[j - 1]
+            # Clasificador sin confianza + mazo apuntado por el jugador -> manda el apunte
+            # (normalizado a nombre canónico). La Confianza queda como 'apunte'.
+            mazo_a = _mazo_apunte(m, a)
+            if m['arquetipo'].startswith('¿?') and mazo_a:
+                m['arquetipo'] = canon_mazo(mazo_a)
+                m['confianza_txt'] = 'apunte'
             registro.append({'row': _fila_pareja(m, a, nick), 'sort': _ts(m['_madrid']),
                              'uuid': m['match_uuid']})
             games += _games_de_match(m, nick)
             i -= 1; j -= 1
         elif c == 'A':                            # apunte sin log -> manual (papel/log perdido)
             a = reales[i - 1]
-            registro.append({'row': _fila_manual(a, nick),
-                             'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
+            if not a.get('es_ejemplo'):           # una fila de ejemplo jamás inventa un match
+                registro.append({'row': _fila_manual(a, nick),
+                                 'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
             i -= 1
         else:                                     # log sin apunte -> práctica
             m = logs[j - 1]

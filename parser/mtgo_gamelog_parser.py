@@ -213,6 +213,8 @@ SIG = [
     ('Living End', [('Living End',3),('Shardless Agent',2)]),
     ('Tameshi Belcher', [('Goblin Charbelcher',3)]),
     ('Boros Ponza', [('High Noon',2),('Erode',2),('Demolition Field',1),('Cleansing Wildfire',2),('Magus of the Moon',2),('Price of Freedom',2)]),
+    ('Through the Breach', [('Through the Breach',3),('Nulldrifter',2),("Kozilek's Return",2),('Talisman of Creativity',2)]),
+    ('MonoR Artifacts', [('Legion Extruder',3),('Shrapnel Blast',2),('Galvanic Blast',1),('Kuldotha Rebirth',2)]),
     ('Neoform', [('Neoform',3),('Allosaurus Rider',2),("Summoner's Pact",2)]),
     ('Izzet Prowess', [('Slickshot Show-Off',2),('Cori-Steel Cutter',2),('Monastery Swiftspear',2)]),
     ('Azorius Control', [('Counterspell',1),('Wrath of the Skies',2),('Teferi, Time Raveler',2)]),
@@ -538,6 +540,16 @@ def selftest():
     # (d) señal fuerte de un arquetipo con roce de otro -> gana el fuerte, baja algo la confianza
     arqa, confa, altsa = classify_scored(['Amulet of Vigor','Primeval Titan','Counterspell'])
     assert arqa == 'Amulet Titan', (arqa, altsa)
+    # (e) firmas nuevas 2026-07-22 (cartas reales vistas a RoccoCocco y CrusherBotBG)
+    arqb, confb, _ = classify_scored(['Through the Breach','Nulldrifter',"Kozilek's Return",
+                                      'Talisman of Creativity','Stock Up'])
+    assert arqb == 'Through the Breach' and confb >= 0.6, (arqb, confb)
+    arqm, confm, _ = classify_scored(['Legion Extruder','Shrapnel Blast','Galvanic Blast',
+                                      'Mox Opal','Cori-Steel Cutter'])
+    assert arqm == 'MonoR Artifacts' and confm >= 0.5, (arqm, confm)
+    # y la Affinity azul de verdad no se ve arrastrada por la firma nueva
+    arqaf, _cf, _ = classify_scored(['Kappa Cannoneer','Thought Monitor','Mox Opal',"Urza's Saga"])
+    assert arqaf == 'Izzet Affinity', arqaf
 
     # --- Scouting ---
     scout = scouting_report([m])
