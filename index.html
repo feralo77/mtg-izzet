@@ -188,7 +188,6 @@
     <div class="tab on" data-v="stats">Estadisticas</div>
     <div class="tab" data-v="play">Cómo juegas</div>
     <div class="tab" data-v="lists">Listas</div>
-    <div class="tab" data-v="sb">Sideboard</div>
     <div class="tab" data-v="ideas">Ideas</div>
     <div class="tab" data-v="logs">Logs MTGO</div>
     <div class="tab claude" data-v="def">La 75 Definitiva</div>
@@ -241,15 +240,8 @@
     <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(de tus partidas registradas)</span></h3><div id="wrByList"></div></div>
     <div class="note-lg" id="metaNote"></div>
     <div class="panel full" style="margin-bottom:16px"><h3>Metajuego del Pro Tour Ámsterdam <span>(Modern · 362 jugadores · 17-19 jul 2026)</span></h3><div class="cwrap"><canvas id="chMeta"></canvas></div></div>
-    <h3 style="margin:6px 2px 12px;font-size:15px">Listas de referencia (Pro Tour)</h3>
+    <h3 style="margin:6px 2px 12px;font-size:15px">Tu lista al detalle</h3>
     <div class="decks" id="decks"></div>
-    <div class="panel full" style="margin-top:16px"><h3>Comparativa main deck: tu Stock vs las 3 del Pro Tour <span>(nº de copias)</span></h3><div style="overflow-x:auto"><table id="cmp"></table></div></div>
-  </section>
-
-  <!-- ===== SIDEBOARD ===== -->
-  <section class="view" id="v-sb">
-    <div class="note-lg">Regla de oro: <b>nunca diluyas la masa crítica de amenazas</b> (12 criaturas + 4 Cori-Steel Cutter). Decide antes de la partida: ¿race puro o disrupción + daño sostenido? · El WR real sale de tus partidas registradas.</div>
-    <div class="sb" id="sbCards"></div>
   </section>
 
   <!-- ===== IDEAS ===== -->
@@ -267,7 +259,7 @@
 
     <div class="grid">
       <div class="panel"><h3>Veredicto de la semana post-PT</h3>
-        <div class="idea"><span class="n"></span><div><b>El paquete Stormchaser/Boomerang NO ha sobrevivido.</b> En las 7 listas top de la semana: 0 Boomerang Basics y solo 1 Stormchaser's Talent (como 1-of en la variante burn). La build clásica lo ha ganado todo. Descarta la "Variante Stormchaser (propuesta)" de la pestaña Listas.</div></div>
+        <div class="idea"><span class="n"></span><div><b>El paquete Stormchaser/Boomerang NO ha sobrevivido.</b> En las 7 listas top de la semana: 0 Boomerang Basics y solo 1 Stormchaser's Talent (como 1-of en la variante burn). La build clásica lo ha ganado todo. La variante Stormchaser quedó descartada (y retirada de la pestaña Listas el 22-jul).</div></div>
         <div class="idea"><span class="n"></span><div><b>Tu Stock estaba a 2 cartas del campeón.</b> JAJC (1º, 9-0) juega tu mismo main con <b>−1 Flashback / +1 Violent Urge</b>… y tu manabase EXACTA (3 Mesa, 3 Tarn, 3 Foothills, 3 Vents, 2 Islet, 1 Falls, 3 Mountain). Tu duda de la Bloodstained Mire queda resuelta: no hace falta.</div></div>
         <div class="idea"><span class="n"></span><div><b>El slot 30 sigue partido:</b> JAJC y runbad juegan 2ª Violent Urge sin Flashback; jvidarte, jeffleeph28 y SkyThZ mantienen 1 Flashback. La Definitiva sigue al campeón: la Urge es mejor en el espejo (primera fuerza), donde vas 0-2.</div></div>
         <div class="idea"><span class="n"></span><div><b>Ha nacido una variante "burn"</b> (EthanBird y Dingo34, mismas 75): 2 Assault Strobe + 3 Monstrous Rage en el main, 0 Violent Urge y las Expressive Iteration al sideboard. Tres resultados top en 3 días — vigílala, pero aún sin muestra para copiarla.</div></div>
@@ -398,17 +390,6 @@ const LISTS = [
  {name:"Stock (tu base)",badge:"you",tag:"tu lista actual (deck 7881695) · verificada en mtggoldfish",url:"https://www.mtggoldfish.com/deck/7881695#online",
   main:[["Criaturas (12)","4 Dragon's Rage Channeler · 4 Monastery Swiftspear · 4 Slickshot Show-Off"],["Hechizos (30)","4 Preordain · 4 Expressive Iteration · 4 Lightning Bolt · 4 Lava Dart · 4 Mutagenic Growth · 1 Violent Urge · 1 Flashback · 4 Mishra's Bauble · 4 Cori-Steel Cutter"],["Tierras (18)","3 Arid Mesa · 3 Scalding Tarn · 3 Wooded Foothills · 3 Steam Vents · 2 Fiery Islet · 1 Thundering Falls · 3 Mountain"]],
   side:"1 Assault Strobe · 3 Consign to Memory · 3 Unholy Heat · 2 Meltdown · 2 Spell Pierce · 2 Spell Snare · 1 Surgical Extraction · 1 Prismari Charm"},
- {name:"PT (tu variante)",badge:"you",tag:"jugada en Liga 4",url:"https://www.mtggoldfish.com/deck/7881694#online",
-  main:[["Nota","Tu build para el prep del PT. Ábrela en el enlace para el detalle."]],side:"(ver enlace)"},
- {name:"Detecnik — PT Ámsterdam",badge:"pt",tag:"UR Cutter Prowess · variante Stormchaser",url:"",
-  main:[["Criaturas","4 DRC · 4 Swiftspear · 3 Slickshot"],["Hechizos","4 Cori-Steel Cutter · 4 Bolt · 4 Lava Dart · 4 Preordain · 3 Expressive Iteration · 3 Mutagenic Growth · 1 Violent Urge · 4 Mishra's Bauble · <span class='new'>2 Stormchaser's Talent</span> · <span class='new'>2 Boomerang Basics</span>"],["Tierras (18)","1 Arid Mesa · 2 Bloodstained Mire · 1 Fiery Islet · 1 Island · 3 Mountain · 4 Scalding Tarn · 3 Steam Vents · 1 Thundering Falls · 2 Wooded Foothills"]],
-  side:"3 Consign to Memory · 3 Meltdown · 3 Unholy Heat · 2 Tormod's Crypt · 2 Spell Pierce · 1 Spell Snare · 1 Prismari Charm"},
- {name:"Chin — PT Ámsterdam",badge:"pt",tag:"UR Cutter Prowess · versión clásica (≈ tu Stock)",url:"",
-  main:[["Criaturas","4 DRC · 4 Swiftspear · 4 Slickshot"],["Hechizos","4 Cori-Steel Cutter · 4 Bolt · 4 Lava Dart · 4 Preordain · 4 Expressive Iteration · 4 Mutagenic Growth · 2 Violent Urge · 4 Mishra's Bauble"],["Tierras (18)","2 Arid Mesa · 3 Bloodstained Mire · 1 Fiery Islet · 3 Mountain · 3 Scalding Tarn · 3 Steam Vents · 1 Thundering Falls · 2 Wooded Foothills"]],
-  side:"4 Consign to Memory · 3 Unholy Heat · 2 Meltdown · 2 Spell Pierce · 2 Tormod's Crypt · 1 Spell Snare · 1 Into the Flood Maw"},
- {name:"Edel — PT Ámsterdam",badge:"pt",tag:"UR Cutter Prowess · variante Stormchaser",url:"",
-  main:[["Criaturas","4 DRC · 4 Swiftspear · 4 Slickshot"],["Hechizos","4 Cori-Steel Cutter · 4 Bolt · 4 Lava Dart · 4 Preordain · 2 Expressive Iteration · 2 Mutagenic Growth · 2 Violent Urge · 4 Mishra's Bauble · <span class='new'>2 Stormchaser's Talent</span> · <span class='new'>2 Boomerang Basics</span>"],["Tierras (18)","2 Arid Mesa · 2 Bloodstained Mire · 1 Fiery Islet · 1 Island · 3 Mountain · 4 Scalding Tarn · 3 Steam Vents · 1 Thundering Falls · 1 Wooded Foothills"]],
-  side:"4 Consign to Memory · 4 Unholy Heat · 2 Meltdown · 2 Spell Snare · 1 Spell Pierce · 1 Murktide Regent · 1 Surgical Extraction"},
 ];
 
 // ===== Tus versiones de lista (las que vas pasando) · resultado calculado de tus partidas =====
@@ -418,7 +399,7 @@ const MYLISTS = [
  {key:"PT",name:"PT",deck:"7881694",url:"https://www.mtggoldfish.com/deck/7881694#online",
   desc:"La variante que preparaste para el Pro Tour. La jugaste en la Liga 4."},
  {key:"2.0",name:"2.0",deck:"7881798",url:"https://www.mtggoldfish.com/deck/7881798#online",
-  desc:"Tu versión nueva, estrenada en la Liga 5. Contenido de la lista pendiente de detallar (mtggoldfish bloquea la descarga automática: pásame el texto y lo incrusto)."},
+  desc:"Tu versión nueva, estrenada en la Liga 5."},
 ];
 
 // ===== Qué información sacan los logs de MTGO (inventario de campos del parser) =====
@@ -435,35 +416,6 @@ const PARSER_FIELDS = [
  ["Evento / Liga · Ronda","no","No viene en el log. Se pone a mano o por el complemento (merge_registro.py)."],
  ["Tu lista jugada","no","No viene en el log. Se etiqueta a mano (Stock / PT / 2.0)."],
  ["Manos de salida / turno a turno","no","El log lo tiene, el parser aún no lo extrae. Mejora futura (idea de mymtgo)."],
-];
-
-const CMP = [
- ["Slickshot Show-Off",4,3,4,4],["Expressive Iteration",4,3,4,2],["Mutagenic Growth",4,3,4,2],
- ["Violent Urge",1,1,2,2],["Flashback",1,0,0,0],
- ["Stormchaser's Talent","—",2,0,2],["Boomerang Basics","—",2,0,2],
- ["SB: Spell Snare",2,1,1,2],["SB: Consign to Memory",3,3,4,4],["SB: Surgical Extraction",1,0,0,1],["SB: Tormod's Crypt","—",2,2,0],
-];
-
-const SBPLAN = [
- {aq:"Boros Energy",meta:"11-16%",val:"par",vl:"Parejo",in:"+3 Unholy Heat, +1 Into the Flood Maw",out:"−2 Violent Urge, −1 Flashback, −1 Mutagenic Growth",plan:"Mata Guide of Souls y Ocelot Pride a vista: su lifegain te saca de rango. Race con removal; ojo Static Prison (Growth no salva del exilio)."},
- {aq:"Izzet Affinity",meta:"8-10%",val:"par",vl:"Parejo/fav.",in:"+2 Meltdown, +3 Unholy Heat, +1 Into the Flood Maw",out:"−2 Violent Urge, −1 Flashback, −3 Mutagenic Growth",plan:"Meltdown en el turno de máximo valor; tokens de Munitions dañan al morir. Flood Maw a Kappa (paga ward). Traen Whipflare: no sobreextiendas monjes."},
- {aq:"Izzet Prowess",meta:"7%",val:"par",vl:"Habilidad",in:"+3 Unholy Heat, +2 Spell Pierce, +1 Murktide, +1 Into the Flood Maw",out:"−4 Preordain, −2 Expressive Iteration, −1 Flashback",plan:"Gana quien controla la mesa, no quien más quema. Mata al portador en respuesta al equip de Cutter. Violent Urge se queda."},
- {aq:"Grixis Reanimator",meta:"6-7%",val:"par",vl:"Parejo",in:"+2 Tormod's Crypt, +3 Unholy Heat, +1 Into the Flood Maw",out:"−2 Violent Urge, −1 Flashback, −2 Preordain, −1 Mutagenic Growth",plan:"No actives Crypt gratis: espera al Persist/Unearth en pila. Heat mata Frog y Oculus. Post-side traen Pyroclasm."},
- {aq:"Broodscale",meta:"9-11%",val:"par",vl:"Parejo/fav.",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −1 Flashback, −2 Preordain",plan:"Removal al Broodscale CON el trigger de Blade en pila. Consign a Kozilek's Command y a Ballista. Eres medio turno más rápido."},
- {aq:"Esper Goryo's",meta:"4-9%",val:"des",vl:"DESFAVORABLE",in:"+2 Tormod's Crypt, +3 Unholy Heat, +1 Into the Flood Maw, +2 Spell Pierce",out:"−3 Mutagenic Growth, −2 Violent Urge, −1 Flashback, −2 Preordain",plan:"Tu peor familia. Crypt corta Goryo's; Flood Maw devuelve la Atraxa a la mano. Mata antes de Solitude+Ephemerate."},
- {aq:"Esper / Azorius Blink",meta:"4-6%",val:"des",vl:"DESFAVORABLE",in:"+3 Unholy Heat, +2 Spell Pierce, +1 Murktide, +1 Into the Flood Maw",out:"−3 Mutagenic Growth, −2 Violent Urge, −1 Flashback, −1 Preordain",plan:"Riddler+Ephemerate genera más cartas de las que quemas: ventana de 4-5 turnos. Pierce a Ephemerate/Wrath. Si abunda: Flood Maw → Mystical Dispute."},
- {aq:"Eldrazi Tron / Ramp",meta:"7-10%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +1 Murktide",out:"−4 Lava Dart, −1 Violent Urge",plan:"Consign gana sola: trigger de Chalice, Kozilek's Command, Ugin, Devourer. Lava Dart no mata nada relevante. Race + counters."},
- {aq:"Boros Ponza (LD)",meta:"3.5-4%",val:"par",vl:"Parejo",in:"+2 Spell Pierce, +1 Murktide",out:"−1 Flashback, −2 Lava Dart",plan:"Ganas con 2-3 tierras. Te mata Solitude/Wrath + High Noon. Pierce a High Noon/Wrath. Bajo High Noon: el hechizo que más daño genere."},
- {aq:"Azorius Control",meta:"3-6%",val:"par",vl:"Parejo/desf.",in:"+2 Spell Pierce, +2 Consign to Memory, +1 Murktide",out:"−3 Lava Dart, −2 Violent Urge",plan:"Una amenaza + protección; no vuelques la mano al Wrath. Consign a Isochron Scepter (rompe el lock). Murktide cierra tras el barrido."},
- {aq:"Ruby Storm",meta:"3-4%",val:"par",vl:"Parejo/fav.",in:"+4 Consign to Memory, +2 Spell Pierce",out:"−4 Lava Dart, −2 Violent Urge",plan:"Consign contrarresta el trigger de tormenta de Grapeshot. Pierce a Past in Flames. Bolt a Ral."},
- {aq:"Amulet Titan",meta:"~3%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +2 Spell Pierce, +1 Into the Flood Maw",out:"−4 Lava Dart, −2 Violent Urge, −1 Mutagenic Growth",plan:"Race puro T3-4. Consign a triggers de Amulet/Titan; Flood Maw al Titan por tempo."},
- {aq:"Golgari Yawgmoth",meta:"2.5%",val:"par",vl:"Parejo",in:"+3 Unholy Heat, +2 Tormod's Crypt, +2 Consign to Memory",out:"−3 Mutagenic Growth, −2 Violent Urge, −1 Flashback, −1 Preordain",plan:"Dorks y Yawgmoth mueren a vista. Crypt corta undying/Cauldron; Consign a Ballista/Cauldron."},
- {aq:"Tameshi Belcher",meta:"2.3%",val:"fav",vl:"FAVORABLE",in:"+4 Consign to Memory, +2 Spell Pierce",out:"−4 Lava Dart, −2 Violent Urge",plan:"Consign contrarresta la activación del Belcher (fuente incolora). Race T3-4. Históricamente fuerte para prowess."},
- {aq:"Living End",meta:"2%",val:"fav",vl:"Favorable",in:"+2 Tormod's Crypt, +3 Consign to Memory",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Consign al trigger de cascade: nunca lanzan Living End. Crypt tras resolver su End. Presiona: sus 3 primeros turnos son ciclar."},
- {aq:"Dimir Frog",meta:"local",val:"par",vl:"A afinar",in:"+3 Unholy Heat, +2 Spell Pierce",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Frecuente en tu meta local. Heat mata Psychic Frog; Pierce a sus counters. Define IN/OUT con más muestra (vas 1-1)."},
- {aq:"Sultai Midrange",meta:"local/emerg.",val:"par",vl:"A afinar",in:"+3 Unholy Heat, +2 Spell Pierce",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Midrange justo (Psychic Frog, removal, disrupción). Heat mata sus amenazas; presiona antes de que grindeen y te superen en cartas. Vas 0-1."},
- {aq:"Azorius Loki",meta:"PT/emerg.",val:"par",vl:"A afinar",in:"+2 Spell Pierce, +2 Consign to Memory, +1 Murktide",out:"−3 Lava Dart, −2 Violent Urge",plan:"Control azorius con Mox (Opal/Amber) + Tamiyo. Trátalo como Azorius Control: amenaza + protección, Consign a las activaciones clave, no vuelques al Wrath. Vas 1-0."},
- {aq:"Sam Combo",meta:"local/combo",val:"fav",vl:"A afinar",in:"+3 Unholy Heat, +2 Consign to Memory",out:"−2 Violent Urge, −1 Flashback, −2 Mutagenic Growth",plan:"Combo de criaturas (Chord of Calling, Birthing Ritual, Cauldron Familiar). Heat a las piezas; Consign a activaciones y a Cauldron. Race: eres más rápido. Vas 0-1."},
 ];
 
 // ===== LA 75 DEFINITIVA (datos · autor: Claude, 20-jul-2026) =====
@@ -514,11 +466,7 @@ const SBDEF = [
 ];
 
 const IDEAS = [
- ["","Testear la <b>variante Stormchaser</b> (+2 Stormchaser's Talent, +2 Boomerang Basics, −1 Flashback). Registrar como Lista = 'Stormchaser' para comparar en el Dashboard."],
- ["","Meter <b>1 Spell Snare</b> al sideboard (estándar en las 3 listas del PT). Recorta 2º Tormod's Crypt o Into the Flood Maw."],
- ["","Si el <b>espejo</b> y el <b>Blink</b> aprietan (vas 0-2 en espejo): valorar Mystical Dispute en el slot flex."],
- ["","Evaluar 1 Unholy Heat main (3 de 9 listas top lo hacían) vs el slot de Flashback."],
- ["","¿Soul-Guide Lantern en vez de Tormod's Crypt? Lantern repone carta; Crypt es 0 maná."],
+ ["","Vigilar la variante burn (2 Assault Strobe + 3 Monstrous Rage main): tres resultados top en 3 días post-PT. Aún sin muestra suficiente para copiarla."],
 ];
 const PT = [
  ["","Izzet Prowess = <b>6,9%</b> del PT (25 jugadores). Meta liderado por Boros Energy e Izzet Affinity (12,7%) y Broodscale (11,6%)."],
@@ -729,23 +677,8 @@ function setTheme(t){
   if(v==='stats')render();else if(v==='lists')renderMeta();
 }
 function renderLists(){
-  $('metaNote').innerHTML="He analizado <b>12 listas</b>: las <b>3 del Pro Tour Ámsterdam</b> (Detecnik, Chin, Edel) + el <b>consenso de 9 listas top</b> de finales de junio/julio (tu proyecto). Tu <b>Stock</b> (main) es muy parecida a la de Chin y tu <b>sideboard ya está adaptado al PT</b> (2 Spell Snare, Surgical Extraction). Lo único que aún no pruebas es el paquete <span style='color:var(--winL);font-weight:700'>Stormchaser's Talent + Boomerang Basics</span>.";
+  $('metaNote').innerHTML="Aquí quedan solo <b>tus listas</b> (decisión del 22-jul: fuera referencias externas). El análisis de las listas top y la síntesis de lista viven en la pestaña <b>La 75 Definitiva</b>; abajo, el metajuego del Pro Tour como contexto.";
   $('decks').innerHTML=LISTS.map(l=>`<div class="deck"><div class="dh"><span class="dn">${l.name}</span><span class="badge ${l.badge}">${l.badge==='you'?'TÚ':'PRO TOUR'}</span></div><div class="dt">${l.tag}</div><div class="cl">${l.main.map(s=>`<div class="sec">${s[0]}</div><div>${s[1]}</div>`).join('')}<div class="sec">Sideboard</div><div>${l.side}</div>${l.url?`<div style="margin-top:8px"><a href="${l.url}" target="_blank">Ver lista completa</a></div>`:''}</div></div>`).join('');
-  const hh=['Carta','Stock','Detecnik','Chin','Edel'];
-  $('cmp').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+CMP.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(x=>`<td style="text-align:center${x!=='—'&&x!==r[1]?';color:var(--winL);font-weight:700':''}">${x}</td>`).join('')}</tr>`).join('')+'</tbody>';
-}
-// ---- Sideboard tab ----
-function renderSB(){
-  const wr={};MATCHES.forEach(d=>{(wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
-  const cls={fav:'fav',des:'des',par:'par'};
-  $('sbCards').innerHTML=SBPLAN.map(m=>{
-    const key=Object.keys(wr).find(k=>k===m.aq||m.aq.includes(k)||k.includes(m.aq.split(' ')[0]));
-    const rec=wr[m.aq];const w=rec?rec.w:0,l=rec?rec.l:0,n=w+l;
-    const wrTxt=n?`tú: ${w}-${l} (${pct(w,n)}%)`:'sin datos';
-    return `<div class="mc ${cls[m.val]}"><div class="mh"><span class="mn">${m.aq}</span><span class="mmeta">${m.meta} · ${m.vl}</span></div>
-      <div style="margin-bottom:6px"><span class="wr">${wrTxt}</span></div>
-      <div class="io"><div class="in"><span class="lbl">Entran</span>${m.in||'—'}</div><div class="out"><span class="lbl">Salen</span>${m.out||'—'}</div></div>
-      <div class="plan">${m.plan}</div></div>`;}).join('');
 }
 // ---- La 75 Definitiva (Claude) ----
 function renderDefCmp(){
@@ -835,7 +768,7 @@ function parseCSV(txt){
     .filter(d=>{if(!d.uid)return true;if(seen.has(d.uid))return false;seen.add(d.uid);return true;});
 }
 $('csv').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();
-  rd.onload=()=>{try{const parsed=parseCSV(rd.result);if(parsed.length){MATCHES=parsed;initSelectors();render();renderMyLists();renderLxM();renderSB();renderSBDef();renderLogs();updateSource(false);alert('Datos actualizados: '+parsed.length+' partidas cargadas.');}else alert('No se detectaron filas válidas. Exporta el Registro como CSV.');}catch(err){alert('Error al leer el CSV: '+err.message);}};
+  rd.onload=()=>{try{const parsed=parseCSV(rd.result);if(parsed.length){MATCHES=parsed;initSelectors();render();renderMyLists();renderLxM();renderSBDef();renderLogs();updateSource(false);alert('Datos actualizados: '+parsed.length+' partidas cargadas.');}else alert('No se detectaron filas válidas. Exporta el Registro como CSV.');}catch(err){alert('Error al leer el CSV: '+err.message);}};
   rd.readAsText(f,'utf-8');});
 
 function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los matchups');fillSel('fBy','by','Todos los reporteros');}
@@ -851,7 +784,7 @@ function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLig
 
   const remote = await loadRemote();
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();renderMyLists();renderLxM();renderLists();renderSB();renderIdeas();renderDefCmp();renderSBDef();renderLogs();
+  initSelectors();renderMyLists();renderLxM();renderLists();renderIdeas();renderDefCmp();renderSBDef();renderLogs();
   render();
   updateSource(remote);
 })();
