@@ -173,6 +173,31 @@ def test_bye_no_consume_match():
     print("OK bye_no_consume_match")
 
 
+def test_concede_con_log_se_unifica():
+    # Caso real Liga 2 R2 vs Zorro7x4: un 'concede' que EN REALIDAD se jugó y quedó logueado.
+    # Antes salían DOS filas (un bye fantasma NA + un log huérfano con Liga vacía y '¿? revisar').
+    # Ahora el log hereda la Liga/Ronda del concede y se funde en UNA sola fila.
+    ms = [match('uz', utc(2026, 7, 12, 0, 30), '¿? (revisar)', res='W', jg=1, jp=0,
+                sr='Salida', opp='Zorro7x4')]
+    aps = [apunte('11/07/2026', 'Liga 2', '2', mazo='NA', res='W', jg=1, jp=0, sr='Salida',
+                  notas='Concede')]
+    reg, games = PL.emparejar(ms, aps, 'feralo77')
+    r = rows(reg)
+    assert len(r) == 1, r                                   # una sola fila, no bye + huérfano
+    assert r[0]['Fuente'] == 'log' and r[0]['match_uuid'] == 'uz', r
+    assert r[0]['Evento / Liga'] == 'Liga 2' and r[0]['Ronda'] == '2', r
+    assert r[0]['Rival'] == 'Zorro7x4', r                   # el rival lo pone el log
+    assert r[0]['Notas de Match / Sideboard'] == 'Concede', r
+    assert r[0]['Mazo del Oponente'] == '¿? (revisar)', r   # concedió: mazo desconocido, honesto
+    assert r[0]['Fecha'] == '11/07/2026', r                 # gana la fecha del apunte
+    assert len(games) == 1, games                           # el game del log SÍ cuenta
+    # Un concede SIN log que le case (bye de verdad) sigue siendo fila manual.
+    reg2, _ = PL.emparejar([], aps, 'feralo77')
+    r2 = rows(reg2)
+    assert len(r2) == 1 and r2[0]['Fuente'] == 'manual' and r2[0]['Ronda'] == '2', r2
+    print("OK concede_con_log_se_unifica")
+
+
 def test_fila_ejemplo():
     # La fila con nota "(ejemplo...)" se marca, no se descarta a ciegas.
     values = [
@@ -284,6 +309,7 @@ if __name__ == '__main__':
     test_medianoche_00_30()
     test_fila_papel()
     test_bye_no_consume_match()
+    test_concede_con_log_se_unifica()
     test_fila_ejemplo()
     test_fallback_apunte_si_revisar()
     test_nicks_de_rival_publicos()
