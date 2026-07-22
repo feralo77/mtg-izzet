@@ -134,15 +134,53 @@ def test_bye_no_consume_match():
     print("OK bye_no_consume_match")
 
 
-def test_fila_ejemplo_ignorada():
+def test_fila_ejemplo():
+    # La fila con nota "(ejemplo...)" se marca, no se descarta a ciegas.
     values = [
         ['Fecha', 'Evento / Liga', 'Ronda', 'Lista', 'Notas', 'Mazo rival (opcional)'],
         ['11/07/2026', 'Liga 1', '1', 'Stock', '(ejemplo: borra esta fila)', 'Broodscale'],
-        ['11/07/2026', 'Liga 1', '1', 'Stock', 'partida real', 'Boros'],
+        ['11/07/2026', 'Liga 1', '2', 'Stock', 'partida real', 'Boros'],
     ]
     aps = PL.apuntes_de_valores(values, 'hoja', 'feralo77')
-    assert len(aps) == 1 and aps[0]['notas'] == 'partida real' and aps[0]['mazo_rival'] == 'Boros', aps
-    print("OK fila_ejemplo_ignorada")
+    assert len(aps) == 2 and aps[0].get('es_ejemplo') and aps[0]['notas'] == '', aps
+    # (a) SIN log que le case: la fila de ejemplo jamás inventa una partida manual
+    reg, _ = PL.emparejar([], aps, 'feralo77')
+    r = rows(reg)
+    assert len(r) == 1 and r[0]['Mazo del Oponente'] == 'Boros', r
+    # (b) CON log que le casa (caso real: Fer edita la fila de ejemplo con la Liga 5 R5):
+    # la fila cuenta, propaga Liga/Ronda/Lista y la nota de plantilla no aparece
+    values_r5 = [
+        ['Fecha', 'Evento / Liga', 'Ronda', 'Lista', 'Notas', 'Mazo rival (opcional)'],
+        ['22/07/2026', 'Liga 5', '5', '2.0', '(ejemplo: bórrame cuando apuntes)', 'ls149950'],
+    ]
+    aps_r5 = PL.apuntes_de_valores(values_r5, 'hoja', 'feralo77')
+    ms = [match('u9', utc(2026, 7, 22, 18, 0), 'Broodscale', res='L', jg=0, jp=2, sr='Salida',
+                opp='ls149950')]
+    reg2, _ = PL.emparejar(ms, aps_r5, 'feralo77')
+    r2 = rows(reg2)
+    assert len(r2) == 1 and r2[0]['Fuente'] == 'log', r2
+    assert r2[0]['Evento / Liga'] == 'Liga 5' and r2[0]['Ronda'] == '5' and r2[0]['Lista'] == '2.0', r2
+    assert r2[0]['Notas de Match / Sideboard'] == '', r2
+    # y el nick escrito en la casilla de mazo NO se cuela como mazo
+    assert r2[0]['Mazo del Oponente'] == 'Broodscale', r2
+    print("OK fila_ejemplo")
+
+
+def test_fallback_apunte_si_revisar():
+    # Clasificador sin confianza + mazo apuntado -> manda el apunte, normalizado a canónico.
+    ms = [match('u1', utc(2026, 7, 12, 18, 0), '¿? (revisar)', res='L', jg=1, jp=2, opp='Ciraris')]
+    aps = [apunte('12/07/2026', 'Liga 2', '4', mazo='Vivoras', res='L', jg=1, jp=2)]
+    reg, games = PL.emparejar(ms, aps, 'feralo77')
+    r = rows(reg)
+    assert r[0]['Arquetipo'] == 'Sultai Midrange', r[0]
+    assert r[0]['Confianza'] == 'apunte', r[0]
+    assert games[0]['Arquetipo'] == 'Sultai Midrange', games[0]
+    # con confianza suficiente, el apunte NO pisa al clasificador
+    ms2 = [match('u2', utc(2026, 7, 12, 19, 0), 'Boros Energy', res='W', jg=2, jp=0, opp='otro')]
+    aps2 = [apunte('12/07/2026', 'Liga 2', '5', mazo='Boros', res='W', jg=2, jp=0)]
+    reg2, _ = PL.emparejar(ms2, aps2, 'feralo77')
+    assert rows(reg2)[0]['Arquetipo'] == 'Boros Energy'
+    print("OK fallback_apunte_si_revisar")
 
 
 def test_nicks_de_rival_publicos():
@@ -205,7 +243,8 @@ if __name__ == '__main__':
     test_medianoche_00_30()
     test_fila_papel()
     test_bye_no_consume_match()
-    test_fila_ejemplo_ignorada()
+    test_fila_ejemplo()
+    test_fallback_apunte_si_revisar()
     test_nicks_de_rival_publicos()
     test_scouting_por_rival()
     test_hoja_gana_legacy()
