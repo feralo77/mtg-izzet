@@ -3,9 +3,9 @@
 """
 Autotests del emparejamiento apuntes ↔ partidas (pipeline.py), con fixtures sintéticos.
 No tocan Google: prueban la lógica pura. Ejecuta:  python3 automation/test_emparejamiento.py
-Casos cubiertos: día con práctica, partida a las 00:30 (hora de Madrid), fila de papel
-(sin log), fila de ejemplo, bye/concede sin log, privacidad (sin nicks de rival) y que la
-hoja de partidas gana al tracker legacy cuando solapan.
+Casos: pareja básica, día con práctica intercalada (mid-secuencia), sesión de madrugada que
+cae el día siguiente (00:30 hora de Madrid), fila de papel (sin log), fila de ejemplo,
+bye/concede sin log, privacidad (sin nicks de rival) y que la hoja gana al tracker legacy.
 """
 import sys
 from pathlib import Path
@@ -45,80 +45,91 @@ def rows(registro):
 
 
 def test_pareja_basica():
-    ms = [match('u1', utc(2026, 7, 11, 18, 0), 'Broodscale'),
-          match('u2', utc(2026, 7, 11, 19, 0), 'Boros Energy', res='L', jg=0, jp=2)]
-    aps = [apunte('11/07/2026', 'Liga 1', '1', mazo='Broodscale', notas='ok'),
-           apunte('11/07/2026', 'Liga 1', '2', mazo='Boros')]
+    ms = [match('u1', utc(2026, 7, 11, 18, 0), 'Broodscale', res='W', jg=2, jp=0, sr='Salida'),
+          match('u2', utc(2026, 7, 11, 19, 0), 'Boros Energy', res='L', jg=0, jp=2, sr='Robo')]
+    aps = [apunte('11/07/2026', 'Liga 1', '1', mazo='Broodscale', notas='ok', res='W', jg=2, jp=0, sr='Salida'),
+           apunte('11/07/2026', 'Liga 1', '2', mazo='Boros', res='L', jg=0, jp=2, sr='Robo')]
     reg, games = PL.emparejar(ms, aps, 'feralo77')
     r = rows(reg)
     assert len(r) == 2, r
     assert r[0]['Ronda'] == '1' and r[0]['Evento / Liga'] == 'Liga 1'
     assert r[0]['Fuente'] == 'log' and r[0]['match_uuid'] == 'u1'
     assert r[0]['Mazo del Oponente'] == 'Broodscale'  # nombre del apunte, no el arquetipo
+    assert r[0]['Fecha'] == '11/07/2026'
     assert r[1]['Ronda'] == '2' and r[1]['Resultado (W/L)'] == 'L'
     assert len(games) == 4, len(games)  # 2 + 2 games
     print("OK pareja_basica")
 
 
-def test_practica_extra():
-    # 3 matches, 2 apuntes -> 2 emparejados + 1 práctica (Fuente log, Evento vacío)
-    ms = [match('u1', utc(2026, 7, 12, 17, 0), 'Broodscale'),
-          match('u2', utc(2026, 7, 12, 18, 0), 'Dimir Frog'),
-          match('u3', utc(2026, 7, 12, 20, 0), 'Izzet Prowess')]
-    aps = [apunte('12/07/2026', 'Liga 2', '4', mazo='Broodscale'),
-           apunte('12/07/2026', 'Liga 2', '5', mazo='Dimir')]
+def test_practica_intercalada():
+    # Una partida de práctica INTERCALADA entre dos rondas de liga: debe saltarse como
+    # práctica (Fuente log, Evento vacío) sin desplazar la Ronda de las de liga.
+    ms = [match('u1', utc(2026, 7, 12, 17, 0), 'Broodscale', res='W', jg=2, jp=0, sr='Salida'),
+          match('up', utc(2026, 7, 12, 18, 0), 'Izzet Prowess', res='W', jg=2, jp=1, sr='Robo'),
+          match('u2', utc(2026, 7, 12, 20, 0), 'Dimir Frog', res='L', jg=0, jp=2, sr='Robo')]
+    aps = [apunte('12/07/2026', 'Liga 2', '4', mazo='Broodscale', res='W', jg=2, jp=0, sr='Salida'),
+           apunte('12/07/2026', 'Liga 2', '5', mazo='Dimir', res='L', jg=0, jp=2, sr='Robo')]
     reg, _ = PL.emparejar(ms, aps, 'feralo77')
     r = rows(reg)
     assert len(r) == 3, r
     prac = [x for x in r if x['Fuente'] == 'log' and x['Evento / Liga'] == '']
-    assert len(prac) == 1, prac
-    assert prac[0]['match_uuid'] == 'u3'
-    assert prac[0]['Mazo del Oponente'] == 'Izzet Prowess'  # arquetipo detectado
-    print("OK practica_extra")
+    assert len(prac) == 1 and prac[0]['match_uuid'] == 'up', prac
+    liga = {x['match_uuid']: x['Ronda'] for x in r if x['Evento / Liga']}
+    assert liga == {'u1': '4', 'u2': '5'}, liga
+    print("OK practica_intercalada")
 
 
-def test_medianoche_madrid():
-    # UTC 20/07 22:30 -> Madrid 21/07 00:30 (CEST +2). Debe caer el 21, no el 20.
-    ms = [match('u1', utc(2026, 7, 20, 22, 30), 'Through the Breach')]
-    aps = [apunte('21/07/2026', 'Liga 5', '1', mazo='Breach')]
+def test_sesion_de_madrugada():
+    # Sesión jugada de madrugada: los apuntes dicen 18/07 pero los logs (Madrid) caen el 19.
+    # El desfase de ±1 día no debe romper el emparejamiento; la Fecha final es la del apunte.
+    ms = [match('u1', utc(2026, 7, 19, 0, 30), 'Boros Ponza', res='W', jg=2, jp=0, sr='Robo'),
+          match('u2', utc(2026, 7, 19, 1, 30), 'Esper Goryo', res='L', jg=0, jp=2, sr='Robo')]
+    aps = [apunte('18/07/2026', 'Liga 3', '3', mazo='Ponza', res='W', jg=2, jp=0, sr='Robo'),
+           apunte('18/07/2026', 'Liga 3', '4', mazo='Gorys', res='L', jg=0, jp=2, sr='Robo')]
     reg, _ = PL.emparejar(ms, aps, 'feralo77')
     r = rows(reg)
-    assert len(r) == 1, r
-    assert r[0]['Fecha'] == '21/07/2026', r[0]['Fecha']
-    assert r[0]['Evento / Liga'] == 'Liga 5' and r[0]['Ronda'] == '1'
-    assert r[0]['Fuente'] == 'log'
-    print("OK medianoche_madrid")
+    assert len(r) == 2 and all(x['Fuente'] == 'log' for x in r), r
+    assert all(x['Fecha'] == '18/07/2026' for x in r), [x['Fecha'] for x in r]
+    assert {x['Ronda'] for x in r} == {'3', '4'}
+    print("OK sesion_de_madrugada")
+
+
+def test_medianoche_00_30():
+    # UTC 20/07 22:30 -> Madrid 21/07 00:30 (CEST +2). El match cae el 21, no el 20.
+    ms = [match('u1', utc(2026, 7, 20, 22, 30), 'Through the Breach', res='W', jg=2, jp=1, sr='Salida')]
+    aps = [apunte('21/07/2026', 'Liga 5', '1', mazo='Breach', res='W', jg=2, jp=1, sr='Salida')]
+    reg, _ = PL.emparejar(ms, aps, 'feralo77')
+    r = rows(reg)
+    assert len(r) == 1 and r[0]['Fecha'] == '21/07/2026', r
+    assert r[0]['Evento / Liga'] == 'Liga 5' and r[0]['Ronda'] == '1' and r[0]['Fuente'] == 'log'
+    print("OK medianoche_00_30")
 
 
 def test_fila_papel():
     # apunte sin log (papel/log perdido) -> fila manual con nota de revisar
-    ms = []
-    aps = [apunte('19/07/2026', 'Liga X', '1', mazo='Amulet Titan')]
-    reg, games = PL.emparejar(ms, aps, 'feralo77')
+    aps = [apunte('19/07/2026', 'Liga X', '1', mazo='Amulet Titan', res='W', jg=2, jp=1)]
+    reg, games = PL.emparejar([], aps, 'feralo77')
     r = rows(reg)
-    assert len(r) == 1 and r[0]['Fuente'] == 'manual', r
-    assert r[0]['match_uuid'] == ''
+    assert len(r) == 1 and r[0]['Fuente'] == 'manual' and r[0]['match_uuid'] == '', r
     assert 'revisar' in r[0]['Notas de Match / Sideboard']
     assert games == []
     print("OK fila_papel")
 
 
 def test_bye_no_consume_match():
-    # Día con un bye intercalado: el bye NO consume un log; los reales se alinean por orden.
-    ms = [match('u1', utc(2026, 7, 11, 17, 0), 'Broodscale'),
-          match('u2', utc(2026, 7, 11, 18, 0), 'Boros Energy')]
-    aps = [apunte('11/07/2026', 'Liga 2', '1', mazo='Broodscale'),
+    # El bye/concede (Mazo=NA) NO consume un log; los reales se emparejan por resultado.
+    ms = [match('u1', utc(2026, 7, 11, 17, 0), 'Broodscale', res='L', jg=0, jp=2, sr='Robo'),
+          match('u2', utc(2026, 7, 11, 18, 0), 'Boros Energy', res='W', jg=2, jp=1, sr='Robo')]
+    aps = [apunte('11/07/2026', 'Liga 2', '1', mazo='Broodscale', res='L', jg=0, jp=2, sr='Robo'),
            apunte('11/07/2026', 'Liga 2', '2', mazo='NA', res='W', jg=1, jp=0, notas='Concede'),
-           apunte('11/07/2026', 'Liga 2', '3', mazo='Boros')]
+           apunte('11/07/2026', 'Liga 2', '3', mazo='Boros', res='W', jg=2, jp=1, sr='Robo')]
     reg, _ = PL.emparejar(ms, aps, 'feralo77')
     r = rows(reg)
     logs = [x for x in r if x['Fuente'] == 'log']
     manual = [x for x in r if x['Fuente'] == 'manual']
     assert len(logs) == 2 and len(manual) == 1, r
-    # el bye conserva su resultado legacy y su nota
     assert manual[0]['Resultado (W/L)'] == 'W' and manual[0]['Notas de Match / Sideboard'] == 'Concede'
-    # los dos reales se emparejan con Ronda 1 y 3 (no con el bye)
-    assert {logs[0]['Ronda'], logs[1]['Ronda']} == {'1', '3'}
+    assert {x['Ronda'] for x in logs} == {'1', '3'}   # ni un log toca la Ronda 2 (el bye)
     print("OK bye_no_consume_match")
 
 
@@ -129,14 +140,13 @@ def test_fila_ejemplo_ignorada():
         ['11/07/2026', 'Liga 1', '1', 'Stock', 'partida real', 'Boros'],
     ]
     aps = PL.apuntes_de_valores(values, 'hoja', 'feralo77')
-    assert len(aps) == 1, aps
-    assert aps[0]['notas'] == 'partida real' and aps[0]['mazo_rival'] == 'Boros'
+    assert len(aps) == 1 and aps[0]['notas'] == 'partida real' and aps[0]['mazo_rival'] == 'Boros', aps
     print("OK fila_ejemplo_ignorada")
 
 
 def test_privacidad_sin_nicks():
-    ms = [match('u1', utc(2026, 7, 13, 18, 0), 'Neoform', opp='SECRET_RIVAL_NICK')]
-    aps = [apunte('13/07/2026', 'Liga 3', '2', mazo='Neoform')]
+    ms = [match('u1', utc(2026, 7, 13, 18, 0), 'Neoform', res='L', jg=1, jp=2, opp='SECRET_RIVAL_NICK')]
+    aps = [apunte('13/07/2026', 'Liga 3', '2', mazo='Neoform', res='L', jg=1, jp=2)]
     reg, games = PL.emparejar(ms, aps, 'feralo77')
     blob = str(rows(reg)) + str(games)
     assert 'SECRET_RIVAL_NICK' not in blob, 'se ha filtrado un nick de rival'
@@ -148,12 +158,10 @@ def test_hoja_gana_legacy():
     hoja = [apunte('11/07/2026', 'Liga 1 (corregida)', '1', mazo='Azorius Loki',
                    notas='hoja', origen='hoja')]
     comb = PL.combinar_apuntes(legacy, hoja)
-    assert len(comb) == 1 and comb[0]['origen'] == 'hoja', comb
-    assert comb[0]['notas'] == 'hoja'
-    # si la hoja no cubre un día, se conserva el legacy
+    assert len(comb) == 1 and comb[0]['origen'] == 'hoja' and comb[0]['notas'] == 'hoja', comb
     legacy2 = legacy + [apunte('12/07/2026', 'Liga 2', '4', mazo='Vivoras', origen='legacy')]
     comb2 = PL.combinar_apuntes(legacy2, hoja)
-    assert len(comb2) == 2, comb2
+    assert len(comb2) == 2, comb2  # si la hoja no cubre un día, se conserva el legacy
     print("OK hoja_gana_legacy")
 
 
@@ -167,8 +175,9 @@ def test_norm_fecha_y_bye():
 
 if __name__ == '__main__':
     test_pareja_basica()
-    test_practica_extra()
-    test_medianoche_madrid()
+    test_practica_intercalada()
+    test_sesion_de_madrugada()
+    test_medianoche_00_30()
     test_fila_papel()
     test_bye_no_consume_match()
     test_fila_ejemplo_ignorada()

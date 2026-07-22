@@ -258,7 +258,7 @@ def combinar_apuntes(base, override):
 def _fila_pareja(m, a, nick):
     mazo = a['mazo_rival'] or m['arquetipo']       # nombre legacy o arquetipo, NUNCA el nick
     return {
-        'match_uuid': m['match_uuid'], 'Fecha': m['_fecha'], 'Evento / Liga': a['evento'],
+        'match_uuid': m['match_uuid'], 'Fecha': a['fecha'] or m['_fecha'], 'Evento / Liga': a['evento'],
         'Lista': a['lista'], 'Ronda': a['ronda'], 'Mazo del Oponente': mazo,
         'Arquetipo': m['arquetipo'], 'Resultado (W/L)': m['resultado'],
         'Juegos Ganados': m['jg'], 'Juegos Perdidos': m['jp'],
@@ -309,42 +309,95 @@ def _ronda_int(a):
     except Exception:
         return 99
 
+def _ts(dt):
+    """Clave de orden numérica y comparable (POSIX) a partir de un datetime."""
+    if dt is None:
+        return 0.0
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=MADRID)
+    return dt.timestamp()
+
+def _sim(a, m):
+    """Compatibilidad apunte ↔ partida: fecha (±1 día, ancla fuerte por el desfase de
+    medianoche), resultado, marcador de juegos y salida/robo. Cuanto mayor, mejor pareja."""
+    s = 0.0
+    fa, fm = day_key(a['fecha']), day_key(m['_fecha'])
+    if fa != datetime.max and fm != datetime.max:
+        dd = abs((fa - fm).days)
+        s += 2.0 if dd <= 1 else (-1.5 if dd == 2 else -4.0)
+    ra, rm = (a.get('resultado') or '').upper(), (m.get('resultado') or '').upper()
+    if ra in ('W', 'L') and rm in ('W', 'L'):
+        s += 2.0 if ra == rm else -2.0
+    try:
+        if str(a.get('jg')).strip() != '' and str(a.get('jp')).strip() != '':
+            if int(a['jg']) == int(m['jg']) and int(a['jp']) == int(m['jp']):
+                s += 1.0
+    except Exception:
+        pass
+    sa, sm = key(a.get('salida_robo')), key(m.get('salida_robo'))
+    if sa and sm:
+        s += 0.5 if sa == sm else -0.25
+    return s
+
 def emparejar(matches, apuntes, nick):
-    """Empareja apuntes ↔ matches por fecha (Madrid) + orden cronológico.
-    Devuelve (registro, games): registro = lista de {'row','sort','uuid'}."""
+    """Empareja apuntes ↔ partidas por ORDEN CRONOLÓGICO GLOBAL (alineación de secuencias
+    tipo diff, anclada por fecha en hora de Madrid ±1 día + resultado + marcador). Es robusto
+    al desfase de medianoche (una sesión de liga jugada de madrugada cae el día siguiente) y a
+    una partida de práctica intercalada. Devuelve (registro, games)."""
     for m in matches:
         h = m.get('hora')
         m['_madrid'] = h.astimezone(MADRID) if h else None
         m['_fecha'] = m['_madrid'].strftime('%d/%m/%Y') if m['_madrid'] else norm_fecha(m.get('fecha', ''))
 
-    matches_ord = sorted(matches, key=lambda m: m['_madrid'] or datetime.min.replace(tzinfo=timezone.utc))
-    m_by_day, a_by_day = defaultdict(list), defaultdict(list)
-    for m in matches_ord:
-        m_by_day[m['_fecha']].append(m)
-    for a in apuntes:
-        a_by_day[a['fecha']].append(a)
+    logs = sorted(matches, key=lambda m: m['_madrid'] or datetime.min.replace(tzinfo=timezone.utc))
+    byes = [a for a in apuntes if is_bye(a.get('mazo_rival'))]
+    reales = [a for a in apuntes if not is_bye(a.get('mazo_rival'))]
+
+    # Alineación por programación dinámica (Needleman-Wunsch): emparejar, saltar un log
+    # (práctica) o saltar un apunte (papel/log perdido). Maximiza la similitud total.
+    SKIP = -0.05
+    n, ml = len(reales), len(logs)
+    dp = [[0.0] * (ml + 1) for _ in range(n + 1)]
+    bt = [[None] * (ml + 1) for _ in range(n + 1)]
+    for i in range(1, n + 1):
+        dp[i][0] = dp[i - 1][0] + SKIP
+        bt[i][0] = 'A'
+    for j in range(1, ml + 1):
+        dp[0][j] = dp[0][j - 1] + SKIP
+        bt[0][j] = 'L'
+    for i in range(1, n + 1):
+        for j in range(1, ml + 1):
+            pair = dp[i - 1][j - 1] + _sim(reales[i - 1], logs[j - 1])
+            skipA = dp[i - 1][j] + SKIP
+            skipL = dp[i][j - 1] + SKIP
+            best = max(pair, skipA, skipL)
+            dp[i][j] = best
+            bt[i][j] = 'P' if best == pair else ('A' if best == skipA else 'L')
 
     registro, games = [], []
-    for day in sorted(set(m_by_day) | set(a_by_day), key=day_key):
-        ms = m_by_day.get(day, [])
-        aps = a_by_day.get(day, [])
-        byes = [a for a in aps if is_bye(a.get('mazo_rival'))]
-        reales = [a for a in aps if not is_bye(a.get('mazo_rival'))]
-        n = min(len(ms), len(reales))
-        for i in range(n):                       # (ii) fila n del día ↔ match n cronológico
-            registro.append({'row': _fila_pareja(ms[i], reales[i], nick),
-                             'sort': (day_key(day), i), 'uuid': ms[i]['match_uuid']})
-            games += _games_de_match(ms[i], nick)
-        for j, m in enumerate(ms[n:]):           # (iv) matches de más -> práctica (log)
-            registro.append({'row': _fila_practica(m, nick),
-                             'sort': (day_key(day), n + j), 'uuid': m['match_uuid']})
+    i, j = n, ml
+    while i > 0 or j > 0:
+        c = bt[i][j]
+        if c == 'P':
+            a, m = reales[i - 1], logs[j - 1]
+            registro.append({'row': _fila_pareja(m, a, nick), 'sort': _ts(m['_madrid']),
+                             'uuid': m['match_uuid']})
             games += _games_de_match(m, nick)
-        for a in reales[n:]:                      # (v) apuntes de más -> manual (papel/log perdido)
+            i -= 1; j -= 1
+        elif c == 'A':                            # apunte sin log -> manual (papel/log perdido)
+            a = reales[i - 1]
             registro.append({'row': _fila_manual(a, nick),
-                             'sort': (day_key(day), 500 + _ronda_int(a)), 'uuid': ''})
-        for a in byes:                            # bye/concede sin log -> manual
-            registro.append({'row': _fila_manual(a, nick),
-                             'sort': (day_key(day), 900 + _ronda_int(a)), 'uuid': ''})
+                             'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
+            i -= 1
+        else:                                     # log sin apunte -> práctica
+            m = logs[j - 1]
+            registro.append({'row': _fila_practica(m, nick), 'sort': _ts(m['_madrid']),
+                             'uuid': m['match_uuid']})
+            games += _games_de_match(m, nick)
+            j -= 1
+    for a in byes:                                # bye/concede sin log -> manual
+        registro.append({'row': _fila_manual(a, nick),
+                         'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
     return registro, games
 
 # ------------------------------------------------------------------------ escritura
