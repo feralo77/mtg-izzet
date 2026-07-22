@@ -10,7 +10,8 @@ Cada día, sin que nadie toque nada:
        - baja los Match_GameLog*.dat de ESE jugador y los parsea (solo sus partidas),
        - lee su hoja de Google "Partidas — <nick>" (los apuntes: Evento/Liga, Ronda,
          Lista, Notas y, opcional, "Mazo rival").
-  3) Empareja apuntes ↔ partidas por FECHA (hora de Madrid) + orden cronológico.
+  3) Empareja apuntes ↔ partidas por RIVAL (columna "Rival" de la hoja, el nick: la
+     llave más fuerte) + FECHA (hora de Madrid) + orden cronológico.
   4) feralo77: además usa el tracker viejo (solo lectura, pestaña gid legacy) como
      apuntes históricos, con las mismas reglas de emparejamiento.
   5) Escribe registro.csv y games.csv en la raíz del repo. El workflow los commitea.
@@ -121,7 +122,7 @@ def list_children(drive, parent_id, only_folders=False):
         q += " and mimeType='application/vnd.google-apps.folder'"
     out, tok = [], None
     while True:
-        r = drive.files().list(q=q, fields='nextPageToken,files(id,name,mimeType)',
+        r = drive.files().list(q=q, fields='nextPageToken,files(id,name,mimeType,createdTime)',
                                pageToken=tok, pageSize=1000).execute()
         out += r.get('files', [])
         tok = r.get('nextPageToken')
@@ -140,12 +141,16 @@ def find_gamelogs(drive, folder_id):
     return logs
 
 def find_partidas_sheet(drive, folder_id):
-    """La hoja de Google 'Partidas — <nick>' dentro de la carpeta del jugador."""
+    """La hoja de Google 'Partidas — <nick>' dentro de la carpeta del jugador.
+    Si hay varias (p. ej. la vieja sin columna Rival y la nueva), gana la MÁS NUEVA:
+    el conector no puede borrar la antigua y así el robot siempre lee el formato vigente."""
     hojas = [f for f in list_children(drive, folder_id)
              if f['mimeType'] == 'application/vnd.google-apps.spreadsheet']
     if not hojas:
         return None
     pref = [f for f in hojas if 'partidas' in key(f['name'])]
+    pref.sort(key=lambda f: f.get('createdTime', ''), reverse=True)
+    hojas.sort(key=lambda f: f.get('createdTime', ''), reverse=True)
     return (pref or hojas)[0]
 
 def download(drive, file_id, dest):
@@ -190,7 +195,8 @@ COLMAP = {
     'ronda': ['ronda', 'rnd'],
     'lista': ['lista'],
     'notas': ['notas de match / sideboard', 'notas', 'nota'],
-    'mazo_rival': ['mazo rival (opcional)', 'mazo rival', 'mazo del oponente', 'rival', 'oponente'],
+    'mazo_rival': ['mazo rival (opcional)', 'mazo rival', 'mazo del oponente', 'mazo', 'oponente'],
+    'rival_nick': ['rival', 'rival (nick)', 'rival mtgo', 'nick rival', 'nick'],
     'mvp': ['cartas clave / mvp', 'mvp', 'cartas clave'],
     'resultado': ['resultado (w/l)', 'resultado', 'res'],
     'jg': ['juegos ganados', 'ganados'],
@@ -215,6 +221,7 @@ def _apunte_from_row(header_keys, cells, origen, nick):
         'lista': col('lista'),
         'notas': col('notas'),
         'mazo_rival': col('mazo_rival'),
+        'rival_nick': col('rival_nick'),
         'mvp': col('mvp'),
         'resultado': col('resultado').upper(),
         'jg': col('jg'),
@@ -284,7 +291,7 @@ def _mazo_apunte(m, a):
     """El mazo del apunte, salvo que el usuario haya escrito ahí el NICK del rival
     (error frecuente: la casilla es para el mazo) — en ese caso se ignora."""
     mazo = a['mazo_rival']
-    if mazo and key(mazo) == key(m.get('opp') or ''):
+    if mazo and key(mazo) in (key(m.get('opp') or ''), key(a.get('rival_nick') or '')):
         return ''
     return mazo
 
@@ -323,7 +330,7 @@ def _fila_manual(a, nick):
         'Mulligans (Rival)': a['mull_opp'], 'Cartas Clave / MVP': a['mvp'],
         'Notas de Match / Sideboard': a['notas'] or 'revisar (sin log)',
         'Reportado por': a.get('reportado_por') or nick, 'Fuente': 'manual',
-        'Rival': '', 'Confianza': '',
+        'Rival': a.get('rival_nick', ''), 'Confianza': '',
     }
 
 def _games_de_match(m, nick):
@@ -365,9 +372,13 @@ def _ts(dt):
     return dt.timestamp()
 
 def _sim(a, m):
-    """Compatibilidad apunte ↔ partida: fecha (±1 día, ancla fuerte por el desfase de
-    medianoche), resultado, marcador de juegos y salida/robo. Cuanto mayor, mejor pareja."""
+    """Compatibilidad apunte ↔ partida: RIVAL (nick, la llave más fuerte — columna Rival
+    de la hoja), fecha (±1 día, ancla por el desfase de medianoche), resultado, marcador
+    de juegos y salida/robo. Cuanto mayor, mejor pareja."""
     s = 0.0
+    na, nm = key(a.get('rival_nick')), key(m.get('opp') or '')
+    if na and nm:
+        s += 3.0 if na == nm else -3.0
     fa, fm = day_key(a['fecha']), day_key(m['_fecha'])
     if fa != datetime.max and fm != datetime.max:
         dd = abs((fa - fm).days)

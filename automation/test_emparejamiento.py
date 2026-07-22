@@ -34,15 +34,54 @@ def match(uuid, hora, arq, res='W', jg=2, jp=0, sr='Salida', opp='rivalNick', ng
 
 
 def apunte(fecha, evento='', ronda='', lista='Stock', notas='', mazo='', mvp='',
-           res='', jg='', jp='', sr='', origen='hoja', nick='feralo77'):
+           res='', jg='', jp='', sr='', origen='hoja', nick='feralo77', rival=''):
     return {'fecha': fecha, 'evento': evento, 'ronda': ronda, 'lista': lista,
-            'notas': notas, 'mazo_rival': mazo, 'mvp': mvp, 'resultado': res,
-            'jg': jg, 'jp': jp, 'salida_robo': sr, 'mull_local': '', 'mull_opp': '',
-            'reportado_por': nick, 'origen': origen}
+            'notas': notas, 'mazo_rival': mazo, 'rival_nick': rival, 'mvp': mvp,
+            'resultado': res, 'jg': jg, 'jp': jp, 'salida_robo': sr,
+            'mull_local': '', 'mull_opp': '', 'reportado_por': nick, 'origen': origen}
 
 
 def rows(registro):
     return [r['row'] for r in sorted(registro, key=lambda r: r['sort'])]
+
+
+def test_columna_rival_nick():
+    # Plantilla nueva (2026-07-22): columnas separadas Rival (nick) y Mazo rival.
+    values = [
+        ['Fecha', 'Evento / Liga', 'Ronda', 'Lista', 'Rival', 'Mazo rival', 'Notas'],
+        ['22/07/2026', 'Liga 5', '5', '2.0', 'ls149950', 'Broodscale', ''],
+    ]
+    aps = PL.apuntes_de_valores(values, 'hoja', 'feralo77')
+    assert len(aps) == 1, aps
+    assert aps[0]['rival_nick'] == 'ls149950' and aps[0]['mazo_rival'] == 'Broodscale', aps[0]
+    # y en la hoja vieja ("Mazo rival (opcional)") el mazo sigue mapeando bien, sin nick
+    values_old = [
+        ['Fecha', 'Evento / Liga', 'Ronda', 'Lista', 'Notas', 'Mazo rival (opcional)'],
+        ['11/07/2026', 'Liga 1', '1', 'Stock', 'real', 'Boros'],
+    ]
+    aps_old = PL.apuntes_de_valores(values_old, 'hoja', 'feralo77')
+    assert aps_old[0]['mazo_rival'] == 'Boros' and aps_old[0]['rival_nick'] == '', aps_old[0]
+    print("OK columna_rival_nick")
+
+
+def test_nick_es_la_llave():
+    # Dos partidas el mismo día, mismo resultado: SOLO el nick permite colgar el apunte
+    # de la partida correcta (la 2ª), dejando la 1ª como práctica.
+    ms = [match('u1', utc(2026, 7, 15, 17, 0), 'Boros Energy', res='W', jg=2, jp=0, opp='Pepe'),
+          match('u2', utc(2026, 7, 15, 19, 0), 'Broodscale', res='W', jg=2, jp=0, opp='Juan')]
+    aps = [apunte('15/07/2026', 'Liga 9', '1', rival='Juan', mazo='Broodscale', res='W', jg=2, jp=0)]
+    reg, _ = PL.emparejar(ms, aps, 'feralo77')
+    r = rows(reg)
+    liga = [x for x in r if x['Evento / Liga'] == 'Liga 9']
+    prac = [x for x in r if not x['Evento / Liga']]
+    assert len(liga) == 1 and liga[0]['match_uuid'] == 'u2' and liga[0]['Rival'] == 'Juan', r
+    assert len(prac) == 1 and prac[0]['match_uuid'] == 'u1', r
+    # nick que NO coincide con ningún log -> mejor manual que emparejar mal
+    aps2 = [apunte('15/07/2026', 'Liga 9', '2', rival='Desconocido77', mazo='Amulet Titan', res='L', jg=0, jp=2)]
+    reg2, _ = PL.emparejar(ms, aps2, 'feralo77')
+    manual = [x for x in rows(reg2) if x['Fuente'] == 'manual']
+    assert len(manual) == 1 and manual[0]['Rival'] == 'Desconocido77', rows(reg2)
+    print("OK nick_es_la_llave")
 
 
 def test_pareja_basica():
@@ -237,6 +276,8 @@ def test_norm_fecha_y_bye():
 
 
 if __name__ == '__main__':
+    test_columna_rival_nick()
+    test_nick_es_la_llave()
     test_pareja_basica()
     test_practica_intercalada()
     test_sesion_de_madrugada()
