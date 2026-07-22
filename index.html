@@ -358,6 +358,8 @@
 
 <script>
 // ================= DATOS =================
+// SNAPSHOT DE EMERGENCIA — solo se usa si fallan registro.csv y la hoja publicada.
+// No mantener a mano: la fuente viva es el tracker (via registro.csv, refrescado a diario).
 let MATCHES = [
  {f:"11/07/2026",ev:"Liga 1",li:"Stock",rd:1,op:"Loki",aq:"Azorius Loki",r:"W",jg:2,jp:0,sr:"Salida",my:0,mr:0,mvp:"",nt:""},
  {f:"11/07/2026",ev:"Liga 1",li:"Stock",rd:2,op:"Devoted",aq:"Devoted Combo",r:"L",jg:0,jp:2,sr:"Robo",my:0,mr:0,mvp:"",nt:"Soy un paquete"},
@@ -715,7 +717,7 @@ function renderLogs(){
 // registro.csv lo mantiene al d\u00eda un GitHub Action (carga diaria desde la hoja del Drive).
 // Mismo origen que el dashboard => sin CORS. Si no existe o falla, prueba la hoja en vivo y, por \u00faltimo, el snapshot.
 const LOCAL_CSV_URL = "registro.csv";
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1Ha71dPwJkPevqCK_ulfJwgMn8Khm3cjHxx4EbN36uBs/gviz/tq?tqx=out:csv&gid=1091441461";
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSPf8e8cX2QCe4fr5VvQr8xfp46n5Z9OIr_fKkd5KIeA9H8Hq8mJ8syW_yDPG8NIAW4pB6l37XD1zBF/pub?gid=1091441461&single=true&output=csv";
 async function tryCSV(url){
   try{
     const res=await fetch(url,{cache:'no-store'});
