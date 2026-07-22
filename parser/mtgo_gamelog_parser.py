@@ -138,17 +138,35 @@ def extract_game(entries, local, opp, match_uuid):
             a, b = int(g.group(2)), int(g.group(3))
             match_score = (a, b) if g.group(1) == local else (b, a)
 
+    # Amenazas de Izzet Prowess: su primer turno de aterrizaje marca el tempo del game
+    THREATS = ('Monastery Swiftspear', "Dragon's Rage Channeler", 'Slickshot Show-Off',
+               'Cori-Steel Cutter')
     mull = Counter(); hand = {}; casts = {local: [], opp: []}
     prowess = monks = activ = 0; removal = []; disc = Counter()
+    draws = Counter(); lands = Counter(); lands_t3 = 0
+    cur_turn = 0; t1_action = False; first_threat_turn = 0; cutter_turn = 0
     for m in msgs:
+        g = re.match(r'@PTurn (\d+):', m)
+        if g: cur_turn = int(g.group(1)); continue
         g = re.match(rf'@P({PLAYER}) mulligans to', m)
         if g: mull[g.group(1)] += 1; continue
         g = re.match(rf'@P({PLAYER}).*?begins the game with (\w+) cards? in hand', m)
         if g: hand[g.group(1)] = NUMWORD.get(g.group(2), 0); continue
+        g = re.match(rf'@P({PLAYER}) draws (a|\w+) cards?', m)
+        if g: draws[g.group(1)] += 1 if g.group(2) == 'a' else NUMWORD.get(g.group(2), 1); continue
+        g = re.match(rf'@P({PLAYER}) plays {CARD}', m)
+        if g:
+            lands[g.group(1)] += 1
+            if g.group(1) == local and 1 <= cur_turn <= 3: lands_t3 += 1
+            continue
         g = re.match(rf'@P({PLAYER}) casts {CARD}', m)
         if g:
             p, card = g.group(1), g.group(2).strip()
             if p in casts: casts[p].append(card)
+            if p == local:
+                if cur_turn == 1: t1_action = True
+                if card in THREATS and not first_threat_turn: first_threat_turn = cur_turn
+                if card == 'Cori-Steel Cutter' and not cutter_turn: cutter_turn = cur_turn
             t = re.search(rf'casts {CARD} targeting {CARD}', m)
             if p == local and t: removal.append(f"{card}->{t.group(2).strip()}")
             continue
@@ -167,7 +185,11 @@ def extract_game(entries, local, opp, match_uuid):
             'hand_local': hand.get(local, 7), 'hand_opp': hand.get(opp, 7),
             'my_casts': casts[local], 'opp_casts': casts[opp],
             'prowess': prowess, 'monks': monks, 'activ': activ,
-            'removal': removal, 'disc_local': disc.get(local, 0), 'disc_opp': disc.get(opp, 0)}
+            'removal': removal, 'disc_local': disc.get(local, 0), 'disc_opp': disc.get(opp, 0),
+            'draws_local': draws.get(local, 0), 'draws_opp': draws.get(opp, 0),
+            'lands_local': lands.get(local, 0), 'lands_opp': lands.get(opp, 0),
+            'lands_t3': lands_t3, 't1_action': t1_action,
+            'first_threat_turn': first_threat_turn, 'cutter_turn': cutter_turn}
 
 # ---------- Clasificador de arquetipo por cartas del rival (con confianza) ----------
 # Firmas PONDERADAS por arquetipo: (carta, peso). El peso mide cuánto DISCRIMINA la
@@ -391,8 +413,9 @@ def run_dir(directory, user, out_csv, lista, reported_by):
 
     # 3) Detalle por GAME (granularidad fina)
     gcols = ["match_uuid","Game","Salida/Robo","Ganado","Turnos","Mulls yo","Mulls rival",
-             "Mano yo","Mano rival","Prowess yo","Monje yo","Activ yo","Descartes yo",
-             "Mis hechizos","Removal (objetivos)","Cartas rival"]
+             "Mano yo","Mano rival","Robos yo","Robos rival","Tierras yo","Tierras T1-3",
+             "Accion T1","Turno 1a amenaza","Turno Cutter","Prowess yo","Monje yo","Activ yo",
+             "Descartes yo","Mis hechizos","Removal (objetivos)","Cartas rival"]
     with open(out_csv + ".games.csv", 'w', newline='', encoding='utf-8') as fh:
         w = csv.writer(fh); w.writerow(gcols)
         for m in matches:
@@ -401,6 +424,8 @@ def run_dir(directory, user, out_csv, lista, reported_by):
                 w.writerow([m['match_uuid'], g['game_idx'], sr,
                             'Sí' if g['winner'] == 'local' else ('No' if g['winner'] == 'opp' else '?'),
                             g['turns'], g['mull_local'], g['mull_opp'], g['hand_local'], g['hand_opp'],
+                            g['draws_local'], g['draws_opp'], g['lands_local'], g['lands_t3'],
+                            1 if g['t1_action'] else 0, g['first_threat_turn'], g['cutter_turn'],
                             g['prowess'], g['monks'], g['activ'], g['disc_local'],
                             ", ".join(g['my_casts']), " | ".join(g['removal']),
                             ", ".join(dict.fromkeys(g['opp_casts']))])
@@ -452,12 +477,17 @@ def selftest():
       "@Prival puts a card on the bottom of their library and begins the game with six cards in hand.",
       "@Pfernando begins the game with seven cards in hand.",
       "@PTurn 1: rival", "@PTurn 1: fernando",
+      "@Pfernando plays @[Mountain@:20,21:@].",
       "@Pfernando casts @[Monastery Swiftspear@:1,2:@].",
       "@Pfernando casts @[Lightning Bolt@:3,4:@] targeting @[Psychic Frog@:5,6:@].",
       "@Pfernando puts a triggered ability from @[Monastery Swiftspear@:1,2:@] onto the stack (Prowess).",
       "@Pfernando's @[Cori-Steel Cutter@:7,8:@] creates a Monk Token.",
       "@Prival casts @[Psychic Frog@:5,6:@].", "@Prival casts @[Unearth@:9,10:@].",
-      "@PTurn 2: rival", "@PTurn 2: fernando", "@PTurn 3: fernando",
+      "@PTurn 2: rival", "@Prival draws a card.", "@PTurn 2: fernando",
+      "@Pfernando draws a card.", "@Pfernando plays @[Steam Vents@:22,23:@].",
+      "@Pfernando casts @[Cori-Steel Cutter@:7,8:@].",
+      "@PTurn 3: fernando", "@Pfernando draws a card.",
+      "@Pfernando casts @[Lava Dart@:24,25:@].",
       "@Pfernando wins the game.", "@Pfernando leads the match 1-0.",
       # game 2
       "@Pfernando chooses to play first.", "@Prival wins the game.", "@Prival leads the match 1-1.",
@@ -484,6 +514,16 @@ def selftest():
     assert 0.0 < m['confianza'] <= 1.0, m['confianza']
     assert m['games_list'][0]['hand_opp'] == 6      # rival mulligan a 6
     assert 'Lightning Bolt->Psychic Frog' in m['removal']
+
+    # --- Datos profundos por game (manos, robos, tierras, tempo) ---
+    g1 = m['games_list'][0]
+    assert g1['draws_local'] == 2 and g1['draws_opp'] == 1, (g1['draws_local'], g1['draws_opp'])
+    assert g1['lands_local'] == 2 and g1['lands_t3'] == 2, (g1['lands_local'], g1['lands_t3'])
+    assert g1['t1_action'] is True
+    assert g1['first_threat_turn'] == 1, g1['first_threat_turn']   # Swiftspear en T1
+    assert g1['cutter_turn'] == 2, g1['cutter_turn']               # Cutter en T2
+    g3 = m['games_list'][2]
+    assert g3['t1_action'] is False and g3['first_threat_turn'] == 0 and g3['lands_local'] == 0
 
     # --- Clasificador con confianza ---
     # (a) firma casi única (peso 3) se sostiene sola, con confianza decente
