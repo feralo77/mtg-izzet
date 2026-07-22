@@ -1,5 +1,8 @@
 # Automatismo del tracker (se hace solo)
 
+> Guía paso a paso sin tecnicismos para ponerlo en marcha: [`GUIA.md`](GUIA.md).
+> Qué hace cada compañero (plantilla + mensaje): [`../docs/instrucciones-companeros.md`](../docs/instrucciones-companeros.md).
+
 Cada día, una **GitHub Action** lee los logs de MTGO del Drive, corre el parser por
 jugador y escribe el resultado en la pestaña **`Registro-logs`** del tracker. El
 dashboard lee esa pestaña, así que se actualiza solo. Nadie tiene que tocar nada
