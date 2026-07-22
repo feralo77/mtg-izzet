@@ -288,10 +288,13 @@ def combinar_apuntes(base, override):
 
 # -------------------------------------------------------------------- emparejamiento
 def _mazo_apunte(m, a):
-    """El mazo del apunte, salvo que el usuario haya escrito ahí el NICK del rival
-    (error frecuente: la casilla es para el mazo) — en ese caso se ignora."""
+    """El mazo del apunte, salvo que sea un marcador de bye/concede (no es un mazo real)
+    o que el usuario haya escrito ahí el NICK del rival (error frecuente: la casilla es
+    para el mazo) — en esos casos se ignora y manda el arquetipo del clasificador."""
     mazo = a['mazo_rival']
-    if mazo and key(mazo) in (key(m.get('opp') or ''), key(a.get('rival_nick') or '')):
+    if not mazo or is_bye(mazo):
+        return ''
+    if key(mazo) in (key(m.get('opp') or ''), key(a.get('rival_nick') or '')):
         return ''
     return mazo
 
@@ -397,6 +400,29 @@ def _sim(a, m):
         s += 0.5 if sa == sm else -0.25
     return s
 
+def _casa_bye(a, row):
+    """¿El apunte de bye/concede corresponde a un log suelto (práctica)? Caso real: un
+    'concede' que en realidad SE JUGÓ y quedó logueado (Liga 2 R2 vs Zorro7x4). Exige el
+    mismo resultado y marcador, fecha ±1 día y —si ambos lo traen— la misma salida/robo.
+    Solo mira logs aún sin liga: un log ya emparejado no es una práctica que reclamar."""
+    if row.get('Fuente') != 'log' or norm(row.get('Evento / Liga')):
+        return False
+    if (a.get('resultado') or '').upper() != norm(row.get('Resultado (W/L)')).upper():
+        return False
+    try:                                           # sin marcador claro NO se funde (prudencia)
+        if int(a['jg']) != int(row['Juegos Ganados']) or int(a['jp']) != int(row['Juegos Perdidos']):
+            return False
+    except Exception:
+        return False
+    fa, fr = day_key(a['fecha']), day_key(norm(row.get('Fecha')))
+    if fa != datetime.max and fr != datetime.max and abs((fa - fr).days) > 1:
+        return False
+    sa, sr = key(a.get('salida_robo')), key(row.get('Salida / Robo (G1)'))
+    if sa and sr and sa != sr:
+        return False
+    return True
+
+
 def emparejar(matches, apuntes, nick):
     """Empareja apuntes ↔ partidas por ORDEN CRONOLÓGICO GLOBAL (alineación de secuencias
     tipo diff, anclada por fecha en hora de Madrid ±1 día + resultado + marcador). Es robusto
@@ -460,9 +486,27 @@ def emparejar(matches, apuntes, nick):
                              'uuid': m['match_uuid']})
             games += _games_de_match(m, nick)
             j -= 1
-    for a in byes:                                # bye/concede sin log -> manual
-        registro.append({'row': _fila_manual(a, nick),
-                         'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
+    reconciliadas = set()
+    for a in byes:
+        # Un 'concede' que en realidad se jugó tiene su log suelto (práctica): ese log
+        # deja de ser práctica y hereda la Liga/Ronda/Lista/notas del apunte -> UNA fila,
+        # sin el bye fantasma. Si no hay log que le case, es un bye de verdad -> manual.
+        cand = next((r for r in registro
+                     if id(r) not in reconciliadas and _casa_bye(a, r['row'])), None)
+        if cand:
+            reconciliadas.add(id(cand))
+            row = cand['row']
+            row['Evento / Liga'] = a['evento']
+            row['Ronda'] = a['ronda']
+            row['Lista'] = a['lista']
+            row['Fecha'] = a['fecha'] or row['Fecha']
+            if a['notas']:
+                row['Notas de Match / Sideboard'] = a['notas']
+            if a['mvp']:
+                row['Cartas Clave / MVP'] = a['mvp']
+        else:                                     # bye/concede sin log -> manual
+            registro.append({'row': _fila_manual(a, nick),
+                             'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
     return registro, games
 
 # ------------------------------------------------------------- scouting por rival
