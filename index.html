@@ -316,6 +316,15 @@
     <div class="decks" id="myLists"></div>
     <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(de tus partidas registradas)</span></h3><div id="wrByList"></div></div>
     <div class="panel full"><h3>Lista × mazo rival <span>(tu récord V-D con cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
+
+    <h3 class="secH" style="margin-top:24px">Listas de los jugadores — carta a carta</h3>
+    <div class="author"><span class="ic"></span><div><b>Comparador de listas</b> — la 75 real y completa de cada jugador, pegada en <span style="font-family:var(--mono)">listas/&lt;nick&gt;.txt</span>. Los logs solo enseñan lo que se jugó; esto es el mazo entero. Se compara entre jugadores, contra <b>La 75 Definitiva</b> y contra el consenso del <b>Meta</b>. Se llena en cuanto cada compañero deje su .txt.</div></div>
+    <div id="listWaiting" class="note-lg" style="display:none"></div>
+    <div class="decks" id="playerLists"></div>
+    <div class="insight" id="listNotas" style="display:none"></div>
+    <div class="panel full" style="margin-top:16px"><h3>Comparador carta a carta <span>(nº de copias · <span style="color:var(--winL)">verde</span> = más que la Definitiva · <span style="color:var(--loss)">rojo</span> = menos o no la lleva · <span style="color:var(--u2)">azul</span> = carta que la Definitiva no tiene)</span></h3>
+      <div style="overflow-x:auto"><table id="listMatrix"></table></div>
+      <div style="font-size:11px;color:var(--tx3);margin-top:8px" id="listMatrixNote"></div></div>
   </section>
 
   <!-- ===== SCOUTING (rivales de MTGO · nicks públicos por decisión de Fer, 22-jul-2026) ===== -->
@@ -633,7 +642,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   $('v-'+t.dataset.v).classList.add('on');
-  if(t.dataset.v==='lists'){renderMyLists();renderLxM();}
+  if(t.dataset.v==='lists'){renderMyLists();renderLxM();renderPlayerLists();}
   if(t.dataset.v==='stats')render();
   if(t.dataset.v==='play')renderPlay();
   if(t.dataset.v==='scout')renderScout();
@@ -659,7 +668,7 @@ function refreshAll(){
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
   if(v==='stats')render();
   else if(v==='play')renderPlay();
-  else if(v==='lists'){renderMyLists();renderLxM();}
+  else if(v==='lists'){renderMyLists();renderLxM();renderPlayerLists();}
   else if(v==='scout')renderScout();
   else if(v==='cmp')renderCmp();
   else if(v==='meta')renderMetaTab();
@@ -764,6 +773,51 @@ function renderLxM(){
   $('wrByList').innerHTML=MYLISTS.map(l=>{const s=listStats(l.key),w=s.n?s.wr:0;
     return `<div class="lrow"><div style="min-width:54px;font-weight:600">${l.name}</div><div class="lbar" style="width:${Math.max(w*1.6,6)}px;background:${w>=50?'var(--win)':'var(--loss)'}"></div><div style="font-family:var(--mono);color:var(--tx2)">${s.n?`${s.wr}% · ${s.W}-${s.L}`:'sin partidas registradas'}</div></div>`;
   }).join('');
+}
+// ---- Comparador de listas de los jugadores (75 real · listas/<nick>.txt) ----
+// Fuente viva: listas/comparativa.json (lo genera scripts/comparar_listas.mjs a partir
+// de los .txt de la carpeta listas/). Si no carga, cae a este snapshot embebido.
+const LISTAS_SNAPSHOT = {"generado":"2026-07-22","referencia":"La 75 Definitiva","jugadores":[{"nick":"feralo77","titulo":"feralo77 — La 75 Definitiva (referencia)","esRef":true,"mainN":60,"sideN":15,"overlapMain":60,"overlapSide":15,"pctSim":100,"soloEl":{"main":[],"side":[]},"soloRef":{"main":[],"side":[]},"distintos":{"main":[],"side":[]}}],"esperando":["4c_PolG","Inkmaster"],"matrizMain":[{"n":"Cori-Steel Cutter","ref":4,"meta":4,"metaPct":95,"j":{"feralo77":4}},{"n":"Dragon's Rage Channeler","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Expressive Iteration","ref":4,"meta":4,"metaPct":85,"j":{"feralo77":4}},{"n":"Lava Dart","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Lightning Bolt","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Mishra's Bauble","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Monastery Swiftspear","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Mutagenic Growth","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Preordain","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Slickshot Show-Off","ref":4,"meta":4,"metaPct":100,"j":{"feralo77":4}},{"n":"Arid Mesa","ref":3,"meta":2,"metaPct":80,"j":{"feralo77":3}},{"n":"Mountain","ref":3,"meta":3,"metaPct":100,"j":{"feralo77":3}},{"n":"Scalding Tarn","ref":3,"meta":2,"metaPct":65,"j":{"feralo77":3}},{"n":"Steam Vents","ref":3,"meta":3,"metaPct":100,"j":{"feralo77":3}},{"n":"Wooded Foothills","ref":3,"meta":4,"metaPct":95,"j":{"feralo77":3}},{"n":"Fiery Islet","ref":2,"meta":2,"metaPct":95,"j":{"feralo77":2}},{"n":"Violent Urge","ref":2,"meta":2,"metaPct":75,"j":{"feralo77":2}},{"n":"Thundering Falls","ref":1,"meta":1,"metaPct":95,"j":{"feralo77":1}}],"matrizSide":[{"n":"Consign to Memory","ref":4,"meta":4,"metaPct":95,"j":{"feralo77":4}},{"n":"Unholy Heat","ref":3,"meta":3,"metaPct":100,"j":{"feralo77":3}},{"n":"Meltdown","ref":2,"meta":2,"metaPct":90,"j":{"feralo77":2}},{"n":"Spell Pierce","ref":2,"meta":2,"metaPct":85,"j":{"feralo77":2}},{"n":"Tormod's Crypt","ref":2,"meta":1,"metaPct":70,"j":{"feralo77":2}},{"n":"Mystical Dispute","ref":1,"meta":1,"metaPct":15,"j":{"feralo77":1}},{"n":"Spell Snare","ref":1,"meta":1,"metaPct":60,"j":{"feralo77":1}}],"notas":["Solo hay una lista cargada: el comparador se llena en cuanto los compañeros dejen su .txt en la carpeta listas/."]};
+let LISTAS_DATA=null;
+async function renderPlayerLists(){
+  if(!LISTAS_DATA){
+    try{const r=await fetch('listas/comparativa.json',{cache:'no-store'});LISTAS_DATA=(r&&r.ok)?await r.json():LISTAS_SNAPSHOT;}
+    catch(e){LISTAS_DATA=LISTAS_SNAPSHOT;}
+  }
+  paintPlayerLists(LISTAS_DATA);
+}
+function paintPlayerLists(j){
+  const J=j.jugadores||[];
+  $('playerLists').innerHTML=J.map(p=>{
+    const badge=p.esRef?'<span class="badge you">referencia</span>':`<span class="badge" style="background:var(--surface-2);color:var(--tx2)">${p.pctSim}% igual a la Def</span>`;
+    const flat=z=>[...((p[z]||{}).main||[]),...((p[z]||{}).side||[])];
+    const solo=p.esRef?[]:flat('soloEl');
+    const dist=p.esRef?[]:[...(p.distintos.main||[]),...(p.distintos.side||[])];
+    const soloTxt=solo.length?`<div style="font-size:12px;margin-top:6px"><span style="color:var(--u2);font-weight:600">Solo suyas (vs Def):</span> ${solo.map(c=>c.q+' '+c.n).join(', ')}</div>`:'';
+    const distTxt=dist.length?`<div style="font-size:12px;margin-top:6px"><span style="color:var(--mid);font-weight:600">Distinto nº:</span> ${dist.map(c=>`${c.n} (${c.suyo}/${c.ref})`).join(', ')}</div>`:'';
+    return `<div class="deck">
+      <div class="dh"><span class="dn">${p.nick}</span>${badge}</div>
+      <div class="dt">${p.titulo}</div>
+      <div class="io" style="grid-template-columns:1fr 1fr;margin:10px 0">
+        <div><span class="lbl">Main</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${p.mainN}</span></div>
+        <div><span class="lbl">Sideboard</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${p.sideN}</span></div>
+      </div>${soloTxt}${distTxt}</div>`;
+  }).join('')||'<div style="color:var(--tx2)">Aún no hay ninguna lista cargada en <span style="font-family:var(--mono)">listas/</span>.</div>';
+  const w=$('listWaiting');
+  if(j.esperando&&j.esperando.length){w.style.display='';w.innerHTML=`Esperando la lista de: <b>${j.esperando.join(', ')}</b>. Pásame su export o dejadlo en <span style="font-family:var(--mono)">listas/&lt;nick&gt;.txt</span> y aparece aquí.`;}
+  else w.style.display='none';
+  const nz=$('listNotas');
+  if(j.notas&&j.notas.length){nz.style.display='';nz.innerHTML='<div class="ic"></div><div>'+j.notas.map(n=>`<div>${n}</div>`).join('')+'</div>';}
+  else nz.style.display='none';
+  const nicks=J.map(p=>p.nick);
+  const cell=(v,ref)=>{if(!v)return `<td style="text-align:center;color:var(--tx3)">·</td>`;
+    let st=''; if(!ref)st='color:var(--u2);font-weight:700'; else if(v>ref)st='color:var(--winL);font-weight:700'; else if(v<ref)st='color:var(--loss);font-weight:700';
+    return `<td style="text-align:center;font-family:var(--mono);${st}">${v}</td>`;};
+  const head=`<thead><tr><th>Carta</th><th style="text-align:center;color:var(--accent)">Def</th><th style="text-align:center">Meta</th>${nicks.map(n=>`<th style="text-align:center">${n}</th>`).join('')}</tr></thead>`;
+  const rows=arr=>arr.map(r=>`<tr><td>${r.n}</td><td style="text-align:center;font-family:var(--mono);color:var(--accent)">${r.ref||'·'}</td><td style="text-align:center;font-family:var(--mono);color:var(--tx3)">${r.meta!=null?r.meta:'·'}</td>${nicks.map(n=>cell(r.j[n]||0,r.ref)).join('')}</tr>`).join('');
+  const sec=t=>`<tr><td colspan="${3+nicks.length}" style="font-family:var(--mono);color:var(--tx2);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding-top:14px">${t}</td></tr>`;
+  $('listMatrix').innerHTML=head+'<tbody>'+sec('Mazo principal')+rows(j.matrizMain||[])+sec('Sideboard')+rows(j.matrizSide||[])+'</tbody>';
+  $('listMatrixNote').innerHTML=`Columna <b style="color:var(--accent)">Def</b> = tu 75 Definitiva (referencia) · <b>Meta</b> = copias típicas del consenso mtgtop8${j.generado?` · generado ${j.generado}`:''}.`;
 }
 // ---- Scouting por rival (nicks públicos por decisión de Fer, 22-jul-2026) ----
 // Récord y mazos salen del registro en vivo (columna Rival); las cartas vistas y el
@@ -1187,7 +1241,7 @@ function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLig
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initCmpSelectors();initPlayer();renderMyLists();renderLxM();renderDefCmp();renderSBDef();
+  initSelectors();initCmpSelectors();initPlayer();renderMyLists();renderLxM();renderPlayerLists();renderDefCmp();renderSBDef();
   render();
   updateSource(remote);
   freshness();

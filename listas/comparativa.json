@@ -1,0 +1,264 @@
+{
+  "generado": "2026-07-22",
+  "referencia": "La 75 Definitiva",
+  "jugadores": [
+    {
+      "nick": "feralo77",
+      "titulo": "feralo77 — La 75 Definitiva (referencia)",
+      "esRef": true,
+      "mainN": 60,
+      "sideN": 15,
+      "overlapMain": 60,
+      "overlapSide": 15,
+      "pctSim": 100,
+      "soloEl": {
+        "main": [],
+        "side": []
+      },
+      "soloRef": {
+        "main": [],
+        "side": []
+      },
+      "distintos": {
+        "main": [],
+        "side": []
+      }
+    }
+  ],
+  "esperando": [
+    "4c_PolG",
+    "Inkmaster"
+  ],
+  "matrizMain": [
+    {
+      "n": "Cori-Steel Cutter",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 95,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Dragon's Rage Channeler",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Expressive Iteration",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 85,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Lava Dart",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Lightning Bolt",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Mishra's Bauble",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Monastery Swiftspear",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Mutagenic Growth",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Preordain",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Slickshot Show-Off",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Arid Mesa",
+      "ref": 3,
+      "meta": 2,
+      "metaPct": 80,
+      "j": {
+        "feralo77": 3
+      }
+    },
+    {
+      "n": "Mountain",
+      "ref": 3,
+      "meta": 3,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 3
+      }
+    },
+    {
+      "n": "Scalding Tarn",
+      "ref": 3,
+      "meta": 2,
+      "metaPct": 65,
+      "j": {
+        "feralo77": 3
+      }
+    },
+    {
+      "n": "Steam Vents",
+      "ref": 3,
+      "meta": 3,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 3
+      }
+    },
+    {
+      "n": "Wooded Foothills",
+      "ref": 3,
+      "meta": 4,
+      "metaPct": 95,
+      "j": {
+        "feralo77": 3
+      }
+    },
+    {
+      "n": "Fiery Islet",
+      "ref": 2,
+      "meta": 2,
+      "metaPct": 95,
+      "j": {
+        "feralo77": 2
+      }
+    },
+    {
+      "n": "Violent Urge",
+      "ref": 2,
+      "meta": 2,
+      "metaPct": 75,
+      "j": {
+        "feralo77": 2
+      }
+    },
+    {
+      "n": "Thundering Falls",
+      "ref": 1,
+      "meta": 1,
+      "metaPct": 95,
+      "j": {
+        "feralo77": 1
+      }
+    }
+  ],
+  "matrizSide": [
+    {
+      "n": "Consign to Memory",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 95,
+      "j": {
+        "feralo77": 4
+      }
+    },
+    {
+      "n": "Unholy Heat",
+      "ref": 3,
+      "meta": 3,
+      "metaPct": 100,
+      "j": {
+        "feralo77": 3
+      }
+    },
+    {
+      "n": "Meltdown",
+      "ref": 2,
+      "meta": 2,
+      "metaPct": 90,
+      "j": {
+        "feralo77": 2
+      }
+    },
+    {
+      "n": "Spell Pierce",
+      "ref": 2,
+      "meta": 2,
+      "metaPct": 85,
+      "j": {
+        "feralo77": 2
+      }
+    },
+    {
+      "n": "Tormod's Crypt",
+      "ref": 2,
+      "meta": 1,
+      "metaPct": 70,
+      "j": {
+        "feralo77": 2
+      }
+    },
+    {
+      "n": "Mystical Dispute",
+      "ref": 1,
+      "meta": 1,
+      "metaPct": 15,
+      "j": {
+        "feralo77": 1
+      }
+    },
+    {
+      "n": "Spell Snare",
+      "ref": 1,
+      "meta": 1,
+      "metaPct": 60,
+      "j": {
+        "feralo77": 1
+      }
+    }
+  ],
+  "notas": [
+    "Solo hay una lista cargada: el comparador se llena en cuanto los compañeros dejen su .txt en la carpeta listas/."
+  ]
+}
