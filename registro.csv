@@ -1,12 +1,11 @@
 match_uuid,Fecha,Evento / Liga,Lista,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente,Rival,Confianza
-,11/07/2026,Liga 2,Stock,2,NA,NA,W,1,0,Salida,1,1,,Concede,feralo77,manual,,
 29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,11/07/2026,Liga 1,Stock,1,Loki,Izzet Affinity,W,2,0,Robo,0,0,,,feralo77,log,MNeon,42%
 0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,2,Devoted,Golgari Yawgmoth,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log,zturchan,47%
 e4b090d8-9bf0-4a39-bcfe-703f18c56740,11/07/2026,Liga 1,Stock,3,Affinity,Izzet Affinity,L,0,2,Robo,0,0,,Paliza,feralo77,log,Dcal215,93%
 b27b88d4-d70c-465f-b832-1fb1f6217358,11/07/2026,Liga 1,Stock,4,Broodscale,Broodscale,W,2,1,Robo,0,0,,,feralo77,log,chylz,100%
 5f239dd1-82c8-4aa4-804b-ace012669679,11/07/2026,Liga 1,Stock,5,Dimir,Dimir Frog,W,2,0,Salida,0,0,,Se estanca en la segunda,feralo77,log,ilprofetaVDR,apunte
 45370f5a-7496-4909-bc25-ef3c52e0373d,11/07/2026,Liga 2,Stock,1,Broodscale,Broodscale,L,0,2,Robo,0,0,,No juego muy bien el match,feralo77,log,DB_BaaL,100%
-477dc805-7cc1-4060-aace-f97412484124,12/07/2026,,,,¿? (revisar),¿? (revisar),W,1,0,Salida,1,1,,,feralo77,log,Zorro7x4,0%
+477dc805-7cc1-4060-aace-f97412484124,11/07/2026,Liga 2,Stock,2,¿? (revisar),¿? (revisar),W,1,0,Salida,1,1,,Concede,feralo77,log,Zorro7x4,0%
 b3c6bda6-ea72-42b4-994b-3dec7ec09c21,11/07/2026,Liga 2,Stock,3,Boros,Boros Energy,W,2,1,Robo,0,0,Snare,,feralo77,log,Cesc_95,100%
 2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,4,Vivoras,Sultai Midrange,L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log,Ciraris,apunte
 12341f9b-5f8f-46d6-83dc-45452ecc0109,12/07/2026,Liga 2,Stock,5,Izzet,Izzet Prowess,L,1,2,Salida,0,1,,Me gana las 2 con el doble strike,feralo77,log,beetea,92%
