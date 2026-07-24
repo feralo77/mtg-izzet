@@ -55,10 +55,10 @@ c21dedf8-b250-492a-9d12-b67418dcaee4,3,Izzet Affinity,Robo,1,5,7,4,0,1,7,6,8,4,4
 94a41a68-7667-4d65-bb03-276a257627fa,3,Eldrazi Ramp,Salida,1,5,0,0,0,1,7,6,7,4,3,3,1,2,0,8,2,0,4c_PolG
 1d1326e9-f7e8-4105-80d4-f9119cb6677f,1,Izzet Affinity,Robo,0,4,5,0,0,0,7,7,4,3,3,3,1,1,0,5,2,0,4c_PolG
 1d1326e9-f7e8-4105-80d4-f9119cb6677f,2,Izzet Affinity,Salida,0,6,3,2,0,0,7,7,6,5,5,3,0,4,4,6,1,0,4c_PolG
-abd74392-c692-42b4-90de-45c181dca0f5,1,¿? (revisar),Robo,0,5,10,2,0,1,7,6,7,4,3,3,1,2,3,8,2,0,4c_PolG
-abd74392-c692-42b4-90de-45c181dca0f5,2,¿? (revisar),Salida,0,6,3,1,0,0,7,7,8,6,6,3,1,2,2,7,2,0,4c_PolG
-e0c49e67-489a-438b-9017-4bb43b772096,1,¿? (revisar),Salida,1,3,8,2,0,0,7,7,3,2,3,3,1,1,2,7,2,0,4c_PolG
-e0c49e67-489a-438b-9017-4bb43b772096,2,¿? (revisar),Robo,1,12,6,0,0,1,7,6,14,14,7,3,1,1,0,17,4,0,4c_PolG
+abd74392-c692-42b4-90de-45c181dca0f5,1,Golgari Yawgmoth,Robo,0,5,10,2,0,1,7,6,7,4,3,3,1,2,3,8,2,0,4c_PolG
+abd74392-c692-42b4-90de-45c181dca0f5,2,Golgari Yawgmoth,Salida,0,6,3,1,0,0,7,7,8,6,6,3,1,2,2,7,2,0,4c_PolG
+e0c49e67-489a-438b-9017-4bb43b772096,1,Living End,Salida,1,3,8,2,0,0,7,7,3,2,3,3,1,1,2,7,2,0,4c_PolG
+e0c49e67-489a-438b-9017-4bb43b772096,2,Living End,Robo,1,12,6,0,0,1,7,6,14,14,7,3,1,1,0,17,4,0,4c_PolG
 61e93b47-fe2c-4d29-90a4-1616d4ef4864,1,Necrodominance,Salida,0,6,1,0,1,0,6,7,8,14,5,3,1,1,6,8,1,1,4c_PolG
 61e93b47-fe2c-4d29-90a4-1616d4ef4864,2,Necrodominance,Salida,1,7,10,7,0,0,7,7,8,7,4,3,1,4,4,13,1,0,4c_PolG
 61e93b47-fe2c-4d29-90a4-1616d4ef4864,3,Necrodominance,Robo,0,9,0,0,0,0,7,7,13,14,6,3,0,2,7,13,1,1,4c_PolG
@@ -97,8 +97,8 @@ ecd661ab-5399-497c-bc38-8799c8a607c4,2,Dimir Frog,Robo,1,2,0,0,0,0,7,7,2,1,2,2,0
 523f5bd2-321c-4b38-8b54-0f427edbb672,2,Amulet Titan,Salida,0,4,0,0,0,0,7,7,3,4,3,3,1,1,0,4,1,0,4c_PolG
 9c63337c-f3af-473f-b686-74dcda18eb08,1,Golgari Yawgmoth,Salida,0,2,0,0,0,0,7,7,1,1,2,2,1,1,0,7,4,0,4c_PolG
 9c63337c-f3af-473f-b686-74dcda18eb08,2,Golgari Yawgmoth,Salida,0,6,6,0,0,1,7,6,5,7,4,2,1,1,0,10,4,0,4c_PolG
-d662e25b-ddd4-4c41-9cc2-d89c651350f2,1,¿? (revisar),Robo,1,5,0,0,0,2,7,5,6,4,3,3,1,1,0,9,3,0,4c_PolG
-d662e25b-ddd4-4c41-9cc2-d89c651350f2,2,¿? (revisar),Robo,1,6,16,5,0,1,7,6,8,6,4,3,0,3,3,13,2,1,4c_PolG
+d662e25b-ddd4-4c41-9cc2-d89c651350f2,1,MonoB Coffers,Robo,1,5,0,0,0,2,7,5,6,4,3,3,1,1,0,9,3,0,4c_PolG
+d662e25b-ddd4-4c41-9cc2-d89c651350f2,2,MonoB Coffers,Robo,1,6,16,5,0,1,7,6,8,6,4,3,0,3,3,13,2,1,4c_PolG
 82ba98c8-1dd2-440e-b63e-ec635166f8c3,1,Azorius Control,Robo,0,10,0,0,0,0,7,7,13,25,5,3,1,1,4,14,3,0,4c_PolG
 82ba98c8-1dd2-440e-b63e-ec635166f8c3,2,Azorius Control,Salida,0,8,0,0,2,0,5,7,8,20,4,1,1,1,6,10,2,0,4c_PolG
 adf9d8f9-221b-49bd-8e9c-5b37946f14f4,1,Eldrazi,Salida,0,4,0,0,1,0,6,7,4,3,2,2,0,3,0,7,3,0,4c_PolG
@@ -131,8 +131,8 @@ df74357a-29ef-4326-af53-700f3e193060,1,Boros Ponza,Robo,0,4,0,0,0,0,7,7,4,5,3,3,
 df74357a-29ef-4326-af53-700f3e193060,2,Boros Ponza,Salida,0,8,3,1,0,0,7,7,10,8,5,3,1,1,2,12,0,0,4c_PolG
 d9cb71f7-6b37-4154-aa85-1c4e64bb0a4a,1,Boros Ponza,Robo,1,5,12,4,0,0,7,7,8,5,5,3,1,1,2,12,1,0,4c_PolG
 d9cb71f7-6b37-4154-aa85-1c4e64bb0a4a,2,Boros Ponza,Robo,1,4,4,2,0,0,7,7,4,5,4,3,0,2,3,7,1,0,4c_PolG
-3b52e7d2-39e1-459a-b2a4-d66256101afa,1,¿? (revisar),Salida,1,4,6,2,0,1,7,6,4,3,3,3,0,2,2,8,2,0,4c_PolG
-3b52e7d2-39e1-459a-b2a4-d66256101afa,2,¿? (revisar),Robo,1,3,9,2,0,0,7,7,3,2,3,3,1,1,2,6,2,0,4c_PolG
+3b52e7d2-39e1-459a-b2a4-d66256101afa,1,Amulet Titan,Salida,1,4,6,2,0,1,7,6,4,3,3,3,0,2,2,8,2,0,4c_PolG
+3b52e7d2-39e1-459a-b2a4-d66256101afa,2,Amulet Titan,Robo,1,3,9,2,0,0,7,7,3,2,3,3,1,1,2,6,2,0,4c_PolG
 5c1316e4-1356-4a81-9e45-b662f00bc2af,1,Broodscale,Salida,1,3,4,0,0,0,7,7,3,3,3,3,1,1,0,6,1,0,4c_PolG
 5c1316e4-1356-4a81-9e45-b662f00bc2af,2,Broodscale,Robo,1,5,9,2,2,0,5,7,7,4,4,3,1,1,4,8,0,0,4c_PolG
 cfbade0b-daed-403f-a55c-b5624e0a917d,1,Sam Combo,Robo,0,4,4,0,0,1,7,6,5,3,3,3,1,1,0,6,1,0,4c_PolG
