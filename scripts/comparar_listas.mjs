@@ -29,6 +29,20 @@ const norm = (n) => n.toLowerCase().replace(/[^a-z0-9]/g, '');
 const clean = (n) => n.replace(/\s+\([A-Za-z0-9]{2,6}\)\s+\d+.*$/, '').replace(/\s+#.*$/, '').trim();
 const readJSON = (p) => { try { return existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : null; } catch { return null; } };
 
+// --- Fetchlands: son intercambiables (importa el TOTAL, no el reparto). ------
+// Se colapsan en una sola entrada "Fetchlands" para que las diferencias de reparto
+// (p.ej. 4 Scalding Tarn vs 3, 1 Arid Mesa vs 2) NO salgan como diferencias entre
+// listas ni en ninguna version. Las tierras de color (Steam Vents, Island, Fiery
+// Islet...) SI se dejan separadas: esas si importan.
+const FETCHES = new Set(['aridmesa','bloodstainedmire','floodedstrand','marshflats','mistyrainforest','polluteddelta','scaldingtarn','verdantcatacombs','windsweptheath','woodedfoothills','prismaticvista','fabledpassage','evolvingwilds']);
+const canon = (name) => FETCHES.has(norm(name)) ? 'Fetchlands' : name;
+// Colapsa fetchlands de una lista de {n,q,(pct)} en una sola entrada, sumando copias.
+const collapseArr = (arr) => {
+  const m = new Map();
+  for (const c of arr) { const n = canon(c.n); const k = norm(n); const e = m.get(k); if (e) e.q += c.q; else m.set(k, { n, q: c.q, pct: c.pct }); }
+  return [...m.values()];
+};
+
 // --- Parser tolerante de una lista en texto plano ---------------------------
 function parseList(txt) {
   // "Cabecera" = una linea de encabezado propia (Sideboard / SB / Deck / Maindeck, sola).
@@ -38,8 +52,9 @@ function parseList(txt) {
   let titulo = null;
   const main = new Map(), side = new Map(); // norm -> {n, q}  (agrega duplicados)
   const add = (bucket, name, q) => {
-    const k = norm(name); if (!k) return;
-    const e = bucket.get(k); if (e) e.q += q; else bucket.set(k, { n: clean(name), q });
+    const disp = canon(clean(name)); // fetchlands -> "Fetchlands" (bloque unico)
+    const k = norm(disp); if (!k) return;
+    const e = bucket.get(k); if (e) e.q += q; else bucket.set(k, { n: disp, q });
   };
   let bucket = main, seenMainCard = false;
   for (const raw of txt.split(/\r?\n/)) {
@@ -71,12 +86,16 @@ const asMap = (arr) => new Map(arr.map((c) => [norm(c.n), c]));
 const refRaw = readJSON(REF);
 if (!refRaw || !refRaw.main) { console.error(`No pude leer la referencia ${REF}`); process.exit(1); }
 const ref = { nombre: refRaw.nombre || 'La 75 Definitiva', main: refRaw.main.map((c) => ({ n: c.n, q: c.q })), side: (refRaw.side || []).map((c) => ({ n: c.n, q: c.q })) };
-const refMainMap = asMap(ref.main), refSideMap = asMap(ref.side);
+const refMainMap = asMap(collapseArr(ref.main)), refSideMap = asMap(collapseArr(ref.side));
 
 const metaRaw = readJSON(META);
 const metaMap = (zone) => {
   const m = new Map();
-  if (metaRaw && metaRaw[zone]) for (const r of metaRaw[zone]) m.set(norm(r.n), { q: r.typical, pct: r.pct });
+  if (metaRaw && metaRaw[zone]) {
+    // colapsa fetchlands del consenso; el % no se suma -> null para el bloque agregado
+    const collapsed = collapseArr(metaRaw[zone].map((r) => ({ n: r.n, q: r.typical, pct: r.pct })));
+    for (const r of collapsed) m.set(norm(r.n), { q: r.q, pct: canon(r.n) === 'Fetchlands' ? null : r.pct });
+  }
   return m;
 };
 const metaMainMap = metaMap('main'), metaSideMap = metaMap('side');

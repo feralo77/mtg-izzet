@@ -1,5 +1,5 @@
 {
-  "generado": "2026-07-23",
+  "generado": "2026-07-24",
   "referencia": "La 75 Definitiva v2 (22-jul-2026)",
   "jugadores": [
     {
@@ -8,9 +8,9 @@
       "esRef": false,
       "mainN": 60,
       "sideN": 15,
-      "overlapMain": 57,
+      "overlapMain": 60,
       "overlapSide": 13,
-      "pctSim": 93,
+      "pctSim": 97,
       "soloEl": {
         "main": [],
         "side": [
@@ -21,12 +21,7 @@
         ]
       },
       "soloRef": {
-        "main": [
-          {
-            "n": "Scalding Tarn",
-            "q": 3
-          }
-        ],
+        "main": [],
         "side": [
           {
             "n": "Murktide Regent",
@@ -35,23 +30,7 @@
         ]
       },
       "distintos": {
-        "main": [
-          {
-            "n": "Arid Mesa",
-            "suyo": 3,
-            "ref": 2
-          },
-          {
-            "n": "Bloodstained Mire",
-            "suyo": 3,
-            "ref": 2
-          },
-          {
-            "n": "Wooded Foothills",
-            "suyo": 3,
-            "ref": 2
-          }
-        ],
+        "main": [],
         "side": [
           {
             "n": "Spell Pierce",
@@ -72,9 +51,9 @@
       "esRef": false,
       "mainN": 60,
       "sideN": 15,
-      "overlapMain": 57,
+      "overlapMain": 59,
       "overlapSide": 10,
-      "pctSim": 89,
+      "pctSim": 92,
       "soloEl": {
         "main": [
           {
@@ -98,12 +77,7 @@
         ]
       },
       "soloRef": {
-        "main": [
-          {
-            "n": "Wooded Foothills",
-            "q": 2
-          }
-        ],
+        "main": [],
         "side": [
           {
             "n": "Tormod's Crypt",
@@ -121,16 +95,6 @@
       },
       "distintos": {
         "main": [
-          {
-            "n": "Bloodstained Mire",
-            "suyo": 3,
-            "ref": 2
-          },
-          {
-            "n": "Scalding Tarn",
-            "suyo": 4,
-            "ref": 3
-          },
           {
             "n": "Violent Urge",
             "suyo": 1,
@@ -162,9 +126,9 @@
       "esRef": false,
       "mainN": 60,
       "sideN": 15,
-      "overlapMain": 54,
+      "overlapMain": 55,
       "overlapSide": 12,
-      "pctSim": 88,
+      "pctSim": 89,
       "soloEl": {
         "main": [
           {
@@ -203,11 +167,6 @@
       "distintos": {
         "main": [
           {
-            "n": "Arid Mesa",
-            "suyo": 1,
-            "ref": 2
-          },
-          {
             "n": "Expressive Iteration",
             "suyo": 3,
             "ref": 4
@@ -221,11 +180,6 @@
             "n": "Mutagenic Growth",
             "suyo": 3,
             "ref": 4
-          },
-          {
-            "n": "Scalding Tarn",
-            "suyo": 4,
-            "ref": 3
           },
           {
             "n": "Slickshot Show-Off",
@@ -263,9 +217,9 @@
       "esRef": false,
       "mainN": 60,
       "sideN": 15,
-      "overlapMain": 53,
+      "overlapMain": 54,
       "overlapSide": 9,
-      "pctSim": 83,
+      "pctSim": 84,
       "soloEl": {
         "main": [
           {
@@ -315,18 +269,7 @@
         ]
       },
       "distintos": {
-        "main": [
-          {
-            "n": "Arid Mesa",
-            "suyo": 1,
-            "ref": 2
-          },
-          {
-            "n": "Bloodstained Mire",
-            "suyo": 3,
-            "ref": 2
-          }
-        ],
+        "main": [],
         "side": [
           {
             "n": "Consign to Memory",
@@ -357,9 +300,9 @@
       "esRef": false,
       "mainN": 60,
       "sideN": 15,
-      "overlapMain": 57,
+      "overlapMain": 59,
       "overlapSide": 10,
-      "pctSim": 89,
+      "pctSim": 92,
       "soloEl": {
         "main": [
           {
@@ -383,12 +326,7 @@
         ]
       },
       "soloRef": {
-        "main": [
-          {
-            "n": "Bloodstained Mire",
-            "q": 2
-          }
-        ],
+        "main": [],
         "side": [
           {
             "n": "Tormod's Crypt",
@@ -407,18 +345,8 @@
       "distintos": {
         "main": [
           {
-            "n": "Arid Mesa",
-            "suyo": 3,
-            "ref": 2
-          },
-          {
             "n": "Violent Urge",
             "suyo": 1,
-            "ref": 2
-          },
-          {
-            "n": "Wooded Foothills",
-            "suyo": 3,
             "ref": 2
           }
         ],
@@ -468,6 +396,20 @@
     "Inkmaster"
   ],
   "matrizMain": [
+    {
+      "n": "Fetchlands",
+      "ref": 9,
+      "meta": 11,
+      "metaPct": null,
+      "j": {
+        "2.0": 9,
+        "4c_PolG": 9,
+        "Basics": 9,
+        "PT": 9,
+        "Stock": 9,
+        "feralo77": 9
+      }
+    },
     {
       "n": "Cori-Steel Cutter",
       "ref": 4,
@@ -634,62 +576,6 @@
         "PT": 3,
         "Stock": 3,
         "feralo77": 3
-      }
-    },
-    {
-      "n": "Scalding Tarn",
-      "ref": 3,
-      "meta": 3,
-      "metaPct": 82,
-      "j": {
-        "2.0": 0,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 3,
-        "Stock": 3,
-        "feralo77": 3
-      }
-    },
-    {
-      "n": "Bloodstained Mire",
-      "ref": 2,
-      "meta": 2,
-      "metaPct": 97,
-      "j": {
-        "2.0": 3,
-        "4c_PolG": 3,
-        "Basics": 2,
-        "PT": 3,
-        "Stock": 0,
-        "feralo77": 2
-      }
-    },
-    {
-      "n": "Arid Mesa",
-      "ref": 2,
-      "meta": 2,
-      "metaPct": 80,
-      "j": {
-        "2.0": 3,
-        "4c_PolG": 2,
-        "Basics": 1,
-        "PT": 1,
-        "Stock": 3,
-        "feralo77": 2
-      }
-    },
-    {
-      "n": "Wooded Foothills",
-      "ref": 2,
-      "meta": 2,
-      "metaPct": 92,
-      "j": {
-        "2.0": 3,
-        "4c_PolG": 0,
-        "Basics": 2,
-        "PT": 2,
-        "Stock": 3,
-        "feralo77": 2
       }
     },
     {
@@ -1004,7 +890,7 @@
     }
   ],
   "notas": [
-    "Núcleo común a las 6 listas: 14 cartas distintas (43 copias) que todas llevan en el mazo principal.",
+    "Núcleo común a las 6 listas: 14 cartas distintas (51 copias) que todas llevan en el mazo principal.",
     "Cartas de main que solo lleva una lista: Monstrous Rage, Assault Strobe, Boomerang Basics, Island."
   ]
 }
