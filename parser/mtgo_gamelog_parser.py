@@ -207,15 +207,16 @@ SIG = [
     ('Boros Energy', [('Guide of Souls',2),('Ocelot Pride',3),('Ajani, Nacatl Pariah',3),('Galvanic Discharge',2)]),
     ('Izzet Affinity', [('Kappa Cannoneer',3),("Urza's Saga",1),('Thought Monitor',2),('Pinnacle Emissary',2),('Mox Opal',2)]),
     ('Eldrazi', [('Thought-Knot Seer',2),('Ugin',1),('Chalice of the Void',1),("Kozilek, the Broodmother",2),('Devourer of Destiny',2),('Karn, the Great Creator',1),('Expedition Map',1)]),
-    ('Amulet Titan', [('Amulet of Vigor',3),('Primeval Titan',2)]),
-    ('Golgari Yawgmoth', [('Yawgmoth, Thran Physician',3),("Agatha's Soul Cauldron",2)]),
+    ('Amulet Titan', [('Amulet of Vigor',3),('Primeval Titan',2),('Arboreal Grazer',2),("Green Sun's Zenith",1)]),
+    ('Golgari Yawgmoth', [('Yawgmoth, Thran Physician',3),("Agatha's Soul Cauldron",2),('Badgermole Cub',2),('Young Wolf',1),('Tyvar, Jubilant Brawler',1),('Wight of the Reliquary',1),('Ignoble Hierarch',1)]),
     ('Ruby Storm', [('Ruby Medallion',3),('Grapeshot',2),('Past in Flames',2),('Manamorphose',2),('Pyretic Ritual',2),('Desperate Ritual',2),('Ral, Monsoon Mage',2),('Reckless Impulse',1)]),
-    ('Living End', [('Living End',3),('Shardless Agent',2)]),
+    # 'Dead' es la mitad de Dead // Gone tal cual la emite el log (MV 3 en mazo, por eso la juega Living End).
+    ('Living End', [('Living End',3),('Curator of Mysteries',3),('Shardless Agent',2),('Waker of Waves',2),('Dead',2),('Commandeer',1),('Foundation Breaker',1)]),
     ('Tameshi Belcher', [('Goblin Charbelcher',3)]),
     ('Boros Ponza', [('High Noon',2),('Erode',2),('Demolition Field',1),('Cleansing Wildfire',2),('Magus of the Moon',2),('Price of Freedom',2)]),
     ('Through the Breach', [('Through the Breach',3),('Nulldrifter',2),("Kozilek's Return",2),('Talisman of Creativity',2)]),
     ('MonoR Artifacts', [('Legion Extruder',3),('Shrapnel Blast',2),('Galvanic Blast',1),('Kuldotha Rebirth',2)]),
-    ('Neoform', [('Neoform',3),('Allosaurus Rider',2),("Summoner's Pact",2)]),
+    ('Neoform', [('Neoform',3),('Planar Genesis',3),('Allosaurus Rider',2),("Summoner's Pact",2)]),
     ('Izzet Prowess', [('Slickshot Show-Off',2),('Cori-Steel Cutter',2),('Monastery Swiftspear',2)]),
     ('Azorius Control', [('Counterspell',1),('Wrath of the Skies',2),('Teferi, Time Raveler',2)]),
     # --- Firmas nuevas 2026-07-22: scouting de rivales de la liga (partidas de Pol + Fer). ---
@@ -232,8 +233,13 @@ SIG = [
     ('Dimir Merfolk', [('Namor the Sub-Mariner',2),('Svyelun of Sea and Sky',2),('Sink into Stupor',2),('Stern Scolding',2)]),
     ('Necrodominance', [('Necrodominance',3),('Soul Spike',2),('March of Wretched Sorrow',1)]),
     ('Oracle Combo', [("Thassa's Oracle",3),("Angel's Grace",3),('Spoils of the Vault',1)]),
-    ('Eldrazi Ramp', [('Sowing Mycospawn',3),('Sire of Seven Deaths',2)]),
+    ('Eldrazi Ramp', [('Sowing Mycospawn',3),('Sire of Seven Deaths',2),("Green Sun's Zenith",1)]),
     ('GW Birthing Ritual', [('Birthing Ritual',2),('Brightglass Gearhulk',3),('Skyclave Apparition',1)]),
+    # --- Firmas nuevas 2026-07-24: catálogo de pendientes del scouting (sekizou, Hayek,
+    # DB_Control4Daze, Bob49). MonoB Coffers = control negro de Cabal Coffers: Karn TGC +
+    # Ensnaring Bridge + March es su paquete; se separa de Necrodominance (agro-combo, manda
+    # Necrodominance peso 3 cuando aparece). Sheoldred a 1 porque también se ve en Dimir Frog y Necro.
+    ('MonoB Coffers', [('March of Wretched Sorrow',2),('Ensnaring Bridge',2),('Sheoldred, the Apocalypse',1),('Karn, the Great Creator',1)]),
 ]
 
 # Parámetros del scoring (mismo espíritu que MyMTGO EstimateArchetypeLocally):
