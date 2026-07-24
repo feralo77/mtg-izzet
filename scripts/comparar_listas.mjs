@@ -2,7 +2,7 @@
 // ============================================================================
 // Comparador de listas de los jugadores.
 //
-// Lee cada listas/<nick>.txt (export de MTGO/Arena/mtggoldfish en texto plano),
+// Lee cada listas/<nick> - <nombre>.txt (export de MTGO/Arena/mtggoldfish en texto plano),
 // lo compara carta a carta:
 //   - entre los jugadores (matriz cartas x jugadores),
 //   - frente a La 75 Definitiva  (meta/mi-75.json, lista de referencia de Fer),
@@ -102,9 +102,19 @@ const metaMainMap = metaMap('main'), metaSideMap = metaMap('side');
 
 // --- Leer las listas de la carpeta ------------------------------------------
 const files = existsSync(DIR) ? readdirSync(DIR).filter((f) => f.toLowerCase().endsWith('.txt')) : [];
+// Una lista = (jugador, nombre). El fichero se llama "<nick> - <nombre>.txt".
+// Se parte por el PRIMER " - " (el nombre puede contener guiones). Sin separador,
+// se toma el nombre entero como jugador y nombre (compatibilidad hacia atras).
+const parseNombre = (f) => {
+  const base = f.replace(/\.txt$/i, '');
+  const i = base.indexOf(' - ');
+  return i > 0 ? { owner: base.slice(0, i).trim(), label: base.slice(i + 3).trim(), id: base }
+               : { owner: base, label: base, id: base };
+};
 const jugadores = [];
 for (const f of files.sort()) {
-  const nick = f.replace(/\.txt$/i, '');
+  const { owner, label, id } = parseNombre(f);
+  const nick = id; // id UNICO de la lista (columna de la matriz): "<nick> - <nombre>"
   const parsed = parseList(readFileSync(join(DIR, f), 'utf8'));
   const mainN = zoneCount(parsed.main), sideN = zoneCount(parsed.side);
   if (mainN === 0 && sideN === 0) { console.error(`  ${f}: vacia, descartada`); continue; }
@@ -129,10 +139,11 @@ for (const f of files.sort()) {
   const dM = diff(jMain, refMainMap), dS = diff(jSide, refSideMap);
   const refTotal = zoneCount(ref.main) + zoneCount(ref.side);
   const pctSim = refTotal ? Math.round(((dM.comun + dS.comun) / refTotal) * 100) : 0;
-  const esRef = norm(nick) === norm('feralo77');
+  // La referencia (100%) es la Definitiva de Fer: fichero "feralo77 - Definitiva.txt".
+  const esRef = norm(owner) === norm('feralo77') && /definitiva/i.test(label);
 
   jugadores.push({
-    nick, titulo: parsed.titulo || nick, esRef,
+    nick, owner, label, titulo: parsed.titulo || `${owner} · ${label}`, esRef,
     mainN, sideN, overlapMain: dM.comun, overlapSide: dS.comun, pctSim,
     soloEl: { main: dM.soloEl, side: dS.soloEl },
     soloRef: { main: dM.soloRef, side: dS.soloRef },
@@ -159,9 +170,10 @@ const matrizMain = matriz((j) => j._main, refMainMap, metaMainMap);
 const matrizSide = matriz((j) => j._side, refSideMap, metaSideMap);
 
 // --- Quien falta por entregar su lista --------------------------------------
+// "Esperando" = jugadores del roster que aun no han dejado NINGUNA lista (por owner).
 const roster = readJSON(ROSTER);
-const tienen = new Set(jugadores.map((j) => norm(j.nick)));
-const esperando = (roster && roster.players ? roster.players : []).filter((p) => !tienen.has(norm(p)));
+const conLista = new Set(jugadores.map((j) => norm(j.owner)));
+const esperando = (roster && roster.players ? roster.players : []).filter((p) => !conLista.has(norm(p)));
 
 // --- Notas por reglas (nucleo comun, mayor divergencia) ---------------------
 const notas = [];

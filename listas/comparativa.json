@@ -3,7 +3,75 @@
   "referencia": "La 75 Definitiva v2 (22-jul-2026)",
   "jugadores": [
     {
-      "nick": "2.0",
+      "nick": "4c_PolG - Pol 1 NF",
+      "owner": "4c_PolG",
+      "label": "Pol 1 NF",
+      "titulo": "4c_PolG · Pol 1 NF",
+      "esRef": false,
+      "mainN": 60,
+      "sideN": 15,
+      "overlapMain": 60,
+      "overlapSide": 10,
+      "pctSim": 93,
+      "soloEl": {
+        "main": [],
+        "side": [
+          {
+            "n": "Assault Strobe",
+            "q": 1
+          },
+          {
+            "n": "Prismari Charm",
+            "q": 1
+          },
+          {
+            "n": "Surgical Extraction",
+            "q": 1
+          }
+        ]
+      },
+      "soloRef": {
+        "main": [],
+        "side": [
+          {
+            "n": "Tormod's Crypt",
+            "q": 2
+          },
+          {
+            "n": "Murktide Regent",
+            "q": 1
+          },
+          {
+            "n": "Mystical Dispute",
+            "q": 1
+          }
+        ]
+      },
+      "distintos": {
+        "main": [],
+        "side": [
+          {
+            "n": "Consign to Memory",
+            "suyo": 3,
+            "ref": 4
+          },
+          {
+            "n": "Spell Pierce",
+            "suyo": 2,
+            "ref": 1
+          },
+          {
+            "n": "Spell Snare",
+            "suyo": 2,
+            "ref": 1
+          }
+        ]
+      }
+    },
+    {
+      "nick": "feralo77 - 2.0",
+      "owner": "feralo77",
+      "label": "2.0",
       "titulo": "feralo77 · 2.0",
       "esRef": false,
       "mainN": 60,
@@ -46,82 +114,9 @@
       }
     },
     {
-      "nick": "4c_PolG",
-      "titulo": "4c_PolG · Izzet Prowess",
-      "esRef": false,
-      "mainN": 60,
-      "sideN": 15,
-      "overlapMain": 59,
-      "overlapSide": 10,
-      "pctSim": 92,
-      "soloEl": {
-        "main": [
-          {
-            "n": "Flashback",
-            "q": 1
-          }
-        ],
-        "side": [
-          {
-            "n": "Assault Strobe",
-            "q": 1
-          },
-          {
-            "n": "Prismari Charm",
-            "q": 1
-          },
-          {
-            "n": "Surgical Extraction",
-            "q": 1
-          }
-        ]
-      },
-      "soloRef": {
-        "main": [],
-        "side": [
-          {
-            "n": "Tormod's Crypt",
-            "q": 2
-          },
-          {
-            "n": "Murktide Regent",
-            "q": 1
-          },
-          {
-            "n": "Mystical Dispute",
-            "q": 1
-          }
-        ]
-      },
-      "distintos": {
-        "main": [
-          {
-            "n": "Violent Urge",
-            "suyo": 1,
-            "ref": 2
-          }
-        ],
-        "side": [
-          {
-            "n": "Consign to Memory",
-            "suyo": 3,
-            "ref": 4
-          },
-          {
-            "n": "Spell Pierce",
-            "suyo": 2,
-            "ref": 1
-          },
-          {
-            "n": "Spell Snare",
-            "suyo": 2,
-            "ref": 1
-          }
-        ]
-      }
-    },
-    {
-      "nick": "Basics",
+      "nick": "feralo77 - Basics",
+      "owner": "feralo77",
+      "label": "Basics",
       "titulo": "feralo77 · Basics (Liga 6, 23-jul-2026) — https://www.mtggoldfish.com/deck/7885257#online",
       "esRef": false,
       "mainN": 60,
@@ -212,7 +207,33 @@
       }
     },
     {
-      "nick": "PT",
+      "nick": "feralo77 - Definitiva",
+      "owner": "feralo77",
+      "label": "Definitiva",
+      "titulo": "feralo77 · La 75 Definitiva v2 (22-jul-2026)",
+      "esRef": true,
+      "mainN": 60,
+      "sideN": 15,
+      "overlapMain": 60,
+      "overlapSide": 15,
+      "pctSim": 100,
+      "soloEl": {
+        "main": [],
+        "side": []
+      },
+      "soloRef": {
+        "main": [],
+        "side": []
+      },
+      "distintos": {
+        "main": [],
+        "side": []
+      }
+    },
+    {
+      "nick": "feralo77 - PT",
+      "owner": "feralo77",
+      "label": "PT",
       "titulo": "feralo77 · PT",
       "esRef": false,
       "mainN": 60,
@@ -295,7 +316,9 @@
       }
     },
     {
-      "nick": "Stock",
+      "nick": "feralo77 - Stock",
+      "owner": "feralo77",
+      "label": "Stock",
       "titulo": "feralo77 · Stock",
       "esRef": false,
       "mainN": 60,
@@ -368,28 +391,6 @@
           }
         ]
       }
-    },
-    {
-      "nick": "feralo77",
-      "titulo": "feralo77 · La 75 Definitiva v2 (22-jul-2026)",
-      "esRef": true,
-      "mainN": 60,
-      "sideN": 15,
-      "overlapMain": 60,
-      "overlapSide": 15,
-      "pctSim": 100,
-      "soloEl": {
-        "main": [],
-        "side": []
-      },
-      "soloRef": {
-        "main": [],
-        "side": []
-      },
-      "distintos": {
-        "main": [],
-        "side": []
-      }
     }
   ],
   "esperando": [
@@ -402,12 +403,12 @@
       "meta": 11,
       "metaPct": null,
       "j": {
-        "2.0": 9,
-        "4c_PolG": 9,
-        "Basics": 9,
-        "PT": 9,
-        "Stock": 9,
-        "feralo77": 9
+        "4c_PolG - Pol 1 NF": 9,
+        "feralo77 - 2.0": 9,
+        "feralo77 - Basics": 9,
+        "feralo77 - Definitiva": 9,
+        "feralo77 - PT": 9,
+        "feralo77 - Stock": 9
       }
     },
     {
@@ -416,12 +417,12 @@
       "meta": 4,
       "metaPct": 98,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 4,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -430,12 +431,12 @@
       "meta": 4,
       "metaPct": 100,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 4,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -444,12 +445,12 @@
       "meta": 4,
       "metaPct": 100,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 4,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -458,12 +459,12 @@
       "meta": 4,
       "metaPct": 100,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 4,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -472,12 +473,12 @@
       "meta": 4,
       "metaPct": 100,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 4,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -486,12 +487,12 @@
       "meta": 4,
       "metaPct": 100,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 4,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -500,12 +501,12 @@
       "meta": 4,
       "metaPct": 100,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 4,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 4,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -514,12 +515,12 @@
       "meta": 4,
       "metaPct": 97,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 3,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 3,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -528,12 +529,12 @@
       "meta": 4,
       "metaPct": 92,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 3,
-        "PT": 4,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 3,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -542,12 +543,12 @@
       "meta": 4,
       "metaPct": 77,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 4,
-        "Basics": 3,
-        "PT": 0,
-        "Stock": 4,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 4,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 3,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 4
       }
     },
     {
@@ -556,12 +557,12 @@
       "meta": 3,
       "metaPct": 100,
       "j": {
-        "2.0": 3,
-        "4c_PolG": 3,
-        "Basics": 3,
-        "PT": 3,
-        "Stock": 3,
-        "feralo77": 3
+        "4c_PolG - Pol 1 NF": 3,
+        "feralo77 - 2.0": 3,
+        "feralo77 - Basics": 3,
+        "feralo77 - Definitiva": 3,
+        "feralo77 - PT": 3,
+        "feralo77 - Stock": 3
       }
     },
     {
@@ -570,12 +571,12 @@
       "meta": 3,
       "metaPct": 100,
       "j": {
-        "2.0": 3,
-        "4c_PolG": 3,
-        "Basics": 3,
-        "PT": 3,
-        "Stock": 3,
-        "feralo77": 3
+        "4c_PolG - Pol 1 NF": 3,
+        "feralo77 - 2.0": 3,
+        "feralo77 - Basics": 3,
+        "feralo77 - Definitiva": 3,
+        "feralo77 - PT": 3,
+        "feralo77 - Stock": 3
       }
     },
     {
@@ -584,12 +585,12 @@
       "meta": 2,
       "metaPct": 95,
       "j": {
-        "2.0": 2,
-        "4c_PolG": 2,
-        "Basics": 1,
-        "PT": 2,
-        "Stock": 2,
-        "feralo77": 2
+        "4c_PolG - Pol 1 NF": 2,
+        "feralo77 - 2.0": 2,
+        "feralo77 - Basics": 1,
+        "feralo77 - Definitiva": 2,
+        "feralo77 - PT": 2,
+        "feralo77 - Stock": 2
       }
     },
     {
@@ -598,12 +599,12 @@
       "meta": 2,
       "metaPct": 70,
       "j": {
-        "2.0": 2,
-        "4c_PolG": 1,
-        "Basics": 1,
-        "PT": 0,
-        "Stock": 1,
-        "feralo77": 2
+        "4c_PolG - Pol 1 NF": 2,
+        "feralo77 - 2.0": 2,
+        "feralo77 - Basics": 1,
+        "feralo77 - Definitiva": 2,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 1
       }
     },
     {
@@ -612,12 +613,12 @@
       "meta": 1,
       "metaPct": 98,
       "j": {
-        "2.0": 1,
-        "4c_PolG": 1,
-        "Basics": 1,
-        "PT": 1,
-        "Stock": 1,
-        "feralo77": 1
+        "4c_PolG - Pol 1 NF": 1,
+        "feralo77 - 2.0": 1,
+        "feralo77 - Basics": 1,
+        "feralo77 - Definitiva": 1,
+        "feralo77 - PT": 1,
+        "feralo77 - Stock": 1
       }
     },
     {
@@ -626,12 +627,12 @@
       "meta": 3,
       "metaPct": 20,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 0,
-        "Basics": 0,
-        "PT": 3,
-        "Stock": 0,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 3,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -640,12 +641,12 @@
       "meta": 1,
       "metaPct": 40,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 0,
-        "Basics": 2,
-        "PT": 1,
-        "Stock": 0,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 2,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 1,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -654,12 +655,12 @@
       "meta": 2,
       "metaPct": 20,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 0,
-        "Basics": 0,
-        "PT": 2,
-        "Stock": 0,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 2,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -668,12 +669,12 @@
       "meta": 2,
       "metaPct": 23,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 0,
-        "Basics": 2,
-        "PT": 0,
-        "Stock": 0,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 2,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -682,12 +683,12 @@
       "meta": 1,
       "metaPct": 18,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 1,
-        "Basics": 0,
-        "PT": 0,
-        "Stock": 1,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 1
       }
     },
     {
@@ -696,12 +697,12 @@
       "meta": 1,
       "metaPct": 22,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 0,
-        "Basics": 1,
-        "PT": 0,
-        "Stock": 0,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 1,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 0
       }
     }
   ],
@@ -712,12 +713,12 @@
       "meta": 4,
       "metaPct": 98,
       "j": {
-        "2.0": 4,
-        "4c_PolG": 3,
-        "Basics": 3,
-        "PT": 3,
-        "Stock": 3,
-        "feralo77": 4
+        "4c_PolG - Pol 1 NF": 3,
+        "feralo77 - 2.0": 4,
+        "feralo77 - Basics": 3,
+        "feralo77 - Definitiva": 4,
+        "feralo77 - PT": 3,
+        "feralo77 - Stock": 3
       }
     },
     {
@@ -726,12 +727,12 @@
       "meta": 3,
       "metaPct": 98,
       "j": {
-        "2.0": 3,
-        "4c_PolG": 3,
-        "Basics": 3,
-        "PT": 4,
-        "Stock": 3,
-        "feralo77": 3
+        "4c_PolG - Pol 1 NF": 3,
+        "feralo77 - 2.0": 3,
+        "feralo77 - Basics": 3,
+        "feralo77 - Definitiva": 3,
+        "feralo77 - PT": 4,
+        "feralo77 - Stock": 3
       }
     },
     {
@@ -740,12 +741,12 @@
       "meta": 2,
       "metaPct": 92,
       "j": {
-        "2.0": 2,
-        "4c_PolG": 2,
-        "Basics": 2,
-        "PT": 1,
-        "Stock": 2,
-        "feralo77": 2
+        "4c_PolG - Pol 1 NF": 2,
+        "feralo77 - 2.0": 2,
+        "feralo77 - Basics": 2,
+        "feralo77 - Definitiva": 2,
+        "feralo77 - PT": 1,
+        "feralo77 - Stock": 2
       }
     },
     {
@@ -754,12 +755,12 @@
       "meta": 1,
       "metaPct": 68,
       "j": {
-        "2.0": 1,
-        "4c_PolG": 0,
-        "Basics": 2,
-        "PT": 0,
-        "Stock": 0,
-        "feralo77": 2
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 1,
+        "feralo77 - Basics": 2,
+        "feralo77 - Definitiva": 2,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -768,12 +769,12 @@
       "meta": 1,
       "metaPct": 67,
       "j": {
-        "2.0": 1,
-        "4c_PolG": 2,
-        "Basics": 2,
-        "PT": 3,
-        "Stock": 2,
-        "feralo77": 1
+        "4c_PolG - Pol 1 NF": 2,
+        "feralo77 - 2.0": 1,
+        "feralo77 - Basics": 2,
+        "feralo77 - Definitiva": 1,
+        "feralo77 - PT": 3,
+        "feralo77 - Stock": 2
       }
     },
     {
@@ -782,12 +783,12 @@
       "meta": 1,
       "metaPct": 87,
       "j": {
-        "2.0": 2,
-        "4c_PolG": 2,
-        "Basics": 2,
-        "PT": 1,
-        "Stock": 2,
-        "feralo77": 1
+        "4c_PolG - Pol 1 NF": 2,
+        "feralo77 - 2.0": 2,
+        "feralo77 - Basics": 2,
+        "feralo77 - Definitiva": 1,
+        "feralo77 - PT": 1,
+        "feralo77 - Stock": 2
       }
     },
     {
@@ -796,12 +797,12 @@
       "meta": 1,
       "metaPct": 15,
       "j": {
-        "2.0": 1,
-        "4c_PolG": 0,
-        "Basics": 0,
-        "PT": 0,
-        "Stock": 0,
-        "feralo77": 1
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 1,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 1,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -810,12 +811,12 @@
       "meta": 1,
       "metaPct": 22,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 0,
-        "Basics": 0,
-        "PT": 0,
-        "Stock": 0,
-        "feralo77": 1
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 1,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -824,12 +825,12 @@
       "meta": 4,
       "metaPct": 20,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 0,
-        "Basics": 0,
-        "PT": 3,
-        "Stock": 0,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 3,
+        "feralo77 - Stock": 0
       }
     },
     {
@@ -838,12 +839,12 @@
       "meta": 1,
       "metaPct": 12,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 1,
-        "Basics": 1,
-        "PT": 0,
-        "Stock": 1,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 1,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 1,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 1
       }
     },
     {
@@ -852,12 +853,12 @@
       "meta": 1,
       "metaPct": 15,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 1,
-        "Basics": 0,
-        "PT": 0,
-        "Stock": 1,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 1,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 1
       }
     },
     {
@@ -866,12 +867,12 @@
       "meta": 1,
       "metaPct": 35,
       "j": {
-        "2.0": 0,
-        "4c_PolG": 1,
-        "Basics": 0,
-        "PT": 0,
-        "Stock": 1,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 1,
+        "feralo77 - 2.0": 0,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 1
       }
     },
     {
@@ -880,17 +881,17 @@
       "meta": 1,
       "metaPct": 10,
       "j": {
-        "2.0": 1,
-        "4c_PolG": 0,
-        "Basics": 0,
-        "PT": 0,
-        "Stock": 0,
-        "feralo77": 0
+        "4c_PolG - Pol 1 NF": 0,
+        "feralo77 - 2.0": 1,
+        "feralo77 - Basics": 0,
+        "feralo77 - Definitiva": 0,
+        "feralo77 - PT": 0,
+        "feralo77 - Stock": 0
       }
     }
   ],
   "notas": [
     "Núcleo común a las 6 listas: 14 cartas distintas (51 copias) que todas llevan en el mazo principal.",
-    "Cartas de main que solo lleva una lista: Monstrous Rage, Assault Strobe, Boomerang Basics, Island."
+    "Cartas de main que solo lleva una lista: Monstrous Rage, Assault Strobe, Boomerang Basics, Flashback, Island."
   ]
 }

@@ -1,19 +1,27 @@
 # Listas de los jugadores
 
-Aquí vive la **lista real y completa de 75 cartas** de cada jugador, para poder
-compararlas carta a carta. Los logs de MTGO solo enseñan las cartas que
-aparecieron en juego, nunca el mazo entero — por eso hace falta que cada jugador
-deje aquí su lista.
+Aquí vive la **lista real y completa de 75 cartas** de cada versión de cada
+jugador, para poder compararlas carta a carta. Los logs de MTGO solo enseñan las
+cartas que aparecieron en juego, nunca el mazo entero — por eso hace falta que
+cada jugador deje aquí su lista.
+
+## Una lista = un jugador + un nombre
+
+Un mismo nombre de mazo puede jugarlo más de una persona (p.ej. dos jugadores
+llaman "Basics" a su versión, pero son mazos distintos). Por eso **cada lista es
+la pareja (jugador, nombre)**, no solo el nombre. En la práctica: el fichero se
+llama `<nick> - <nombre>.txt`.
 
 ## Cómo añadir una lista
 
 1. Abre tu mazo en MTGO / Arena / mtggoldfish y dale a **Export** (o cópialo).
-2. Crea un fichero de texto con el **nick del jugador** como nombre:
-   `feralo77.txt`, `4c_PolG.txt`, `Inkmaster.txt`.
+2. Crea un fichero de texto llamado **`<nick> - <nombre>.txt`**:
+   `feralo77 - Stock.txt`, `feralo77 - Definitiva.txt`, `4c_PolG - Pol 1 NF.txt`,
+   `Inkmaster - Prowess.txt`. El nick es el mismo que en `automation/jugadores.json`.
 3. Pega dentro el export tal cual. Formato (una carta por línea):
 
    ```
-   # feralo77 — La 75 Definitiva      ← opcional: la 1ª línea con # es el título
+   # feralo77 · La 75 Definitiva      ← opcional: la 1ª línea con # es el título
    4 Monastery Swiftspear
    4 Dragon's Rage Channeler
    ...
@@ -46,5 +54,5 @@ node scripts/comparar_listas.mjs --date AAAA-MM-DD
 ```
 
 > La lista de referencia (contra la que se calculan las diferencias) es la 75 de
-> Fer en `meta/mi-75.json`, no un fichero de esta carpeta. `feralo77.txt` está aquí
-> como ejemplo y para que aparezca en el comparador junto al resto.
+> Fer en `meta/mi-75.json`, no un fichero de esta carpeta. `feralo77 - Definitiva.txt`
+> está aquí para que la referencia aparezca en el comparador junto al resto.
