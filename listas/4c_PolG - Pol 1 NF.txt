@@ -1,11 +1,10 @@
-# 4c_PolG · Izzet Prowess
+# 4c_PolG · Pol 1 NF
 2 Arid Mesa
 3 Bloodstained Mire
 4 Cori-Steel Cutter
 4 Dragon's Rage Channeler
 4 Expressive Iteration
 2 Fiery Islet
-1 Flashback
 4 Lava Dart
 4 Lightning Bolt
 4 Mishra's Bauble
@@ -17,7 +16,7 @@
 4 Slickshot Show-Off
 3 Steam Vents
 1 Thundering Falls
-1 Violent Urge
+2 Violent Urge
 
 1 Assault Strobe
 3 Consign to Memory
