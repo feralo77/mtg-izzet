@@ -1,23 +1,23 @@
 # Listas de los jugadores
 
-Aquí vive la **lista real y completa de 75 cartas** de cada versión de cada
-jugador, para poder compararlas carta a carta. Los logs de MTGO solo enseñan las
-cartas que aparecieron en juego, nunca el mazo entero — por eso hace falta que
-cada jugador deje aquí su lista.
+Aquí vive la **lista real y completa de 75 cartas** de cada mazo, para poder
+compararlas carta a carta. Los logs de MTGO solo enseñan las cartas que
+aparecieron en juego, nunca el mazo entero — por eso hace falta dejar aquí la lista.
 
-## Una lista = un jugador + un nombre
+## Una lista = un nombre
 
-Un mismo nombre de mazo puede jugarlo más de una persona (p.ej. dos jugadores
-llaman "Basics" a su versión, pero son mazos distintos). Por eso **cada lista es
-la pareja (jugador, nombre)**, no solo el nombre. En la práctica: el fichero se
-llama `<nick> - <nombre>.txt`.
+Una lista se identifica por su **nombre** (`Stock`, `Basics`, `Pol 1 NF`…). Si dos
+jugadores juegan el mismo mazo, le ponen el **mismo nombre**: es la misma lista, y
+en el dashboard sus estadísticas se **suman**. Si son mazos distintos, nombres
+distintos. En la práctica: el fichero se llama `<nombre>.txt` y basta con una copia
+por mazo (no hace falta una por jugador).
 
 ## Cómo añadir una lista
 
 1. Abre tu mazo en MTGO / Arena / mtggoldfish y dale a **Export** (o cópialo).
-2. Crea un fichero de texto llamado **`<nick> - <nombre>.txt`**:
-   `feralo77 - Stock.txt`, `feralo77 - Definitiva.txt`, `4c_PolG - Pol 1 NF.txt`,
-   `Inkmaster - Prowess.txt`. El nick es el mismo que en `automation/jugadores.json`.
+2. Crea un fichero de texto llamado **`<nombre>.txt`** con el nombre del mazo:
+   `Stock.txt`, `Definitiva.txt`, `Pol 1 NF.txt`. Usa el mismo nombre que pones en
+   la columna «Lista» de tu hoja de apuntes, para que cuadren récord y comparativa.
 3. Pega dentro el export tal cual. Formato (una carta por línea):
 
    ```
@@ -54,5 +54,5 @@ node scripts/comparar_listas.mjs --date AAAA-MM-DD
 ```
 
 > La lista de referencia (contra la que se calculan las diferencias) es la 75 de
-> Fer en `meta/mi-75.json`, no un fichero de esta carpeta. `feralo77 - Definitiva.txt`
+> Fer en `meta/mi-75.json`, no un fichero de esta carpeta. `Definitiva.txt`
 > está aquí para que la referencia aparezca en el comparador junto al resto.

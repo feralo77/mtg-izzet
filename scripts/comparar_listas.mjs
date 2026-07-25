@@ -2,7 +2,7 @@
 // ============================================================================
 // Comparador de listas de los jugadores.
 //
-// Lee cada listas/<nick> - <nombre>.txt (export de MTGO/Arena/mtggoldfish en texto plano),
+// Lee cada listas/<nombre>.txt (export de MTGO/Arena/mtggoldfish en texto plano),
 // lo compara carta a carta:
 //   - entre los jugadores (matriz cartas x jugadores),
 //   - frente a La 75 Definitiva  (meta/mi-75.json, lista de referencia de Fer),
@@ -102,19 +102,18 @@ const metaMainMap = metaMap('main'), metaSideMap = metaMap('side');
 
 // --- Leer las listas de la carpeta ------------------------------------------
 const files = existsSync(DIR) ? readdirSync(DIR).filter((f) => f.toLowerCase().endsWith('.txt')) : [];
-// Una lista = (jugador, nombre). El fichero se llama "<nick> - <nombre>.txt".
-// Se parte por el PRIMER " - " (el nombre puede contener guiones). Sin separador,
-// se toma el nombre entero como jugador y nombre (compatibilidad hacia atras).
-const parseNombre = (f) => {
-  const base = f.replace(/\.txt$/i, '');
-  const i = base.indexOf(' - ');
-  return i > 0 ? { owner: base.slice(0, i).trim(), label: base.slice(i + 3).trim(), id: base }
-               : { owner: base, label: base, id: base };
+// Una lista se identifica por su NOMBRE (el fichero se llama "<nombre>.txt"). Dos jugadores
+// que juegan el mismo mazo le ponen el mismo nombre -> es la misma lista, y sus estadisticas
+// se suman (eso lo hace el dashboard sobre el registro). Aqui, el nombre = nick de la columna.
+const rosterPlayers = ((readJSON(ROSTER) || {}).players) || [];
+const ownerFromTitle = (titulo) => {         // solo para saber quien AUN no dejo lista (esperando)
+  if (!titulo) return null;
+  return rosterPlayers.find((p) => norm(titulo).includes(norm(p))) || null;
 };
+const owners = new Set();
 const jugadores = [];
 for (const f of files.sort()) {
-  const { owner, label, id } = parseNombre(f);
-  const nick = id; // id UNICO de la lista (columna de la matriz): "<nick> - <nombre>"
+  const nick = f.replace(/\.txt$/i, ''); // NOMBRE de la lista (id de columna)
   const parsed = parseList(readFileSync(join(DIR, f), 'utf8'));
   const mainN = zoneCount(parsed.main), sideN = zoneCount(parsed.side);
   if (mainN === 0 && sideN === 0) { console.error(`  ${f}: vacia, descartada`); continue; }
@@ -139,11 +138,13 @@ for (const f of files.sort()) {
   const dM = diff(jMain, refMainMap), dS = diff(jSide, refSideMap);
   const refTotal = zoneCount(ref.main) + zoneCount(ref.side);
   const pctSim = refTotal ? Math.round(((dM.comun + dS.comun) / refTotal) * 100) : 0;
-  // La referencia (100%) es la Definitiva de Fer: fichero "feralo77 - Definitiva.txt".
-  const esRef = norm(owner) === norm('feralo77') && /definitiva/i.test(label);
+  // La referencia (100%) es La 75 Definitiva: fichero "Definitiva.txt".
+  const esRef = /definitiva/i.test(nick);
+  const owner = ownerFromTitle(parsed.titulo);
+  if (owner) owners.add(norm(owner));
 
   jugadores.push({
-    nick, owner, label, titulo: parsed.titulo || `${owner} · ${label}`, esRef,
+    nick, owner, titulo: parsed.titulo || nick, esRef,
     mainN, sideN, overlapMain: dM.comun, overlapSide: dS.comun, pctSim,
     soloEl: { main: dM.soloEl, side: dS.soloEl },
     soloRef: { main: dM.soloRef, side: dS.soloRef },
@@ -170,10 +171,9 @@ const matrizMain = matriz((j) => j._main, refMainMap, metaMainMap);
 const matrizSide = matriz((j) => j._side, refSideMap, metaSideMap);
 
 // --- Quien falta por entregar su lista --------------------------------------
-// "Esperando" = jugadores del roster que aun no han dejado NINGUNA lista (por owner).
-const roster = readJSON(ROSTER);
-const conLista = new Set(jugadores.map((j) => norm(j.owner)));
-const esperando = (roster && roster.players ? roster.players : []).filter((p) => !conLista.has(norm(p)));
+// "Esperando" = jugadores del roster de los que aun no hay NINGUNA lista suya (via el
+// autor del titulo). Es solo informativo: la identidad de la lista es el nombre, no el jugador.
+const esperando = rosterPlayers.filter((p) => !owners.has(norm(p)));
 
 // --- Notas por reglas (nucleo comun, mayor divergencia) ---------------------
 const notas = [];
