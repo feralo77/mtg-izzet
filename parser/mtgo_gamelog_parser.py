@@ -145,6 +145,12 @@ def extract_game(entries, local, opp, match_uuid):
     prowess = monks = activ = 0; removal = []; disc = Counter()
     draws = Counter(); lands = Counter(); lands_t3 = 0
     cur_turn = 0; t1_action = False; first_threat_turn = 0; cutter_turn = 0
+    # Métricas nuevas de "Cómo juegas": tus criaturas, tu interacción y la del rival sobre ti
+    CREATURES = ('Monastery Swiftspear', "Dragon's Rage Channeler", 'Slickshot Show-Off', 'Murktide Regent')
+    INTERACTION = ('Lightning Bolt', 'Lava Dart', 'Unholy Heat', 'Spell Pierce', 'Spell Snare',
+                   'Consign to Memory', 'Mystical Dispute', 'Counterspell')
+    monk_turns = set(); my_creatures = set()
+    creatures_local = 0; first_interaction_turn = 0; opp_interaction = 0
     for m in msgs:
         g = re.match(r'@PTurn (\d+):', m)
         if g: cur_turn = int(g.group(1)); continue
@@ -167,18 +173,25 @@ def extract_game(entries, local, opp, match_uuid):
                 if cur_turn == 1: t1_action = True
                 if card in THREATS and not first_threat_turn: first_threat_turn = cur_turn
                 if card == 'Cori-Steel Cutter' and not cutter_turn: cutter_turn = cur_turn
+                if card in CREATURES: creatures_local += 1; my_creatures.add(card)
+                if card in INTERACTION and not first_interaction_turn: first_interaction_turn = cur_turn
             t = re.search(rf'casts {CARD} targeting {CARD}', m)
             if p == local and t: removal.append(f"{card}->{t.group(2).strip()}")
+            # interacción del RIVAL apuntada a una amenaza tuya (removal/rebote dirigido)
+            if p == opp and t and t.group(2).strip() in my_creatures: opp_interaction += 1
             continue
         g = re.match(rf'@P({PLAYER}) puts a triggered ability from {CARD} onto the stack \(Prowess\)', m)
         if g and g.group(1) == local: prowess += 1; continue
         g = re.match(rf"@P({PLAYER})'s {CARD} creates a Monk Token", m)
-        if g and g.group(1) == local: monks += 1; continue
+        if g and g.group(1) == local:
+            monks += 1; monk_turns.add(cur_turn); my_creatures.add('Monk Token'); continue
         g = re.match(rf'@P({PLAYER}) activates an ability', m)
         if g and g.group(1) == local: activ += 1; continue
         g = re.match(rf'@P({PLAYER}) discards {CARD}', m)
         if g: disc[g.group(1)] += 1; continue
 
+    # ¿hubo ficha de Monje en el MISMO turno en que cayó el Cutter? (línea explosiva del Cutter)
+    token_cutter_turn = 1 if (cutter_turn and cutter_turn in monk_turns) else 0
     return {'match_uuid': match_uuid, 'ts': ts, 'local': local, 'opp': opp,
             'turns': turns, 'local_on_play': local_on_play, 'winner': winner,
             'match_score': match_score, 'mull_local': mull.get(local, 0), 'mull_opp': mull.get(opp, 0),
@@ -189,7 +202,9 @@ def extract_game(entries, local, opp, match_uuid):
             'draws_local': draws.get(local, 0), 'draws_opp': draws.get(opp, 0),
             'lands_local': lands.get(local, 0), 'lands_opp': lands.get(opp, 0),
             'lands_t3': lands_t3, 't1_action': t1_action,
-            'first_threat_turn': first_threat_turn, 'cutter_turn': cutter_turn}
+            'first_threat_turn': first_threat_turn, 'cutter_turn': cutter_turn,
+            'token_cutter_turn': token_cutter_turn, 'creatures_local': creatures_local,
+            'first_interaction_turn': first_interaction_turn, 'opp_interaction': opp_interaction}
 
 # ---------- Clasificador de arquetipo por cartas del rival (con confianza) ----------
 # Firmas PONDERADAS por arquetipo: (carta, peso). El peso mide cuánto DISCRIMINA la
@@ -439,7 +454,8 @@ def run_dir(directory, user, out_csv, lista, reported_by):
     gcols = ["match_uuid","Game","Salida/Robo","Ganado","Turnos","Mulls yo","Mulls rival",
              "Mano yo","Mano rival","Robos yo","Robos rival","Tierras yo","Tierras T1-3",
              "Accion T1","Turno 1a amenaza","Turno Cutter","Prowess yo","Monje yo","Activ yo",
-             "Descartes yo","Mis hechizos","Removal (objetivos)","Cartas rival"]
+             "Descartes yo","Mis hechizos","Removal (objetivos)","Cartas rival",
+             "Ficha turno Cutter","Criaturas yo","Turno 1a interaccion","Interaccion rival"]
     with open(out_csv + ".games.csv", 'w', newline='', encoding='utf-8') as fh:
         w = csv.writer(fh); w.writerow(gcols)
         for m in matches:
@@ -452,7 +468,9 @@ def run_dir(directory, user, out_csv, lista, reported_by):
                             1 if g['t1_action'] else 0, g['first_threat_turn'], g['cutter_turn'],
                             g['prowess'], g['monks'], g['activ'], g['disc_local'],
                             ", ".join(g['my_casts']), " | ".join(g['removal']),
-                            ", ".join(dict.fromkeys(g['opp_casts']))])
+                            ", ".join(dict.fromkeys(g['opp_casts'])),
+                            g['token_cutter_turn'], g['creatures_local'],
+                            g['first_interaction_turn'], g['opp_interaction']])
 
     # 4) Scouting por arquetipo (récord + cartas del rival más vistas)
     scout = scouting_report(matches)
@@ -507,9 +525,11 @@ def selftest():
       "@Pfernando puts a triggered ability from @[Monastery Swiftspear@:1,2:@] onto the stack (Prowess).",
       "@Pfernando's @[Cori-Steel Cutter@:7,8:@] creates a Monk Token.",
       "@Prival casts @[Psychic Frog@:5,6:@].", "@Prival casts @[Unearth@:9,10:@].",
+      "@Prival casts @[Fatal Push@:30,31:@] targeting @[Monastery Swiftspear@:1,2:@].",
       "@PTurn 2: rival", "@Prival draws a card.", "@PTurn 2: fernando",
       "@Pfernando draws a card.", "@Pfernando plays @[Steam Vents@:22,23:@].",
       "@Pfernando casts @[Cori-Steel Cutter@:7,8:@].",
+      "@Pfernando's @[Cori-Steel Cutter@:7,8:@] creates a Monk Token.",
       "@PTurn 3: fernando", "@Pfernando draws a card.",
       "@Pfernando casts @[Lava Dart@:24,25:@].",
       "@Pfernando wins the game.", "@Pfernando leads the match 1-0.",
@@ -532,7 +552,7 @@ def selftest():
     assert m['resultado'] == 'W' and m['jg'] == 2 and m['jp'] == 1, m
     assert m['salida_robo'] == 'Robo'            # G1: rival juega primero -> yo al robo
     assert m['turns_max'] == 3, m['turns_max']
-    assert m['prowess'] == 1 and m['monks'] == 1, (m['prowess'], m['monks'])
+    assert m['prowess'] == 1 and m['monks'] == 2, (m['prowess'], m['monks'])
     assert m['mull_opp_tot'] == 1 and m['mull_local_tot'] == 0
     assert m['arquetipo'] == 'Grixis Frog/Reanimator'
     assert 0.0 < m['confianza'] <= 1.0, m['confianza']
@@ -545,6 +565,11 @@ def selftest():
     assert g1['lands_local'] == 2 and g1['lands_t3'] == 2, (g1['lands_local'], g1['lands_t3'])
     assert g1['t1_action'] is True
     assert g1['first_threat_turn'] == 1, g1['first_threat_turn']   # Swiftspear en T1
+    # --- Métricas nuevas de "Cómo juegas" ---
+    assert g1['token_cutter_turn'] == 1, g1['token_cutter_turn']            # ficha en el turno del Cutter (T2)
+    assert g1['creatures_local'] == 1, g1['creatures_local']               # solo Swiftspear (Cutter es artefacto)
+    assert g1['first_interaction_turn'] == 1, g1['first_interaction_turn'] # Lightning Bolt en T1
+    assert g1['opp_interaction'] == 1, g1['opp_interaction']               # Fatal Push del rival a tu Swiftspear
     assert g1['cutter_turn'] == 2, g1['cutter_turn']               # Cutter en T2
     g3 = m['games_list'][2]
     assert g3['t1_action'] is False and g3['first_threat_turn'] == 0 and g3['lands_local'] == 0

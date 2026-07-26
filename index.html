@@ -276,37 +276,56 @@
 
   <!-- ===== CÓMO JUEGAS (análisis profundo de los logs) ===== -->
   <section class="view" id="v-play">
-    <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — análisis game a game de tus logs de MTGO. No solo el resultado: manos iniciales, mulligans, robos, tierras y a qué velocidad aterriza tu juego. Todo sale del log real de cada partida (el log cuenta cuántas cartas se mueven, no cuáles robas) y se refresca solo con cada carga de datos.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — análisis game a game de tus logs de MTGO. No solo el resultado: cuándo aterriza tu juego, tu línea explosiva del Cutter, cuánto te interrumpen. Filtra por <b>lista</b> y por <b>mazo rival</b>; arriba las 5 claves, y el resto en "Ver más". Todo sale del log real de cada partida.</div></div>
+    <div class="filters">
+      <div class="fg"><label>Lista</label><select id="fpLista"></select></div>
+      <div class="fg"><label>Mazo rival</label><select id="fpArq"></select></div>
+    </div>
     <div class="kpis" id="playKpis"></div>
     <div class="insight" id="playInsight"></div>
-    <div id="playDeep">
-      <h3 class="secH">Manos iniciales</h3>
+
+    <h3 class="secH">Las 5 claves</h3>
+    <div id="playKeyV2">
       <div class="grid">
-        <div class="panel"><h3>Mano conservada <span>(WR por tamaño de mano · nº de games)</span></h3><div class="cwrap"><canvas id="chHand"></canvas></div></div>
-        <div class="panel"><h3>Mulligans <span>(WR según quién mulliganea)</span></h3><div class="cwrap"><canvas id="chMull"></canvas></div></div>
+        <div class="panel"><h3>Cutter con ficha ese turno <span>(WR: ficha ese turno / Cutter sin ficha / sin Cutter)</span></h3><div class="cwrap"><canvas id="chKeyCut"></canvas></div></div>
+        <div class="panel"><h3>Criaturas que despliegas <span>(WR por nº de criaturas en el game)</span></h3><div class="cwrap"><canvas id="chKeyCrea"></canvas></div></div>
       </div>
-      <h3 class="secH">Robos y tierras</h3>
       <div class="grid">
-        <div class="panel"><h3>Tierras en los turnos 1-3 <span>(WR según tu maná temprano)</span></h3><div class="cwrap"><canvas id="chLands"></canvas></div></div>
-        <div class="panel"><h3>Robos por game <span>(media · tú vs rival · ganados y perdidos)</span></h3><div class="cwrap"><canvas id="chDraws"></canvas></div></div>
-      </div>
-      <h3 class="secH">Tempo: cuándo aterriza tu juego</h3>
-      <div class="grid">
-        <div class="panel"><h3>Primera amenaza <span>(WR por turno de la primera criatura o Cutter)</span></h3><div class="cwrap"><canvas id="chThreat"></canvas></div></div>
-        <div class="panel"><h3>Cori-Steel Cutter <span>(WR según el turno en que cae)</span></h3><div class="cwrap"><canvas id="chCutter"></canvas></div></div>
+        <div class="panel"><h3>Interacción del rival sobre tus amenazas <span>(WR según el removal dirigido que comes)</span></h3><div class="cwrap"><canvas id="chKeyRR"></canvas></div></div>
+        <div class="panel"><h3>Tu primera interacción <span>(WR por turno de tu primer removal)</span></h3><div class="cwrap"><canvas id="chKeyFI"></canvas></div></div>
       </div>
     </div>
-    <div class="note-lg" id="playOldNote" style="display:none">Los datos profundos (manos, robos, tierras, tempo) aparecerán con la próxima carga de datos: el games.csv publicado aún es del formato antiguo. Pulsa "Actualizar datos" arriba.</div>
-    <h3 class="secH">Motor y duración</h3>
-    <div class="grid">
-      <div class="panel"><h3>Duración de partida vs victoria <span>(WR por turnos)</span></h3><div class="cwrap"><canvas id="chDur"></canvas></div></div>
-      <div class="panel"><h3>Salida vs Robo <span>(WR por game)</span></h3><div class="cwrap"><canvas id="chPD2"></canvas></div></div>
+    <div class="grid"><div class="panel full"><h3>Duración de partida vs victoria <span>(WR por turnos — ¿cierras rápido?)</span></h3><div class="cwrap"><canvas id="chKeyDur"></canvas></div></div></div>
+    <div class="note-lg" id="playV2Note" style="display:none">Las claves nuevas (Cutter+ficha, criaturas desplegadas, interacción del rival, tu primera interacción) aparecerán con la próxima carga de datos: el games.csv publicado aún no trae esas columnas. Pulsa "Actualizar datos" arriba.</div>
+
+    <div style="margin:var(--space-5) 0"><button class="btn" id="playMoreBtn">Ver más estadísticas</button></div>
+    <div id="playMore" style="display:none">
+      <div id="playDeep">
+        <h3 class="secH">Manos iniciales</h3>
+        <div class="grid">
+          <div class="panel"><h3>Mano conservada <span>(WR por tamaño de mano · nº de games)</span></h3><div class="cwrap"><canvas id="chHand"></canvas></div></div>
+          <div class="panel"><h3>Mulligans <span>(WR según quién mulliganea)</span></h3><div class="cwrap"><canvas id="chMull"></canvas></div></div>
+        </div>
+        <h3 class="secH">Robos y tierras</h3>
+        <div class="grid">
+          <div class="panel"><h3>Tierras en los turnos 1-3 <span>(WR según tu maná temprano)</span></h3><div class="cwrap"><canvas id="chLands"></canvas></div></div>
+          <div class="panel"><h3>Robos por game <span>(media · tú vs rival · ganados y perdidos)</span></h3><div class="cwrap"><canvas id="chDraws"></canvas></div></div>
+        </div>
+        <h3 class="secH">Tempo: cuándo aterriza tu juego</h3>
+        <div class="grid">
+          <div class="panel"><h3>Primera amenaza <span>(WR por turno de la primera criatura o Cutter)</span></h3><div class="cwrap"><canvas id="chThreat"></canvas></div></div>
+          <div class="panel"><h3>Cori-Steel Cutter <span>(WR según el turno en que cae)</span></h3><div class="cwrap"><canvas id="chCutter"></canvas></div></div>
+        </div>
+      </div>
+      <div class="note-lg" id="playOldNote" style="display:none">Los datos profundos (manos, robos, tierras, tempo) aparecerán con la próxima carga de datos: el games.csv publicado aún es del formato antiguo. Pulsa "Actualizar datos" arriba.</div>
+      <h3 class="secH">Motor</h3>
+      <div class="grid">
+        <div class="panel"><h3>Salida vs Robo <span>(WR por game)</span></h3><div class="cwrap"><canvas id="chPD2"></canvas></div></div>
+        <div class="panel"><h3>Prowess disparado <span>(media por game · ganados vs perdidos)</span></h3><div class="cwrap"><canvas id="chProw"></canvas></div></div>
+      </div>
+      <div class="grid"><div class="panel full"><h3>Fichas de Monje del Cutter <span>(media por game · ganados vs perdidos)</span></h3><div class="cwrap"><canvas id="chMonk"></canvas></div></div></div>
+      <div class="panel full" id="playTblPanel"><h3>Game a game <span>(todo lo que el log sabe de cada juego)</span></h3><div style="overflow-x:auto"><table id="playTbl"></table></div></div>
     </div>
-    <div class="grid">
-      <div class="panel"><h3>Prowess disparado <span>(media por game · ganados vs perdidos)</span></h3><div class="cwrap"><canvas id="chProw"></canvas></div></div>
-      <div class="panel"><h3>Fichas de Monje del Cutter <span>(media por game)</span></h3><div class="cwrap"><canvas id="chMonk"></canvas></div></div>
-    </div>
-    <div class="panel full" id="playTblPanel"><h3>Game a game <span>(todo lo que el log sabe de cada juego)</span></h3><div style="overflow-x:auto"><table id="playTbl"></table></div></div>
   </section>
 
   <!-- ===== LISTAS ===== -->
@@ -532,67 +551,96 @@ const outcome=m=>`${m.jg}-${m.jp}`;
 let GAMES = [{"uid":"e374128a-368c-4536-aafc-cdc89ce9d702","gi":1,"aq":"Broodscale","sr":"Salida","w":0,"t":6,"pw":0,"mk":3,"mu":1,"mo":1,"hy":6,"hr":6,"dy":7,"dr":9,"ly":4,"l3":3,"t1":1,"ft":1,"ct":4,"sp":9,"by":"feralo77"},{"uid":"e374128a-368c-4536-aafc-cdc89ce9d702","gi":2,"aq":"Broodscale","sr":"Salida","w":0,"t":6,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":6,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"},{"uid":"dc40834c-85ad-4880-b63b-c17e91264235","gi":1,"aq":"Esper Goryo's","sr":"Robo","w":1,"t":5,"pw":3,"mk":2,"mu":0,"mo":1,"hy":7,"hr":6,"dy":5,"dr":4,"ly":5,"l3":3,"t1":0,"ft":2,"ct":4,"sp":8,"by":"feralo77"},{"uid":"dc40834c-85ad-4880-b63b-c17e91264235","gi":2,"aq":"Esper Goryo's","sr":"Robo","w":0,"t":5,"pw":2,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":10,"ly":4,"l3":3,"t1":1,"ft":1,"ct":2,"sp":10,"by":"feralo77"},{"uid":"dc40834c-85ad-4880-b63b-c17e91264235","gi":3,"aq":"Esper Goryo's","sr":"Salida","w":0,"t":4,"pw":2,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":11,"ly":3,"l3":3,"t1":0,"ft":3,"ct":3,"sp":5,"by":"feralo77"},{"uid":"d5330261-a86d-4d6f-8db2-dc60547443a3","gi":1,"aq":"¿? (revisar)","sr":"Robo","w":0,"t":6,"pw":10,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":5,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":12,"by":"feralo77"},{"uid":"d5330261-a86d-4d6f-8db2-dc60547443a3","gi":2,"aq":"¿? (revisar)","sr":"Salida","w":0,"t":4,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":5,"ly":2,"l3":2,"t1":1,"ft":1,"ct":4,"sp":5,"by":"feralo77"},{"uid":"f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c","gi":1,"aq":"Grixis Reanimator","sr":"Robo","w":1,"t":5,"pw":13,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":7,"dr":4,"ly":2,"l3":2,"t1":1,"ft":1,"ct":3,"sp":8,"by":"feralo77"},{"uid":"f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c","gi":2,"aq":"Grixis Reanimator","sr":"Robo","w":0,"t":5,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":4,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":7,"by":"feralo77"},{"uid":"f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c","gi":3,"aq":"Grixis Reanimator","sr":"Salida","w":0,"t":6,"pw":4,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":7,"dr":10,"ly":5,"l3":3,"t1":1,"ft":1,"ct":5,"sp":7,"by":"feralo77"},{"uid":"1c723cb8-94a5-49ed-8560-1a230db0c41c","gi":1,"aq":"¿? (revisar)","sr":"Salida","w":0,"t":4,"pw":4,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":5,"ly":3,"l3":2,"t1":1,"ft":1,"ct":3,"sp":7,"by":"feralo77"},{"uid":"1c723cb8-94a5-49ed-8560-1a230db0c41c","gi":2,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":5,"pw":5,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":8,"ly":3,"l3":2,"t1":1,"ft":2,"ct":0,"sp":10,"by":"feralo77"},{"uid":"1c723cb8-94a5-49ed-8560-1a230db0c41c","gi":3,"aq":"¿? (revisar)","sr":"Robo","w":1,"t":5,"pw":8,"mk":4,"mu":0,"mo":1,"hy":7,"hr":6,"dy":6,"dr":10,"ly":3,"l3":3,"t1":1,"ft":1,"ct":2,"sp":9,"by":"feralo77"},{"uid":"2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999","gi":1,"aq":"Azorius Control","sr":"Robo","w":1,"t":8,"pw":13,"mk":3,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":19,"ly":3,"l3":3,"t1":0,"ft":3,"ct":3,"sp":14,"by":"feralo77"},{"uid":"2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999","gi":2,"aq":"Azorius Control","sr":"Robo","w":1,"t":9,"pw":4,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":12,"dr":16,"ly":6,"l3":3,"t1":1,"ft":3,"ct":0,"sp":13,"by":"feralo77"},{"uid":"c8505bf6-1d70-4e4e-9cca-44f07c66febf","gi":1,"aq":"Dimir Frog","sr":"Robo","w":0,"t":12,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":14,"dr":19,"ly":5,"l3":3,"t1":1,"ft":1,"ct":3,"sp":12,"by":"feralo77"},{"uid":"c8505bf6-1d70-4e4e-9cca-44f07c66febf","gi":2,"aq":"Dimir Frog","sr":"Salida","w":0,"t":7,"pw":6,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":6,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"},{"uid":"bb7b0286-7f95-43a9-ba8e-a7846e11993a","gi":1,"aq":"Grixis Frog/Reanimator","sr":"Robo","w":1,"t":4,"pw":2,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":4,"dr":4,"ly":3,"l3":2,"t1":0,"ft":2,"ct":2,"sp":5,"by":"feralo77"},{"uid":"d816e48c-41ed-4a2d-b209-fc3ea83164b9","gi":1,"aq":"Broodscale","sr":"Salida","w":0,"t":6,"pw":8,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":7,"ly":2,"l3":1,"t1":1,"ft":1,"ct":6,"sp":8,"by":"feralo77"},{"uid":"d816e48c-41ed-4a2d-b209-fc3ea83164b9","gi":2,"aq":"Broodscale","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":1,"hy":7,"hr":6,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":1,"ct":2,"sp":7,"by":"feralo77"},{"uid":"d816e48c-41ed-4a2d-b209-fc3ea83164b9","gi":3,"aq":"Broodscale","sr":"Robo","w":1,"t":3,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":2,"ly":3,"l3":3,"t1":1,"ft":1,"ct":0,"sp":6,"by":"feralo77"},{"uid":"3ce63980-35b8-445a-ac25-c9f04ad0aa35","gi":1,"aq":"Boros Energy","sr":"Robo","w":0,"t":4,"pw":0,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":4,"dr":3,"ly":2,"l3":2,"t1":1,"ft":1,"ct":3,"sp":4,"by":"feralo77"},{"uid":"3ce63980-35b8-445a-ac25-c9f04ad0aa35","gi":2,"aq":"Boros Energy","sr":"Salida","w":1,"t":4,"pw":3,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":3,"dr":3,"ly":3,"l3":2,"t1":0,"ft":2,"ct":0,"sp":6,"by":"feralo77"},{"uid":"3ce63980-35b8-445a-ac25-c9f04ad0aa35","gi":3,"aq":"Boros Energy","sr":"Robo","w":0,"t":4,"pw":1,"mk":0,"mu":1,"mo":0,"hy":6,"hr":7,"dy":5,"dr":3,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":5,"by":"feralo77"},{"uid":"e6102623-accf-4ddc-b334-a80f72bb542e","gi":1,"aq":"Izzet Prowess","sr":"Robo","w":0,"t":3,"pw":0,"mk":0,"mu":1,"mo":0,"hy":6,"hr":7,"dy":4,"dr":4,"ly":2,"l3":2,"t1":1,"ft":2,"ct":0,"sp":2,"by":"feralo77"},{"uid":"e6102623-accf-4ddc-b334-a80f72bb542e","gi":2,"aq":"Izzet Prowess","sr":"Salida","w":0,"t":7,"pw":9,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":8,"ly":3,"l3":2,"t1":1,"ft":1,"ct":5,"sp":10,"by":"feralo77"},{"uid":"7a1d37f5-097e-4d5c-b98a-6cac99874573","gi":1,"aq":"Esper Goryo's","sr":"Robo","w":0,"t":6,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":6,"ly":5,"l3":3,"t1":1,"ft":2,"ct":0,"sp":7,"by":"feralo77"},{"uid":"7a1d37f5-097e-4d5c-b98a-6cac99874573","gi":2,"aq":"Esper Goryo's","sr":"Salida","w":0,"t":6,"pw":1,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":9,"dr":6,"ly":6,"l3":3,"t1":0,"ft":3,"ct":5,"sp":10,"by":"feralo77"},{"uid":"c0725c15-1759-408e-8b7c-b7c9c427edbd","gi":1,"aq":"Boros Ponza","sr":"Robo","w":1,"t":5,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":7,"dr":4,"ly":4,"l3":3,"t1":1,"ft":1,"ct":3,"sp":10,"by":"feralo77"},{"uid":"c0725c15-1759-408e-8b7c-b7c9c427edbd","gi":2,"aq":"Boros Ponza","sr":"Robo","w":1,"t":8,"pw":7,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":7,"ly":4,"l3":2,"t1":0,"ft":2,"ct":3,"sp":10,"by":"feralo77"},{"uid":"97933634-bc3e-4f9d-b425-a72418449d67","gi":1,"aq":"Neoform","sr":"Robo","w":0,"t":4,"pw":3,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":16,"ly":3,"l3":3,"t1":1,"ft":1,"ct":2,"sp":6,"by":"feralo77"},{"uid":"97933634-bc3e-4f9d-b425-a72418449d67","gi":2,"aq":"Neoform","sr":"Salida","w":1,"t":3,"pw":5,"mk":3,"mu":1,"mo":1,"hy":6,"hr":6,"dy":4,"dr":3,"ly":3,"l3":3,"t1":0,"ft":2,"ct":2,"sp":5,"by":"feralo77"},{"uid":"97933634-bc3e-4f9d-b425-a72418449d67","gi":3,"aq":"Neoform","sr":"Robo","w":0,"t":7,"pw":4,"mk":0,"mu":2,"mo":1,"hy":5,"hr":6,"dy":6,"dr":16,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":5,"by":"feralo77"},{"uid":"6b307f87-0c75-4eca-9302-56075da4dba4","gi":1,"aq":"Grixis Reanimator","sr":"Salida","w":0,"t":5,"pw":4,"mk":2,"mu":1,"mo":0,"hy":6,"hr":7,"dy":7,"dr":9,"ly":4,"l3":2,"t1":1,"ft":1,"ct":3,"sp":9,"by":"feralo77"},{"uid":"6b307f87-0c75-4eca-9302-56075da4dba4","gi":2,"aq":"Grixis Reanimator","sr":"Salida","w":1,"t":5,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":6,"ly":4,"l3":3,"t1":1,"ft":1,"ct":0,"sp":9,"by":"feralo77"},{"uid":"6b307f87-0c75-4eca-9302-56075da4dba4","gi":3,"aq":"Grixis Reanimator","sr":"Robo","w":1,"t":4,"pw":10,"mk":1,"mu":1,"mo":1,"hy":6,"hr":6,"dy":5,"dr":4,"ly":3,"l3":3,"t1":1,"ft":1,"ct":4,"sp":7,"by":"feralo77"},{"uid":"12341f9b-5f8f-46d6-83dc-45452ecc0109","gi":1,"aq":"Izzet Prowess","sr":"Salida","w":0,"t":3,"pw":0,"mk":1,"mu":0,"mo":1,"hy":7,"hr":6,"dy":2,"dr":4,"ly":2,"l3":2,"t1":1,"ft":1,"ct":3,"sp":4,"by":"feralo77"},{"uid":"12341f9b-5f8f-46d6-83dc-45452ecc0109","gi":2,"aq":"Izzet Prowess","sr":"Salida","w":1,"t":4,"pw":5,"mk":5,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":4,"ly":4,"l3":3,"t1":0,"ft":2,"ct":2,"sp":7,"by":"feralo77"},{"uid":"12341f9b-5f8f-46d6-83dc-45452ecc0109","gi":3,"aq":"Izzet Prowess","sr":"Robo","w":0,"t":4,"pw":1,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":5,"ly":3,"l3":3,"t1":1,"ft":2,"ct":3,"sp":5,"by":"feralo77"},{"uid":"2e4ceb70-379b-4be5-996b-2a7892581ae6","gi":1,"aq":"¿? (revisar)","sr":"Robo","w":0,"t":6,"pw":1,"mk":0,"mu":0,"mo":2,"hy":7,"hr":5,"dy":7,"dr":6,"ly":3,"l3":3,"t1":1,"ft":1,"ct":0,"sp":10,"by":"feralo77"},{"uid":"2e4ceb70-379b-4be5-996b-2a7892581ae6","gi":2,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":3,"hy":7,"hr":4,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":3,"ct":4,"sp":8,"by":"feralo77"},{"uid":"2e4ceb70-379b-4be5-996b-2a7892581ae6","gi":3,"aq":"¿? (revisar)","sr":"Robo","w":0,"t":6,"pw":6,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":8,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":9,"by":"feralo77"},{"uid":"b3c6bda6-ea72-42b4-994b-3dec7ec09c21","gi":1,"aq":"Boros Energy","sr":"Robo","w":1,"t":5,"pw":13,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":1,"ct":4,"sp":11,"by":"feralo77"},{"uid":"b3c6bda6-ea72-42b4-994b-3dec7ec09c21","gi":2,"aq":"Boros Energy","sr":"Robo","w":0,"t":7,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":8,"dr":10,"ly":5,"l3":3,"t1":0,"ft":2,"ct":0,"sp":9,"by":"feralo77"},{"uid":"b3c6bda6-ea72-42b4-994b-3dec7ec09c21","gi":3,"aq":"Boros Energy","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":6,"ly":4,"l3":3,"t1":1,"ft":1,"ct":0,"sp":10,"by":"feralo77"},{"uid":"477dc805-7cc1-4060-aace-f97412484124","gi":1,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":3,"pw":0,"mk":0,"mu":1,"mo":1,"hy":6,"hr":6,"dy":2,"dr":2,"ly":2,"l3":2,"t1":1,"ft":2,"ct":3,"sp":3,"by":"feralo77"},{"uid":"45370f5a-7496-4909-bc25-ef3c52e0373d","gi":1,"aq":"Broodscale","sr":"Robo","w":0,"t":5,"pw":15,"mk":4,"mu":0,"mo":0,"hy":7,"hr":7,"dy":7,"dr":3,"ly":4,"l3":3,"t1":1,"ft":1,"ct":2,"sp":11,"by":"feralo77"},{"uid":"45370f5a-7496-4909-bc25-ef3c52e0373d","gi":2,"aq":"Broodscale","sr":"Salida","w":0,"t":9,"pw":5,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":9,"ly":4,"l3":3,"t1":1,"ft":1,"ct":3,"sp":11,"by":"feralo77"},{"uid":"5f239dd1-82c8-4aa4-804b-ace012669679","gi":1,"aq":"¿? (revisar)","sr":"Salida","w":1,"t":5,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":4,"ly":3,"l3":1,"t1":1,"ft":1,"ct":5,"sp":7,"by":"feralo77"},{"uid":"5f239dd1-82c8-4aa4-804b-ace012669679","gi":2,"aq":"¿? (revisar)","sr":"Robo","w":1,"t":4,"pw":0,"mk":1,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":3,"ly":3,"l3":3,"t1":0,"ft":2,"ct":3,"sp":4,"by":"feralo77"},{"uid":"b27b88d4-d70c-465f-b832-1fb1f6217358","gi":1,"aq":"Broodscale","sr":"Robo","w":1,"t":7,"pw":19,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":10,"dr":8,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":16,"by":"feralo77"},{"uid":"b27b88d4-d70c-465f-b832-1fb1f6217358","gi":2,"aq":"Broodscale","sr":"Robo","w":0,"t":7,"pw":0,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":9,"dr":7,"ly":5,"l3":3,"t1":1,"ft":1,"ct":0,"sp":14,"by":"feralo77"},{"uid":"b27b88d4-d70c-465f-b832-1fb1f6217358","gi":3,"aq":"Broodscale","sr":"Salida","w":1,"t":5,"pw":2,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":5,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"},{"uid":"e4b090d8-9bf0-4a39-bcfe-703f18c56740","gi":1,"aq":"Izzet Affinity","sr":"Robo","w":0,"t":4,"pw":2,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":6,"dr":4,"ly":4,"l3":3,"t1":1,"ft":3,"ct":3,"sp":5,"by":"feralo77"},{"uid":"e4b090d8-9bf0-4a39-bcfe-703f18c56740","gi":2,"aq":"Izzet Affinity","sr":"Salida","w":0,"t":4,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":3,"dr":6,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":4,"by":"feralo77"},{"uid":"0115af07-1f16-4850-8811-0e57e8a3d72b","gi":1,"aq":"Golgari Yawgmoth","sr":"Robo","w":0,"t":4,"pw":5,"mk":2,"mu":0,"mo":0,"hy":7,"hr":7,"dy":4,"dr":3,"ly":3,"l3":3,"t1":0,"ft":2,"ct":2,"sp":6,"by":"feralo77"},{"uid":"0115af07-1f16-4850-8811-0e57e8a3d72b","gi":2,"aq":"Golgari Yawgmoth","sr":"Salida","w":0,"t":3,"pw":1,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":2,"dr":3,"ly":2,"l3":2,"t1":1,"ft":1,"ct":0,"sp":4,"by":"feralo77"},{"uid":"29dc7612-bb7c-4974-9ac8-7a475aa6f8d6","gi":1,"aq":"Izzet Affinity","sr":"Robo","w":1,"t":4,"pw":8,"mk":0,"mu":0,"mo":0,"hy":7,"hr":7,"dy":5,"dr":5,"ly":3,"l3":3,"t1":1,"ft":1,"ct":2,"sp":8,"by":"feralo77"},{"uid":"29dc7612-bb7c-4974-9ac8-7a475aa6f8d6","gi":2,"aq":"Izzet Affinity","sr":"Robo","w":1,"t":5,"pw":4,"mk":0,"mu":0,"mo":1,"hy":7,"hr":6,"dy":6,"dr":10,"ly":3,"l3":3,"t1":1,"ft":1,"ct":0,"sp":8,"by":"feralo77"}];
 let GAMES_DEEP = true;
 let playDone=false;
+let playMoreShown=false;
 function renderPlay(){
   if(playDone) return; playDone=true;
   Object.values(playCharts).forEach(c=>c&&c.destroy());playCharts={};
-  const D=G(), N=D.length, avg=(a,d=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**d)/10**d:0;
+  // Filtros locales de la pestaña: Lista (cruce con el registro por match_uuid) y Mazo rival (directo)
+  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=d.li;});
+  const selLi=$('fpLista'), selAq=$('fpArq');
+  const fLi=selLi?selLi.value:'all', fAq=selAq?selAq.value:'all';
+  const D=G().filter(g=>(fLi==='all'||lim[g.uid]===fLi)&&(fAq==='all'||g.aq===fAq)), N=D.length;
+  const avg=(a,d=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**d)/10**d:0;
   const wins=D.filter(g=>g.w), losses=D.filter(g=>!g.w);
   const sal=D.filter(g=>g.sr==='Salida'), rob=D.filter(g=>g.sr==='Robo');
   const wrOf=a=>pct(a.filter(g=>g.w).length,a.length);
   const tw=avg(wins.map(g=>g.t)), tl=avg(losses.map(g=>g.t));
   const pwW=avg(wins.map(g=>g.pw)), pwL=avg(losses.map(g=>g.pw));
   const deep=GAMES_DEEP&&N>0&&D.some(g=>g.hy!==undefined);
+  const v2=N>0&&D.some(g=>g.kf!==undefined);   // formato con Cutter+ficha, criaturas, interacción
   $('playDeep').style.display=deep?'':'none';
   $('playTblPanel').style.display=deep?'':'none';
   $('playOldNote').style.display=deep?'none':'';
+  $('playKeyV2').style.display=v2?'':'none';
+  $('playV2Note').style.display=v2?'none':'';
 
-  // KPIs
-  const mulled=D.filter(g=>g.mu>0);
+  // KPIs clave (resumen siempre visible)
   const k=[['','Games',N,'de tus logs'],['g','WR por game',wrOf(D)+'%',`${wins.length}-${losses.length}`],
     ['g','WR salida',wrOf(sal)+'%',sal.length+' games'],['r','WR robo',wrOf(rob)+'%',rob.length+' games']];
-  if(deep){
-    k.push(['p','Mano media',avg(D.map(g=>g.hy),2),'cartas al empezar']);
-    k.push(['o','Games con mulligan',pct(mulled.length,N)+'%',`WR ${wrOf(mulled)}% cuando muleas`]);
-  }else{
-    k.push(['o','Turnos ganados',tw,'vs '+tl+' en perdidos'],['p','Prowess ganados',pwW,'vs '+pwL+' en perdidos']);
-  }
   $('playKpis').innerHTML=k.map(x=>`<div class="kpi ${x[0]}"><div class="lab">${x[1]}</div><div class="val">${x[2]}</div><div class="note">${x[3]}</div></div>`).join('');
-
-  // Insight en vivo
-  const lng=D.filter(g=>g.t>=7);
-  let ins=`Eres <b>tempo puro</b>: en games de 7+ turnos ganas el <b>${pct(lng.filter(g=>g.w).length,lng.length)}%</b> (${lng.length} games) y tus derrotas duran más (${tl} turnos) que tus victorias (${tw}). Cuando tu motor dispara, ganas: <b>${pwW}</b> prowess de media en ganados vs <b>${pwL}</b> en perdidos.`;
-  if(deep){
-    const rmull=D.filter(g=>g.mo>0), cutE=D.filter(g=>g.ct>=1&&g.ct<=2), noCut=D.filter(g=>!g.ct);
-    ins+=` Con <b>Cutter en T1-2</b> ganas el <b>${wrOf(cutE)}%</b> (${cutE.length} games) frente al ${wrOf(noCut)}% sin Cutter — es tu carta de más impacto y merece mulligan agresivo hacia ella. Cuando el <b>rival mulliganea</b> subes al <b>${wrOf(rmull)}%</b>: castiga su mano corta cerrando rápido. Ojo a la muestra: cada barra lleva su nº de games; por debajo de ~10, señal solo direccional.`;
-  }
-  $('playInsight').innerHTML=`<div class="ic"></div><div>${ins}</div>`;
 
   const barOpts=(pct100)=>({responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:pct100?{min:0,max:100,ticks:{callback:v=>v+'%'}}:{beginAtZero:true},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>(pct100?'WR '+c.parsed.y+'%':c.parsed.y)}}}});
   const wrBar=(cv,groups)=>{const st=groups.map(b=>{const gg=D.filter(b[1]);return {lab:`${b[0]} (${gg.length})`,wr:wrOf(gg),n:gg.length};}).filter(x=>x.n>0);
     return new Chart($(cv),{type:'bar',data:{labels:st.map(x=>x.lab),datasets:[{data:st.map(x=>x.wr),backgroundColor:st.map(x=>x.wr>=55?C.grn:x.wr>=45?C.L1_2:C.red),borderRadius:0}]},options:barOpts(true)});};
 
-  if(deep){
-    playCharts.hand=wrBar('chHand',[['Mano de 7',g=>g.hy===7],['Mull a 6',g=>g.hy===6],['Mull a 5-',g=>g.hy<=5&&g.hy>0]]);
-    playCharts.mull=wrBar('chMull',[['Nadie mullea',g=>!g.mu&&!g.mo],['Muleas tú',g=>g.mu>0&&!g.mo],['Mullea el rival',g=>g.mo>0&&!g.mu],['Ambos',g=>g.mu>0&&g.mo>0]]);
-    playCharts.lands=wrBar('chLands',[['0-1 tierras T1-3',g=>g.l3<=1],['2 tierras',g=>g.l3===2],['3+ tierras',g=>g.l3>=3]]);
-    playCharts.draws=new Chart($('chDraws'),{type:'bar',data:{labels:['Games ganados','Games perdidos'],datasets:[
-      {label:'Robas tú',data:[avg(wins.map(g=>g.dy)),avg(losses.map(g=>g.dy))],backgroundColor:C.blue,borderRadius:0},
-      {label:'Roba el rival',data:[avg(wins.map(g=>g.dr)),avg(losses.map(g=>g.dr))],backgroundColor:cssv('--barmut'),borderRadius:0}]},
-      options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{beginAtZero:true},x:{grid:{display:false}}},plugins:{legend:{position:'top',labels:{usePointStyle:true,boxWidth:8}}}}});
-    playCharts.threat=wrBar('chThreat',[['T1',g=>g.ft===1],['T2',g=>g.ft===2],['T3+',g=>g.ft>=3],['Sin amenaza',g=>!g.ft]]);
-    playCharts.cutter=wrBar('chCutter',[['Cutter T1-2',g=>g.ct>=1&&g.ct<=2],['Cutter T3+',g=>g.ct>=3],['Sin Cutter',g=>!g.ct]]);
+  // Insight en vivo (lidera con la línea explosiva del Cutter cuando hay datos nuevos)
+  let ins;
+  if(v2){
+    const cf=D.filter(g=>g.kf===1), cnf=D.filter(g=>g.ct>0&&g.kf===0), nc=D.filter(g=>!g.ct);
+    const crHi=D.filter(g=>g.cy>=2), crLo=D.filter(g=>g.cy<=1), rrHi=D.filter(g=>g.rr>=2);
+    ins=`<b>La línea explosiva del Cutter manda.</b> Bajas el Cutter y encadenas ficha ese mismo turno: ganas el <b>${wrOf(cf)}%</b> (${cf.length} games); Cutter sin ficha ese turno, ${wrOf(cnf)}% (${cnf.length}); sin Cutter, ${wrOf(nc)}% (${nc.length}). Desplegando <b>2+ criaturas</b> ganas el <b>${wrOf(crHi)}%</b> (${crHi.length}) frente al ${wrOf(crLo)}% con 0-1 (${crLo.length}). Cuando el rival te mete 2+ removal dirigidos caes al ${wrOf(rrHi)}% (${rrHi.length}). Cada barra lleva su nº de games: por debajo de ~10, señal solo direccional.`;
+  }else{
+    const lng=D.filter(g=>g.t>=7);
+    ins=`Eres <b>tempo puro</b>: en games de 7+ turnos ganas el <b>${pct(lng.filter(g=>g.w).length,lng.length)}%</b> (${lng.length} games) y tus derrotas duran más (${tl} turnos) que tus victorias (${tw}). Prowess medio <b>${pwW}</b> en ganados vs <b>${pwL}</b> en perdidos.`;
   }
-  playCharts.dur=wrBar('chDur',[['1-4 turnos',g=>g.t<=4],['5-6 turnos',g=>g.t>=5&&g.t<=6],['7+ turnos',g=>g.t>=7]]);
-  playCharts.pd2=new Chart($('chPD2'),{type:'bar',data:{labels:['Salida','Robo'],datasets:[{data:[wrOf(sal),wrOf(rob)],backgroundColor:[C.grn,C.red],borderRadius:0}]},options:barOpts(true)});
-  playCharts.prow=new Chart($('chProw'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[pwW,pwL],backgroundColor:[C.grn,C.red],borderRadius:0}]},options:barOpts(false)});
-  playCharts.monk=new Chart($('chMonk'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[avg(wins.map(g=>g.mk)),avg(losses.map(g=>g.mk))],backgroundColor:[C.blue,cssv('--barmut')],borderRadius:0}]},options:barOpts(false)});
+  $('playInsight').innerHTML=`<div class="ic"></div><div>${ins}</div>`;
 
-  // Tabla game a game
-  if(deep){
-    const hh=['Mazo rival','G','G1','Res','Mano','Mulls y/r','T1','1ª amenaza','Cutter','Tierras T1-3','Robos','Turnos','Prowess','Monjes'];
-    $('playTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
-      D.map(g=>`<tr><td>${g.aq}</td><td>${g.gi||''}</td><td>${g.sr||'?'}</td><td><span class="pill ${g.w?'W':'L'}">${g.w?'W':'L'}</span></td><td>${g.hy??'—'}</td><td>${g.mu??0}/${g.mo??0}</td><td>${g.t1?'Sí':'·'}</td><td>${g.ft?'T'+g.ft:'—'}</td><td>${g.ct?'T'+g.ct:'—'}</td><td>${g.l3??'—'}</td><td>${g.dy??'—'}</td><td>${g.t}</td><td>${g.pw}</td><td>${g.mk}</td></tr>`).join('')+'</tbody>';
+  // ===== 5 CLAVES (por defecto) =====
+  if(v2){
+    playCharts.keyCut=wrBar('chKeyCut',[['Cutter + ficha',g=>g.kf===1],['Cutter sin ficha',g=>g.ct>0&&g.kf===0],['Sin Cutter',g=>!g.ct]]);
+    playCharts.keyCrea=wrBar('chKeyCrea',[['0-1 criaturas',g=>g.cy<=1],['2-3 criaturas',g=>g.cy>=2&&g.cy<=3],['4+ criaturas',g=>g.cy>=4]]);
+    playCharts.keyRR=wrBar('chKeyRR',[['Sin interacción',g=>g.rr===0],['1 removal',g=>g.rr===1],['2+ removal',g=>g.rr>=2]]);
+    playCharts.keyFI=wrBar('chKeyFI',[['T1',g=>g.fi===1],['T2',g=>g.fi===2],['T3+',g=>g.fi>=3],['Sin interacción',g=>!g.fi]]);
   }
+  playCharts.keyDur=wrBar('chKeyDur',[['1-4 turnos',g=>g.t<=4],['5-6 turnos',g=>g.t>=5&&g.t<=6],['7+ turnos',g=>g.t>=7]]);
+
+  // ===== VER MÁS (desplegable) =====
+  $('playMore').style.display=playMoreShown?'':'none';
+  $('playMoreBtn').textContent=playMoreShown?'Ocultar estadísticas':'Ver más estadísticas';
+  $('playMoreBtn').onclick=()=>{playMoreShown=!playMoreShown;playDone=false;renderPlay();};
+  if(playMoreShown){
+    if(deep){
+      playCharts.hand=wrBar('chHand',[['Mano de 7',g=>g.hy===7],['Mull a 6',g=>g.hy===6],['Mull a 5-',g=>g.hy<=5&&g.hy>0]]);
+      playCharts.mull=wrBar('chMull',[['Nadie mullea',g=>!g.mu&&!g.mo],['Muleas tú',g=>g.mu>0&&!g.mo],['Mullea el rival',g=>g.mo>0&&!g.mu],['Ambos',g=>g.mu>0&&g.mo>0]]);
+      playCharts.lands=wrBar('chLands',[['0-1 tierras T1-3',g=>g.l3<=1],['2 tierras',g=>g.l3===2],['3+ tierras',g=>g.l3>=3]]);
+      playCharts.draws=new Chart($('chDraws'),{type:'bar',data:{labels:['Games ganados','Games perdidos'],datasets:[
+        {label:'Robas tú',data:[avg(wins.map(g=>g.dy)),avg(losses.map(g=>g.dy))],backgroundColor:C.blue,borderRadius:0},
+        {label:'Roba el rival',data:[avg(wins.map(g=>g.dr)),avg(losses.map(g=>g.dr))],backgroundColor:cssv('--barmut'),borderRadius:0}]},
+        options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{beginAtZero:true},x:{grid:{display:false}}},plugins:{legend:{position:'top',labels:{usePointStyle:true,boxWidth:8}}}}});
+      playCharts.threat=wrBar('chThreat',[['T1',g=>g.ft===1],['T2',g=>g.ft===2],['T3+',g=>g.ft>=3],['Sin amenaza',g=>!g.ft]]);
+      playCharts.cutter=wrBar('chCutter',[['Cutter T1-2',g=>g.ct>=1&&g.ct<=2],['Cutter T3+',g=>g.ct>=3],['Sin Cutter',g=>!g.ct]]);
+    }
+    playCharts.pd2=new Chart($('chPD2'),{type:'bar',data:{labels:['Salida','Robo'],datasets:[{data:[wrOf(sal),wrOf(rob)],backgroundColor:[C.grn,C.red],borderRadius:0}]},options:barOpts(true)});
+    playCharts.prow=new Chart($('chProw'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[pwW,pwL],backgroundColor:[C.grn,C.red],borderRadius:0}]},options:barOpts(false)});
+    playCharts.monk=new Chart($('chMonk'),{type:'bar',data:{labels:['Ganados','Perdidos'],datasets:[{data:[avg(wins.map(g=>g.mk)),avg(losses.map(g=>g.mk))],backgroundColor:[C.blue,cssv('--barmut')],borderRadius:0}]},options:barOpts(false)});
+    // Tabla game a game (con las columnas nuevas cuando hay datos v2)
+    if(deep){
+      const hh=['Mazo rival','G','G1','Res','Mano','Mulls y/r','T1','1ª amenaza','Cutter'].concat(v2?['Ficha Cut','Criat','1ª int','Rem.riv']:[]).concat(['Tierras T1-3','Robos','Turnos','Prowess','Monjes']);
+      $('playTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
+        D.map(g=>{const base=`<td>${g.aq}</td><td>${g.gi||''}</td><td>${g.sr||'?'}</td><td><span class="pill ${g.w?'W':'L'}">${g.w?'W':'L'}</span></td><td>${g.hy??'—'}</td><td>${g.mu??0}/${g.mo??0}</td><td>${g.t1?'Sí':'·'}</td><td>${g.ft?'T'+g.ft:'—'}</td><td>${g.ct?'T'+g.ct:'—'}</td>`;
+          const v2c=v2?`<td>${g.kf?'Sí':'·'}</td><td>${g.cy??'—'}</td><td>${g.fi?'T'+g.fi:'—'}</td><td>${g.rr??'—'}</td>`:'';
+          const tail=`<td>${g.l3??'—'}</td><td>${g.dy??'—'}</td><td>${g.t}</td><td>${g.pw}</td><td>${g.mk}</td>`;
+          return `<tr>${base}${v2c}${tail}</tr>`;}).join('')+'</tbody>';
+    }
+  }
+}
+function initPlaySel(){
+  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=d.li;});
+  const listas=[...new Set(G().map(g=>lim[g.uid]).filter(Boolean))].sort();
+  const arqs=[...new Set(G().map(g=>g.aq).filter(Boolean))].sort();
+  const fill=(id,vals,allTxt)=>{const s=$(id);if(!s)return;const cur=s.value||'all';s.innerHTML='';s.add(new Option(allTxt,'all'));vals.forEach(v=>s.add(new Option(v,v)));s.value=(vals.includes(cur)||cur==='all')?cur:'all';s.onchange=()=>{playDone=false;renderPlay();};};
+  fill('fpLista',listas,'Todas las listas');
+  fill('fpArq',arqs,'Todos los mazos');
 }
 
 // Tabs
@@ -622,7 +670,7 @@ function initPlayer(){
   s.onchange=()=>{PLAYER=s.value;refreshAll();};
 }
 function refreshAll(){
-  initSelectors();initCmpSelectors();renderSBDef();playDone=false;
+  initSelectors();initCmpSelectors();initPlaySel();renderSBDef();playDone=false;
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
   if(v==='stats')render();
   else if(v==='play')renderPlay();
@@ -1159,6 +1207,8 @@ function parseGamesCSV(txt){
     mu:['mulls yo'],mo:['mulls rival'],hy:['mano yo'],hr:['mano rival'],
     dy:['robos yo'],dr:['robos rival'],ly:['tierras yo'],l3:['tierras t1-3'],
     t1:['accion t1'],ft:['turno 1a amenaza'],ct:['turno cutter'],sp:['hechizos yo'],
+    kf:['ficha turno cutter','ficha cutter'],cy:['criaturas yo','criaturas'],
+    fi:['turno 1a interaccion','turno 1a interacción','1a interaccion'],rr:['interaccion rival','interacción rival','removal rival'],
     by:['reportado por','reportado','usuario']};
   const col={};for(const k in AL){col[k]=header.findIndex(h=>AL[k].includes(h));}
   GAMES_DEEP=col.hy>=0;   // ¿games.csv del formato profundo (manos/robos/tierras)?
@@ -1170,6 +1220,7 @@ function parseGamesCSV(txt){
       t:+g('t')||0,pw:+g('pw')||0,mk:+g('mk')||0,by:g('by')||'feralo77'};
     if(GAMES_DEEP){o.mu=n('mu');o.mo=n('mo');o.hy=n('hy');o.hr=n('hr');o.dy=n('dy');o.dr=n('dr');
       o.ly=n('ly');o.l3=n('l3');o.t1=n('t1');o.ft=n('ft');o.ct=n('ct');o.sp=n('sp');}
+    if(col.kf>=0){o.kf=n('kf');o.cy=n('cy');o.fi=n('fi');o.rr=n('rr');}   // formato v2: Cutter+ficha, criaturas, interacción
     return o;
   }).filter(g=>g.t||g.pw||g.mk);
 }
@@ -1209,7 +1260,7 @@ function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLig
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initCmpSelectors();initPlayer();renderMyLists();renderLxM();renderPlayerLists();renderDefCmp();renderSBDef();
+  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists();renderDefCmp();renderSBDef();
   render();
   updateSource(remote);
   freshness();
