@@ -221,6 +221,39 @@
   @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
   @media(max-width:640px){.cwrap{height:250px}.io{grid-template-columns:1fr}.title{font-size:20px}.wordmark{font-size:24px;padding:0 14px}}
+  /* ===== Guía del mazo (pestaña Guía) — menú lateral + secciones ===== */
+  .gwrap{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--gap);align-items:start}
+  .gmenu{position:sticky;top:14px;border:var(--stroke) solid var(--border);background:var(--surface);box-shadow:var(--shadow)}
+  .gmi{font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:10px 14px;color:var(--text);cursor:pointer;border-bottom:var(--stroke) solid var(--hairline);transition:background .11s var(--ease)}
+  .gmi:last-child{border-bottom:none}
+  .gmi:hover{background:var(--surface-2)}
+  .gmi.on{background:var(--primary);color:var(--on-primary)}
+  .gsec{display:none} .gsec.on{display:block;animation:fade .28s ease}
+  .gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:var(--gap);align-items:start}
+  .gcard{background:var(--surface);border:var(--stroke) solid var(--border);padding:15px 17px;box-shadow:var(--shadow-sm);margin-bottom:var(--gap)}
+  .gcards .gcard{margin-bottom:0}
+  .gcard h4{font-family:var(--font-display);font-weight:400;font-size:13px;text-transform:uppercase;letter-spacing:.01em;margin-bottom:9px}
+  .gul{margin:0;padding-left:17px;font-size:12.5px;line-height:1.6}
+  .gul li{margin-bottom:4px}
+  .gul li::marker{color:var(--primary)}
+  .gp{font-size:12.5px;line-height:1.6;margin-bottom:9px}
+  .gsec .mc{margin-bottom:var(--gap)}
+  .gsec .mc .plan p.gp:last-child{margin-bottom:0}
+  .gjump{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:var(--gap)}
+  .gjump a{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--text);
+    text-decoration:none;border:var(--stroke) solid var(--border);background:var(--surface);padding:4px 9px;box-shadow:var(--shadow-sm);
+    transition:transform .11s var(--ease),box-shadow .11s var(--ease)}
+  .gjump a:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow)}
+  .hand{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
+  .hchip{font-family:var(--font-mono);font-size:11px;font-weight:600;padding:3px 8px;border:var(--stroke) solid var(--border);background:var(--surface-2)}
+  .hchip.t{background:var(--warning-soft);color:var(--text)}
+  .hchip.c{background:var(--primary-soft);color:var(--text)}
+  .gcard h4 .hq-cell{margin-left:6px}
+  #gSbTable td{white-space:normal}
+  #gSbTable .gout{color:var(--loss)} #gSbTable .gin{color:var(--winL)}
+  @media(max-width:860px){.gwrap{grid-template-columns:1fr}.gmenu{position:static;display:flex;flex-wrap:wrap}
+    .gmi{border-bottom:none;border-right:var(--stroke) solid var(--hairline);flex:1 1 auto;text-align:center}.gmi:last-child{border-right:none}}
 </style>
 </head>
 <body>
@@ -247,6 +280,7 @@
     <div class="tab" data-v="lists">Listas</div>
     <div class="tab" data-v="scout">Scouting</div>
     <div class="tab" data-v="cmp">Comparativa</div>
+    <div class="tab" data-v="guia">Guía</div>
     <div class="tab claude" data-v="def">La 75 Definitiva</div>
     <div class="tab claude" data-v="sbdef">Plan SB</div>
     <div class="tab claude" data-v="meta">Meta · mtgtop8</div>
@@ -478,6 +512,1086 @@
     <div class="panel full"><h3>Agregado por carta <span>&middot; % de listas &middot; copias típicas &middot; rango min–max = varianza</span></h3><div style="overflow-x:auto"><table id="metaTbl"></table></div></div>
   </section>
 
+  <!-- ===== GUÍA DEL MAZO (fuente: guía premium de ethanmtg, traducida al español) ===== -->
+  <section class="view" id="v-guia">
+    <div class="author"><span class="ic"></span><div><b>Guía de juego del mazo</b> — traducción al español de la guía premium de <b>ethanmtg</b> (Metafy / youtube @ ethanmtg) que tiene Fer, volcada aquí el 27-jul-2026. La guía original es un documento vivo (el autor la actualiza y publica planes de sideboard nuevos cada 2 semanas): esto es la foto de esa fecha. Ojo: su <b>plan de sideboard</b> (sección "Plan de sideboard") es para la lista stock del autor (60+15 con Soul-Guide Lantern); tu plan propio, ponderado a tu meta local, sigue viviendo en la pestaña <b>Plan SB</b>. Los nombres de las cartas se dejan en inglés, tal y como los ves en MTGO.</div></div>
+    <div class="gwrap">
+      <nav class="gmenu" id="gMenu">
+        <div class="gmi on" data-g="intro">Introducción</div>
+        <div class="gmi" data-g="listas">Listas y flex slots</div>
+        <div class="gmi" data-g="criaturas">Criaturas</div>
+        <div class="gmi" data-g="hechizos">Hechizos</div>
+        <div class="gmi" data-g="tierras">Tierras</div>
+        <div class="gmi" data-g="sbcartas">Cartas de sideboard</div>
+        <div class="gmi" data-g="sbplan">Plan de sideboard</div>
+        <div class="gmi" data-g="patrones">Patrones de juego</div>
+        <div class="gmi" data-g="matchups">Matchups</div>
+        <div class="gmi" data-g="manos">Manos iniciales</div>
+        <div class="gmi" data-g="notas">Notas de meta</div>
+      </nav>
+      <div class="gbody">
+
+        <!-- ========== INTRODUCCIÓN ========== -->
+        <div class="gsec on" id="g-intro">
+          <div class="gcard">
+            <h4>Qué es Izzet Prowess</h4>
+            <p class="gp">Izzet Prowess es un mazo <b>aggro-tempo</b> de primera línea en Modern. Combina salidas explosivas con interacción flexible: usa hechizos baratos (removal eficiente y amenazas potentes) para presionar desde los primeros turnos, adaptando el plan de juego a un abanico muy amplio de matchups. El arquetipo ha cambiado mucho a lo largo de su historia.</p>
+            <p class="gp">El consejo del autor: lee la guía a fondo y céntrate en <b>aplicar</b> lo aprendido a tus propias partidas — la teoría solo vale si te cambia decisiones en mesa.</p>
+          </div>
+          <div class="gcard">
+            <h4>Cómo usar esta guía</h4>
+            <ul class="gul">
+              <li>La guía <b>no depende de una lista concreta</b>: la filosofía de cada matchup se mantiene aunque cambien 2-3 cartas.</li>
+              <li>El autor publica cada 2 semanas un plan de sideboard actualizado para la lista que jugaría ese día; el plan volcado aquí es el que acompañaba a esta versión de la guía.</li>
+              <li>La guía original incluye vídeos de gameplay (por ejemplo, partidas comentadas contra Boros Energy) que no se pueden volcar aquí.</li>
+              <li>Algunas entradas están marcadas <span class="tag">pendiente en la guía original</span>: el autor aún no las ha escrito.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ========== LISTAS Y FLEX SLOTS ========== -->
+        <div class="gsec" id="g-listas">
+          <div class="gcard">
+            <h4>Las listas de referencia del autor</h4>
+            <p class="gp">Cinco variantes del arquetipo, con enlace a mtggoldfish:</p>
+            <ul class="gul">
+              <li><b>Mainboard stock</b> — <a href="https://www.mtggoldfish.com/deck/7808347" target="_blank" rel="noopener">mtggoldfish.com/deck/7808347</a></li>
+              <li><b>Stormchaser's Lessons</b> — <a href="https://www.mtggoldfish.com/deck/7824034" target="_blank" rel="noopener">mtggoldfish.com/deck/7824034</a></li>
+              <li><b>Jeskai Prowess</b> — <a href="https://www.mtggoldfish.com/deck/7845797" target="_blank" rel="noopener">mtggoldfish.com/deck/7845797</a></li>
+              <li><b>Team Cosmos Prowess</b> — <a href="https://www.mtggoldfish.com/deck/7881436" target="_blank" rel="noopener">mtggoldfish.com/deck/7881436</a></li>
+              <li><b>One-of spread</b> (copias sueltas) — <a href="https://www.mtggoldfish.com/deck/7809957" target="_blank" rel="noopener">mtggoldfish.com/deck/7809957</a></li>
+            </ul>
+            <p class="gp" style="margin-top:10px;color:var(--text-muted)">Del cierre de la guía: "jugar la build stock es la mejor forma de atacar este meta — el campo es muy diverso. Céntrate en el plan primario de correr el game 1; el mainboard stock maximiza la consistencia".</p>
+          </div>
+          <div class="gcard">
+            <h4>Flex slots del mainboard</h4>
+            <p class="gp">El mainboard tiene <b>4 huecos flexibles</b> en total, que se reparten entre estas cartas (una combinación de):</p>
+            <ul class="gul">
+              <li>4ª <b>Expressive Iteration</b></li>
+              <li>1ª y/o 2ª <b>Violent Urge</b></li>
+              <li>4ª <b>Mutagenic Growth</b></li>
+              <li>1ª <b>Unholy Heat</b></li>
+              <li>1ª y/o 2ª <b>Flashback</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ========== CRIATURAS ========== -->
+        <div class="gsec" id="g-criaturas">
+          <div class="note-lg">Estas tres criaturas, a 4 copias, son el paquete fijo del arquetipo desde hace tiempo. En general a todas les pega la misma interacción; las excepciones se señalan carta a carta.</div>
+          <div class="gcard">
+            <h4>Monastery Swiftspear</h4>
+            <ul class="gul">
+              <li>Gran jugada de turno 1: presencia en mesa + agresión desde el minuto uno.</li>
+              <li>Prowess: cada hechizo que no sea criatura la sube.</li>
+              <li>La criatura más flexible del mazo — prisa por un maná la hace buena en casi cualquier turno; es agresiva y genera vuelcos de tempo.</li>
+              <li>La mejor criatura para emparejar con <b>Cori-Steel Cutter</b>.</li>
+              <li>Puede convertirse en un objetivo que el rival está obligado a matar — y ese removal no va a un Slickshot Show-Off.</li>
+              <li>Excelente con los efectos de doble golpe (3+ de fuerza con doble golpe y prowess ya es una amenaza de cierre).</li>
+              <li>Ojo: <b>Yawgmoth la bloquea gratis</b> (protección contra Humanos, y Swiftspear es Humana).</li>
+              <li>Le pega todo el removal de criatura del formato; la única excepción práctica es que March of Otherworldly Light tiene que pagar X=1 en vez de 0.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Dragon's Rage Channeler (DRC)</h4>
+            <ul class="gul">
+              <li>Gran jugada de turno 1: presencia en mesa + tempo (y con Mishra's Bauble, selección de cartas).</li>
+              <li>El mejor motor de selección del mazo. Sin ver una DRC cuesta mucho activar Delirium con consistencia.</li>
+              <li>Con Delirium activo <b>DRC está obligada a atacar</b>: puede ser un problema si el rival tiene una Quantum Riddler u otro volador. Lanza los hechizos en la 2ª fase principal para no forzar un ataque que no quieres.</li>
+              <li>Reloj muy rápido si Delirium se activa en el turno 2 o 3: Delirium en el turno 2 son potencialmente 9 de daño de combate acumulado con DRC para el turno 4.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Slickshot Show-Off</h4>
+            <ul class="gul">
+              <li>La mejor criatura del mazo en nivel de poder bruto.</li>
+              <li>La mayor fuente de daño puntual (+2 de fuerza por cada hechizo no criatura).</li>
+              <li><b>Plotear</b> el Slickshot (pagar su coste de plot y dejarlo aparcado) es excelente para volver ineficiente el maná de la interacción del rival.</li>
+              <li>Si el rival no usa hechizos de daño como removal, muchas veces lo correcto es lanzarlo directamente para maximizar ataques y daño total.</li>
+              <li>Pegar "solo" 3-5 con Slickshot sigue siendo bueno — sobre todo cuando robas varios y quieres ser conservador con los hechizos o con lo que comprometes a la mesa.</li>
+              <li>Sé agresivo con él: 3 de fuerza ya obligan al rival a gastarle interacción antes de que encadenes más hechizos.</li>
+              <li>Mutagenic Growth lo salva de Lightning Bolt o Galvanic Discharge.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ========== HECHIZOS ========== -->
+        <div class="gsec" id="g-hechizos">
+          <div class="gcards">
+          <div class="gcard">
+            <h4>Boomerang Basics</h4>
+            <ul class="gul">
+              <li>Combea con Stormchaser's Talent.</li>
+              <li>Muy buena rebotando un Riddler "scameado" (puesto en mesa con trucos de blink) o un bloqueador único.</li>
+              <li>Con 5 manás puedes activar Stormchaser's Talent (nivel 2) devolviendo Boomerang Basics a la mano, y relanzar el Boomerang sobre el propio Talent: presión lenta pero constante.</li>
+              <li>Sin Talent en mesa, lánzalo agresivo por tempo; no lo guardes esperando un Talent salvo que el matchup lo pida.</li>
+              <li>Matchups malos para él: Eldrazi Tron, Living End, Affinity, Belcher, Storm.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Cori-Steel Cutter</h4>
+            <ul class="gul">
+              <li>La mejor jugada de turno 2 es Cutter + Mishra's Bauble (el Bauble es el 2º hechizo: ficha de Monje al momento).</li>
+              <li>La amenaza que mejor escala, y buena incluso contra Wrath of God (aunque Wrath of the Skies sí se lleva el Cutter, que es artefacto).</li>
+              <li>La ficha de Monje nueva <b>no da ventana de prioridad al rival</b> mientras sea un 1/1 (solo la da si decides equiparle el Cutter).</li>
+              <li>Puede disparar en el turno del rival (flashback de Lava Dart, un Bolt a velocidad de instantáneo...).</li>
+              <li>Es un artefacto: cuenta para Delirium.</li>
+              <li>Línea fuerte: Lava Dart turno 1; turno 2 Cutter + flashback del Dart para la ficha (redonda si tienes 3+ tierras).</li>
+              <li>Recuerda que se puede equipar a una criatura por 2 manás — puede dar arrolla a un volador.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Expressive Iteration</h4>
+            <ul class="gul">
+              <li>La mejor ventaja de cartas a 2 manás disponible.</li>
+              <li>Gran carta de game 1; <b>empeora mucho tras el sideboard</b>, porque los planes de matchup meten interacción específica y la echan del hueco.</li>
+              <li>Ayuda a habilitar Delirium.</li>
+              <li>Se suele cortar post-side por interacción (Consign to Memory, Unholy Heat...).</li>
+              <li>Rara vez es buena por duplicado: atasca la mano y te impide comprometer mesa.</li>
+              <li>Lánzala <b>antes</b> de jugar la tierra del turno (salvo que juegues alrededor de Spell Pierce, Jwari Disruption, etc.).</li>
+              <li>Lanzarla "a pelo" sin disparar ninguna criatura es flojo (salvo mano vacía).</li>
+              <li>La 2ª copia en la mano inicial es carta de mulligan casi por defecto.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Flashback</h4>
+            <ul class="gul">
+              <li>Una incorporación compleja al arquetipo.</li>
+              <li>Aporta redundancia, pero necesita otras cartas para funcionar.</li>
+              <li>Fuerte relanzando la interacción que importa (Consign to Memory contra Tron, un hechizo de daño contra Boros Energy).</li>
+              <li>Puede disparar el Cutter con una sola carta efectiva (robas Flashback de arriba y disparas el Cutter).</li>
+              <li>Flexible: sirve en agresivo (relanzar un hechizo en tu turno para la ficha) y en tempo (relanzar interacción).</li>
+              <li>Puede ser mala en manos iniciales (ejemplo: 3 amenazas, 3 tierras y 1 Flashback).</li>
+              <li>Mala contra High Noon y Trinisphere (todo el mazo lo es, pero Flashback queda muerta del todo hasta quitarlos) y contra hate de cementerio (Tormod's Crypt).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Flow State</h4>
+            <ul class="gul">
+              <li>Muy parecida a Expressive Iteration: cada copia que se juega sustituye a una Expressive.</li>
+              <li>Suelo más bajo que Expressive (sin instantáneo y conjuro en el cementerio solo pone 1 carta en mano), pero techo más alto (puede dar 2 cartas a la mano, en vez de 1 a mano + 1 al exilio).</li>
+              <li>Necesita un Preordain u otra Flow State ya en el cementerio para compararse con Expressive (más un instantáneo, que es mucho más fácil).</li>
+              <li>Mala contra hate de cementerio incremental (Emperor of Bones, Territorial Kavu, Tormod's Crypt de main...).</li>
+              <li>En la lista stock la diferencia de coste entre ambas es irrelevante.</li>
+              <li>Invita al rival a interactuar con tu cementerio: mala para las cartas de Delirium.</li>
+              <li>En conjunto es menos fiable que Expressive; podría sustituirla si se imprimen conjuros de 1 maná que entren al mazo, o en las versiones con Boomerang + Talent (más conjuros).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Gut Shot</h4>
+            <ul class="gul">
+              <li>Carta de meta: seguro contra Boros Energy (Ocelot Pride y Ragavan).</li>
+              <li>Hechizo extra de coste cero: ayuda a disparar DRC y/o el Cutter.</li>
+              <li>A velocidad de instantáneo y gratis para disparar prowess (protege contra removal de daño).</li>
+              <li>Mala contra: Tron, Goryo's, el mirror, Storm, Esper Blink, Belcher.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Lava Dart</h4>
+            <ul class="gul">
+              <li>El mejor hechizo de daño para disparar prowess: con flashback son dos hechizos en una carta.</li>
+              <li>Daño flojo, pero se lanza dos veces.</li>
+              <li>Lanzarla y flashbackearla en el turno del rival dispara el Cutter fuera de tu turno.</li>
+              <li>Al pagar el flashback (sacrificando la Montaña) <b>el rival no recibe prioridad</b> entre una cosa y otra: puedes flashbackear en respuesta y esquivar el hate de cementerio.</li>
+              <li>Buenísima en el turno del rival para dejarte el flashback en el tuyo: libera maná para el resto de hechizos.</li>
+              <li>Ojo: el flashback lo paran Vexing Bauble y Boromir (se lanza sin pagar maná), y Chalice of the Void con un contador también la para.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Lightning Bolt</h4>
+            <ul class="gul">
+              <li>El mejor hechizo de daño de la historia: es jugada de tempo y de agresión a la vez.</li>
+              <li>Versátil: controla la mesa o va a la cara para ganar la carrera.</li>
+              <li>Si el mazo pudiera jugar 8, los jugaría.</li>
+              <li>Aparte de ir a la cara, en el game 1 su mejor uso suele ser matar Solitude (incluida la que están intentando Ephemerate).</li>
+              <li>Excelente matando Slickshot Show-Off (en el mirror).</li>
+              <li>Los patrones concretos por matchup están en la guía de matchups.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Mishra's Bauble</h4>
+            <ul class="gul">
+              <li>Lanzarlo solo para un trigger de Swiftspear es flojo (mejor gastarlo en disparar Slickshot o Cutter); con varias amenazas prowess en mesa, si suma 3+ de daño, adelante.</li>
+              <li>Con DRC: la mejor forma de turbo-Delirium. El patrón principal es buscando tierras agresivamente (turno 1-2: DRC, Bauble para ver si viene tierra).</li>
+              <li>Mírate tu propia carta de arriba <b>antes</b> de fetchear o de jugar tierra sin girar: si la carta es mala, rompe la fetch; si es buena, no fetchees (o juega la tierra que entra girada).</li>
+              <li>Si el rival juega Thoughtseize, rompe el Bauble en su mantenimiento (ves tu robo del turno y no le regalas información de una carta extra en mano cuando lance el descarte).</li>
+              <li>Si surveileas y aparece un Bauble: si lanzarlo da daño relevante, déjalo arriba para robarlo; si no, casi siempre al cementerio.</li>
+              <li>En torneos de papel: pon un dado o un boli encima del mazo para no saltarte el robo diferido del Bauble.</li>
+              <li>Le pegan Vexing Bauble y Boromir: juega alrededor (por ejemplo, lanza los Bauble pronto pase lo que pase).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Mutagenic Growth</h4>
+            <ul class="gul">
+              <li>Genial para agredir y para proteger criaturas de la interacción basada en daño.</li>
+              <li>Con un efecto de doble golpe encima, son 10+ de daño mínimo desde una criatura.</li>
+              <li>Empeora post-side, cuando la interacción del rival se refina.</li>
+              <li>No hace nada contra removal que no sea de daño (Solitude, Prismatic Ending...).</li>
+              <li>Contra mazos de Solitude: no la gastes antes de ver la primera Solitude, o fuerza al rival a interactuar antes de tener que lanzarla.</li>
+              <li>Cuidado en mirrors agresivos: las 2 vidas pesan mucho.</li>
+              <li>La paran Vexing Bauble y Boromir si no puedes pagar el maná verde (sin Stomping Ground disponible).</li>
+              <li>Truco: en el turno 2, tras lanzar el Cutter, se puede lanzar sobre una criatura <b>del rival</b> solo para fabricar tu ficha de Monje.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Preordain</h4>
+            <ul class="gul">
+              <li>El mejor cantrip (hechizo barato que roba carta) disponible.</li>
+              <li>Importante para llegar a Delirium.</li>
+              <li>Si tienes garantizado encadenar más hechizos después, suele ser mejor <b>fetchear antes</b> de lanzarlo.</li>
+              <li>Muy bueno encadenando hechizos y disparando el Cutter.</li>
+              <li>Cuidado con lanzarlo con posibles Orcish Bowmasters en contra.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Prismari Charm</h4>
+            <ul class="gul">
+              <li>Su mejor modo es rebotar un permanente por tempo (una criatura clave — un Primeval Titan — o un bloqueador).</li>
+              <li>El modo de 1 daño a dos objetivos brilla contra fichas de Drone.</li>
+              <li>Surveil 2 encuentra Delirium mejor que otros cantrips.</li>
+              <li>Ojo: es un instantáneo — si cortas Expressive Iteration por Charm pierdes densidad de conjuros para Delirium.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Stormchaser's Talent</h4>
+            <ul class="gul">
+              <li>Amenaza prowess que además habilita prowess (la ficha de Otter tiene prowess).</li>
+              <li>Puede ser fuerte a final de partida con la activación de nivel 2 (recupera un hechizo de daño o de robo), aunque no pasa a menudo.</li>
+              <li>La ficha de Otter es débil a Orcish Bowmasters.</li>
+              <li>Se empareja de maravilla con Boomerang Basics.</li>
+              <li>Tipo de carta extra para Delirium (encantamiento).</li>
+              <li>Débil a interacción de no-criatura (Spell Pierce, Force of Negation).</li>
+              <li>Exige más del maná: para jugar varios Talent + Boomerang suele hacer falta el 4º Steam Vents.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Unholy Heat</h4>
+            <ul class="gul">
+              <li>El mejor removal de daño que no puede ir a la cara.</li>
+              <li>Genial contra Guide of Souls.</li>
+              <li>Como flex de main es fuerte contra: mirror, Boros Energy, Yawgmoth, Broodscale, Domain Zoo.</li>
+              <li>Delirium se comprueba <b>al resolver</b>: con 3 tipos en el cementerio y una DRC en mesa, puedes lanzarla, surveilear con el trigger y meter el 4º tipo antes de que resuelva.</li>
+              <li>Lo normal es verla en el sideboard.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Violent Urge</h4>
+            <ul class="gul">
+              <li>El mejor efecto de doble golpe disponible.</li>
+              <li>Igual que Unholy Heat, comprueba Delirium al resolver: con 3 tipos y DRC en mesa puedes surveilear el 4º en respuesta.</li>
+              <li>Mala contra removal de coste cero (Solitude): mira el patrón de juego nº 10, "cuándo ir a por todas".</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Academic Dispute <span class="tag">pendiente en la guía original</span></h4>
+            <p class="gp" style="color:var(--text-muted)">El autor aún no ha escrito esta entrada.</p>
+          </div>
+          </div>
+        </div>
+
+        <!-- ========== TIERRAS ========== -->
+        <div class="gsec" id="g-tierras">
+          <div class="gcards">
+          <div class="gcard">
+            <h4>Mountain</h4>
+            <ul class="gul">
+              <li>Normalmente 2-3 copias (las listas stock llevan 3).</li>
+              <li>Fetchéala pronto si la vida importa en el matchup (Boros Energy).</li>
+              <li>Intenta conservarlas en el mazo contra Boros Ponza (te romperán las no básicas).</li>
+              <li>Si solo tienes una fetch en mano y hay que quedarse corta de tierras en un mulligan, devuelve la Mountain antes que la primera fetch.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Fetchlands</h4>
+            <ul class="gul">
+              <li>Importantes para Delirium; evita mandarlas al cementerio si el rival tiene hate de cementerio incremental.</li>
+              <li>Cuidado con el orden del surveil: si vas a encadenar otro hechizo con DRC en mesa, suele ser correcto <b>fetchear antes</b> del primer hechizo.</li>
+              <li>En general, <b>no fetchees solo "para afinar el mazo"</b>.</li>
+              <li>Lleva la cuenta de qué cartas van al fondo de tu biblioteca (lo que exilia Endurance, lo que manda al fondo Expressive Iteration): te dirá si te interesa barajar (fetchear) para volver a tener acceso a ellas (ese Lightning Bolt que necesitas para cerrar).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Fiery Islet</h4>
+            <ul class="gul">
+              <li>Se juegan una o dos; la stock suele llevar dos.</li>
+              <li>En la versión Temur el maná va más justo y la 2ª Islet tiene que ser una fetch.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Steam Vents</h4>
+            <ul class="gul">
+              <li>Normalmente 3; la 4ª solo si juegas la versión con varios Boomerang + Talent.</li>
+              <li>Búscala para el turno 1: te deja lanzar Preordain tranquilo en el turno 2.</li>
+              <li>Cuidado con el shock (las 2 vidas) contra el mirror y Boros Energy: prioriza fetchear Mountains o Steam Vents giradas siempre que puedas.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Stomping Ground</h4>
+            <ul class="gul">
+              <li>En las builds Temur sustituye a una Mountain.</li>
+              <li>Duele en el mirror y contra Boros Energy: administra la vida.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Thundering Falls</h4>
+            <ul class="gul">
+              <li>Una o ninguna.</li>
+              <li>No quieres robarla: quieres que sea <b>objetivo de fetch</b>.</li>
+              <li>Es la primera tierra que devuelves en un mulligan.</li>
+              <li>Aun así es buena jugada de turno 1 si puedes hacer Cutter + Bauble en el turno 2.</li>
+              <li>Suele brillar a mitad-final de partida, no al principio cuando el maná tiene que rendir.</li>
+              <li>Puede dar un vuelco tarde: surveilear una Lava Dart (para el flashback) o la carta que te da Delirium.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Island <span class="tag">pendiente en la guía original</span></h4>
+            <p class="gp" style="color:var(--text-muted)">El autor aún no ha escrito esta entrada.</p>
+          </div>
+          </div>
+        </div>
+
+        <!-- ========== CARTAS DE SIDEBOARD ========== -->
+        <div class="gsec" id="g-sbcartas">
+          <div class="note-lg">Salen opciones nuevas de sideboard cada poco; cuando aparece una, el autor la añade a la guía original.</div>
+          <div class="gcards">
+          <div class="gcard">
+            <h4>Abhorrent Oculus</h4>
+            <ul class="gul">
+              <li>Compite por los huecos de Murktide Regent en el sideboard.</li>
+              <li>Sus 3 manás cuestan más de justificar que los (potenciales) 2 de Murktide, que además saca menos cartas del cementerio.</li>
+              <li>Es más carta de "late game" que Murktide, que por costar menos es más fácil de bajar en el turno 3 si necesitas agredir o forzar un vuelco de tempo.</li>
+              <li>Cuesta más emparejarlo con otro hechizo en el mismo turno ("amenaza alternativa" + hechizo de daño o criatura prowess suele generar más tempo que el Oculus solo). Con Murktide es más fácil.</li>
+              <li>Mejor que Murktide contra Archon of Cruelty.</li>
+              <li>Claramente flojo contra el Murktide del rival.</li>
+              <li>En pruebas del autor: 2 Oculus de sideboard como plan de late game, y como arma contra otros mazos/jugadores de Oculus.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Assault Strobe</h4>
+            <ul class="gul">
+              <li>El mejor doble golpe después de Violent Urge.</li>
+              <li>A velocidad de conjuro: peor contra bloqueadores potenciales, pero ayuda más a Delirium (es conjuro).</li>
+              <li>Genial en los matchups donde hay que correr (mazos de combo).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Blood Moon</h4>
+            <ul class="gul">
+              <li>Herramienta del pasado: hoy Consign to Memory pelea mejor contra Tron y Amulet.</li>
+              <li>Que te rompa tu propio maná azul tampoco ayuda.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Consign to Memory</h4>
+            <ul class="gul">
+              <li>Excelente contrarrestando los pagos de Tron (contrarresta cualquier hechizo incoloro y cualquier habilidad activada o disparada).</li>
+              <li>Puede contrarrestar el trigger de Storm.</li>
+              <li>Esquiva Chalice of the Void a 1 con su coste de replicar.</li>
+              <li>Contrarresta el trigger de Leyline Binding.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Eddymurk Crab</h4>
+            <ul class="gul">
+              <li>Otra opción de amenaza alternativa.</li>
+              <li>La más defensiva de todas, pero también puede ser muy agresiva girando bloqueadores clave antes de un ataque grande (o en tu turno, para despejar).</li>
+              <li>No exilia cartas de tu cementerio: mejor para Delirium.</li>
+              <li>Necesita específicamente instantáneos y conjuros en el cementerio para abaratarse (a diferencia de las otras opciones).</li>
+              <li>Necesita más pruebas: con 20-22 instantáneos y conjuros puede que no se lance con fiabilidad.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Into the Flood Maw</h4>
+            <ul class="gul">
+              <li>Aplicación principal: rebotar criaturas problemáticas (Primeval Titan, bloqueadores) y High Noon.</li>
+              <li>Compite con los contrahechizos por el hueco; Spell Snare también para High Noon, que es la razón principal de jugarla.</li>
+              <li>El autor la ha ido soltando: no impactaba en las partidas perdidas — luce cuando ya vas bien ("win more"), salvo cuando rebota High Noon o un Slickshot letal.</li>
+              <li>Mejor por pares (encadena el rebote turnos seguidos), pero el meta actual no lo pide: hay poco High Noon y menos Goryo's del que debería.</li>
+              <li>Genial contra el "scam" de Quantum Riddler: si Esper Blink sube en el meta, puede volver al sideboard.</li>
+              <li>Sigue siendo decente en matchups de tempo rebotando criaturas (Amulet, el mirror, Boros Energy, Goryo's).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Meltdown</h4>
+            <ul class="gul">
+              <li>Necesaria para el matchup de Affinity (el autor está probando a fondo Mystical Dispute para ver si puede sustituirla).</li>
+              <li>Casi siempre se lanza por X=0 (o X=1 si hay Shadowspear o "Skateboard" — Esoteric Railgun — en mesa).</li>
+              <li>Welding Jar es fuerte contra ella.</li>
+              <li>Aplicación muy limitada fuera de ahí: es la carta más lineal del sideboard.</li>
+              <li>También rinde contra Izzet Steel-Cutter.</li>
+              <li>Mala contra Weapons Manufacturing, sobre todo si tienes criaturas en mesa (les regala fichas al morir sus artefactos).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Murktide Regent</h4>
+            <ul class="gul">
+              <li>La amenaza alternativa más jugada.</li>
+              <li>Puede estorbar a Delirium (el delve se come tu cementerio).</li>
+              <li>Su gracia: esquiva la línea de interacción del rival, pensada para amenazas pequeñas y baratas.</li>
+              <li>Crece cuando salen instantáneos y conjuros de los cementerios.</li>
+              <li>No es una amenaza diversa (comparada con Oculus).</li>
+              <li>No es gran defensora (comparada con Eddymurk Crab).</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Mystical Dispute</h4>
+            <ul class="gul">
+              <li>El mejor contrahechizo disponible... si todas las cartas fueran azules.</li>
+              <li>Empeora cuanto más dura la partida (más fácil que el rival pueda pagar los 3).</li>
+              <li>Su aplicación concreta está repartida por la guía de matchups.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Spell Pierce</h4>
+            <ul class="gul">
+              <li>El contrahechizo más eficiente al que llega el mazo.</li>
+              <li>Su aplicación concreta está repartida por la guía de matchups.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Spell Snare</h4>
+            <ul class="gul">
+              <li>Contrahechizo eficiente que apunta a cartas problemáticas concretas: High Noon, Goryo's Vengeance, Psychic Frog, Cori-Steel Cutter, Goblin Bombardment.</li>
+              <li>Se vuelve incómodo si no está en la mano inicial.</li>
+              <li>Su aplicación concreta está repartida por la guía de matchups.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Surgical Extraction</h4>
+            <ul class="gul">
+              <li>Era la mejor respuesta a Phlage.</li>
+              <li>Con Phlage prohibida, Tormod's Crypt es mejor en general: habilita Delirium y se lleva el cementerio entero.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Tormod's Crypt</h4>
+            <ul class="gul">
+              <li>El mejor hate de cementerio.</li>
+              <li>Coste cero: dispara prowess gratis.</li>
+              <li>Artefacto: ayuda a Delirium.</li>
+              <li>Es desventaja de cartas; y el mazo de cementerio más dedicado ahora mismo es Living End, que se frena mejor con Consign to Memory.</li>
+              <li>Genial contra Goryo's y Grixis Reanimator.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Wear // Tear <span class="tag">pendiente en la guía original</span></h4>
+            <p class="gp" style="color:var(--text-muted)">El autor aún no ha escrito esta entrada.</p>
+          </div>
+          </div>
+        </div>
+
+        <!-- ========== PLAN DE SIDEBOARD (matriz del autor) ========== -->
+        <div class="gsec" id="g-sbplan">
+          <div class="note-lg"><b>El plan de sideboard del autor</b>, transcrito de su matriz (youtube @ ethanmtg). Es para SU lista stock — main: 4 Lava Dart, 4 Cori-Steel Cutter, 4 Dragon's Rage Channeler, 4 Expressive Iteration, 4 Mishra's Bauble, 4 Monastery Swiftspear, 4 Lightning Bolt, 4 Mutagenic Growth, 4 Preordain, 4 Slickshot Show-Off, 2 Violent Urge, 18 tierras · side: 4 Consign to Memory, 2 Meltdown, 2 Mystical Dispute, 1 Soul-Guide Lantern, 2 Spell Pierce, 4 Unholy Heat. Si tu 75 difiere (la tuya lleva Tormod's Crypt, Murktide, Spell Snare...), traduce la intención, no las copias exactas: tu plan propio está en la pestaña <b>Plan SB</b>.</div>
+          <div class="panel full" style="margin-bottom:16px"><h3>IN / OUT por matchup <span>(23 matchups &middot; el plan cuadra: entra lo mismo que sale)</span></h3>
+            <div style="overflow-x:auto"><table id="gSbTable">
+              <thead><tr><th>Matchup</th><th>Fuera (OUT)</th><th>Dentro (IN)</th></tr></thead>
+              <tbody>
+                <tr><td><b>Affinity</b> *</td><td class="gout">3 Expressive Iteration &middot; 1 Mutagenic Growth</td><td class="gin">2 Meltdown &middot; 2 Mystical Dispute</td></tr>
+                <tr><td><b>Amulet Titan</b></td><td class="gout">1 Lava Dart &middot; 4 Expressive Iteration &middot; 3 Lightning Bolt</td><td class="gin">4 Consign to Memory &middot; 4 Unholy Heat</td></tr>
+                <tr><td><b>Azorius Blink</b></td><td class="gout">4 Mutagenic Growth</td><td class="gin">4 Unholy Heat</td></tr>
+                <tr><td><b>Azorius Scepter (Jeskai)</b></td><td class="gout">2 Expressive Iteration &middot; 2 Lightning Bolt</td><td class="gin">2 Mystical Dispute &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Belcher</b></td><td class="gout">4 Expressive Iteration &middot; 4 Mutagenic Growth</td><td class="gin">4 Consign to Memory &middot; 2 Mystical Dispute &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Boros Energy</b></td><td class="gout">4 Mutagenic Growth</td><td class="gin">4 Unholy Heat</td></tr>
+                <tr><td><b>Boros Ponza</b></td><td class="gout">2 Mutagenic Growth</td><td class="gin">2 Spell Pierce</td></tr>
+                <tr><td><b>Broodscale</b></td><td class="gout">2 Expressive Iteration &middot; 4 Mutagenic Growth &middot; 2 Violent Urge</td><td class="gin">2 Consign to Memory &middot; 2 Meltdown &middot; 4 Unholy Heat</td></tr>
+                <tr><td><b>Burn</b></td><td class="gout">4 Mutagenic Growth</td><td class="gin">2 Spell Pierce &middot; 2 Unholy Heat</td></tr>
+                <tr><td><b>Dimir Frog</b></td><td class="gout">1 Lava Dart &middot; 4 Mutagenic Growth</td><td class="gin">2 Mystical Dispute &middot; 2 Spell Pierce &middot; 1 Unholy Heat</td></tr>
+                <tr><td><b>Domain Zoo</b></td><td class="gout">2 Expressive Iteration &middot; 4 Mutagenic Growth &middot; 2 Violent Urge</td><td class="gin">4 Consign to Memory &middot; 4 Unholy Heat</td></tr>
+                <tr><td><b>Eldrazi Ramp</b></td><td class="gout">4 Expressive Iteration &middot; 2 Mutagenic Growth</td><td class="gin">4 Consign to Memory &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Eldrazi Tron</b></td><td class="gout">4 Expressive Iteration &middot; 4 Lightning Bolt</td><td class="gin">4 Consign to Memory &middot; 2 Meltdown &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Esper Blink</b></td><td class="gout">4 Mutagenic Growth</td><td class="gin">2 Mystical Dispute &middot; 2 Unholy Heat</td></tr>
+                <tr><td><b>Goryo's Vengeance</b></td><td class="gout">1 Lava Dart &middot; 4 Mutagenic Growth &middot; 2 Violent Urge</td><td class="gin">2 Mystical Dispute &middot; 1 Soul-Guide Lantern &middot; 2 Spell Pierce &middot; 2 Unholy Heat</td></tr>
+                <tr><td><b>Grixis Reanimator</b></td><td class="gout">1 Lava Dart &middot; 4 Expressive Iteration &middot; 2 Mutagenic Growth</td><td class="gin">2 Mystical Dispute &middot; 1 Soul-Guide Lantern &middot; 2 Spell Pierce &middot; 2 Unholy Heat</td></tr>
+                <tr><td><b>Izzet Prowess (mirror)</b></td><td class="gout">2 Expressive Iteration &middot; 4 Mutagenic Growth</td><td class="gin">2 Spell Pierce &middot; 4 Unholy Heat</td></tr>
+                <tr><td><b>Izzet Steel-Cutter</b></td><td class="gout">2 Expressive Iteration &middot; 2 Mutagenic Growth</td><td class="gin">2 Meltdown &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Living End</b></td><td class="gout">1 Cori-Steel Cutter &middot; 4 Dragon's Rage Channeler &middot; 2 Expressive Iteration</td><td class="gin">4 Consign to Memory &middot; 1 Soul-Guide Lantern &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Neoform</b></td><td class="gout">2 Cori-Steel Cutter &middot; 4 Expressive Iteration</td><td class="gin">2 Consign to Memory &middot; 2 Mystical Dispute &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Rhinos</b></td><td class="gout">4 Expressive Iteration &middot; 2 Lightning Bolt</td><td class="gin">4 Consign to Memory &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Ruby Storm</b></td><td class="gout">1 Lava Dart &middot; 4 Expressive Iteration</td><td class="gin">2 Consign to Memory &middot; 1 Soul-Guide Lantern &middot; 2 Spell Pierce</td></tr>
+                <tr><td><b>Yawgmoth</b></td><td class="gout">3 Expressive Iteration &middot; 2 Mutagenic Growth</td><td class="gin">1 Soul-Guide Lantern &middot; 4 Unholy Heat</td></tr>
+              </tbody>
+            </table></div>
+            <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">* Affinity con decklist abierta: si el rival lleva 3+ Galvanic Blast, corta las 4 Expressive Iteration y quédate TODAS las Mutagenic Growth (nota del autor, sección "Notas de meta").</div>
+          </div>
+          <div class="gcard">
+            <h4>Cómo leer este plan</h4>
+            <ul class="gul">
+              <li>Lo que más sale del main: <b>Expressive Iteration</b> (lenta cuando entra interacción) y <b>Mutagenic Growth</b> (mala cuando el removal rival no es de daño o cuando la vida pesa).</li>
+              <li>Las amenazas casi nunca se tocan: no diluyas la masa crítica de criaturas + Cutter. Las excepciones del autor: DRC fuera contra <b>Living End</b> (alimenta su plan y bloquea fatal post-Living End) y algún Cutter contra <b>Living End / Neoform</b> (demasiado lento para esa carrera).</li>
+              <li><b>Consign to Memory</b> entra contra todo lo que dependa de triggers o hechizos incoloros (Tron, Eldrazi, cascadas, Belcher, Amulet).</li>
+              <li><b>Unholy Heat</b> entra contra mesas de criaturas (Energy, Blink, Broodscale, Zoo, mirror, Yawgmoth).</li>
+              <li><b>Soul-Guide Lantern</b> (su hate de cementerio) entra a copia suelta contra Goryo's, Grixis Reanimator, Living End, Ruby Storm y Yawgmoth.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ========== PATRONES DE JUEGO ========== -->
+        <div class="gsec" id="g-patrones">
+          <div class="gcard"><h4>1 &middot; Juega las amenazas prowess ANTES que los hechizos</h4>
+            <ul class="gul">
+              <li>Suena obvio, pero se olvida si no planificas el turno entero antes de actuar.</li>
+              <li>Acuérdate siempre de tus Slickshot ploteados: colócalos visibles en la mesa para no saltártelos.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>2 &middot; En matchup desconocido, DRC antes que Swiftspear</h4>
+            <ul class="gul">
+              <li>Si la DRC sobrevive da más daño total y más triggers de surveil.</li>
+              <li>En matchups de desgaste (mirror, Dimir Frog), al revés: Swiftspear primero — DRC es más fuerte al principio, Swiftspear rinde mejor tarde porque la prisa amenaza más.</li>
+              <li>El peor enemigo de DRC es <b>Lava Dart</b>: si sabes que el rival lleva Darts, no juegues DRC antes que Swiftspear.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>3 &middot; Expressive Iteration brilla como PRIMER hechizo del turno</h4>
+            <ul class="gul">
+              <li>Hay excepciones, pero como primer hechizo te da el máximo de opciones: encontrar la tierra antes de jugar la de la mano, encontrar un Bauble para los triggers, etc.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>4 &middot; Sé agresivo con Lava Dart</h4>
+            <ul class="gul">
+              <li>Dart turno 1 → turno 2 Cutter + flashback del Dart es muy fuerte, y compensa la pérdida de tempo.</li>
+              <li>Si el flashback deja al rival a 1-4 vidas (ataques con Slickshot en mesa, sacrificar la Montaña para el trigger), casi siempre es correcto hacerlo. Excepciones: cartas concretas tipo Beza, o si pierdes demasiado tempo.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>5 &middot; Baja el Slickshot ploteado DESPUÉS de lanzar el Cutter</h4>
+            <ul class="gul"><li>Así el Cutter dispara con el propio Slickshot y no pierdes la ficha.</li></ul>
+          </div>
+          <div class="gcard"><h4>6 &middot; Bauble en el mantenimiento del rival si juega Thoughtseize</h4>
+            <ul class="gul">
+              <li>Ves tu robo antes de su descarte y no le regalas una carta extra de información en tu mano.</li>
+              <li>Pero si el rival tiene una fetch sin romper, espera: no lo rompas todavía.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>7 &middot; Bauble sobre ti ANTES de jugar fetch o tierra sin girar</h4>
+            <ul class="gul">
+              <li>Es un scry gratis: si la carta no te gusta, juega la fetch y rompe (barajas); si te gusta, juega tierra sin fetchear y róbala.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>8 &middot; Instantáneos en TU mantenimiento con DRC en mesa</h4>
+            <ul class="gul">
+              <li>El surveil de DRC llega antes de tu robo del turno: filtras la carta de arriba.</li>
+              <li>Y recuerda que el Cutter puede disparar en el turno del rival.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>9 &middot; Decide QUÉ buscas antes de surveilear</h4>
+            <ul class="gul">
+              <li>¿Amenaza? ¿Interacción? ¿Tierra? ¿Delirium? ¿Una carta concreta? La respuesta depende del contexto de la partida, y eso es lo difícil.</li>
+              <li>Sé agresivo con la decisión: no te conformes con algo que "podría funcionar" según robes. Si necesitas amenaza o daño, el Preordain va al cementerio.</li>
+              <li>Decide qué quieres y comprométete con esa línea.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>10 &middot; ¿Cuándo ir a por todas?</h4>
+            <ul class="gul">
+              <li>Ponle un rango a la mano del rival según lo que ha jugado y cómo: eso estima su interacción.</li>
+              <li>Evalúa cómo pinta la partida si NO comprometes mesa: ¿hay un Psychic Frog que se adueña del juego? ¿te pueden matar el turno que viene? ¿no hacer nada solo retrasa lo inevitable?</li>
+              <li>Intenta sacarle la interacción de la mano gastando tú lo mínimo (esto es lo más fino del mazo).</li>
+              <li>Normalmente NO conviene sentarse a esperar: fuerza el intercambio o solo retrasas lo inevitable. Ojo — esto no es lo mismo que hacer al rival ineficiente de maná; son conceptos parientes pero distintos en la práctica.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>11 &middot; En CADA end step del rival, comprueba si tienes letal el turno siguiente</h4>
+            <ul class="gul"><li>Cuenta el daño exacto (fichas, triggers gratis, doble golpe) — es la comprobación más rentable del mazo.</li></ul>
+          </div>
+        </div>
+
+        <!-- ========== MATCHUPS ========== -->
+        <div class="gsec" id="g-matchups">
+          <div class="gjump" id="gJump">
+            <a href="#gm-affinity">Affinity</a><a href="#gm-amulet">Amulet Titan</a><a href="#gm-belcher">Belcher</a><a href="#gm-boros">Boros Energy</a><a href="#gm-ponza">Boros Ponza</a><a href="#gm-brood">Broodscale</a><a href="#gm-burn">Burn</a><a href="#gm-frog">Dimir Frog</a><a href="#gm-zoo">Domain Zoo</a><a href="#gm-etron">Eldrazi Tron</a><a href="#gm-goryo">Goryo's</a><a href="#gm-mirror">Mirror</a><a href="#gm-steelcutter">Izzet Steel-Cutter</a><a href="#gm-livingend">Living End</a><a href="#gm-neoform">Neoform</a><a href="#gm-rhinos">Rhinos</a><a href="#gm-storm">Ruby Storm</a><a href="#gm-scepter">Scepter Control</a><a href="#gm-yawg">Yawgmoth</a>
+          </div>
+
+          <div class="mc par gm" id="gm-affinity">
+            <div class="mh"><span class="mn">Affinity</span><span class="mmeta">Muy intensivo en habilidad &middot; Affinity va por delante en el game 1 &middot; bastante igualado post-side</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">3 Expressive Iteration &middot; 1 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">2 Meltdown &middot; 2 Mystical Dispute</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> carrera pura en el game 1 (tu única interacción son los hechizos de daño). Post-side ganas interacción clave y juegas más a tempo: frena Pinnacle Emissary y/o Kappa Cannoneer mientras sigues corriendo. Los dobles golpes son la llave — te dejan matar/correr mientras reservas la interacción para sus amenazas gordas. Estimar el rango de la mano del rival es crítico; el timing se castiga mucho.</p>
+              <ul class="gul">
+                <li>Lightning Bolt a Pinnacle Emissary.</li>
+                <li>Meltdown después de que hayan bajado Pinnacle Emissary, o antes de que puedan lanzar Kappa Cannoneer (sin morir ni perder media mesa por las fichas de Munitions).</li>
+                <li>Mystical Dispute a Kappa Cannoneer o Pinnacle Emissary.</li>
+                <li>Meltdown tras las fichas de Constructo de Urza's Saga + su último capítulo (deja de ser viable con 5+ fichas de Munitions en mesa).</li>
+                <li>Guarda las Lava Dart para las fichas de Drone (lánzalas lo más tarde posible).</li>
+                <li>La partida suele acabar con un Slickshot y/o un doble golpe. Plotear el Slickshot esquiva Galvanic Blast.</li>
+                <li>DRC antes que Swiftspear, y juega ambas agresivas para sacarles los Galvanic Blast.</li>
+              </ul>
+              <p class="gp"><b>Cómo estimar su rango:</b></p>
+              <ul class="gul">
+                <li>¿Cuántas tierras tiene en mano? Si juega Fiery Islet pronto, es raro que tenga más tierras (excepción: Islet turno 1 puede indicar Urza's Saga turno 2); parecido con Shivan Reef (que suele caer antes que Islet). Un Spirebluff Canal en el turno 1 no te dice casi nada (es su mejor tierra). De ahí sacas cuántos hechizos potenciales le quedan.</li>
+                <li>Rango de amenazas: si es agresivo con Pinnacle Emissary, probablemente tiene Kappa Cannoneer detrás. Sin artefacto en el turno 1, huele a Weapons Manufacturing con Urza's Saga de tierra, o a Pinnacle con warp y maná extra. Eso te dice cuánto tienes que apretar la carrera.</li>
+                <li>¿Qué interacción representa (Metallic Rebuke, Galvanic Blast)? Fíjate en si se ha quedado sin maná de color girado en algún turno (si lo hizo, probablemente no hay Rebuke). Difícil de leer con muchos artefactos en mesa. Y si lleva guardándose una carta no-tierra desde el principio, sospecha. Eso decide si priorizas agresión o juegas a tempo/control.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> algo más de tempo (Meltdown/Bolt sobre Pinnacle), pero sin dejar de correr.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-amulet">
+            <div class="mh"><span class="mn">Amulet Titan</span><span class="mmeta">Igualado &middot; el dado del game 1 pesa mucho &middot; post-ban se juega casi igual</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">1 Lava Dart &middot; 4 Expressive Iteration &middot; 3 Lightning Bolt</span></div><div><span class="lbl">Dentro</span><span class="in">4 Consign to Memory &middot; 4 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> carrera pura en el game 1; solo puedes interactuar con Amulet of Vigor o Spelunking (doble Bolt al Primeval Titan NO es viable). Post-side entran Consign to Memory y Unholy Heat para pelear Amulet y Titan — decidir cuándo aguantar el Consign abierto es lo difícil del matchup. El kill habitual es un doble golpe: ir a fichas de Monje con el Cutter suele perder la carrera contra Amulet. Ojo con su Zuran Orb.</p>
+              <ul class="gul">
+                <li>Mulligan agresivo buscando criatura de turno 1 — incluso post-side con la interacción dentro.</li>
+                <li>El mejor objetivo del Bolt es <b>Arboreal Grazer</b> (con alcance, bloquea de maravilla al Slickshot): guarda el daño para el Grazer, o llega al bloqueo con una prowess de 3+ (sin pasarte de hechizos en esa jugada: guárdalos para los turnos de Slickshot).</li>
+                <li>Turbo doble golpe: la partida la cierran Slickshot y/o Violent Urge / Assault Strobe.</li>
+                <li>Dryad of the Ilysian Grove bloquea bien (y habilita los triggers de Valakut).</li>
+                <li>El Cutter puede ser lento en el robo, sobre todo sin otras amenazas al lado.</li>
+                <li>Spelunking es difícil de controlar: el Consign se queda corto porque lo que más pega (las tierras sin girar) no es un trigger contrarrestable.</li>
+                <li><b>Consign to Memory:</b> al trigger de entrada de Amulet of Vigor y/o Primeval Titan; en salida, suele ser mejor bajar el one-drop que aguantar el Consign (en pruebas); al último capítulo de Urza's Saga (le niega buscar Amulet o Zuran Orb); y al trigger de rebote sobre Tolaria West (que quiere transmutarla en Summoner's Pact) — puede darte un turno extra antes del Titan.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> sin cambios grandes; algo más de tempo, pero la prioridad sigue siendo la agresión.</p>
+            </div>
+          </div>
+
+          <div class="mc fav gm" id="gm-belcher">
+            <div class="mh"><span class="mn">Belcher</span><span class="mmeta">Favorable</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">4 Expressive Iteration &middot; 4 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">4 Consign to Memory &middot; 2 Mystical Dispute &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> carrera pura. Prowess es un pelín más rápido pese a toda su interacción. El matchup es favorable porque puedes simplemente apretar: en algún momento su interacción tropieza, o les toca ensamblar el kill de Belcher/Tameshi con todo en contra.</p>
+              <ul class="gul">
+                <li>Su interacción (versión azul): Spell Snare, Stern Scolding, Spell Pierce, Force of Negation, Disrupting Shoal, Sink into Stupor, Counterspell, Into the Flood Maw, Jwari Disruption, Beyeen Veil (les puede salvar un turno letal) y Harbinger of the Seas (post-side: fetchea Mountains agresivamente).</li>
+                <li>Tu papel: hacerles preguntas sin parar. Lanza amenazas con su maná abierto — con una amenaza en mesa su interacción alinea peor.</li>
+                <li>El one-drop de criatura es casi obligatorio.</li>
+                <li>Si no lanzas hechizos "contra" su interacción, jugarán Belcher y te matarán: game 1, un Belcher en su turno 4 significa que mueres en el 5.</li>
+                <li>Vigila el maná para Whir of Invention: <b>7 manás = Belcher</b> (Whir por 3 en tu end step busca Lotus Bloom; desgiran, Belcher y activan — por eso hay que ser ultra-agresivo).</li>
+                <li>Consign to Memory al 2º trigger de suspender de Lotus Bloom (cuando queda 1 contador y va a salir): el Bloom se queda exiliado sin lanzarse.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> ya eras favorito siendo agresivo — no diluyas la estrategia. La interacción clave (Consign) entra por las cartas lentas (Expressive); el plan no cambia: no tengas miedo de sobre-extender, te da tiempo a jugar amenazas antes que interacción en los primeros turnos.</p>
+              <p class="gp"><b>Mono-Red Belcher:</b> básicamente igual, pero su interacción es menor y más contundente (Orim's Chant) y están más centrados en el combo. Eso lo hace PEOR matchup que el Belcher azul. El plan es el mismo: mata lo más rápido posible. (El análisis en profundidad está pendiente en la guía original.)</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-boros">
+            <div class="mh"><span class="mn">Boros Energy</span><span class="mmeta">Mucho más navegable tras el ban de Phlage &middot; sin Surgical dedicada, se libera hueco para contrahechizos</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">4 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">4 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> controla sus cartas clave y da la vuelta con jugadas de tempo. Si Guide of Souls y/o Ocelot Pride se quedan en mesa, o te ganan la carrera o te entierran en vida/valor/mesa. Céntrate en ejecutar jugadas de tempo positivas.</p>
+              <ul class="gul">
+                <li>Mulligan buscando removal.</li>
+                <li>Espera a que gasten uno o dos removal antes de bajar el Slickshot Show-Off.</li>
+                <li>Controlar lo clave: Lava Dart a Ocelot Pride; Lava Dart a Ragavan (suele salir del mazo tras el game 1); Lightning Bolt es tu carta más versátil — guárdalo para Guide of Souls o Voice of Victory; prioriza Unholy Heat sobre Guide of Souls para que el Bolt quede libre para Voice of Victory.</li>
+                <li>Tempo: el <b>Cutter es tu mejor carta de final de partida</b> (sin Phlage, su Wrath of the Skies se vuelve incómodo; su Solitude, que empieza a aparecer como respuesta, es mala contra el Cutter). En cuanto puedas cambiar una por una disparando el Cutter, corres por encima de sus amenazas y sus topdecks.</li>
+                <li>Línea bonita: Lava Dart a la ficha de gato en su end step; su Ajani se voltea; en tu turno Cutter + flashback del Dart sobre Ajani = planeswalker muerto.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> naturalmente más tempo; entra más removal para Guide of Souls. (La guía original incluye un vídeo exclusivo de este matchup, no volcado aquí.)</p>
+            </div>
+          </div>
+
+          <div class="mc fav gm" id="gm-ponza">
+            <div class="mh"><span class="mn">Boros Ponza</span><span class="mmeta">Positivo &middot; post-side, juega al desgaste</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">2 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> el matchup gira alrededor de Solitude y de no robar básicas de más. Fuerza su interacción pronto (Path to Exile, Erode, Galvanic Discharge) para que cuando lancen Wrath of the Skies no les quede seguimiento eficiente. Desborda su interacción sin sobre-extenderte al barrido. Es positivo porque con tantas amenazas acabas desbordando su interacción.</p>
+              <ul class="gul">
+                <li>La amenaza de turno 1 es importantísima: castiga su interacción temprana porque ellos ramplean (salvo Galvanic Discharge).</li>
+                <li>Cleansing Wildfire y Price of Freedom SÍ pegan a básicas.</li>
+                <li>Deja maná de básica sin girar cuando aguantes hechizos: si quieren volarte esa tierra tendrá que ser con Cleansing Wildfire o Price of Freedom, no con Field of Ruin.</li>
+                <li>Spell Pierce brilla sobre High Noon, pero en general: si puedes contrarrestar algo, hazlo.</li>
+                <li>Price of Freedom sobre el Cutter duele — evítalo: no bajes el Cutter antes de que gasten Price of Freedom o Wrath of the Skies (excepción: turno 2 con Bauble).</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> plan parecido, algo más de tempo por High Noon — en el robo, aguanta Spell Pierce de turno 1 para su High Noon de turno 2. Más desgaste: su interacción pasa por encima si te dedicas a cambiar una por una — nada de hechizos de bomba (pump o daño a la cara) salvo que maten.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-brood">
+            <div class="mh"><span class="mn">Broodscale (Gruul)</span><span class="mmeta">Complejo: el rol agresivo cambia constantemente &middot; el matchup que el autor sigue probando más</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">2 Expressive Iteration &middot; 4 Mutagenic Growth &middot; 2 Violent Urge</span></div><div><span class="lbl">Dentro</span><span class="in">2 Consign to Memory &middot; 2 Meltdown &middot; 4 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> tus hechizos de daño controlan su combo, así que el plan es de tempo — pero con la agresión justa para pasar por debajo de Emrakul y Devourer of Destiny.</p>
+              <ul class="gul">
+                <li>Kozilek's Command es su mejor interacción (flexible y rampea).</li>
+                <li>Writhing Chrysalis fabrica bloqueadores muy buenos.</li>
+                <li>Juega tu interacción lo más tarde posible, que inviertan recursos en intentar el combo (si no tienen Spawns en mesa, espera a que paguen el adapt de Basking Broodscale antes de matarla).</li>
+                <li>Warping Wail post-side: se juega alrededor sobre todo con Lava Dart en el cementerio.</li>
+                <li>Su Urza's Saga rara vez llega a fabricar Constructos.</li>
+                <li>Dos Glaring Fleshraker te matan rapidísimo: si puedes, guarda el removal para la Broodscale, pero con varios removal en mano, <b>siempre mata al Fleshraker</b>.</li>
+                <li>Kills que debes conocer: Fleshraker + Broodscale + Blade; Broodscale + Blade + Walking Ballista; Broodscale + Blade + Kozilek's Command. Y Emrakul también te mata.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> mismo plan; Unholy Heat es un refuerzo muy fuerte.</p>
+            </div>
+          </div>
+
+          <div class="mc des gm" id="gm-burn">
+            <div class="mh"><span class="mn">Burn</span><span class="mmeta">Desfavorable</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">4 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">2 Spell Pierce &middot; 2 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> asume que tus Swiftspear y DRC van a morir a sus hechizos (sobre todo Searing Blaze), y luego adueñate de la mesa con el Cutter o corre con Slickshot. Es desfavorable porque su redundancia de hechizos que también matan criaturas te impide colar el doble golpe, y el Cutter puede perder la carrera contra el daño directo.</p>
+              <ul class="gul">
+                <li>Su guion: removal para tu criatura de turno 1 (clave en el robo); tú debes jugar la criatura de turno 1 AUNQUE haya Searing Blaze.</li>
+                <li>El rival suele bajar Eidolon of the Great Revel justo después de gestionar tu primera criatura.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> Spell Pierce hace de protección para tus amenazas (o contrarresta Boros Charm). Si el rival NO saca Goblin Guide y/o su Monastery Swiftspear, mete algún Unholy Heat más.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-frog">
+            <div class="mh"><span class="mn">Dimir Frog</span><span class="mmeta">Va de hacerle la partida difícil al rival &middot; desgaste puro</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">1 Lava Dart &middot; 4 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">2 Mystical Dispute &middot; 2 Spell Pierce &middot; 1 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> tempo — vuelve su maná ineficiente, encadena amenazas baratas, mata sus amenazas clave. Y sé el agresor: tú giras la esquina antes y más fácil. Matchup de desgaste puro.</p>
+              <ul class="gul">
+                <li>El one-drop importa: exige el primer Fatal Push ya.</li>
+                <li>Plotear Slickshot es oro para generar ineficiencia de maná.</li>
+                <li>El Cutter es tu mejor amenaza: solo lo responden con contrahechizos.</li>
+                <li>Spell Snare al Psychic Frog. Orcish Bowmasters pega a DRC.</li>
+                <li>Cuidado con Preordain y Mishra's Bauble con Bowmasters en mesa.</li>
+                <li>Una Tamiyo sin respuesta suele darles tiempo para estabilizar y girar la esquina (y bloquea muy bien).</li>
+                <li>Genera ineficiencia jugando alrededor de sus contrahechizos: lanza instantáneos en su turno; en el primer contrahechizo suele ser seguro entrar.</li>
+                <li>La build de Oculus/Unearth es más peligrosa que la clásica de Murktide (mete el hate de cementerio cuando toque). La versión Lessons (Talent + Boomerang) es mejor aquí que Slickshot: más eficiente y más difícil de responder.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> sin cambios de plan — los contrahechizos encajan perfectos en el plan preboard.</p>
+            </div>
+          </div>
+
+          <div class="mc des gm" id="gm-zoo">
+            <div class="mh"><span class="mn">Domain Zoo</span><span class="mmeta">Difícil por Leyline of the Guildpact</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">2 Expressive Iteration &middot; 4 Mutagenic Growth &middot; 2 Violent Urge</span></div><div><span class="lbl">Dentro</span><span class="in">4 Consign to Memory &middot; 4 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> corre con Slickshot Show-Off. Es difícil porque sus amenazas son duras de responder (y corren bien) y su removal alinea perfecto contra las tuyas.</p>
+              <ul class="gul">
+                <li>El Cutter solo es buena amenaza si su mesa no está desbocada (Scion + Kavus). Le pega Leyline Binding: intenta sacarles el Binding antes.</li>
+                <li>Evita a toda costa Scion of Draco + Leyline of the Guildpact (los Boomerang Basics pelean esto mejor).</li>
+                <li>Into the Flood Maw rinde (Leylines o bloqueadores).</li>
+                <li>La versión de Energy es peor para ti: criaturas más eficientes que no puedes seguir.</li>
+                <li>Ellos juegan a sobrevivir (rol de control): sus amenazas escalan por encima de las tuyas en el late game.</li>
+                <li>Rebota la Leyline of the Guildpact: les rompe el maná y encoge al Territorial Kavu.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> Consign to Memory es la carta con la que hacerles tempo (al trigger de Leyline Binding). En el robo, turno 1 solo fetch; criatura + Consign representado desde el turno 2. El plan agresivo y los fundamentos no cambian.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-etron">
+            <div class="mh"><span class="mn">Eldrazi Tron</span><span class="mmeta">La carrera clásica de aggro contra Tron</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">4 Expressive Iteration &middot; 4 Lightning Bolt</span></div><div><span class="lbl">Dentro</span><span class="in">4 Consign to Memory &middot; 2 Meltdown &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> carrera pura. En cuanto lleguen a 7 manás se adueñan de la partida. Interactúa con sus hechizos clave y agresión total con todo lo demás.</p>
+              <ul class="gul">
+                <li>Lo peor para ti: <b>Chalice of the Void a 1</b> y/o <b>Trinisphere</b> — objetivo nº 1 de Consign to Memory.</li>
+                <li>Un Thought-Knot Seer temprano te gana la carrera y bloquea de maravilla: si tienen la mesa vacía y lo lanzan, suele ser buen momento para el Consign.</li>
+                <li>Consign a un Kozilek's Command SOLO si exilia una criatura que va a pegar mucho o si fabrica 3+ Spawns.</li>
+                <li>Ugin es prácticamente game over: pasa por debajo yendo ancho un turno antes.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> algo más de tempo con los Consign dentro, pero hay que matarlos antes de que lancen a los perros gordos.</p>
+            </div>
+          </div>
+
+          <div class="mc des gm" id="gm-goryo">
+            <div class="mh"><span class="mn">Goryo's Vengeance</span><span class="mmeta">Desfavorable</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">1 Lava Dart &middot; 4 Mutagenic Growth &middot; 2 Violent Urge</span></div><div><span class="lbl">Dentro</span><span class="in">2 Mystical Dispute &middot; 1 Soul-Guide Lantern &middot; 2 Spell Pierce &middot; 2 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> game 1 ultra-agresivo, pero sin sobre-extender a Solitude. La mejor apertura: one-drop y Cutter detrás. Evita el "turbo-Goryo's" comprometiendo mesa y forzándoles a gastar interacción en ti.</p>
+              <ul class="gul">
+                <li>Into the Flood Maw brilla: contra Goryo's Vengeance (en respuesta), contra un Psychic Frog con contadores, o contra el scam de Riddler.</li>
+                <li>Spell Snare y Spell Pierce rinden ambos (Goryo's, Frog, su interacción — todo bueno).</li>
+                <li>Sácales la primera Solitude antes de ir con el doble golpe (ir ancho en mesa es tu mejor arma contra Solitude).</li>
+                <li>El Frog es difícil de matar con rebotes o Unholy Heat (se protege solo).</li>
+                <li>No te quedes sin maná jugando contra Solitude + Ephemerate.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> algo más de tempo con contrahechizos y Flood Maw, pero sigue haciendo falta agresión para pasar por debajo de su plan.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-mirror">
+            <div class="mh"><span class="mn">Izzet Prowess (mirror)</span><span class="mmeta">El Cutter manda &middot; quien baja amenazas primero, gana los intercambios</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">2 Expressive Iteration &middot; 4 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">2 Spell Pierce &middot; 4 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> baja el Cori-Steel Cutter, escala su valor y controla la mesa. Si tienes la opción, controla la mesa cuando el rival tenga amenazas; el intercambio amenaza-por-amenaza favorece a quien las jugó primero.</p>
+              <ul class="gul">
+                <li>Prioriza Cutter temprano + trigger. Si el rival no tiene maná azul disponible, casi siempre lanzas el Cutter.</li>
+                <li>Spell Pierce / Spell Snare a su Cutter cuando vas en el robo es crucial.</li>
+                <li>Compromete mesa. Lava Dart a la DRC de turno 1.</li>
+                <li>Lightning Bolt es tu carta más flexible: lánzalo más tarde que el resto del daño si puedes.</li>
+                <li>Bloquear es débil en el mirror (es muy fácil bombear en el turno propio): controla la mesa, pero <b>no bloqueando</b>.</li>
+                <li>Farolea el Mutagenic Growth (representa la protección aunque no la tengas).</li>
+                <li>Minimiza la pérdida de vida: cuidado con fetches y shocks.</li>
+                <li>Ojo al Delirium a velocidad de instantáneo (una DRC que de repente vuela y bloquea a tu Slickshot).</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> más control con los contrahechizos entrando a por el Cutter, pero sigue siendo un matchup de agredir en combate y comprometer mesa con los hechizos de daño.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-steelcutter">
+            <div class="mh"><span class="mn">Izzet Steel-Cutter</span><span class="mmeta">Controla Tamiyo y Emry &middot; ultra-agresivo</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">2 Expressive Iteration &middot; 2 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">2 Meltdown &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> controla sus criaturas clave (Tamiyo y Emry) y sé ultra-agresivo montando el kill de Slickshot y/o doble golpe.</p>
+              <ul class="gul">
+                <li>Las partidas suelen acabar con un doble golpe.</li>
+                <li>Emry casi siempre es must-kill (salvo el caso raro de cero artefactos relevantes en cementerio/mesa).</li>
+                <li>Vivi se convierte rápido en un bloqueador enorme: post-side, guárdale el Unholy Heat si puedes.</li>
+                <li>Que su Repeal rebote fichas de Monje no es tan grave — Repeal es mucho peor contra tu plan principal (Slickshot/doble golpe).</li>
+                <li>Su Urza's Saga puede buscar Aether Spellbomb (muy buena contra tu doble golpe o el Slickshot).</li>
+                <li>Shadowspear sobre Vivi cambia el tempo de casi cualquier mesa.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> sigue siendo ganar la carrera; entra removal extra, mismos patrones y prioridades. Ojo a los Force of Negation que suelen entrar de su banquillo.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-livingend">
+            <div class="mh"><span class="mn">Living End</span><span class="mmeta">Pasa por debajo y remata con daño</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">1 Cori-Steel Cutter &middot; 4 Dragon's Rage Channeler &middot; 2 Expressive Iteration</span></div><div><span class="lbl">Dentro</span><span class="in">4 Consign to Memory &middot; 1 Soul-Guide Lantern &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> pasa por debajo del Living End corriendo con criaturas, y cuando lo lancen remata con hechizos de daño. Post-side, prioriza contrarrestar el trigger de cascada / el propio Living End y sé todo lo agresivo que puedas.</p>
+              <ul class="gul">
+                <li>Consign to Memory al trigger de cascada.</li>
+                <li>Su plan es solo controlar la mesa y sobrevivir hasta lanzar Living End.</li>
+                <li>Slickshot DESPUÉS de que Living End resuelva (esquivas al posible Generous Ent; si lo tienen, intenta que ataquen con él).</li>
+                <li>Cuidado con lanzar criaturas después del turno 1 con Subtlety en su mazo.</li>
+                <li>Wistfulness se lleva el Cutter: evita bajarlo en el turno 2 sin más hechizos ese turno.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> más tempo con los contrahechizos, pero el objetivo sigue siendo pasar por debajo del Living End.</p>
+            </div>
+          </div>
+
+          <div class="mc des gm" id="gm-neoform">
+            <div class="mh"><span class="mn">Neoform</span><span class="mmeta">A esquivar &middot; game 1 desfavorable</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">2 Cori-Steel Cutter &middot; 4 Expressive Iteration</span></div><div><span class="lbl">Dentro</span><span class="in">2 Consign to Memory &middot; 2 Mystical Dispute &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> tempo — tienes que interactuar con el Neoform porque ellos corren mejor. El game 1 es carrera pura y vas por detrás.</p>
+              <ul class="gul">
+                <li>Wistfulness se lleva el Cutter.</li>
+                <li>El doble golpe es necesario para ganarles la carrera.</li>
+                <li>NO juegues alrededor de Pact of Negation (no compensa).</li>
+                <li>Post-side: mulligan a por contrahechizos (Spell Pierce, Spell Snare).</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> mucho más tempo, cazando contrahechizos.</p>
+            </div>
+          </div>
+
+          <div class="mc par gm" id="gm-rhinos">
+            <div class="mh"><span class="mn">Rhinos</span><span class="mmeta">El autor sigue probándolo post-ban</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">4 Expressive Iteration &middot; 2 Lightning Bolt</span></div><div><span class="lbl">Dentro</span><span class="in">4 Consign to Memory &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> gana la carrera a los rinos. Comprometer mesa y exigirles interacción es crítico.</p>
+              <ul class="gul">
+                <li>Consign to Memory al trigger de cascada.</li>
+                <li>Su interacción alinea bien contra ti, y ahora Wistfulness además destruye el Cutter.</li>
+                <li>Presión temprana obligatoria: one-drop y amenaza de seguimiento en el turno 2.</li>
+                <li>Brazen Borrower es muy bueno contra Slickshot: intenta sacarlo con un one-drop o el Cutter antes de ir all-in con Slickshot.</li>
+                <li>Endurance puede quitarte Delirium, y bloquea genial al Slickshot. Fire // Ice puede llevarse dos DRC: cuidado.</li>
+                <li>Rhinos gira la esquina rápido: fuerza su interacción en vez de jugar alrededor de ella.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> algo más de tempo por el Consign, pero el plan A sigue siendo correr más que Crashing Footfalls.</p>
+            </div>
+          </div>
+
+          <div class="mc des gm" id="gm-storm">
+            <div class="mh"><span class="mn">Ruby Storm</span><span class="mmeta">Ligeramente desfavorable &middot; si ambos corren perfecto, gana Storm</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">1 Lava Dart &middot; 4 Expressive Iteration</span></div><div><span class="lbl">Dentro</span><span class="in">2 Consign to Memory &middot; 1 Soul-Guide Lantern &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> game 1 carrera pura — de media son más rápidos (por eso son ligeramente favoritos). Post-side casi igual, pero con contrahechizos las partidas se alargan: si ambos corren perfecto Storm gana, así que hay que adaptarse con contramagia.</p>
+              <ul class="gul">
+                <li>Lightning Bolt al Ral en respuesta a su trigger de voltear.</li>
+                <li>Spell Snare a cualquier Ral o Ruby Medallion.</li>
+                <li>Spell Pierce normalmente NO va a los rituales... pero mira cuánto maná les quedará después del ritual: a veces toca contrarrestarlo. Ejemplo: ritual + Ruby Medallion en su turno 2 — contrarresta el Medallion, no el primer ritual.</li>
+                <li>Plotear el Slickshot esquiva Prismatic Ending.</li>
+                <li>El hate de cementerio pega fuerte: Surgical agresiva, y Tormod's Crypt en respuesta a Past in Flames.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> tienes contramagia, pero sigues necesitando correr con Slickshot y/o one-drops.</p>
+            </div>
+          </div>
+
+          <div class="mc des gm" id="gm-scepter">
+            <div class="mh"><span class="mn">Scepter Control (Jeskai)</span><span class="mmeta">Desfavorable &middot; aguantan tu ritmo y giran con Isochron Scepter + Orim's Chant</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">2 Expressive Iteration &middot; 2 Lightning Bolt</span></div><div><span class="lbl">Dentro</span><span class="in">2 Mystical Dispute &middot; 2 Spell Pierce</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> corre. Pasa por debajo de Wrath of the Skies y Wrath of God, y fuérzales el Orim's Chant pronto. Baja varias amenazas en los primeros turnos para desbordar su interacción. Post-side prioriza contrarrestar a <b>Teferi, Time Raveler</b>: les deja interactuar en el momento perfecto y gratis.</p>
+              <ul class="gul">
+                <li>No te sobre-extiendas al barrido: 2-3 criaturas ya exigen respuesta.</li>
+                <li>Narset corta tus Preordain.</li>
+                <li>Guarda el Slickshot Show-Off para después de haber jugado todas las demás amenazas.</li>
+                <li>Cuidado con los pump: no los comprometas hasta que jueguen Solitude o esté claro que no la tienen.</li>
+                <li>Amenazas tempranas = les fuerzas a hundir 2 manás en Orim's Chant y/o a no poder ponerlo bajo el Isochron Scepter.</li>
+                <li>Isochron Scepter + Orim's Chant es prácticamente game over.</li>
+                <li>Su interacción es diversa: apunta lo que ya han jugado para no jugar alrededor de lo que ya gastaron.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> algo más de tempo con contrahechizos; recuerda que hay que pasar por debajo de Teferi si juegas contramagia.</p>
+            </div>
+          </div>
+
+          <div class="mc fav gm" id="gm-yawg">
+            <div class="mh"><span class="mn">Yawgmoth</span><span class="mmeta">Favorable</span></div>
+            <div class="io"><div><span class="lbl">Fuera</span><span class="out">3 Expressive Iteration &middot; 2 Mutagenic Growth</span></div><div><span class="lbl">Dentro</span><span class="in">1 Soul-Guide Lantern &middot; 4 Unholy Heat</span></div></div>
+            <div class="plan">
+              <p class="gp"><b>Plan:</b> esencialmente carrera, pero bájalos de vida CUANTO ANTES para recortar el margen de activaciones de Yawgmoth. Es favorable porque, aunque los mazos van parejos en velocidad, Yawgmoth necesita vida para combear: tú los pones por debajo de 5 antes de que ellos te maten. No juegues alrededor de Fatal Push en el game 1 — las listas stock lo llevan en el sideboard.</p>
+              <ul class="gul">
+                <li>Bolt SIEMPRE al Delighted Halfling de turno 1.</li>
+                <li>One-drop de criatura y/o Lightning Bolt obligatorios en el turno 1 (mulligan a todo lo demás).</li>
+                <li>Ataca sin parar; no quieres bloquear nunca.</li>
+                <li>Yawgmoth bloquea a Swiftspear gratis (protección contra Humanos).</li>
+                <li>Agatha's Soul Cauldron puede comerse tu cementerio: te puede apagar el Delirium.</li>
+              </ul>
+              <p class="gp"><b>Post-side:</b> sin ajustes grandes: Expressive fuera por Unholy Heat; sigue bajándolos de vida mientras matas su maná (Halfling, Hierarch).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== MANOS INICIALES ========== -->
+        <div class="gsec" id="g-manos">
+          <div class="note-lg">Para entrenar el ojo con los rangos de mano inicial: primero un ejemplo de mano buenísima y otro de mano mala, y después 14 manos preboard con el veredicto del autor en salida y en robo. En la guía original son capturas de MTGO; aquí están transcritas carta a carta (tierras marcadas en ámbar, criaturas en cobalto).</div>
+
+          <div class="gcard"><h4>Ejemplo — gran mano <span class="hq-cell hq-cell--good">KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Arid Mesa</span><span class="hchip t">Steam Vents</span><span class="hchip t">Fiery Islet</span><span class="hchip">Preordain</span><span class="hchip c">Monastery Swiftspear</span><span class="hchip">Cori-Steel Cutter</span><span class="hchip">Mishra's Bauble</span></div>
+            <ul class="gul"><li>Un Lightning Bolt en lugar de una tierra la convertiría en LA mano perfecta.</li></ul>
+          </div>
+          <div class="gcard"><h4>Ejemplo — mano mala <span class="hq-cell hq-cell--bad">MULL</span></h4>
+            <div class="hand"><span class="hchip t">Scalding Tarn</span><span class="hchip t">Fiery Islet</span><span class="hchip t">Scalding Tarn</span><span class="hchip t">Mountain</span><span class="hchip">Lightning Bolt</span><span class="hchip">Mutagenic Growth</span><span class="hchip">Mishra's Bauble</span></div>
+            <ul class="gul"><li>Necesita demasiadas piezas a la vez: amenazas y más interacción.</li></ul>
+          </div>
+
+          <h3 class="secH">Las 14 manos preboard</h3>
+
+          <div class="gcard"><h4>Mano 1 <span class="hq-cell hq-cell--good">SALIDA: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Steam Vents</span><span class="hchip t">Steam Vents</span><span class="hchip t">Scalding Tarn</span><span class="hchip c">Dragon's Rage Channeler</span><span class="hchip">Preordain</span><span class="hchip">Expressive Iteration</span><span class="hchip">Expressive Iteration</span></div>
+            <ul class="gul">
+              <li>Contra rival desconocido, en salida es suficientemente agresiva. Casi cualquier robo (hechizo de daño o amenaza) la mejora.</li>
+              <li>En robo, valorar el mulligan según el matchup: mala contra el mirror, Boros Energy y Living End; buena contra Tron, Control, Goryo's y Dimir Frog. En salida mejora contra mirror y Energy porque Preordain encuentra los hechizos de daño.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 2 <span class="hq-cell hq-cell--good">ROBO: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Fiery Islet</span><span class="hchip t">Fiery Islet</span><span class="hchip t">Scalding Tarn</span><span class="hchip t">Arid Mesa</span><span class="hchip">Cori-Steel Cutter</span><span class="hchip">Lightning Bolt</span><span class="hchip">Expressive Iteration</span></div>
+            <ul class="gul">
+              <li>Mano bien montada gracias a la pieza de interacción temprana (el Bolt).</li>
+              <li>Si el rival no juega nada de 1-2 manás, surveilea buscando criaturas.</li>
+              <li>Expressive en el turno 3 tras Cutter en el 2 solo es aceptable si hay interacción en mano: no te quedes atrás en mesa.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 3 <span class="hq-cell hq-cell--bad">ROBO: MULL</span></h4>
+            <div class="hand"><span class="hchip t">Mountain</span><span class="hchip t">Scalding Tarn</span><span class="hchip t">Thundering Falls</span><span class="hchip t">Steam Vents</span><span class="hchip">Lightning Bolt</span><span class="hchip">Lightning Bolt</span><span class="hchip">Preordain</span></div>
+            <ul class="gul">
+              <li>Busca demasiadas cosas a la vez. Mulligan también en salida.</li>
+              <li>Necesita amenazas con desesperación: después de gastar los Bolt no hay con qué girar la esquina.</li>
+              <li>Le faltan hechizos de seguimiento para disparar prowess, y en robo probablemente vas ya por detrás en mesa.</li>
+              <li>¿Keep contra Energy? Quizá, pero seguramente solo en un mulligan a 6.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 4 <span class="hq-cell hq-cell--bad">ROBO: MULL</span></h4>
+            <div class="hand"><span class="hchip t">Scalding Tarn</span><span class="hchip c">Dragon's Rage Channeler</span><span class="hchip c">Dragon's Rage Channeler</span><span class="hchip c">Monastery Swiftspear</span><span class="hchip c">Slickshot Show-Off</span><span class="hchip">Violent Urge</span><span class="hchip">Cori-Steel Cutter</span></div>
+            <ul class="gul">
+              <li>Mulligan también en salida.</li>
+              <li>Sin interacción para acompañar a las amenazas tempranas.</li>
+              <li>Sin hechizos de preparación ni de coste cero con los que encadenar surveils.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 5 <span class="hq-cell hq-cell--good">SALIDA: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Arid Mesa</span><span class="hchip">Lava Dart</span><span class="hchip c">Slickshot Show-Off</span><span class="hchip c">Slickshot Show-Off</span><span class="hchip">Mutagenic Growth</span><span class="hchip">Mishra's Bauble</span><span class="hchip">Cori-Steel Cutter</span></div>
+            <ul class="gul">
+              <li>Fetcheando la tierra de surveil, la probabilidad de ver tierra para el turno 2 ronda el 48%.</li>
+              <li>Demasiado techo para tirarla: si falla la tierra, casi todo lo que robes de 1 maná se puede jugar igual.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 6 <span class="hq-cell hq-cell--good">SALIDA: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Steam Vents</span><span class="hchip t">Bloodstained Mire</span><span class="hchip t">Steam Vents</span><span class="hchip t">Fiery Islet</span><span class="hchip">Mishra's Bauble</span><span class="hchip">Cori-Steel Cutter</span><span class="hchip">Expressive Iteration</span></div>
+            <ul class="gul">
+              <li>Cutter + Bauble en el turno 2 es muy fuerte en salida (al rival solo lo salva un Force).</li>
+              <li>Tierra de surveil en el turno 1 buscando interacción, según el matchup.</li>
+              <li>Expressive Iteration también puede buscar la interacción.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 7 <span class="hq-cell hq-cell--good">SALIDA: KEEP</span> <span class="hq-cell hq-cell--good">ROBO: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Steam Vents</span><span class="hchip">Preordain</span><span class="hchip c">Monastery Swiftspear</span><span class="hchip">Mishra's Bauble</span><span class="hchip">Cori-Steel Cutter</span><span class="hchip">Cori-Steel Cutter</span><span class="hchip c">Slickshot Show-Off</span></div>
+            <ul class="gul">
+              <li>Keep en ambos lados, pero el patrón cambia.</li>
+              <li>En salida: Swiftspear y a atacar; si falla la tierra del turno 2, Preordain; el Bauble se guarda SIEMPRE para el Cutter.</li>
+              <li>En robo: si no robas tierra, Preordain buscando tierra (y luego interacción); después compromete mesa (Swiftspear).</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 8 <span class="hq-cell hq-cell--bad">SALIDA: MULL</span></h4>
+            <div class="hand"><span class="hchip t">Mountain</span><span class="hchip t">Arid Mesa</span><span class="hchip t">Steam Vents</span><span class="hchip t">Mountain</span><span class="hchip c">Slickshot Show-Off</span><span class="hchip">Expressive Iteration</span><span class="hchip">Mutagenic Growth</span></div>
+            <ul class="gul">
+              <li>Demasiado lenta de arranque y poco agresiva.</li>
+              <li>Busca robar demasiadas cosas (interacción Y más amenazas).</li>
+              <li>Un solo removal que no sea de daño mata la mano entera.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 9 <span class="hq-cell hq-cell--good">ROBO: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Arid Mesa</span><span class="hchip t">Bloodstained Mire</span><span class="hchip t">Bloodstained Mire</span><span class="hchip c">Monastery Swiftspear</span><span class="hchip c">Monastery Swiftspear</span><span class="hchip">Lightning Bolt</span><span class="hchip">Cori-Steel Cutter</span></div>
+            <ul class="gul">
+              <li>Mano fuerte contra un abanico amplio de matchups.</li>
+              <li>Versátil: amenaza o respuesta en el turno 1, según lo que pida la mesa.</li>
+              <li>Puede bajar el Cutter en el turno 2 si el rival no presenta amenazas tempranas.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 10 <span class="hq-cell hq-cell--good">SALIDA: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Mountain</span><span class="hchip c">Dragon's Rage Channeler</span><span class="hchip">Mishra's Bauble</span><span class="hchip">Lava Dart</span><span class="hchip c">Slickshot Show-Off</span><span class="hchip">Expressive Iteration</span><span class="hchip">Expressive Iteration</span></div>
+            <ul class="gul">
+              <li>La probabilidad de ver tierra para el turno 2 ronda el 70% (DRC, Bauble, surveil, romper el Bauble, robo del Bauble y robo del turno).</li>
+              <li>Dos Expressive pueden atascar, pero esto es bastante mejor que un mulligan a 6 medio.</li>
+              <li>Expressive en el turno 3 muy probable.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 11 <span class="hq-cell hq-cell--good">ROBO: KEEP</span> <span class="hq-cell hq-cell--good">SALIDA: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Mountain</span><span class="hchip t">Bloodstained Mire</span><span class="hchip">Preordain</span><span class="hchip">Preordain</span><span class="hchip">Lava Dart</span><span class="hchip">Lightning Bolt</span><span class="hchip c">Slickshot Show-Off</span></div>
+            <ul class="gul">
+              <li>Keep en ambos lados con patrones distintos.</li>
+              <li>En salida: fetch de Steam Vents, Preordain. En el turno 2, o segundo Preordain + interacción, o plotear el Slickshot según lo que haga el rival. (Si sabes que juegas contra Affinity: fetch y pasar aguantando el Bolt.)</li>
+              <li>En robo: si el rival baja criatura, Bolt o Lava Dart; si no, probablemente Preordain.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 12 <span class="hq-cell hq-cell--bad">ROBO: MULL</span></h4>
+            <div class="hand"><span class="hchip t">Fiery Islet</span><span class="hchip t">Scalding Tarn</span><span class="hchip">Mutagenic Growth</span><span class="hchip">Expressive Iteration</span><span class="hchip">Violent Urge</span><span class="hchip">Mishra's Bauble</span><span class="hchip">Mishra's Bauble</span></div>
+            <ul class="gul">
+              <li>Sin amenazas — y cuando por fin las robes, lo que te hará falta con prioridad será interacción.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 13 <span class="hq-cell hq-cell--bad">ROBO: MULL</span> <span class="hq-cell hq-cell--good">SALIDA: KEEP</span></h4>
+            <div class="hand"><span class="hchip t">Steam Vents</span><span class="hchip t">Steam Vents</span><span class="hchip t">Arid Mesa</span><span class="hchip">Mutagenic Growth</span><span class="hchip">Expressive Iteration</span><span class="hchip">Violent Urge</span><span class="hchip">Cori-Steel Cutter</span></div>
+            <ul class="gul">
+              <li>En salida, jugar fetch → tierra de surveil no se castiga: da tiempo a excavar.</li>
+              <li>Con Expressive buscas interacción o amenazas, según matchup y mesa.</li>
+            </ul>
+          </div>
+          <div class="gcard"><h4>Mano 14 <span class="hq-cell hq-cell--bad">ROBO: MULL</span></h4>
+            <div class="hand"><span class="hchip t">Mountain</span><span class="hchip t">Bloodstained Mire</span><span class="hchip">Violent Urge</span><span class="hchip">Mutagenic Growth</span><span class="hchip">Preordain</span><span class="hchip">Preordain</span><span class="hchip">Expressive Iteration</span></div>
+            <ul class="gul">
+              <li>La regla general: toda mano <b>sin interacción ni amenazas</b> se tira. Mulligan también en salida.</li>
+              <li>Busca demasiadas piezas a la vez.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ========== NOTAS DE META ========== -->
+        <div class="gsec" id="g-notas">
+          <div class="note-lg">Notas sueltas del autor sobre el meta del momento (acompañaban a esta versión de la guía; son las que más caducan).</div>
+          <div class="gcard">
+            <h4>Notas de matchup (decklist abierta)</h4>
+            <ul class="gul">
+              <li><b>Affinity:</b> con decklist abierta, si el rival lleva 3+ Galvanic Blast — corta las 4 Expressive Iteration y quédate TODAS las Mutagenic Growth.</li>
+              <li><b>Burn:</b> con decklist abierta, si el rival lleva Eidolon of the Great Revel — mete todos los Unholy Heat: corta 2 Expressive Iteration por el 3º y el 4º Unholy Heat.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Ajustes de sideboard</h4>
+            <ul class="gul">
+              <li>Si esperas más combo en tu meta (Storm, Yawgmoth, Goryo's): juega 1 Tormod's Crypt en lugar de la 2ª Mystical Dispute.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Mystical Dispute — por qué ahora</h4>
+            <ul class="gul">
+              <li>Subida de Affinity en metas de papel: la mejor respuesta a Kappa Cannoneer y/o Pinnacle Emissary.</li>
+              <li>Fuerte contra Psychic Frog.</li>
+              <li>Mejora si sube Neoform (la gente intentando cazar a los tier 1).</li>
+              <li>Ligera subida de Control: Dispute es tu mejor contrahechizo contra mazos que juegan "Counterspell" de verdad.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Into the Flood Maw — por qué ya no</h4>
+            <ul class="gul">
+              <li>Consistentemente floja contra High Noon, sobre todo con los Ponza subiendo a 4 High Noon de main.</li>
+              <li>Mala contra Chalice of the Void y Trinisphere (subida de Eldrazi Tron).</li>
+              <li>Los sideboards de Prowess se están alejando de Murktide Regent: menos necesidad de pelear amenazas alternativas en el mirror.</li>
+            </ul>
+          </div>
+          <div class="gcard">
+            <h4>Manabase</h4>
+            <ul class="gul">
+              <li>La 2ª Fiery Islet ha rendido mejor que la 10ª fetchland.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <script>
@@ -660,6 +1774,15 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   if(t.dataset.v==='scout')renderScout();
   if(t.dataset.v==='cmp')renderCmp();
   if(t.dataset.v==='meta')renderMetaTab();
+});
+
+
+// Guía del mazo: menú lateral de secciones (contenido estático, sin datos)
+document.querySelectorAll('#gMenu .gmi').forEach(m=>m.onclick=()=>{
+  document.querySelectorAll('#gMenu .gmi').forEach(x=>x.classList.remove('on'));m.classList.add('on');
+  document.querySelectorAll('#v-guia .gsec').forEach(s=>s.classList.remove('on'));
+  $('g-'+m.dataset.g).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
 });
 
 // ===== Filtro GLOBAL por jugador: todo el dashboard mira a M() (partidas) y G() (games) =====

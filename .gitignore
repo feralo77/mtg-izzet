@@ -14,6 +14,10 @@ registro_*.csv
 *Match_GameChat*
 1A7TNNOY.XNJ/
 
+# Guía premium comprada (documento de pago de ethanmtg — no redistribuir el original)
+*.pages
+guia.pages
+
 # Python
 __pycache__/
 *.pyc
