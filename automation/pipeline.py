@@ -59,7 +59,8 @@ GAMES_COLS = ["match_uuid", "Game", "Arquetipo", "Salida / Robo", "Ganado", "Tur
               "Prowess", "Monjes", "Mulls yo", "Mulls rival", "Mano yo", "Mano rival",
               "Robos yo", "Robos rival", "Tierras yo", "Tierras T1-3", "Accion T1",
               "Turno 1a amenaza", "Turno Cutter", "Hechizos yo", "Removal yo",
-              "Descartes yo", "Reportado por"]
+              "Descartes yo", "Ficha turno Cutter", "Criaturas yo",
+              "Turno 1a interaccion", "Interaccion rival", "Reportado por"]
 
 # ---------------------------------------------------------------- utilidades de datos
 def norm(s):
@@ -356,6 +357,10 @@ def _games_de_match(m, nick):
             'Hechizos yo': len(g.get('my_casts', [])),
             'Removal yo': len(g.get('removal', [])),
             'Descartes yo': g.get('disc_local', 0),
+            'Ficha turno Cutter': g.get('token_cutter_turn', 0),
+            'Criaturas yo': g.get('creatures_local', 0),
+            'Turno 1a interaccion': g.get('first_interaction_turn', 0),
+            'Interaccion rival': g.get('opp_interaction', 0),
             'Reportado por': nick,
         })
     return filas
