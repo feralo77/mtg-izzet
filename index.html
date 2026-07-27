@@ -390,7 +390,7 @@
 
   <!-- ===== COMPARATIVA (jugadores / listas / mazos rivales / salida-robo) ===== -->
   <section class="view" id="v-cmp">
-    <div class="author"><span class="ic"></span><div><b>Comparativa</b> — pon lo que quieras codo con codo. Elige <b>por qué comparar</b> (jugador, lista, mazo rival o salida/robo) y afina con los filtros: la tabla, las barras y el radar se rehacen al vuelo. Una lista es su nombre: si la "Basics" la jugáis dos, cuenta como una (sus partidas se suman). La comparación entre <b>jugadores</b> usa a todos (ignora el filtro de jugador de la cabecera) y se llena sola cuando tus compañeros suban sus logs.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Comparativa</b> — pon lo que quieras codo con codo. Elige <b>por qué comparar</b> (jugador, lista, mazo rival o salida/robo) y afina con los filtros: la tabla, las barras y el radar se rehacen al vuelo. Para el duelo directo tienes el <b>Cara a cara</b>: elige dos y ves cada métrica lado a lado, con la mejor en verde. Una lista es su nombre: si la "Basics" la jugáis dos, cuenta como una (sus partidas se suman). La comparación entre <b>jugadores</b> usa a todos (ignora el filtro de jugador de la cabecera) y se llena sola cuando tus compañeros suban sus logs.</div></div>
 
     <div class="segwrap"><label>Comparar por</label>
       <div class="seg" id="cmpDim">
@@ -409,6 +409,14 @@
     </div>
 
     <div class="kpis" id="cmpKpis"></div>
+
+    <div class="panel full" style="margin-bottom:16px"><h3>Cara a cara <span>(elige dos y compáralas métrica a métrica · verde = la mejor de las dos)</span></h3>
+      <div class="filters" style="margin-bottom:10px">
+        <div class="fg"><label>A</label><select id="cmpH2HA"></select></div>
+        <div class="fg"><label>B</label><select id="cmpH2HB"></select></div>
+      </div>
+      <div style="overflow-x:auto"><table id="cmpH2H"></table></div>
+      <div class="cmp-note" id="cmpH2HNote"></div></div>
 
     <div class="panel full" style="margin-bottom:16px"><h3>Tabla comparativa <span>(una fila por cada cosa · clic en cabecera para ordenar · verde ≥60% · ámbar 40-59% · rojo &lt;40%)</span></h3>
       <div style="overflow-x:auto"><table id="cmpTbl"></table></div>
@@ -2017,26 +2025,27 @@ function renderScout(){
 let cmpDim='li', cmpMetricKey='wrMatch', cmpCharts={}, cmpLastGroups=[], cmpSort={col:'n',dir:-1};
 const CMP_DIMS={by:{label:'Jugador',wf:'wf-player'},li:{label:'Lista',wf:'wf-lista'},aq:{label:'Mazo rival',wf:'wf-arq'},sr:{label:'Salida / Robo',wf:'wf-sr'}};
 const cmean=(a,dec=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**dec)/10**dec:0;
-// Columnas de la tabla (grp res=resultados, play=cómo juega; deep=sólo con games profundos; bar=elegible en barras)
+// Columnas de la tabla (grp res=resultados, play=cómo juega; deep=sólo con games profundos; bar=elegible en barras;
+// dir: en el Cara a cara, quién gana la métrica — 1 = mayor mejor, -1 = menor mejor, sin dir = neutra, no se puntúa)
 const CMP_METRICS=[
   {k:'matches',lab:'Partidas',kind:'int'},
   {k:'rec',lab:'Récord',kind:'rec',sortK:'n'},
-  {k:'wrMatch',lab:'WR match',kind:'wr',hb:true,bar:true},
-  {k:'wrGames',lab:'WR games',kind:'wr',hb:true,bar:true},
-  {k:'wrSal',lab:'WR salida',kind:'wr',hb:true,bar:true},
-  {k:'wrRob',lab:'WR robo',kind:'wr',hb:true,bar:true},
-  {k:'mulls',lab:'Mull/part.',kind:'num'},
-  {k:'turns',lab:'Turnos',kind:'num',bar:true},
-  {k:'hand',lab:'Mano media',kind:'num',deep:true},
-  {k:'mullPct',lab:'% mulligan',kind:'wr'},
-  {k:'prow',lab:'Prowess/g',kind:'num',bar:true},
-  {k:'monk',lab:'Monjes/g',kind:'num',bar:true},
+  {k:'wrMatch',lab:'WR match',kind:'wr',hb:true,bar:true,dir:1},
+  {k:'wrGames',lab:'WR games',kind:'wr',hb:true,bar:true,dir:1},
+  {k:'wrSal',lab:'WR salida',kind:'wr',hb:true,bar:true,dir:1},
+  {k:'wrRob',lab:'WR robo',kind:'wr',hb:true,bar:true,dir:1},
+  {k:'mulls',lab:'Mull/part.',kind:'num',dir:-1},
+  {k:'turns',lab:'Turnos',kind:'num',bar:true,dir:-1},
+  {k:'hand',lab:'Mano media',kind:'num',deep:true,dir:1},
+  {k:'mullPct',lab:'% mulligan',kind:'wr',dir:-1},
+  {k:'prow',lab:'Prowess/g',kind:'num',bar:true,dir:1},
+  {k:'monk',lab:'Monjes/g',kind:'num',bar:true,dir:1},
   {k:'draws',lab:'Robos/g',kind:'num',deep:true,bar:true},
   {k:'land3',lab:'Tierras T1-3',kind:'num',deep:true},
-  {k:'threat',lab:'1ª amenaza',kind:'num',deep:true},
-  {k:'cutter',lab:'Turno Cutter',kind:'num'},
-  {k:'wrLong',lab:'WR 7+ turnos',kind:'wr',hb:true,bar:true},
-  {k:'wrCutE',lab:'WR Cutter T1-2',kind:'wr',hb:true,bar:true},
+  {k:'threat',lab:'1ª amenaza',kind:'num',deep:true,dir:-1},
+  {k:'cutter',lab:'Turno Cutter',kind:'num',dir:-1},
+  {k:'wrLong',lab:'WR 7+ turnos',kind:'wr',hb:true,bar:true,dir:1},
+  {k:'wrCutE',lab:'WR Cutter T1-2',kind:'wr',hb:true,bar:true,dir:1},
 ];
 // Dimensión "Lista": la identidad es el NOMBRE — la "Basics" de dos jugadores cuenta como una.
 function cmpValM(d,liByUid){return cmpDim==='by'?(d.by||'—'):cmpDim==='aq'?d.aq:cmpDim==='sr'?d.sr:d.li;}
@@ -2156,11 +2165,46 @@ function cmpMatrix(gr){
   $('cmpMx').innerHTML=aqs.length?('<thead><tr><th>Mazo rival</th>'+gr.map(g=>`<th style="text-align:center">${g.key}</th>`).join('')+'</tr></thead><tbody>'+aqs.map(aq=>`<tr><td>${aq}</td>${gr.map(g=>cell(g,aq)).join('')}</tr>`).join('')+'</tbody>'):'';
   $('cmpMxNote').textContent=aqs.length?`Récord V-D por matchup. Columnas = ${CMP_DIMS[cmpDim].label.toLowerCase()}. Verde ≥60%, ámbar 40-59%, rojo <40%.`:'Sin matchups en la selección actual.';
 }
+// ---- Cara a cara: dos entidades de la dimensión activa, métrica a métrica ----
+// La petición original (Fer, 27-jul): "poder escoger 2 listas y ver los datos de cada una".
+// Funciona sobre la dimensión activa (por defecto Lista) y respeta los filtros de arriba.
+function cmpH2HRender(gr){
+  const selA=$('cmpH2HA'),selB=$('cmpH2HB'),tbl=$('cmpH2H'),note=$('cmpH2HNote');
+  if(!selA||!selB)return;
+  const keys=gr.map(g=>g.key);
+  if(keys.length<2){selA.innerHTML='';selB.innerHTML='';tbl.innerHTML='';
+    note.textContent=`Hacen falta al menos dos ${CMP_DIMS[cmpDim].label.toLowerCase()}s con partidas en la selección actual.`;return;}
+  const fill=(s,def)=>{const prev=keys.includes(s.value)?s.value:def;s.innerHTML='';keys.forEach(k=>s.add(new Option(k,k)));s.value=prev;};
+  fill(selA,keys[0]);fill(selB,keys[1]);
+  if(selB.value===selA.value)selB.value=keys.find(k=>k!==selA.value);
+  selA.onchange=selB.onchange=()=>cmpH2HRender(cmpLastGroups.length?cmpLastGroups:gr);
+  const A=gr.find(g=>g.key===selA.value),B=gr.find(g=>g.key===selB.value);
+  if(!A||!B){tbl.innerHTML='';return;}
+  const anyDeep=A.deep||B.deep,cols=CMP_METRICS.filter(m=>!m.deep||anyDeep);
+  const val=(g,m)=>{const v=m.k==='rec'?g.rec:g[m.k];return (v==null||v===''||(typeof v==='number'&&isNaN(v)))?null:v;};
+  const cell=(v,m,win)=>{
+    if(v==null)return '<td style="text-align:center;color:var(--tx3)">·</td>';
+    const txt=m.kind==='wr'?v+'%':v;
+    return win?`<td style="text-align:center"><span class="hq-cell hq-cell--good">${txt}</span></td>`
+              :`<td style="text-align:center;font-family:var(--mono)">${txt}</td>`;};
+  let h=`<thead><tr><th>Métrica</th><th style="text-align:center">${A.key}</th><th style="text-align:center">${B.key}</th></tr></thead><tbody>`;
+  let pa=0,pb=0;
+  cols.forEach(m=>{
+    const va=val(A,m),vb=val(B,m);
+    let wa=false,wb=false;
+    if(m.dir&&va!=null&&vb!=null&&typeof va==='number'&&typeof vb==='number'&&va!==vb){wa=(va-vb)*m.dir>0;wb=!wa;if(wa)pa++;else pb++;}
+    h+=`<tr><td>${m.lab}</td>${cell(va,m,wa)}${cell(vb,m,wb)}</tr>`;});
+  h+='</tbody>';
+  tbl.innerHTML=h;
+  const marc=pa===pb?`empate ${pa}-${pb}`:pa>pb?`${A.key} gana ${pa}-${pb}`:`${B.key} gana ${pb}-${pa}`;
+  note.textContent=`Marcador de métricas: ${marc}. En turnos, mulligans, 1ª amenaza y turno del Cutter gana el número más bajo; Partidas, Récord, Robos y Tierras son informativas (no puntúan). Con pocas partidas, pinzas.`;
+}
 function renderCmp(){
   cmpSyncFilters();
   const gr=cmpGroups();
   cmpKpisRender(gr);
   cmpTable(gr);
+  cmpH2HRender(gr);
   Object.values(cmpCharts).forEach(c=>c&&c.destroy());cmpCharts={};
   cmpBar(gr);cmpRadar(gr);cmpMatrix(gr);
 }
