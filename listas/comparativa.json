@@ -1,5 +1,5 @@
 {
-  "generado": "2026-07-25",
+  "generado": "2026-07-27",
   "referencia": "La 75 Definitiva v2 (22-jul-2026)",
   "jugadores": [
     {
@@ -385,6 +385,90 @@
           }
         ]
       }
+    },
+    {
+      "nick": "UR Aggro Flashback",
+      "owner": "4c_PolG",
+      "titulo": "4c_PolG · UR Aggro Flashback (Drive, 2026-07-27)",
+      "esRef": false,
+      "mainN": 60,
+      "sideN": 15,
+      "overlapMain": 54,
+      "overlapSide": 9,
+      "pctSim": 84,
+      "soloEl": {
+        "main": [
+          {
+            "n": "Monstrous Rage",
+            "q": 3
+          },
+          {
+            "n": "Assault Strobe",
+            "q": 2
+          },
+          {
+            "n": "Flashback",
+            "q": 1
+          }
+        ],
+        "side": [
+          {
+            "n": "Expressive Iteration",
+            "q": 3
+          }
+        ]
+      },
+      "soloRef": {
+        "main": [
+          {
+            "n": "Expressive Iteration",
+            "q": 4
+          },
+          {
+            "n": "Violent Urge",
+            "q": 2
+          }
+        ],
+        "side": [
+          {
+            "n": "Tormod's Crypt",
+            "q": 2
+          },
+          {
+            "n": "Murktide Regent",
+            "q": 1
+          },
+          {
+            "n": "Mystical Dispute",
+            "q": 1
+          }
+        ]
+      },
+      "distintos": {
+        "main": [],
+        "side": [
+          {
+            "n": "Consign to Memory",
+            "suyo": 3,
+            "ref": 4
+          },
+          {
+            "n": "Meltdown",
+            "suyo": 1,
+            "ref": 2
+          },
+          {
+            "n": "Spell Pierce",
+            "suyo": 2,
+            "ref": 1
+          },
+          {
+            "n": "Spell Snare",
+            "suyo": 3,
+            "ref": 1
+          }
+        ]
+      }
     }
   ],
   "esperando": [
@@ -394,7 +478,7 @@
     {
       "n": "Fetchlands",
       "ref": 9,
-      "meta": 12,
+      "meta": 13,
       "metaPct": null,
       "j": {
         "2.0": 9,
@@ -402,11 +486,27 @@
         "Definitiva": 9,
         "PT": 9,
         "Pol 1 NF": 9,
-        "Stock": 9
+        "Stock": 9,
+        "UR Aggro Flashback": 9
       }
     },
     {
       "n": "Cori-Steel Cutter",
+      "ref": 4,
+      "meta": 4,
+      "metaPct": 97,
+      "j": {
+        "2.0": 4,
+        "Basics": 4,
+        "Definitiva": 4,
+        "PT": 4,
+        "Pol 1 NF": 4,
+        "Stock": 4,
+        "UR Aggro Flashback": 4
+      }
+    },
+    {
+      "n": "Dragon's Rage Channeler",
       "ref": 4,
       "meta": 4,
       "metaPct": 98,
@@ -416,133 +516,128 @@
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
-      }
-    },
-    {
-      "n": "Dragon's Rage Channeler",
-      "ref": 4,
-      "meta": 4,
-      "metaPct": 100,
-      "j": {
-        "2.0": 4,
-        "Basics": 4,
-        "Definitiva": 4,
-        "PT": 4,
-        "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Lava Dart",
       "ref": 4,
       "meta": 4,
-      "metaPct": 100,
+      "metaPct": 98,
       "j": {
         "2.0": 4,
         "Basics": 4,
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Lightning Bolt",
       "ref": 4,
       "meta": 4,
-      "metaPct": 100,
+      "metaPct": 98,
       "j": {
         "2.0": 4,
         "Basics": 4,
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Mishra's Bauble",
       "ref": 4,
       "meta": 4,
-      "metaPct": 100,
+      "metaPct": 98,
       "j": {
         "2.0": 4,
         "Basics": 4,
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Monastery Swiftspear",
       "ref": 4,
       "meta": 4,
-      "metaPct": 100,
+      "metaPct": 98,
       "j": {
         "2.0": 4,
         "Basics": 4,
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Preordain",
       "ref": 4,
       "meta": 4,
-      "metaPct": 100,
+      "metaPct": 98,
       "j": {
         "2.0": 4,
         "Basics": 4,
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Mutagenic Growth",
       "ref": 4,
       "meta": 4,
-      "metaPct": 97,
+      "metaPct": 95,
       "j": {
         "2.0": 4,
         "Basics": 3,
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Slickshot Show-Off",
       "ref": 4,
       "meta": 4,
-      "metaPct": 92,
+      "metaPct": 95,
       "j": {
         "2.0": 4,
         "Basics": 3,
         "Definitiva": 4,
         "PT": 4,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 4
       }
     },
     {
       "n": "Expressive Iteration",
       "ref": 4,
       "meta": 4,
-      "metaPct": 73,
+      "metaPct": 75,
       "j": {
         "2.0": 4,
         "Basics": 3,
         "Definitiva": 4,
         "PT": 0,
         "Pol 1 NF": 4,
-        "Stock": 4
+        "Stock": 4,
+        "UR Aggro Flashback": 0
       }
     },
     {
@@ -556,7 +651,8 @@
         "Definitiva": 3,
         "PT": 3,
         "Pol 1 NF": 3,
-        "Stock": 3
+        "Stock": 3,
+        "UR Aggro Flashback": 3
       }
     },
     {
@@ -570,7 +666,8 @@
         "Definitiva": 3,
         "PT": 3,
         "Pol 1 NF": 3,
-        "Stock": 3
+        "Stock": 3,
+        "UR Aggro Flashback": 3
       }
     },
     {
@@ -584,21 +681,23 @@
         "Definitiva": 2,
         "PT": 2,
         "Pol 1 NF": 2,
-        "Stock": 2
+        "Stock": 2,
+        "UR Aggro Flashback": 2
       }
     },
     {
       "n": "Violent Urge",
       "ref": 2,
-      "meta": 2,
-      "metaPct": 70,
+      "meta": 1,
+      "metaPct": 72,
       "j": {
         "2.0": 2,
         "Basics": 1,
         "Definitiva": 2,
         "PT": 0,
         "Pol 1 NF": 2,
-        "Stock": 1
+        "Stock": 1,
+        "UR Aggro Flashback": 0
       }
     },
     {
@@ -612,91 +711,98 @@
         "Definitiva": 1,
         "PT": 1,
         "Pol 1 NF": 1,
-        "Stock": 1
+        "Stock": 1,
+        "UR Aggro Flashback": 1
       }
     },
     {
       "n": "Monstrous Rage",
       "ref": 0,
       "meta": 3,
-      "metaPct": 22,
+      "metaPct": 25,
       "j": {
         "2.0": 0,
         "Basics": 0,
         "Definitiva": 0,
         "PT": 3,
         "Pol 1 NF": 0,
-        "Stock": 0
-      }
-    },
-    {
-      "n": "Stormchaser's Talent",
-      "ref": 0,
-      "meta": 1,
-      "metaPct": 43,
-      "j": {
-        "2.0": 0,
-        "Basics": 2,
-        "Definitiva": 0,
-        "PT": 1,
-        "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 3
       }
     },
     {
       "n": "Assault Strobe",
       "ref": 0,
       "meta": 2,
-      "metaPct": 22,
+      "metaPct": 25,
       "j": {
         "2.0": 0,
         "Basics": 0,
         "Definitiva": 0,
         "PT": 2,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 2
+      }
+    },
+    {
+      "n": "Stormchaser's Talent",
+      "ref": 0,
+      "meta": 1,
+      "metaPct": 42,
+      "j": {
+        "2.0": 0,
+        "Basics": 2,
+        "Definitiva": 0,
+        "PT": 1,
+        "Pol 1 NF": 0,
+        "Stock": 0,
+        "UR Aggro Flashback": 0
       }
     },
     {
       "n": "Boomerang Basics",
       "ref": 0,
       "meta": 2,
-      "metaPct": 25,
+      "metaPct": 22,
       "j": {
         "2.0": 0,
         "Basics": 2,
         "Definitiva": 0,
         "PT": 0,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 0
       }
     },
     {
       "n": "Flashback",
       "ref": 0,
       "meta": 1,
-      "metaPct": 17,
+      "metaPct": 15,
       "j": {
         "2.0": 0,
         "Basics": 0,
         "Definitiva": 0,
         "PT": 0,
         "Pol 1 NF": 0,
-        "Stock": 1
+        "Stock": 1,
+        "UR Aggro Flashback": 1
       }
     },
     {
       "n": "Island",
       "ref": 0,
       "meta": 1,
-      "metaPct": 22,
+      "metaPct": 20,
       "j": {
         "2.0": 0,
         "Basics": 1,
         "Definitiva": 0,
         "PT": 0,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 0
       }
     }
   ],
@@ -704,7 +810,7 @@
     {
       "n": "Consign to Memory",
       "ref": 4,
-      "meta": 4,
+      "meta": 3,
       "metaPct": 98,
       "j": {
         "2.0": 4,
@@ -712,105 +818,113 @@
         "Definitiva": 4,
         "PT": 3,
         "Pol 1 NF": 3,
-        "Stock": 3
+        "Stock": 3,
+        "UR Aggro Flashback": 3
       }
     },
     {
       "n": "Unholy Heat",
       "ref": 3,
       "meta": 3,
-      "metaPct": 98,
+      "metaPct": 97,
       "j": {
         "2.0": 3,
         "Basics": 3,
         "Definitiva": 3,
         "PT": 4,
         "Pol 1 NF": 3,
-        "Stock": 3
+        "Stock": 3,
+        "UR Aggro Flashback": 3
       }
     },
     {
       "n": "Meltdown",
       "ref": 2,
       "meta": 2,
-      "metaPct": 92,
+      "metaPct": 93,
       "j": {
         "2.0": 2,
         "Basics": 2,
         "Definitiva": 2,
         "PT": 1,
         "Pol 1 NF": 2,
-        "Stock": 2
+        "Stock": 2,
+        "UR Aggro Flashback": 1
       }
     },
     {
       "n": "Tormod's Crypt",
       "ref": 2,
-      "meta": 1,
-      "metaPct": 68,
+      "meta": 2,
+      "metaPct": 62,
       "j": {
         "2.0": 1,
         "Basics": 2,
         "Definitiva": 2,
         "PT": 0,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 0
       }
     },
     {
       "n": "Spell Snare",
       "ref": 1,
       "meta": 2,
-      "metaPct": 70,
+      "metaPct": 77,
       "j": {
         "2.0": 1,
         "Basics": 2,
         "Definitiva": 1,
         "PT": 3,
         "Pol 1 NF": 2,
-        "Stock": 2
+        "Stock": 2,
+        "UR Aggro Flashback": 3
       }
     },
     {
       "n": "Spell Pierce",
       "ref": 1,
       "meta": 1,
-      "metaPct": 87,
+      "metaPct": 90,
       "j": {
         "2.0": 2,
         "Basics": 2,
         "Definitiva": 1,
         "PT": 1,
         "Pol 1 NF": 2,
-        "Stock": 2
+        "Stock": 2,
+        "UR Aggro Flashback": 2
       }
     },
     {
       "n": "Mystical Dispute",
       "ref": 1,
       "meta": 1,
-      "metaPct": 15,
+      "metaPct": 17,
       "j": {
         "2.0": 1,
         "Basics": 0,
         "Definitiva": 1,
         "PT": 0,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 0
       }
     },
     {
       "n": "Murktide Regent",
       "ref": 1,
       "meta": 1,
-      "metaPct": 22,
+      "metaPct": 23,
       "j": {
         "2.0": 0,
         "Basics": 0,
         "Definitiva": 1,
         "PT": 0,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 0
       }
     },
     {
@@ -824,21 +938,23 @@
         "Definitiva": 0,
         "PT": 3,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 3
       }
     },
     {
       "n": "Prismari Charm",
       "ref": 0,
       "meta": 1,
-      "metaPct": 13,
+      "metaPct": 12,
       "j": {
         "2.0": 0,
         "Basics": 1,
         "Definitiva": 0,
         "PT": 0,
         "Pol 1 NF": 1,
-        "Stock": 1
+        "Stock": 1,
+        "UR Aggro Flashback": 0
       }
     },
     {
@@ -852,40 +968,43 @@
         "Definitiva": 0,
         "PT": 0,
         "Pol 1 NF": 1,
-        "Stock": 1
+        "Stock": 1,
+        "UR Aggro Flashback": 0
       }
     },
     {
       "n": "Surgical Extraction",
       "ref": 0,
       "meta": 1,
-      "metaPct": 32,
+      "metaPct": 27,
       "j": {
         "2.0": 0,
         "Basics": 0,
         "Definitiva": 0,
         "PT": 0,
         "Pol 1 NF": 1,
-        "Stock": 1
+        "Stock": 1,
+        "UR Aggro Flashback": 0
       }
     },
     {
       "n": "Soul-Guide Lantern",
       "ref": 0,
       "meta": 1,
-      "metaPct": 10,
+      "metaPct": 8,
       "j": {
         "2.0": 1,
         "Basics": 0,
         "Definitiva": 0,
         "PT": 0,
         "Pol 1 NF": 0,
-        "Stock": 0
+        "Stock": 0,
+        "UR Aggro Flashback": 0
       }
     }
   ],
   "notas": [
-    "Núcleo común a las 6 listas: 14 cartas distintas (51 copias) que todas llevan en el mazo principal.",
-    "Cartas de main que solo lleva una lista: Monstrous Rage, Assault Strobe, Boomerang Basics, Flashback, Island."
+    "Núcleo común a las 7 listas: 14 cartas distintas (51 copias) que todas llevan en el mazo principal.",
+    "Cartas de main que solo lleva una lista: Boomerang Basics, Island."
   ]
 }

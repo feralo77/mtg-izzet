@@ -300,6 +300,43 @@ def test_norm_fecha_y_bye():
     print("OK norm_fecha_y_bye")
 
 
+def test_nick_con_errata():
+    # Caso real (27-jul): Fer apuntó 'belfy' y el log dice 'bellfy'; 'PunThenWhine' y el
+    # log 'PuntThenWhine'. Una letra bailada no debe romper el emparejamiento: antes esas
+    # dos R3 quedaban como apunte manual sin resultado + log suelto sin liga.
+    ms = [match('u1', utc(2026, 7, 26, 18, 0), 'Amulet Titan', res='W', jg=2, jp=0, opp='PuntThenWhine'),
+          match('u2', utc(2026, 7, 27, 12, 0), 'Living End', res='L', jg=0, jp=2, opp='bellfy')]
+    aps = [apunte('26/07/2026', 'Liga 7', '3', rival='PunThenWhine', mazo='Amulet', res='W'),
+           apunte('27/07/2026', 'Liga 8', '3', rival='belfy', mazo='Living End', res='L')]
+    reg, _ = PL.emparejar(ms, aps, 'feralo77')
+    r = rows(reg)
+    assert len(r) == 2 and all(x['Fuente'] == 'log' for x in r), r
+    assert {x['Evento / Liga'] for x in r} == {'Liga 7', 'Liga 8'}, r
+    assert {x['Ronda'] for x in r} == {'3'}, r
+    # la tolerancia tiene límites: nicks muy cortos o distintos de verdad NO se funden
+    assert PL.mismo_nick('belfy', 'bellfy') and PL.mismo_nick('punthenwhine', 'puntthenwhine')
+    assert not PL.mismo_nick('mkc', 'mkd')          # 3 letras: a 1 edición es otro nick
+    assert not PL.mismo_nick('juan', 'pepe')
+    assert not PL.mismo_nick('', 'bellfy')
+    print("OK nick_con_errata")
+
+
+def test_listas_nombre_y_validez():
+    # El nombre del fichero en Drive ES el nombre de la lista; los exports viejos ya
+    # curados se ignoran y el prefijo "Deck - " del export de MTGO se limpia.
+    assert PL._nombre_lista('UR Aggro Flashback') == 'UR Aggro Flashback'
+    assert PL._nombre_lista('Pol 1 NF.txt') == 'Pol 1 NF'
+    assert PL._nombre_lista('Deck - UR Twist (1).txt') == 'UR Twist'
+    assert PL._nombre_lista('Deck - Izzet Stock (1).txt') is None   # legacy curado
+    assert PL._nombre_lista('Izzet basics.txt') is None             # legacy curado
+    assert PL._nombre_lista('') is None
+    # al repo público solo pasan ficheros con pinta de mazo
+    assert PL._es_lista_valida('\n'.join(f"4 Carta {i}" for i in range(10)))
+    assert not PL._es_lista_valida('apuntes sueltos\nsin cartas\n1 linea suelta')
+    assert not PL._es_lista_valida('4 Carta\n' * 20000)
+    print("OK listas_nombre_y_validez")
+
+
 if __name__ == '__main__':
     test_columna_rival_nick()
     test_nick_es_la_llave()
@@ -316,4 +353,6 @@ if __name__ == '__main__':
     test_scouting_por_rival()
     test_hoja_gana_legacy()
     test_norm_fecha_y_bye()
+    test_nick_con_errata()
+    test_listas_nombre_y_validez()
     print("\nTodos los autotests del emparejamiento OK")
