@@ -33,7 +33,7 @@ Variables de entorno (secretos de GitHub):
 
 Jugadores registrados: automation/jugadores.json  {"players": ["feralo77", ...]}
 """
-import os, sys, json, csv, tempfile
+import os, re, sys, json, csv, tempfile
 from pathlib import Path
 from collections import defaultdict, Counter
 from datetime import datetime, timezone
@@ -106,6 +106,34 @@ CANON = {
 def canon_mazo(s):
     return CANON.get(key(s), norm(s))
 
+def _lev(a, b):
+    """Distancia de edición (Levenshtein). Para nicks cortos, sobra con la versión simple."""
+    if a == b:
+        return 0
+    if len(a) > len(b):
+        a, b = b, a
+    prev = list(range(len(a) + 1))
+    for j, cb in enumerate(b, 1):
+        cur = [j]
+        for i, ca in enumerate(a, 1):
+            cur.append(min(prev[i] + 1, cur[-1] + 1, prev[i - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+
+def mismo_nick(na, nm):
+    """¿Mismo nick tolerando ERRATAS de tecleo? El apunte lo escribe una persona y el log
+    lo escribe la máquina: 'belfy' vs 'bellfy' o 'PunThenWhine' vs 'PuntThenWhine' (las R3
+    de las Ligas 7 y 8 de Fer, 27-jul-2026) son el mismo rival. Vale la igualdad exacta,
+    1 edición si el nick tiene 4+ letras o 2 si tiene 7+. En nicks muy cortos (MKC) solo
+    vale la igualdad: a una edición ya es OTRO nick."""
+    if not na or not nm:
+        return False
+    if na == nm:
+        return True
+    d = _lev(na, nm)
+    n = min(len(na), len(nm))
+    return (d == 1 and n >= 4) or (d == 2 and n >= 7)
+
 # ------------------------------------------------------------- clientes Google (lectura)
 def clients():
     from google.oauth2 import service_account
@@ -161,6 +189,65 @@ def download(drive, file_id, dest):
         done = False
         while not done:
             _, done = dl.next_chunk()
+
+# --------------------------------------------------------------- listas desde Drive
+# Cada jugador deja su mazo como '<Nombre de lista>.txt' en la raíz de su Logs_<nick> y
+# el robot lo publica en listas/ (decisión de Fer, 2026-07-27: las listas se cargan solas).
+# El nombre del fichero ES el nombre de la lista, el mismo que va en la columna Lista de
+# la hoja; mismo nombre = misma lista (las estadísticas se suman en el dashboard).
+LISTAS_DIR = REPO / 'listas'
+# Exports viejos que ya viven en listas/ con su nombre canónico (Stock, PT, 2.0, Basics):
+# re-publicarlos con el nombre crudo del export crearía listas duplicadas.
+LISTAS_IGNORAR = {'izzet basics', 'deck - izzet stock', 'deck - izzet stock (1)',
+                  'deck - izzet pt', 'deck - izzet 2.0', 'deck - izzet prowess'}
+
+def _nombre_lista(drive_name):
+    """Nombre de lista a partir del nombre del fichero en Drive; None si se ignora."""
+    base = re.sub(r'\.txt$', '', norm(drive_name), flags=re.I).strip()
+    if not base or key(base) in LISTAS_IGNORAR:
+        return None
+    base = re.sub(r'^deck\s*-\s*', '', base, flags=re.I)      # prefijo del export de MTGO
+    base = re.sub(r'\s*\(\d+\)$', '', base).strip()           # sufijo "(1)" de duplicados
+    return base or None
+
+def _es_lista_valida(texto):
+    """Al repo (público) solo pasan ficheros con pinta de mazo: 8+ líneas '<n> Carta'."""
+    if len(texto) > 20000:
+        return False
+    return sum(1 for l in texto.splitlines() if re.match(r'\s*\d+x?\s+\S', l)) >= 8
+
+def sync_listas(drive, folder_id, nick, hoy=None):
+    """Baja los ficheros de texto de la RAÍZ de Logs_<nick> a listas/<nombre>.txt.
+    Solo escribe si el contenido cambió (para no commitear a diario sin motivo).
+    Devuelve los nombres de fichero escritos."""
+    cambios = []
+    existentes = {p.name.lower(): p for p in LISTAS_DIR.glob('*.txt')}
+    for f in list_children(drive, folder_id):
+        if f.get('mimeType') != 'text/plain':
+            continue
+        nombre = _nombre_lista(f.get('name', ''))
+        if not nombre:
+            continue
+        fd, tpath = tempfile.mkstemp(suffix='.txt')
+        os.close(fd)
+        try:
+            download(drive, f['id'], tpath)
+            texto = Path(tpath).read_text(encoding='utf-8', errors='replace').strip() + '\n'
+        finally:
+            os.unlink(tpath)
+        if not _es_lista_valida(texto):
+            print(f"    ! '{f['name']}': no parece una lista de mazo, se ignora")
+            continue
+        dest = existentes.get(f"{nombre.lower()}.txt", LISTAS_DIR / f"{nombre}.txt")
+        if dest.exists():
+            cuerpo = ''.join(l for l in dest.read_text(encoding='utf-8').splitlines(keepends=True)
+                             if not l.startswith('#'))
+            if cuerpo.strip() == texto.strip():
+                continue
+        fecha = (hoy or datetime.now(MADRID)).strftime('%Y-%m-%d')
+        dest.write_text(f"# {nick} · {nombre} (Drive, {fecha})\n{texto}", encoding='utf-8')
+        cambios.append(dest.name)
+    return cambios
 
 # ------------------------------------------------------------------ parseo de los logs
 def parse_player(logdir, nick):
@@ -386,7 +473,7 @@ def _sim(a, m):
     s = 0.0
     na, nm = key(a.get('rival_nick')), key(m.get('opp') or '')
     if na and nm:
-        s += 3.0 if na == nm else -3.0
+        s += 3.0 if mismo_nick(na, nm) else -3.0
     fa, fm = day_key(a['fecha']), day_key(m['_fecha'])
     if fa != datetime.max and fm != datetime.max:
         dd = abs((fa - fm).days)
@@ -620,6 +707,13 @@ def main():
         print(f"- {nick}: {len(gl)} ficheros -> {len(matches)} partidas · "
               f"apuntes: {len(sheet_apuntes)} hoja + {len(apuntes) - len(sheet_apuntes)} legacy "
               f"-> {len(reg)} filas de registro / {len(gm)} games")
+        # 5) su lista (.txt en la raíz de la carpeta) -> listas/ del repo
+        try:
+            nuevas = sync_listas(drive, lf['id'], nick)
+            if nuevas:
+                print(f"    listas sincronizadas desde Drive: {', '.join(nuevas)}")
+        except Exception as e:
+            print(f"    ! listas de {nick}: {e}")
 
     # dedupe por match_uuid (los manual sin uuid se conservan todos), orden cronológico
     registro_all.sort(key=lambda r: r['sort'])

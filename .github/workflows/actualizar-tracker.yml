@@ -27,20 +27,31 @@ jobs:
       - name: Instalar dependencias
         run: pip install --quiet google-api-python-client google-auth
 
-      - name: Parsear carpetas y regenerar registro.csv + games.csv
+      - name: Parsear carpetas y regenerar registro.csv + games.csv (+ listas nuevas)
         env:
           GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SA_KEY }}
           TRACKER_SHEET_ID: ${{ secrets.TRACKER_SHEET_ID }}
           MTG_FOLDER_ID: ${{ secrets.MTG_FOLDER_ID }}
         run: python automation/pipeline.py
 
+      - name: Regenerar el comparador de listas (solo si algún .txt cambió)
+        run: |
+          if [[ -n "$(git status --porcelain -- 'listas/*.txt')" ]]; then
+            node scripts/comparar_listas.mjs --date "$(date -u +%F)"
+          else
+            echo "Sin listas nuevas."
+          fi
+
       - name: Commitear si hay cambios
         run: |
-          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv)" ]]; then
+          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv listas)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add registro.csv games.csv scouting.csv
-            git commit -m "Datos: registro.csv, games.csv y scouting.csv desde las carpetas"
+            git add registro.csv games.csv scouting.csv listas
+            git commit -m "Datos: registro, games, scouting y listas desde las carpetas"
+            # otro robot (p. ej. el de meta) puede haber subido mientras corríamos:
+            # rebasar antes de empujar evita el push rechazado del 27-jul
+            git pull --rebase
             git push
             echo "Datos actualizados y subidos."
           else
