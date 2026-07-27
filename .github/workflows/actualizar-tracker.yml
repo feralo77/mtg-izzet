@@ -4,6 +4,9 @@ name: Actualizar datos desde las carpetas
 # Drive (logs + hoja "Partidas — <nick>"), empareja apuntes con partidas y regenera
 # registro.csv y games.csv, commiteándolos si cambian. El robot SOLO lee en Google.
 # También se puede lanzar a mano (Actions -> Run workflow), incluso desde una rama.
+# LANZADO A MANO (el botón "Actualizar datos" del dashboard) regenera además la META
+# de mtgtop8: una sola pulsación refresca TODO. La corrida diaria de las 06:00 no toca
+# la meta (esa sigue con su propio cron cada 2 días, para no machacar mtgtop8).
 on:
   schedule:
     - cron: "0 6 * * *"      # cada día a las 06:00 UTC
@@ -42,13 +45,17 @@ jobs:
             echo "Sin listas nuevas."
           fi
 
+      - name: Regenerar la meta de mtgtop8 (solo en lanzamiento manual — el botón refresca TODO)
+        if: github.event_name == 'workflow_dispatch'
+        run: node scripts/meta_mtgtop8.mjs --out meta --milista meta/mi-75.json --date "$(date +%F)"
+
       - name: Commitear si hay cambios
         run: |
-          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv listas)" ]]; then
+          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv listas meta)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add registro.csv games.csv scouting.csv listas
-            git commit -m "Datos: registro, games, scouting y listas desde las carpetas"
+            git add registro.csv games.csv scouting.csv listas meta
+            git commit -m "Datos: registro, games, scouting, listas y meta desde el robot"
             # otro robot (p. ej. el de meta) puede haber subido mientras corríamos:
             # rebasar antes de empujar evita el push rechazado del 27-jul
             git pull --rebase
