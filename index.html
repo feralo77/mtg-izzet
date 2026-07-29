@@ -329,7 +329,7 @@
         <div class="panel"><h3>Tu primera interacción <span>(WR por turno de tu primer removal)</span></h3><div class="cwrap"><canvas id="chKeyFI"></canvas></div></div>
       </div>
     </div>
-    <div class="grid"><div class="panel full"><h3>Duración de partida vs victoria <span>(WR por turnos — ¿cierras rápido?)</span></h3><div class="cwrap"><canvas id="chKeyDur"></canvas></div></div></div>
+    <div class="grid"><div class="panel full"><h3>Duración de partida vs victoria <span>(WR según el turno en que acaba el game — ¿cierras rápido?)</span></h3><div class="cwrap"><canvas id="chKeyDur"></canvas></div></div></div>
     <div class="note-lg" id="playV2Note" style="display:none">Las claves nuevas (Cutter+ficha, criaturas desplegadas, interacción del rival, tu primera interacción) aparecerán con la próxima carga de datos: el games.csv publicado aún no trae esas columnas. Pulsa "Actualizar datos" arriba.</div>
 
     <div style="margin:var(--space-5) 0"><button class="btn" id="playMoreBtn">Ver más estadísticas</button></div>
@@ -1730,7 +1730,7 @@ function renderPlay(){
     playCharts.keyRR=wrBar('chKeyRR',[['Sin interacción',g=>g.rr===0],['1 removal',g=>g.rr===1],['2+ removal',g=>g.rr>=2]]);
     playCharts.keyFI=wrBar('chKeyFI',[['T1',g=>g.fi===1],['T2',g=>g.fi===2],['T3+',g=>g.fi>=3],['Sin interacción',g=>!g.fi]]);
   }
-  playCharts.keyDur=wrBar('chKeyDur',[['1-4 turnos',g=>g.t<=4],['5-6 turnos',g=>g.t>=5&&g.t<=6],['7+ turnos',g=>g.t>=7]]);
+  playCharts.keyDur=wrBar('chKeyDur',[['T1',g=>g.t===1],['T2',g=>g.t===2],['T3',g=>g.t===3],['T4',g=>g.t===4],['T5',g=>g.t===5],['T6+',g=>g.t>=6]]);
 
   // ===== VER MÁS (desplegable) =====
   $('playMore').style.display=playMoreShown?'':'none';
