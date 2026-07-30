@@ -368,19 +368,33 @@
   <!-- ===== LISTAS ===== -->
   <section class="view" id="v-lists">
     <div class="author"><span class="ic"></span><div><b>Listas de los jugadores</b> — cada versión que habéis jugado (tú y tus compañeros de liga) y su rendimiento real, cruzado con partidas y games. Una versión se identifica por su <b>maindeck</b>, no por el nombre: dos listas con las mismas 60 cartas y sideboard distinto son la <b>misma versión</b> y sus estadísticas se <b>suman</b> (la "Ur Aggro Rage" de Pol tiene el maindeck idéntico a tu "Aggro"). Los fetchlands cuentan como intercambiables. Los nombres exactos que hay dentro de cada versión salen en su ficha. La síntesis carta a carta y el porqué de cada slot viven en <b>La 75 Definitiva</b>; el campo global, en <b>Meta · mtgtop8</b>.</div></div>
-    <h3 class="secH" style="margin-top:2px">Listas y su rendimiento <span class="q" style="font-size:12px;font-weight:400">(por nombre · suma a quien la juegue)</span></h3>
-    <div class="decks" id="myLists"></div>
-    <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(mismo maindeck = misma versión, aunque cambie el sideboard)</span></h3><div id="wrByList"></div></div>
-    <div class="panel full"><h3>Versión × mazo rival <span>(récord V-D de cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
+    <div class="gwrap">
+      <nav class="gmenu" id="lMenu"></nav>
+      <div>
+        <!-- Resumen: las 3 versiones de un vistazo -->
+        <div class="gsec on" id="l-resumen">
+          <h3 class="secH" style="margin-top:2px">Las versiones <span class="q" style="font-size:12px;font-weight:400">(mismo maindeck = misma versión)</span></h3>
+          <div class="decks" id="myLists"></div>
+          <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(mismo maindeck = misma versión, aunque cambie el sideboard)</span></h3><div id="wrByList"></div></div>
+          <div class="panel full"><h3>Versión × mazo rival <span>(récord V-D de cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
+        </div>
 
-    <h3 class="secH" style="margin-top:24px">Comparador de listas — carta a carta</h3>
-    <div class="author"><span class="ic"></span><div><b>Comparador de listas</b> — la 75 real y completa de cada lista (las tuyas y las de tus compañeros), comparadas contra <b>La 75 Definitiva</b> y contra el consenso del <b>Meta</b>. Los logs solo enseñan lo que se jugó; esto es el mazo entero, pegado en <span style="font-family:var(--mono)">listas/&lt;nombre&gt;.txt</span>. Se amplía en cuanto haya más .txt en la carpeta.</div></div>
-    <div id="listWaiting" class="note-lg" style="display:none"></div>
-    <div class="decks" id="playerLists"></div>
-    <div class="insight" id="listNotas" style="display:none"></div>
-    <div class="panel full" style="margin-top:16px"><h3>Comparador carta a carta <span>(nº de copias · <span style="color:var(--winL)">verde</span> = más que la Definitiva · <span style="color:var(--loss)">rojo</span> = menos o no la lleva · <span style="color:var(--u2)">azul</span> = carta que la Definitiva no tiene)</span></h3>
-      <div style="overflow-x:auto"><table id="listMatrix"></table></div>
-      <div style="font-size:11px;color:var(--tx3);margin-top:8px" id="listMatrixNote"></div></div>
+        <!-- Una sección por versión: variantes y cartas que cambian. Se generan en JS. -->
+        <div id="lVersionPanes"></div>
+
+        <!-- Comparador carta a carta (por LISTA: aquí sí interesa la 75 exacta) -->
+        <div class="gsec" id="l-comparador">
+          <h3 class="secH" style="margin-top:2px">Comparador de listas — carta a carta</h3>
+          <div class="author"><span class="ic"></span><div><b>Comparador de listas</b> — la 75 real y completa de cada lista (las tuyas y las de tus compañeros), comparadas contra <b>La 75 Definitiva</b> y contra el consenso del <b>Meta</b>. Aquí se compara <b>por lista</b>, no por versión: el interés es justo la 75 exacta de cada una. Los logs solo enseñan lo que se jugó; esto es el mazo entero, pegado en <span style="font-family:var(--mono)">listas/&lt;nombre&gt;.txt</span>.</div></div>
+          <div id="listWaiting" class="note-lg" style="display:none"></div>
+          <div class="decks" id="playerLists"></div>
+          <div class="insight" id="listNotas" style="display:none"></div>
+          <div class="panel full" style="margin-top:16px"><h3>Comparador carta a carta <span>(nº de copias · <span style="color:var(--winL)">verde</span> = más que la Definitiva · <span style="color:var(--loss)">rojo</span> = menos o no la lleva · <span style="color:var(--u2)">azul</span> = carta que la Definitiva no tiene)</span></h3>
+            <div style="overflow-x:auto"><table id="listMatrix"></table></div>
+            <div style="font-size:11px;color:var(--tx3);margin-top:8px" id="listMatrixNote"></div></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ===== SCOUTING (rivales de MTGO · nicks públicos por decisión de Fer, 22-jul-2026) ===== -->
@@ -1805,7 +1819,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   $('v-'+t.dataset.v).classList.add('on');
-  if(t.dataset.v==='lists'){renderMyLists();renderLxM();renderPlayerLists();}
+  if(t.dataset.v==='lists'){renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();}
   if(t.dataset.v==='stats')render();
   if(t.dataset.v==='play')renderPlay();
   if(t.dataset.v==='scout')renderScout();
@@ -1840,7 +1854,7 @@ function refreshAll(){
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
   if(v==='stats')render();
   else if(v==='play')renderPlay();
-  else if(v==='lists'){renderMyLists();renderLxM();renderPlayerLists();}
+  else if(v==='lists'){renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();}
   else if(v==='scout')renderScout();
   else if(v==='cmp')renderCmp();
   else if(v==='meta')renderMetaTab();
@@ -1919,6 +1933,104 @@ function listGroups(){
     return {...o,players:[...o.players].sort(),listas:[...o.listas].sort(),W,L,n:W+L,gw,gl,wr:pct(W,W+L),mm};
   }).sort((a,b)=> b.n-a.n || a.li.localeCompare(b.li));
 }
+// ---- Menú lateral de la pestaña Listas + una sección por versión --------------
+// Dentro de una versión el maindeck es el MISMO, así que lo único que cambia entre sus
+// variantes es el sideboard (y algún flex del main). Eso hace que la comparación sea
+// limpia: la diferencia de récord es atribuible a esas cartas y no al mazo.
+// Ojo con la lectura: son muestras pequeñas y cada variante la ha jugado quien la ha
+// jugado, así que el jugador es un factor. Se avisa en la propia sección.
+let lSecActual='l-resumen';
+
+function variantesDe(v){
+  // récord de cada nombre de lista dentro de la versión v
+  const out={};
+  M().forEach(d=>{ if(verLab(d)!==v) return; const li=d.li||'—';
+    const o=out[li]=out[li]||{li,W:0,L:0,players:new Set()};
+    if(d.r==='W')o.W++; else if(d.r==='L')o.L++;
+    if(d.by)o.players.add(d.by); });
+  return Object.values(out).map(o=>({...o,players:[...o.players].sort(),n:o.W+o.L,wr:pct(o.W,o.W+o.L)}))
+    .sort((a,b)=>b.n-a.n);
+}
+
+function cartasQueCambian(v,listas){
+  // Cruza las matrices de comparativa.json (nº de copias por lista) con el récord de las
+  // partidas de cada lista. Solo entra la carta cuyas copias NO son iguales en todas.
+  const D=LISTAS_DATA||LISTAS_SNAPSHOT; if(!D) return [];
+  const rec=Object.fromEntries(variantesDe(v).map(x=>[x.li,x]));
+  const conDatos=listas.filter(l=>rec[l]);            // listas con partidas jugadas
+  const filas=[];
+  // El nombre de la lista en la hoja y el del .txt no coinciden en mayúsculas ("UR Aggro
+  // Rage" en el apunte de Pol, "Ur Aggro Rage.txt" en su Drive). Buscar la clave tal cual
+  // devolvía "0 copias" para una lista que sí lleva la carta, que es peor que no enseñarla.
+  const kk=s=>(s||'').trim().toLowerCase();
+  const busca=(j,l)=>{ if(!j)return undefined; if(j[l]!==undefined)return j[l];
+    const hit=Object.keys(j).find(k=>kk(k)===kk(l)); return hit===undefined?undefined:j[hit]; };
+  [['main',D.matrizMain||[]],['side',D.matrizSide||[]]].forEach(([zona,rows])=>{
+    rows.forEach(r=>{
+      const q={}; let hay=false, faltan=false;
+      listas.forEach(l=>{ const val=busca(r.j,l);
+        if(val!==undefined){q[l]=val;hay=true;} else faltan=true; });
+      if(!hay||faltan) return;   // si a alguna variante le falta su .txt, no se compara
+      const vals=[...new Set(Object.values(q))];
+      if(vals.length<2) return;                        // igual en todas: no diferencia
+      // Dos casos distintos, y mezclarlos engaña:
+      //  - PRESENCIA: alguna variante la lleva a 0 -> el récord con/sin significa algo.
+      //  - COPIAS: todas la llevan, solo cambia el número -> "con ella" serían TODAS las
+      //    partidas y "sin ella" ninguna, así que el récord no dice nada. Se marca.
+      const presencia=Object.values(q).some(x=>x===0);
+      const con=conDatos.filter(l=>(q[l]||0)>0), sin=conDatos.filter(l=>!(q[l]||0));
+      const sum=ls=>ls.reduce((a,l)=>({W:a.W+rec[l].W,L:a.L+rec[l].L}),{W:0,L:0});
+      const cw=sum(con), sw=sum(sin);
+      filas.push({n:r.n,zona,presencia,copias:listas.map(l=>`${l}: ${q[l]}`).join(' · '),
+        conN:presencia?cw.W+cw.L:0,conRec:`${cw.W}-${cw.L}`,conWr:presencia&&(cw.W+cw.L)?pct(cw.W,cw.W+cw.L):null,
+        sinN:presencia?sw.W+sw.L:0,sinRec:`${sw.W}-${sw.L}`,sinWr:presencia&&(sw.W+sw.L)?pct(sw.W,sw.W+sw.L):null});
+    });
+  });
+  return filas.sort((a,b)=>(b.presencia-a.presencia)||((b.conN+b.sinN)-(a.conN+a.sinN)));
+}
+
+function renderListsMenu(){
+  const gs=listGroups();
+  const item=(id,lab,sub)=>`<div class="gmi${id===lSecActual?' on':''}" data-l="${id}">${lab}${sub?`<span style="display:block;font-weight:400;text-transform:none;letter-spacing:0;font-size:10.5px;color:${id===lSecActual?'var(--on-primary)':'var(--tx3)'};margin-top:2px">${sub}</span>`:''}</div>`;
+  $('lMenu').innerHTML = item('l-resumen','Resumen',`${gs.length} versiones`)
+    + gs.map(g=>item('l-v-'+slug(g.li),g.li,`${g.n} partidas · ${g.wr}%`)).join('')
+    + item('l-comparador','Comparador','carta a carta');
+
+  $('lVersionPanes').innerHTML = gs.map(g=>{
+    const vs=variantesDe(g.li), cc=cartasQueCambian(g.li,g.listas);
+    const wrCell=w=>w===null?'<td style="text-align:center;color:var(--tx3)">·</td>'
+      :`<td style="text-align:center"><span class="hq-cell ${w>=60?'hq-cell--good':w>=40?'hq-cell--mid':'hq-cell--bad'}">${w}%</span></td>`;
+    const tablaVar = vs.length
+      ? `<div style="overflow-x:auto"><table><thead><tr><th>Variante</th><th>Quién la juega</th><th style="text-align:center">Partidas</th><th style="text-align:center">Récord</th><th style="text-align:center">WR</th></tr></thead><tbody>`
+        + vs.map(x=>`<tr><td><b>${x.li}</b></td><td>${x.players.join(' + ')||'—'}</td><td style="text-align:center">${x.n}</td><td style="text-align:center;font-family:var(--mono)">${x.W}-${x.L}</td>${wrCell(x.wr)}</tr>`).join('')
+        + '</tbody></table></div>'
+      : '<div style="color:var(--tx2);font-size:12.5px">Todavía no hay partidas apuntadas con esta versión.</div>';
+    const tablaCC = cc.length
+      ? `<div style="overflow-x:auto"><table><thead><tr><th>Carta</th><th>Zona</th><th>Copias por variante</th><th style="text-align:center">Con ella</th><th style="text-align:center">WR</th><th style="text-align:center">Sin ella</th><th style="text-align:center">WR</th></tr></thead><tbody>`
+        + cc.map(x=>x.presencia
+            ? `<tr><td><b>${x.n}</b></td><td><span class="tag">${x.zona}</span></td><td style="font-family:var(--mono);font-size:11px">${x.copias}</td><td style="text-align:center;font-family:var(--mono)">${x.conN?x.conRec:'—'}</td>${wrCell(x.conWr)}<td style="text-align:center;font-family:var(--mono)">${x.sinN?x.sinRec:'—'}</td>${wrCell(x.sinWr)}</tr>`
+            : `<tr><td>${x.n}</td><td><span class="tag">${x.zona}</span></td><td style="font-family:var(--mono);font-size:11px">${x.copias}</td><td colspan="4" style="color:var(--tx3);font-size:11.5px">Todas las variantes la llevan, solo cambia el nº de copias — el récord con/sin no dice nada aquí.</td></tr>`).join('')
+        + '</tbody></table></div>'
+      : '<div style="color:var(--tx2);font-size:12.5px">Las variantes de esta versión no difieren en ninguna carta, o falta su .txt en <span style="font-family:var(--mono)">listas/</span>.</div>';
+    return `<div class="gsec" id="l-v-${slug(g.li)}">
+      <h3 class="secH" style="margin-top:2px">${g.li} <span class="q" style="font-size:12px;font-weight:400">· ${g.W}-${g.L} (${g.wr}%) en ${g.n} partidas</span></h3>
+      <div class="author"><span class="ic"></span><div><b>${g.li}</b> — ${(LIST_META[g.li]||{}).desc||'Versión del mazo.'} Dentro de esta versión el <b>maindeck es el mismo</b>, así que entre sus variantes solo cambia el sideboard (y algún flex). Eso hace la comparación limpia: la diferencia de récord no viene del mazo. <b>Pero ojo</b>: las muestras son pequeñas y cada variante la juega quien la juega, así que el jugador también pesa — no lo leas como causa-efecto.</div></div>
+      <div class="panel full" style="margin-bottom:var(--gap)"><h3>Variantes <span>(mismo maindeck, distinto sideboard)</span></h3>${tablaVar}</div>
+      <div class="panel full"><h3>Cartas que cambian dentro de la versión <span>(récord de las partidas jugadas con y sin cada carta)</span></h3>${tablaCC}
+        <div style="font-size:11px;color:var(--tx3);margin-top:8px">"Con ella" suma las partidas de las variantes que llevan la carta; "sin ella", las de las que no. Copias sacadas de <span style="font-family:var(--mono)">listas/&lt;nombre&gt;.txt</span> vía el comparador.</div></div>
+    </div>`;
+  }).join('');
+
+  document.querySelectorAll('#lMenu .gmi').forEach(m=>m.onclick=()=>{
+    lSecActual=m.dataset.l;
+    document.querySelectorAll('#v-lists .gsec').forEach(s=>s.classList.remove('on'));
+    const s=$(lSecActual); if(s)s.classList.add('on');
+    renderListsMenu();                                  // repinta el menú (marca activo)
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  document.querySelectorAll('#v-lists .gsec').forEach(s=>s.classList.toggle('on',s.id===lSecActual));
+}
+const slug=s=>(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'x';
 function renderMyLists(){
   // por-lista también a nivel de GAME: se cruza games.csv con el registro por match_uuid
   const li_by_uid={};M().forEach(d=>{if(d.uid)li_by_uid[d.uid]=verLab(d);});
@@ -2514,7 +2626,7 @@ function initSelectors(){fillSel('fLista','li','Todas las versiones');fillSel('f
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists();renderDefCmp();renderSBDef();
+  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDefCmp();renderSBDef();
   render();
   updateSource(remote);
   freshness();
