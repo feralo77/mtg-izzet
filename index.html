@@ -455,7 +455,11 @@
 
   <!-- ===== LA 75 DEFINITIVA (autor: Claude) ===== -->
   <section class="view" id="v-def">
-    <div class="author"><span class="ic"></span><div><b>Autor de esta pestaña: Claude</b> &middot; 22-jul-2026. <b>La 75 Definitiva v2</b>, reconstruida hoy sobre <b>60 listas de mtgtop8</b> (ventana de 28 dias, no solo la ultima semana) cruzadas con <b>tu historico real</b> (26 partidas). Es la clasica UR Cutter Prowess afinada a TU meta: el main sigue el consenso; el sideboard ataca tus dos agujeros (mirror 0-2 y Esper Goryo's 0-2). El campo global en vivo esta en <b>Meta &middot; mtgtop8</b>.</div></div>
+    <div class="author"><span class="ic"></span><div><b>La 75 Definitiva se calcula, no se escribe.</b> Decisión de Fer (30-jul-2026): esta pestaña se reconstruye en cada corrida del robot cruzando el <b>consenso del campo</b> (mtgtop8) con <b>tu histórico real</b>. Lo que sale abajo no lo ha teclado nadie. <b>Con un límite honesto</b>: los datos dicen qué llevas distinto y qué matchups pierdes, pero <b>no</b> dicen qué carta responde a qué mazo — eso es criterio de Magic. Cada aviso marca dónde acaba el cálculo y empieza la decisión.</div></div>
+
+    <!-- Bloque CALCULADO desde meta/definitiva.json (automation/generar_definitiva.py) -->
+    <div id="defGen"></div>
+    <h3 class="secH" style="margin-top:26px">Notas escritas a mano <span class="q" style="font-size:12px;font-weight:400">(del 22-jul · en retirada, se van sustituyendo por lo calculado)</span></h3>
 
     <div class="grid">
       <div class="panel"><h3>Que cambia respecto a antes</h3>
@@ -2406,6 +2410,40 @@ function setTheme(t){
   if(v==='stats')render();else if(v==='play')renderPlay();else if(v==='cmp')renderCmp();
 }
 // ---- La 75 Definitiva (Claude) ----
+// ---- La 75 Definitiva CALCULADA (meta/definitiva.json) -----------------------
+// La genera automation/generar_definitiva.py en cada corrida del robot. Aquí solo se
+// pinta: si se añade una regla al generador, esta pestaña la refleja sin tocar HTML.
+let DEF_GEN=null;
+async function renderDefGen(){
+  if(!DEF_GEN){
+    try{const r=await fetch('meta/definitiva.json',{cache:'no-store'});DEF_GEN=(r&&r.ok)?await r.json():null;}
+    catch(e){DEF_GEN=null;}
+  }
+  const el=$('defGen'); if(!el) return;
+  if(!DEF_GEN){ el.innerHTML='<div class="note-lg">La 75 calculada aparecerá con la próxima corrida del robot (falta <span style="font-family:var(--mono)">meta/definitiva.json</span>). Pulsa "Actualizar datos" arriba.</div>'; return; }
+  const D=DEF_GEN;
+  const wrCell=w=>w===null||w===undefined?'<span style="color:var(--tx3)">·</span>'
+    :`<span class="hq-cell ${w>=60?'hq-cell--good':w>=40?'hq-cell--mid':'hq-cell--bad'}">${w}%</span>`;
+  const zona=(rows,tot,lab)=>`<div class="panel"><h3>${lab} <span>(${tot} cartas · consenso de ${D.campo.mazos} listas)</span></h3>
+    <div style="overflow-x:auto"><table><thead><tr><th>Carta</th><th style="text-align:center">Copias</th><th style="text-align:center">% del campo</th><th style="text-align:center">Rango</th></tr></thead><tbody>
+    ${rows.map(c=>`<tr><td>${c.n}</td><td style="text-align:center;font-family:var(--mono)"><b>${c.copias}</b></td><td style="text-align:center">${c.pct}%</td><td style="text-align:center;font-family:var(--mono);color:var(--tx2)">${c.min}-${c.max}</td></tr>`).join('')}
+    </tbody></table></div></div>`;
+  const desv=(rows,lab)=>!rows.length?'':`<div class="panel full" style="margin-top:var(--gap)"><h3>${lab} <span>(y tu récord con y sin cada una)</span></h3>
+    <div style="overflow-x:auto"><table><thead><tr><th>Carta</th><th>Qué pasa</th><th style="text-align:center">Campo</th><th style="text-align:center">Base</th><th>Tus versiones</th><th style="text-align:center">Con ella</th><th style="text-align:center">Sin ella</th></tr></thead><tbody>
+    ${rows.map(x=>{const tv=Object.entries(x.tusVersiones).filter(([,q])=>q>0).map(([n,q])=>`${n}: ${q}`).join(' · ')||'ninguna';
+      return `<tr><td><b>${x.n}</b></td><td style="font-size:11.5px">${x.tipo}</td><td style="text-align:center">${x.consensoPct}%</td><td style="text-align:center;font-family:var(--mono)">${x.baseCopias}</td><td style="font-family:var(--mono);font-size:11px">${tv}</td><td style="text-align:center">${x.con.n?`${x.con.W}-${x.con.L} ${wrCell(x.con.wr)}`:'<span style="color:var(--tx3)">·</span>'}</td><td style="text-align:center">${x.sin.n?`${x.sin.W}-${x.sin.L} ${wrCell(x.sin.wr)}`:'<span style="color:var(--tx3)">·</span>'}</td></tr>`;}).join('')}
+    </tbody></table></div>
+    <div style="font-size:11px;color:var(--tx3);margin-top:8px">"Con ella" suma las partidas de tus versiones que la llevan; "sin ella", las de las que no. Con estas muestras es una señal, no una conclusión.</div></div>`;
+  el.innerHTML=`
+    <div class="note-lg" style="margin-bottom:var(--gap)"><b>Cómo se calcula.</b> ${D.comoSeCalcula} <span style="color:var(--tx2)">Recalculada el ${D.generado} · campo: ${D.campo.mazos} listas de ${D.campo.ventanaDias} días · tu histórico: ${D.tuHistorico.partidas} partidas y ${D.tuHistorico.games} games.</span></div>
+    ${D.avisos.map(a=>`<div class="insight" style="margin-bottom:var(--gap)"><div class="ic"></div><div><b>${a.titulo}.</b> ${a.texto}
+      ${a.datos&&a.datos.length?`<div style="margin-top:8px;font-family:var(--mono);font-size:11.5px">${a.datos.map(d=>d.aq?`${d.aq}: ${d.rec} (${d.wr}%, ${d.n})`:d.tramo?`${d.tramo}: ${d.wr}% (${d.n} games)`:`${d.sr}: ${d.W}-${d.L} (${d.wr}%)`).join(' &nbsp;·&nbsp; ')}</div>`:''}
+      <div style="margin-top:8px;font-size:11.5px;color:var(--tx2)"><b>Hasta aquí llega el cálculo.</b> ${a.decision}.</div></div></div>`).join('')}
+    <div class="grid">${zona(D.base.main,D.base.mainN,'Maindeck de partida')}${zona(D.base.side,D.base.sideN,'Sideboard de partida')}</div>
+    ${desv(D.desviaciones.main,'Desviaciones en el maindeck')}
+    ${desv(D.desviaciones.side,'Desviaciones en el sideboard')}`;
+}
+
 function renderDefCmp(){
   const hh=['Carta','Tu 75','% del campo','Por qué'];
   $('defCmp').innerHTML='<thead><tr>'+hh.map((h,i)=>`<th${i===1||i===2?' style="text-align:center"':''}${i===1?' style="text-align:center;color:var(--mid)"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+
@@ -2626,7 +2664,7 @@ function initSelectors(){fillSel('fLista','li','Todas las versiones');fillSel('f
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDefCmp();renderSBDef();
+  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDefGen();renderDefCmp();renderSBDef();
   render();
   updateSource(remote);
   freshness();

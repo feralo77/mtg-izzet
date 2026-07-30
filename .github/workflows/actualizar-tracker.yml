@@ -57,6 +57,12 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: node scripts/meta_mtgtop8.mjs --out meta --milista meta/mi-75.json --date "$(date +%F)"
 
+      # Va DESPUES de la meta: lee meta/prowess.json (el consenso del campo) y lo cruza
+      # con registro.csv y games.csv. Si la meta no se regenero en esta corrida usa la
+      # anterior, que es correcto: el consenso cambia mucho mas despacio que los datos.
+      - name: Recalcular La 75 Definitiva
+        run: python automation/generar_definitiva.py --date "$(date -u +%F)"
+
       - name: Commitear si hay cambios
         run: |
           if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv listas meta)" ]]; then
