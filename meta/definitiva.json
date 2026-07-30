@@ -2,7 +2,7 @@
  "generado": "2026-07-30",
  "comoSeCalcula": "Base: la lista media de mtgtop8 (cada carta a sus copias típicas, de más jugada a menos, hasta 60 y 15; los fetchlands como bloque intercambiable). Encima, las desviaciones de las versiones de Fer con su récord real con y sin cada carta, y los avisos que el histórico sostiene. Lo que NO se calcula: qué carta responde a qué mazo — eso es criterio de Magic y va marcado como decisión humana en cada aviso.",
  "campo": {
-  "mazos": 58,
+  "mazos": 60,
   "ventanaDias": 28,
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
   "generado": "2026-07-30"
@@ -125,7 +125,7 @@
    {
     "n": "Mutagenic Growth",
     "copias": 4,
-    "pct": 91,
+    "pct": 92,
     "typical": 4,
     "min": 1,
     "max": 4
@@ -139,25 +139,25 @@
     "max": 4
    },
    {
-    "n": "Scalding Tarn",
-    "copias": 3,
-    "pct": 81,
-    "typical": 3,
+    "n": "Arid Mesa",
+    "copias": 2,
+    "pct": 80,
+    "typical": 2,
     "min": 1,
     "max": 4
    },
    {
-    "n": "Arid Mesa",
-    "copias": 2,
-    "pct": 79,
-    "typical": 2,
+    "n": "Scalding Tarn",
+    "copias": 3,
+    "pct": 78,
+    "typical": 3,
     "min": 1,
     "max": 4
    },
    {
     "n": "Expressive Iteration",
     "copias": 4,
-    "pct": 72,
+    "pct": 73,
     "typical": 4,
     "min": 1,
     "max": 4
@@ -165,8 +165,8 @@
    {
     "n": "Violent Urge",
     "copias": 1,
-    "pct": 67,
-    "typical": 1,
+    "pct": 68,
+    "typical": 2,
     "min": 1,
     "max": 2
    }
@@ -199,16 +199,16 @@
    },
    {
     "n": "Spell Pierce",
-    "copias": 1,
+    "copias": 2,
     "pct": 88,
-    "typical": 1,
+    "typical": 2,
     "min": 1,
     "max": 3
    },
    {
     "n": "Spell Snare",
     "copias": 2,
-    "pct": 72,
+    "pct": 70,
     "typical": 2,
     "min": 1,
     "max": 3
@@ -222,17 +222,9 @@
     "max": 2
    },
    {
-    "n": "Surgical Extraction",
-    "copias": 1,
-    "pct": 24,
-    "typical": 1,
-    "min": 1,
-    "max": 2
-   },
-   {
     "n": "Murktide Regent",
     "copias": 1,
-    "pct": 24,
+    "pct": 27,
     "typical": 1,
     "min": 1,
     "max": 2
@@ -245,8 +237,8 @@
    {
     "n": "Violent Urge",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 67,
-    "consensoCopias": 1,
+    "consensoPct": 68,
+    "consensoCopias": 2,
     "baseCopias": 1,
     "tusVersiones": {
      "2.0": 2,
@@ -273,7 +265,7 @@
    {
     "n": "Flashback",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 14,
+    "consensoPct": 17,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -301,7 +293,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 24,
+    "consensoPct": 23,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -329,7 +321,7 @@
    {
     "n": "Monstrous Rage",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 24,
+    "consensoPct": 23,
     "consensoCopias": 3,
     "baseCopias": 0,
     "tusVersiones": {
@@ -357,7 +349,7 @@
    {
     "n": "Stormchaser's Talent",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 41,
+    "consensoPct": 40,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -385,7 +377,7 @@
    {
     "n": "Boomerang Basics",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 21,
+    "consensoPct": 20,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -413,7 +405,7 @@
    {
     "n": "Island",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 19,
+    "consensoPct": 18,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -469,37 +461,9 @@
     }
    },
    {
-    "n": "Spell Pierce",
-    "tipo": "copias distintas del consenso",
-    "consensoPct": 88,
-    "consensoCopias": 1,
-    "baseCopias": 1,
-    "tusVersiones": {
-     "2.0": 2,
-     "Basics": 2,
-     "PT": 1,
-     "Pol 1 NF": 2,
-     "Stock": 2,
-     "UR Aggro Flashback": 2,
-     "Ur Aggro Rage": 2
-    },
-    "con": {
-     "W": 88,
-     "L": 73,
-     "n": 161,
-     "wr": 55
-    },
-    "sin": {
-     "W": 0,
-     "L": 0,
-     "n": 0,
-     "wr": null
-    }
-   },
-   {
     "n": "Spell Snare",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 72,
+    "consensoPct": 70,
     "consensoCopias": 2,
     "baseCopias": 2,
     "tusVersiones": {
@@ -555,7 +519,7 @@
    {
     "n": "Prismari Charm",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 12,
+    "consensoPct": 13,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -583,9 +547,9 @@
    {
     "n": "Surgical Extraction",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 24,
+    "consensoPct": 25,
     "consensoCopias": 1,
-    "baseCopias": 1,
+    "baseCopias": 0,
     "tusVersiones": {
      "2.0": 0,
      "Basics": 0,
@@ -611,7 +575,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 16,
+    "consensoPct": 15,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -695,7 +659,7 @@
    {
     "n": "Soul-Guide Lantern",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 7,
+    "consensoPct": 8,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -723,7 +687,7 @@
    {
     "n": "Murktide Regent",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 24,
+    "consensoPct": 27,
     "consensoCopias": 1,
     "baseCopias": 1,
     "tusVersiones": {
