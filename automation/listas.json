@@ -1,0 +1,21 @@
+{
+  "_comment": "VERSIONES del mazo. Una 'lista' es un nombre de fichero (listas/<nombre>.txt) y un valor de la columna Lista de la hoja. Una 'versión' agrupa las listas que son el MISMO mazo: mismo maindeck (agrupando fetchlands, que son intercambiables en este mazo) con distinto sideboard. Motivo (decisión de Fer, 2026-07-30): con 8 listas y ~170 partidas, tratar cada nombre como un mazo distinto parte las muestras en trozos inservibles (la '2.0' llegó a tener 5 partidas y un 20% de WR sin significado). Agrupando por versión, las mismas partidas dan tramos de 14-90. El nombre exacto se conserva en la columna Lista: la versión no sustituye el detalle, lo agrega.",
+
+  "_medido": "Distancias reales de maindeck medidas el 2026-07-30 (cartas cambiadas, fetchlands agrupados): Stock<->2.0 = 1, Stock<->Pol 1 NF = 1, 2.0<->Pol 1 NF = 0, PT<->Ur Aggro Rage = 0, PT<->UR Aggro Flashback = 1, Basics<->cualquiera = 5 o más. Los nombres de las listas salen de su carta distintiva: 'Basics' por Boomerang Basics, 'UR Aggro Flashback' por Flashback, 'Ur Aggro Rage' por Monstrous Rage.",
+
+  "versiones": {
+    "Stock": ["Stock", "2.0", "Pol 1 NF"],
+    "Basics": ["Basics"],
+    "PT": ["PT", "UR Aggro Flashback", "Ur Aggro Rage", "UR Aggro Surgicals"]
+  },
+
+  "_referencia": "Listas que NO son partidas jugadas sino la 75 de referencia contra la que se compara todo. No entran en ninguna versión y no deben aparecer en las estadísticas por versión.",
+  "referencia": ["Definitiva"],
+
+  "_defecto": "Partidas que salen de un log SIN apunte a mano se quedaban con la Lista vacía: 77 de las 168 (el 46%) eran así, todas de Pol, y quedaban fuera de cualquier estadística por lista. Fer confirmó (2026-07-30) que las de Pol son Stock. Si algún jugador no está aquí, sus partidas sin apunte siguen con Lista vacía (mejor vacío que inventado).",
+  "defecto_por_jugador": {
+    "4c_PolG": "Stock"
+  },
+
+  "_pendiente": "'UR Aggro Surgicals' (2 partidas de Pol) no tiene .txt en listas/. Se mapea a PT por su nombre ('UR Aggro' es como Pol llama a la PT) y porque el sideboard de Ur Aggro Rage lleva 2 Surgical Extraction: huele a nombre viejo de esa misma lista. Si aparece su .txt y el maindeck no cuadra, corregir aquí."
+}

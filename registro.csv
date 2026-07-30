@@ -1,169 +1,169 @@
-match_uuid,Fecha,Evento / Liga,Lista,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente,Rival,Confianza
-94c9e75c-8c88-48c3-8be1-f98eefa840ee,09/07/2026,,,,Dimir Merfolk,Dimir Merfolk,L,0,2,Robo,0,1,,,4c_PolG,log,Tirifolix92,100%
-5e4e366b-a7b1-48bd-a823-7c0a454d3287,09/07/2026,,,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,0,,,4c_PolG,log,porterops,100%
-19a8178f-63ef-4b53-a171-0a5714f5fda3,09/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,0,Salida,0,2,,,4c_PolG,log,Matts,42%
-46411b6d-7069-458c-991f-c7321dec3b00,09/07/2026,,,,Eldrazi,Eldrazi,L,1,2,Robo,0,4,,,4c_PolG,log,icy195,85%
-c9769568-364b-46c6-a4ff-8928237c0896,09/07/2026,,,,Grixis Reanimator,Grixis Reanimator,W,2,1,Salida,1,1,,,4c_PolG,log,BrentJ,47%
-0d961857-ede8-4aee-94c2-18506eb66105,09/07/2026,,,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,Blindside09,100%
-76d5155d-ffc5-43c1-9510-1b2c27883f16,09/07/2026,,,,GW Birthing Ritual,GW Birthing Ritual,W,2,0,Salida,1,1,,,4c_PolG,log,dough_shack,100%
-6feaaca4-1e27-44c9-8f83-11d6f79d0f48,09/07/2026,,,,Azorius Control,Azorius Control,W,2,0,Salida,0,1,,,4c_PolG,log,grenzos,100%
-0df787ad-a7df-4eca-a7d3-78f67bcc9704,09/07/2026,,,,Azorius Control,Azorius Control,W,2,0,Salida,0,0,,,4c_PolG,log,nobrawn,100%
-ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,09/07/2026,,,,Ruby Storm,Ruby Storm,W,2,1,Salida,0,0,,,4c_PolG,log,Gianlook,89%
-a4c01001-0f1c-4b02-a66e-bdd3233ff158,09/07/2026,,,,Ruby Storm,Ruby Storm,L,1,2,Robo,0,1,,,4c_PolG,log,Monkmerlin,100%
-b6afde50-6862-4a83-8dac-de9a08a8bad4,09/07/2026,,,,Grixis Reanimator,Grixis Reanimator,W,2,1,Robo,0,0,,,4c_PolG,log,tetsugaku_zombie,93%
-cfbade0b-daed-403f-a55c-b5624e0a917d,09/07/2026,,,,Sam Combo,Sam Combo,L,1,2,Robo,0,1,,,4c_PolG,log,KapoUzumaki11,100%
-5c1316e4-1356-4a81-9e45-b662f00bc2af,09/07/2026,,,,Broodscale,Broodscale,W,2,0,Salida,0,0,,,4c_PolG,log,Malox11,46%
-3b52e7d2-39e1-459a-b2a4-d66256101afa,10/07/2026,,,,Amulet Titan,Amulet Titan,W,2,0,Salida,0,1,,,4c_PolG,log,Bob49,37%
-d9cb71f7-6b37-4154-aa85-1c4e64bb0a4a,10/07/2026,,,,Boros Ponza,Boros Ponza,W,2,0,Robo,0,0,,,4c_PolG,log,FANELLACCIO,84%
-29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,11/07/2026,Liga 1,Stock,1,Loki,Izzet Affinity,W,2,0,Robo,0,0,,,feralo77,log,MNeon,42%
-0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,2,Devoted,Golgari Yawgmoth,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log,zturchan,84%
-e4b090d8-9bf0-4a39-bcfe-703f18c56740,11/07/2026,Liga 1,Stock,3,Affinity,Izzet Affinity,L,0,2,Robo,0,0,,Paliza,feralo77,log,Dcal215,93%
-b27b88d4-d70c-465f-b832-1fb1f6217358,11/07/2026,Liga 1,Stock,4,Broodscale,Broodscale,W,2,1,Robo,0,0,,,feralo77,log,chylz,100%
-5f239dd1-82c8-4aa4-804b-ace012669679,11/07/2026,Liga 1,Stock,5,Dimir,Dimir Frog,W,2,0,Salida,0,0,,Se estanca en la segunda,feralo77,log,ilprofetaVDR,apunte
-45370f5a-7496-4909-bc25-ef3c52e0373d,11/07/2026,Liga 2,Stock,1,Broodscale,Broodscale,L,0,2,Robo,0,0,,No juego muy bien el match,feralo77,log,DB_BaaL,100%
-df74357a-29ef-4326-af53-700f3e193060,12/07/2026,,,,Boros Ponza,Boros Ponza,L,0,2,Robo,0,0,,,4c_PolG,log,Snapcaster1288,93%
-5169dd19-7379-43a3-acab-4fb65ad49b3d,12/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,1,Salida,0,1,,,4c_PolG,log,annihilator8,93%
-477dc805-7cc1-4060-aace-f97412484124,11/07/2026,Liga 2,Stock,2,¿? (revisar),¿? (revisar),W,1,0,Salida,1,1,,Concede,feralo77,log,Zorro7x4,0%
-b3c6bda6-ea72-42b4-994b-3dec7ec09c21,11/07/2026,Liga 2,Stock,3,Boros,Boros Energy,W,2,1,Robo,0,0,Snare,,feralo77,log,Cesc_95,100%
-2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,4,Vivoras,Sultai Midrange,L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log,Ciraris,apunte
-12341f9b-5f8f-46d6-83dc-45452ecc0109,12/07/2026,Liga 2,Stock,5,Izzet,Izzet Prowess,L,1,2,Salida,0,1,,Me gana las 2 con el doble strike,feralo77,log,beetea,92%
-3cb28fcf-16c3-4f3f-868f-6aa301955aa4,12/07/2026,,,,Boros Energy,Boros Energy,W,2,1,Robo,0,0,,,4c_PolG,log,claudioh,88%
-9a452380-38d2-4afe-95dd-41f5f2c6a482,13/07/2026,,,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,zecarlonxo,88%
-ca5dcc9c-dffb-47ac-b2c6-1daae13b0ce5,13/07/2026,,,,Boros Energy,Boros Energy,L,1,2,Robo,0,0,,,4c_PolG,log,Counter_Magic,100%
-02eb2f17-6b45-40de-bfd6-8a7839b907f7,13/07/2026,,,,Boros Energy,Boros Energy,L,0,2,Salida,1,0,,,4c_PolG,log,yriel,95%
-59809b0a-9efa-404f-995a-d21a958561a5,13/07/2026,,,,Living End,Living End,L,0,2,Robo,0,0,,,4c_PolG,log,prizedamalgam,84%
-59467dd1-1288-4722-89b5-f6862b10360a,13/07/2026,,,,Izzet Prowess,Izzet Prowess,W,2,1,Robo,0,0,,,4c_PolG,log,JulianJohn,92%
-397c5889-d59c-4a8e-b573-5569cf872e38,13/07/2026,,,,Merfolk,Merfolk,W,2,1,Salida,0,0,,,4c_PolG,log,fart_sniffer_93,100%
-1cad81a1-6b14-4a2c-8831-a3947b16a441,13/07/2026,,,,Esper Goryo's,Esper Goryo's,L,0,2,Salida,0,0,,,4c_PolG,log,zutoSamuel,93%
-adf9d8f9-221b-49bd-8e9c-5b37946f14f4,13/07/2026,,,,Eldrazi,Eldrazi,W,2,1,Salida,1,0,,,4c_PolG,log,e0068,64%
-82ba98c8-1dd2-440e-b63e-ec635166f8c3,13/07/2026,,,,Azorius Control,Azorius Control,L,0,2,Robo,0,0,,,4c_PolG,log,Simunsorx,71%
-d662e25b-ddd4-4c41-9cc2-d89c651350f2,13/07/2026,,,,MonoB Coffers,MonoB Coffers,W,2,0,Robo,0,2,,,4c_PolG,log,sekizou,100%
-9c63337c-f3af-473f-b686-74dcda18eb08,13/07/2026,,,,Golgari Yawgmoth,Golgari Yawgmoth,L,0,2,Salida,0,0,,,4c_PolG,log,Nytrox,63%
-6b307f87-0c75-4eca-9302-56075da4dba4,13/07/2026,Liga 3,Stock,1,MonoB Reanimator,Grixis Reanimator,W,2,1,Salida,1,0,,,feralo77,log,Zores,67%
-97933634-bc3e-4f9d-b425-a72418449d67,14/07/2026,Liga 3,Stock,2,Neoform,Neoform,L,1,2,Robo,0,0,primera grisel al 2,,feralo77,log,Asmodai02,100%
-523f5bd2-321c-4b38-8b54-0f427edbb672,15/07/2026,,,,Amulet Titan,Amulet Titan,L,0,2,Salida,0,0,,,4c_PolG,log,chagu,94%
-23f3ce8d-9ccd-44ae-9e94-60ae77d53f08,15/07/2026,,,,Golgari Yawgmoth,Golgari Yawgmoth,W,2,1,Salida,1,0,,,4c_PolG,log,Shade_Scorpion,86%
-ecd661ab-5399-497c-bc38-8799c8a607c4,15/07/2026,,,,Dimir Frog,Dimir Frog,W,2,0,Robo,0,1,,,4c_PolG,log,KangXiaotian,81%
-efcdfc72-d2e7-4c8d-b7a0-c0234af24c04,15/07/2026,,,,Eldrazi,Eldrazi,L,0,2,Salida,0,1,,,4c_PolG,log,midiowl,64%
-905d4baa-63b5-4e72-b5d6-0372d2738561,15/07/2026,,,,Ruby Storm,Ruby Storm,W,2,1,Salida,0,0,,,4c_PolG,log,Bachipandi21,100%
-e2ab0481-f981-4c01-ae47-e8c32563dd8d,15/07/2026,,,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,0,1,,,4c_PolG,log,Syparon,42%
-d3d67632-54c8-40d5-86fd-eb4c21a3b656,15/07/2026,,,,Izzet Prowess,Izzet Prowess,W,2,1,Robo,0,0,,,4c_PolG,log,Gobeli,100%
-bcb065ef-1de7-4f2b-9773-7dc53d6c937c,15/07/2026,,,,Izzet Prowess,Izzet Prowess,L,0,2,Robo,0,0,,,4c_PolG,log,Jakesbaked,92%
-e6db5229-4b28-4478-9cfc-1c309f0157de,15/07/2026,,,,Grixis Frog/Reanimator,Grixis Frog/Reanimator,W,2,1,Robo,0,0,,,4c_PolG,log,LionelB,81%
-82827b58-c888-41c8-9dfb-1faa524389f2,15/07/2026,,,,Esper Goryo's,Esper Goryo's,L,1,2,Robo,0,0,,,4c_PolG,log,YAK9k,93%
-c0725c15-1759-408e-8b7c-b7c9c427edbd,18/07/2026,Liga 3,Stock,3,Ponza,Boros Ponza,W,2,0,Robo,0,0,,,feralo77,log,Jsph,93%
-7a1d37f5-097e-4d5c-b98a-6cac99874573,18/07/2026,Liga 3,Stock,4,Gorys,Esper Goryo's,L,0,2,Robo,0,0,,No le quito bien el atraxa,feralo77,log,kentaro_hokori,93%
-e6102623-accf-4ddc-b334-a80f72bb542e,18/07/2026,Liga 3,Stock,5,Izzet,Izzet Prowess,L,0,2,Robo,1,0,,,feralo77,log,101DeMoNS,100%
-3ce63980-35b8-445a-ac25-c9f04ad0aa35,18/07/2026,Liga 4,PT,1,Sam,Sam Combo,L,1,2,Robo,0,1,soy malo,,feralo77,log,TheeMacSheezy,94%
-d816e48c-41ed-4a2d-b209-fc3ea83164b9,18/07/2026,Liga 4,PT,2,Broodscale,Broodscale,W,2,1,Salida,0,0,,,feralo77,log,InspiringPresence,100%
-bb7b0286-7f95-43a9-ba8e-a7846e11993a,18/07/2026,Liga 4,PT,3,Grixis Reanimator,Grixis Frog/Reanimator,W,1,0,Robo,0,1,,,feralo77,log,Durrrr89,65%
-c8505bf6-1d70-4e4e-9cca-44f07c66febf,18/07/2026,Liga 4,PT,4,Dimir,Dimir Frog,L,0,2,Robo,0,0,Lista con namor y 2000 counter,,feralo77,log,SeriousSquid,81%
-8dd0205b-553f-491d-8885-1ad1b3e471f4,19/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,1,Robo,0,1,,,4c_PolG,log,DurdleTurtleLoL,93%
-11840f79-f2f5-4806-b018-e707b60fbd32,19/07/2026,,,,Broodscale,Broodscale,L,0,2,Salida,1,0,,,4c_PolG,log,Bring_back_affinity,100%
-f696164a-4255-4f74-9310-cefddb09caf3,19/07/2026,,,,Esper Goryo's,Esper Goryo's,W,2,1,Salida,1,0,,,4c_PolG,log,MIKOTAM,93%
-61e93b47-fe2c-4d29-90a4-1616d4ef4864,19/07/2026,,,,Necrodominance,Necrodominance,L,1,2,Salida,1,0,,,4c_PolG,log,thegreatflow93,100%
-2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999,18/07/2026,Liga 4,PT,5,UW,Azorius Control,W,2,0,Robo,0,0,A XISPAS,,feralo77,log,Jijito,71%
-e0c49e67-489a-438b-9017-4bb43b772096,19/07/2026,,,,Living End,Living End,W,2,0,Salida,0,0,,,4c_PolG,log,Hayek,88%
-abd74392-c692-42b4-90de-45c181dca0f5,19/07/2026,,,,Golgari Yawgmoth,Golgari Yawgmoth,L,0,2,Robo,0,1,,,4c_PolG,log,DB_Control4Daze,86%
-1d1326e9-f7e8-4105-80d4-f9119cb6677f,19/07/2026,,,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,0,0,,,4c_PolG,log,DeepDisherino,42%
-94a41a68-7667-4d65-bb03-276a257627fa,20/07/2026,,,,Eldrazi Ramp,Eldrazi Ramp,W,2,1,Salida,0,2,,,4c_PolG,log,pastelZero,69%
-c21dedf8-b250-492a-9d12-b67418dcaee4,20/07/2026,,,,Izzet Affinity,Izzet Affinity,W,2,1,Robo,0,0,,,4c_PolG,log,YeffPog,93%
-09e0e9b8-95e3-49a6-b34b-0d294e1b9ab6,20/07/2026,,,,Neoform,Neoform,L,0,2,Robo,1,0,,,4c_PolG,log,dolly_d84,100%
-e899efbc-3b8b-4031-8c7c-005ee182c1e1,20/07/2026,,,,Eldrazi,Eldrazi,W,2,1,Salida,1,0,,,4c_PolG,log,ChJet,64%
-d5da430a-b292-4ccb-bc22-5fa0eda0945e,20/07/2026,,,,Ruby Storm,Ruby Storm,W,2,1,Robo,0,2,,,4c_PolG,log,Chazure,94%
-1c723cb8-94a5-49ed-8560-1a230db0c41c,20/07/2026,Liga 5,2.0,1,Through the Breach,Through the Breach,W,2,1,Salida,0,0,"Duros, la ultima a xispas",,feralo77,log,RoccoCocco,100%
-bfd2e15f-1fb7-4aff-9589-139aa5c706f7,20/07/2026,,,,¿? (revisar),¿? (revisar),L,1,2,Salida,2,0,,,4c_PolG,log,,0%
-48c7fa6e-e913-48da-b97e-39f1575c9f57,21/07/2026,,,,Amulet Titan,Amulet Titan,W,2,1,Salida,1,0,,,4c_PolG,log,neatpete8,100%
-fbddc77c-c56c-4cc8-8748-9375c78c6325,21/07/2026,,,,Dimir Frog,Dimir Frog,W,2,1,Robo,0,0,,,4c_PolG,log,Amama,81%
-fcc54cdf-e566-4400-9ef2-618f1818795b,21/07/2026,,,,Neoform,Neoform,W,2,0,Salida,0,0,,,4c_PolG,log,kytk321,93%
-0768dca5-f42b-4f7b-b5aa-b9af70073696,21/07/2026,,,,Esper Goryo's,Esper Goryo's,W,2,1,Robo,1,0,,,4c_PolG,log,Th3L3gend27,93%
-68f213b3-b4d0-4f47-b648-a781b7eab614,21/07/2026,,,,Boros Energy,Boros Energy,L,0,2,Robo,0,0,,,4c_PolG,log,TOP_AI,88%
-f16cf142-496e-41f6-9afd-0de6047552ab,21/07/2026,,,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,1,,,4c_PolG,log,enrouki1,100%
-f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,21/07/2026,Liga 5,2.0,2,MonoB Reanimator,Grixis Reanimator,L,1,2,Robo,0,0,Tendria que haber tirado mulligan en la tercera,,feralo77,log,eckschin,93%
-d5330261-a86d-4d6f-8db2-dc60547443a3,21/07/2026,Liga 5,2.0,3,MonoR Artifacts,MonoR Artifacts,L,0,2,Robo,0,0,Me cruje,,feralo77,log,CrusherBotBG,94%
-dc40834c-85ad-4880-b63b-c17e91264235,21/07/2026,Liga 5,2.0,4,Goryos,Esper Goryo's,L,1,2,Robo,0,1,hUMILADO,,feralo77,log,vinnyrussian123,93%
-0490d733-3ad7-4a16-9d43-b20dbb297c2f,22/07/2026,,,,Azorius Control,Azorius Control,L,1,2,Salida,0,0,,,4c_PolG,log,Galanator,71%
-69a8c5b2-406d-4acd-8368-2716058b6d2e,22/07/2026,,,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,1,0,,,4c_PolG,log,ipakers,93%
-e374128a-368c-4536-aafc-cdc89ce9d702,22/07/2026,Liga 5,2.0,5,Broodscale,Broodscale,L,0,2,Salida,1,1,,,feralo77,log,ls149950,48%
-d43e65c2-eb56-41d8-9ace-80ef98332ec5,22/07/2026,,,,Grixis Reanimator,Grixis Reanimator,L,0,2,Salida,0,0,,,4c_PolG,log,xITDxxP985x,47%
-1aab62bd-3018-4bcb-bace-437886c88f11,22/07/2026,,,,Elves,Elves,W,2,0,Salida,1,0,,,4c_PolG,log,Orpheus819,80%
-ff17944e-41ce-44e9-adbe-30b1461955f6,22/07/2026,,,,Hollow One,Hollow One,L,1,2,Salida,0,1,,,4c_PolG,log,Dudarudi,100%
-dd2aa23e-c93a-40a7-bbc9-add220569e4e,22/07/2026,,,,Eldrazi Ramp,Eldrazi Ramp,L,0,2,Robo,0,0,,,4c_PolG,log,Niroval,96%
-de67bc4c-a8f7-45a5-834c-f651b839bbf9,22/07/2026,,,,Oracle Combo,Oracle Combo,W,2,1,Salida,0,1,,,4c_PolG,log,Boce,100%
-241c6d98-b967-4522-949e-2931767cb411,22/07/2026,,,,Living End,Living End,W,2,1,Robo,0,0,,,4c_PolG,log,TSTOB,86%
-43e1e1a1-fb2f-4f80-8ecf-352c7afbbfbb,22/07/2026,Liga 1,Pol 1 NF,1,Zoo,Dimir Frog,L,0,2,Salida,0,0,,En G2 y G3 no conformarse con cualquier mano. Intentar buscar mano con bicho y consign para cortar su wincon de Draco con línea a la vez que metemos una cierta presión. El Unholy es fundamental para cortar los Kavus.,4c_PolG,log,Ardonas,81%
-46a29e3c-6802-4fce-b658-7d7ea562a9fe,22/07/2026,Liga 1,Pol 1 NF,2,Boros Energy,Boros Energy,W,2,0,Salida,1,1,,"Unholys, Snares y Bouncer para dentro en G2 y G3 para prevenir los posibles High Noon y Ajanis. Pairing ligeramente a nuestro favor.",4c_PolG,log,Somedude127,90%
-d78d4858-bcd9-4551-97bd-3db5da194fe4,22/07/2026,Liga 1,Pol 1 NF,3,Eldrazi PT,Eldrazi Ramp,W,2,1,Salida,1,1,,En G2 y G3 es posible que nuestro oponente haga algún mulligan agresivo para buscar cálices o trinisferas. Consigns MVP's.,4c_PolG,log,Tarmofaeries,69%
-70f4ef63-3a6e-4a28-84f4-14e241371df4,22/07/2026,Liga 1,Pol 1 NF,4,Neoform,Neoform,W,2,1,Salida,1,0,,"En esta partida ha quedado claro que por lo menos necesitamos un counter para ganar, ya que si se corta el combo no le da tiempo a volver a jugarlo.",4c_PolG,log,Jijito,100%
-aaf13d68-242a-46e7-bfcc-580ec314f3cb,22/07/2026,Liga 1,Pol 1 NF,5,Chord Toolbox,Sam Combo,W,2,1,Robo,0,1,,"Pairing duro debido al gran número de criaturas de nuestro oponente. Hay que saber elegir muy bien a que le tiramos nuestro removal. Los Cutter ganan la partida por opresión, por eso va a llevar High Noon en G2 y G3. Meter Spell Snare ya que le corta gran parte de su baraja, incluídos los High Noon. Pierce no lo veo necesario. Ante High Noon el Cutter nos sirve para equipar a nuestras criaturas y poderles dar arrollar para poder pasar por encima a sus bichos molestos 1/1.",4c_PolG,log,Coradorable,94%
-c4d81339-5db2-4754-a5ae-35e31346a7e0,23/07/2026,Liga 6,Basics,1,Amulet,Amulet Titan,L,1,2,Robo,0,2,,,feralo77,log,CacZarn,100%
-bc4fd619-5f52-4f6d-b849-051290198cf5,23/07/2026,Liga 6,Basics,2,Ponza,Boros Ponza,W,2,0,Salida,1,0,,,feralo77,log,Mactavor,93%
-289a726b-b73a-4293-a126-0e60e50403df,23/07/2026,Liga 2,Pol 1 NF,1,UR Prowess,Izzet Prowess,L,1,2,Robo,0,0,,,4c_PolG,log,toondoslav,100%
-a9df8904-b0f3-46ad-83e1-e5a8f11b6e71,23/07/2026,Liga 2,Pol 1 NF,2,Eldrazi PT,Eldrazi PT,W,2,0,Salida,0,0,,,4c_PolG,log,Villhelm97,apunte
-a4dcd953-1fd9-4509-931b-f2996cadfee4,23/07/2026,Liga 2,Pol 1 NF,3,Storm,Ruby Storm,W,2,1,Robo,1,0,,,4c_PolG,log,Ch4ppy,97%
-1788e343-d5ac-4ea0-867e-03d2c6473183,23/07/2026,Liga 2,Pol 1 NF,4,Yawgmoth,Golgari Yawgmoth,W,2,0,Salida,0,1,,En la guía que tenemos de side no mete Spell Snare. Yo los he jugado y me han ido de lujo para counter a Caldero.,4c_PolG,log,KingMotus,86%
-e17aad99-e134-49af-976a-94fe34e7b89a,23/07/2026,Liga 2,Pol 1 NF,5,Chord Toolbox,Chord Toolbox,W,2,0,Salida,0,1,,,4c_PolG,log,Boce,apunte
-26d69ccb-01ca-4680-b5df-ff259858bdcc,23/07/2026,Liga 6,Basics,3,URb,URb,W,2,1,Robo,0,1,,https://www.mtggoldfish.com/deck/7886860#online,feralo77,log,OafMcNamara,apunte
-167e6b9f-942f-4549-bd62-1232fdde806b,23/07/2026,Liga 3,Pol 1 NF,1,Boros Hollow One,Hollow One,L,1,2,Salida,0,0,,,4c_PolG,log,k2slice,93%
-b90c6633-7d11-46c8-8a09-c07b7ee677ab,23/07/2026,Liga 3,Pol 1 NF,2,Grixis Reanimator,Grixis Reanimator,L,0,2,Salida,0,0,,,4c_PolG,log,titan55,47%
-517eaca8-f07d-4b82-9c72-2484eae81399,24/07/2026,Liga 6,Basics,4,Boros,Boros Energy,L,0,2,Robo,0,1,,,feralo77,log,Wbez,100%
-e7bfe95e-2617-4c32-9afd-1ba616531fed,24/07/2026,Liga 4,Pol 1 NF,1,Mono green Ouroboroid,Mono green Ouroboroid,W,2,0,Robo,0,0,,,4c_PolG,log,gartuyzz,apunte
-be93f36b-e50b-490a-a430-5236b33c747a,24/07/2026,Liga 4,Pol 1 NF,2,UR Prowess,Izzet Prowess,W,2,1,Salida,0,0,,,4c_PolG,log,Sunblast_Angel,92%
-ccd7fb74-82d9-4f7f-b624-8801fd7012a1,24/07/2026,Liga 4,Pol 1 NF,3,Grixis Reanimator,Grixis Reanimator,L,1,2,Salida,0,0,,,4c_PolG,log,Cawl25,47%
-7f4280f9-0e13-4865-b0cf-f7e0da9f41c8,24/07/2026,Liga 6,Basics,5,Boros,Boros Energy,W,2,1,Salida,1,0,,,feralo77,log,JohnJonis,100%
-a98f93a2-95d5-4c58-b0df-2238cebb9458,24/07/2026,Liga 4,Pol 1 NF,4,Isochron Scepter,Azorius Control,L,0,2,Robo,1,1,,,4c_PolG,log,ganache1127,95%
-d67f4904-2677-4333-896b-db4572b6075e,24/07/2026,Liga 4,Pol 1 NF,5,Isochron Scepter,Azorius Control,L,1,2,Salida,2,1,,,4c_PolG,log,alessandro81,100%
-16221428-d559-4582-9eaa-a7120fc6fdb6,24/07/2026,,,,Izzet Affinity,Izzet Affinity,L,1,2,Robo,1,0,,,4c_PolG,log,Sagequatch,42%
-15d3bfc1-8d5d-43b8-b970-b4f4701ade45,24/07/2026,,,,Esper Goryo's,Esper Goryo's,L,0,2,Robo,0,0,,,4c_PolG,log,sGiuG,93%
-500e79be-006a-461c-b8d9-0c947bb93d36,24/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Salida,0,0,,,4c_PolG,log,banned-ravager,30%
-c4961472-48ba-4177-9a51-07857894d43d,24/07/2026,,,,Dimir Frog,Dimir Frog,L,0,2,Robo,1,0,,,4c_PolG,log,AGrackle,81%
-a11f57aa-291d-4e30-9ddb-13e08daa205c,24/07/2026,,,,Neoform,Neoform,L,1,2,Salida,1,2,,,4c_PolG,log,chylz,93%
-12d2afba-3162-4790-ae57-d8b1a0c08b72,24/07/2026,,,,¿? (revisar),¿? (revisar),L,1,2,Robo,0,1,,,4c_PolG,log,Jkimb0,0%
-de7a16dc-a805-498d-bcef-4b1ac8ef3ce3,25/07/2026,,,,Izzet Prowess,Izzet Prowess,L,1,2,Robo,0,0,,,4c_PolG,log,TheRightStuff,92%
-d53964d3-095d-4b81-981b-4477c171089d,25/07/2026,,,,¿? (revisar),¿? (revisar),W,2,0,Robo,1,1,,,4c_PolG,log,Joy1,17%
-c2475170-26ae-4a55-b751-974284b930c6,25/07/2026,,,,Esper Goryo's,Esper Goryo's,W,2,0,Salida,0,2,,,4c_PolG,log,Bobone,47%
-6d98d09e-91df-4b55-97bc-450ea1207154,25/07/2026,,,,¿? (revisar),¿? (revisar),W,2,1,Robo,0,2,,,4c_PolG,log,virp13,31%
-432820ee-9461-4968-98fd-388fee185f79,25/07/2026,Liga 5,UR Aggro Flashback,1,Hollow One,Hollow One,W,2,1,Salida,0,0,,Salir o no salir condiciona una barbaridad y hay que meter todos los Unholy dentro por Lava Dart.,4c_PolG,log,41krid,95%
-d7132d11-73e5-4ee3-9568-d168d3dd948f,25/07/2026,Liga 5,UR Aggro Flashback,2,Eldrazi Tron,Eldrazi,L,1,2,Salida,0,0,,,4c_PolG,log,summersalt,88%
-0bbc9c4a-3c6e-4ba6-9c88-039954bf4ee4,25/07/2026,Liga 5,UR Aggro Flashback,3,Storm,Ruby Storm,L,0,2,Robo,0,0,,,4c_PolG,log,kyporioth,92%
-8cee2aab-2f44-42e0-a19e-c06c33a4a611,25/07/2026,Liga 5,UR Aggro Flashback,4,Hollow One,Hollow One,W,2,0,Salida,0,0,,,4c_PolG,log,AlexEvans,90%
-c6f5c973-b58d-4360-b766-4f7cae6adf86,25/07/2026,Liga 5,UR Aggro Flashback,5,Eldrazi PT,Eldrazi Ramp,W,2,1,Salida,1,0,,Consings y Pierce IN,4c_PolG,log,AchtungSchaaf827,92%
-2412cf29-cf25-421f-869f-60e5119d8a8f,25/07/2026,Liga 6,UR Aggro Flashback,1,Neoform,Neoform,L,0,2,Salida,0,0,,,4c_PolG,log,SzogunTokugawa,100%
-4aa92490-c76a-43c0-8270-1ca4afd37ea4,25/07/2026,Liga 6,UR Aggro Flashback,2,Hammer Time,Izzet Affinity,L,1,2,Robo,1,0,,,4c_PolG,log,Eyelash,88%
-f7d2ebb8-a71b-4aaa-9249-0e64d85b8f32,25/07/2026,Liga 6,UR Aggro Flashback,3,Hollow One,Hollow One,W,2,0,Robo,0,0,,,4c_PolG,log,GabbaGandalf,100%
-d719f721-c142-440b-9502-96ff66fb1f78,25/07/2026,Liga 6,UR Aggro Flashback,4,Mono-Black Coffers,MonoB Coffers,W,2,0,Robo,0,0,,,4c_PolG,log,sekizou,46%
-e9889b1c-4ab7-4e5f-9604-1d331626cdd4,25/07/2026,Liga 6,UR Aggro Flashback,5,Oswald Grinding Station,Oswald Grinding Station,L,0,1,Salida,0,0,,,4c_PolG,log,fphonne,apunte
-43708187-1e4d-4704-9912-3b13b0be314e,25/07/2026,Liga 7,Basics,1,Amulet,Amulet Titan,L,1,2,Robo,0,0,,,feralo77,log,AndySCWilson,100%
-996d868d-1b52-4100-baf0-993f7fb6ea70,25/07/2026,Liga 7,Basics,2,Hollow One,Hollow One,W,2,1,Salida,0,0,,,feralo77,log,Iceblade908,100%
-d1d502df-3f42-46bf-91e0-0c70195d7729,26/07/2026,Liga 7,Basics,3,Amulet,Amulet Titan,W,2,0,Salida,0,0,,,feralo77,log,PuntThenWhine,91%
-34899403-d4a3-4e09-b676-6b66c969f0dc,26/07/2026,Liga 7,Basics,4,Boros,Boros Energy,W,2,0,Salida,0,0,,,feralo77,log,Reaperss,100%
-,27/07/2026,Liga 9,Basics,1,Mono-Green Eldrazi,Mono-Green Eldrazi,,,,,,,,revisar (sin log),feralo77,manual,krixtijan,
-,27/07/2026,Liga 9,Basics,2,Ponza,Ponza,,,,,,,,revisar (sin log),feralo77,manual,funnyscreenname,
-b40dc27a-7b39-4575-8c5a-d6531fbd97d0,26/07/2026,Liga 7,Basics,5,Dimir Frog,Dimir Frog,L,0,2,Robo,1,0,,,feralo77,log,Ghost11157,81%
-ad10d270-b2bf-46ce-b675-6e882ef35b68,27/07/2026,Liga 8,PT,1,Neoform,Neoform,L,0,2,Robo,1,0,,,feralo77,log,NJGB1,100%
-187e18dd-196f-4024-bad1-1ababc699072,27/07/2026,Liga 8,PT,2,Storm,Ruby Storm,W,2,0,Salida,0,0,,,feralo77,log,haoqinglangou,97%
-200fc873-e94c-4527-8d9b-abbabdb69a66,27/07/2026,Liga 8,PT,3,Living End,Living End,L,0,2,Salida,0,0,,,feralo77,log,bellfy,62%
-703f5e3e-45b2-47fa-9f17-db469c117ce9,27/07/2026,Liga 7,UR Aggro Flashback,1,Affinity,Izzet Affinity,W,2,1,Salida,0,0,,,4c_PolG,log,Heavenscythe,93%
-830999b5-951e-4fc4-8bcb-e1e3626d07c8,27/07/2026,Liga 8,PT,4,Storm,Ruby Storm,W,2,0,Robo,0,0,,,feralo77,log,liuyuchen,86%
-89ab3577-bce8-44e9-a816-024413efeb07,27/07/2026,Liga 7,UR Aggro Flashback,2,UR Artifacts,UR Artifacts,W,2,0,Robo,0,0,,,4c_PolG,log,don_mars,apunte
-c848d8d2-0e77-401a-8e8b-51808077084b,27/07/2026,Liga 8,PT,5,Devoted Combo,Golgari Yawgmoth,W,2,1,Salida,0,0,,,feralo77,log,ulbabrabal,42%
-c6a63bb2-6fc4-44d4-a758-4f25e719f642,27/07/2026,Liga 7,UR Aggro Flashback,3,Boros Ponza,Boros Ponza,L,1,2,Salida,0,0,,,4c_PolG,log,Auripower,93%
-f3cb3478-63b2-49d8-a78a-9c8c27edd95d,27/07/2026,Liga 7,UR Aggro Flashback,4,Eldrazi Ramp,Eldrazi Ramp,W,2,1,Salida,1,2,,,4c_PolG,log,41krid,96%
-a3379035-a670-46fd-8516-50dfc51ccd95,27/07/2026,Liga 7,UR Aggro Flashback,5,Tron,Eldrazi,W,2,1,Robo,0,1,,,4c_PolG,log,Tikiman89,85%
-f451faa0-92bc-463d-912e-991b0b28abb2,27/07/2026,Liga 8,UR Aggro Flashback,1,Hollow One,Hollow One,L,1,2,Robo,1,0,,,4c_PolG,log,Bananaman985,100%
-01a33235-ddaa-4d06-b552-b9b2c55778fd,27/07/2026,Liga 8,UR Aggro Flashback,2,Goryos Atraxa,Esper Goryo's,L,0,2,Salida,0,0,,,4c_PolG,log,MKC,47%
-cefe1808-a1a3-4331-8d21-ffbad4f29a69,27/07/2026,Liga 8,UR Aggro Flashback,3,UB Mill,UB Mill,W,2,0,Robo,1,1,,,4c_PolG,log,BlackVenant,apunte
-51ce026f-500f-4e8e-9efd-d319ebc8ed5c,27/07/2026,Liga 8,UR Aggro Flashback,4,Neoform,Neoform,W,2,1,Robo,1,1,,,4c_PolG,log,Pascal3000,88%
-48062ea1-82e1-4210-b639-b4e701e698ce,27/07/2026,Liga 8,UR Aggro Flashback,5,Neoform,Neoform,W,2,1,Robo,0,0,,,4c_PolG,log,Auripower,93%
-de410482-9c8e-4237-8242-f4a78a994874,27/07/2026,Liga 9,UR Aggro Flashback,1,Storm,Storm,W,2,0,Robo,1,0,,,4c_PolG,log,Aquilix,apunte
-339c8384-b556-4ecd-ad86-8bbcfc045e51,27/07/2026,Liga 9,UR Aggro Flashback,2,Song of Creation,Izzet Affinity,W,2,0,Robo,0,0,,,4c_PolG,log,mommydom_manifesto,42%
-,28/07/2026,Liga 9,Basics,3,Hollow One,Hollow One,,,,,,,,revisar (sin log),feralo77,manual,Thattaman,
-38a0ba1a-93e9-418c-8f92-f33fbd119e9b,27/07/2026,Liga 9,UR Aggro Flashback,3,Broodscales,Broodscale,L,0,2,Robo,0,1,,,4c_PolG,log,PhyrexianSwarm,100%
-5d892b72-c95e-4be4-b0f3-e80652520d9b,27/07/2026,Liga 9,UR Aggro Flashback,4,Hammer Time,Izzet Affinity,W,2,1,Salida,0,0,,,4c_PolG,log,Eyelash,42%
-,29/07/2026,Liga 10,UR Aggro Rage,3,Boros Aggro,Boros Aggro,,,,,,,,revisar (sin log),4c_PolG,manual,Ignacioz1,
-,29/07/2026,Liga 10,UR Aggro Rage,4,UB Frog,UB Frog,,,,,,,,revisar (sin log),4c_PolG,manual,Tarmofaeries,
-,29/07/2026,Liga 9,Basics,4,Yamwoth,Yamwoth,,,,,,,,revisar (sin log),feralo77,manual,Marckys,
-,29/07/2026,Liga 9,Basics,5,Ponza,Ponza,,,,,,,,revisar (sin log),feralo77,manual,EighFinity,
-77b6f032-c22f-425a-9258-3fad12a1aa2a,27/07/2026,Liga 9,UR Aggro Flashback,5,Goryos Atraxa,Esper Goryo's,L,1,2,Salida,0,0,,,4c_PolG,log,DB_cntrlfreak_ttv,93%
-b3a723b4-e38d-4ff0-a0e5-59e86ccbc923,29/07/2026,Liga 10,UR Aggro Rage,1,Grixis Reanimator,Grixis Reanimator,W,2,1,Robo,0,0,,,4c_PolG,log,biz1,47%
-be04ad8d-50a2-40ce-b9b0-3065be1f24fb,29/07/2026,Liga 10,UR Aggro Rage,2,Goryos Atraxa,Esper Goryo's,W,2,1,Salida,1,0,,,4c_PolG,log,GoncalvesF,47%
+match_uuid,Fecha,Evento / Liga,Lista,Versión,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente,Rival,Confianza
+94c9e75c-8c88-48c3-8be1-f98eefa840ee,09/07/2026,,Stock,Stock,,Dimir Merfolk,Dimir Merfolk,L,0,2,Robo,0,1,,,4c_PolG,log,Tirifolix92,100%
+5e4e366b-a7b1-48bd-a823-7c0a454d3287,09/07/2026,,Stock,Stock,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,0,,,4c_PolG,log,porterops,100%
+19a8178f-63ef-4b53-a171-0a5714f5fda3,09/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,W,2,0,Salida,0,2,,,4c_PolG,log,Matts,42%
+46411b6d-7069-458c-991f-c7321dec3b00,09/07/2026,,Stock,Stock,,Eldrazi,Eldrazi,L,1,2,Robo,0,4,,,4c_PolG,log,icy195,85%
+c9769568-364b-46c6-a4ff-8928237c0896,09/07/2026,,Stock,Stock,,Grixis Reanimator,Grixis Reanimator,W,2,1,Salida,1,1,,,4c_PolG,log,BrentJ,47%
+0d961857-ede8-4aee-94c2-18506eb66105,09/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,Blindside09,100%
+76d5155d-ffc5-43c1-9510-1b2c27883f16,09/07/2026,,Stock,Stock,,GW Birthing Ritual,GW Birthing Ritual,W,2,0,Salida,1,1,,,4c_PolG,log,dough_shack,100%
+6feaaca4-1e27-44c9-8f83-11d6f79d0f48,09/07/2026,,Stock,Stock,,Azorius Control,Azorius Control,W,2,0,Salida,0,1,,,4c_PolG,log,grenzos,100%
+0df787ad-a7df-4eca-a7d3-78f67bcc9704,09/07/2026,,Stock,Stock,,Azorius Control,Azorius Control,W,2,0,Salida,0,0,,,4c_PolG,log,nobrawn,100%
+ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,09/07/2026,,Stock,Stock,,Ruby Storm,Ruby Storm,W,2,1,Salida,0,0,,,4c_PolG,log,Gianlook,89%
+a4c01001-0f1c-4b02-a66e-bdd3233ff158,09/07/2026,,Stock,Stock,,Ruby Storm,Ruby Storm,L,1,2,Robo,0,1,,,4c_PolG,log,Monkmerlin,100%
+b6afde50-6862-4a83-8dac-de9a08a8bad4,09/07/2026,,Stock,Stock,,Grixis Reanimator,Grixis Reanimator,W,2,1,Robo,0,0,,,4c_PolG,log,tetsugaku_zombie,93%
+cfbade0b-daed-403f-a55c-b5624e0a917d,09/07/2026,,Stock,Stock,,Sam Combo,Sam Combo,L,1,2,Robo,0,1,,,4c_PolG,log,KapoUzumaki11,100%
+5c1316e4-1356-4a81-9e45-b662f00bc2af,09/07/2026,,Stock,Stock,,Broodscale,Broodscale,W,2,0,Salida,0,0,,,4c_PolG,log,Malox11,46%
+3b52e7d2-39e1-459a-b2a4-d66256101afa,10/07/2026,,Stock,Stock,,Amulet Titan,Amulet Titan,W,2,0,Salida,0,1,,,4c_PolG,log,Bob49,37%
+d9cb71f7-6b37-4154-aa85-1c4e64bb0a4a,10/07/2026,,Stock,Stock,,Boros Ponza,Boros Ponza,W,2,0,Robo,0,0,,,4c_PolG,log,FANELLACCIO,84%
+29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,11/07/2026,Liga 1,Stock,Stock,1,Loki,Izzet Affinity,W,2,0,Robo,0,0,,,feralo77,log,MNeon,42%
+0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,Stock,2,Devoted,Golgari Yawgmoth,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log,zturchan,84%
+e4b090d8-9bf0-4a39-bcfe-703f18c56740,11/07/2026,Liga 1,Stock,Stock,3,Affinity,Izzet Affinity,L,0,2,Robo,0,0,,Paliza,feralo77,log,Dcal215,93%
+b27b88d4-d70c-465f-b832-1fb1f6217358,11/07/2026,Liga 1,Stock,Stock,4,Broodscale,Broodscale,W,2,1,Robo,0,0,,,feralo77,log,chylz,100%
+5f239dd1-82c8-4aa4-804b-ace012669679,11/07/2026,Liga 1,Stock,Stock,5,Dimir,Dimir Frog,W,2,0,Salida,0,0,,Se estanca en la segunda,feralo77,log,ilprofetaVDR,apunte
+45370f5a-7496-4909-bc25-ef3c52e0373d,11/07/2026,Liga 2,Stock,Stock,1,Broodscale,Broodscale,L,0,2,Robo,0,0,,No juego muy bien el match,feralo77,log,DB_BaaL,100%
+df74357a-29ef-4326-af53-700f3e193060,12/07/2026,,Stock,Stock,,Boros Ponza,Boros Ponza,L,0,2,Robo,0,0,,,4c_PolG,log,Snapcaster1288,93%
+5169dd19-7379-43a3-acab-4fb65ad49b3d,12/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,W,2,1,Salida,0,1,,,4c_PolG,log,annihilator8,93%
+477dc805-7cc1-4060-aace-f97412484124,11/07/2026,Liga 2,Stock,Stock,2,¿? (revisar),¿? (revisar),W,1,0,Salida,1,1,,Concede,feralo77,log,Zorro7x4,0%
+b3c6bda6-ea72-42b4-994b-3dec7ec09c21,11/07/2026,Liga 2,Stock,Stock,3,Boros,Boros Energy,W,2,1,Robo,0,0,Snare,,feralo77,log,Cesc_95,100%
+2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,Stock,4,Vivoras,Sultai Midrange,L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log,Ciraris,apunte
+12341f9b-5f8f-46d6-83dc-45452ecc0109,12/07/2026,Liga 2,Stock,Stock,5,Izzet,Izzet Prowess,L,1,2,Salida,0,1,,Me gana las 2 con el doble strike,feralo77,log,beetea,92%
+3cb28fcf-16c3-4f3f-868f-6aa301955aa4,12/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,W,2,1,Robo,0,0,,,4c_PolG,log,claudioh,88%
+9a452380-38d2-4afe-95dd-41f5f2c6a482,13/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,zecarlonxo,88%
+ca5dcc9c-dffb-47ac-b2c6-1daae13b0ce5,13/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,L,1,2,Robo,0,0,,,4c_PolG,log,Counter_Magic,100%
+02eb2f17-6b45-40de-bfd6-8a7839b907f7,13/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,L,0,2,Salida,1,0,,,4c_PolG,log,yriel,95%
+59809b0a-9efa-404f-995a-d21a958561a5,13/07/2026,,Stock,Stock,,Living End,Living End,L,0,2,Robo,0,0,,,4c_PolG,log,prizedamalgam,84%
+59467dd1-1288-4722-89b5-f6862b10360a,13/07/2026,,Stock,Stock,,Izzet Prowess,Izzet Prowess,W,2,1,Robo,0,0,,,4c_PolG,log,JulianJohn,92%
+397c5889-d59c-4a8e-b573-5569cf872e38,13/07/2026,,Stock,Stock,,Merfolk,Merfolk,W,2,1,Salida,0,0,,,4c_PolG,log,fart_sniffer_93,100%
+1cad81a1-6b14-4a2c-8831-a3947b16a441,13/07/2026,,Stock,Stock,,Esper Goryo's,Esper Goryo's,L,0,2,Salida,0,0,,,4c_PolG,log,zutoSamuel,93%
+adf9d8f9-221b-49bd-8e9c-5b37946f14f4,13/07/2026,,Stock,Stock,,Eldrazi,Eldrazi,W,2,1,Salida,1,0,,,4c_PolG,log,e0068,64%
+82ba98c8-1dd2-440e-b63e-ec635166f8c3,13/07/2026,,Stock,Stock,,Azorius Control,Azorius Control,L,0,2,Robo,0,0,,,4c_PolG,log,Simunsorx,71%
+d662e25b-ddd4-4c41-9cc2-d89c651350f2,13/07/2026,,Stock,Stock,,MonoB Coffers,MonoB Coffers,W,2,0,Robo,0,2,,,4c_PolG,log,sekizou,100%
+9c63337c-f3af-473f-b686-74dcda18eb08,13/07/2026,,Stock,Stock,,Golgari Yawgmoth,Golgari Yawgmoth,L,0,2,Salida,0,0,,,4c_PolG,log,Nytrox,63%
+6b307f87-0c75-4eca-9302-56075da4dba4,13/07/2026,Liga 3,Stock,Stock,1,MonoB Reanimator,Grixis Reanimator,W,2,1,Salida,1,0,,,feralo77,log,Zores,67%
+97933634-bc3e-4f9d-b425-a72418449d67,14/07/2026,Liga 3,Stock,Stock,2,Neoform,Neoform,L,1,2,Robo,0,0,primera grisel al 2,,feralo77,log,Asmodai02,100%
+523f5bd2-321c-4b38-8b54-0f427edbb672,15/07/2026,,Stock,Stock,,Amulet Titan,Amulet Titan,L,0,2,Salida,0,0,,,4c_PolG,log,chagu,94%
+23f3ce8d-9ccd-44ae-9e94-60ae77d53f08,15/07/2026,,Stock,Stock,,Golgari Yawgmoth,Golgari Yawgmoth,W,2,1,Salida,1,0,,,4c_PolG,log,Shade_Scorpion,86%
+ecd661ab-5399-497c-bc38-8799c8a607c4,15/07/2026,,Stock,Stock,,Dimir Frog,Dimir Frog,W,2,0,Robo,0,1,,,4c_PolG,log,KangXiaotian,81%
+efcdfc72-d2e7-4c8d-b7a0-c0234af24c04,15/07/2026,,Stock,Stock,,Eldrazi,Eldrazi,L,0,2,Salida,0,1,,,4c_PolG,log,midiowl,64%
+905d4baa-63b5-4e72-b5d6-0372d2738561,15/07/2026,,Stock,Stock,,Ruby Storm,Ruby Storm,W,2,1,Salida,0,0,,,4c_PolG,log,Bachipandi21,100%
+e2ab0481-f981-4c01-ae47-e8c32563dd8d,15/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,0,1,,,4c_PolG,log,Syparon,42%
+d3d67632-54c8-40d5-86fd-eb4c21a3b656,15/07/2026,,Stock,Stock,,Izzet Prowess,Izzet Prowess,W,2,1,Robo,0,0,,,4c_PolG,log,Gobeli,100%
+bcb065ef-1de7-4f2b-9773-7dc53d6c937c,15/07/2026,,Stock,Stock,,Izzet Prowess,Izzet Prowess,L,0,2,Robo,0,0,,,4c_PolG,log,Jakesbaked,92%
+e6db5229-4b28-4478-9cfc-1c309f0157de,15/07/2026,,Stock,Stock,,Grixis Frog/Reanimator,Grixis Frog/Reanimator,W,2,1,Robo,0,0,,,4c_PolG,log,LionelB,81%
+82827b58-c888-41c8-9dfb-1faa524389f2,15/07/2026,,Stock,Stock,,Esper Goryo's,Esper Goryo's,L,1,2,Robo,0,0,,,4c_PolG,log,YAK9k,93%
+c0725c15-1759-408e-8b7c-b7c9c427edbd,18/07/2026,Liga 3,Stock,Stock,3,Ponza,Boros Ponza,W,2,0,Robo,0,0,,,feralo77,log,Jsph,93%
+7a1d37f5-097e-4d5c-b98a-6cac99874573,18/07/2026,Liga 3,Stock,Stock,4,Gorys,Esper Goryo's,L,0,2,Robo,0,0,,No le quito bien el atraxa,feralo77,log,kentaro_hokori,93%
+e6102623-accf-4ddc-b334-a80f72bb542e,18/07/2026,Liga 3,Stock,Stock,5,Izzet,Izzet Prowess,L,0,2,Robo,1,0,,,feralo77,log,101DeMoNS,100%
+3ce63980-35b8-445a-ac25-c9f04ad0aa35,18/07/2026,Liga 4,PT,PT,1,Sam,Sam Combo,L,1,2,Robo,0,1,soy malo,,feralo77,log,TheeMacSheezy,94%
+d816e48c-41ed-4a2d-b209-fc3ea83164b9,18/07/2026,Liga 4,PT,PT,2,Broodscale,Broodscale,W,2,1,Salida,0,0,,,feralo77,log,InspiringPresence,100%
+bb7b0286-7f95-43a9-ba8e-a7846e11993a,18/07/2026,Liga 4,PT,PT,3,Grixis Reanimator,Grixis Frog/Reanimator,W,1,0,Robo,0,1,,,feralo77,log,Durrrr89,65%
+c8505bf6-1d70-4e4e-9cca-44f07c66febf,18/07/2026,Liga 4,PT,PT,4,Dimir,Dimir Frog,L,0,2,Robo,0,0,Lista con namor y 2000 counter,,feralo77,log,SeriousSquid,81%
+8dd0205b-553f-491d-8885-1ad1b3e471f4,19/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,W,2,1,Robo,0,1,,,4c_PolG,log,DurdleTurtleLoL,93%
+11840f79-f2f5-4806-b018-e707b60fbd32,19/07/2026,,Stock,Stock,,Broodscale,Broodscale,L,0,2,Salida,1,0,,,4c_PolG,log,Bring_back_affinity,100%
+f696164a-4255-4f74-9310-cefddb09caf3,19/07/2026,,Stock,Stock,,Esper Goryo's,Esper Goryo's,W,2,1,Salida,1,0,,,4c_PolG,log,MIKOTAM,93%
+61e93b47-fe2c-4d29-90a4-1616d4ef4864,19/07/2026,,Stock,Stock,,Necrodominance,Necrodominance,L,1,2,Salida,1,0,,,4c_PolG,log,thegreatflow93,100%
+2c4fe934-9d9d-4fa6-9cd3-b322ac2eb999,18/07/2026,Liga 4,PT,PT,5,UW,Azorius Control,W,2,0,Robo,0,0,A XISPAS,,feralo77,log,Jijito,71%
+e0c49e67-489a-438b-9017-4bb43b772096,19/07/2026,,Stock,Stock,,Living End,Living End,W,2,0,Salida,0,0,,,4c_PolG,log,Hayek,88%
+abd74392-c692-42b4-90de-45c181dca0f5,19/07/2026,,Stock,Stock,,Golgari Yawgmoth,Golgari Yawgmoth,L,0,2,Robo,0,1,,,4c_PolG,log,DB_Control4Daze,86%
+1d1326e9-f7e8-4105-80d4-f9119cb6677f,19/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,0,0,,,4c_PolG,log,DeepDisherino,42%
+94a41a68-7667-4d65-bb03-276a257627fa,20/07/2026,,Stock,Stock,,Eldrazi Ramp,Eldrazi Ramp,W,2,1,Salida,0,2,,,4c_PolG,log,pastelZero,69%
+c21dedf8-b250-492a-9d12-b67418dcaee4,20/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,W,2,1,Robo,0,0,,,4c_PolG,log,YeffPog,93%
+09e0e9b8-95e3-49a6-b34b-0d294e1b9ab6,20/07/2026,,Stock,Stock,,Neoform,Neoform,L,0,2,Robo,1,0,,,4c_PolG,log,dolly_d84,100%
+e899efbc-3b8b-4031-8c7c-005ee182c1e1,20/07/2026,,Stock,Stock,,Eldrazi,Eldrazi,W,2,1,Salida,1,0,,,4c_PolG,log,ChJet,64%
+d5da430a-b292-4ccb-bc22-5fa0eda0945e,20/07/2026,,Stock,Stock,,Ruby Storm,Ruby Storm,W,2,1,Robo,0,2,,,4c_PolG,log,Chazure,94%
+1c723cb8-94a5-49ed-8560-1a230db0c41c,20/07/2026,Liga 5,2.0,Stock,1,Through the Breach,Through the Breach,W,2,1,Salida,0,0,"Duros, la ultima a xispas",,feralo77,log,RoccoCocco,100%
+bfd2e15f-1fb7-4aff-9589-139aa5c706f7,20/07/2026,,Stock,Stock,,¿? (revisar),¿? (revisar),L,1,2,Salida,2,0,,,4c_PolG,log,,0%
+48c7fa6e-e913-48da-b97e-39f1575c9f57,21/07/2026,,Stock,Stock,,Amulet Titan,Amulet Titan,W,2,1,Salida,1,0,,,4c_PolG,log,neatpete8,100%
+fbddc77c-c56c-4cc8-8748-9375c78c6325,21/07/2026,,Stock,Stock,,Dimir Frog,Dimir Frog,W,2,1,Robo,0,0,,,4c_PolG,log,Amama,81%
+fcc54cdf-e566-4400-9ef2-618f1818795b,21/07/2026,,Stock,Stock,,Neoform,Neoform,W,2,0,Salida,0,0,,,4c_PolG,log,kytk321,93%
+0768dca5-f42b-4f7b-b5aa-b9af70073696,21/07/2026,,Stock,Stock,,Esper Goryo's,Esper Goryo's,W,2,1,Robo,1,0,,,4c_PolG,log,Th3L3gend27,93%
+68f213b3-b4d0-4f47-b648-a781b7eab614,21/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,L,0,2,Robo,0,0,,,4c_PolG,log,TOP_AI,88%
+f16cf142-496e-41f6-9afd-0de6047552ab,21/07/2026,,Stock,Stock,,Cosmogoyf Combo,Cosmogoyf Combo,L,0,2,Robo,0,1,,,4c_PolG,log,enrouki1,100%
+f6e0b3ae-3ac6-4ed7-b23d-b0eab42b927c,21/07/2026,Liga 5,2.0,Stock,2,MonoB Reanimator,Grixis Reanimator,L,1,2,Robo,0,0,Tendria que haber tirado mulligan en la tercera,,feralo77,log,eckschin,93%
+d5330261-a86d-4d6f-8db2-dc60547443a3,21/07/2026,Liga 5,2.0,Stock,3,MonoR Artifacts,MonoR Artifacts,L,0,2,Robo,0,0,Me cruje,,feralo77,log,CrusherBotBG,94%
+dc40834c-85ad-4880-b63b-c17e91264235,21/07/2026,Liga 5,2.0,Stock,4,Goryos,Esper Goryo's,L,1,2,Robo,0,1,hUMILADO,,feralo77,log,vinnyrussian123,93%
+0490d733-3ad7-4a16-9d43-b20dbb297c2f,22/07/2026,,Stock,Stock,,Azorius Control,Azorius Control,L,1,2,Salida,0,0,,,4c_PolG,log,Galanator,71%
+69a8c5b2-406d-4acd-8368-2716058b6d2e,22/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,L,0,2,Robo,1,0,,,4c_PolG,log,ipakers,93%
+e374128a-368c-4536-aafc-cdc89ce9d702,22/07/2026,Liga 5,2.0,Stock,5,Broodscale,Broodscale,L,0,2,Salida,1,1,,,feralo77,log,ls149950,48%
+d43e65c2-eb56-41d8-9ace-80ef98332ec5,22/07/2026,,Stock,Stock,,Grixis Reanimator,Grixis Reanimator,L,0,2,Salida,0,0,,,4c_PolG,log,xITDxxP985x,47%
+1aab62bd-3018-4bcb-bace-437886c88f11,22/07/2026,,Stock,Stock,,Elves,Elves,W,2,0,Salida,1,0,,,4c_PolG,log,Orpheus819,80%
+ff17944e-41ce-44e9-adbe-30b1461955f6,22/07/2026,,Stock,Stock,,Hollow One,Hollow One,L,1,2,Salida,0,1,,,4c_PolG,log,Dudarudi,100%
+dd2aa23e-c93a-40a7-bbc9-add220569e4e,22/07/2026,,Stock,Stock,,Eldrazi Ramp,Eldrazi Ramp,L,0,2,Robo,0,0,,,4c_PolG,log,Niroval,96%
+de67bc4c-a8f7-45a5-834c-f651b839bbf9,22/07/2026,,Stock,Stock,,Oracle Combo,Oracle Combo,W,2,1,Salida,0,1,,,4c_PolG,log,Boce,100%
+241c6d98-b967-4522-949e-2931767cb411,22/07/2026,,Stock,Stock,,Living End,Living End,W,2,1,Robo,0,0,,,4c_PolG,log,TSTOB,86%
+43e1e1a1-fb2f-4f80-8ecf-352c7afbbfbb,22/07/2026,Liga 1,Pol 1 NF,Stock,1,Zoo,Dimir Frog,L,0,2,Salida,0,0,,En G2 y G3 no conformarse con cualquier mano. Intentar buscar mano con bicho y consign para cortar su wincon de Draco con línea a la vez que metemos una cierta presión. El Unholy es fundamental para cortar los Kavus.,4c_PolG,log,Ardonas,81%
+46a29e3c-6802-4fce-b658-7d7ea562a9fe,22/07/2026,Liga 1,Pol 1 NF,Stock,2,Boros Energy,Boros Energy,W,2,0,Salida,1,1,,"Unholys, Snares y Bouncer para dentro en G2 y G3 para prevenir los posibles High Noon y Ajanis. Pairing ligeramente a nuestro favor.",4c_PolG,log,Somedude127,90%
+d78d4858-bcd9-4551-97bd-3db5da194fe4,22/07/2026,Liga 1,Pol 1 NF,Stock,3,Eldrazi PT,Eldrazi Ramp,W,2,1,Salida,1,1,,En G2 y G3 es posible que nuestro oponente haga algún mulligan agresivo para buscar cálices o trinisferas. Consigns MVP's.,4c_PolG,log,Tarmofaeries,69%
+70f4ef63-3a6e-4a28-84f4-14e241371df4,22/07/2026,Liga 1,Pol 1 NF,Stock,4,Neoform,Neoform,W,2,1,Salida,1,0,,"En esta partida ha quedado claro que por lo menos necesitamos un counter para ganar, ya que si se corta el combo no le da tiempo a volver a jugarlo.",4c_PolG,log,Jijito,100%
+aaf13d68-242a-46e7-bfcc-580ec314f3cb,22/07/2026,Liga 1,Pol 1 NF,Stock,5,Chord Toolbox,Sam Combo,W,2,1,Robo,0,1,,"Pairing duro debido al gran número de criaturas de nuestro oponente. Hay que saber elegir muy bien a que le tiramos nuestro removal. Los Cutter ganan la partida por opresión, por eso va a llevar High Noon en G2 y G3. Meter Spell Snare ya que le corta gran parte de su baraja, incluídos los High Noon. Pierce no lo veo necesario. Ante High Noon el Cutter nos sirve para equipar a nuestras criaturas y poderles dar arrollar para poder pasar por encima a sus bichos molestos 1/1.",4c_PolG,log,Coradorable,94%
+c4d81339-5db2-4754-a5ae-35e31346a7e0,23/07/2026,Liga 6,Basics,Basics,1,Amulet,Amulet Titan,L,1,2,Robo,0,2,,,feralo77,log,CacZarn,100%
+bc4fd619-5f52-4f6d-b849-051290198cf5,23/07/2026,Liga 6,Basics,Basics,2,Ponza,Boros Ponza,W,2,0,Salida,1,0,,,feralo77,log,Mactavor,93%
+289a726b-b73a-4293-a126-0e60e50403df,23/07/2026,Liga 2,Pol 1 NF,Stock,1,UR Prowess,Izzet Prowess,L,1,2,Robo,0,0,,,4c_PolG,log,toondoslav,100%
+a9df8904-b0f3-46ad-83e1-e5a8f11b6e71,23/07/2026,Liga 2,Pol 1 NF,Stock,2,Eldrazi PT,Eldrazi PT,W,2,0,Salida,0,0,,,4c_PolG,log,Villhelm97,apunte
+a4dcd953-1fd9-4509-931b-f2996cadfee4,23/07/2026,Liga 2,Pol 1 NF,Stock,3,Storm,Ruby Storm,W,2,1,Robo,1,0,,,4c_PolG,log,Ch4ppy,97%
+1788e343-d5ac-4ea0-867e-03d2c6473183,23/07/2026,Liga 2,Pol 1 NF,Stock,4,Yawgmoth,Golgari Yawgmoth,W,2,0,Salida,0,1,,En la guía que tenemos de side no mete Spell Snare. Yo los he jugado y me han ido de lujo para counter a Caldero.,4c_PolG,log,KingMotus,86%
+e17aad99-e134-49af-976a-94fe34e7b89a,23/07/2026,Liga 2,Pol 1 NF,Stock,5,Chord Toolbox,Chord Toolbox,W,2,0,Salida,0,1,,,4c_PolG,log,Boce,apunte
+26d69ccb-01ca-4680-b5df-ff259858bdcc,23/07/2026,Liga 6,Basics,Basics,3,URb,URb,W,2,1,Robo,0,1,,https://www.mtggoldfish.com/deck/7886860#online,feralo77,log,OafMcNamara,apunte
+167e6b9f-942f-4549-bd62-1232fdde806b,23/07/2026,Liga 3,Pol 1 NF,Stock,1,Boros Hollow One,Hollow One,L,1,2,Salida,0,0,,,4c_PolG,log,k2slice,93%
+b90c6633-7d11-46c8-8a09-c07b7ee677ab,23/07/2026,Liga 3,Pol 1 NF,Stock,2,Grixis Reanimator,Grixis Reanimator,L,0,2,Salida,0,0,,,4c_PolG,log,titan55,47%
+517eaca8-f07d-4b82-9c72-2484eae81399,24/07/2026,Liga 6,Basics,Basics,4,Boros,Boros Energy,L,0,2,Robo,0,1,,,feralo77,log,Wbez,100%
+e7bfe95e-2617-4c32-9afd-1ba616531fed,24/07/2026,Liga 4,Pol 1 NF,Stock,1,Mono green Ouroboroid,Mono green Ouroboroid,W,2,0,Robo,0,0,,,4c_PolG,log,gartuyzz,apunte
+be93f36b-e50b-490a-a430-5236b33c747a,24/07/2026,Liga 4,Pol 1 NF,Stock,2,UR Prowess,Izzet Prowess,W,2,1,Salida,0,0,,,4c_PolG,log,Sunblast_Angel,92%
+ccd7fb74-82d9-4f7f-b624-8801fd7012a1,24/07/2026,Liga 4,Pol 1 NF,Stock,3,Grixis Reanimator,Grixis Reanimator,L,1,2,Salida,0,0,,,4c_PolG,log,Cawl25,47%
+7f4280f9-0e13-4865-b0cf-f7e0da9f41c8,24/07/2026,Liga 6,Basics,Basics,5,Boros,Boros Energy,W,2,1,Salida,1,0,,,feralo77,log,JohnJonis,100%
+a98f93a2-95d5-4c58-b0df-2238cebb9458,24/07/2026,Liga 4,Pol 1 NF,Stock,4,Isochron Scepter,Azorius Control,L,0,2,Robo,1,1,,,4c_PolG,log,ganache1127,95%
+d67f4904-2677-4333-896b-db4572b6075e,24/07/2026,Liga 4,Pol 1 NF,Stock,5,Isochron Scepter,Azorius Control,L,1,2,Salida,2,1,,,4c_PolG,log,alessandro81,100%
+16221428-d559-4582-9eaa-a7120fc6fdb6,24/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,L,1,2,Robo,1,0,,,4c_PolG,log,Sagequatch,42%
+15d3bfc1-8d5d-43b8-b970-b4f4701ade45,24/07/2026,,Stock,Stock,,Esper Goryo's,Esper Goryo's,L,0,2,Robo,0,0,,,4c_PolG,log,sGiuG,93%
+500e79be-006a-461c-b8d9-0c947bb93d36,24/07/2026,,Stock,Stock,,¿? (revisar),¿? (revisar),W,2,1,Salida,0,0,,,4c_PolG,log,banned-ravager,30%
+c4961472-48ba-4177-9a51-07857894d43d,24/07/2026,,Stock,Stock,,Dimir Frog,Dimir Frog,L,0,2,Robo,1,0,,,4c_PolG,log,AGrackle,81%
+a11f57aa-291d-4e30-9ddb-13e08daa205c,24/07/2026,,Stock,Stock,,Neoform,Neoform,L,1,2,Salida,1,2,,,4c_PolG,log,chylz,93%
+12d2afba-3162-4790-ae57-d8b1a0c08b72,24/07/2026,,Stock,Stock,,¿? (revisar),¿? (revisar),L,1,2,Robo,0,1,,,4c_PolG,log,Jkimb0,0%
+de7a16dc-a805-498d-bcef-4b1ac8ef3ce3,25/07/2026,,Stock,Stock,,Izzet Prowess,Izzet Prowess,L,1,2,Robo,0,0,,,4c_PolG,log,TheRightStuff,92%
+d53964d3-095d-4b81-981b-4477c171089d,25/07/2026,,Stock,Stock,,¿? (revisar),¿? (revisar),W,2,0,Robo,1,1,,,4c_PolG,log,Joy1,17%
+c2475170-26ae-4a55-b751-974284b930c6,25/07/2026,,Stock,Stock,,Esper Goryo's,Esper Goryo's,W,2,0,Salida,0,2,,,4c_PolG,log,Bobone,47%
+6d98d09e-91df-4b55-97bc-450ea1207154,25/07/2026,,Stock,Stock,,¿? (revisar),¿? (revisar),W,2,1,Robo,0,2,,,4c_PolG,log,virp13,31%
+432820ee-9461-4968-98fd-388fee185f79,25/07/2026,Liga 5,UR Aggro Flashback,PT,1,Hollow One,Hollow One,W,2,1,Salida,0,0,,Salir o no salir condiciona una barbaridad y hay que meter todos los Unholy dentro por Lava Dart.,4c_PolG,log,41krid,95%
+d7132d11-73e5-4ee3-9568-d168d3dd948f,25/07/2026,Liga 5,UR Aggro Flashback,PT,2,Eldrazi Tron,Eldrazi,L,1,2,Salida,0,0,,,4c_PolG,log,summersalt,88%
+0bbc9c4a-3c6e-4ba6-9c88-039954bf4ee4,25/07/2026,Liga 5,UR Aggro Flashback,PT,3,Storm,Ruby Storm,L,0,2,Robo,0,0,,,4c_PolG,log,kyporioth,92%
+8cee2aab-2f44-42e0-a19e-c06c33a4a611,25/07/2026,Liga 5,UR Aggro Flashback,PT,4,Hollow One,Hollow One,W,2,0,Salida,0,0,,,4c_PolG,log,AlexEvans,90%
+c6f5c973-b58d-4360-b766-4f7cae6adf86,25/07/2026,Liga 5,UR Aggro Flashback,PT,5,Eldrazi PT,Eldrazi Ramp,W,2,1,Salida,1,0,,Consings y Pierce IN,4c_PolG,log,AchtungSchaaf827,92%
+2412cf29-cf25-421f-869f-60e5119d8a8f,25/07/2026,Liga 6,UR Aggro Flashback,PT,1,Neoform,Neoform,L,0,2,Salida,0,0,,,4c_PolG,log,SzogunTokugawa,100%
+4aa92490-c76a-43c0-8270-1ca4afd37ea4,25/07/2026,Liga 6,UR Aggro Flashback,PT,2,Hammer Time,Izzet Affinity,L,1,2,Robo,1,0,,,4c_PolG,log,Eyelash,88%
+f7d2ebb8-a71b-4aaa-9249-0e64d85b8f32,25/07/2026,Liga 6,UR Aggro Flashback,PT,3,Hollow One,Hollow One,W,2,0,Robo,0,0,,,4c_PolG,log,GabbaGandalf,100%
+d719f721-c142-440b-9502-96ff66fb1f78,25/07/2026,Liga 6,UR Aggro Flashback,PT,4,Mono-Black Coffers,MonoB Coffers,W,2,0,Robo,0,0,,,4c_PolG,log,sekizou,46%
+e9889b1c-4ab7-4e5f-9604-1d331626cdd4,25/07/2026,Liga 6,UR Aggro Flashback,PT,5,Oswald Grinding Station,Oswald Grinding Station,L,0,1,Salida,0,0,,,4c_PolG,log,fphonne,apunte
+43708187-1e4d-4704-9912-3b13b0be314e,25/07/2026,Liga 7,Basics,Basics,1,Amulet,Amulet Titan,L,1,2,Robo,0,0,,,feralo77,log,AndySCWilson,100%
+996d868d-1b52-4100-baf0-993f7fb6ea70,25/07/2026,Liga 7,Basics,Basics,2,Hollow One,Hollow One,W,2,1,Salida,0,0,,,feralo77,log,Iceblade908,100%
+d1d502df-3f42-46bf-91e0-0c70195d7729,26/07/2026,Liga 7,Basics,Basics,3,Amulet,Amulet Titan,W,2,0,Salida,0,0,,,feralo77,log,PuntThenWhine,91%
+34899403-d4a3-4e09-b676-6b66c969f0dc,26/07/2026,Liga 7,Basics,Basics,4,Boros,Boros Energy,W,2,0,Salida,0,0,,,feralo77,log,Reaperss,100%
+,27/07/2026,Liga 9,Basics,Basics,1,Mono-Green Eldrazi,Mono-Green Eldrazi,,,,,,,,revisar (sin log),feralo77,manual,krixtijan,
+,27/07/2026,Liga 9,Basics,Basics,2,Ponza,Ponza,,,,,,,,revisar (sin log),feralo77,manual,funnyscreenname,
+b40dc27a-7b39-4575-8c5a-d6531fbd97d0,26/07/2026,Liga 7,Basics,Basics,5,Dimir Frog,Dimir Frog,L,0,2,Robo,1,0,,,feralo77,log,Ghost11157,81%
+ad10d270-b2bf-46ce-b675-6e882ef35b68,27/07/2026,Liga 8,PT,PT,1,Neoform,Neoform,L,0,2,Robo,1,0,,,feralo77,log,NJGB1,100%
+187e18dd-196f-4024-bad1-1ababc699072,27/07/2026,Liga 8,PT,PT,2,Storm,Ruby Storm,W,2,0,Salida,0,0,,,feralo77,log,haoqinglangou,97%
+200fc873-e94c-4527-8d9b-abbabdb69a66,27/07/2026,Liga 8,PT,PT,3,Living End,Living End,L,0,2,Salida,0,0,,,feralo77,log,bellfy,62%
+703f5e3e-45b2-47fa-9f17-db469c117ce9,27/07/2026,Liga 7,UR Aggro Flashback,PT,1,Affinity,Izzet Affinity,W,2,1,Salida,0,0,,,4c_PolG,log,Heavenscythe,93%
+830999b5-951e-4fc4-8bcb-e1e3626d07c8,27/07/2026,Liga 8,PT,PT,4,Storm,Ruby Storm,W,2,0,Robo,0,0,,,feralo77,log,liuyuchen,86%
+89ab3577-bce8-44e9-a816-024413efeb07,27/07/2026,Liga 7,UR Aggro Flashback,PT,2,UR Artifacts,UR Artifacts,W,2,0,Robo,0,0,,,4c_PolG,log,don_mars,apunte
+c848d8d2-0e77-401a-8e8b-51808077084b,27/07/2026,Liga 8,PT,PT,5,Devoted Combo,Golgari Yawgmoth,W,2,1,Salida,0,0,,,feralo77,log,ulbabrabal,42%
+c6a63bb2-6fc4-44d4-a758-4f25e719f642,27/07/2026,Liga 7,UR Aggro Flashback,PT,3,Boros Ponza,Boros Ponza,L,1,2,Salida,0,0,,,4c_PolG,log,Auripower,93%
+f3cb3478-63b2-49d8-a78a-9c8c27edd95d,27/07/2026,Liga 7,UR Aggro Flashback,PT,4,Eldrazi Ramp,Eldrazi Ramp,W,2,1,Salida,1,2,,,4c_PolG,log,41krid,96%
+a3379035-a670-46fd-8516-50dfc51ccd95,27/07/2026,Liga 7,UR Aggro Flashback,PT,5,Tron,Eldrazi,W,2,1,Robo,0,1,,,4c_PolG,log,Tikiman89,85%
+f451faa0-92bc-463d-912e-991b0b28abb2,27/07/2026,Liga 8,UR Aggro Flashback,PT,1,Hollow One,Hollow One,L,1,2,Robo,1,0,,,4c_PolG,log,Bananaman985,100%
+01a33235-ddaa-4d06-b552-b9b2c55778fd,27/07/2026,Liga 8,UR Aggro Flashback,PT,2,Goryos Atraxa,Esper Goryo's,L,0,2,Salida,0,0,,,4c_PolG,log,MKC,47%
+cefe1808-a1a3-4331-8d21-ffbad4f29a69,27/07/2026,Liga 8,UR Aggro Flashback,PT,3,UB Mill,UB Mill,W,2,0,Robo,1,1,,,4c_PolG,log,BlackVenant,apunte
+51ce026f-500f-4e8e-9efd-d319ebc8ed5c,27/07/2026,Liga 8,UR Aggro Flashback,PT,4,Neoform,Neoform,W,2,1,Robo,1,1,,,4c_PolG,log,Pascal3000,88%
+48062ea1-82e1-4210-b639-b4e701e698ce,27/07/2026,Liga 8,UR Aggro Flashback,PT,5,Neoform,Neoform,W,2,1,Robo,0,0,,,4c_PolG,log,Auripower,93%
+de410482-9c8e-4237-8242-f4a78a994874,27/07/2026,Liga 9,UR Aggro Flashback,PT,1,Storm,Storm,W,2,0,Robo,1,0,,,4c_PolG,log,Aquilix,apunte
+339c8384-b556-4ecd-ad86-8bbcfc045e51,27/07/2026,Liga 9,UR Aggro Flashback,PT,2,Song of Creation,Izzet Affinity,W,2,0,Robo,0,0,,,4c_PolG,log,mommydom_manifesto,42%
+,28/07/2026,Liga 9,Basics,Basics,3,Hollow One,Hollow One,,,,,,,,revisar (sin log),feralo77,manual,Thattaman,
+38a0ba1a-93e9-418c-8f92-f33fbd119e9b,27/07/2026,Liga 9,UR Aggro Flashback,PT,3,Broodscales,Broodscale,L,0,2,Robo,0,1,,,4c_PolG,log,PhyrexianSwarm,100%
+5d892b72-c95e-4be4-b0f3-e80652520d9b,27/07/2026,Liga 9,UR Aggro Flashback,PT,4,Hammer Time,Izzet Affinity,W,2,1,Salida,0,0,,,4c_PolG,log,Eyelash,42%
+,29/07/2026,Liga 10,UR Aggro Rage,PT,3,Boros Aggro,Boros Aggro,,,,,,,,revisar (sin log),4c_PolG,manual,Ignacioz1,
+,29/07/2026,Liga 10,UR Aggro Rage,PT,4,UB Frog,UB Frog,,,,,,,,revisar (sin log),4c_PolG,manual,Tarmofaeries,
+,29/07/2026,Liga 9,Basics,Basics,4,Yamwoth,Yamwoth,,,,,,,,revisar (sin log),feralo77,manual,Marckys,
+,29/07/2026,Liga 9,Basics,Basics,5,Ponza,Ponza,,,,,,,,revisar (sin log),feralo77,manual,EighFinity,
+77b6f032-c22f-425a-9258-3fad12a1aa2a,27/07/2026,Liga 9,UR Aggro Flashback,PT,5,Goryos Atraxa,Esper Goryo's,L,1,2,Salida,0,0,,,4c_PolG,log,DB_cntrlfreak_ttv,93%
+b3a723b4-e38d-4ff0-a0e5-59e86ccbc923,29/07/2026,Liga 10,UR Aggro Rage,PT,1,Grixis Reanimator,Grixis Reanimator,W,2,1,Robo,0,0,,,4c_PolG,log,biz1,47%
+be04ad8d-50a2-40ce-b9b0-3065be1f24fb,29/07/2026,Liga 10,UR Aggro Rage,PT,2,Goryos Atraxa,Esper Goryo's,W,2,1,Salida,1,0,,,4c_PolG,log,GoncalvesF,47%
