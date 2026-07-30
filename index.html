@@ -330,6 +330,9 @@
       </div>
     </div>
     <div class="grid"><div class="panel full"><h3>Duración de partida vs victoria <span>(WR según el turno en que acaba el game — ¿cierras rápido?)</span></h3><div class="cwrap"><canvas id="chKeyDur"></canvas></div></div></div>
+    <div class="grid"><div class="panel full"><h3>Salida o robo, game a game <span>(el game 1 es la única medición limpia)</span></h3><div class="cwrap"><canvas id="chG1SR"></canvas></div>
+      <div class="note-lg" style="margin-top:12px"><b>Por qué solo cuenta el game 1.</b> En el primer game, quién empieza lo decide el dado: es azar puro, así que la diferencia que veas es el efecto real de la salida. En los games 2 y 3 elige el que <b>perdió</b> el game anterior — o sea que "estar en salida" va pegado a "vas por detrás en la partida", y ese sesgo se come la ventaja. Si el G2 y el G3 salen planos, no significa que da igual empezar: significa que ahí la salida se la queda quien la necesita.</div>
+      <div id="g1srIns" class="note-lg" style="margin-top:8px"></div></div></div>
     <div class="note-lg" id="playV2Note" style="display:none">Las claves nuevas (Cutter+ficha, criaturas desplegadas, interacción del rival, tu primera interacción) aparecerán con la próxima carga de datos: el games.csv publicado aún no trae esas columnas. Pulsa "Actualizar datos" arriba.</div>
 
     <div style="margin:var(--space-5) 0"><button class="btn" id="playMoreBtn">Ver más estadísticas</button></div>
@@ -364,7 +367,7 @@
 
   <!-- ===== LISTAS ===== -->
   <section class="view" id="v-lists">
-    <div class="author"><span class="ic"></span><div><b>Listas de los jugadores</b> — cada versión que habéis jugado (tú y tus compañeros de liga) y su rendimiento real, cruzado con partidas y games. Una versión se identifica por su <b>maindeck</b>, no por el nombre: dos listas con las mismas 60 cartas y sideboard distinto son la <b>misma versión</b> y sus estadísticas se <b>suman</b> (la "Ur Aggro Rage" de Pol tiene el maindeck idéntico a tu "PT"). Los fetchlands cuentan como intercambiables. Los nombres exactos que hay dentro de cada versión salen en su ficha. La síntesis carta a carta y el porqué de cada slot viven en <b>La 75 Definitiva</b>; el campo global, en <b>Meta · mtgtop8</b>.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Listas de los jugadores</b> — cada versión que habéis jugado (tú y tus compañeros de liga) y su rendimiento real, cruzado con partidas y games. Una versión se identifica por su <b>maindeck</b>, no por el nombre: dos listas con las mismas 60 cartas y sideboard distinto son la <b>misma versión</b> y sus estadísticas se <b>suman</b> (la "Ur Aggro Rage" de Pol tiene el maindeck idéntico a tu "Aggro"). Los fetchlands cuentan como intercambiables. Los nombres exactos que hay dentro de cada versión salen en su ficha. La síntesis carta a carta y el porqué de cada slot viven en <b>La 75 Definitiva</b>; el campo global, en <b>Meta · mtgtop8</b>.</div></div>
     <h3 class="secH" style="margin-top:2px">Listas y su rendimiento <span class="q" style="font-size:12px;font-weight:400">(por nombre · suma a quien la juegue)</span></h3>
     <div class="decks" id="myLists"></div>
     <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(mismo maindeck = misma versión, aunque cambie el sideboard)</span></h3><div id="wrByList"></div></div>
@@ -395,7 +398,7 @@
     <div class="segwrap"><label>Comparar por</label>
       <div class="seg" id="cmpDim">
         <div class="opt" data-d="by">Jugador</div>
-        <div class="opt on" data-d="li">Lista</div>
+        <div class="opt on" data-d="li">Versión</div>
         <div class="opt" data-d="aq">Mazo rival</div>
         <div class="opt" data-d="sr">Salida / Robo</div>
       </div>
@@ -1636,8 +1639,8 @@ let MATCHES = [
 const LIST_META = {
  "Stock":{deck:"7881695",url:"https://www.mtggoldfish.com/deck/7881695#online",
   desc:"Base clásica (Preordain + Expressive Iteration, 1 Violent Urge + 1 Flashback). Verificada en mtggoldfish."},
- "PT":{deck:"7881694",url:"https://www.mtggoldfish.com/deck/7881694#online",
-  desc:"La variante del Pro Tour. Jugada en la Liga 4."},
+ "Aggro":{deck:"7881694",url:"https://www.mtggoldfish.com/deck/7881694#online",
+  desc:"La versión agresiva (antes \u0022PT\u0022, la del Pro Tour): Monstrous Rage + Assault Strobe en vez de Expressive Iteration. Es la que Pol ha replicado por su cuenta."},
  "2.0":{deck:"7881798",url:"https://www.mtggoldfish.com/deck/7881798#online",
   desc:"Versión nueva, estrenada en la Liga 5."},
  "Basics":{deck:"7885257",url:"https://www.mtggoldfish.com/deck/7885257#online",
@@ -1732,6 +1735,32 @@ function renderPlay(){
   }
   playCharts.keyDur=wrBar('chKeyDur',[['T1',g=>g.t===1],['T2',g=>g.t===2],['T3',g=>g.t===3],['T4',g=>g.t===4],['T5',g=>g.t===5],['T6+',g=>g.t>=6]]);
 
+  // ===== Salida/robo game a game =====
+  // El G1 reparte la salida por dado (azar): es la ÚNICA medición sin sesgo del efecto
+  // de empezar. En el G2/G3 elige quien perdió el game anterior, así que "salida" y "vas
+  // perdiendo" van juntas y la ventaja se camufla. Se enseñan los tres para que se vea.
+  {
+    const gsr=(gi,sr)=>D.filter(g=>g.gi===gi&&g.sr===sr);
+    const gis=[1,2,3].filter(i=>D.some(g=>g.gi===i));
+    const serie=sr=>gis.map(i=>{const a=gsr(i,sr);return a.length?wrOf(a):null;});
+    const nOf=(i,sr)=>gsr(i,sr).length;
+    playCharts.g1sr=new Chart($('chG1SR'),{type:'bar',
+      data:{labels:gis.map(i=>`Game ${i}`),datasets:[
+        {label:'En salida',data:serie('Salida'),backgroundColor:C.grn,borderRadius:0},
+        {label:'En robo',data:serie('Robo'),backgroundColor:C.red,borderRadius:0}]},
+      options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},
+        scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}},
+        plugins:{legend:{position:'top',labels:{usePointStyle:true,boxWidth:8}},
+          tooltip:{callbacks:{label:c=>{const i=gis[c.dataIndex],sr=c.datasetIndex===0?'Salida':'Robo';
+            const a=gsr(i,sr),w=a.filter(g=>g.w).length;
+            return `${sr}: WR ${c.parsed.y}% (${w}-${a.length-w}, ${a.length} games)`;}}}}}});
+    const s1=gsr(1,'Salida'), r1=gsr(1,'Robo');
+    const w1=wrOf(s1), l1=wrOf(r1), br=w1-l1;
+    $('g1srIns').innerHTML = (s1.length&&r1.length)
+      ? `<b>Tu game 1:</b> en salida ganas el <b>${w1}%</b> (${s1.filter(g=>g.w).length}-${s1.length-s1.filter(g=>g.w).length}, ${s1.length} games); en robo, el <b>${l1}%</b> (${r1.filter(g=>g.w).length}-${r1.length-r1.filter(g=>g.w).length}, ${r1.length}). Son <b>${Math.abs(br)} puntos</b> de diferencia${br>0?'':' a favor del robo, que sería rarísimo — mira el tamaño de la muestra'}. ${Math.abs(br)>=15?'Es mucho: el mazo depende de empezar, y eso pesa en mulligans y en el plan de sideboard cuando vas segundo.':'Con esta muestra la señal es moderada.'}`
+      : 'Faltan games del primero en salida y en robo para comparar.';
+  }
+
   // ===== VER MÁS (desplegable) =====
   $('playMore').style.display=playMoreShown?'':'none';
   $('playMoreBtn').textContent=playMoreShown?'Ocultar estadísticas':'Ver más estadísticas';
@@ -1817,7 +1846,7 @@ function refreshAll(){
   else if(v==='meta')renderMetaTab();
 }
 
-// 'li' se resuelve por VERSIÓN del mazo (no por nombre de lista): filtrar por "PT" trae
+// 'li' se resuelve por VERSIÓN del mazo (no por nombre de lista): filtrar por "Aggro" trae
 // también las partidas apuntadas como "Ur Aggro Rage", que es el mismo maindeck.
 function uniq(f){return [...new Set(M().map(d=>f==='li'?verLab(d):d[f]))];}
 function fillSel(id,f,all){const s=$(id);s.innerHTML='';const o=new Option(all,'all');s.add(o);uniq(f).forEach(v=>s.add(new Option(v,v)));s.onchange=render;}
@@ -1874,7 +1903,7 @@ function render(){const D=filtered(),all=M();
 // ---- Listas por NOMBRE: una lista = su nombre; suma a todos los que la juegan ----
 // Respeta el filtro global de jugador (M()): con "todos" suma; con un jugador, su parte.
 // Agrupa por VERSIÓN del mazo, no por nombre de lista: la "Ur Aggro Rage" de Pol y la
-// "PT" de Fer son el mismo maindeck con distinto sideboard, y contarlas aparte partía
+// "Aggro" de Fer son el mismo maindeck con distinto sideboard, y contarlas aparte partía
 // las muestras en trozos sin significado (la "2.0" llegó a 5 partidas). `listas` guarda
 // los nombres exactos que hay dentro de cada versión, para poder enseñarlos.
 function listGroups(){
@@ -2031,7 +2060,7 @@ function renderScout(){
 // dashboard. Al comparar POR JUGADOR usa todos los jugadores (ignora el filtro global de cabecera);
 // en el resto respeta ese filtro. La tabla, las barras y el radar se rehacen con cada cambio.
 let cmpDim='li', cmpMetricKey='wrMatch', cmpCharts={}, cmpLastGroups=[], cmpSort={col:'n',dir:-1};
-const CMP_DIMS={by:{label:'Jugador',wf:'wf-player'},li:{label:'Lista',wf:'wf-lista'},aq:{label:'Mazo rival',wf:'wf-arq'},sr:{label:'Salida / Robo',wf:'wf-sr'}};
+const CMP_DIMS={by:{label:'Jugador',wf:'wf-player'},li:{label:'Versión',wf:'wf-lista'},aq:{label:'Mazo rival',wf:'wf-arq'},sr:{label:'Salida / Robo',wf:'wf-sr'}};
 const cmean=(a,dec=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**dec)/10**dec:0;
 // Columnas de la tabla (grp res=resultados, play=cómo juega; deep=sólo con games profundos; bar=elegible en barras;
 // dir: en el Cara a cara, quién gana la métrica — 1 = mayor mejor, -1 = menor mejor, sin dir = neutra, no se puntúa)
@@ -2052,11 +2081,19 @@ const CMP_METRICS=[
   {k:'land3',lab:'Tierras T1-3',kind:'num',deep:true},
   {k:'threat',lab:'1ª amenaza',kind:'num',deep:true,dir:-1},
   {k:'cutter',lab:'Turno Cutter',kind:'num',dir:-1},
-  {k:'wrLong',lab:'WR 7+ turnos',kind:'wr',hb:true,bar:true,dir:1},
+  {k:'wrLong',lab:'WR 6+ turnos',kind:'wr',hb:true,bar:true,dir:1},
   {k:'wrCutE',lab:'WR Cutter T1-2',kind:'wr',hb:true,bar:true,dir:1},
+  // Las 4 de "las 5 claves" + el game 1 por salida/robo. Van marcadas v2: solo salen
+  // cuando games.csv trae esas columnas, igual que 'deep' para los datos profundos.
+  {k:'wrKf',lab:'WR Cutter+ficha',kind:'wr',v2:true,hb:true,bar:true,dir:1},
+  {k:'crea',lab:'Criaturas/g',kind:'num',v2:true,bar:true,dir:1},
+  {k:'firstInt',lab:'1ª interacción',kind:'num',v2:true,dir:-1},
+  {k:'rrOpp',lab:'Removal rival/g',kind:'num',v2:true,dir:-1},
+  {k:'wrG1Sal',lab:'WR G1 salida',kind:'wr',hb:true,bar:true,dir:1},
+  {k:'wrG1Rob',lab:'WR G1 robo',kind:'wr',hb:true,bar:true,dir:1},
 ];
 // Dimensión "Lista": la identidad es la VERSIÓN del mazo (mismo maindeck), no el nombre.
-// Así la "PT" de Fer y la "Ur Aggro Rage" de Pol cuentan como una: son el mismo mazo con
+// Así la "Aggro" de Fer y la "Ur Aggro Rage" de Pol cuentan como una: son el mismo mazo con
 // distinto sideboard, y separarlas dejaba muestras de 5 partidas sin significado.
 function cmpValM(d,liByUid){return cmpDim==='by'?(d.by||'—'):cmpDim==='aq'?d.aq:cmpDim==='sr'?d.sr:verLab(d);}
 function cmpValG(g,liByUid){return cmpDim==='by'?(g.by||'feralo77'):cmpDim==='aq'?g.aq:cmpDim==='sr'?g.sr:(liByUid[g.uid]||'—');}
@@ -2075,7 +2112,13 @@ function cmpGroupStats(D,GG){
   const sal=D.filter(d=>d.sr==='Salida'),rob=D.filter(d=>d.sr==='Robo');
   const sw=sal.filter(d=>d.r==='W').length,rw=rob.filter(d=>d.r==='W').length;
   const wins=GG.filter(g=>g.w),deep=GG.some(g=>g.hy!==undefined);
-  const cutE=GG.filter(g=>g.ct>=1&&g.ct<=2),lng=GG.filter(g=>g.t>=7),mull=GG.filter(g=>g.mu>0),ctP=GG.filter(g=>g.ct>0),ftP=GG.filter(g=>g.ft);
+  // El corte de duración está en el turno 6, no en el 7 (medido el 29-jul: hasta el T5 se
+  // gana el 56%, del T6 en adelante el 39% y plano). El umbral viejo medía otra cosa.
+  const cutE=GG.filter(g=>g.ct>=1&&g.ct<=2),lng=GG.filter(g=>g.t>=6),mull=GG.filter(g=>g.mu>0),ctP=GG.filter(g=>g.ct>0),ftP=GG.filter(g=>g.ft);
+  // v2: las 4 métricas de "las 5 claves" de Cómo juegas, que la Comparativa no tenía.
+  const v2=GG.some(g=>g.kf!==undefined);
+  const kfP=GG.filter(g=>g.kf===1), fiP=GG.filter(g=>g.fi), g1=GG.filter(g=>g.gi===1);
+  const g1s=g1.filter(g=>g.sr==='Salida'), g1r=g1.filter(g=>g.sr==='Robo');
   return {n:W+L,matches:D.length,W,L,rec:`${W}-${L}`,
     wrMatch:(W+L)?pct(W,W+L):null,wrGames:(gw+gl)?pct(gw,gw+gl):null,
     wrSal:sal.length?pct(sw,sal.length):null,salN:sal.length,
@@ -2087,7 +2130,14 @@ function cmpGroupStats(D,GG){
     draws:deep?cmean(GG.map(g=>g.dy)):null,land3:deep?cmean(GG.map(g=>g.l3),2):null,
     threat:ftP.length&&deep?cmean(ftP.map(g=>g.ft),2):null,cutter:ctP.length?cmean(ctP.map(g=>g.ct),2):null,
     wrLong:lng.length?pct(lng.filter(g=>g.w).length,lng.length):null,longN:lng.length,
-    wrCutE:cutE.length?pct(cutE.filter(g=>g.w).length,cutE.length):null,cutEN:cutE.length,deep};
+    wrCutE:cutE.length?pct(cutE.filter(g=>g.w).length,cutE.length):null,cutEN:cutE.length,
+    wrKf:v2&&kfP.length?pct(kfP.filter(g=>g.w).length,kfP.length):null,kfN:kfP.length,
+    crea:v2?cmean(GG.map(g=>g.cy),2):null,
+    rrOpp:v2?cmean(GG.map(g=>g.rr),2):null,
+    firstInt:v2&&fiP.length?cmean(fiP.map(g=>g.fi),2):null,
+    wrG1Sal:g1s.length?pct(g1s.filter(g=>g.w).length,g1s.length):null,g1SalN:g1s.length,
+    wrG1Rob:g1r.length?pct(g1r.filter(g=>g.w).length,g1r.length):null,g1RobN:g1r.length,
+    deep,v2};
 }
 function cmpGroups(){
   const {mF,gF,liByUid}=cmpBase();
@@ -2123,7 +2173,7 @@ function cmpCell(g,m){
 }
 function cmpTable(gr){
   cmpLastGroups=gr;
-  const anyDeep=gr.some(g=>g.deep),cols=CMP_METRICS.filter(m=>!m.deep||anyDeep),dimLab=CMP_DIMS[cmpDim].label,sk=cmpSort.col;
+  const anyDeep=gr.some(g=>g.deep),anyV2=gr.some(g=>g.v2),cols=CMP_METRICS.filter(m=>(!m.deep||anyDeep)&&(!m.v2||anyV2)),dimLab=CMP_DIMS[cmpDim].label,sk=cmpSort.col;
   const sorted=[...gr].sort((a,b)=>{
     if(sk==='key')return (a.key>b.key?1:a.key<b.key?-1:0)*cmpSort.dir;
     let x=a[sk],y=b[sk];x=(x==null?-Infinity:x);y=(y==null?-Infinity:y);return (x>y?1:x<y?-1:0)*cmpSort.dir;});
@@ -2354,13 +2404,15 @@ function updateSource(remote){
 
 // ---- Versiones del mazo ----------------------------------------------------
 // Varias listas son el MISMO mazo con distinto sideboard (la "Ur Aggro Rage" de Pol
-// tiene el maindeck idéntico a la "PT" de Fer; la "Pol 1 NF" al de la "Stock"). Los
+// tiene el maindeck idéntico a la "Aggro" de Fer; la "Pol 1 NF" al de la "Stock"). Los
 // paneles agregados agrupan por VERSIÓN para que las muestras sirvan; la lista exacta
 // se conserva y el comparador carta a carta sigue siendo por lista.
-// La fuente de verdad es automation/listas.json (el robot escribe la columna Versión);
-// esto es el respaldo para cuando el CSV no la trae todavía o se usa el snapshot.
+// automation/listas.json es la fuente de verdad para los DATOS (el robot escribe la
+// columna Versión del registro). Este mapa manda en el DASHBOARD: así renombrar una
+// versión es un solo cambio aquí y se ve al instante, sin esperar una corrida del robot.
+// La columna del CSV se usa de respaldo para listas que este mapa no conozca.
 const VERSIONES={Stock:['Stock','2.0','Pol 1 NF'],Basics:['Basics'],
-                 PT:['PT','UR Aggro Flashback','Ur Aggro Rage','UR Aggro Surgicals']};
+                 Aggro:['PT','UR Aggro Flashback','Ur Aggro Rage','UR Aggro Surgicals']};
 const VER_REF=['Definitiva'];   // lista de referencia: no es una versión jugada
 const VER_MAP=(()=>{const m={};for(const v in VERSIONES)VERSIONES[v].forEach(l=>m[l.toLowerCase()]=v);return m;})();
 const verOf=li=>{const k=(li||'').trim().toLowerCase();
@@ -2388,7 +2440,7 @@ function parseCSV(txt){
   const seen=new Set();
   return lines.slice(1).map(splitCSVLine).map(c=>{
     const g=k=>col[k]>=0?norm(c[col[k]]):'';
-    return {uid:g('uid'),f:g('f'),ev:g('ev'),li:g('li')||'—',ver:g('ver')||verOf(g('li')),rd:+g('rd')||g('rd'),op:g('op'),
+    return {uid:g('uid'),f:g('f'),ev:g('ev'),li:g('li')||'—',ver:verOf(g('li'))||g('ver'),rd:+g('rd')||g('rd'),op:g('op'),
       aq:g('aq')||'Otros (¿?)',r:g('r').toUpperCase(),jg:+g('jg')||0,jp:+g('jp')||0,sr:g('sr'),
       my:+g('my')||0,mr:+g('mr')||0,mvp:g('mvp'),nt:g('nt'),by:g('by')||'—',src:g('src'),
       rv:g('rv'),cf:g('cf')};
