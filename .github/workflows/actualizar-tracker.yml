@@ -37,6 +37,14 @@ jobs:
           MTG_FOLDER_ID: ${{ secrets.MTG_FOLDER_ID }}
         run: python automation/pipeline.py
 
+      # Aviso, NO barrera: un corte de Scryfall no debe tumbar el pipeline de datos.
+      # Nació de una sesión (30-jul) en la que se sospechó que 'Boomerang Basics' y
+      # 'Flashback' eran erratas: resultaron ser cartas reales de sets nuevos. A ojo no
+      # se distingue una errata de una carta que no conoces; Scryfall sí.
+      - name: Comprobar que los nombres de carta de listas/ existen (aviso)
+        continue-on-error: true
+        run: python automation/validar_listas.py --aviso
+
       - name: Regenerar el comparador de listas (solo si algún .txt cambió)
         run: |
           if [[ -n "$(git status --porcelain -- 'listas/*.txt')" ]]; then

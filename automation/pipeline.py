@@ -48,7 +48,7 @@ MADRID = ZoneInfo('Europe/Madrid')
 LEGACY_PLAYER = 'feralo77'                       # el único con histórico en el tracker viejo
 DEFAULT_LEGACY_GID = 1091441461
 
-REGISTRO_COLS = ["match_uuid", "Fecha", "Evento / Liga", "Lista", "Ronda",
+REGISTRO_COLS = ["match_uuid", "Fecha", "Evento / Liga", "Lista", "Versión", "Ronda",
                  "Mazo del Oponente", "Arquetipo", "Resultado (W/L)", "Juegos Ganados",
                  "Juegos Perdidos", "Salida / Robo (G1)", "Mulligans (Yo)",
                  "Mulligans (Rival)", "Cartas Clave / MVP", "Notas de Match / Sideboard",
@@ -196,6 +196,31 @@ def download(drive, file_id, dest):
 # El nombre del fichero ES el nombre de la lista, el mismo que va en la columna Lista de
 # la hoja; mismo nombre = misma lista (las estadísticas se suman en el dashboard).
 LISTAS_DIR = REPO / 'listas'
+
+# --------------------------------------------------------------- versiones del mazo
+# Varias listas son el MISMO mazo con distinto sideboard (ej. la 'Ur Aggro Rage' de Pol
+# tiene el maindeck idéntico a la 'PT' de Fer). La versión las agrupa para que las
+# muestras sean utilizables; la columna Lista conserva el nombre exacto.
+# Configuración y el porqué: automation/listas.json
+_LISTAS_CFG = json.loads((HERE / 'listas.json').read_text(encoding='utf-8'))
+_VERSION_DE = {key(l): v for v, ls in _LISTAS_CFG['versiones'].items() for l in ls}
+_REFERENCIA = {key(l) for l in _LISTAS_CFG.get('referencia', [])}
+_LISTA_DEFECTO = _LISTAS_CFG.get('defecto_por_jugador', {})
+
+
+def version_de(lista):
+    """Versión (Stock/Basics/PT) de un nombre de lista. '' si no la conocemos o si es
+    la lista de referencia — mejor vacío que meterla en el cajón equivocado."""
+    k = key(lista or '')
+    if not k or k in _REFERENCIA:
+        return ''
+    return _VERSION_DE.get(k, '')
+
+
+def lista_por_defecto(nick):
+    """Lista que se asume cuando una partida sale de un log SIN apunte a mano.
+    Sin entrada para ese jugador se deja vacío (no se inventa)."""
+    return _LISTA_DEFECTO.get(nick, '')
 # Exports viejos que ya viven en listas/ con su nombre canónico (Stock, PT, 2.0, Basics):
 # re-publicarlos con el nombre crudo del export crearía listas duplicadas.
 LISTAS_IGNORAR = {'izzet basics', 'deck - izzet stock', 'deck - izzet stock (1)',
@@ -390,7 +415,8 @@ def _fila_pareja(m, a, nick):
     mazo = _mazo_apunte(m, a) or m['arquetipo']    # nombre del apunte o arquetipo detectado
     return {
         'match_uuid': m['match_uuid'], 'Fecha': a['fecha'] or m['_fecha'], 'Evento / Liga': a['evento'],
-        'Lista': a['lista'], 'Ronda': a['ronda'], 'Mazo del Oponente': mazo,
+        'Lista': a['lista'], 'Versión': version_de(a['lista']),
+        'Ronda': a['ronda'], 'Mazo del Oponente': mazo,
         'Arquetipo': m['arquetipo'], 'Resultado (W/L)': m['resultado'],
         'Juegos Ganados': m['jg'], 'Juegos Perdidos': m['jp'],
         'Salida / Robo (G1)': m['salida_robo'], 'Mulligans (Yo)': m['mull_local'],
@@ -400,9 +426,14 @@ def _fila_pareja(m, a, nick):
     }
 
 def _fila_practica(m, nick):
+    # Sin apunte a mano no sabemos la lista por el log. Para los jugadores que lo tienen
+    # declarado en listas.json se asume la suya (Pol -> Stock): 77 de sus partidas se
+    # quedaban fuera de toda estadística por lista por esta casilla vacía.
+    lista = lista_por_defecto(nick)
     return {
         'match_uuid': m['match_uuid'], 'Fecha': m['_fecha'], 'Evento / Liga': '',
-        'Lista': '', 'Ronda': '', 'Mazo del Oponente': m['arquetipo'],
+        'Lista': lista, 'Versión': version_de(lista),
+        'Ronda': '', 'Mazo del Oponente': m['arquetipo'],
         'Arquetipo': m['arquetipo'], 'Resultado (W/L)': m['resultado'],
         'Juegos Ganados': m['jg'], 'Juegos Perdidos': m['jp'],
         'Salida / Robo (G1)': m['salida_robo'], 'Mulligans (Yo)': m['mull_local'],
@@ -414,7 +445,8 @@ def _fila_practica(m, nick):
 def _fila_manual(a, nick):
     return {
         'match_uuid': '', 'Fecha': a['fecha'], 'Evento / Liga': a['evento'],
-        'Lista': a['lista'], 'Ronda': a['ronda'], 'Mazo del Oponente': a['mazo_rival'],
+        'Lista': a['lista'], 'Versión': version_de(a['lista']),
+        'Ronda': a['ronda'], 'Mazo del Oponente': a['mazo_rival'],
         'Arquetipo': a['mazo_rival'], 'Resultado (W/L)': a['resultado'],
         'Juegos Ganados': a['jg'], 'Juegos Perdidos': a['jp'],
         'Salida / Robo (G1)': a['salida_robo'], 'Mulligans (Yo)': a['mull_local'],
@@ -591,6 +623,7 @@ def emparejar(matches, apuntes, nick):
             row['Evento / Liga'] = a['evento']
             row['Ronda'] = a['ronda']
             row['Lista'] = a['lista']
+            row['Versión'] = version_de(a['lista'])   # la del apunte manda sobre el defecto
             row['Fecha'] = a['fecha'] or row['Fecha']
             if a['notas']:
                 row['Notas de Match / Sideboard'] = a['notas']

@@ -312,7 +312,7 @@
   <section class="view" id="v-play">
     <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — análisis game a game de tus logs de MTGO. No solo el resultado: cuándo aterriza tu juego, tu línea explosiva del Cutter, cuánto te interrumpen. Filtra por <b>lista</b> y por <b>mazo rival</b>; arriba las 5 claves, y el resto en "Ver más". Todo sale del log real de cada partida.</div></div>
     <div class="filters">
-      <div class="fg"><label>Lista</label><select id="fpLista"></select></div>
+      <div class="fg"><label>Versión</label><select id="fpLista"></select></div>
       <div class="fg"><label>Mazo rival</label><select id="fpArq"></select></div>
     </div>
     <div class="kpis" id="playKpis"></div>
@@ -364,11 +364,11 @@
 
   <!-- ===== LISTAS ===== -->
   <section class="view" id="v-lists">
-    <div class="author"><span class="ic"></span><div><b>Listas de los jugadores</b> — cada versión que habéis jugado (tú y tus compañeros de liga) y su rendimiento real, cruzado con partidas y games. Una lista se identifica por su <b>nombre</b>: si dos jugáis el mismo mazo con el mismo nombre, sus estadísticas se <b>suman</b>. La síntesis carta a carta y el porqué de cada slot viven en <b>La 75 Definitiva</b>; el campo global, en <b>Meta · mtgtop8</b>.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Listas de los jugadores</b> — cada versión que habéis jugado (tú y tus compañeros de liga) y su rendimiento real, cruzado con partidas y games. Una versión se identifica por su <b>maindeck</b>, no por el nombre: dos listas con las mismas 60 cartas y sideboard distinto son la <b>misma versión</b> y sus estadísticas se <b>suman</b> (la "Ur Aggro Rage" de Pol tiene el maindeck idéntico a tu "PT"). Los fetchlands cuentan como intercambiables. Los nombres exactos que hay dentro de cada versión salen en su ficha. La síntesis carta a carta y el porqué de cada slot viven en <b>La 75 Definitiva</b>; el campo global, en <b>Meta · mtgtop8</b>.</div></div>
     <h3 class="secH" style="margin-top:2px">Listas y su rendimiento <span class="q" style="font-size:12px;font-weight:400">(por nombre · suma a quien la juegue)</span></h3>
     <div class="decks" id="myLists"></div>
-    <div class="panel full" style="margin:16px 0"><h3>Win rate por lista <span>(de las partidas registradas de cada jugador)</span></h3><div id="wrByList"></div></div>
-    <div class="panel full"><h3>Lista × mazo rival <span>(récord V-D de cada lista · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
+    <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(mismo maindeck = misma versión, aunque cambie el sideboard)</span></h3><div id="wrByList"></div></div>
+    <div class="panel full"><h3>Versión × mazo rival <span>(récord V-D de cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
 
     <h3 class="secH" style="margin-top:24px">Comparador de listas — carta a carta</h3>
     <div class="author"><span class="ic"></span><div><b>Comparador de listas</b> — la 75 real y completa de cada lista (las tuyas y las de tus compañeros), comparadas contra <b>La 75 Definitiva</b> y contra el consenso del <b>Meta</b>. Los logs solo enseñan lo que se jugó; esto es el mazo entero, pegado en <span style="font-family:var(--mono)">listas/&lt;nombre&gt;.txt</span>. Se amplía en cuanto haya más .txt en la carpeta.</div></div>
@@ -390,7 +390,7 @@
 
   <!-- ===== COMPARATIVA (jugadores / listas / mazos rivales / salida-robo) ===== -->
   <section class="view" id="v-cmp">
-    <div class="author"><span class="ic"></span><div><b>Comparativa</b> — pon lo que quieras codo con codo. Elige <b>por qué comparar</b> (jugador, lista, mazo rival o salida/robo) y afina con los filtros: la tabla, las barras y el radar se rehacen al vuelo. Para el duelo directo tienes el <b>Cara a cara</b>: elige dos y ves cada métrica lado a lado, con la mejor en verde. Una lista es su nombre: si la "Basics" la jugáis dos, cuenta como una (sus partidas se suman). La comparación entre <b>jugadores</b> usa a todos (ignora el filtro de jugador de la cabecera) y se llena sola cuando tus compañeros suban sus logs.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Comparativa</b> — pon lo que quieras codo con codo. Elige <b>por qué comparar</b> (jugador, lista, mazo rival o salida/robo) y afina con los filtros: la tabla, las barras y el radar se rehacen al vuelo. Para el duelo directo tienes el <b>Cara a cara</b>: elige dos y ves cada métrica lado a lado, con la mejor en verde. Una versión es su maindeck: dos listas con las mismas 60 cartas y sideboard distinto cuentan como una (sus partidas se suman). La comparación entre <b>jugadores</b> usa a todos (ignora el filtro de jugador de la cabecera) y se llena sola cuando tus compañeros suban sus logs.</div></div>
 
     <div class="segwrap"><label>Comparar por</label>
       <div class="seg" id="cmpDim">
@@ -402,7 +402,7 @@
     </div>
     <div class="filters" id="cmpFilters">
       <div class="fg" id="wf-liga"><label>Liga / Evento</label><select id="cfLiga"></select></div>
-      <div class="fg" id="wf-lista"><label>Lista</label><select id="cfLista"></select></div>
+      <div class="fg" id="wf-lista"><label>Versión</label><select id="cfLista"></select></div>
       <div class="fg" id="wf-sr"><label>Salida / Robo</label><select id="cfSR"></select></div>
       <div class="fg" id="wf-arq"><label>Mazo rival</label><select id="cfArq"></select></div>
       <div class="fg" id="wf-player"><label>Jugador</label><select id="cfPlayer"></select></div>
@@ -1678,7 +1678,7 @@ function renderPlay(){
   if(playDone) return; playDone=true;
   Object.values(playCharts).forEach(c=>c&&c.destroy());playCharts={};
   // Filtros locales de la pestaña: Lista (cruce con el registro por match_uuid) y Mazo rival (directo)
-  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=d.li;});
+  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=verLab(d);});
   const selLi=$('fpLista'), selAq=$('fpArq');
   const fLi=selLi?selLi.value:'all', fAq=selAq?selAq.value:'all';
   const D=G().filter(g=>(fLi==='all'||lim[g.uid]===fLi)&&(fAq==='all'||g.aq===fAq)), N=D.length;
@@ -1763,11 +1763,11 @@ function renderPlay(){
   }
 }
 function initPlaySel(){
-  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=d.li;});
+  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=verLab(d);});
   const listas=[...new Set(G().map(g=>lim[g.uid]).filter(Boolean))].sort();
   const arqs=[...new Set(G().map(g=>g.aq).filter(Boolean))].sort();
   const fill=(id,vals,allTxt)=>{const s=$(id);if(!s)return;const cur=s.value||'all';s.innerHTML='';s.add(new Option(allTxt,'all'));vals.forEach(v=>s.add(new Option(v,v)));s.value=(vals.includes(cur)||cur==='all')?cur:'all';s.onchange=()=>{playDone=false;renderPlay();};};
-  fill('fpLista',listas,'Todas las listas');
+  fill('fpLista',listas,'Todas las versiones');
   fill('fpArq',arqs,'Todos los mazos');
 }
 
@@ -1817,10 +1817,12 @@ function refreshAll(){
   else if(v==='meta')renderMetaTab();
 }
 
-function uniq(f){return [...new Set(M().map(d=>d[f]))];}
+// 'li' se resuelve por VERSIÓN del mazo (no por nombre de lista): filtrar por "PT" trae
+// también las partidas apuntadas como "Ur Aggro Rage", que es el mismo maindeck.
+function uniq(f){return [...new Set(M().map(d=>f==='li'?verLab(d):d[f]))];}
 function fillSel(id,f,all){const s=$(id);s.innerHTML='';const o=new Option(all,'all');s.add(o);uniq(f).forEach(v=>s.add(new Option(v,v)));s.onchange=render;}
 function filtered(){const li=$('fLista').value,lg=$('fLiga').value,sr=$('fSR').value,aq=$('fArq').value;
-  return M().filter(d=>(li==='all'||d.li===li)&&(lg==='all'||d.ev===lg)&&(sr==='all'||d.sr===sr)&&(aq==='all'||d.aq===aq));}
+  return M().filter(d=>(li==='all'||verLab(d)===li)&&(lg==='all'||d.ev===lg)&&(sr==='all'||d.sr===sr)&&(aq==='all'||d.aq===aq));}
 
 function kpis(D){
   const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
@@ -1871,21 +1873,26 @@ function render(){const D=filtered(),all=M();
 
 // ---- Listas por NOMBRE: una lista = su nombre; suma a todos los que la juegan ----
 // Respeta el filtro global de jugador (M()): con "todos" suma; con un jugador, su parte.
+// Agrupa por VERSIÓN del mazo, no por nombre de lista: la "Ur Aggro Rage" de Pol y la
+// "PT" de Fer son el mismo maindeck con distinto sideboard, y contarlas aparte partía
+// las muestras en trozos sin significado (la "2.0" llegó a 5 partidas). `listas` guarda
+// los nombres exactos que hay dentro de cada versión, para poder enseñarlos.
 function listGroups(){
   const g={};
-  M().forEach(d=>{const li=d.li; if(!li||li==='—')return;
-    (g[li]=g[li]||{li,key:li,D:[],players:new Set()}).D.push(d);
-    if(d.by) g[li].players.add(d.by);});
+  M().forEach(d=>{const v=verLab(d); if(!v||v==='—')return;
+    (g[v]=g[v]||{li:v,key:v,D:[],players:new Set(),listas:new Set()}).D.push(d);
+    if(d.by) g[v].players.add(d.by);
+    if(d.li&&d.li!=='—') g[v].listas.add(d.li);});
   return Object.values(g).map(o=>{
     const W=o.D.filter(d=>d.r==='W').length,L=o.D.filter(d=>d.r==='L').length;
     const gw=o.D.reduce((a,d)=>a+d.jg,0),gl=o.D.reduce((a,d)=>a+d.jp,0);
     const mm={};o.D.forEach(d=>{(mm[d.aq]=mm[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
-    return {...o,players:[...o.players].sort(),W,L,n:W+L,gw,gl,wr:pct(W,W+L),mm};
+    return {...o,players:[...o.players].sort(),listas:[...o.listas].sort(),W,L,n:W+L,gw,gl,wr:pct(W,W+L),mm};
   }).sort((a,b)=> b.n-a.n || a.li.localeCompare(b.li));
 }
 function renderMyLists(){
   // por-lista también a nivel de GAME: se cruza games.csv con el registro por match_uuid
-  const li_by_uid={};M().forEach(d=>{if(d.uid)li_by_uid[d.uid]=d.li;});
+  const li_by_uid={};M().forEach(d=>{if(d.uid)li_by_uid[d.uid]=verLab(d);});
   const groups=listGroups();
   $('myLists').innerHTML=groups.map(l=>{
     const meta=LIST_META[l.key]||{};
@@ -1903,11 +1910,12 @@ function renderMyLists(){
         <div><span class="lbl">Win rate</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${l.wr}%</span> <span class="q" style="font-size:11px">· ${l.gw}-${l.gl} juegos</span></div>
       </div>
       ${l.players.length>1?`<div style="font-size:11px;color:var(--tx3);margin-bottom:8px">Estadísticas sumadas de ${l.players.length} jugadores.</div>`:''}
+      ${l.listas.length>1?`<div style="font-size:11px;color:var(--tx3);margin-bottom:8px">Mismo mazo con distinto sideboard: ${l.listas.join(' · ')}.</div>`:''}
       ${gg.length?`<div style="font-size:12px;color:var(--tx2);margin-bottom:8px;font-family:var(--mono)">En los logs: ${gg.length} games (${gw}-${gg.length-gw}) · ${avg(gg.map(g=>g.t))} turnos · ${avg(gg.map(g=>g.pw))} prowess/game</div>`:''}
       <div style="font-size:12px"><span style="color:var(--winL);font-weight:600">Gana a:</span> ${best.join(', ')||'—'}<br><span style="color:var(--loss);font-weight:600">Pierde con:</span> ${worst.join(', ')||'—'}</div>
       ${meta.url?`<div style="margin-top:10px"><a href="${meta.url}" target="_blank">Abrir lista en mtggoldfish →</a></div>`:''}
     </div>`;
-  }).join('')||'<div style="color:var(--tx2)">Todavía no hay ninguna lista con partidas registradas. Aparecen aquí en cuanto el robot cruza un apunte con columna «Lista» y su log.</div>';
+  }).join('')||'<div style="color:var(--tx2)">Todavía no hay ninguna versión con partidas registradas. Aparecen aquí en cuanto el robot cruza un apunte con columna «Lista» y su log.</div>';
 }
 // ---- Lista x mazo rival + win rate por lista (por nombre) ----
 function renderLxM(){
@@ -2047,14 +2055,16 @@ const CMP_METRICS=[
   {k:'wrLong',lab:'WR 7+ turnos',kind:'wr',hb:true,bar:true,dir:1},
   {k:'wrCutE',lab:'WR Cutter T1-2',kind:'wr',hb:true,bar:true,dir:1},
 ];
-// Dimensión "Lista": la identidad es el NOMBRE — la "Basics" de dos jugadores cuenta como una.
-function cmpValM(d,liByUid){return cmpDim==='by'?(d.by||'—'):cmpDim==='aq'?d.aq:cmpDim==='sr'?d.sr:d.li;}
+// Dimensión "Lista": la identidad es la VERSIÓN del mazo (mismo maindeck), no el nombre.
+// Así la "PT" de Fer y la "Ur Aggro Rage" de Pol cuentan como una: son el mismo mazo con
+// distinto sideboard, y separarlas dejaba muestras de 5 partidas sin significado.
+function cmpValM(d,liByUid){return cmpDim==='by'?(d.by||'—'):cmpDim==='aq'?d.aq:cmpDim==='sr'?d.sr:verLab(d);}
 function cmpValG(g,liByUid){return cmpDim==='by'?(g.by||'feralo77'):cmpDim==='aq'?g.aq:cmpDim==='sr'?g.sr:(liByUid[g.uid]||'—');}
 function cmpBase(){
   const mAll=cmpDim==='by'?MATCHES:M(), gAll=cmpDim==='by'?GAMES:G();
   const fLg=$('cfLiga').value,fLi=$('cfLista').value,fSr=$('cfSR').value,fAq=$('cfArq').value,fPl=$('cfPlayer').value;
-  const liByUid={},evByUid={};mAll.forEach(d=>{if(d.uid){liByUid[d.uid]=d.li;evByUid[d.uid]=d.ev;}});
-  const mF=mAll.filter(d=>(cmpDim==='li'||fLi==='all'||d.li===fLi)&&(fLg==='all'||d.ev===fLg)&&(cmpDim==='sr'||fSr==='all'||d.sr===fSr)&&(cmpDim==='aq'||fAq==='all'||d.aq===fAq)&&(cmpDim==='by'||fPl==='all'||(d.by||'—')===fPl));
+  const liByUid={},evByUid={};mAll.forEach(d=>{if(d.uid){liByUid[d.uid]=verLab(d);evByUid[d.uid]=d.ev;}});
+  const mF=mAll.filter(d=>(cmpDim==='li'||fLi==='all'||verLab(d)===fLi)&&(fLg==='all'||d.ev===fLg)&&(cmpDim==='sr'||fSr==='all'||d.sr===fSr)&&(cmpDim==='aq'||fAq==='all'||d.aq===fAq)&&(cmpDim==='by'||fPl==='all'||(d.by||'—')===fPl));
   const gF=gAll.filter(g=>{const li=liByUid[g.uid],ev=evByUid[g.uid];
     return (cmpDim==='li'||fLi==='all'||li===fLi)&&(fLg==='all'||ev===fLg)&&(cmpDim==='sr'||fSr==='all'||g.sr===fSr)&&(cmpDim==='aq'||fAq==='all'||g.aq===fAq)&&(cmpDim==='by'||fPl==='all'||(g.by||'feralo77')===fPl);});
   return {mF,gF,liByUid};
@@ -2211,7 +2221,8 @@ function renderCmp(){
 function initCmpSelectors(){
   const fill=(id,vals,allLbl)=>{const s=$(id);if(!s)return;const prev=s.value||'all';s.innerHTML='';s.add(new Option(allLbl,'all'));vals.forEach(v=>s.add(new Option(v,v)));s.value=[...vals,'all'].includes(prev)?prev:'all';s.onchange=renderCmp;};
   const uni=f=>[...new Set(MATCHES.map(d=>d[f]).filter(v=>v&&v!=='—'&&v!=='N/A (bye/concede)'))].sort();
-  fill('cfLiga',uni('ev'),'Todas las ligas');fill('cfLista',uni('li'),'Todas las listas');
+  const uniVer=[...new Set(MATCHES.map(verLab).filter(v=>v&&v!=='—'))].sort();
+  fill('cfLiga',uni('ev'),'Todas las ligas');fill('cfLista',uniVer,'Todas las versiones');
   fill('cfSR',uni('sr'),'Salida + Robo');fill('cfArq',uni('aq'),'Todos los mazos');
   fill('cfPlayer',[...new Set(MATCHES.map(d=>d.by||'').filter(v=>v&&v!=='—'))].sort(),'Todos los jugadores');
   const ms=$('cmpMetric');if(ms){const prev=ms.value||cmpMetricKey;ms.innerHTML='';CMP_METRICS.filter(m=>m.bar).forEach(m=>ms.add(new Option(m.lab,m.k)));ms.value=CMP_METRICS.some(m=>m.bar&&m.k===prev)?prev:'wrMatch';cmpMetricKey=ms.value;ms.onchange=()=>{cmpMetricKey=ms.value;cmpBar(cmpLastGroups);};}
@@ -2341,6 +2352,24 @@ function updateSource(remote){
   el.innerHTML=`<span class="dot ${remote?'on':''}"></span>${label} \u00b7 ${MATCHES.length} partidas`;
 }
 
+// ---- Versiones del mazo ----------------------------------------------------
+// Varias listas son el MISMO mazo con distinto sideboard (la "Ur Aggro Rage" de Pol
+// tiene el maindeck idéntico a la "PT" de Fer; la "Pol 1 NF" al de la "Stock"). Los
+// paneles agregados agrupan por VERSIÓN para que las muestras sirvan; la lista exacta
+// se conserva y el comparador carta a carta sigue siendo por lista.
+// La fuente de verdad es automation/listas.json (el robot escribe la columna Versión);
+// esto es el respaldo para cuando el CSV no la trae todavía o se usa el snapshot.
+const VERSIONES={Stock:['Stock','2.0','Pol 1 NF'],Basics:['Basics'],
+                 PT:['PT','UR Aggro Flashback','Ur Aggro Rage','UR Aggro Surgicals']};
+const VER_REF=['Definitiva'];   // lista de referencia: no es una versión jugada
+const VER_MAP=(()=>{const m={};for(const v in VERSIONES)VERSIONES[v].forEach(l=>m[l.toLowerCase()]=v);return m;})();
+const verOf=li=>{const k=(li||'').trim().toLowerCase();
+  if(!k||k==='—'||VER_REF.some(r=>r.toLowerCase()===k))return '';
+  return VER_MAP[k]||'';};
+// Etiqueta para enseñar: la versión si la conocemos; si no, el nombre crudo de la lista
+// (mejor mostrar "Cosa rara" que esconder partidas en un cajón que no existe).
+const verLab=d=>d.ver||(d.li&&d.li!=='—'?d.li:'—');
+
 // ---- CSV loader (por NOMBRE de columna: robusto a orden y a columnas nuevas) ----
 function splitCSVLine(l){const out=[];let cur='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){cur+='"';i++;}else q=!q;}else if(c===','&&!q){out.push(cur);cur='';}else cur+=c;}out.push(cur);return out;}
 function parseCSV(txt){
@@ -2349,7 +2378,7 @@ function parseCSV(txt){
   const norm=s=>(s||'').trim();
   const key=s=>norm(s).toLowerCase().replace(/\s+/g,' ');
   const header=splitCSVLine(lines[0]).map(key);
-  const AL={f:['fecha'],ev:['evento / liga','evento','liga'],li:['lista'],rd:['ronda'],
+  const AL={f:['fecha'],ev:['evento / liga','evento','liga'],li:['lista'],ver:['versión','version'],rd:['ronda'],
     op:['mazo del oponente','rival','oponente'],aq:['arquetipo','mazo'],r:['resultado (w/l)','resultado','res'],
     jg:['juegos ganados'],jp:['juegos perdidos'],sr:['salida / robo (g1)','salida / robo','salida/robo','g1'],
     my:['mulligans (yo)'],mr:['mulligans (rival)'],mvp:['cartas clave / mvp','mvp'],
@@ -2359,7 +2388,7 @@ function parseCSV(txt){
   const seen=new Set();
   return lines.slice(1).map(splitCSVLine).map(c=>{
     const g=k=>col[k]>=0?norm(c[col[k]]):'';
-    return {uid:g('uid'),f:g('f'),ev:g('ev'),li:g('li')||'—',rd:+g('rd')||g('rd'),op:g('op'),
+    return {uid:g('uid'),f:g('f'),ev:g('ev'),li:g('li')||'—',ver:g('ver')||verOf(g('li')),rd:+g('rd')||g('rd'),op:g('op'),
       aq:g('aq')||'Otros (¿?)',r:g('r').toUpperCase(),jg:+g('jg')||0,jp:+g('jp')||0,sr:g('sr'),
       my:+g('my')||0,mr:+g('mr')||0,mvp:g('mvp'),nt:g('nt'),by:g('by')||'—',src:g('src'),
       rv:g('rv'),cf:g('cf')};
@@ -2419,7 +2448,7 @@ async function freshness(){
   }catch(e){}
 }
 
-function initSelectors(){fillSel('fLista','li','Todas las listas');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los mazos');}
+function initSelectors(){fillSel('fLista','li','Todas las versiones');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los mazos');}
 
 // init
 (async function(){

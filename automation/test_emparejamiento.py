@@ -337,6 +337,56 @@ def test_listas_nombre_y_validez():
     print("OK listas_nombre_y_validez")
 
 
+def test_versiones_agrupan_el_mismo_maindeck():
+    """Listas con el mismo maindeck y distinto sideboard son la MISMA versión.
+    Medido el 2026-07-30: 'Ur Aggro Rage' (Pol) tiene 0 cartas de diferencia de
+    maindeck con 'PT' (Fer), y 'Pol 1 NF' 1 carta con 'Stock'."""
+    assert PL.version_de('PT') == 'PT'
+    assert PL.version_de('Ur Aggro Rage') == 'PT'
+    assert PL.version_de('UR Aggro Flashback') == 'PT'
+    assert PL.version_de('Stock') == 'Stock'
+    assert PL.version_de('2.0') == 'Stock'
+    assert PL.version_de('Pol 1 NF') == 'Stock'
+    assert PL.version_de('Basics') == 'Basics'
+    # la de referencia NO es una versión jugada
+    assert PL.version_de('Definitiva') == ''
+    # desconocida o vacía -> vacío, nunca un cajón inventado
+    assert PL.version_de('Lista que no existe') == ''
+    assert PL.version_de('') == ''
+    assert PL.version_de(None) == ''
+    print("OK version_de agrupa por maindeck")
+
+
+def test_lista_por_defecto_solo_donde_esta_declarada():
+    """77 partidas de Pol salían de logs sin apunte y quedaban con Lista vacía,
+    fuera de toda estadística. Fer confirmó que son Stock. Para quien no esté
+    declarado se deja vacío: mejor un hueco que un dato inventado."""
+    assert PL.lista_por_defecto('4c_PolG') == 'Stock'
+    assert PL.lista_por_defecto('feralo77') == ''
+    assert PL.lista_por_defecto('Inkmaster') == ''
+    print("OK lista por defecto solo donde está declarada")
+
+
+def test_fila_practica_lleva_lista_y_version():
+    """Una partida de log sin apunte de Pol ya no sale con la Lista en blanco."""
+    m = {'match_uuid': 'u1', '_fecha': '30/07/2026', 'arquetipo': 'Storm',
+         'resultado': 'W', 'jg': 2, 'jp': 1, 'salida_robo': 'Salida',
+         'mull_local': 0, 'mull_opp': 0, 'opp': 'algun_rival', 'confianza': 0.8}
+    fila = PL._fila_practica(m, '4c_PolG')
+    assert fila['Lista'] == 'Stock'
+    assert fila['Versión'] == 'Stock'
+    # Fer no tiene defecto declarado: se queda vacío, no se inventa
+    assert PL._fila_practica(m, 'feralo77')['Lista'] == ''
+    assert PL._fila_practica(m, 'feralo77')['Versión'] == ''
+    print("OK la práctica de Pol lleva lista y versión")
+
+
+def test_version_esta_en_las_columnas_del_registro():
+    assert 'Versión' in PL.REGISTRO_COLS
+    assert PL.REGISTRO_COLS.index('Versión') == PL.REGISTRO_COLS.index('Lista') + 1
+    print("OK la columna Versión existe y va junto a Lista")
+
+
 if __name__ == '__main__':
     test_columna_rival_nick()
     test_nick_es_la_llave()
@@ -355,4 +405,8 @@ if __name__ == '__main__':
     test_norm_fecha_y_bye()
     test_nick_con_errata()
     test_listas_nombre_y_validez()
+    test_versiones_agrupan_el_mismo_maindeck()
+    test_lista_por_defecto_solo_donde_esta_declarada()
+    test_fila_practica_lleva_lista_y_version()
+    test_version_esta_en_las_columnas_del_registro()
     print("\nTodos los autotests del emparejamiento OK")
