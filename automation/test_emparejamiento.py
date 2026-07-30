@@ -341,9 +341,11 @@ def test_versiones_agrupan_el_mismo_maindeck():
     """Listas con el mismo maindeck y distinto sideboard son la MISMA versión.
     Medido el 2026-07-30: 'Ur Aggro Rage' (Pol) tiene 0 cartas de diferencia de
     maindeck con 'PT' (Fer), y 'Pol 1 NF' 1 carta con 'Stock'."""
-    assert PL.version_de('PT') == 'PT'
-    assert PL.version_de('Ur Aggro Rage') == 'PT'
-    assert PL.version_de('UR Aggro Flashback') == 'PT'
+    # 'PT' es el nombre de la LISTA (como está apuntada en la hoja); la VERSIÓN se
+    # llama 'Aggro' desde el 30-jul. Renombrar la versión no toca los apuntes viejos.
+    assert PL.version_de('PT') == 'Aggro'
+    assert PL.version_de('Ur Aggro Rage') == 'Aggro'
+    assert PL.version_de('UR Aggro Flashback') == 'Aggro'
     assert PL.version_de('Stock') == 'Stock'
     assert PL.version_de('2.0') == 'Stock'
     assert PL.version_de('Pol 1 NF') == 'Stock'
