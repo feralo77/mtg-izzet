@@ -8,8 +8,8 @@
   "generado": "2026-07-30"
  },
  "tuHistorico": {
-  "partidas": 161,
-  "games": 399,
+  "partidas": 164,
+  "games": 408,
   "versiones": [
    "Aggro",
    "Basics",
@@ -256,9 +256,9 @@
      "wr": 52
     },
     "sin": {
-     "W": 23,
-     "L": 14,
-     "n": 37,
+     "W": 25,
+     "L": 15,
+     "n": 40,
      "wr": 62
     }
    },
@@ -284,9 +284,9 @@
      "wr": 54
     },
     "sin": {
-     "W": 25,
-     "L": 19,
-     "n": 44,
+     "W": 27,
+     "L": 20,
+     "n": 47,
      "wr": 57
     }
    },
@@ -306,9 +306,9 @@
      "Ur Aggro Rage": 2
     },
     "con": {
-     "W": 23,
-     "L": 14,
-     "n": 37,
+     "W": 25,
+     "L": 15,
+     "n": 40,
      "wr": 62
     },
     "sin": {
@@ -334,9 +334,9 @@
      "Ur Aggro Rage": 3
     },
     "con": {
-     "W": 23,
-     "L": 14,
-     "n": 37,
+     "W": 25,
+     "L": 15,
+     "n": 40,
      "wr": 62
     },
     "sin": {
@@ -362,9 +362,9 @@
      "Ur Aggro Rage": 1
     },
     "con": {
-     "W": 14,
-     "L": 8,
-     "n": 22,
+     "W": 16,
+     "L": 9,
+     "n": 25,
      "wr": 64
     },
     "sin": {
@@ -396,10 +396,10 @@
      "wr": 60
     },
     "sin": {
-     "W": 82,
-     "L": 69,
-     "n": 151,
-     "wr": 54
+     "W": 84,
+     "L": 70,
+     "n": 154,
+     "wr": 55
     }
    },
    {
@@ -424,10 +424,10 @@
      "wr": 60
     },
     "sin": {
-     "W": 82,
-     "L": 69,
-     "n": 151,
-     "wr": 54
+     "W": 84,
+     "L": 70,
+     "n": 154,
+     "wr": 55
     }
    }
   ],
@@ -448,9 +448,9 @@
      "Ur Aggro Rage": 3
     },
     "con": {
-     "W": 88,
-     "L": 73,
-     "n": 161,
+     "W": 90,
+     "L": 74,
+     "n": 164,
      "wr": 55
     },
     "sin": {
@@ -476,9 +476,9 @@
      "Ur Aggro Rage": 2
     },
     "con": {
-     "W": 88,
-     "L": 73,
-     "n": 161,
+     "W": 90,
+     "L": 74,
+     "n": 164,
      "wr": 55
     },
     "sin": {
@@ -504,9 +504,9 @@
      "Ur Aggro Rage": 4
     },
     "con": {
-     "W": 88,
-     "L": 73,
-     "n": 161,
+     "W": 90,
+     "L": 74,
+     "n": 164,
      "wr": 55
     },
     "sin": {
@@ -538,10 +538,10 @@
      "wr": 54
     },
     "sin": {
-     "W": 24,
-     "L": 18,
-     "n": 42,
-     "wr": 57
+     "W": 26,
+     "L": 19,
+     "n": 45,
+     "wr": 58
     }
    },
    {
@@ -560,9 +560,9 @@
      "Ur Aggro Rage": 2
     },
     "con": {
-     "W": 60,
-     "L": 51,
-     "n": 111,
+     "W": 62,
+     "L": 52,
+     "n": 114,
      "wr": 54
     },
     "sin": {
@@ -594,9 +594,9 @@
      "wr": 53
     },
     "sin": {
-     "W": 30,
-     "L": 22,
-     "n": 52,
+     "W": 32,
+     "L": 23,
+     "n": 55,
      "wr": 58
     }
    },
@@ -622,9 +622,9 @@
      "wr": 60
     },
     "sin": {
-     "W": 67,
-     "L": 59,
-     "n": 126,
+     "W": 69,
+     "L": 60,
+     "n": 129,
      "wr": 53
     }
    },
@@ -650,9 +650,9 @@
      "wr": 20
     },
     "sin": {
-     "W": 87,
-     "L": 69,
-     "n": 156,
+     "W": 89,
+     "L": 70,
+     "n": 159,
      "wr": 56
     }
    },
@@ -678,9 +678,9 @@
      "wr": 20
     },
     "sin": {
-     "W": 87,
-     "L": 69,
-     "n": 156,
+     "W": 89,
+     "L": 70,
+     "n": 159,
      "wr": 56
     }
    },
@@ -706,9 +706,9 @@
      "wr": null
     },
     "sin": {
-     "W": 88,
-     "L": 73,
-     "n": 161,
+     "W": 90,
+     "L": 74,
+     "n": 164,
      "wr": 55
     }
    }
@@ -725,9 +725,9 @@
   {
    "aq": "Boros Energy",
    "W": 7,
-   "L": 4,
-   "n": 11,
-   "wr": 64
+   "L": 5,
+   "n": 12,
+   "wr": 58
   },
   {
    "aq": "Esper Goryo's",
@@ -735,6 +735,13 @@
    "L": 7,
    "n": 11,
    "wr": 36
+  },
+  {
+   "aq": "Dimir Frog",
+   "W": 5,
+   "L": 4,
+   "n": 9,
+   "wr": 56
   },
   {
    "aq": "Neoform",
@@ -773,13 +780,6 @@
   },
   {
    "aq": "Broodscale",
-   "W": 3,
-   "L": 4,
-   "n": 7,
-   "wr": 43
-  },
-  {
-   "aq": "Dimir Frog",
    "W": 3,
    "L": 4,
    "n": 7,
@@ -1019,16 +1019,16 @@
   {
    "clave": "ventana-de-victoria",
    "titulo": "Hasta qué turno ganas",
-   "texto": "Hasta el turno 5 ganas el 56% (283 games); del 6 en adelante, el 39% (116). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
+   "texto": "Hasta el turno 5 ganas el 56% (290 games); del 6 en adelante, el 39% (118). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
    "datos": [
     {
      "tramo": "T1-T5",
-     "n": 283,
+     "n": 290,
      "wr": 56
     },
     {
      "tramo": "T6+",
-     "n": 116,
+     "n": 118,
      "wr": 39
     }
    ],
@@ -1037,21 +1037,21 @@
   {
    "clave": "game1-salida-robo",
    "titulo": "El peso de empezar",
-   "texto": "En el game 1, donde la salida la reparte el dado, ganas el 61% saliendo y el 38% robando: 23 puntos. Es la única medición sin sesgo (en el G2/G3 elige quien perdió el anterior). Cuanto mayor sea esa brecha, más debe pesar en la lista la resiliencia jugando segundo.",
+   "texto": "En el game 1, donde la salida la reparte el dado, ganas el 62% saliendo y el 37% robando: 25 puntos. Es la única medición sin sesgo (en el G2/G3 elige quien perdió el anterior). Cuanto mayor sea esa brecha, más debe pesar en la lista la resiliencia jugando segundo.",
    "datos": [
     {
      "sr": "Salida",
-     "n": 77,
-     "W": 47,
+     "n": 78,
+     "W": 48,
      "L": 30,
-     "wr": 61
+     "wr": 62
     },
     {
      "sr": "Robo",
-     "n": 84,
+     "n": 86,
      "W": 32,
-     "L": 52,
-     "wr": 38
+     "L": 54,
+     "wr": 37
     }
    ],
    "decision": "humana: qué cartas te hacen menos dependiente de la salida"
