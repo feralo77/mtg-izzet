@@ -1,11 +1,11 @@
 {
- "generado": "2026-08-01",
+ "generado": "2026-08-02",
  "comoSeCalcula": "Base: la lista media de mtgtop8 (cada carta a sus copias típicas, de más jugada a menos, hasta 60 y 15; los fetchlands como bloque intercambiable). Encima, las desviaciones de las versiones de Fer con su récord real con y sin cada carta, y los avisos que el histórico sostiene. Lo que NO se calcula: qué carta responde a qué mazo — eso es criterio de Magic y va marcado como decisión humana en cada aviso.",
  "campo": {
   "mazos": 60,
   "ventanaDias": 28,
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
-  "generado": "2026-07-31"
+  "generado": "2026-08-01"
  },
  "tuHistorico": {
   "partidas": 164,
@@ -99,6 +99,14 @@
     "max": 4
    },
    {
+    "n": "Slickshot Show-Off",
+    "copias": 4,
+    "pct": 95,
+    "typical": 4,
+    "min": 2,
+    "max": 4
+   },
+   {
     "n": "Bloodstained Mire",
     "copias": 3,
     "pct": 95,
@@ -107,17 +115,9 @@
     "max": 4
    },
    {
-    "n": "Slickshot Show-Off",
-    "copias": 4,
-    "pct": 93,
-    "typical": 4,
-    "min": 2,
-    "max": 4
-   },
-   {
     "n": "Fiery Islet",
     "copias": 2,
-    "pct": 93,
+    "pct": 95,
     "typical": 2,
     "min": 1,
     "max": 2
@@ -125,7 +125,7 @@
    {
     "n": "Mutagenic Growth",
     "copias": 4,
-    "pct": 92,
+    "pct": 93,
     "typical": 4,
     "min": 1,
     "max": 4
@@ -133,15 +133,7 @@
    {
     "n": "Wooded Foothills",
     "copias": 2,
-    "pct": 90,
-    "typical": 2,
-    "min": 1,
-    "max": 4
-   },
-   {
-    "n": "Arid Mesa",
-    "copias": 2,
-    "pct": 80,
+    "pct": 92,
     "typical": 2,
     "min": 1,
     "max": 4
@@ -149,8 +141,16 @@
    {
     "n": "Scalding Tarn",
     "copias": 3,
-    "pct": 78,
+    "pct": 80,
     "typical": 3,
+    "min": 1,
+    "max": 4
+   },
+   {
+    "n": "Arid Mesa",
+    "copias": 2,
+    "pct": 78,
+    "typical": 2,
     "min": 1,
     "max": 4
    },
@@ -186,7 +186,7 @@
     "copias": 3,
     "pct": 97,
     "typical": 3,
-    "min": 2,
+    "min": 1,
     "max": 4
    },
    {
@@ -208,7 +208,7 @@
    {
     "n": "Spell Snare",
     "copias": 2,
-    "pct": 70,
+    "pct": 67,
     "typical": 2,
     "min": 1,
     "max": 3
@@ -222,7 +222,7 @@
     "max": 2
    },
    {
-    "n": "Murktide Regent",
+    "n": "Surgical Extraction",
     "copias": 1,
     "pct": 27,
     "typical": 1,
@@ -265,7 +265,7 @@
    {
     "n": "Flashback",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 17,
+    "consensoPct": 18,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -349,7 +349,7 @@
    {
     "n": "Stormchaser's Talent",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 40,
+    "consensoPct": 38,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -377,7 +377,7 @@
    {
     "n": "Boomerang Basics",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 20,
+    "consensoPct": 18,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -463,7 +463,7 @@
    {
     "n": "Spell Snare",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 70,
+    "consensoPct": 67,
     "consensoCopias": 2,
     "baseCopias": 2,
     "tusVersiones": {
@@ -519,7 +519,7 @@
    {
     "n": "Prismari Charm",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 13,
+    "consensoPct": 15,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -547,9 +547,9 @@
    {
     "n": "Surgical Extraction",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 25,
+    "consensoPct": 27,
     "consensoCopias": 1,
-    "baseCopias": 0,
+    "baseCopias": 1,
     "tusVersiones": {
      "2.0": 0,
      "Basics": 0,
@@ -575,7 +575,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 15,
+    "consensoPct": 13,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -682,34 +682,6 @@
      "L": 70,
      "n": 159,
      "wr": 56
-    }
-   },
-   {
-    "n": "Murktide Regent",
-    "tipo": "copias distintas del consenso",
-    "consensoPct": 27,
-    "consensoCopias": 1,
-    "baseCopias": 1,
-    "tusVersiones": {
-     "2.0": 0,
-     "Basics": 0,
-     "PT": 0,
-     "Pol 1 NF": 0,
-     "Stock": 0,
-     "UR Aggro Flashback": 0,
-     "Ur Aggro Rage": 0
-    },
-    "con": {
-     "W": 0,
-     "L": 0,
-     "n": 0,
-     "wr": null
-    },
-    "sin": {
-     "W": 90,
-     "L": 74,
-     "n": 164,
-     "wr": 55
     }
    }
   ]
