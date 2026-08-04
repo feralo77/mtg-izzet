@@ -1,11 +1,11 @@
 {
- "generado": "2026-08-03",
+ "generado": "2026-08-04",
  "comoSeCalcula": "Base: la lista media de mtgtop8 (cada carta a sus copias típicas, de más jugada a menos, hasta 60 y 15; los fetchlands como bloque intercambiable). Encima, las desviaciones de las versiones de Fer con su récord real con y sin cada carta, y los avisos que el histórico sostiene. Lo que NO se calcula: qué carta responde a qué mazo — eso es criterio de Magic y va marcado como decisión humana en cada aviso.",
  "campo": {
   "mazos": 60,
   "ventanaDias": 28,
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
-  "generado": "2026-08-01"
+  "generado": "2026-08-03"
  },
  "tuHistorico": {
   "partidas": 164,
@@ -133,7 +133,7 @@
    {
     "n": "Wooded Foothills",
     "copias": 2,
-    "pct": 92,
+    "pct": 88,
     "typical": 2,
     "min": 1,
     "max": 4
@@ -157,7 +157,7 @@
    {
     "n": "Expressive Iteration",
     "copias": 4,
-    "pct": 73,
+    "pct": 75,
     "typical": 4,
     "min": 1,
     "max": 4
@@ -165,7 +165,7 @@
    {
     "n": "Violent Urge",
     "copias": 1,
-    "pct": 68,
+    "pct": 72,
     "typical": 2,
     "min": 1,
     "max": 2
@@ -192,7 +192,7 @@
    {
     "n": "Meltdown",
     "copias": 2,
-    "pct": 95,
+    "pct": 93,
     "typical": 2,
     "min": 1,
     "max": 3
@@ -200,16 +200,16 @@
    {
     "n": "Spell Pierce",
     "copias": 2,
-    "pct": 88,
+    "pct": 85,
     "typical": 2,
     "min": 1,
     "max": 3
    },
    {
     "n": "Spell Snare",
-    "copias": 2,
-    "pct": 67,
-    "typical": 2,
+    "copias": 3,
+    "pct": 68,
+    "typical": 3,
     "min": 1,
     "max": 3
    },
@@ -218,14 +218,6 @@
     "copias": 2,
     "pct": 57,
     "typical": 2,
-    "min": 1,
-    "max": 2
-   },
-   {
-    "n": "Surgical Extraction",
-    "copias": 1,
-    "pct": 27,
-    "typical": 1,
     "min": 1,
     "max": 2
    }
@@ -237,7 +229,7 @@
    {
     "n": "Violent Urge",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 68,
+    "consensoPct": 72,
     "consensoCopias": 2,
     "baseCopias": 1,
     "tusVersiones": {
@@ -293,7 +285,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 23,
+    "consensoPct": 22,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -321,7 +313,7 @@
    {
     "n": "Monstrous Rage",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 23,
+    "consensoPct": 22,
     "consensoCopias": 3,
     "baseCopias": 0,
     "tusVersiones": {
@@ -349,7 +341,7 @@
    {
     "n": "Stormchaser's Talent",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 38,
+    "consensoPct": 37,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -377,7 +369,7 @@
    {
     "n": "Boomerang Basics",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 18,
+    "consensoPct": 17,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -461,34 +453,6 @@
     }
    },
    {
-    "n": "Spell Snare",
-    "tipo": "copias distintas del consenso",
-    "consensoPct": 67,
-    "consensoCopias": 2,
-    "baseCopias": 2,
-    "tusVersiones": {
-     "2.0": 1,
-     "Basics": 2,
-     "PT": 3,
-     "Pol 1 NF": 2,
-     "Stock": 2,
-     "UR Aggro Flashback": 3,
-     "Ur Aggro Rage": 2
-    },
-    "con": {
-     "W": 90,
-     "L": 74,
-     "n": 164,
-     "wr": 55
-    },
-    "sin": {
-     "W": 0,
-     "L": 0,
-     "n": 0,
-     "wr": null
-    }
-   },
-   {
     "n": "Unholy Heat",
     "tipo": "copias distintas del consenso",
     "consensoPct": 97,
@@ -519,7 +483,7 @@
    {
     "n": "Prismari Charm",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 15,
+    "consensoPct": 18,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -547,9 +511,9 @@
    {
     "n": "Surgical Extraction",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 27,
+    "consensoPct": 28,
     "consensoCopias": 1,
-    "baseCopias": 1,
+    "baseCopias": 0,
     "tusVersiones": {
      "2.0": 0,
      "Basics": 0,
@@ -575,7 +539,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 13,
+    "consensoPct": 10,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -603,7 +567,7 @@
    {
     "n": "Expressive Iteration",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 22,
+    "consensoPct": 20,
     "consensoCopias": 4,
     "baseCopias": 0,
     "tusVersiones": {
