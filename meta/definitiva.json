@@ -1,15 +1,15 @@
 {
- "generado": "2026-08-05",
+ "generado": "2026-08-06",
  "comoSeCalcula": "Base: la lista media de mtgtop8 (cada carta a sus copias típicas, de más jugada a menos, hasta 60 y 15; los fetchlands como bloque intercambiable). Encima, las desviaciones de las versiones de Fer con su récord real con y sin cada carta, y los avisos que el histórico sostiene. Lo que NO se calcula: qué carta responde a qué mazo — eso es criterio de Magic y va marcado como decisión humana en cada aviso.",
  "campo": {
   "mazos": 60,
   "ventanaDias": 28,
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
-  "generado": "2026-08-03"
+  "generado": "2026-08-05"
  },
  "tuHistorico": {
-  "partidas": 164,
-  "games": 408,
+  "partidas": 173,
+  "games": 432,
   "versiones": [
    "Aggro",
    "Basics",
@@ -43,6 +43,14 @@
     "max": 4
    },
    {
+    "n": "Lava Dart",
+    "copias": 4,
+    "pct": 98,
+    "typical": 4,
+    "min": 4,
+    "max": 4
+   },
+   {
     "n": "Lightning Bolt",
     "copias": 4,
     "pct": 98,
@@ -64,14 +72,6 @@
     "pct": 98,
     "typical": 4,
     "min": 4,
-    "max": 4
-   },
-   {
-    "n": "Lava Dart",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 3,
     "max": 4
    },
    {
@@ -101,7 +101,7 @@
    {
     "n": "Slickshot Show-Off",
     "copias": 4,
-    "pct": 95,
+    "pct": 97,
     "typical": 4,
     "min": 2,
     "max": 4
@@ -109,7 +109,7 @@
    {
     "n": "Bloodstained Mire",
     "copias": 3,
-    "pct": 95,
+    "pct": 97,
     "typical": 3,
     "min": 1,
     "max": 4
@@ -125,7 +125,7 @@
    {
     "n": "Mutagenic Growth",
     "copias": 4,
-    "pct": 93,
+    "pct": 92,
     "typical": 4,
     "min": 1,
     "max": 4
@@ -133,23 +133,7 @@
    {
     "n": "Wooded Foothills",
     "copias": 2,
-    "pct": 88,
-    "typical": 2,
-    "min": 1,
-    "max": 4
-   },
-   {
-    "n": "Scalding Tarn",
-    "copias": 3,
-    "pct": 80,
-    "typical": 3,
-    "min": 1,
-    "max": 4
-   },
-   {
-    "n": "Arid Mesa",
-    "copias": 2,
-    "pct": 78,
+    "pct": 87,
     "typical": 2,
     "min": 1,
     "max": 4
@@ -157,18 +141,26 @@
    {
     "n": "Expressive Iteration",
     "copias": 4,
-    "pct": 75,
+    "pct": 82,
     "typical": 4,
     "min": 1,
     "max": 4
    },
    {
-    "n": "Violent Urge",
-    "copias": 1,
-    "pct": 72,
+    "n": "Scalding Tarn",
+    "copias": 4,
+    "pct": 77,
+    "typical": 4,
+    "min": 1,
+    "max": 4
+   },
+   {
+    "n": "Arid Mesa",
+    "copias": 2,
+    "pct": 75,
     "typical": 2,
     "min": 1,
-    "max": 2
+    "max": 4
    }
   ],
   "mainN": 60,
@@ -176,7 +168,7 @@
    {
     "n": "Consign to Memory",
     "copias": 3,
-    "pct": 98,
+    "pct": 97,
     "typical": 3,
     "min": 2,
     "max": 4
@@ -207,17 +199,25 @@
    },
    {
     "n": "Spell Snare",
-    "copias": 3,
-    "pct": 68,
-    "typical": 3,
+    "copias": 2,
+    "pct": 63,
+    "typical": 2,
     "min": 1,
     "max": 3
    },
    {
     "n": "Tormod's Crypt",
     "copias": 2,
-    "pct": 57,
+    "pct": 60,
     "typical": 2,
+    "min": 1,
+    "max": 4
+   },
+   {
+    "n": "Murktide Regent",
+    "copias": 1,
+    "pct": 30,
+    "typical": 1,
     "min": 1,
     "max": 2
    }
@@ -229,23 +229,24 @@
    {
     "n": "Violent Urge",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 72,
+    "consensoPct": 70,
     "consensoCopias": 2,
-    "baseCopias": 1,
+    "baseCopias": 0,
     "tusVersiones": {
      "2.0": 2,
      "Basics": 1,
      "PT": 0,
      "Pol 1 NF": 2,
+     "Stock 2.0": 2,
      "Stock": 1,
      "UR Aggro Flashback": 0,
      "Ur Aggro Rage": 0
     },
     "con": {
-     "W": 65,
-     "L": 59,
-     "n": 124,
-     "wr": 52
+     "W": 72,
+     "L": 61,
+     "n": 133,
+     "wr": 54
     },
     "sin": {
      "W": 25,
@@ -257,7 +258,7 @@
    {
     "n": "Flashback",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 18,
+    "consensoPct": 20,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -265,27 +266,28 @@
      "Basics": 0,
      "PT": 0,
      "Pol 1 NF": 0,
+     "Stock 2.0": 0,
      "Stock": 1,
      "UR Aggro Flashback": 1,
      "Ur Aggro Rage": 0
     },
     "con": {
-     "W": 63,
-     "L": 54,
-     "n": 117,
-     "wr": 54
+     "W": 66,
+     "L": 55,
+     "n": 121,
+     "wr": 55
     },
     "sin": {
-     "W": 27,
-     "L": 20,
-     "n": 47,
-     "wr": 57
+     "W": 31,
+     "L": 21,
+     "n": 52,
+     "wr": 60
     }
    },
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 22,
+    "consensoPct": 20,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -293,6 +295,7 @@
      "Basics": 0,
      "PT": 2,
      "Pol 1 NF": 0,
+     "Stock 2.0": 0,
      "Stock": 0,
      "UR Aggro Flashback": 2,
      "Ur Aggro Rage": 2
@@ -304,10 +307,10 @@
      "wr": 62
     },
     "sin": {
-     "W": 65,
-     "L": 59,
-     "n": 124,
-     "wr": 52
+     "W": 72,
+     "L": 61,
+     "n": 133,
+     "wr": 54
     }
    },
    {
@@ -321,6 +324,7 @@
      "Basics": 0,
      "PT": 3,
      "Pol 1 NF": 0,
+     "Stock 2.0": 0,
      "Stock": 0,
      "UR Aggro Flashback": 3,
      "Ur Aggro Rage": 3
@@ -332,16 +336,16 @@
      "wr": 62
     },
     "sin": {
-     "W": 65,
-     "L": 59,
-     "n": 124,
-     "wr": 52
+     "W": 72,
+     "L": 61,
+     "n": 133,
+     "wr": 54
     }
    },
    {
     "n": "Stormchaser's Talent",
-    "tipo": "copias distintas del consenso",
-    "consensoPct": 37,
+    "tipo": "la llevas y el campo casi no",
+    "consensoPct": 28,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -349,27 +353,28 @@
      "Basics": 2,
      "PT": 1,
      "Pol 1 NF": 0,
+     "Stock 2.0": 1,
      "Stock": 0,
      "UR Aggro Flashback": 0,
      "Ur Aggro Rage": 1
     },
     "con": {
-     "W": 16,
-     "L": 9,
-     "n": 25,
-     "wr": 64
+     "W": 20,
+     "L": 10,
+     "n": 30,
+     "wr": 67
     },
     "sin": {
-     "W": 74,
-     "L": 65,
-     "n": 139,
-     "wr": 53
+     "W": 77,
+     "L": 66,
+     "n": 143,
+     "wr": 54
     }
    },
    {
     "n": "Boomerang Basics",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 17,
+    "consensoPct": 13,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -377,6 +382,7 @@
      "Basics": 2,
      "PT": 0,
      "Pol 1 NF": 0,
+     "Stock 2.0": 0,
      "Stock": 0,
      "UR Aggro Flashback": 0,
      "Ur Aggro Rage": 0
@@ -388,16 +394,16 @@
      "wr": 60
     },
     "sin": {
-     "W": 84,
-     "L": 70,
-     "n": 154,
-     "wr": 55
+     "W": 91,
+     "L": 72,
+     "n": 163,
+     "wr": 56
     }
    },
    {
     "n": "Island",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 18,
+    "consensoPct": 13,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -405,6 +411,7 @@
      "Basics": 1,
      "PT": 0,
      "Pol 1 NF": 0,
+     "Stock 2.0": 0,
      "Stock": 0,
      "UR Aggro Flashback": 0,
      "Ur Aggro Rage": 0
@@ -416,10 +423,10 @@
      "wr": 60
     },
     "sin": {
-     "W": 84,
-     "L": 70,
-     "n": 154,
-     "wr": 55
+     "W": 91,
+     "L": 72,
+     "n": 163,
+     "wr": 56
     }
    }
   ],
@@ -427,7 +434,7 @@
    {
     "n": "Consign to Memory",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 98,
+    "consensoPct": 97,
     "consensoCopias": 3,
     "baseCopias": 3,
     "tusVersiones": {
@@ -435,15 +442,45 @@
      "Basics": 3,
      "PT": 3,
      "Pol 1 NF": 3,
+     "Stock 2.0": 4,
      "Stock": 3,
      "UR Aggro Flashback": 3,
      "Ur Aggro Rage": 3
     },
     "con": {
-     "W": 90,
-     "L": 74,
-     "n": 164,
-     "wr": 55
+     "W": 97,
+     "L": 76,
+     "n": 173,
+     "wr": 56
+    },
+    "sin": {
+     "W": 0,
+     "L": 0,
+     "n": 0,
+     "wr": null
+    }
+   },
+   {
+    "n": "Spell Snare",
+    "tipo": "copias distintas del consenso",
+    "consensoPct": 63,
+    "consensoCopias": 2,
+    "baseCopias": 2,
+    "tusVersiones": {
+     "2.0": 1,
+     "Basics": 2,
+     "PT": 3,
+     "Pol 1 NF": 2,
+     "Stock 2.0": 2,
+     "Stock": 2,
+     "UR Aggro Flashback": 3,
+     "Ur Aggro Rage": 2
+    },
+    "con": {
+     "W": 97,
+     "L": 76,
+     "n": 173,
+     "wr": 56
     },
     "sin": {
      "W": 0,
@@ -463,15 +500,16 @@
      "Basics": 3,
      "PT": 4,
      "Pol 1 NF": 3,
+     "Stock 2.0": 4,
      "Stock": 3,
      "UR Aggro Flashback": 3,
      "Ur Aggro Rage": 4
     },
     "con": {
-     "W": 90,
-     "L": 74,
-     "n": 164,
-     "wr": 55
+     "W": 97,
+     "L": 76,
+     "n": 173,
+     "wr": 56
     },
     "sin": {
      "W": 0,
@@ -483,7 +521,7 @@
    {
     "n": "Prismari Charm",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 18,
+    "consensoPct": 17,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -491,27 +529,28 @@
      "Basics": 1,
      "PT": 0,
      "Pol 1 NF": 1,
+     "Stock 2.0": 0,
      "Stock": 1,
      "UR Aggro Flashback": 0,
      "Ur Aggro Rage": 0
     },
     "con": {
-     "W": 64,
-     "L": 55,
-     "n": 119,
+     "W": 67,
+     "L": 56,
+     "n": 123,
      "wr": 54
     },
     "sin": {
-     "W": 26,
-     "L": 19,
-     "n": 45,
-     "wr": 58
+     "W": 30,
+     "L": 20,
+     "n": 50,
+     "wr": 60
     }
    },
    {
     "n": "Surgical Extraction",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 28,
+    "consensoPct": 30,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -519,43 +558,16 @@
      "Basics": 0,
      "PT": 0,
      "Pol 1 NF": 1,
+     "Stock 2.0": 0,
      "Stock": 1,
      "UR Aggro Flashback": 0,
      "Ur Aggro Rage": 2
     },
     "con": {
-     "W": 62,
-     "L": 52,
-     "n": 114,
-     "wr": 54
-    },
-    "sin": {
-     "W": 28,
-     "L": 22,
-     "n": 50,
-     "wr": 56
-    }
-   },
-   {
-    "n": "Assault Strobe",
-    "tipo": "la llevas y el campo casi no",
-    "consensoPct": 10,
-    "consensoCopias": 1,
-    "baseCopias": 0,
-    "tusVersiones": {
-     "2.0": 0,
-     "Basics": 0,
-     "PT": 0,
-     "Pol 1 NF": 1,
-     "Stock": 1,
-     "UR Aggro Flashback": 0,
-     "Ur Aggro Rage": 0
-    },
-    "con": {
-     "W": 58,
-     "L": 51,
-     "n": 109,
-     "wr": 53
+     "W": 65,
+     "L": 53,
+     "n": 118,
+     "wr": 55
     },
     "sin": {
      "W": 32,
@@ -565,9 +577,38 @@
     }
    },
    {
+    "n": "Assault Strobe",
+    "tipo": "la llevas y el campo casi no",
+    "consensoPct": 12,
+    "consensoCopias": 1,
+    "baseCopias": 0,
+    "tusVersiones": {
+     "2.0": 0,
+     "Basics": 0,
+     "PT": 0,
+     "Pol 1 NF": 1,
+     "Stock 2.0": 0,
+     "Stock": 1,
+     "UR Aggro Flashback": 0,
+     "Ur Aggro Rage": 0
+    },
+    "con": {
+     "W": 61,
+     "L": 52,
+     "n": 113,
+     "wr": 54
+    },
+    "sin": {
+     "W": 36,
+     "L": 24,
+     "n": 60,
+     "wr": 60
+    }
+   },
+   {
     "n": "Expressive Iteration",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 20,
+    "consensoPct": 17,
     "consensoCopias": 4,
     "baseCopias": 0,
     "tusVersiones": {
@@ -575,6 +616,7 @@
      "Basics": 0,
      "PT": 3,
      "Pol 1 NF": 0,
+     "Stock 2.0": 0,
      "Stock": 0,
      "UR Aggro Flashback": 3,
      "Ur Aggro Rage": 0
@@ -586,44 +628,16 @@
      "wr": 60
     },
     "sin": {
-     "W": 69,
-     "L": 60,
-     "n": 129,
-     "wr": 53
-    }
-   },
-   {
-    "n": "Mystical Dispute",
-    "tipo": "la llevas y el campo casi no",
-    "consensoPct": 17,
-    "consensoCopias": 1,
-    "baseCopias": 0,
-    "tusVersiones": {
-     "2.0": 1,
-     "Basics": 0,
-     "PT": 0,
-     "Pol 1 NF": 0,
-     "Stock": 0,
-     "UR Aggro Flashback": 0,
-     "Ur Aggro Rage": 0
-    },
-    "con": {
-     "W": 1,
-     "L": 4,
-     "n": 5,
-     "wr": 20
-    },
-    "sin": {
-     "W": 89,
-     "L": 70,
-     "n": 159,
-     "wr": 56
+     "W": 76,
+     "L": 62,
+     "n": 138,
+     "wr": 55
     }
    },
    {
     "n": "Soul-Guide Lantern",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 8,
+    "consensoPct": 13,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -631,6 +645,36 @@
      "Basics": 0,
      "PT": 0,
      "Pol 1 NF": 0,
+     "Stock 2.0": 1,
+     "Stock": 0,
+     "UR Aggro Flashback": 0,
+     "Ur Aggro Rage": 0
+    },
+    "con": {
+     "W": 5,
+     "L": 5,
+     "n": 10,
+     "wr": 50
+    },
+    "sin": {
+     "W": 92,
+     "L": 71,
+     "n": 163,
+     "wr": 56
+    }
+   },
+   {
+    "n": "Mystical Dispute",
+    "tipo": "la llevas y el campo casi no",
+    "consensoPct": 20,
+    "consensoCopias": 1,
+    "baseCopias": 0,
+    "tusVersiones": {
+     "2.0": 1,
+     "Basics": 0,
+     "PT": 0,
+     "Pol 1 NF": 0,
+     "Stock 2.0": 0,
      "Stock": 0,
      "UR Aggro Flashback": 0,
      "Ur Aggro Rage": 0
@@ -642,9 +686,67 @@
      "wr": 20
     },
     "sin": {
-     "W": 89,
-     "L": 70,
-     "n": 159,
+     "W": 96,
+     "L": 72,
+     "n": 168,
+     "wr": 57
+    }
+   },
+   {
+    "n": "Violent Urge",
+    "tipo": "la llevas y el campo casi no",
+    "consensoPct": 0,
+    "consensoCopias": 0,
+    "baseCopias": 0,
+    "tusVersiones": {
+     "2.0": 0,
+     "Basics": 0,
+     "PT": 0,
+     "Pol 1 NF": 0,
+     "Stock 2.0": 1,
+     "Stock": 0,
+     "UR Aggro Flashback": 0,
+     "Ur Aggro Rage": 0
+    },
+    "con": {
+     "W": 4,
+     "L": 1,
+     "n": 5,
+     "wr": 80
+    },
+    "sin": {
+     "W": 93,
+     "L": 75,
+     "n": 168,
+     "wr": 55
+    }
+   },
+   {
+    "n": "Murktide Regent",
+    "tipo": "copias distintas del consenso",
+    "consensoPct": 30,
+    "consensoCopias": 1,
+    "baseCopias": 1,
+    "tusVersiones": {
+     "2.0": 0,
+     "Basics": 0,
+     "PT": 0,
+     "Pol 1 NF": 0,
+     "Stock 2.0": 0,
+     "Stock": 0,
+     "UR Aggro Flashback": 0,
+     "Ur Aggro Rage": 0
+    },
+    "con": {
+     "W": 0,
+     "L": 0,
+     "n": 0,
+     "wr": null
+    },
+    "sin": {
+     "W": 97,
+     "L": 76,
+     "n": 173,
      "wr": 56
     }
    }
@@ -652,18 +754,18 @@
  },
  "matchups": [
   {
+   "aq": "Boros Energy",
+   "W": 9,
+   "L": 5,
+   "n": 14,
+   "wr": 64
+  },
+  {
    "aq": "Izzet Affinity",
    "W": 8,
    "L": 6,
    "n": 14,
    "wr": 57
-  },
-  {
-   "aq": "Boros Energy",
-   "W": 7,
-   "L": 5,
-   "n": 12,
-   "wr": 58
   },
   {
    "aq": "Esper Goryo's",
@@ -680,11 +782,32 @@
    "wr": 56
   },
   {
+   "aq": "Izzet Prowess",
+   "W": 3,
+   "L": 6,
+   "n": 9,
+   "wr": 33
+  },
+  {
    "aq": "Neoform",
    "W": 4,
    "L": 5,
    "n": 9,
    "wr": 44
+  },
+  {
+   "aq": "Ruby Storm",
+   "W": 7,
+   "L": 2,
+   "n": 9,
+   "wr": 78
+  },
+  {
+   "aq": "Azorius Control",
+   "W": 4,
+   "L": 4,
+   "n": 8,
+   "wr": 50
   },
   {
    "aq": "Grixis Reanimator",
@@ -694,32 +817,18 @@
    "wr": 50
   },
   {
-   "aq": "Izzet Prowess",
-   "W": 3,
-   "L": 5,
-   "n": 8,
-   "wr": 38
-  },
-  {
-   "aq": "Ruby Storm",
-   "W": 6,
-   "L": 2,
-   "n": 8,
-   "wr": 75
-  },
-  {
-   "aq": "Azorius Control",
-   "W": 3,
-   "L": 4,
-   "n": 7,
-   "wr": 43
-  },
-  {
    "aq": "Broodscale",
    "W": 3,
    "L": 4,
    "n": 7,
    "wr": 43
+  },
+  {
+   "aq": "Eldrazi",
+   "W": 4,
+   "L": 3,
+   "n": 7,
+   "wr": 57
   },
   {
    "aq": "Hollow One",
@@ -736,11 +845,11 @@
    "wr": 50
   },
   {
-   "aq": "Eldrazi",
-   "W": 3,
-   "L": 3,
+   "aq": "Eldrazi Ramp",
+   "W": 5,
+   "L": 1,
    "n": 6,
-   "wr": 50
+   "wr": 83
   },
   {
    "aq": "Golgari Yawgmoth",
@@ -764,13 +873,6 @@
    "wr": 60
   },
   {
-   "aq": "Eldrazi Ramp",
-   "W": 4,
-   "L": 1,
-   "n": 5,
-   "wr": 80
-  },
-  {
    "aq": "Living End",
    "W": 2,
    "L": 2,
@@ -790,6 +892,13 @@
    "L": 2,
    "n": 2,
    "wr": 0
+  },
+  {
+   "aq": "Eldrazi PT",
+   "W": 2,
+   "L": 0,
+   "n": 2,
+   "wr": 100
   },
   {
    "aq": "Grixis Frog/Reanimator",
@@ -820,18 +929,18 @@
    "wr": 0
   },
   {
-   "aq": "Eldrazi PT",
+   "aq": "Elves",
    "W": 1,
    "L": 0,
    "n": 1,
    "wr": 100
   },
   {
-   "aq": "Elves",
-   "W": 1,
-   "L": 0,
+   "aq": "Esper Blink",
+   "W": 0,
+   "L": 1,
    "n": 1,
-   "wr": 100
+   "wr": 0
   },
   {
    "aq": "GW Birthing Ritual",
@@ -939,9 +1048,9 @@
     },
     {
      "aq": "Izzet Prowess",
-     "rec": "3-5",
-     "wr": 38,
-     "n": 8
+     "rec": "3-6",
+     "wr": 33,
+     "n": 9
     },
     {
      "aq": "Sam Combo",
@@ -955,16 +1064,16 @@
   {
    "clave": "ventana-de-victoria",
    "titulo": "Hasta qué turno ganas",
-   "texto": "Hasta el turno 5 ganas el 56% (290 games); del 6 en adelante, el 39% (118). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
+   "texto": "Hasta el turno 5 ganas el 57% (307 games); del 6 en adelante, el 39% (125). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
    "datos": [
     {
      "tramo": "T1-T5",
-     "n": 290,
-     "wr": 56
+     "n": 307,
+     "wr": 57
     },
     {
      "tramo": "T6+",
-     "n": 118,
+     "n": 125,
      "wr": 39
     }
    ],
@@ -973,21 +1082,21 @@
   {
    "clave": "game1-salida-robo",
    "titulo": "El peso de empezar",
-   "texto": "En el game 1, donde la salida la reparte el dado, ganas el 62% saliendo y el 37% robando: 25 puntos. Es la única medición sin sesgo (en el G2/G3 elige quien perdió el anterior). Cuanto mayor sea esa brecha, más debe pesar en la lista la resiliencia jugando segundo.",
+   "texto": "En el game 1, donde la salida la reparte el dado, ganas el 63% saliendo y el 39% robando: 24 puntos. Es la única medición sin sesgo (en el G2/G3 elige quien perdió el anterior). Cuanto mayor sea esa brecha, más debe pesar en la lista la resiliencia jugando segundo.",
    "datos": [
     {
      "sr": "Salida",
-     "n": 78,
-     "W": 48,
-     "L": 30,
-     "wr": 62
+     "n": 83,
+     "W": 52,
+     "L": 31,
+     "wr": 63
     },
     {
      "sr": "Robo",
-     "n": 86,
-     "W": 32,
-     "L": 54,
-     "wr": 37
+     "n": 90,
+     "W": 35,
+     "L": 55,
+     "wr": 39
     }
    ],
    "decision": "humana: qué cartas te hacen menos dependiente de la salida"

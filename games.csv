@@ -1,4 +1,28 @@
 match_uuid,Game,Arquetipo,Salida / Robo,Ganado,Turnos,Prowess,Monjes,Mulls yo,Mulls rival,Mano yo,Mano rival,Robos yo,Robos rival,Tierras yo,Tierras T1-3,Accion T1,Turno 1a amenaza,Turno Cutter,Hechizos yo,Removal yo,Descartes yo,Ficha turno Cutter,Criaturas yo,Turno 1a interaccion,Interaccion rival,Reportado por
+7df980f5-df8a-43bf-b2f6-50a10a39e827,1,Esper Blink,Robo,0,9,1,1,1,0,6,7,11,11,4,2,1,1,2,12,4,1,0,2,3,1,4c_PolG
+7df980f5-df8a-43bf-b2f6-50a10a39e827,2,Esper Blink,Salida,1,16,5,3,0,0,7,7,18,18,7,3,1,1,9,27,5,0,1,7,5,3,4c_PolG
+7df980f5-df8a-43bf-b2f6-50a10a39e827,3,Esper Blink,Robo,0,6,2,1,1,0,6,7,7,5,4,3,1,1,5,10,2,0,1,3,3,1,4c_PolG
+7cd1fd31-9d34-4706-802e-7ef04959ec9a,1,Eldrazi PT,Salida,1,4,6,2,1,1,6,6,4,3,3,3,1,1,2,7,1,0,0,3,3,0,4c_PolG
+7cd1fd31-9d34-4706-802e-7ef04959ec9a,2,Eldrazi PT,Robo,0,7,4,0,0,1,7,6,8,6,3,2,1,1,0,8,2,0,0,3,4,0,4c_PolG
+7cd1fd31-9d34-4706-802e-7ef04959ec9a,3,Eldrazi PT,Salida,1,5,3,0,0,2,7,5,4,5,4,3,1,1,0,5,1,0,0,2,3,0,4c_PolG
+b64cf2ef-b361-4511-af3d-a0620d56930e,1,Ruby Storm,Robo,1,3,9,2,1,0,6,7,4,3,3,3,0,2,2,7,1,0,1,2,3,0,4c_PolG
+b64cf2ef-b361-4511-af3d-a0620d56930e,2,Ruby Storm,Robo,1,4,0,0,1,0,6,7,6,8,4,3,1,3,0,8,3,0,0,1,3,0,4c_PolG
+97e27e2f-38a8-4ed2-8cae-34c525e8e098,1,Eldrazi Ramp,Robo,1,4,19,3,0,0,7,7,8,3,4,3,1,2,2,11,3,0,1,2,1,0,4c_PolG
+97e27e2f-38a8-4ed2-8cae-34c525e8e098,2,Eldrazi Ramp,Robo,1,3,0,0,0,1,7,6,4,2,3,3,0,3,0,6,2,0,0,1,3,0,4c_PolG
+11591610-3aac-452e-b03f-d649436b144b,1,Boros Energy,Salida,0,7,16,1,1,0,6,7,8,9,3,3,1,1,6,13,4,0,0,3,2,0,4c_PolG
+11591610-3aac-452e-b03f-d649436b144b,2,Boros Energy,Salida,1,4,8,3,0,1,7,6,4,3,3,3,0,2,2,7,1,0,1,1,3,1,4c_PolG
+11591610-3aac-452e-b03f-d649436b144b,3,Boros Energy,Robo,1,7,2,1,1,0,6,7,8,8,4,3,0,2,6,12,3,0,1,4,2,1,4c_PolG
+b83b8a38-e447-4aaf-b79c-8c0f19d6da4f,1,Eldrazi,Salida,1,4,6,0,0,0,7,7,5,3,3,2,1,1,0,8,2,0,0,4,0,0,4c_PolG
+b83b8a38-e447-4aaf-b79c-8c0f19d6da4f,2,Eldrazi,Robo,0,4,0,0,1,1,6,6,6,3,3,3,1,1,0,8,1,0,0,2,3,0,4c_PolG
+b83b8a38-e447-4aaf-b79c-8c0f19d6da4f,3,Eldrazi,Salida,1,5,12,2,0,1,7,6,5,5,4,3,1,1,2,7,3,0,1,1,3,0,4c_PolG
+d57914a0-4f4f-4081-aa1b-e7b20c08b704,1,Boros Energy,Salida,1,4,0,0,0,0,7,7,4,3,2,2,1,1,0,7,4,0,0,2,2,1,4c_PolG
+d57914a0-4f4f-4081-aa1b-e7b20c08b704,2,Boros Energy,Robo,0,5,2,0,0,1,7,6,4,4,4,3,1,1,0,7,2,0,0,3,2,1,4c_PolG
+d57914a0-4f4f-4081-aa1b-e7b20c08b704,3,Boros Energy,Salida,1,6,4,3,0,0,7,7,7,5,5,3,1,1,3,9,1,0,0,2,2,1,4c_PolG
+7b278452-88db-4edc-8bc1-7671c31c2c71,1,Izzet Prowess,Salida,1,4,8,2,0,1,7,6,4,4,2,2,0,2,2,6,3,0,1,1,3,1,4c_PolG
+7b278452-88db-4edc-8bc1-7671c31c2c71,2,Izzet Prowess,Robo,0,4,0,0,0,0,7,7,5,4,3,3,1,3,0,5,1,0,0,2,1,3,4c_PolG
+7b278452-88db-4edc-8bc1-7671c31c2c71,3,Izzet Prowess,Salida,0,5,0,1,0,1,7,6,7,6,5,3,0,2,2,7,1,0,0,1,3,1,4c_PolG
+631c1984-2888-4783-8a95-3ab0e25aa9a9,1,Azorius Control,Robo,1,4,7,3,1,0,6,7,6,5,4,3,1,1,2,9,3,0,1,2,4,0,4c_PolG
+631c1984-2888-4783-8a95-3ab0e25aa9a9,2,Azorius Control,Robo,1,5,6,0,1,0,6,7,8,9,5,3,1,1,0,9,1,0,0,5,0,0,4c_PolG
 52504083-eb2d-4ea9-ac11-d7849d4f0d45,1,Dimir Frog,Robo,0,3,3,0,1,0,6,7,5,5,2,2,1,3,0,6,2,0,0,2,0,0,4c_PolG
 52504083-eb2d-4ea9-ac11-d7849d4f0d45,2,Dimir Frog,Salida,1,3,3,0,0,0,7,7,3,3,3,3,1,1,0,5,2,0,0,2,0,0,4c_PolG
 52504083-eb2d-4ea9-ac11-d7849d4f0d45,3,Dimir Frog,Robo,1,4,15,2,0,1,7,6,8,4,4,3,1,1,3,10,2,0,1,2,3,1,4c_PolG
