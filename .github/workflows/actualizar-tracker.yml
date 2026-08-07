@@ -63,6 +63,12 @@ jobs:
       - name: Recalcular La 75 Definitiva
         run: python automation/generar_definitiva.py --date "$(date -u +%F)"
 
+      # El radar cruza el campo global, la liga y el récord de Fer para sacar alarmas
+      # ("este mazo sube y lo pierdes"). Tiene su propio cron cada 4 días; aquí corre
+      # también porque el botón "Actualizar datos" refresca TODO de una vez.
+      - name: Regenerar el radar de metajuego
+        run: node scripts/radar_meta.mjs --out meta --hoy "$(date -u +%F)"
+
       - name: Commitear si hay cambios
         run: |
           if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv listas meta)" ]]; then

@@ -1,0 +1,53 @@
+name: Radar de metajuego (cada 4 días)
+
+# Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer
+# (registro.csv) y su récord contra cada mazo, y saca alarmas: si un arquetipo sube
+# y el winrate contra él es bajo, hay que adaptarse.
+#
+# La cadencia es la del brainstorm (cada ~4 días, acordada al arrancar el proyecto),
+# a propósito: las subidas del campo se miden contra la corrida anterior, así que el
+# radar y el brainstorm miran la misma ventana de tiempo.
+#
+# Lo que este robot NO hace: decidir qué carta responde a qué mazo. Eso es criterio de
+# Magic y sale del brainstorm con /mtg-expert. El radar dice CUÁNDO hace falta uno y
+# POR QUÉ, con los datos ya preparados. Lo pinta la pestaña "Brainstorm" del dashboard.
+
+on:
+  schedule:
+    - cron: '0 8 */4 * *'   # 08:00 UTC cada ~4 días (días 1, 5, 9, 13, 17, 21, 25, 29)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: radar-meta
+  cancel-in-progress: true
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerar meta/radar.json
+        run: node scripts/radar_meta.mjs --out meta --hoy "$(date +%F)"
+
+      - name: Commitear si hay cambios
+        run: |
+          if [[ -n "$(git status --porcelain meta/radar.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add meta/radar.json
+            git commit -m "Radar: actualización automática del metajuego y las alarmas"
+            # el robot de datos puede haber subido mientras corríamos: rebasar antes de empujar
+            git pull --rebase
+            git push
+            echo "meta/radar.json actualizado y subido."
+          else
+            echo "Sin cambios en meta/radar.json."
+          fi
