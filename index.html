@@ -282,7 +282,6 @@
     <div class="tab" data-v="cmp">Comparativa</div>
     <div class="tab" data-v="guia">Guía</div>
     <div class="tab claude" data-v="def">La 75 Definitiva</div>
-    <div class="tab claude" data-v="sbdef">Plan SB</div>
     <div class="tab claude" data-v="meta">Meta · mtgtop8</div>
   </nav>
 
@@ -453,76 +452,16 @@
       <div class="cmp-note" id="cmpMxNote"></div></div>
   </section>
 
-  <!-- ===== LA 75 DEFINITIVA (autor: Claude) ===== -->
+  <!-- ===== LA 75 DEFINITIVA — 60 + 15 + guia de sideboard =====
+       Decision de Fer (7-ago-2026): esta pestana muestra SOLO tres cosas: el maindeck,
+       el banquillo y el plan de sideboard por matchup. Lo demas (tablas de consenso del
+       campo, desviaciones con record, notas historicas) se quito por no aportar al juego.
+       Fuente: meta/mi-75.json (la lista) + meta/guia-sb.json (el plan). El record de cada
+       matchup se calcula en vivo desde registro.csv. -->
   <section class="view" id="v-def">
-    <div class="author"><span class="ic"></span><div><b>La 75 Definitiva se calcula, no se escribe.</b> Decisión de Fer (30-jul-2026): esta pestaña se reconstruye en cada corrida del robot cruzando el <b>consenso del campo</b> (mtgtop8) con <b>tu histórico real</b>. Lo que sale abajo no lo ha teclado nadie. <b>Con un límite honesto</b>: los datos dicen qué llevas distinto y qué matchups pierdes, pero <b>no</b> dicen qué carta responde a qué mazo — eso es criterio de Magic. Cada aviso marca dónde acaba el cálculo y empieza la decisión.</div></div>
-
-    <!-- Bloque CALCULADO desde meta/definitiva.json (automation/generar_definitiva.py) -->
-    <div id="defGen"></div>
-    <h3 class="secH" style="margin-top:26px">Notas escritas a mano <span class="q" style="font-size:12px;font-weight:400">(del 22-jul · en retirada, se van sustituyendo por lo calculado)</span></h3>
-
-    <div class="grid">
-      <div class="panel"><h3>Que cambia respecto a antes</h3>
-        <div class="idea"><span class="n"></span><div><b>Entra Bloodstained Mire en la manabase.</b> Hace un mes tu duda era si hacia falta; hoy la juega el <b>97% del campo</b>. No es moda: cada fetch mete tierra al cementerio gratis y acelera el <b>delirium del Dragon's Rage Channeler</b> (con Bauble ya llevas artefacto). Cambio de coste casi cero que te hace pegar como 3/3 volador un turno antes.</div></div>
-        <div class="idea"><span class="n"></span><div><b>El main es clasico y estable.</b> El 82% de la lista es identico en las 60 listas. Te quedas con <b>4 Expressive Iteration</b> y <b>2 Violent Urge</b> (primera fuerza, gana los bloqueos del mirror). Stormchaser's Talent ha resurgido al 40%, pero en las variantes burn/boomerang, no en la tuya.</div></div>
-        <div class="idea"><span class="n"></span><div><b>El sideboard ahora ataca TUS perdidas.</b> Entra <b>1 Murktide Regent</b> para el mirror (tu 0-2): un volador enorme que sus Bolt no matan. Subes a <b>2 Tormod's Crypt</b> por tu Esper Goryo's 0-2. Mantienes <b>4 Consign</b> porque tu meta local esta lleno de mazos de trigger (Broodscale, reanimator, Neoform, Breach).</div></div>
-        <div class="idea"><span class="n"></span><div><b>Variante burn en el radar.</b> Assault Strobe + Monstrous Rage (20% del campo) es un mazo distinto: 0 Violent Urge, Expressive Iteration al banquillo, plan de race. No es tu build, pero si un dia quieres probar el plan agresivo puro, ahi esta.</div></div>
-      </div>
-      <div class="panel"><h3>De donde sale <span>(60 listas &middot; 28 dias &middot; mtgtop8)</span></h3>
-        <div class="dl">
-          <div class="sec">Nucleo intocable (100% del campo)</div>
-          <div>4 Dragon's Rage Channeler &middot; 4 Monastery Swiftspear &middot; 4 Lightning Bolt &middot; 4 Lava Dart &middot; 4 Mishra's Bauble &middot; 4 Preordain</div>
-          <div class="sec">Casi unanime (92-98%)</div>
-          <div>4 Cori-Steel Cutter (98%) &middot; 4 Mutagenic Growth (97%) &middot; 4 Slickshot Show-Off (92%)</div>
-          <div class="sec">Los que definen tu build</div>
-          <div>4 Expressive Iteration (77% &middot; el 23% que la corta es burn) &middot; 2 Violent Urge (70%)</div>
-          <div class="sec">El sideboard se construye para TU meta, no para el top 8 de otros</div>
-          <div style="font-size:12px">Tu record real por mazo manda sobre el consenso global. Por eso Murktide (mirror), 2 Crypt (Goryo's) y Mystical Dispute (tu liga es muy azul), aunque el campo global los juegue menos.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid">
-      <div class="panel"><h3>La 75 Definitiva v2 &mdash; Main (60)</h3>
-        <div class="dl">
-          <div class="sec">Criaturas (12)</div>
-          <div>4 Dragon's Rage Channeler &middot; 4 Monastery Swiftspear &middot; 4 Slickshot Show-Off</div>
-          <div class="sec">Hechizos (30)</div>
-          <div>4 Cori-Steel Cutter &middot; 4 Mishra's Bauble &middot; 4 Lightning Bolt &middot; 4 Lava Dart &middot; 4 Preordain &middot; 4 Expressive Iteration &middot; 4 Mutagenic Growth &middot; 2 Violent Urge</div>
-          <div class="sec">Tierras (18) <span class="chip in">+Mire</span></div>
-          <div>3 Steam Vents &middot; 3 Mountain &middot; 3 Scalding Tarn &middot; 2 Arid Mesa &middot; 2 Wooded Foothills &middot; <span class="chg">2 Bloodstained Mire</span> &middot; 2 Fiery Islet &middot; 1 Thundering Falls</div>
-        </div>
-      </div>
-      <div class="panel"><h3>Sideboard v2 (15) <span>&middot; ponderado a tu meta local</span></h3>
-        <div class="dl">
-          <div>4 Consign to Memory &middot; 3 Unholy Heat &middot; <span class="chg">2 Tormod's Crypt</span> &middot; 2 Meltdown &middot; 1 Spell Pierce &middot; 1 Spell Snare &middot; <span class="chg">1 Murktide Regent</span><span class="chip in">nuevo</span> &middot; 1 Mystical Dispute</div>
-          <div class="sec">Por que cada desvio con el campo</div>
-          <div style="font-size:12px">
-          &middot; <b>Murktide Regent</b> (campo 22%): la palanca del <b>mirror</b>, donde vas 0-2. Un top-end volador que sus Bolt y bloqueos no manejan.<br>
-          &middot; <b>2 Tormod's Crypt</b> (campo 68%, tipico 1): subes a 2 por tu <b>Esper Goryo's 0-2</b> y el Grixis Reanimator. Coste 0 = medio turno cuando vas en el robo.<br>
-          &middot; <b>Mystical Dispute</b> (campo 15%): tu liga es mas azul que el campo global (Dimir Frog, Azorius, mirror).<br>
-          &middot; <b>Sin Surgical Extraction</b> (campo 35%): la Crypt le gana en tu meta, coste 0 y no depende del mana.<br>
-          &middot; <b>El plan carta a carta por rival esta en la pestana Plan SB.</b></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel full"><h3>Tu 75 vs el consenso del campo <span>(60 listas &middot; donde te desvias y por que)</span></h3>
-      <div style="overflow-x:auto"><table id="defCmp"></table></div>
-    </div>
-
-    <div class="grid" style="margin-top:16px">
-      <div class="panel full"><h3>Y tu agujero en el robo (33% WR)</h3>
-        <div class="idea"><span class="n"></span><div>La lista ya ayuda: la <b>2&ordf; Violent Urge</b> (primera fuerza = bloqueos que matan) y <b>Crypt/Dispute/Pierce a coste 0-1</b> valen medio turno cuando vas por detras. Pero el arreglo grande es de <b>juego</b>, no de lista: en el robo, <b>mulliganea mas agresivo</b> hacia manos con interaccion en el turno 1 (Bolt/Dart) o Cutter en el 2. Tus barridos 0-2 son casi todos en el robo (salida 75% vs robo 33%).</div></div>
-      </div>
-    </div>
+    <div id="def75"></div>
   </section>
 
-  <!-- ===== PLAN SB DEFINITIVO (autor: Claude) ===== -->
-  <section class="view" id="v-sbdef">
-    <div class="author"><span class="ic"></span><div><b>Autor de esta pestaña: Claude</b> · 22-jul-2026. Plan carta a carta para el <b>Sideboard v2</b>: <b>4 Consign · 3 Unholy Heat · 2 Tormod's Crypt · 2 Meltdown · 1 Spell Pierce · 1 Spell Snare · 1 Murktide Regent · 1 Mystical Dispute</b>. Ordenado por TU meta local (lo que más te cruzas y tus 0-2 primero). Los IN/OUT parten del main v2 (2 Violent Urge, Bloodstained Mire). Regla de oro: <b>nunca diluyas la masa crítica de amenazas</b> (12 criaturas + 4 Cutter). Tu récord real aparece en cada tarjeta.</div></div>
-    <div class="sb" id="sbDefCards"></div>
-  </section>
 
   <!-- ===== META (mtgtop8) · autor: Claude ===== -->
   <section class="view" id="v-meta">
@@ -1667,10 +1606,8 @@ const LIST_META = {
 
 // ===== LA 75 DEFINITIVA (datos · autor: Claude, 20-jul-2026) =====
 // Columnas: [carta, Definitiva, JAJC(1º 9-0), jvidarte(8º), runbad(5-0), SkyThZ(5-0×2), jeffleeph28(5-0), EthanBird(burn), Dingo34(burn)]
-const DEFCMP = [["Bloodstained Mire","2","97%","AÑADIDA a tu manabase — enciende el delirium del Dragon's Rage Channeler; el campo la juega casi en pleno"],["Expressive Iteration","4 main","77%","Te quedas en la clásica; el 23% que la corta al banquillo es la variante burn (no la tuya)"],["Violent Urge","2 main","70%","Primera fuerza: gana los bloqueos del mirror; es el 30º slot de consenso"],["Stormchaser's Talent","0","40%","Fuera: ha resurgido, pero en las builds burn/boomerang, no en la clásica"],["Tormod's Crypt (SB)","2","68% (típ. 1)","Subes a 2 copias por tu Esper Goryo's 0-2 y el Grixis Reanimator"],["Murktide Regent (SB)","1","22%","TU tech para el mirror (0-2): un top-end volador que sus Bolt no matan"],["Mystical Dispute (SB)","1","15%","Tu liga es más azul que el campo global (Dimir Frog, Azorius, el propio mirror)"],["Surgical Extraction (SB)","0","35%","La cambias por la Crypt: coste 0 y mejor en el robo, que es tu punto débil"],["Spell Snare (SB)","1","67%","Del consenso: coge el Cutter del mirror y los doses de Broodscale/Frog"]];
 
 // Plan de sideboard sobre la Definitiva (15: 4 Consign · 3 Heat · 2 Crypt · 2 Meltdown · 2 Pierce · 1 Snare · 1 Dispute)
-const SBDEF = [{"aq":"Broodscale","meta":"local 2-2 · lo que más te cruzas","val":"par","vl":"Parejo/fav.","in":"+3 Unholy Heat, +2 Consign to Memory","out":"−2 Violent Urge, −2 Mutagenic Growth, −1 Lava Dart","plan":"El mazo que más te encuentras. Heat mata Basking Broodscale y las piezas; Consign contrarresta el trigger de Kozilek's Command y a Walking Ballista. Removal al Broodscale CON el trigger de Blade of the Bloodchief en la pila (si no, revive). Eres medio turno más rápido: presiona y no regales tempo. Growth es win-more aquí."},{"aq":"Izzet Prowess","meta":"local 0-2 · 7% campo","val":"par","vl":"Habilidad · tu 0-2 a romper","in":"+1 Murktide Regent, +3 Unholy Heat, +1 Spell Snare, +1 Mystical Dispute","out":"−4 Mutagenic Growth, −2 Preordain","plan":"Tu 0-2 y la clave del cambio de sideboard. Gana quien controla la mesa y resuelve la primera amenaza pegajosa. MURKTIDE es la palanca nueva: un volador enorme (crece con tu cementerio) que sus Bolt no matan y que el otro Prowess no maneja — entra cuando la partida se alarga post-side. Snare al Cutter en curva, Dispute a su counter o amenaza por 1. Mata al portador del Cutter en respuesta a que lo equipe. Deja las 2 Violent Urge: primera fuerza gana los bloqueos del espejo."},{"aq":"Esper Goryo's","meta":"local 0-2 · 4-9% campo","val":"des","vl":"DESFAVORABLE · tu 0-2","in":"+2 Tormod's Crypt, +3 Unholy Heat, +1 Spell Pierce, +1 Spell Snare","out":"−4 Mutagenic Growth, −2 Violent Urge, −1 Lava Dart","plan":"Tu otro 0-2. Las 2 Crypt son el plan: actívalas en RESPUESTA a Goryo's Vengeance en la pila, nunca antes. Pierce/Snare al Goryo's o a la criatura-motor; Heat mata Psychic Frog y las piezas. Mata antes de que encadenen Solitude+Ephemerate. Growth SALE: su removal exilia (Solitude, March, Prismatic Ending) y no lo salva. Sé el beatdown: cierra antes de que reanimen a Atraxa/Archon of Cruelty."},{"aq":"Boros Energy","meta":"local 1-1 · 11-16% campo","val":"par","vl":"Parejo","in":"+3 Unholy Heat","out":"−2 Violent Urge, −1 Mutagenic Growth","plan":"Mata Guide of Souls y Ocelot Pride a vista: su lifegain te saca del rango de quemarlo. Growth no salva de Static Prison (exilio). Race con removal; cuidado con Galvanic Discharge sobre tus criaturas y con Ajani. Sin Flashback en el main, el plan es limpio."},{"aq":"Dimir Frog","meta":"local 1-1","val":"par","vl":"A afinar","in":"+3 Unholy Heat, +1 Spell Pierce, +1 Mystical Dispute","out":"−2 Violent Urge, −2 Mutagenic Growth, −1 Lava Dart","plan":"Heat mata Psychic Frog (y a Tamiyo si hace falta). Dispute y Pierce cogen sus counters y su removal barato por poco maná. Contra las listas con Namor y muchos counters (la que te ganó): juega tus amenazas de una en una alrededor de su maná abierto, no vuelques la mano al primer Counterspell."},{"aq":"Grixis Reanimator","meta":"local 1-1 · 6-7% campo","val":"par","vl":"Parejo","in":"+2 Tormod's Crypt, +3 Unholy Heat","out":"−2 Violent Urge, −2 Mutagenic Growth, −1 Preordain","plan":"Crypt en respuesta a Persist/Unearth en la pila, no antes. Heat mata Psychic Frog, Orcish Bowmasters y Overlord of the Balemurk. Post-side traen Pyroclasm/Flare of Malice: cuenta el daño antes de sobreextender monjes. Mismo plan vale para el Reanimator MonoB."},{"aq":"Izzet Affinity","meta":"local 1-1 · 8-10% campo","val":"par","vl":"Parejo/fav.","in":"+2 Meltdown, +3 Unholy Heat","out":"−2 Violent Urge, −3 Mutagenic Growth","plan":"Meltdown en su turno de máximo valor: barre Moxes, Cutter, Pinnacle Emissary y Kappa Cannoneer de golpe. Heat a Kappa y Emissary. Traen Whipflare: no sobreextiendas monjes. Ojo a los tokens de Munitions que dañan al morir."},{"aq":"Azorius Control","meta":"local 1-0 · 3-6% campo","val":"par","vl":"Parejo/desf.","in":"+1 Spell Pierce, +1 Spell Snare, +1 Mystical Dispute, +2 Consign to Memory","out":"−3 Lava Dart, −2 Mutagenic Growth","plan":"Una amenaza + protección; no vuelques la mano al Wrath of the Skies. Dispute cuesta 1 contra todo su mazo; Snare coge Counterspell y No More Lies; Consign a Isochron Scepter y a sus activaciones. Lava Dart no mata nada: fuera. Murktide también es oro aquí si la partida se alarga."},{"aq":"Boros Ponza","meta":"local 1-0 · 3.5-4% campo","val":"par","vl":"Parejo","in":"+1 Spell Pierce, +1 Spell Snare","out":"−2 Lava Dart","plan":"Ganas con 2-3 tierras; no dependas de una cuarta. Pierce/Snare a High Noon y a su Wrath. Bajo High Noon, lanza solo el hechizo del turno que más daño genere. Cierra rápido: no le des tiempo a estabilizar con Cleansing Wildfire y Solitude."},{"aq":"Neoform","meta":"local 0-1","val":"par","vl":"A afinar","in":"+1 Spell Pierce, +1 Spell Snare, +2 Consign to Memory, +3 Unholy Heat","out":"−4 Mutagenic Growth, −2 Violent Urge, −1 Lava Dart","plan":"Te ganaron con Griselbrand al 2. Consign contrarresta el propio Neoform (habilidad activada) y a Allosaurus Rider; Pierce/Snare al Summoner's Pact o al Neoform. Heat al sacrificable. Regla dura: mulligan a manos con interacción T1-2 SIEMPRE, sobre todo en el robo."},{"aq":"Through the Breach","meta":"local 1-0","val":"fav","vl":"Favorable","in":"+4 Consign to Memory, +1 Spell Pierce","out":"−3 Mutagenic Growth, −2 Violent Urge","plan":"Consign contrarresta el trigger de Through the Breach y el de Kozilek's Return; Pierce al Breach o al Stock Up. Race puro: eres mucho más rápido. Guarda un counter para el turno que vaya a por Emrakul/Nulldrifter, no lo gastes antes."},{"aq":"Golgari Yawgmoth","meta":"local 0-1 · 2.5% campo","val":"par","vl":"Parejo","in":"+3 Unholy Heat, +2 Tormod's Crypt, +2 Consign to Memory","out":"−3 Mutagenic Growth, −2 Violent Urge, −2 Preordain","plan":"Los dorks y el propio Yawgmoth mueren a Heat/Bolt a vista. Crypt corta undying y el Underworld Cookbook/Cauldron; Consign a Walking Ballista y a la activación de Yawgmoth en la pila. No les dejes montar el motor: mata la Druid en cuanto la veas."},{"aq":"Sultai Midrange","meta":"local 0-1","val":"par","vl":"A afinar","in":"+3 Unholy Heat, +1 Spell Snare","out":"−2 Violent Urge, −2 Mutagenic Growth","plan":"Midrange de Frog + removal + disrupción. Heat a sus amenazas; Snare a su dos clave (Ice-Fang Coatl, Coiling Oracle). Eres el beatdown: presiona antes de que te supere en cartas. Growth es flojo si su removal exilia."},{"aq":"Eldrazi Tron / Ramp","meta":"7-10% campo","val":"fav","vl":"FAVORABLE","in":"+4 Consign to Memory","out":"−4 Lava Dart","plan":"Consign gana sola: contrarresta el trigger de Chalice of the Void, Kozilek's Command, Ugin y Devourer of Destiny. Lava Dart no mata nada relevante. Presión máxima y guarda un Consign para su bomba de turno grande."},{"aq":"Ruby Storm","meta":"3-4% campo","val":"par","vl":"Parejo/fav.","in":"+4 Consign to Memory, +1 Spell Pierce","out":"−4 Lava Dart, −1 Violent Urge","plan":"Consign contrarresta el trigger de tormenta de Grapeshot y las activaciones de Ral; Pierce a Past in Flames. Bolt a Ral, God of Storms. Race T3-4: eres más rápido si no se comban pronto."},{"aq":"Living End","meta":"~2% campo","val":"fav","vl":"Favorable","in":"+4 Consign to Memory, +2 Tormod's Crypt","out":"−4 Mutagenic Growth, −2 Violent Urge","plan":"Consign al trigger de cascade: si lo contrarrestas, NUNCA lanzan Living End (no lo pueden lanzar a mano). Crypt tras resolver su End para vaciar su cementerio. Castiga sus 3 turnos de ciclar con tu reloj."}];
 
 // ================= LÓGICA =================
 Chart.defaults.font.family="'Space Grotesk','IBM Plex Mono',-apple-system,BlinkMacSystemFont,sans-serif";
@@ -1854,7 +1791,7 @@ function initPlayer(){
   s.onchange=()=>{PLAYER=s.value;refreshAll();};
 }
 function refreshAll(){
-  initSelectors();initCmpSelectors();initPlaySel();renderSBDef();playDone=false;
+  initSelectors();initCmpSelectors();initPlaySel();renderDef75();playDone=false;
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
   if(v==='stats')render();
   else if(v==='play')renderPlay();
@@ -2410,55 +2347,66 @@ function setTheme(t){
   if(v==='stats')render();else if(v==='play')renderPlay();else if(v==='cmp')renderCmp();
 }
 // ---- La 75 Definitiva (Claude) ----
-// ---- La 75 Definitiva CALCULADA (meta/definitiva.json) -----------------------
-// La genera automation/generar_definitiva.py en cada corrida del robot. Aquí solo se
-// pinta: si se añade una regla al generador, esta pestaña la refleja sin tocar HTML.
-let DEF_GEN=null;
-async function renderDefGen(){
-  if(!DEF_GEN){
-    try{const r=await fetch('meta/definitiva.json',{cache:'no-store'});DEF_GEN=(r&&r.ok)?await r.json():null;}
-    catch(e){DEF_GEN=null;}
-  }
-  const el=$('defGen'); if(!el) return;
-  if(!DEF_GEN){ el.innerHTML='<div class="note-lg">La 75 calculada aparecerá con la próxima corrida del robot (falta <span style="font-family:var(--mono)">meta/definitiva.json</span>). Pulsa "Actualizar datos" arriba.</div>'; return; }
-  const D=DEF_GEN;
-  const wrCell=w=>w===null||w===undefined?'<span style="color:var(--tx3)">·</span>'
-    :`<span class="hq-cell ${w>=60?'hq-cell--good':w>=40?'hq-cell--mid':'hq-cell--bad'}">${w}%</span>`;
-  const zona=(rows,tot,lab)=>`<div class="panel"><h3>${lab} <span>(${tot} cartas · consenso de ${D.campo.mazos} listas)</span></h3>
-    <div style="overflow-x:auto"><table><thead><tr><th>Carta</th><th style="text-align:center">Copias</th><th style="text-align:center">% del campo</th><th style="text-align:center">Rango</th></tr></thead><tbody>
-    ${rows.map(c=>`<tr><td>${c.n}</td><td style="text-align:center;font-family:var(--mono)"><b>${c.copias}</b></td><td style="text-align:center">${c.pct}%</td><td style="text-align:center;font-family:var(--mono);color:var(--tx2)">${c.min}-${c.max}</td></tr>`).join('')}
-    </tbody></table></div></div>`;
-  const desv=(rows,lab)=>!rows.length?'':`<div class="panel full" style="margin-top:var(--gap)"><h3>${lab} <span>(y tu récord con y sin cada una)</span></h3>
-    <div style="overflow-x:auto"><table><thead><tr><th>Carta</th><th>Qué pasa</th><th style="text-align:center">Campo</th><th style="text-align:center">Base</th><th>Tus versiones</th><th style="text-align:center">Con ella</th><th style="text-align:center">Sin ella</th></tr></thead><tbody>
-    ${rows.map(x=>{const tv=Object.entries(x.tusVersiones).filter(([,q])=>q>0).map(([n,q])=>`${n}: ${q}`).join(' · ')||'ninguna';
-      return `<tr><td><b>${x.n}</b></td><td style="font-size:11.5px">${x.tipo}</td><td style="text-align:center">${x.consensoPct}%</td><td style="text-align:center;font-family:var(--mono)">${x.baseCopias}</td><td style="font-family:var(--mono);font-size:11px">${tv}</td><td style="text-align:center">${x.con.n?`${x.con.W}-${x.con.L} ${wrCell(x.con.wr)}`:'<span style="color:var(--tx3)">·</span>'}</td><td style="text-align:center">${x.sin.n?`${x.sin.W}-${x.sin.L} ${wrCell(x.sin.wr)}`:'<span style="color:var(--tx3)">·</span>'}</td></tr>`;}).join('')}
-    </tbody></table></div>
-    <div style="font-size:11px;color:var(--tx3);margin-top:8px">"Con ella" suma las partidas de tus versiones que la llevan; "sin ella", las de las que no. Con estas muestras es una señal, no una conclusión.</div></div>`;
-  el.innerHTML=`
-    <div class="note-lg" style="margin-bottom:var(--gap)"><b>Cómo se calcula.</b> ${D.comoSeCalcula} <span style="color:var(--tx2)">Recalculada el ${D.generado} · campo: ${D.campo.mazos} listas de ${D.campo.ventanaDias} días · tu histórico: ${D.tuHistorico.partidas} partidas y ${D.tuHistorico.games} games.</span></div>
-    ${D.avisos.map(a=>`<div class="insight" style="margin-bottom:var(--gap)"><div class="ic"></div><div><b>${a.titulo}.</b> ${a.texto}
-      ${a.datos&&a.datos.length?`<div style="margin-top:8px;font-family:var(--mono);font-size:11.5px">${a.datos.map(d=>d.aq?`${d.aq}: ${d.rec} (${d.wr}%, ${d.n})`:d.tramo?`${d.tramo}: ${d.wr}% (${d.n} games)`:`${d.sr}: ${d.W}-${d.L} (${d.wr}%)`).join(' &nbsp;·&nbsp; ')}</div>`:''}
-      <div style="margin-top:8px;font-size:11.5px;color:var(--tx2)"><b>Hasta aquí llega el cálculo.</b> ${a.decision}.</div></div></div>`).join('')}
-    <div class="grid">${zona(D.base.main,D.base.mainN,'Maindeck de partida')}${zona(D.base.side,D.base.sideN,'Sideboard de partida')}</div>
-    ${desv(D.desviaciones.main,'Desviaciones en el maindeck')}
-    ${desv(D.desviaciones.side,'Desviaciones en el sideboard')}`;
-}
+// ---- La 75 Definitiva: el maindeck, el banquillo y la guia de sideboard ------
+// Decision de Fer (7-ago-2026): esta pestana muestra SOLO esas tres cosas.
+// Fuente unica: meta/mi-75.json (la lista) y meta/guia-sb.json (el plan por matchup).
+// El record de cada matchup NO esta escrito en el JSON: se calcula en vivo desde
+// registro.csv, asi que no puede quedarse viejo.
+let MI75=null, GUIASB=null;
+async function renderDef75(){
+  const el=$('def75'); if(!el) return;
+  if(!MI75){ try{const r=await fetch('meta/mi-75.json',{cache:'no-store'});MI75=(r&&r.ok)?await r.json():null;}catch(e){MI75=null;} }
+  if(!GUIASB){ try{const r=await fetch('meta/guia-sb.json',{cache:'no-store'});GUIASB=(r&&r.ok)?await r.json():null;}catch(e){GUIASB=null;} }
+  if(!MI75){ el.innerHTML='<div class="note-lg">Falta <span style="font-family:var(--mono)">meta/mi-75.json</span>. Pulsa "Actualizar datos" arriba.</div>'; return; }
 
-function renderDefCmp(){
-  const hh=['Carta','Tu 75','% del campo','Por qué'];
-  $('defCmp').innerHTML='<thead><tr>'+hh.map((h,i)=>`<th${i===1||i===2?' style="text-align:center"':''}${i===1?' style="text-align:center;color:var(--mid)"':''}>${h}</th>`).join('')+'</tr></thead><tbody>'+
-    DEFCMP.map(r=>`<tr><td>${r[0]}</td><td style="text-align:center;color:var(--mid);font-weight:800;font-family:var(--mono)">${r[1]}</td><td style="text-align:center;font-family:var(--mono);color:var(--tx2)">${r[2]}</td><td style="white-space:normal;color:var(--tx2);font-size:12px">${r[3]}</td></tr>`).join('')+'</tbody>';
-}
-function renderSBDef(){
-  const wr={};M().forEach(d=>{(wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
-  const cls={fav:'fav',des:'des',par:'par'};
-  $('sbDefCards').innerHTML=SBDEF.map(m=>{
-    const rec=wr[m.aq];const w=rec?rec.w:0,l=rec?rec.l:0,n=w+l;
-    const wrTxt=n?`tú: ${w}-${l} (${pct(w,n)}%)`:'sin datos';
-    return `<div class="mc ${cls[m.val]}"><div class="mh"><span class="mn">${m.aq}</span><span class="mmeta">${m.meta} · ${m.vl}</span></div>
-      <div style="margin-bottom:6px"><span class="wr">${wrTxt}</span></div>
-      <div class="io"><div class="in"><span class="lbl">Entran</span>${m.in||'—'}</div><div class="out"><span class="lbl">Salen</span>${m.out||'—'}</div></div>
-      <div class="plan">${m.plan}</div></div>`;}).join('');
+  const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const zona=(z,lab)=>{
+    const c=MI75.main.filter(x=>x.z===z), n=c.reduce((a,x)=>a+x.q,0);
+    return `<div class="sec">${lab} (${n})</div><div>${c.map(x=>`${x.q} ${esc(x.n)}`).join(' &middot; ')}</div>`;
+  };
+  const mainN=MI75.main.reduce((a,x)=>a+x.q,0), sideN=MI75.side.reduce((a,x)=>a+x.q,0);
+
+  const lista=`
+    <div class="grid">
+      <div class="panel"><h3>Maindeck (${mainN}) <span>&middot; el consenso del campo, sin desviaciones</span></h3>
+        <div class="dl">${zona('criatura','Criaturas')}${zona('hechizo','Hechizos')}${zona('tierra','Tierras')}</div>
+        <div style="font-size:11.5px;color:var(--tx2);margin-top:10px">${esc(MI75.notaTierras||'')}</div>
+        <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">${esc(MI75.porQueEsteMain||'')}</div>
+      </div>
+      <div class="panel"><h3>Banquillo (${sideN}) <span>&middot; ponderado a tu liga, no al campo</span></h3>
+        <table style="margin-top:2px"><tbody>
+        ${MI75.side.map(x=>`<tr><td style="width:1%;white-space:nowrap;font-family:var(--mono);font-weight:800;color:var(--mid)">${x.q}</td><td style="width:1%;white-space:nowrap"><b>${esc(x.n)}</b></td><td style="white-space:normal;color:var(--tx2);font-size:11.5px">${esc(x.para||'')}</td></tr>`).join('')}
+        </tbody></table>
+        <div style="font-size:11.5px;color:var(--tx2);margin-top:10px">${esc(MI75.porQueEsteSide||'')}</div>
+      </div>
+    </div>`;
+
+  // --- Guia de sideboard: record en vivo por arquetipo ---
+  const wr={}; M().forEach(d=>{ if(!d.aq) return; (wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++; });
+  const recDe=aqs=>{ let w=0,l=0; (aqs||[]).forEach(a=>{ if(wr[a]){w+=wr[a].w;l+=wr[a].l;} }); return {w,l,n:w+l}; };
+  const guia = !GUIASB ? '' : `
+    <div class="panel full" style="margin-top:var(--gap)">
+      <h3>Guia de sideboard <span>&middot; ${GUIASB.matchups.length} matchups, ordenados por lo que mas te cruzas en la liga</span></h3>
+      <div class="note-lg" style="margin-bottom:var(--gap)"><b>Regla general.</b> ${esc(GUIASB.reglaGeneral)}</div>
+      <div class="sb">
+      ${GUIASB.matchups.map(m=>{
+        const r=recDe(m.aq);
+        const cls = !r.n ? 'par' : (r.w/r.n>=0.6?'fav':(r.w/r.n<=0.34?'des':'par'));
+        const quien = PLAYER==='all' ? 'la liga' : (PLAYER==='feralo77' ? 'tu' : PLAYER);
+        const rec = r.n ? `${quien}: ${r.w}-${r.l} (${pct(r.w,r.n)}%, n=${r.n})` : 'sin partidas registradas';
+        return `<div class="mc ${cls}">
+          <div class="mh"><span class="mn">${esc(m.mazo)}</span><span class="mmeta">${m.pctLocal}% de tu liga</span></div>
+          <div style="margin-bottom:6px"><span class="wr">${rec}</span></div>
+          <div class="io"><div class="in"><span class="lbl">Entran</span>${(m.in||[]).map(esc).join(' &middot; ')||'&mdash;'}</div><div class="out"><span class="lbl">Salen</span>${(m.out||[]).map(esc).join(' &middot; ')||'&mdash;'}</div></div>
+          <div class="plan"><b>${esc(m.rol)}.</b> ${esc(m.plan)}</div>
+          <div class="plan" style="margin-top:6px"><b>La clave:</b> ${esc(m.clave)}</div>
+        </div>`;
+      }).join('')}
+      </div>
+      <div style="font-size:11px;color:var(--tx3);margin-top:10px">${esc(GUIASB.autor)} Escrita el ${esc(GUIASB.fecha)} para ${esc(GUIASB.para)}. El record de cada matchup se recalcula solo desde registro.csv.</div>
+    </div>`;
+
+  el.innerHTML = lista + guia;
 }
 // ===== META (mtgtop8) · autor: Claude — lista media, varianzas, tendencia y deltas vs tu 75 =====
 // El fichero vivo meta/prowess.json lo refresca una GitHub Action cada 2 dias (scripts/meta_mtgtop8.mjs).
@@ -2489,11 +2437,11 @@ function renderCoach(){
 // ---- Tu meta local vs el campo (récords en vivo + plan del SB) ----
 function renderMetaLocal(){
   const m={};M().forEach(d=>{if(!d.aq||d.aq.startsWith('N/A'))return;(m[d.aq]=m[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
-  const sb={};SBDEF.forEach(s=>sb[s.aq]=s);
+  const sb={};((GUIASB&&GUIASB.matchups)||[]).forEach(m=>(m.aq||[]).forEach(a=>sb[a]={in:(m.in||[]).join(' \u00b7 ')}));
   const rows=Object.entries(m).map(([aq,v])=>({aq,n:v.w+v.l,w:v.w,l:v.l,wr:pct(v.w,v.w+v.l),plan:sb[aq]}))
     .sort((a,b)=>b.n-a.n||a.wr-b.wr).slice(0,12);
   if(!rows.length){$('metaLocal').innerHTML='<tbody><tr><td style="color:var(--tx2)">Sin partidas registradas todavía.</td></tr></tbody>';return;}
-  $('metaLocal').innerHTML='<thead><tr><th>Mazo rival</th><th>Partidas</th><th>Tu récord</th><th>WR</th><th>Qué entra del sideboard (Plan SB)</th></tr></thead><tbody>'+
+  $('metaLocal').innerHTML='<thead><tr><th>Mazo rival</th><th>Partidas</th><th>Tu récord</th><th>WR</th><th>Qué entra del sideboard (guía de La 75 Definitiva)</th></tr></thead><tbody>'+
     rows.map(r=>`<tr><td>${r.aq}</td><td>${r.n}</td><td style="font-family:var(--mono)">${r.w}-${r.l}</td><td><span class="hq-cell ${r.wr>=60?'hq-cell--good':r.wr>=40?'hq-cell--mid':'hq-cell--bad'}">${r.wr}%</span></td><td style="white-space:normal;color:var(--tx2)">${r.plan?r.plan.in:'—'}</td></tr>`).join('')+'</tbody>';
 }
 function paintMeta(j){
@@ -2664,7 +2612,7 @@ function initSelectors(){fillSel('fLista','li','Todas las versiones');fillSel('f
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDefGen();renderDefCmp();renderSBDef();
+  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDef75();
   render();
   updateSource(remote);
   freshness();

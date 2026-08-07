@@ -1,0 +1,304 @@
+{
+  "fecha": "2026-08-07",
+  "autor": "Criterio de Magic (brainstorm /mtg-expert). No lo calcula el robot: que carta responde a que mazo no sale de los datos.",
+  "para": "La 75 Definitiva (7-ago-2026)",
+  "orden": "Por frecuencia en la liga de Fer (scouting.csv, 164 rivales censados). Tu record sale de registro.csv filtrado por feralo77.",
+  "reglaGeneral": "Nunca bajes de 4 Cori-Steel Cutter, 4 Dragon's Rage Channeler, 4 Monastery Swiftspear, 4 Mishra's Bauble ni 4 Preordain: son el motor. Lo que sale es siempre pump que sobra (Mutagenic Growth, Violent Urge), Expressive Iteration cuando el matchup es de carrera, o Lava Dart cuando el rival no tiene criaturas de 1 de resistencia.",
+  "matchups": [
+    {
+      "mazo": "Boros Energy",
+      "pctLocal": 8,
+      "rol": "Eres el beatdown, pero por el aire",
+      "in": [
+        "3 Unholy Heat"
+      ],
+      "out": [
+        "2 Violent Urge",
+        "1 Expressive Iteration"
+      ],
+      "plan": "Su Guide of Souls y Ocelot Pride ganan la carrera por tierra: no compitas ahi. Slickshot Show-Off es tu reloj real. Unholy Heat con delirium mata cualquier cosa suya, incluido Ajani y el Solitude evocado.",
+      "clave": "Lava Dart se queda: mata Ocelot Pride y las fichas de gato. Mutagenic Growth tambien: su removal es Galvanic Discharge (dano), no exilio.",
+      "aq": [
+        "Boros Energy"
+      ]
+    },
+    {
+      "mazo": "Izzet Affinity",
+      "pctLocal": 8,
+      "rol": "Beatdown con disrupcion",
+      "in": [
+        "2 Meltdown",
+        "4 Consign to Memory"
+      ],
+      "out": [
+        "2 Violent Urge",
+        "2 Mutagenic Growth",
+        "2 Expressive Iteration"
+      ],
+      "plan": "Consign contesta el trigger de construct de Urza's Saga y el robo de Thought Monitor. Meltdown limpia la mesa barata.",
+      "clave": "CUIDADO: Meltdown destruye TODOS los artefactos de coste igual o menor a X, incluidos los tuyos. A X=2 te matas tus propios Cori-Steel Cutter (coste 2) y tus Mishra's Bauble. Juegalo a X=1 salvo que ya no tengas Cutter en mesa y necesites barrer lo suyo.",
+      "aq": [
+        "Izzet Affinity",
+        "UR Artifacts",
+        "MonoR Artifacts"
+      ]
+    },
+    {
+      "mazo": "Esper Goryo's",
+      "pctLocal": 7,
+      "rol": "BEATDOWN PURO. Aqui pierdes por jugar de control",
+      "in": [
+        "2 Tormod's Crypt",
+        "2 Spell Pierce",
+        "2 Consign to Memory"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "2 Violent Urge"
+      ],
+      "plan": "Combinan en el turno 2-3. O eres mas rapido o los interrumpes; no hay tercera opcion. Mutagenic Growth no hace nada contra criaturas de 10 puntos.",
+      "clave": "La Tormod's Crypt se activa EN RESPUESTA al Goryo's Vengeance, nunca antes: Goryo's apunta a una criatura legendaria del cementerio, y si vacias el cementerio el hechizo se contrarresta solo por falta de objetivo. Consign contesta el trigger de entrada de Atraxa y el de Not Dead After All.",
+      "aq": [
+        "Esper Goryo's"
+      ]
+    },
+    {
+      "mazo": "Eldrazi (todas las variantes)",
+      "pctLocal": 9,
+      "rol": "Beatdown: cierra en 4-5 turnos",
+      "in": [
+        "4 Consign to Memory",
+        "2 Spell Pierce"
+      ],
+      "out": [
+        "4 Lava Dart",
+        "2 Violent Urge"
+      ],
+      "plan": "Su late game es inganable. Todo lo que hagas va dirigido a cerrar antes del turno 6.",
+      "clave": "Consign to Memory contrarresta hechizos INCOLOROS, no solo triggers: Thought-Knot Seer, Reality Smasher, Devourer of Destiny y Ulamog entran todos. Y tiene replicate por 1: con 3 manas contrarrestas dos cosas. Es la mejor carta del matchup con diferencia. Lava Dart es papel mojado contra 4/4.",
+      "aq": [
+        "Eldrazi",
+        "Eldrazi Ramp",
+        "Eldrazi PT",
+        "Eldrazi Tron"
+      ]
+    },
+    {
+      "mazo": "Neoform",
+      "pctLocal": 5,
+      "rol": "Beatdown maximo",
+      "in": [
+        "2 Spell Pierce",
+        "4 Consign to Memory"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "2 Violent Urge"
+      ],
+      "plan": "Mulliganea buscando manos que cierren en el turno 4 o que tengan interaccion en el 2. Una mano lenta contra Neoform es una derrota escrita.",
+      "clave": "Spell Pierce contesta el propio Neoform por 1 mana mientras tu sigues atacando. Consign contesta los triggers de entrada de lo que trampeen (Archon of Cruelty).",
+      "aq": [
+        "Neoform"
+      ]
+    },
+    {
+      "mazo": "Dimir Frog",
+      "pctLocal": 5,
+      "rol": "Beatdown: a la larga te supera en cartas",
+      "in": [
+        "3 Unholy Heat",
+        "2 Spell Snare"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "1 Violent Urge"
+      ],
+      "plan": "Unholy Heat con delirium mata Psychic Frog y Murktide Regent. Spell Snare pega a Psychic Frog y a Orcish Bowmasters, ambos de coste 2.",
+      "clave": "Orcish Bowmasters castiga cada Preordain y cada Mishra's Bauble que juegues: si esta en mesa o lo sospechas, guarda los cantrips para cuando el dano de 1 ya no cambie nada. Mutagenic Growth no salva de Fatal Push.",
+      "aq": [
+        "Dimir Frog",
+        "Grixis Frog/Reanimator"
+      ]
+    },
+    {
+      "mazo": "Izzet Prowess (el mirror)",
+      "pctLocal": 5,
+      "rol": "Es beatdown el que resuelve Cori-Steel Cutter primero",
+      "in": [
+        "2 Spell Snare",
+        "3 Unholy Heat",
+        "1 Consign to Memory"
+      ],
+      "out": [
+        "4 Expressive Iteration",
+        "2 Mutagenic Growth"
+      ],
+      "plan": "Expressive Iteration sale: 3 manas a velocidad de conjuro en un mirror de tempo es medio turno regalado. Quieres el mana abierto para Snare y Consign.",
+      "clave": "Los dos trucos del mirror: (1) Spell Snare contrarresta su Cori-Steel Cutter y su Slickshot Show-Off, los dos de coste 2; (2) Consign to Memory contesta el trigger Flurry del Cutter, asi que su ficha de Monje no llega a existir. Bolt y Heat NO matan el Cutter (es un equipo): guardalos para el Dragon's Rage Channeler y los Monjes. Deja 2 Mutagenic Growth para ganar combates y salvar del Bolt.",
+      "aq": [
+        "Izzet Prowess"
+      ]
+    },
+    {
+      "mazo": "Ruby Storm",
+      "pctLocal": 5,
+      "rol": "Beatdown absoluto: mata en el turno 4",
+      "in": [
+        "4 Consign to Memory",
+        "2 Spell Pierce",
+        "2 Meltdown"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "4 Lava Dart"
+      ],
+      "plan": "No tienen criaturas: Growth y Dart son cartas en blanco. Todo lo que entra es interaccion o reloj.",
+      "clave": "Consign to Memory contrarresta el TRIGGER DE TORMENTA del Grapeshot: las copias no llegan a crearse y solo resuelve el hechizo original. Es la mejor respuesta del formato a Storm. Meltdown a X=2 mata Ruby Medallion (aunque te lleve tus Cutter por delante: aqui compensa).",
+      "aq": [
+        "Ruby Storm",
+        "Storm"
+      ]
+    },
+    {
+      "mazo": "Azorius Control",
+      "pctLocal": 5,
+      "rol": "Beatdown, pero sin sobreextenderte",
+      "in": [
+        "2 Spell Pierce",
+        "2 Spell Snare"
+      ],
+      "out": [
+        "4 Mutagenic Growth"
+      ],
+      "plan": "Despliega dos amenazas y guarda el resto para despues del barrido. La pregunta de este matchup es cuanto comprometes, no que cartas cambias.",
+      "clave": "Mutagenic Growth sale entero porque su removal EXILIA (Prismatic Ending, Solitude, Leyline Binding) y Growth no salva de eso. Spell Snare pega a Counterspell (coste 2).",
+      "aq": [
+        "Azorius Control"
+      ]
+    },
+    {
+      "mazo": "Grixis Reanimator",
+      "pctLocal": 5,
+      "rol": "Beatdown",
+      "in": [
+        "2 Tormod's Crypt",
+        "4 Consign to Memory"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "2 Violent Urge"
+      ],
+      "plan": "Mismo esquema que Esper Goryo's: reloj rapido y odio de cementerio en el momento justo.",
+      "clave": "Crypt en respuesta al hechizo de reanimacion. Consign contesta el trigger de entrada de lo que reanimen (Archon of Cruelty, Atraxa).",
+      "aq": [
+        "Grixis Reanimator"
+      ]
+    },
+    {
+      "mazo": "Hollow One",
+      "pctLocal": 4,
+      "rol": "Beatdown",
+      "in": [
+        "2 Tormod's Crypt",
+        "3 Unholy Heat"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "1 Expressive Iteration"
+      ],
+      "plan": "Su explosividad viene del cementerio. Unholy Heat mata Hollow One y Flamewake Phoenix.",
+      "clave": "Crypt en respuesta al trigger de retorno de Bloodghast o Flamewake Phoenix, no en tu turno 1.",
+      "aq": [
+        "Hollow One"
+      ]
+    },
+    {
+      "mazo": "Broodscale",
+      "pctLocal": 4,
+      "rol": "Beatdown con disrupcion",
+      "in": [
+        "4 Consign to Memory",
+        "2 Spell Snare"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "2 Violent Urge"
+      ],
+      "plan": "Su combo es infinito: no puedes ganarles a los puntos si lo montan. Interrumpe o cierra antes.",
+      "clave": "Spell Snare contrarresta Basking Broodscale en la pila (coste 2) y Consign contesta el trigger que hace el bucle. Las dos rompen el combo, no solo lo retrasan.",
+      "aq": [
+        "Broodscale"
+      ]
+    },
+    {
+      "mazo": "Amulet Titan",
+      "pctLocal": 4,
+      "rol": "Beatdown: turno 4 o nada",
+      "in": [
+        "4 Consign to Memory",
+        "2 Spell Pierce"
+      ],
+      "out": [
+        "4 Lava Dart",
+        "2 Violent Urge"
+      ],
+      "plan": "Lava Dart no tiene objetivos. Toda la interaccion va a la pila.",
+      "clave": "Consign to Memory contesta el trigger de Primeval Titan (el Titan resuelve pero no busca ninguna tierra) y el trigger de enderezar de Amulet of Vigor. Con replicate por 1 puedes contestar dos disparos del Amulet en el mismo turno.",
+      "aq": [
+        "Amulet Titan"
+      ]
+    },
+    {
+      "mazo": "Golgari Yawgmoth",
+      "pctLocal": 4,
+      "rol": "Beatdown: mata a Yawgmoth en cuanto lo veas",
+      "in": [
+        "3 Unholy Heat"
+      ],
+      "out": [
+        "3 Mutagenic Growth"
+      ],
+      "plan": "Yawgmoth, Thran Physician es la carta. Guarda un removal para el, no lo gastes en Wall of Roots.",
+      "clave": "OJO: Consign to Memory NO contesta la habilidad de Yawgmoth. Consign contrarresta habilidades DISPARADAS y hechizos incoloros; la de Yawgmoth es una habilidad ACTIVADA. Aqui Consign se queda en el banquillo.",
+      "aq": [
+        "Golgari Yawgmoth"
+      ]
+    },
+    {
+      "mazo": "Boros Ponza",
+      "pctLocal": 3,
+      "rol": "Beatdown",
+      "in": [
+        "3 Unholy Heat"
+      ],
+      "out": [
+        "2 Violent Urge",
+        "1 Lava Dart"
+      ],
+      "plan": "Te atacan el mana. Despliega amenazas antes de que te quedes en dos tierras.",
+      "clave": "Si sospechas Blood Moon o Magus of the Moon, crackea los fetch YA y busca Steam Vents mientras puedas: con Moon en juego todas tus tierras no basicas son Montanas y te quedas sin una sola fuente de azul (no llevas Island). Si Ponza crece en la liga, ese es el momento de meter 1 Island por 1 fetch.",
+      "aq": [
+        "Boros Ponza"
+      ]
+    },
+    {
+      "mazo": "Living End",
+      "pctLocal": 2,
+      "rol": "Beatdown: mata en el turno 4",
+      "in": [
+        "4 Consign to Memory",
+        "2 Tormod's Crypt",
+        "2 Spell Pierce"
+      ],
+      "out": [
+        "4 Mutagenic Growth",
+        "4 Lava Dart"
+      ],
+      "plan": "Todo su mazo es un hechizo. Growth y Dart no tienen a quien apuntar hasta que ya es tarde.",
+      "clave": "Consign to Memory contrarresta el TRIGGER DE CASCADA: el Living End no llega a lanzarse. Es la respuesta mas limpia que existe. Alternativa: Tormod's Crypt en respuesta a la cascada, para que el Living End vuelva a poner cero criaturas.",
+      "aq": [
+        "Living End"
+      ]
+    }
+  ]
+}
