@@ -1,0 +1,27 @@
+{
+  "nota": "Puente entre los nombres de arquetipo de mtgtop8 (campo global de Modern) y los que usa el registro de Fer. Sin esto, 'Boros Aggro sube un 3%' no significa nada para el. Cada entrada: el nombre de mtgtop8 -> los nombres del registro que representan lo mismo. Si aparece un arquetipo nuevo en mtgtop8 y no esta aqui, el radar lo muestra igual pero como 'no lo has visto nunca', que tambien es informacion util.",
+  "mapa": {
+    "Boros Aggro": ["Boros Energy"],
+    "UR Aggro": ["Izzet Prowess"],
+    "Affinity": ["Izzet Affinity", "UR Artifacts", "MonoR Artifacts", "Oswald Grinding Station"],
+    "Hollow One": ["Hollow One"],
+    "Eldrazi Ramp": ["Eldrazi", "Eldrazi Ramp", "Eldrazi PT", "Mono-Green Eldrazi"],
+    "Dimir Control": ["Dimir Frog", "Grixis Frog/Reanimator"],
+    "UW Control": ["Azorius Control"],
+    "Boros Ponza": ["Boros Ponza", "Ponza"],
+    "Broodscale Bloodchief": ["Broodscale"],
+    "Instant Reanimator": ["Esper Goryo's"],
+    "Reanimator": ["Grixis Reanimator"],
+    "Creatures Toolbox": ["Golgari Yawgmoth", "Chord Toolbox", "GW Birthing Ritual"],
+    "Amulet Titan": ["Amulet Titan"],
+    "Living End": ["Living End"],
+    "Allosaurus Combo": ["Neoform"],
+    "Ruby Storm": ["Ruby Storm", "Storm"],
+    "Cosmogoyf": ["Cosmogoyf Combo"],
+    "Merfolk": ["Merfolk", "Dimir Merfolk"],
+    "Mono Black Aggro": ["MonoB Coffers", "Necrodominance"],
+    "Death's Shadow": ["Death's Shadow"],
+    "Elves": ["Elves"],
+    "Through the Breach": ["Through the Breach"]
+  }
+}
