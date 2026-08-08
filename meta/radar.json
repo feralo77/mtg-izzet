@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-07",
+ "generado": "2026-08-08",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -18,15 +18,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-07",
   "proximo": "2026-08-11",
-  "diasDesde": 0,
+  "diasDesde": 1,
   "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-07",
+ "campoDesde": "2026-08-08",
  "campoError": null,
  "campo": {
-  "mazos": 746,
+  "mazos": 720,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -39,7 +39,7 @@
    },
    {
     "n": "Blink",
-    "pct": 4
+    "pct": 5
    },
    {
     "n": "Affinity",
@@ -54,20 +54,20 @@
     "pct": 3
    },
    {
-    "n": "Red Deck Wins",
-    "pct": 0.9
-   },
-   {
     "n": "Mardu Aggro",
     "pct": 0.8
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.7
+    "n": "Red Deck Wins",
+    "pct": 0.8
    },
    {
     "n": "Mono Black Aggro",
     "pct": 0.7
+   },
+   {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.6
    },
    {
     "n": "Eldrazi Aggro",
@@ -167,7 +167,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Broodscale Bloodchief",
@@ -194,15 +194,11 @@
     "pct": 3
    },
    {
-    "n": "Allosaurus Combo",
-    "pct": 2
-   },
-   {
     "n": "Ruby Storm",
     "pct": 2
    },
    {
-    "n": "Cosmogoyf",
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
@@ -210,16 +206,16 @@
     "pct": 2
    },
    {
+    "n": "Cosmogoyf",
+    "pct": 2
+   },
+   {
     "n": "Song of Creation",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "Dredge",
     "pct": 0.4
-   },
-   {
-    "n": "Hammer Time",
-    "pct": 0.3
    },
    {
     "n": "UB Mill",
@@ -228,6 +224,10 @@
    {
     "n": "CopyCat",
     "pct": 0.3
+   },
+   {
+    "n": "Hammer Time",
+    "pct": 0.1
    },
    {
     "n": "Infect",
@@ -246,12 +246,12 @@
  "liga": {
   "modo": "dos mitades del histórico, por número de partidas",
   "ahora": {
-   "partidas": 91,
+   "partidas": 94,
    "desde": "2026-07-22",
-   "hasta": "2026-08-05"
+   "hasta": "2026-08-07"
   },
   "antes": {
-   "partidas": 91,
+   "partidas": 93,
    "desde": "2026-07-09",
    "hasta": "2026-07-22"
   },
@@ -266,26 +266,14 @@
      "Eldrazi PT",
      "Mono-Green Eldrazi"
     ],
-    "partidas": 12,
-    "frec": 13.2,
-    "frecPrev": 6.6,
-    "delta": 6.6,
+    "partidas": 11,
+    "frec": 11.7,
+    "frecPrev": 7.5,
+    "delta": 4.2,
     "w": 0,
     "l": 0,
     "n_": 0,
     "wr": null
-   },
-   {
-    "n": "Boros Energy",
-    "variantes": null,
-    "partidas": 7,
-    "frec": 7.7,
-    "frecPrev": 7.7,
-    "delta": 0,
-    "w": 3,
-    "l": 1,
-    "n_": 4,
-    "wr": 75
    },
    {
     "n": "Izzet Affinity",
@@ -296,13 +284,25 @@
      "Oswald Grinding Station"
     ],
     "partidas": 7,
-    "frec": 7.7,
-    "frecPrev": 11,
-    "delta": -3.3,
+    "frec": 7.4,
+    "frecPrev": 10.8,
+    "delta": -3.4,
     "w": 1,
     "l": 2,
     "n_": 3,
     "wr": 33
+   },
+   {
+    "n": "Neoform",
+    "variantes": null,
+    "partidas": 7,
+    "frec": 7.4,
+    "frecPrev": 3.2,
+    "delta": 4.2,
+    "w": 0,
+    "l": 2,
+    "n_": 2,
+    "wr": 0
    },
    {
     "n": "Ruby Storm",
@@ -311,9 +311,9 @@
      "Storm"
     ],
     "partidas": 7,
-    "frec": 7.7,
-    "frecPrev": 4.4,
-    "delta": 3.3,
+    "frec": 7.4,
+    "frecPrev": 4.3,
+    "delta": 3.1,
     "w": 2,
     "l": 0,
     "n_": 2,
@@ -323,25 +323,25 @@
     "n": "Hollow One",
     "variantes": null,
     "partidas": 7,
-    "frec": 7.7,
+    "frec": 7.4,
     "frecPrev": 1.1,
-    "delta": 6.6,
+    "delta": 6.3,
     "w": 1,
     "l": 0,
     "n_": 1,
     "wr": 100
    },
    {
-    "n": "Neoform",
+    "n": "Boros Energy",
     "variantes": null,
     "partidas": 6,
-    "frec": 6.6,
-    "frecPrev": 3.3,
-    "delta": 3.3,
-    "w": 0,
-    "l": 2,
-    "n_": 2,
-    "wr": 0
+    "frec": 6.4,
+    "frecPrev": 8.6,
+    "delta": -2.2,
+    "w": 3,
+    "l": 1,
+    "n_": 4,
+    "wr": 75
    },
    {
     "n": "Boros Ponza",
@@ -350,9 +350,9 @@
      "Ponza"
     ],
     "partidas": 5,
-    "frec": 5.5,
-    "frecPrev": 3.3,
-    "delta": 2.2,
+    "frec": 5.3,
+    "frecPrev": 3.2,
+    "delta": 2.1,
     "w": 2,
     "l": 0,
     "n_": 2,
@@ -362,9 +362,9 @@
     "n": "Esper Goryo's",
     "variantes": null,
     "partidas": 5,
-    "frec": 5.5,
-    "frecPrev": 6.6,
-    "delta": -1.1,
+    "frec": 5.3,
+    "frecPrev": 6.5,
+    "delta": -1.2,
     "w": 0,
     "l": 2,
     "n_": 2,
@@ -377,9 +377,9 @@
      "Grixis Frog/Reanimator"
     ],
     "partidas": 4,
-    "frec": 4.4,
-    "frecPrev": 7.7,
-    "delta": -3.3,
+    "frec": 4.3,
+    "frecPrev": 7.5,
+    "delta": -3.2,
     "w": 2,
     "l": 2,
     "n_": 4,
@@ -389,8 +389,8 @@
     "n": "Amulet Titan",
     "variantes": null,
     "partidas": 4,
-    "frec": 4.4,
-    "frecPrev": 3.3,
+    "frec": 4.3,
+    "frecPrev": 3.2,
     "delta": 1.1,
     "w": 1,
     "l": 2,
@@ -401,8 +401,8 @@
     "n": "Izzet Prowess",
     "variantes": null,
     "partidas": 4,
-    "frec": 4.4,
-    "frecPrev": 5.5,
+    "frec": 4.3,
+    "frecPrev": 5.4,
     "delta": -1.1,
     "w": 0,
     "l": 2,
@@ -417,8 +417,8 @@
      "GW Birthing Ritual"
     ],
     "partidas": 3,
-    "frec": 3.3,
-    "frecPrev": 5.5,
+    "frec": 3.2,
+    "frecPrev": 5.4,
     "delta": -2.2,
     "w": 1,
     "l": 1,
@@ -429,8 +429,8 @@
     "n": "Grixis Reanimator",
     "variantes": null,
     "partidas": 3,
-    "frec": 3.3,
-    "frecPrev": 5.5,
+    "frec": 3.2,
+    "frecPrev": 5.4,
     "delta": -2.2,
     "w": 1,
     "l": 1,
@@ -441,8 +441,8 @@
     "n": "Azorius Control",
     "variantes": null,
     "partidas": 3,
-    "frec": 3.3,
-    "frecPrev": 5.5,
+    "frec": 3.2,
+    "frecPrev": 5.4,
     "delta": -2.2,
     "w": 1,
     "l": 0,
@@ -452,22 +452,34 @@
    {
     "n": "Living End",
     "variantes": null,
-    "partidas": 2,
-    "frec": 2.2,
-    "frecPrev": 3.3,
-    "delta": -1.1,
+    "partidas": 3,
+    "frec": 3.2,
+    "frecPrev": 3.2,
+    "delta": 0,
     "w": 0,
     "l": 1,
     "n_": 1,
     "wr": 0
    },
    {
+    "n": "Broodscales",
+    "variantes": null,
+    "partidas": 2,
+    "frec": 2.1,
+    "frecPrev": 0,
+    "delta": 2.1,
+    "w": 0,
+    "l": 0,
+    "n_": 0,
+    "wr": null
+   },
+   {
     "n": "Broodscale",
     "variantes": null,
     "partidas": 1,
     "frec": 1.1,
-    "frecPrev": 6.6,
-    "delta": -5.5,
+    "frecPrev": 6.5,
+    "delta": -5.4,
     "w": 2,
     "l": 2,
     "n_": 4,
@@ -573,18 +585,6 @@
     "wr": null
    },
    {
-    "n": "Broodscales",
-    "variantes": null,
-    "partidas": 1,
-    "frec": 1.1,
-    "frecPrev": 0,
-    "delta": 1.1,
-    "w": 0,
-    "l": 0,
-    "n_": 0,
-    "wr": null
-   },
-   {
     "n": "Cosmogoyf",
     "variantes": null,
     "partidas": 1,
@@ -598,6 +598,30 @@
    },
    {
     "n": "Esper Blink",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 1.1,
+    "frecPrev": 0,
+    "delta": 1.1,
+    "w": 0,
+    "l": 0,
+    "n_": 0,
+    "wr": null
+   },
+   {
+    "n": "Merfolks",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 1.1,
+    "frecPrev": 0,
+    "delta": 1.1,
+    "w": 0,
+    "l": 0,
+    "n_": 0,
+    "wr": null
+   },
+   {
+    "n": "Orzhov Control",
     "variantes": null,
     "partidas": 1,
     "frec": 1.1,
@@ -689,11 +713,11 @@
   {
    "nivel": "adaptarse",
    "mazo": "Izzet Affinity",
-   "titular": "Izzet Affinity: es el 7.7% de tu liga y vas 1-2 (33%)",
+   "titular": "Izzet Affinity: es el 7.4% de tu liga y vas 1-2 (33%)",
    "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
-    "frecLiga": 7.7,
-    "deltaLiga": -3.3,
+    "frecLiga": 7.4,
+    "deltaLiga": -3.4,
     "campo": {
      "global": "Affinity",
      "pct": 4,
@@ -709,11 +733,11 @@
   {
    "nivel": "pinta-mal",
    "mazo": "Neoform",
-   "titular": "Neoform: sube +3.3 pts y de 2 partidas has ganado 0",
+   "titular": "Neoform: sube +4.2 pts y de 2 partidas has ganado 0",
    "porQue": "Son 2 partidas, asi que no es una conclusion: es un aviso. Pero pesa en tu liga y todo lo que sabes de el es malo.",
    "datos": {
-    "frecLiga": 6.6,
-    "deltaLiga": 3.3,
+    "frecLiga": 7.4,
+    "deltaLiga": 4.2,
     "campo": {
      "global": "Allosaurus Combo",
      "pct": 2,
@@ -729,11 +753,11 @@
   {
    "nivel": "pinta-mal",
    "mazo": "Esper Goryo's",
-   "titular": "Esper Goryo's: 5.5% de tu liga y de 2 partidas has ganado 0",
+   "titular": "Esper Goryo's: 5.3% de tu liga y de 2 partidas has ganado 0",
    "porQue": "Son 2 partidas, asi que no es una conclusion: es un aviso. Pero pesa en tu liga y todo lo que sabes de el es malo.",
    "datos": {
-    "frecLiga": 5.5,
-    "deltaLiga": -1.1,
+    "frecLiga": 5.3,
+    "deltaLiga": -1.2,
     "campo": {
      "global": "Instant Reanimator",
      "pct": 6,
@@ -749,11 +773,11 @@
   {
    "nivel": "vigilar",
    "mazo": "Eldrazi",
-   "titular": "Eldrazi: 13.2% de tu liga y ni una partida tuya",
+   "titular": "Eldrazi: 11.7% de tu liga y ni una partida tuya",
    "porQue": "No es que vayas mal: es que no hay datos. Te lo vas a cruzar y no sabes como va el matchup.",
    "datos": {
-    "frecLiga": 13.2,
-    "deltaLiga": 6.6,
+    "frecLiga": 11.7,
+    "deltaLiga": 4.2,
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 7,
@@ -769,16 +793,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 4% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 5% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 4,
+     "pct": 5,
      "pctPrev": 4,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,

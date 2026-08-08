@@ -1,11 +1,11 @@
 {
- "generado": "2026-08-07",
+ "generado": "2026-08-08",
  "comoSeCalcula": "Base: la lista media de mtgtop8 (cada carta a sus copias típicas, de más jugada a menos, hasta 60 y 15; los fetchlands como bloque intercambiable). Encima, las desviaciones de las versiones de Fer con su récord real con y sin cada carta, y los avisos que el histórico sostiene. Lo que NO se calcula: qué carta responde a qué mazo — eso es criterio de Magic y va marcado como decisión humana en cada aviso.",
  "campo": {
   "mazos": 60,
   "ventanaDias": 28,
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
-  "generado": "2026-08-05"
+  "generado": "2026-08-07"
  },
  "tuHistorico": {
   "partidas": 173,
@@ -125,7 +125,7 @@
    {
     "n": "Mutagenic Growth",
     "copias": 4,
-    "pct": 92,
+    "pct": 90,
     "typical": 4,
     "min": 1,
     "max": 4
@@ -147,18 +147,18 @@
     "max": 4
    },
    {
-    "n": "Scalding Tarn",
-    "copias": 4,
-    "pct": 77,
-    "typical": 4,
+    "n": "Arid Mesa",
+    "copias": 2,
+    "pct": 80,
+    "typical": 2,
     "min": 1,
     "max": 4
    },
    {
-    "n": "Arid Mesa",
-    "copias": 2,
+    "n": "Scalding Tarn",
+    "copias": 4,
     "pct": 75,
-    "typical": 2,
+    "typical": 4,
     "min": 1,
     "max": 4
    }
@@ -200,7 +200,7 @@
    {
     "n": "Spell Snare",
     "copias": 2,
-    "pct": 63,
+    "pct": 62,
     "typical": 2,
     "min": 1,
     "max": 3
@@ -208,18 +208,18 @@
    {
     "n": "Tormod's Crypt",
     "copias": 2,
-    "pct": 60,
+    "pct": 55,
     "typical": 2,
     "min": 1,
     "max": 4
    },
    {
-    "n": "Murktide Regent",
+    "n": "Surgical Extraction",
     "copias": 1,
-    "pct": 30,
+    "pct": 33,
     "typical": 1,
     "min": 1,
-    "max": 2
+    "max": 3
    }
   ],
   "sideN": 15
@@ -229,8 +229,8 @@
    {
     "n": "Violent Urge",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 70,
-    "consensoCopias": 2,
+    "consensoPct": 68,
+    "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
      "2.0": 2,
@@ -463,7 +463,7 @@
    {
     "n": "Spell Snare",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 63,
+    "consensoPct": 62,
     "consensoCopias": 2,
     "baseCopias": 2,
     "tusVersiones": {
@@ -521,7 +521,7 @@
    {
     "n": "Prismari Charm",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 17,
+    "consensoPct": 15,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -549,10 +549,10 @@
    },
    {
     "n": "Surgical Extraction",
-    "tipo": "la llevas y el campo casi no",
-    "consensoPct": 30,
+    "tipo": "copias distintas del consenso",
+    "consensoPct": 33,
     "consensoCopias": 1,
-    "baseCopias": 0,
+    "baseCopias": 1,
     "tusVersiones": {
      "2.0": 0,
      "Basics": 0,
@@ -579,7 +579,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 12,
+    "consensoPct": 15,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -637,7 +637,7 @@
    {
     "n": "Soul-Guide Lantern",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 13,
+    "consensoPct": 17,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -666,7 +666,7 @@
    {
     "n": "Mystical Dispute",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 20,
+    "consensoPct": 22,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -719,35 +719,6 @@
      "L": 75,
      "n": 168,
      "wr": 55
-    }
-   },
-   {
-    "n": "Murktide Regent",
-    "tipo": "copias distintas del consenso",
-    "consensoPct": 30,
-    "consensoCopias": 1,
-    "baseCopias": 1,
-    "tusVersiones": {
-     "2.0": 0,
-     "Basics": 0,
-     "PT": 0,
-     "Pol 1 NF": 0,
-     "Stock 2.0": 0,
-     "Stock": 0,
-     "UR Aggro Flashback": 0,
-     "Ur Aggro Rage": 0
-    },
-    "con": {
-     "W": 0,
-     "L": 0,
-     "n": 0,
-     "wr": null
-    },
-    "sin": {
-     "W": 97,
-     "L": 76,
-     "n": 173,
-     "wr": 56
     }
    }
   ]
