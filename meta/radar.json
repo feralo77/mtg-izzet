@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-08",
+ "generado": "2026-08-09",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -18,20 +18,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-07",
   "proximo": "2026-08-11",
-  "diasDesde": 1,
+  "diasDesde": 2,
   "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-08",
+ "campoDesde": "2026-08-09",
  "campoError": null,
  "campo": {
-  "mazos": 720,
+  "mazos": 688,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "Boros Aggro",
-    "pct": 8
+    "pct": 7
    },
    {
     "n": "UR Aggro",
@@ -55,11 +55,11 @@
    },
    {
     "n": "Mardu Aggro",
-    "pct": 0.8
+    "pct": 1
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.8
+    "pct": 0.9
    },
    {
     "n": "Mono Black Aggro",
@@ -68,10 +68,6 @@
    {
     "n": "Simic Birthing Ritual",
     "pct": 0.6
-   },
-   {
-    "n": "Eldrazi Aggro",
-    "pct": 0.3
    },
    {
     "n": "Jeskai Aggro",
@@ -86,11 +82,19 @@
     "pct": 0.3
    },
    {
+    "n": "Selesnya Aggro",
+    "pct": 0.3
+   },
+   {
     "n": "Merfolk",
     "pct": 0.3
    },
    {
     "n": "Cascade Crash",
+    "pct": 0.1
+   },
+   {
+    "n": "Eldrazi Aggro",
     "pct": 0.1
    },
    {
@@ -102,16 +106,12 @@
     "pct": 0.1
    },
    {
-    "n": "Selesnya Aggro",
-    "pct": 0.1
-   },
-   {
     "n": "Humans",
     "pct": 0.1
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.4
+    "pct": 0.3
    },
    {
     "n": "Eldrazi Ramp",
@@ -123,30 +123,26 @@
    },
    {
     "n": "UW Control",
-    "pct": 4
+    "pct": 5
    },
    {
     "n": "UrzaTron",
     "pct": 3
    },
    {
-    "n": "Boros Ponza",
-    "pct": 2
-   },
-   {
     "n": "Esper Control",
     "pct": 1
    },
    {
-    "n": "4/5c Control",
-    "pct": 0.4
-   },
-   {
-    "n": "Jeskai Control",
-    "pct": 0.3
+    "n": "Boros Ponza",
+    "pct": 1
    },
    {
     "n": "Grixis Control",
+    "pct": 0.3
+   },
+   {
+    "n": "4/5c Control",
     "pct": 0.3
    },
    {
@@ -154,11 +150,11 @@
     "pct": 0.3
    },
    {
-    "n": "Smallpox",
+    "n": "Jeskai Control",
     "pct": 0.1
    },
    {
-    "n": "UR Control",
+    "n": "Smallpox",
     "pct": 0.1
    },
    {
@@ -171,7 +167,7 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 7
+    "pct": 8
    },
    {
     "n": "Instant Reanimator",
@@ -179,18 +175,18 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 5
+    "pct": 6
    },
    {
     "n": "Reanimator",
     "pct": 4
    },
    {
-    "n": "Amulet Titan",
-    "pct": 4
+    "n": "Living End",
+    "pct": 3
    },
    {
-    "n": "Living End",
+    "n": "Amulet Titan",
     "pct": 3
    },
    {
@@ -202,12 +198,12 @@
     "pct": 2
    },
    {
-    "n": "Landless",
-    "pct": 2
+    "n": "Cosmogoyf",
+    "pct": 1
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 2
+    "n": "Landless",
+    "pct": 1
    },
    {
     "n": "Song of Creation",
@@ -215,7 +211,7 @@
    },
    {
     "n": "Dredge",
-    "pct": 0.4
+    "pct": 0.3
    },
    {
     "n": "UB Mill",
@@ -801,8 +797,8 @@
     "campo": {
      "global": "Blink",
      "pct": 5,
-     "pctPrev": 4,
-     "delta": 1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
