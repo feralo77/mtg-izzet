@@ -21,10 +21,10 @@
   "diasDesde": 2,
   "toca": false
  },
- "hayComparacionCampo": true,
- "campoFresco": true,
+ "hayComparacionCampo": false,
+ "campoFresco": false,
  "campoDesde": "2026-08-09",
- "campoError": null,
+ "campoError": "fetch failed",
  "campo": {
   "mazos": 688,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
