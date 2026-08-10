@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-09",
+ "generado": "2026-08-10",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -18,13 +18,13 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-07",
   "proximo": "2026-08-11",
-  "diasDesde": 2,
+  "diasDesde": 3,
   "toca": false
  },
  "hayComparacionCampo": false,
  "campoFresco": false,
  "campoDesde": "2026-08-09",
- "campoError": "fetch failed",
+ "campoError": "mtgtop8 respondió 500",
  "campo": {
   "mazos": 688,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
