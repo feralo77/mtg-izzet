@@ -383,6 +383,24 @@ def test_fila_practica_lleva_lista_y_version():
     print("OK la práctica de Pol lleva lista y versión")
 
 
+def test_copia_de_fichero_no_dobla_games():
+    # Caso real (11-ago): 'Match_GameLog_X.dat' + 'Match_GameLog_X (1).dat' con los
+    # mismos bytes -> los games del match salían doblados (2-1 se convertía en 4-2).
+    # parse_player debe saltarse el segundo fichero por CONTENIDO antes de parsearlo.
+    import io, tempfile as tf
+    from contextlib import redirect_stdout
+    with tf.TemporaryDirectory() as d:
+        raw = b'bytes de mentira que el parser no entiende'
+        (Path(d) / 'Match_GameLog_x.dat').write_bytes(raw)
+        (Path(d) / 'Match_GameLog_x (1).dat').write_bytes(raw)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            out = PL.parse_player(d, 'feralo77')
+        assert out == [], out
+        assert buf.getvalue().count('contenido duplicado') == 1, buf.getvalue()
+    print("OK copia_de_fichero_no_dobla_games")
+
+
 def test_liga_anulada_descarta_apuntes():
     # Liga anulada (anuladas.json): los apuntes de ese jugador y evento hasta el corte
     # (o sin fecha) desaparecen; una ronda posterior al corte SÍ cuenta (liga retomada),
@@ -430,6 +448,7 @@ if __name__ == '__main__':
     test_versiones_agrupan_el_mismo_maindeck()
     test_lista_por_defecto_solo_donde_esta_declarada()
     test_fila_practica_lleva_lista_y_version()
+    test_copia_de_fichero_no_dobla_games()
     test_liga_anulada_descarta_apuntes()
     test_version_esta_en_las_columnas_del_registro()
     print("\nTodos los autotests del emparejamiento OK")

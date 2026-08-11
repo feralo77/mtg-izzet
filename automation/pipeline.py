@@ -33,7 +33,7 @@ Variables de entorno (secretos de GitHub):
 
 Jugadores registrados: automation/jugadores.json  {"players": ["feralo77", ...]}
 """
-import os, re, sys, json, csv, tempfile
+import os, re, sys, json, csv, tempfile, hashlib
 from pathlib import Path
 from collections import defaultdict, Counter
 from datetime import datetime, timezone
@@ -276,15 +276,23 @@ def sync_listas(drive, folder_id, nick, hoy=None):
 
 # ------------------------------------------------------------------ parseo de los logs
 def parse_player(logdir, nick):
-    """Matches (agregados, con games_list) donde 'nick' juega. Dedupe de ficheros por nombre."""
-    seen, games = set(), []
+    """Matches (agregados, con games_list) donde 'nick' juega. Dedupe de ficheros por
+    nombre Y por contenido: una copia tipo 'Match_GameLog_X (1).dat' (mismos bytes,
+    otro nombre) doblaría los games del match al agrupar por match_uuid."""
+    seen, seen_hash, games = set(), set(), []
     for fp in P.find_files(str(logdir)):
         b = os.path.basename(fp)
         if b in seen:
             continue
         seen.add(b)
+        raw = open(fp, 'rb').read()
+        h = hashlib.sha256(raw).hexdigest()
+        if h in seen_hash:
+            print(f"    - {b}: contenido duplicado de otro fichero, se ignora")
+            continue
+        seen_hash.add(h)
         try:
-            p = P.parse_gamelog(open(fp, 'rb').read())
+            p = P.parse_gamelog(raw)
         except Exception as e:
             print(f"    ! {b}: {e}")
             continue
