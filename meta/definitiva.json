@@ -8,8 +8,8 @@
   "generado": "2026-08-11"
  },
  "tuHistorico": {
-  "partidas": 177,
-  "games": 441,
+  "partidas": 178,
+  "games": 442,
   "versiones": [
    "Aggro",
    "Basics",
@@ -748,10 +748,10 @@
   },
   {
    "aq": "Esper Goryo's",
-   "W": 4,
+   "W": 5,
    "L": 8,
-   "n": 12,
-   "wr": 33
+   "n": 13,
+   "wr": 38
   },
   {
    "aq": "Dimir Frog",
@@ -1028,9 +1028,9 @@
    "datos": [
     {
      "aq": "Esper Goryo's",
-     "rec": "4-8",
-     "wr": 33,
-     "n": 12
+     "rec": "5-8",
+     "wr": 38,
+     "n": 13
     },
     {
      "aq": "Izzet Prowess",
@@ -1050,12 +1050,12 @@
   {
    "clave": "ventana-de-victoria",
    "titulo": "Hasta qué turno ganas",
-   "texto": "Hasta el turno 5 ganas el 57% (310 games); del 6 en adelante, el 39% (131). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
+   "texto": "Hasta el turno 5 ganas el 58% (311 games); del 6 en adelante, el 39% (131). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
    "datos": [
     {
      "tramo": "T1-T5",
-     "n": 310,
-     "wr": 57
+     "n": 311,
+     "wr": 58
     },
     {
      "tramo": "T6+",
@@ -1068,7 +1068,7 @@
   {
    "clave": "game1-salida-robo",
    "titulo": "El peso de empezar",
-   "texto": "En el game 1, donde la salida la reparte el dado, ganas el 62% saliendo y el 38% robando: 24 puntos. Es la única medición sin sesgo (en el G2/G3 elige quien perdió el anterior). Cuanto mayor sea esa brecha, más debe pesar en la lista la resiliencia jugando segundo.",
+   "texto": "En el game 1, donde la salida la reparte el dado, ganas el 62% saliendo y el 39% robando: 23 puntos. Es la única medición sin sesgo (en el G2/G3 elige quien perdió el anterior). Cuanto mayor sea esa brecha, más debe pesar en la lista la resiliencia jugando segundo.",
    "datos": [
     {
      "sr": "Salida",
@@ -1079,10 +1079,10 @@
     },
     {
      "sr": "Robo",
-     "n": 91,
-     "W": 35,
+     "n": 92,
+     "W": 36,
      "L": 56,
-     "wr": 38
+     "wr": 39
     }
    ],
    "decision": "humana: qué cartas te hacen menos dependiente de la salida"
