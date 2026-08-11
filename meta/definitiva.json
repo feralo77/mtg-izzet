@@ -9,7 +9,7 @@
  },
  "tuHistorico": {
   "partidas": 177,
-  "games": 446,
+  "games": 441,
   "versiones": [
    "Aggro",
    "Basics",
@@ -1050,16 +1050,16 @@
   {
    "clave": "ventana-de-victoria",
    "titulo": "Hasta qué turno ganas",
-   "texto": "Hasta el turno 5 ganas el 57% (311 games); del 6 en adelante, el 39% (135). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
+   "texto": "Hasta el turno 5 ganas el 57% (310 games); del 6 en adelante, el 39% (131). Toda carta que solo aporte a partir del turno 6 está pagando un precio en una ventana que casi no juegas.",
    "datos": [
     {
      "tramo": "T1-T5",
-     "n": 311,
+     "n": 310,
      "wr": 57
     },
     {
      "tramo": "T6+",
-     "n": 135,
+     "n": 131,
      "wr": 39
     }
    ],
