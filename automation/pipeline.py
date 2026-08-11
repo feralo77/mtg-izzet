@@ -33,7 +33,7 @@ Variables de entorno (secretos de GitHub):
 
 Jugadores registrados: automation/jugadores.json  {"players": ["feralo77", ...]}
 """
-import os, re, sys, json, csv, tempfile
+import os, re, sys, json, csv, tempfile, hashlib
 from pathlib import Path
 from collections import defaultdict, Counter
 from datetime import datetime, timezone
@@ -276,15 +276,23 @@ def sync_listas(drive, folder_id, nick, hoy=None):
 
 # ------------------------------------------------------------------ parseo de los logs
 def parse_player(logdir, nick):
-    """Matches (agregados, con games_list) donde 'nick' juega. Dedupe de ficheros por nombre."""
-    seen, games = set(), []
+    """Matches (agregados, con games_list) donde 'nick' juega. Dedupe de ficheros por
+    nombre Y por contenido: una copia tipo 'Match_GameLog_X (1).dat' (mismos bytes,
+    otro nombre) doblaría los games del match al agrupar por match_uuid."""
+    seen, seen_hash, games = set(), set(), []
     for fp in P.find_files(str(logdir)):
         b = os.path.basename(fp)
         if b in seen:
             continue
         seen.add(b)
+        raw = open(fp, 'rb').read()
+        h = hashlib.sha256(raw).hexdigest()
+        if h in seen_hash:
+            print(f"    - {b}: contenido duplicado de otro fichero, se ignora")
+            continue
+        seen_hash.add(h)
         try:
-            p = P.parse_gamelog(open(fp, 'rb').read())
+            p = P.parse_gamelog(raw)
         except Exception as e:
             print(f"    ! {b}: {e}")
             continue
@@ -381,6 +389,40 @@ def apuntes_de_valores(values, origen, nick):
         if not a['fecha'] and not a['mazo_rival'] and not a['evento']:
             continue
         out.append(a)
+    return out
+
+def cargar_anuladas():
+    """Reglas de automation/anuladas.json: ligas que se dan por no existentes."""
+    p = HERE / 'anuladas.json'
+    if not p.exists():
+        return []
+    try:
+        return json.loads(p.read_text(encoding='utf-8')).get('anuladas', [])
+    except Exception as e:
+        print(f"! anuladas.json ilegible, se ignora: {e}")
+        return []
+
+def filtrar_anuladas(apuntes, nick, reglas):
+    """Descarta los apuntes que caen en una liga anulada: mismo jugador y evento,
+    con fecha hasta el corte (incluido) o sin fecha. Un apunte posterior al corte
+    pasa — así la liga puede retomarse con partidas nuevas sin tocar la regla."""
+    out = []
+    for a in apuntes:
+        anulado = False
+        for r in reglas:
+            if key(r.get('jugador')) != key(nick) or key(r.get('evento')) != key(a.get('evento')):
+                continue
+            corte = day_key(norm_fecha(r.get('hasta', '')))
+            fecha = day_key(a.get('fecha', ''))
+            if not a.get('fecha') or fecha <= corte:
+                anulado = True
+                break
+        if anulado:
+            continue
+        out.append(a)
+    n = len(apuntes) - len(out)
+    if n:
+        print(f"    anuladas: {n} apunte(s) descartado(s) por liga anulada")
     return out
 
 def combinar_apuntes(base, override):
@@ -691,6 +733,7 @@ def main():
     tracker_id = os.environ.get('TRACKER_SHEET_ID')
     legacy_gid = int(os.environ.get('TRACKER_LEGACY_GID', DEFAULT_LEGACY_GID))
     players = json.loads((HERE / 'jugadores.json').read_text(encoding='utf-8')).get('players', [])
+    anuladas = cargar_anuladas()
     drive, sheets = clients()
 
     # apuntes legacy (tracker viejo), solo lectura, solo para feralo77
@@ -732,6 +775,8 @@ def main():
         apuntes = sheet_apuntes
         if nick == LEGACY_PLAYER:
             apuntes = combinar_apuntes(legacy_apuntes, sheet_apuntes)
+        # 3.5) ligas anuladas (automation/anuladas.json): esos apuntes no existen
+        apuntes = filtrar_anuladas(apuntes, nick, anuladas)
         # 4) emparejar
         reg, gm = emparejar(matches, apuntes, nick)
         registro_all += reg

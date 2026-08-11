@@ -143,6 +143,22 @@
   .filters .fg label{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
   .filters select{font-family:var(--font-sans);font-weight:500;background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;padding:9px 12px;font-size:13px;min-width:140px;box-shadow:var(--shadow-sm)}
   .filters select:focus{outline:none;box-shadow:var(--shadow)}
+  /* Multiselect — filtros que admiten VARIAS opciones a la vez (desplegable de casillas) */
+  .msel{position:relative;min-width:150px}
+  .msel .msbtn{font-family:var(--font-sans);font-weight:500;background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;padding:9px 12px;font-size:13px;box-shadow:var(--shadow-sm);cursor:pointer;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left}
+  .msel .msbtn:focus{outline:none;box-shadow:var(--shadow)}
+  .msel .msbtn .car{font-size:10px;opacity:.7}
+  .msel.act .msbtn{border-color:var(--primary);box-shadow:var(--shadow)}
+  .msel.act .msbtn .mstxt{font-weight:700}
+  .mspanel{display:none;position:absolute;top:calc(100% + 4px);left:0;z-index:60;min-width:100%;max-height:280px;overflow:auto;background:var(--surface);border:var(--stroke) solid var(--border);box-shadow:var(--shadow);padding:4px 0}
+  .msel.open .mspanel{display:block}
+  .msopt{display:flex;align-items:center;gap:9px;padding:7px 12px;font-size:13px;cursor:pointer;white-space:nowrap;font-weight:500;text-transform:none;letter-spacing:0}
+  .msopt:hover{background:var(--surface-2)}
+  .msopt input{accent-color:var(--primary);margin:0}
+  .msopt.msall{border-bottom:var(--stroke) solid var(--border);font-weight:700}
+  .srcbar .msel{min-width:190px}
+  .srcbar .msel .msbtn{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  .srcbar .mspanel{left:auto;right:0;min-width:210px}
   /* Comparativa — segmented control (dimensión a comparar) */
   .seg{display:inline-flex;flex-wrap:wrap;border:var(--stroke) solid var(--border);box-shadow:var(--shadow-sm);background:var(--surface)}
   .seg .opt{font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
@@ -279,7 +295,7 @@
     </div>
     <div class="srcbar">
       <span class="src" id="srcInfo"></span>
-      <select id="fPlayer" title="Filtra TODO el dashboard por jugador"></select>
+      <div id="fPlayer" title="Filtra TODO el dashboard por jugador — puedes marcar varios"></div>
       <button class="themebtn" id="themeBtn" title="Cambiar entre tema oscuro y claro"><span id="themeIcon"></span><span id="themeTxt">Claro</span></button>
       <a class="btn" href="https://github.com/feralo77/mtg-izzet/actions/workflows/actualizar-tracker.yml" target="_blank" rel="noopener" title="Abre GitHub Actions: pulsa 'Run workflow' y en ~2 minutos el robot lo regenera TODO de una vez — partidas, games, scouting, listas de la carpeta del Drive y meta de mtgtop8">Actualizar datos</a>
     </div>
@@ -300,10 +316,10 @@
   <!-- ===== ESTADÍSTICAS ===== -->
   <section class="view on" id="v-stats">
     <div class="filters">
-      <div class="fg"><label>Lista</label><select id="fLista"></select></div>
-      <div class="fg"><label>Liga / Evento</label><select id="fLiga"></select></div>
-      <div class="fg"><label>Salida / Robo</label><select id="fSR"></select></div>
-      <div class="fg"><label>Mazo rival</label><select id="fArq"></select></div>
+      <div class="fg"><label>Lista</label><div id="fLista"></div></div>
+      <div class="fg"><label>Liga / Evento</label><div id="fLiga"></div></div>
+      <div class="fg"><label>Salida / Robo</label><div id="fSR"></div></div>
+      <div class="fg"><label>Mazo rival</label><div id="fArq"></div></div>
     </div>
     <div class="kpis" id="kpis"></div>
     <div class="insight" id="insight"></div>
@@ -323,8 +339,8 @@
   <section class="view" id="v-play">
     <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — análisis game a game de tus logs de MTGO. No solo el resultado: cuándo aterriza tu juego, tu línea explosiva del Cutter, cuánto te interrumpen. Filtra por <b>lista</b> y por <b>mazo rival</b>; arriba las 5 claves, y el resto en "Ver más". Todo sale del log real de cada partida.</div></div>
     <div class="filters">
-      <div class="fg"><label>Versión</label><select id="fpLista"></select></div>
-      <div class="fg"><label>Mazo rival</label><select id="fpArq"></select></div>
+      <div class="fg"><label>Versión</label><div id="fpLista"></div></div>
+      <div class="fg"><label>Mazo rival</label><div id="fpArq"></div></div>
     </div>
     <div class="kpis" id="playKpis"></div>
     <div class="insight" id="playInsight"></div>
@@ -429,11 +445,11 @@
       </div>
     </div>
     <div class="filters" id="cmpFilters">
-      <div class="fg" id="wf-liga"><label>Liga / Evento</label><select id="cfLiga"></select></div>
-      <div class="fg" id="wf-lista"><label>Versión</label><select id="cfLista"></select></div>
-      <div class="fg" id="wf-sr"><label>Salida / Robo</label><select id="cfSR"></select></div>
-      <div class="fg" id="wf-arq"><label>Mazo rival</label><select id="cfArq"></select></div>
-      <div class="fg" id="wf-player"><label>Jugador</label><select id="cfPlayer"></select></div>
+      <div class="fg" id="wf-liga"><label>Liga / Evento</label><div id="cfLiga"></div></div>
+      <div class="fg" id="wf-lista"><label>Versión</label><div id="cfLista"></div></div>
+      <div class="fg" id="wf-sr"><label>Salida / Robo</label><div id="cfSR"></div></div>
+      <div class="fg" id="wf-arq"><label>Mazo rival</label><div id="cfArq"></div></div>
+      <div class="fg" id="wf-player"><label>Jugador</label><div id="cfPlayer"></div></div>
     </div>
 
     <div class="kpis" id="cmpKpis"></div>
@@ -1659,9 +1675,7 @@ function renderPlay(){
   Object.values(playCharts).forEach(c=>c&&c.destroy());playCharts={};
   // Filtros locales de la pestaña: Lista (cruce con el registro por match_uuid) y Mazo rival (directo)
   const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=verLab(d);});
-  const selLi=$('fpLista'), selAq=$('fpArq');
-  const fLi=selLi?selLi.value:'all', fAq=selAq?selAq.value:'all';
-  const D=G().filter(g=>(fLi==='all'||lim[g.uid]===fLi)&&(fAq==='all'||g.aq===fAq)), N=D.length;
+  const D=G().filter(g=>msOk('fpLista',lim[g.uid])&&msOk('fpArq',g.aq)), N=D.length;
   const avg=(a,d=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**d)/10**d:0;
   const wins=D.filter(g=>g.w), losses=D.filter(g=>!g.w);
   const sal=D.filter(g=>g.sr==='Salida'), rob=D.filter(g=>g.sr==='Robo');
@@ -1770,11 +1784,8 @@ function renderPlay(){
 }
 function initPlaySel(){
   const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=verLab(d);});
-  const listas=[...new Set(G().map(g=>lim[g.uid]).filter(Boolean))].sort();
-  const arqs=[...new Set(G().map(g=>g.aq).filter(Boolean))].sort();
-  const fill=(id,vals,allTxt)=>{const s=$(id);if(!s)return;const cur=s.value||'all';s.innerHTML='';s.add(new Option(allTxt,'all'));vals.forEach(v=>s.add(new Option(v,v)));s.value=(vals.includes(cur)||cur==='all')?cur:'all';s.onchange=()=>{playDone=false;renderPlay();};};
-  fill('fpLista',listas,'Todas las versiones');
-  fill('fpArq',arqs,'Todos los mazos');
+  msFill('fpLista',[...new Set(G().map(g=>lim[g.uid]).filter(Boolean))].sort());
+  msFill('fpArq',[...new Set(G().map(g=>g.aq).filter(Boolean))].sort());
 }
 
 // Tabs
@@ -1799,18 +1810,55 @@ document.querySelectorAll('#gMenu .gmi').forEach(m=>m.onclick=()=>{
   window.scrollTo({top:0,behavior:'smooth'});
 });
 
+// ===== Multiselect: todos los filtros del dashboard admiten VARIAS opciones a la vez =====
+// msVal(id) devuelve null (sin filtro, pasan todas) o el Set de lo marcado; msOk(id,v)
+// dice si un valor pasa. msFill refresca las opciones sin perder lo marcado (y poda lo
+// que ya no exista en los datos). Marcar la fila "Todas..." limpia el filtro.
+const MS={};
+function msInit(id,allTxt,onch){
+  const host=$(id); if(!host) return;
+  MS[id]={sel:new Set(),vals:[],allTxt,onch,host};
+  host.classList.add('msel');
+  host.innerHTML='<button type="button" class="msbtn"><span class="mstxt"></span><span class="car">&#9662;</span></button><div class="mspanel"></div>';
+  host.querySelector('.msbtn').onclick=e=>{e.stopPropagation();const abierto=host.classList.contains('open');msCloseAll();if(!abierto)host.classList.add('open');};
+  host.querySelector('.mspanel').onclick=e=>e.stopPropagation();
+  msLabel(id);
+}
+function msCloseAll(){document.querySelectorAll('.msel.open').forEach(x=>x.classList.remove('open'));}
+document.addEventListener('click',msCloseAll);
+function msLabel(id){
+  const m=MS[id];
+  m.host.querySelector('.mstxt').textContent=!m.sel.size?m.allTxt:m.sel.size===1?[...m.sel][0]:m.sel.size+' marcados';
+  m.host.classList.toggle('act',m.sel.size>0);
+}
+function msFill(id,vals){
+  const m=MS[id]; if(!m) return;
+  m.vals=vals; m.sel=new Set([...m.sel].filter(v=>vals.includes(v)));
+  const p=m.host.querySelector('.mspanel'); p.innerHTML='';
+  const row=(txt,checked,fn,cls)=>{
+    const l=document.createElement('label');l.className='msopt'+(cls?' '+cls:'');
+    const c=document.createElement('input');c.type='checkbox';c.checked=checked;c.onchange=fn;
+    l.appendChild(c);l.appendChild(document.createTextNode(txt));p.appendChild(l);return c;};
+  const all=row(m.allTxt,!m.sel.size,()=>{m.sel.clear();p.querySelectorAll('input').forEach((c,i)=>c.checked=i===0);msLabel(id);m.onch&&m.onch();},'msall');
+  vals.forEach(v=>row(v,m.sel.has(v),e=>{e.target.checked?m.sel.add(v):m.sel.delete(v);all.checked=!m.sel.size;msLabel(id);m.onch&&m.onch();}));
+  msLabel(id);
+}
+function msVal(id){const m=MS[id];return m&&m.sel.size?m.sel:null;}
+function msOk(id,v){const s=msVal(id);return !s||s.has(v);}
+const playRefresh=()=>{playDone=false;renderPlay();};
+msInit('fPlayer','Todos los jugadores',refreshAll);
+msInit('fLista','Todas las versiones',render);msInit('fLiga','Todas las ligas',render);
+msInit('fSR','Salida + Robo',render);msInit('fArq','Todos los mazos',render);
+msInit('fpLista','Todas las versiones',playRefresh);msInit('fpArq','Todos los mazos',playRefresh);
+msInit('cfLiga','Todas las ligas',renderCmp);msInit('cfLista','Todas las versiones',renderCmp);
+msInit('cfSR','Salida + Robo',renderCmp);msInit('cfArq','Todos los mazos',renderCmp);
+msInit('cfPlayer','Todos los jugadores',renderCmp);
+
 // ===== Filtro GLOBAL por jugador: todo el dashboard mira a M() (partidas) y G() (games) =====
-let PLAYER='all';
-const M=()=>PLAYER==='all'?MATCHES:MATCHES.filter(d=>(d.by||'—')===PLAYER);
-const G=()=>PLAYER==='all'?GAMES:GAMES.filter(g=>(g.by||'feralo77')===PLAYER);
+const M=()=>{const s=msVal('fPlayer');return s?MATCHES.filter(d=>s.has(d.by||'—')):MATCHES;};
+const G=()=>{const s=msVal('fPlayer');return s?GAMES.filter(g=>s.has(g.by||'feralo77')):GAMES;};
 function initPlayer(){
-  const s=$('fPlayer');
-  const vals=[...new Set([...MATCHES.map(d=>d.by||''),...GAMES.map(g=>g.by||'')])].filter(v=>v&&v!=='—').sort();
-  const cur=s.value||'all';s.innerHTML='';
-  s.add(new Option('Todos los jugadores','all'));
-  vals.forEach(v=>s.add(new Option(v,v)));
-  s.value=vals.includes(cur)||cur==='all'?cur:'all';
-  s.onchange=()=>{PLAYER=s.value;refreshAll();};
+  msFill('fPlayer',[...new Set([...MATCHES.map(d=>d.by||''),...GAMES.map(g=>g.by||'')])].filter(v=>v&&v!=='—').sort());
 }
 function refreshAll(){
   initSelectors();initCmpSelectors();initPlaySel();renderDef75();renderBrain();playDone=false;
@@ -1825,10 +1873,9 @@ function refreshAll(){
 
 // 'li' se resuelve por VERSIÓN del mazo (no por nombre de lista): filtrar por "Aggro" trae
 // también las partidas apuntadas como "Ur Aggro Rage", que es el mismo maindeck.
-function uniq(f){return [...new Set(M().map(d=>f==='li'?verLab(d):d[f]))];}
-function fillSel(id,f,all){const s=$(id);s.innerHTML='';const o=new Option(all,'all');s.add(o);uniq(f).forEach(v=>s.add(new Option(v,v)));s.onchange=render;}
-function filtered(){const li=$('fLista').value,lg=$('fLiga').value,sr=$('fSR').value,aq=$('fArq').value;
-  return M().filter(d=>(li==='all'||verLab(d)===li)&&(lg==='all'||d.ev===lg)&&(sr==='all'||d.sr===sr)&&(aq==='all'||d.aq===aq));}
+function uniq(f){return [...new Set(M().map(d=>f==='li'?verLab(d):d[f]))].filter(Boolean);}
+function filtered(){
+  return M().filter(d=>msOk('fLista',verLab(d))&&msOk('fLiga',d.ev)&&msOk('fSR',d.sr)&&msOk('fArq',d.aq));}
 
 function kpis(D){
   const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
@@ -2174,11 +2221,10 @@ function cmpValM(d,liByUid){return cmpDim==='by'?(d.by||'—'):cmpDim==='aq'?d.a
 function cmpValG(g,liByUid){return cmpDim==='by'?(g.by||'feralo77'):cmpDim==='aq'?g.aq:cmpDim==='sr'?g.sr:(liByUid[g.uid]||'—');}
 function cmpBase(){
   const mAll=cmpDim==='by'?MATCHES:M(), gAll=cmpDim==='by'?GAMES:G();
-  const fLg=$('cfLiga').value,fLi=$('cfLista').value,fSr=$('cfSR').value,fAq=$('cfArq').value,fPl=$('cfPlayer').value;
   const liByUid={},evByUid={};mAll.forEach(d=>{if(d.uid){liByUid[d.uid]=verLab(d);evByUid[d.uid]=d.ev;}});
-  const mF=mAll.filter(d=>(cmpDim==='li'||fLi==='all'||verLab(d)===fLi)&&(fLg==='all'||d.ev===fLg)&&(cmpDim==='sr'||fSr==='all'||d.sr===fSr)&&(cmpDim==='aq'||fAq==='all'||d.aq===fAq)&&(cmpDim==='by'||fPl==='all'||(d.by||'—')===fPl));
+  const mF=mAll.filter(d=>(cmpDim==='li'||msOk('cfLista',verLab(d)))&&msOk('cfLiga',d.ev)&&(cmpDim==='sr'||msOk('cfSR',d.sr))&&(cmpDim==='aq'||msOk('cfArq',d.aq))&&(cmpDim==='by'||msOk('cfPlayer',d.by||'—')));
   const gF=gAll.filter(g=>{const li=liByUid[g.uid],ev=evByUid[g.uid];
-    return (cmpDim==='li'||fLi==='all'||li===fLi)&&(fLg==='all'||ev===fLg)&&(cmpDim==='sr'||fSr==='all'||g.sr===fSr)&&(cmpDim==='aq'||fAq==='all'||g.aq===fAq)&&(cmpDim==='by'||fPl==='all'||(g.by||'feralo77')===fPl);});
+    return (cmpDim==='li'||msOk('cfLista',li))&&msOk('cfLiga',ev)&&(cmpDim==='sr'||msOk('cfSR',g.sr))&&(cmpDim==='aq'||msOk('cfArq',g.aq))&&(cmpDim==='by'||msOk('cfPlayer',g.by||'feralo77'));});
   return {mF,gF,liByUid};
 }
 function cmpGroupStats(D,GG){
@@ -2344,12 +2390,11 @@ function renderCmp(){
   cmpBar(gr);cmpRadar(gr);cmpMatrix(gr);
 }
 function initCmpSelectors(){
-  const fill=(id,vals,allLbl)=>{const s=$(id);if(!s)return;const prev=s.value||'all';s.innerHTML='';s.add(new Option(allLbl,'all'));vals.forEach(v=>s.add(new Option(v,v)));s.value=[...vals,'all'].includes(prev)?prev:'all';s.onchange=renderCmp;};
   const uni=f=>[...new Set(MATCHES.map(d=>d[f]).filter(v=>v&&v!=='—'&&v!=='N/A (bye/concede)'))].sort();
   const uniVer=[...new Set(MATCHES.map(verLab).filter(v=>v&&v!=='—'))].sort();
-  fill('cfLiga',uni('ev'),'Todas las ligas');fill('cfLista',uniVer,'Todas las versiones');
-  fill('cfSR',uni('sr'),'Salida + Robo');fill('cfArq',uni('aq'),'Todos los mazos');
-  fill('cfPlayer',[...new Set(MATCHES.map(d=>d.by||'').filter(v=>v&&v!=='—'))].sort(),'Todos los jugadores');
+  msFill('cfLiga',uni('ev'));msFill('cfLista',uniVer);
+  msFill('cfSR',uni('sr'));msFill('cfArq',uni('aq'));
+  msFill('cfPlayer',[...new Set(MATCHES.map(d=>d.by||'').filter(v=>v&&v!=='—'))].sort());
   const ms=$('cmpMetric');if(ms){const prev=ms.value||cmpMetricKey;ms.innerHTML='';CMP_METRICS.filter(m=>m.bar).forEach(m=>ms.add(new Option(m.lab,m.k)));ms.value=CMP_METRICS.some(m=>m.bar&&m.k===prev)?prev:'wrMatch';cmpMetricKey=ms.value;ms.onchange=()=>{cmpMetricKey=ms.value;cmpBar(cmpLastGroups);};}
 }
 // Selector de dimensión (segmented) — se cablea una vez; el DOM ya existe a esta altura del script.
@@ -2558,7 +2603,8 @@ async function renderDef75(){
       ${GUIASB.matchups.map(m=>{
         const r=recDe(m.aq);
         const cls = !r.n ? 'par' : (r.w/r.n>=0.6?'fav':(r.w/r.n<=0.34?'des':'par'));
-        const quien = PLAYER==='all' ? 'la liga' : (PLAYER==='feralo77' ? 'tu' : PLAYER);
+        const selJ = msVal('fPlayer');
+        const quien = !selJ ? 'la liga' : (selJ.size>1 ? 'los marcados' : ([...selJ][0]==='feralo77' ? 'tu' : [...selJ][0]));
         const rec = r.n ? `${quien}: ${r.w}-${r.l} (${pct(r.w,r.n)}%, n=${r.n})` : 'sin partidas registradas';
         return `<div class="mc ${cls}">
           <div class="mh"><span class="mn">${esc(m.mazo)}</span><span class="mmeta">${m.pctLocal}% de tu liga</span></div>
@@ -2764,7 +2810,7 @@ async function freshness(){
   }catch(e){}
 }
 
-function initSelectors(){fillSel('fLista','li','Todas las versiones');fillSel('fLiga','ev','Todas las ligas');fillSel('fSR','sr','Salida + Robo');fillSel('fArq','aq','Todos los mazos');}
+function initSelectors(){msFill('fLista',uniq('li'));msFill('fLiga',uniq('ev'));msFill('fSR',uniq('sr'));msFill('fArq',uniq('aq'));}
 
 // init
 (async function(){

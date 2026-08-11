@@ -1,0 +1,6 @@
+{
+  "comentario": "Ligas anuladas: apuntes que el robot descarta como si no existieran. Cada regla anula los apuntes de ese jugador y evento con fecha hasta el dia indicado (incluido) o sin fecha. Si la liga se retoma con partidas nuevas (fechas posteriores), esas SI cuentan. Motivo de la primera regla: Fer decidio no colgar los logs de su Liga 9 (11-ago-2026); las 5 rondas apuntadas sin resultado quedan anuladas y la liga se rejugara con otros rivales.",
+  "anuladas": [
+    { "jugador": "feralo77", "evento": "Liga 9", "hasta": "10/08/2026" }
+  ]
+}
