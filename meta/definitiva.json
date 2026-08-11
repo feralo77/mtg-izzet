@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-10",
+ "generado": "2026-08-11",
  "comoSeCalcula": "Base: la lista media de mtgtop8 (cada carta a sus copias típicas, de más jugada a menos, hasta 60 y 15; los fetchlands como bloque intercambiable). Encima, las desviaciones de las versiones de Fer con su récord real con y sin cada carta, y los avisos que el histórico sostiene. Lo que NO se calcula: qué carta responde a qué mazo — eso es criterio de Magic y va marcado como decisión humana en cada aviso.",
  "campo": {
   "mazos": 60,
