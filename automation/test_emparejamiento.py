@@ -383,6 +383,26 @@ def test_fila_practica_lleva_lista_y_version():
     print("OK la práctica de Pol lleva lista y versión")
 
 
+def test_liga_anulada_descarta_apuntes():
+    # Liga anulada (anuladas.json): los apuntes de ese jugador y evento hasta el corte
+    # (o sin fecha) desaparecen; una ronda posterior al corte SÍ cuenta (liga retomada),
+    # y los demás jugadores no se ven afectados aunque jueguen la misma liga.
+    reglas = [{'jugador': 'feralo77', 'evento': 'Liga 9', 'hasta': '10/08/2026'}]
+    aps = [
+        apunte('27/07/2026', evento='Liga 9', ronda='1', mazo='Mono-Green Eldrazi'),
+        apunte('', evento='Liga 9', ronda='2', mazo='Ponza'),
+        apunte('28/07/2026', evento='Liga 8', ronda='1', mazo='Storm'),
+        apunte('20/08/2026', evento='Liga 9', ronda='1', mazo='Burn'),
+    ]
+    out = PL.filtrar_anuladas(aps, 'feralo77', reglas)
+    assert [(a['evento'], a['fecha']) for a in out] == \
+        [('Liga 8', '28/07/2026'), ('Liga 9', '20/08/2026')], out
+    otros = PL.filtrar_anuladas([apunte('27/07/2026', evento='Liga 9', nick='4c_PolG')],
+                                '4c_PolG', reglas)
+    assert len(otros) == 1, otros
+    print("OK liga_anulada_descarta_apuntes")
+
+
 def test_version_esta_en_las_columnas_del_registro():
     assert 'Versión' in PL.REGISTRO_COLS
     assert PL.REGISTRO_COLS.index('Versión') == PL.REGISTRO_COLS.index('Lista') + 1
@@ -410,5 +430,6 @@ if __name__ == '__main__':
     test_versiones_agrupan_el_mismo_maindeck()
     test_lista_por_defecto_solo_donde_esta_declarada()
     test_fila_practica_lleva_lista_y_version()
+    test_liga_anulada_descarta_apuntes()
     test_version_esta_en_las_columnas_del_registro()
     print("\nTodos los autotests del emparejamiento OK")

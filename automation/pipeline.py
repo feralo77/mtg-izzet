@@ -383,6 +383,40 @@ def apuntes_de_valores(values, origen, nick):
         out.append(a)
     return out
 
+def cargar_anuladas():
+    """Reglas de automation/anuladas.json: ligas que se dan por no existentes."""
+    p = HERE / 'anuladas.json'
+    if not p.exists():
+        return []
+    try:
+        return json.loads(p.read_text(encoding='utf-8')).get('anuladas', [])
+    except Exception as e:
+        print(f"! anuladas.json ilegible, se ignora: {e}")
+        return []
+
+def filtrar_anuladas(apuntes, nick, reglas):
+    """Descarta los apuntes que caen en una liga anulada: mismo jugador y evento,
+    con fecha hasta el corte (incluido) o sin fecha. Un apunte posterior al corte
+    pasa — así la liga puede retomarse con partidas nuevas sin tocar la regla."""
+    out = []
+    for a in apuntes:
+        anulado = False
+        for r in reglas:
+            if key(r.get('jugador')) != key(nick) or key(r.get('evento')) != key(a.get('evento')):
+                continue
+            corte = day_key(norm_fecha(r.get('hasta', '')))
+            fecha = day_key(a.get('fecha', ''))
+            if not a.get('fecha') or fecha <= corte:
+                anulado = True
+                break
+        if anulado:
+            continue
+        out.append(a)
+    n = len(apuntes) - len(out)
+    if n:
+        print(f"    anuladas: {n} apunte(s) descartado(s) por liga anulada")
+    return out
+
 def combinar_apuntes(base, override):
     """Une apuntes por fecha+posición: 'override' (la hoja de partidas) pisa a 'base'
     (el tracker legacy) cuando ambos tienen fila en la misma posición del día."""
@@ -691,6 +725,7 @@ def main():
     tracker_id = os.environ.get('TRACKER_SHEET_ID')
     legacy_gid = int(os.environ.get('TRACKER_LEGACY_GID', DEFAULT_LEGACY_GID))
     players = json.loads((HERE / 'jugadores.json').read_text(encoding='utf-8')).get('players', [])
+    anuladas = cargar_anuladas()
     drive, sheets = clients()
 
     # apuntes legacy (tracker viejo), solo lectura, solo para feralo77
@@ -732,6 +767,8 @@ def main():
         apuntes = sheet_apuntes
         if nick == LEGACY_PLAYER:
             apuntes = combinar_apuntes(legacy_apuntes, sheet_apuntes)
+        # 3.5) ligas anuladas (automation/anuladas.json): esos apuntes no existen
+        apuntes = filtrar_anuladas(apuntes, nick, anuladas)
         # 4) emparejar
         reg, gm = emparejar(matches, apuntes, nick)
         registro_all += reg
