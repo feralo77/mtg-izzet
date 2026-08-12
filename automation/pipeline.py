@@ -92,6 +92,21 @@ def is_bye(mazo):
     return m in {'na', 'n/a', 'bye', 'concede', 'n/a (bye/concede)', 'bye/concede',
                  'bye / concede', 'sin rival'}
 
+# Alias de arquetipo (meta/arquetipos.json, clave alias_registro): etiquetas que son
+# EL MISMO mazo con dos nombres ('Storm' y 'Ruby Storm') se funden antes de escribir
+# los CSV, para que ningún récord quede partido en dos cajones (pedido de Fer, 12-ago).
+def _cargar_alias_arquetipos():
+    try:
+        return json.loads((REPO / 'meta' / 'arquetipos.json').read_text(encoding='utf-8')).get('alias_registro', {})
+    except Exception as e:
+        print(f"! meta/arquetipos.json ilegible, sin alias: {e}")
+        return {}
+
+ALIAS_ARQ = _cargar_alias_arquetipos()
+
+def alias_arq(a):
+    return ALIAS_ARQ.get(a, a)
+
 # Nombres cortos que se usan en los apuntes -> arquetipo canónico del dashboard.
 # Se aplican cuando el clasificador no llega ('¿? (revisar)') y el apunte SÍ trae mazo.
 CANON = {
@@ -104,7 +119,7 @@ CANON = {
 }
 
 def canon_mazo(s):
-    return CANON.get(key(s), norm(s))
+    return alias_arq(CANON.get(key(s), norm(s)))
 
 def _lev(a, b):
     """Distancia de edición (Levenshtein). Para nicks cortos, sobra con la versión simple."""
@@ -598,6 +613,7 @@ def emparejar(matches, apuntes, nick):
         h = m.get('hora')
         m['_madrid'] = h.astimezone(MADRID) if h else None
         m['_fecha'] = m['_madrid'].strftime('%d/%m/%Y') if m['_madrid'] else norm_fecha(m.get('fecha', ''))
+        m['arquetipo'] = alias_arq(m['arquetipo'])   # 'Storm' y 'Ruby Storm' son el mismo cajón
 
     logs = sorted(matches, key=lambda m: m['_madrid'] or datetime.min.replace(tzinfo=timezone.utc))
     byes = [a for a in apuntes if is_bye(a.get('mazo_rival')) and not a.get('es_ejemplo')]
