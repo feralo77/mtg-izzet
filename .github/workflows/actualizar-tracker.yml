@@ -57,12 +57,6 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: node scripts/meta_mtgtop8.mjs --out meta --milista meta/mi-75.json --date "$(date +%F)"
 
-      # Va DESPUES de la meta: lee meta/prowess.json (el consenso del campo) y lo cruza
-      # con registro.csv y games.csv. Si la meta no se regenero en esta corrida usa la
-      # anterior, que es correcto: el consenso cambia mucho mas despacio que los datos.
-      - name: Recalcular La 75 Definitiva
-        run: python automation/generar_definitiva.py --date "$(date -u +%F)"
-
       # El radar cruza el campo global, la liga y el récord de Fer para sacar alarmas
       # ("este mazo sube y lo pierdes"). Tiene su propio cron cada 4 días; aquí corre
       # también porque el botón "Actualizar datos" refresca TODO de una vez.
@@ -71,10 +65,10 @@ jobs:
 
       - name: Commitear si hay cambios
         run: |
-          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv listas meta)" ]]; then
+          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv esperando.json listas meta)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add registro.csv games.csv scouting.csv listas meta
+            git add registro.csv games.csv scouting.csv esperando.json listas meta
             git commit -m "Datos: registro, games, scouting, listas y meta desde el robot"
             # otro robot (p. ej. el de meta) puede haber subido mientras corríamos:
             # rebasar antes de empujar evita el push rechazado del 27-jul

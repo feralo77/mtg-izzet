@@ -312,10 +312,14 @@ def parse_player(logdir, nick):
             print(f"    ! {b}: {e}")
             continue
         if not p:
+            print(f"    - {b}: el parser no encuentra un match dentro, se ignora")
             continue
         names = P.detect_names([e['message'] for e in p['entries']])
         if nick not in names:
-            continue                             # solo SUS partidas
+            # Nada de descartes silenciosos: decir SIEMPRE por qué un fichero no cuenta
+            # (suele ser una partida espectada o jugada desde otra cuenta).
+            print(f"    - {b}: {nick} no juega en este log (jugadores: {', '.join(sorted(names)) or 'ninguno detectado'})")
+            continue
         opp = next((n for n in names if n != nick), None)
         for gm in P.split_games(p['entries']):
             games.append(P.extract_game(gm, nick, opp, p['match_uuid']))
@@ -604,7 +608,7 @@ def _casa_bye(a, row):
     return True
 
 
-def emparejar(matches, apuntes, nick):
+def emparejar(matches, apuntes, nick, esperando=None):
     """Empareja apuntes ↔ partidas por ORDEN CRONOLÓGICO GLOBAL (alineación de secuencias
     tipo diff, anclada por fecha en hora de Madrid ±1 día + resultado + marcador). Es robusto
     al desfase de medianoche (una sesión de liga jugada de madrugada cae el día siguiente) y a
@@ -662,6 +666,12 @@ def emparejar(matches, apuntes, nick):
             # colgar): su fila aparecerá cuando llegue el log. Antes esto creaba filas
             # manuales 'revisar (sin log)' que ensuciaban frecuencias y récords. Los
             # byes/concedes son la excepción (abajo): nunca tendrán log.
+            # Para que no desaparezcan en silencio, van a esperando.json (cartel del dashboard).
+            a = reales[i - 1]
+            if esperando is not None and not a.get('es_ejemplo'):
+                esperando.append({'jugador': nick, 'fecha': a['fecha'], 'evento': a['evento'],
+                                  'ronda': a['ronda'], 'rival': a['rival_nick'],
+                                  'mazo': a['mazo_rival']})
             i -= 1
         else:                                     # log sin apunte -> práctica
             m = logs[j - 1]
@@ -766,7 +776,7 @@ def main():
     logs_folders = [f for f in list_children(drive, folder_id, only_folders=True)
                     if f['name'].startswith('Logs_')]
     tmp = Path(tempfile.mkdtemp())
-    registro_all, games_all, scout_src = [], [], []
+    registro_all, games_all, scout_src, esperando_all = [], [], [], []
 
     for lf in logs_folders:
         nick = lf['name'][len('Logs_'):]
@@ -795,7 +805,7 @@ def main():
         # 3.5) ligas anuladas (automation/anuladas.json): esos apuntes no existen
         apuntes = filtrar_anuladas(apuntes, nick, anuladas)
         # 4) emparejar
-        reg, gm = emparejar(matches, apuntes, nick)
+        reg, gm = emparejar(matches, apuntes, nick, esperando=esperando_all)
         registro_all += reg
         games_all += gm
         scout_src.append((nick, matches))
@@ -825,6 +835,13 @@ def main():
     escribir_csv(REPO / 'games.csv', GAMES_COLS, games_all)
     scout = scouting_por_rival(scout_src)
     escribir_csv(REPO / 'scouting.csv', SCOUT_COLS, scout)
+    # rondas apuntadas que esperan su log -> cartel en el dashboard (nada desaparece en silencio)
+    esperando_all.sort(key=lambda a: (a['jugador'], _ts(day_key(a['fecha'])), _ronda_int(a)))
+    (REPO / 'esperando.json').write_text(
+        json.dumps({'generado': datetime.now(timezone.utc).strftime('%Y-%m-%d'),
+                    'rondas': esperando_all}, ensure_ascii=False, indent=1), encoding='utf-8')
+    if esperando_all:
+        print(f"esperando.json -> {len(esperando_all)} ronda(s) apuntada(s) sin log")
     logs = sum(1 for f in filas if f['Fuente'] == 'log')
     manual = sum(1 for f in filas if f['Fuente'] == 'manual')
     print(f"OK: registro.csv -> {len(filas)} filas ({logs} log + {manual} manual) · "

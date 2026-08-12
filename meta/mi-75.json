@@ -8,7 +8,7 @@
     "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO"
   },
   "porQueEsteMain": "El main es el consenso del campo, sin desviaciones. Con un 79% de consenso entre 60 listas y cero movimiento en la ventana de 28 dias (ni cartas que suban, ni que bajen, ni nuevas, ni que se caigan), desviarse del main es pagar por nada. Tu ventaja esta en el banquillo y en como juegas.",
-  "porQueEsteSide": "El banquillo esta ponderado a TU liga (164 rivales censados en scouting.csv), no al campo global. Unica desviacion: 4 Consign to Memory en vez de los 3 del campo, porque el 37% de tu meta local son mazos de trigger (Eldrazi 9%, Izzet Affinity 8%, Ruby Storm 5%, Neoform 5%, Broodscale 4%, Amulet Titan 4%, Living End 2%). En el campo global esa capa es mas pequena.",
+  "porQueEsteSide": "El banquillo esta ponderado a TU liga (los rivales censados en scouting.csv), no al campo global. Unica desviacion: 4 Consign to Memory en vez de los 3 del campo, porque el 37% de tu meta local son mazos de trigger (Eldrazi 9%, Izzet Affinity 8%, Ruby Storm 5%, Neoform 5%, Broodscale 4%, Amulet Titan 4%, Living End 2%). En el campo global esa capa es mas pequena.",
   "main": [
     { "n": "Dragon's Rage Channeler", "q": 4, "z": "criatura" },
     { "n": "Monastery Swiftspear", "q": 4, "z": "criatura" },

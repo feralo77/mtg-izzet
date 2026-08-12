@@ -405,6 +405,19 @@ def test_copia_de_fichero_no_dobla_games():
     print("OK copia_de_fichero_no_dobla_games")
 
 
+def test_esperando_recoge_apuntes_sin_log():
+    # Un apunte sin log no se publica, pero tampoco desaparece en silencio: va a la
+    # lista 'esperando' (el robot la vuelca a esperando.json y el dashboard la enseña).
+    # El bye no espera nada: se publica directamente.
+    esp = []
+    aps = [apunte('20/08/2026', 'Liga 10', '1', mazo='Burn', rival='pepito'),
+           apunte('20/08/2026', 'Liga 10', '2', mazo='bye', res='W')]
+    reg, _ = PL.emparejar([], aps, 'feralo77', esperando=esp)
+    assert len(esp) == 1 and esp[0]['rival'] == 'pepito' and esp[0]['evento'] == 'Liga 10', esp
+    assert len(rows(reg)) == 1 and rows(reg)[0]['Fuente'] == 'manual', rows(reg)
+    print("OK esperando_recoge_apuntes_sin_log")
+
+
 def test_alias_de_arquetipo_unifica():
     # 'Storm' y 'Ruby Storm' son el mismo mazo (Fer, 12-ago): el registro, los games y
     # el fallback del apunte salen ya unificados al nombre canónico.
@@ -468,6 +481,7 @@ if __name__ == '__main__':
     test_lista_por_defecto_solo_donde_esta_declarada()
     test_fila_practica_lleva_lista_y_version()
     test_copia_de_fichero_no_dobla_games()
+    test_esperando_recoge_apuntes_sin_log()
     test_alias_de_arquetipo_unifica()
     test_liga_anulada_descarta_apuntes()
     test_version_esta_en_las_columnas_del_registro()
