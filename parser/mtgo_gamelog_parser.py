@@ -221,6 +221,9 @@ SIG = [
     ('Dimir Frog', [('Psychic Frog',3)]),
     ('Boros Energy', [('Guide of Souls',2),('Ocelot Pride',3),('Ajani, Nacatl Pariah',3),('Galvanic Discharge',2)]),
     ('Izzet Affinity', [('Kappa Cannoneer',3),("Urza's Saga",1),('Thought Monitor',2),('Pinnacle Emissary',2),('Mox Opal',2)]),
+    # NO confundir con Izzet Affinity (decisión de Fer, 12-ago): el shell de Emry/Tamiyo
+    # con Cori-Steel Cutter es OTRA variante y se mide aparte.
+    ('Izzet Cori', [('Tamiyo, Inquisitive Student',3),('Flame of Anor',3),('Emry, Lurker of the Loch',3),('Metallic Rebuke',2),('Aether Spellbomb',1)]),
     ('Eldrazi', [('Thought-Knot Seer',2),('Ugin',1),('Chalice of the Void',1),("Kozilek, the Broodmother",2),('Devourer of Destiny',2),('Karn, the Great Creator',1),('Expedition Map',1)]),
     ('Amulet Titan', [('Amulet of Vigor',3),('Primeval Titan',2),('Arboreal Grazer',2),("Green Sun's Zenith",1)]),
     ('Golgari Yawgmoth', [('Yawgmoth, Thran Physician',3),("Agatha's Soul Cauldron",2),('Badgermole Cub',2),('Young Wolf',1),('Tyvar, Jubilant Brawler',1),('Wight of the Reliquary',1),('Ignoble Hierarch',1)]),

@@ -1937,7 +1937,9 @@ function chartPD(D){const s=D.filter(d=>d.sr==='Salida'),r=D.filter(d=>d.sr==='R
 let sortCol='f',sortDir=1;
 function table(D){const cols=[['f','Fecha'],['ev','Liga'],['li','Lista'],['rd','Rnd'],['aq','Mazo rival'],['r','Res'],['g','Games'],['sr','G1'],['mull','Mulls'],['by','Jugador']];
   const val=(d,k)=>k==='g'?`${d.jg}-${d.jp}`:k==='mull'?`${d.my}/${d.mr}`:d[k];
-  const s=[...D].sort((a,b)=>{let x=sortCol==='rd'?a.rd:val(a,sortCol),y=sortCol==='rd'?b.rd:val(b,sortCol);return (x>y?1:x<y?-1:0)*sortDir;});
+  // Fecha y ronda ordenan por su VALOR (una fecha dd/mm/aaaa como texto pone el 11/08 antes que el 30/07)
+  const sval=(d,k)=>k==='f'?_dts(d.f):k==='rd'?d.rd:val(d,k);
+  const s=[...D].sort((a,b)=>{let x=sval(a,sortCol),y=sval(b,sortCol);return (x>y?1:x<y?-1:0)*sortDir;});
   let h='<thead><tr>'+cols.map(c=>`<th data-k="${c[0]}">${c[1]}${sortCol===c[0]?(sortDir>0?' ▲':' ▼'):''}</th>`).join('')+'</tr></thead><tbody>';
   h+=s.map(d=>`<tr><td>${d.f}</td><td><span class="tag">${d.ev}</span></td><td>${d.li}</td><td>${d.rd}</td><td>${d.aq}</td><td><span class="pill ${d.r}">${d.r}</span></td><td>${d.jg}-${d.jp}</td><td>${d.sr}</td><td>${d.my}/${d.mr}</td><td>${d.by||'—'}</td></tr>`).join('')+'</tbody>';
   const t=$('tbl');t.innerHTML=h;t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(sortCol===k)sortDir*=-1;else{sortCol=k;sortDir=1;}table(filtered());});}

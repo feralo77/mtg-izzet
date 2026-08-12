@@ -418,6 +418,21 @@ def test_esperando_recoge_apuntes_sin_log():
     print("OK esperando_recoge_apuntes_sin_log")
 
 
+def test_mazo_corregido_manda():
+    # El bautizo a mano de Fer (mazos-corregidos.json) manda sobre el clasificador y
+    # sale con Confianza 'fer'. Se prueba inyectando una corrección temporal.
+    PL.MAZOS_CORREGIDOS['uu-test'] = 'Desconocido'
+    try:
+        ms = [match('uu-test', utc(2026, 8, 1, 18, 0), '¿? (revisar)', opp='alguien')]
+        reg, games = PL.emparejar(ms, [], 'feralo77')
+        r = rows(reg)[0]
+        assert r['Arquetipo'] == 'Desconocido' and r['Confianza'] == 'fer', r
+        assert games[0]['Arquetipo'] == 'Desconocido', games[0]
+    finally:
+        del PL.MAZOS_CORREGIDOS['uu-test']
+    print("OK mazo_corregido_manda")
+
+
 def test_alias_de_arquetipo_unifica():
     # 'Storm' y 'Ruby Storm' son el mismo mazo (Fer, 12-ago): el registro, los games y
     # el fallback del apunte salen ya unificados al nombre canónico.
@@ -482,6 +497,7 @@ if __name__ == '__main__':
     test_fila_practica_lleva_lista_y_version()
     test_copia_de_fichero_no_dobla_games()
     test_esperando_recoge_apuntes_sin_log()
+    test_mazo_corregido_manda()
     test_alias_de_arquetipo_unifica()
     test_liga_anulada_descarta_apuntes()
     test_version_esta_en_las_columnas_del_registro()
