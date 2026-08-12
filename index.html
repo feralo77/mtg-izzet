@@ -143,6 +143,9 @@
   .filters .fg label{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
   .filters select{font-family:var(--font-sans);font-weight:500;background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;padding:9px 12px;font-size:13px;min-width:140px;box-shadow:var(--shadow-sm)}
   .filters select:focus{outline:none;box-shadow:var(--shadow)}
+  .filters input[type=text]{font-family:var(--font-sans);font-weight:500;background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;padding:9px 12px;font-size:13px;min-width:180px;box-shadow:var(--shadow-sm)}
+  .filters input[type=text]:focus{outline:none;box-shadow:var(--shadow)}
+  .srcbar select#fDias{font-family:var(--font-sans);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;padding:9px 12px;box-shadow:var(--shadow-sm);cursor:pointer}
   /* Multiselect — filtros que admiten VARIAS opciones a la vez (desplegable de casillas) */
   .msel{position:relative;min-width:150px}
   .msel .msbtn{font-family:var(--font-sans);font-weight:500;background:var(--surface);color:var(--text);border:var(--stroke) solid var(--border);border-radius:0;padding:9px 12px;font-size:13px;box-shadow:var(--shadow-sm);cursor:pointer;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left}
@@ -295,6 +298,13 @@
     </div>
     <div class="srcbar">
       <span class="src" id="srcInfo"></span>
+      <select id="fDias" title="Acota TODO el dashboard a las partidas de los últimos días">
+        <option value="0">Todo el histórico</option>
+        <option value="7">Últimos 7 días</option>
+        <option value="14">Últimos 14 días</option>
+        <option value="30">Últimos 30 días</option>
+        <option value="60">Últimos 60 días</option>
+      </select>
       <div id="fPlayer" title="Filtra TODO el dashboard por jugador — puedes marcar varios"></div>
       <button class="themebtn" id="themeBtn" title="Cambiar entre tema oscuro y claro"><span id="themeIcon"></span><span id="themeTxt">Claro</span></button>
       <a class="btn" href="https://github.com/feralo77/mtg-izzet/actions/workflows/actualizar-tracker.yml" target="_blank" rel="noopener" title="Abre GitHub Actions: pulsa 'Run workflow' y en ~2 minutos el robot lo regenera TODO de una vez — partidas, games, scouting, listas de la carpeta del Drive y meta de mtgtop8">Actualizar datos</a>
@@ -315,6 +325,7 @@
 
   <!-- ===== ESTADÍSTICAS ===== -->
   <section class="view on" id="v-stats">
+    <div class="insight" id="waitNote" style="display:none"></div>
     <div class="filters">
       <div class="fg"><label>Lista</label><div id="fLista"></div></div>
       <div class="fg"><label>Liga / Evento</label><div id="fLiga"></div></div>
@@ -428,6 +439,10 @@
   <section class="view" id="v-scout">
     <div class="author"><span class="ic"></span><div><b>Scouting de rivales</b> — a quién os habéis enfrentado en MTGO, con qué mazo, vuestro récord y las cartas que le habéis visto. Sale solo de los logs, sin apuntar nada. Útil para preparar la ronda cuando repites oponente en la MoL; el filtro de jugador de arriba te da el scouting de cada uno.</div></div>
     <div class="kpis" id="scoutKpis"></div>
+    <div class="filters">
+      <div class="fg"><label>Buscar rival</label><input type="text" id="scoutBuscar" placeholder="Escribe el nick…" autocomplete="off"></div>
+      <div class="fg"><button type="button" class="btn" id="scoutVerTodos">Ver todos</button></div>
+    </div>
     <div class="panel full"><h3>Rival a rival <span>(más enfrentados primero)</span></h3><div style="overflow-x:auto"><table id="scoutTbl"></table></div>
       <div style="font-size:11.5px;color:var(--tx2);margin-top:8px" id="scoutNote"></div></div>
   </section>
@@ -1854,9 +1869,16 @@ msInit('cfLiga','Todas las ligas',renderCmp);msInit('cfLista','Todas las version
 msInit('cfSR','Salida + Robo',renderCmp);msInit('cfArq','Todos los mazos',renderCmp);
 msInit('cfPlayer','Todos los jugadores',renderCmp);
 
-// ===== Filtro GLOBAL por jugador: todo el dashboard mira a M() (partidas) y G() (games) =====
-const M=()=>{const s=msVal('fPlayer');return s?MATCHES.filter(d=>s.has(d.by||'—')):MATCHES;};
-const G=()=>{const s=msVal('fPlayer');return s?GAMES.filter(g=>s.has(g.by||'feralo77')):GAMES;};
+// ===== Filtros GLOBALES: fecha (últimos N días) + jugador. Todo el dashboard mira a
+// M() (partidas) y G() (games); MD()/GD() aplican solo la fecha (los usa la Comparativa
+// por jugador, que ignora el filtro de jugador pero no debe ignorar el de fecha).
+let DIAS=0;
+const _dts=f=>{const m=/^(\d{2})\/(\d{2})\/(\d{4})$/.exec(f||'');return m?Date.UTC(+m[3],+m[2]-1,+m[1]):0;};
+const MD=()=>{if(!DIAS)return MATCHES;const c=Date.now()-DIAS*864e5;return MATCHES.filter(d=>_dts(d.f)>=c);};
+const GD=()=>{if(!DIAS)return GAMES;const ok=new Set(MD().map(d=>d.uid).filter(Boolean));return GAMES.filter(g=>ok.has(g.uid));};
+const M=()=>{const s=msVal('fPlayer'),b=MD();return s?b.filter(d=>s.has(d.by||'—')):b;};
+const G=()=>{const s=msVal('fPlayer'),b=GD();return s?b.filter(g=>s.has(g.by||'feralo77')):b;};
+function initDias(){const s=$('fDias');if(s)s.onchange=()=>{DIAS=+s.value;refreshAll();};}
 function initPlayer(){
   msFill('fPlayer',[...new Set([...MATCHES.map(d=>d.by||''),...GAMES.map(g=>g.by||'')])].filter(v=>v&&v!=='—').sort());
 }
@@ -2149,6 +2171,14 @@ async function loadScout(){
       SCOUT[k]={cards:iC>=0?c[iC]:'',vistos:iV>=0?c[iV]:'',turns:iT>=0?c[iT]:'',conf:iCf>=0?c[iCf]:''};});
   }catch(e){}
 }
+// Buscador + top-20: con 169 rivales la tabla entera solo sirve para hacer scroll.
+// Se enseñan los 20 más enfrentados; escribir un nick filtra al vuelo y "Ver todos" abre la lista entera.
+let scoutQ='', scoutAll=false;
+function initScoutCtrl(){
+  const i=$('scoutBuscar'), b=$('scoutVerTodos');
+  if(i)i.oninput=()=>{scoutQ=i.value;renderScout();};
+  if(b)b.onclick=()=>{scoutAll=!scoutAll;renderScout();};
+}
 function renderScout(){
   const D=M().filter(d=>d.rv);
   const m={};
@@ -2167,15 +2197,22 @@ function renderScout(){
     ['g','Dominados',rows.filter(r=>r.w>r.l).length,'récord a favor'],
     ['r','Récord en contra',rows.filter(r=>r.l>r.w).length,'a preparar']];
   $('scoutKpis').innerHTML=kk.map(x=>`<div class="kpi ${x[0]}"><div class="lab">${x[1]}</div><div class="val">${x[2]}</div><div class="note">${x[3]}</div></div>`).join('');
+  const q=scoutQ.trim().toLowerCase();
+  let show=q?rows.filter(r=>r.op.toLowerCase().includes(q)):rows;
+  const LIM=20, truncado=!q&&!scoutAll&&show.length>LIM;
+  if(truncado)show=show.slice(0,LIM);
+  const vb=$('scoutVerTodos');if(vb){vb.textContent=scoutAll?'Ver top 20':'Ver todos';vb.style.display=q?'none':'';}
   const hh=['Rival','Enfr.','Tu récord','WR','Mazo(s) visto(s)','Cartas que le habéis visto','Visto por'];
   $('scoutTbl').innerHTML='<thead><tr>'+hh.map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
-    rows.map(r=>{
+    show.map(r=>{
       const deck=Object.entries(r.decks).sort((a,b)=>b[1]-a[1]).map(([k,v])=>v>1?`${k} (${v})`:k).join(', ');
       const wr=pct(r.w,r.w+r.l);
       const s=SCOUT&&SCOUT[r.op];
       return `<tr><td><b>${r.op}</b></td><td>${r.n}</td><td style="font-family:var(--mono)">${r.w}-${r.l}</td><td><span class="pill ${wr>=50?'W':'L'}">${wr}%</span></td><td style="white-space:normal">${deck}</td><td style="white-space:normal;color:var(--tx2)">${s?s.cards:'—'}</td><td>${s?s.vistos:'—'}</td></tr>`;
     }).join('')+'</tbody>';
-  $('scoutNote').textContent=SCOUT?'Récord y mazos: del registro en vivo. Cartas vistas: de scouting.csv (agregado de todos los jugadores).':'Las cartas vistas por rival aparecerán con la próxima carga de datos (scouting.csv).';
+  const base=SCOUT?'Récord y mazos: del registro en vivo. Cartas vistas: de scouting.csv (agregado de todos los jugadores).':'Las cartas vistas por rival aparecerán con la próxima carga de datos (scouting.csv).';
+  const extra=q?` Mostrando ${show.length} de ${rows.length} rivales (búsqueda).`:truncado?` Mostrando los ${LIM} más enfrentados de ${rows.length} — "Ver todos" o busca un nick.`:'';
+  $('scoutNote').textContent=base+extra;
 }
 // ================= COMPARATIVA (jugadores / listas / mazos rivales / salida-robo) =================
 // Motor de comparación codo con codo. Reutiliza M()/G() y los mismos datos que el resto del
@@ -2220,7 +2257,7 @@ const CMP_METRICS=[
 function cmpValM(d,liByUid){return cmpDim==='by'?(d.by||'—'):cmpDim==='aq'?d.aq:cmpDim==='sr'?d.sr:verLab(d);}
 function cmpValG(g,liByUid){return cmpDim==='by'?(g.by||'feralo77'):cmpDim==='aq'?g.aq:cmpDim==='sr'?g.sr:(liByUid[g.uid]||'—');}
 function cmpBase(){
-  const mAll=cmpDim==='by'?MATCHES:M(), gAll=cmpDim==='by'?GAMES:G();
+  const mAll=cmpDim==='by'?MD():M(), gAll=cmpDim==='by'?GD():G();
   const liByUid={},evByUid={};mAll.forEach(d=>{if(d.uid){liByUid[d.uid]=verLab(d);evByUid[d.uid]=d.ev;}});
   const mF=mAll.filter(d=>(cmpDim==='li'||msOk('cfLista',verLab(d)))&&msOk('cfLiga',d.ev)&&(cmpDim==='sr'||msOk('cfSR',d.sr))&&(cmpDim==='aq'||msOk('cfArq',d.aq))&&(cmpDim==='by'||msOk('cfPlayer',d.by||'—')));
   const gF=gAll.filter(g=>{const li=liByUid[g.uid],ev=evByUid[g.uid];
@@ -2723,7 +2760,7 @@ function updateSource(remote){
 // versión es un solo cambio aquí y se ve al instante, sin esperar una corrida del robot.
 // La columna del CSV se usa de respaldo para listas que este mapa no conozca.
 const VERSIONES={Stock:['Stock','2.0','Pol 1 NF','Stock 2.0'],Basics:['Basics'],
-                 Aggro:['PT','UR Aggro Flashback','Ur Aggro Rage','UR Aggro Surgicals']};
+                 Aggro:['PT','UR Aggro Flashback','Ur Aggro Rage']};
 const VER_REF=['Definitiva'];   // lista de referencia: no es una versión jugada
 const VER_MAP=(()=>{const m={};for(const v in VERSIONES)VERSIONES[v].forEach(l=>m[l.toLowerCase()]=v);return m;})();
 const verOf=li=>{const k=(li||'').trim().toLowerCase();
@@ -2799,7 +2836,10 @@ async function loadGames(){
   GAMES_DEEP=true;   // el snapshot incrustado es del formato profundo
   return false;
 }
-// ---- Frescura: cuándo cargó datos el robot por última vez (último commit de registro.csv) ----
+// ---- Frescura y salud de los automatismos. El robot es diario y el meta corre cada 2
+// días: si una fuente lleva más de la cuenta sin refrescarse es que su workflow está
+// caído, y eso antes no lo veía nadie (el meta falló el 9-ago en silencio). Ahora la
+// fuente atrasada sale EN ROJO en la cabecera. ----
 async function freshness(){
   try{
     const r=await fetch('https://api.github.com/repos/feralo77/mtg-izzet/commits?path=registro.csv&per_page=1');
@@ -2807,7 +2847,32 @@ async function freshness(){
     const j=await r.json();if(!j.length) return;
     const d=new Date(j[0].commit.committer.date), h=Math.round((Date.now()-d)/36e5);
     const txt=h<1?'hace menos de 1 h':h<48?`hace ${h} h`:`hace ${Math.round(h/24)} días`;
-    $('srcInfo').innerHTML+=` · datos ${txt}`;
+    $('srcInfo').innerHTML+=h>=48
+      ?` · <span style="color:var(--danger-ink);font-weight:700" title="El robot diario lleva demasiado sin escribir datos: revisa GitHub Actions">DATOS ${txt} — ¿robot caído?</span>`
+      :` · datos ${txt}`;
+  }catch(e){}
+  const chk=async(path,maxDias,nombre)=>{
+    try{
+      const r=await fetch(path,{cache:'no-store'});if(!r.ok)return;
+      const g=(await r.json()).generado;if(!g)return;
+      const dd=Math.floor((Date.now()-new Date(g))/864e5);
+      if(dd>maxDias)$('srcInfo').innerHTML+=` · <span style="color:var(--danger-ink);font-weight:700" title="Su workflow lleva demasiado sin correr con éxito: revisa GitHub Actions">${nombre} hace ${dd} días — ¿caído?</span>`;
+    }catch(e){}
+  };
+  await chk('meta/prowess.json',4,'META');
+  await chk('meta/radar.json',6,'RADAR');
+}
+// ---- Rondas apuntadas esperando su log (esperando.json, lo escribe el robot) ----
+async function loadEsperando(){
+  try{
+    const r=await fetch('esperando.json',{cache:'no-store'});if(!r.ok)return;
+    const rs=(await r.json()).rondas||[];const el=$('waitNote');
+    if(!el||!rs.length)return;
+    const e=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const by={};rs.forEach(a=>{(by[a.jugador]=by[a.jugador]||[]).push(a);});
+    const det=Object.entries(by).map(([jug,as])=>`<b>${e(jug)}</b>: ${as.map(a=>e([a.evento,a.ronda?'R'+a.ronda:'',a.rival?'vs '+a.rival:''].filter(Boolean).join(' '))).join(' · ')}`).join(' &mdash; ');
+    el.style.display='';
+    el.innerHTML=`<div class="ic"></div><div><b>${rs.length} ronda${rs.length===1?'':'s'} apuntada${rs.length===1?'':'s'} esperando su log</b> — no cuentan en nada hasta que el .dat esté en el Drive. ${det}</div>`;
   }catch(e){}
 }
 
@@ -2825,10 +2890,10 @@ function initSelectors(){msFill('fLista',uniq('li'));msFill('fLiga',uniq('ev'));
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initCmpSelectors();initPlayer();initPlaySel();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDef75();renderBrain();
+  initSelectors();initCmpSelectors();initPlayer();initPlaySel();initDias();initScoutCtrl();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDef75();renderBrain();
   render();
   updateSource(remote);
-  freshness();
+  freshness();loadEsperando();
 })();
 </script>
 </body>
