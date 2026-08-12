@@ -60,6 +60,12 @@
       "clave": "La Tormod's Crypt se activa EN RESPUESTA al Goryo's Vengeance, nunca antes: Goryo's apunta a una criatura legendaria del cementerio, y si vacias el cementerio el hechizo se contrarresta solo por falta de objetivo. Consign contesta el trigger de entrada de Atraxa y el de Not Dead After All.",
       "aq": [
         "Esper Goryo's"
+      ],
+      "patrones": [
+        "G1 ultra-agresivo pero SIN sobreextender a Solitude: ve ancho, no con todo a la vez.",
+        "Sacales la primera Solitude antes de comprometer el golpe grande.",
+        "No te quedes sin mana contra Solitude + Ephemerate.",
+        "El Psychic Frog se protege solo: no gastes removal ahi, presiona por otro lado."
       ]
     },
     {
@@ -137,6 +143,14 @@
       "clave": "Los dos trucos del mirror: (1) Spell Snare contrarresta su Cori-Steel Cutter y su Slickshot Show-Off, los dos de coste 2; (2) Consign to Memory contesta el trigger Flurry del Cutter, asi que su ficha de Monje no llega a existir. Bolt y Heat NO matan el Cutter (es un equipo): guardalos para el Dragon's Rage Channeler y los Monjes. Deja 2 Mutagenic Growth para ganar combates y salvar del Bolt.",
       "aq": [
         "Izzet Prowess"
+      ],
+      "patrones": [
+        "Bloquear es debil en el mirror (cualquiera bombea en su turno): controla la mesa con dano, no con bloqueos.",
+        "Lightning Bolt es tu carta mas flexible: gastala la ultima, despues del resto del dano.",
+        "Farolea el Mutagenic Growth: representa la proteccion aunque no la tengas.",
+        "Minimiza la perdida de vida propia (fetch/shock): el mirror se decide por 2-3 puntos.",
+        "Ojo al delirium a velocidad de instantanea: una DRC que de pronto vuela y bloquea al Slickshot.",
+        "Divergencia ethanmtg (anotada 12-ago, sin adoptar): el saca los 4 Growth; aqui se dejan 2 porque salvan del Bolt. Si pierdes los intercambios de mesa, prueba su version."
       ]
     },
     {
@@ -300,5 +314,6 @@
         "Living End"
       ]
     }
-  ]
+  ],
+  "nota_patrones": "Campo 'patrones' (12-ago): patrones de juego migrados del cruce con la guia de ethanmtg (pestana Guia), matchup a matchup. Encargo de Fer del 27-jul; hechos mirror y Esper Goryo's, quedan 14."
 }

@@ -2612,6 +2612,7 @@ async function renderDef75(){
           <div class="io"><div class="in"><span class="lbl">Entran</span>${(m.in||[]).map(esc).join(' &middot; ')||'&mdash;'}</div><div class="out"><span class="lbl">Salen</span>${(m.out||[]).map(esc).join(' &middot; ')||'&mdash;'}</div></div>
           <div class="plan"><b>${esc(m.rol)}.</b> ${esc(m.plan)}</div>
           <div class="plan" style="margin-top:6px"><b>La clave:</b> ${esc(m.clave)}</div>
+          ${(m.patrones&&m.patrones.length)?`<div class="plan" style="margin-top:6px"><b>Patrones (cruce con la Guía):</b><ul style="margin:4px 0 0 18px;padding:0">${m.patrones.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>`:''}
         </div>`;
       }).join('')}
       </div>
