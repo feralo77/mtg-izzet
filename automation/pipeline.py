@@ -640,11 +640,12 @@ def emparejar(matches, apuntes, nick):
                              'uuid': m['match_uuid']})
             games += _games_de_match(m, nick)
             i -= 1; j -= 1
-        elif c == 'A':                            # apunte sin log -> manual (papel/log perdido)
-            a = reales[i - 1]
-            if not a.get('es_ejemplo'):           # una fila de ejemplo jamás inventa un match
-                registro.append({'row': _fila_manual(a, nick),
-                                 'sort': _ts(day_key(a['fecha'])) + _ronda_int(a) * 60, 'uuid': ''})
+        elif c == 'A':                            # apunte sin log -> NO se publica
+            # Regla de Fer (12-ago-2026): solo cuenta lo que tiene log. Un apunte sin log
+            # suele ser una ronda rellenada de antemano y aún sin jugar (o un log sin
+            # colgar): su fila aparecerá cuando llegue el log. Antes esto creaba filas
+            # manuales 'revisar (sin log)' que ensuciaban frecuencias y récords. Los
+            # byes/concedes son la excepción (abajo): nunca tendrán log.
             i -= 1
         else:                                     # log sin apunte -> práctica
             m = logs[j - 1]
