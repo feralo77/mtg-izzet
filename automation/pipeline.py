@@ -107,6 +107,21 @@ ALIAS_ARQ = _cargar_alias_arquetipos()
 def alias_arq(a):
     return ALIAS_ARQ.get(a, a)
 
+# Correcciones a mano de partidas concretas (automation/mazos-corregidos.json):
+# Fer vio las cartas y bautizó el mazo — mandan sobre el clasificador ('Desconocido'
+# incluido: mejor un cajón honesto que un '¿? (revisar)' eterno).
+def _cargar_mazos_corregidos():
+    p = HERE / 'mazos-corregidos.json'
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text(encoding='utf-8')).get('corregidos', {})
+    except Exception as e:
+        print(f"! mazos-corregidos.json ilegible, se ignora: {e}")
+        return {}
+
+MAZOS_CORREGIDOS = _cargar_mazos_corregidos()
+
 # Nombres cortos que se usan en los apuntes -> arquetipo canónico del dashboard.
 # Se aplican cuando el clasificador no llega ('¿? (revisar)') y el apunte SÍ trae mazo.
 CANON = {
@@ -500,7 +515,7 @@ def _fila_practica(m, nick):
         'Salida / Robo (G1)': m['salida_robo'], 'Mulligans (Yo)': m['mull_local'],
         'Mulligans (Rival)': m['mull_opp'], 'Cartas Clave / MVP': '',
         'Notas de Match / Sideboard': '', 'Reportado por': nick, 'Fuente': 'log',
-        'Rival': m.get('opp') or '', 'Confianza': f"{int(m.get('confianza', 0) * 100)}%",
+        'Rival': m.get('opp') or '', 'Confianza': m.get('confianza_txt') or f"{int(m.get('confianza', 0) * 100)}%",
     }
 
 def _fila_manual(a, nick):
@@ -618,6 +633,9 @@ def emparejar(matches, apuntes, nick, esperando=None):
         m['_madrid'] = h.astimezone(MADRID) if h else None
         m['_fecha'] = m['_madrid'].strftime('%d/%m/%Y') if m['_madrid'] else norm_fecha(m.get('fecha', ''))
         m['arquetipo'] = alias_arq(m['arquetipo'])   # 'Storm' y 'Ruby Storm' son el mismo cajón
+        if m.get('match_uuid') in MAZOS_CORREGIDOS:  # el bautizo de Fer manda sobre todo
+            m['arquetipo'] = MAZOS_CORREGIDOS[m['match_uuid']]
+            m['confianza_txt'] = 'fer'
 
     logs = sorted(matches, key=lambda m: m['_madrid'] or datetime.min.replace(tzinfo=timezone.utc))
     byes = [a for a in apuntes if is_bye(a.get('mazo_rival')) and not a.get('es_ejemplo')]
