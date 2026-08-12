@@ -76,11 +76,12 @@ def test_nick_es_la_llave():
     prac = [x for x in r if not x['Evento / Liga']]
     assert len(liga) == 1 and liga[0]['match_uuid'] == 'u2' and liga[0]['Rival'] == 'Juan', r
     assert len(prac) == 1 and prac[0]['match_uuid'] == 'u1', r
-    # nick que NO coincide con ningún log -> mejor manual que emparejar mal
+    # nick que NO coincide con ningún log -> mejor fuera que emparejar mal
+    # (regla 12-ago: el apunte sin log no se publica; los logs quedan como práctica)
     aps2 = [apunte('15/07/2026', 'Liga 9', '2', rival='Desconocido77', mazo='Amulet Titan', res='L', jg=0, jp=2)]
     reg2, _ = PL.emparejar(ms, aps2, 'feralo77')
-    manual = [x for x in rows(reg2) if x['Fuente'] == 'manual']
-    assert len(manual) == 1 and manual[0]['Rival'] == 'Desconocido77', rows(reg2)
+    r2 = rows(reg2)
+    assert all(x['Fuente'] == 'log' and not x['Evento / Liga'] for x in r2) and len(r2) == 2, r2
     print("OK nick_es_la_llave")
 
 
@@ -146,14 +147,18 @@ def test_medianoche_00_30():
 
 
 def test_fila_papel():
-    # apunte sin log (papel/log perdido) -> fila manual con nota de revisar
-    aps = [apunte('19/07/2026', 'Liga X', '1', mazo='Amulet Titan', res='W', jg=2, jp=1)]
+    # Regla de Fer (12-ago-2026): un apunte sin log NO se publica, aunque lleve
+    # resultado tecleado — la hoja se puede rellenar antes de jugar. Su fila
+    # aparecerá cuando llegue el log. (Antes creaba una fila manual 'revisar'.)
+    aps = [apunte('19/07/2026', 'Liga X', '1', mazo='Amulet Titan', res='W', jg=2, jp=1),
+           apunte('20/07/2026', 'Liga X', '2', mazo='Storm')]
     reg, games = PL.emparejar([], aps, 'feralo77')
-    r = rows(reg)
-    assert len(r) == 1 and r[0]['Fuente'] == 'manual' and r[0]['match_uuid'] == '', r
-    assert 'revisar' in r[0]['Notas de Match / Sideboard']
-    assert games == []
-    print("OK fila_papel")
+    assert rows(reg) == [] and games == [], rows(reg)
+    # el bye sigue siendo la excepción: no hay log posible y completa la liga
+    reg2, _ = PL.emparejar([], [apunte('19/07/2026', 'Liga X', '3', mazo='bye', res='W')], 'feralo77')
+    r2 = rows(reg2)
+    assert len(r2) == 1 and r2[0]['Fuente'] == 'manual', r2
+    print("OK fila_papel (apunte sin log no se publica; bye sí)")
 
 
 def test_bye_no_consume_match():
@@ -207,10 +212,9 @@ def test_fila_ejemplo():
     ]
     aps = PL.apuntes_de_valores(values, 'hoja', 'feralo77')
     assert len(aps) == 2 and aps[0].get('es_ejemplo') and aps[0]['notas'] == '', aps
-    # (a) SIN log que le case: la fila de ejemplo jamás inventa una partida manual
+    # (a) SIN log que le case: nada se publica (regla 12-ago), ni el ejemplo ni el real
     reg, _ = PL.emparejar([], aps, 'feralo77')
-    r = rows(reg)
-    assert len(r) == 1 and r[0]['Mazo del Oponente'] == 'Boros', r
+    assert rows(reg) == [], rows(reg)
     # (b) CON log que le casa (caso real: Fer edita la fila de ejemplo con la Liga 5 R5):
     # la fila cuenta, propaga Liga/Ronda/Lista y la nota de plantilla no aparece
     values_r5 = [
@@ -257,9 +261,9 @@ def test_nicks_de_rival_publicos():
     assert r[0]['Rival'] == 'RIVAL_NICK', r[0]
     assert r[0]['Mazo del Oponente'] == 'Neoform' and r[0]['Arquetipo'] == 'Neoform', r[0]
     assert 'RIVAL_NICK' not in str(games), 'games.csv no lleva nicks (no los necesita)'
-    # una fila manual (sin log) no tiene nick
+    # un apunte sin log ya no se publica (regla 12-ago), así que no hay fila sin nick
     reg2, _ = PL.emparejar([], [apunte('14/07/2026', 'Liga 3', '3', mazo='Amulet Titan', res='W', jg=2, jp=0)], 'feralo77')
-    assert rows(reg2)[0]['Rival'] == ''
+    assert rows(reg2) == []
     print("OK nicks_de_rival_publicos")
 
 
