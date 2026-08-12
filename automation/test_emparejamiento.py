@@ -405,6 +405,21 @@ def test_copia_de_fichero_no_dobla_games():
     print("OK copia_de_fichero_no_dobla_games")
 
 
+def test_alias_de_arquetipo_unifica():
+    # 'Storm' y 'Ruby Storm' son el mismo mazo (Fer, 12-ago): el registro, los games y
+    # el fallback del apunte salen ya unificados al nombre canónico.
+    assert PL.alias_arq('Storm') == 'Ruby Storm'
+    assert PL.alias_arq('Eldrazi PT') == 'Eldrazi' and PL.alias_arq('Eldrazi Ramp') == 'Eldrazi'
+    assert PL.alias_arq('Izzet Prowess') == 'Izzet Prowess'   # sin alias, se queda igual
+    ms = [match('u1', utc(2026, 8, 1, 18, 0), 'Storm', opp='rival1'),
+          match('u2', utc(2026, 8, 1, 19, 0), 'Ruby Storm', opp='rival2')]
+    reg, games = PL.emparejar(ms, [], 'feralo77')
+    assert {r['Arquetipo'] for r in rows(reg)} == {'Ruby Storm'}, rows(reg)
+    assert {g['Arquetipo'] for g in games} == {'Ruby Storm'}, games
+    assert PL.canon_mazo('Eldrazi Ramp') == 'Eldrazi'
+    print("OK alias_de_arquetipo_unifica")
+
+
 def test_liga_anulada_descarta_apuntes():
     # Liga anulada (anuladas.json): los apuntes de ese jugador y evento hasta el corte
     # (o sin fecha) desaparecen; una ronda posterior al corte SÍ cuenta (liga retomada),
@@ -453,6 +468,7 @@ if __name__ == '__main__':
     test_lista_por_defecto_solo_donde_esta_declarada()
     test_fila_practica_lleva_lista_y_version()
     test_copia_de_fichero_no_dobla_games()
+    test_alias_de_arquetipo_unifica()
     test_liga_anulada_descarta_apuntes()
     test_version_esta_en_las_columnas_del_registro()
     print("\nTodos los autotests del emparejamiento OK")

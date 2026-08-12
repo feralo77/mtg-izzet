@@ -19,20 +19,76 @@
  "base": {
   "main": [
    {
+    "n": "Cori-Steel Cutter",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 4,
+    "max": 4
+   },
+   {
+    "n": "Dragon's Rage Channeler",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 4,
+    "max": 4
+   },
+   {
+    "n": "Lava Dart",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 4,
+    "max": 4
+   },
+   {
+    "n": "Lightning Bolt",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 4,
+    "max": 4
+   },
+   {
+    "n": "Mishra's Bauble",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 4,
+    "max": 4
+   },
+   {
+    "n": "Preordain",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 4,
+    "max": 4
+   },
+   {
+    "n": "Monastery Swiftspear",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 3,
+    "max": 4
+   },
+   {
+    "n": "Slickshot Show-Off",
+    "copias": 4,
+    "pct": 100,
+    "typical": 4,
+    "min": 2,
+    "max": 4
+   },
+   {
     "n": "Steam Vents",
     "copias": 3,
     "pct": 100,
     "typical": 3,
     "min": 2,
     "max": 4
-   },
-   {
-    "n": "Mountain",
-    "copias": 3,
-    "pct": 100,
-    "typical": 3,
-    "min": 2,
-    "max": 3
    },
    {
     "n": "Thundering Falls",
@@ -43,84 +99,36 @@
     "max": 2
    },
    {
-    "n": "Cori-Steel Cutter",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 4,
-    "max": 4
-   },
-   {
-    "n": "Dragon's Rage Channeler",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 4,
-    "max": 4
-   },
-   {
-    "n": "Lava Dart",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 4,
-    "max": 4
-   },
-   {
-    "n": "Lightning Bolt",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 4,
-    "max": 4
-   },
-   {
-    "n": "Mishra's Bauble",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 4,
-    "max": 4
-   },
-   {
-    "n": "Preordain",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 4,
-    "max": 4
-   },
-   {
-    "n": "Monastery Swiftspear",
-    "copias": 4,
-    "pct": 98,
-    "typical": 4,
-    "min": 3,
-    "max": 4
-   },
-   {
     "n": "Bloodstained Mire",
-    "copias": 3,
+    "copias": 4,
     "pct": 98,
-    "typical": 3,
+    "typical": 4,
     "min": 1,
     "max": 4
    },
    {
-    "n": "Slickshot Show-Off",
-    "copias": 4,
-    "pct": 97,
-    "typical": 4,
+    "n": "Mountain",
+    "copias": 3,
+    "pct": 98,
+    "typical": 3,
     "min": 2,
-    "max": 4
+    "max": 3
    },
    {
     "n": "Fiery Islet",
     "copias": 2,
-    "pct": 95,
+    "pct": 98,
     "typical": 2,
     "min": 1,
     "max": 2
+   },
+   {
+    "n": "Expressive Iteration",
+    "copias": 4,
+    "pct": 92,
+    "typical": 4,
+    "min": 2,
+    "max": 4
    },
    {
     "n": "Wooded Foothills",
@@ -131,17 +139,9 @@
     "max": 4
    },
    {
-    "n": "Expressive Iteration",
-    "copias": 4,
-    "pct": 88,
-    "typical": 4,
-    "min": 1,
-    "max": 4
-   },
-   {
     "n": "Mutagenic Growth",
     "copias": 4,
-    "pct": 83,
+    "pct": 85,
     "typical": 4,
     "min": 2,
     "max": 4
@@ -149,7 +149,7 @@
    {
     "n": "Arid Mesa",
     "copias": 2,
-    "pct": 80,
+    "pct": 82,
     "typical": 2,
     "min": 1,
     "max": 4
@@ -157,37 +157,21 @@
    {
     "n": "Scalding Tarn",
     "copias": 3,
-    "pct": 78,
+    "pct": 75,
     "typical": 3,
     "min": 1,
     "max": 4
-   },
-   {
-    "n": "Violent Urge",
-    "copias": 1,
-    "pct": 68,
-    "typical": 2,
-    "min": 1,
-    "max": 2
    }
   ],
   "mainN": 60,
   "side": [
    {
     "n": "Consign to Memory",
-    "copias": 3,
+    "copias": 4,
     "pct": 98,
-    "typical": 3,
+    "typical": 4,
     "min": 2,
     "max": 4
-   },
-   {
-    "n": "Meltdown",
-    "copias": 2,
-    "pct": 97,
-    "typical": 2,
-    "min": 1,
-    "max": 3
    },
    {
     "n": "Unholy Heat",
@@ -196,6 +180,14 @@
     "typical": 3,
     "min": 1,
     "max": 4
+   },
+   {
+    "n": "Meltdown",
+    "copias": 2,
+    "pct": 95,
+    "typical": 2,
+    "min": 1,
+    "max": 3
    },
    {
     "n": "Spell Pierce",
@@ -208,7 +200,7 @@
    {
     "n": "Spell Snare",
     "copias": 2,
-    "pct": 70,
+    "pct": 72,
     "typical": 2,
     "min": 1,
     "max": 3
@@ -216,18 +208,10 @@
    {
     "n": "Tormod's Crypt",
     "copias": 2,
-    "pct": 50,
+    "pct": 52,
     "typical": 2,
     "min": 1,
     "max": 4
-   },
-   {
-    "n": "Surgical Extraction",
-    "copias": 1,
-    "pct": 45,
-    "typical": 1,
-    "min": 1,
-    "max": 3
    }
   ],
   "sideN": 15
@@ -237,9 +221,9 @@
    {
     "n": "Violent Urge",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 68,
+    "consensoPct": 72,
     "consensoCopias": 2,
-    "baseCopias": 1,
+    "baseCopias": 0,
     "tusVersiones": {
      "2.0": 2,
      "Basics": 1,
@@ -295,7 +279,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 15,
+    "consensoPct": 13,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -324,7 +308,7 @@
    {
     "n": "Monstrous Rage",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 17,
+    "consensoPct": 15,
     "consensoCopias": 3,
     "baseCopias": 0,
     "tusVersiones": {
@@ -353,7 +337,7 @@
    {
     "n": "Stormchaser's Talent",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 23,
+    "consensoPct": 22,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -382,7 +366,7 @@
    {
     "n": "Boomerang Basics",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 12,
+    "consensoPct": 10,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -411,7 +395,7 @@
    {
     "n": "Island",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 8,
+    "consensoPct": 5,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -440,38 +424,9 @@
   ],
   "side": [
    {
-    "n": "Consign to Memory",
-    "tipo": "copias distintas del consenso",
-    "consensoPct": 98,
-    "consensoCopias": 3,
-    "baseCopias": 3,
-    "tusVersiones": {
-     "2.0": 4,
-     "Basics": 3,
-     "PT": 3,
-     "Pol 1 NF": 3,
-     "Stock 2.0": 4,
-     "Stock": 3,
-     "UR Aggro Flashback": 3,
-     "Ur Aggro Rage": 3
-    },
-    "con": {
-     "W": 100,
-     "L": 78,
-     "n": 178,
-     "wr": 56
-    },
-    "sin": {
-     "W": 0,
-     "L": 0,
-     "n": 0,
-     "wr": null
-    }
-   },
-   {
     "n": "Spell Snare",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 70,
+    "consensoPct": 72,
     "consensoCopias": 2,
     "baseCopias": 2,
     "tusVersiones": {
@@ -558,9 +513,9 @@
    {
     "n": "Surgical Extraction",
     "tipo": "copias distintas del consenso",
-    "consensoPct": 45,
+    "consensoPct": 50,
     "consensoCopias": 1,
-    "baseCopias": 1,
+    "baseCopias": 0,
     "tusVersiones": {
      "2.0": 0,
      "Basics": 0,
@@ -587,7 +542,7 @@
    {
     "n": "Assault Strobe",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 13,
+    "consensoPct": 15,
     "consensoCopias": 2,
     "baseCopias": 0,
     "tusVersiones": {
@@ -616,8 +571,8 @@
    {
     "n": "Expressive Iteration",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 12,
-    "consensoCopias": 4,
+    "consensoPct": 10,
+    "consensoCopias": 3,
     "baseCopias": 0,
     "tusVersiones": {
      "2.0": 0,
@@ -645,7 +600,7 @@
    {
     "n": "Soul-Guide Lantern",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 13,
+    "consensoPct": 15,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -674,7 +629,7 @@
    {
     "n": "Mystical Dispute",
     "tipo": "la llevas y el campo casi no",
-    "consensoPct": 27,
+    "consensoPct": 25,
     "consensoCopias": 1,
     "baseCopias": 0,
     "tusVersiones": {
@@ -733,6 +688,20 @@
  },
  "matchups": [
   {
+   "aq": "Eldrazi",
+   "W": 11,
+   "L": 5,
+   "n": 16,
+   "wr": 69
+  },
+  {
+   "aq": "Izzet Affinity",
+   "W": 9,
+   "L": 6,
+   "n": 15,
+   "wr": 60
+  },
+  {
    "aq": "Boros Energy",
    "W": 9,
    "L": 5,
@@ -740,18 +709,25 @@
    "wr": 64
   },
   {
-   "aq": "Izzet Affinity",
-   "W": 8,
-   "L": 6,
-   "n": 14,
-   "wr": 57
-  },
-  {
    "aq": "Esper Goryo's",
    "W": 5,
    "L": 8,
    "n": 13,
    "wr": 38
+  },
+  {
+   "aq": "Grixis Reanimator",
+   "W": 6,
+   "L": 4,
+   "n": 10,
+   "wr": 60
+  },
+  {
+   "aq": "Ruby Storm",
+   "W": 8,
+   "L": 2,
+   "n": 10,
+   "wr": 80
   },
   {
    "aq": "Dimir Frog",
@@ -775,28 +751,7 @@
    "wr": 44
   },
   {
-   "aq": "Ruby Storm",
-   "W": 7,
-   "L": 2,
-   "n": 9,
-   "wr": 78
-  },
-  {
    "aq": "Azorius Control",
-   "W": 4,
-   "L": 4,
-   "n": 8,
-   "wr": 50
-  },
-  {
-   "aq": "Eldrazi",
-   "W": 4,
-   "L": 4,
-   "n": 8,
-   "wr": 50
-  },
-  {
-   "aq": "Grixis Reanimator",
    "W": 4,
    "L": 4,
    "n": 8,
@@ -829,13 +784,6 @@
    "L": 3,
    "n": 6,
    "wr": 50
-  },
-  {
-   "aq": "Eldrazi Ramp",
-   "W": 5,
-   "L": 1,
-   "n": 6,
-   "wr": 83
   },
   {
    "aq": "¿? (revisar)",
@@ -873,18 +821,11 @@
    "wr": 0
   },
   {
-   "aq": "Eldrazi PT",
-   "W": 2,
-   "L": 0,
+   "aq": "Merfolk",
+   "W": 1,
+   "L": 1,
    "n": 2,
-   "wr": 100
-  },
-  {
-   "aq": "Grixis Frog/Reanimator",
-   "W": 2,
-   "L": 0,
-   "n": 2,
-   "wr": 100
+   "wr": 50
   },
   {
    "aq": "MonoB Coffers",
@@ -899,13 +840,6 @@
    "L": 0,
    "n": 1,
    "wr": 100
-  },
-  {
-   "aq": "Dimir Merfolk",
-   "W": 0,
-   "L": 1,
-   "n": 1,
-   "wr": 0
   },
   {
    "aq": "Elves",
@@ -923,13 +857,6 @@
   },
   {
    "aq": "GW Birthing Ritual",
-   "W": 1,
-   "L": 0,
-   "n": 1,
-   "wr": 100
-  },
-  {
-   "aq": "Merfolk",
    "W": 1,
    "L": 0,
    "n": 1,
@@ -971,13 +898,6 @@
    "wr": 0
   },
   {
-   "aq": "Storm",
-   "W": 1,
-   "L": 0,
-   "n": 1,
-   "wr": 100
-  },
-  {
    "aq": "Sultai Midrange",
    "W": 0,
    "L": 1,
@@ -1000,13 +920,6 @@
   },
   {
    "aq": "UB Mill",
-   "W": 1,
-   "L": 0,
-   "n": 1,
-   "wr": 100
-  },
-  {
-   "aq": "UR Artifacts",
    "W": 1,
    "L": 0,
    "n": 1,

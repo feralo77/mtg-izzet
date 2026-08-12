@@ -1,5 +1,16 @@
 {
   "nota": "Puente entre los nombres de arquetipo de mtgtop8 (campo global de Modern) y los que usa el registro de Fer. Sin esto, 'Boros Aggro sube un 3%' no significa nada para el. Cada entrada: el nombre de mtgtop8 -> los nombres del registro que representan lo mismo. Si aparece un arquetipo nuevo en mtgtop8 y no esta aqui, el radar lo muestra igual pero como 'no lo has visto nunca', que tambien es informacion util.",
+
+  "nota_alias": "Etiquetas que son EL MISMO mazo con dos nombres (pedido de Fer, 12-ago: 'Storm y Ruby Storm son lo mismo'). El robot las funde ANTES de escribir registro.csv/scouting.csv, asi que todo el dashboard las ve ya unificadas. Es mas conservador que 'mapa' (que agrupa mazos PARECIDOS solo para comparar con el campo): aqui solo entra lo que es identico. Alias -> nombre canonico (el mas jugado, el que Fer reconoce).",
+  "alias_registro": {
+    "Storm": "Ruby Storm",
+    "Eldrazi Ramp": "Eldrazi",
+    "Eldrazi PT": "Eldrazi",
+    "Mono-Green Eldrazi": "Eldrazi",
+    "Grixis Frog/Reanimator": "Grixis Reanimator",
+    "UR Artifacts": "Izzet Affinity",
+    "Dimir Merfolk": "Merfolk"
+  },
   "mapa": {
     "Boros Aggro": ["Boros Energy"],
     "UR Aggro": ["Izzet Prowess"],
