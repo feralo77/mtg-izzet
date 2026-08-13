@@ -253,6 +253,9 @@ SIG = [
     ('Dimir Merfolk', [('Namor the Sub-Mariner',2),('Svyelun of Sea and Sky',2),('Sink into Stupor',2),('Stern Scolding',2)]),
     ('Necrodominance', [('Necrodominance',3),('Soul Spike',2),('March of Wretched Sorrow',1)]),
     ('Oracle Combo', [("Thassa's Oracle",3),("Angel's Grace",3),('Spoils of the Vault',1)]),
+    # Sultai Birthing Ritual (13-ago): comparte la carta Birthing Ritual con el GW y con
+    # Sam Combo, asi que lo que discrimina son sus azules/verdes, no el encantamiento.
+    ('Sultai Midrange', [('Ice-Fang Coatl',3),('Coiling Oracle',3),('Shardless Agent',2),('Abhorrent Oculus',1),('Birthing Ritual',1)]),
     ('Eldrazi Ramp', [('Sowing Mycospawn',3),('Sire of Seven Deaths',2),("Green Sun's Zenith",1)]),
     ('GW Birthing Ritual', [('Birthing Ritual',2),('Brightglass Gearhulk',3),('Skyclave Apparition',1)]),
     # --- Firmas nuevas 2026-07-24: catálogo de pendientes del scouting (sekizou, Hayek,
@@ -613,6 +616,9 @@ def selftest():
     assert classify(['Psychic Frog','Namor the Sub-Mariner','Disrupting Shoal','Cryptic Command','Counterspell']) == 'Dimir Frog'  # el Frog manda sobre Dimir Merfolk
     assert classify(['Necrodominance','Soul Spike','March of Wretched Sorrow','Sheoldred, the Apocalypse']) == 'Necrodominance'
     assert classify(["Thassa's Oracle","Angel's Grace",'Spoils of the Vault','Stock Up']) == 'Oracle Combo'
+    # Birthing Ritual NO define arquetipo por si sola: la juegan tres mazos distintos
+    assert classify(['Ice-Fang Coatl','Coiling Oracle','Shardless Agent','Birthing Ritual','Endurance']) == 'Sultai Midrange'
+    assert classify(['Guide of Souls','Skyclave Apparition','Solitude','Badgermole Cub','Birthing Ritual']) != 'Sultai Midrange'
     assert classify(['Sowing Mycospawn','Sire of Seven Deaths',"Kozilek's Command",'Ancient Stirrings']) == 'Eldrazi Ramp'
     assert classify(['Birthing Ritual','Brightglass Gearhulk','Ephemerate','Guide of Souls','Solitude']) == 'GW Birthing Ritual'
     # ...y las que ya iban no se rompen: Eldrazi colorless con Karn/Expedition Map sigue Eldrazi,

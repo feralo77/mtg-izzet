@@ -27,7 +27,7 @@
  "campoDesde": "2026-08-13",
  "campoError": null,
  "campo": {
-  "mazos": 612,
+  "mazos": 652,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -48,7 +48,7 @@
    },
    {
     "n": "4/5c Aggro",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Hollow One",
@@ -56,15 +56,19 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.7
+    "pct": 0.6
+   },
+   {
+    "n": "Mono Black Aggro",
+    "pct": 0.6
    },
    {
     "n": "Mardu Aggro",
-    "pct": 0.7
+    "pct": 0.6
    },
    {
     "n": "Merfolk",
-    "pct": 0.7
+    "pct": 0.6
    },
    {
     "n": "Death's Shadow",
@@ -73,10 +77,6 @@
    {
     "n": "Simic Birthing Ritual",
     "pct": 0.5
-   },
-   {
-    "n": "Mono Black Aggro",
-    "pct": 0.3
    },
    {
     "n": "Selesnya Aggro",
@@ -116,7 +116,7 @@
    },
    {
     "n": "Dimir Control",
-    "pct": 7
+    "pct": 6
    },
    {
     "n": "UW Control",
@@ -155,12 +155,16 @@
     "pct": 0.2
    },
    {
+    "n": "UR Control",
+    "pct": 0.2
+   },
+   {
     "n": "Other - Control",
     "pct": 0.5
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 8
+    "pct": 9
    },
    {
     "n": "Broodscale Bloodchief",
@@ -196,11 +200,11 @@
    },
    {
     "n": "Cosmogoyf",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Song of Creation",
-    "pct": 0.8
+    "pct": 0.9
    },
    {
     "n": "Infect",
@@ -332,22 +336,6 @@
     "wr": 100
    },
    {
-    "n": "Golgari Yawgmoth",
-    "variantes": [
-     "Golgari Yawgmoth",
-     "Chord Toolbox",
-     "Birthing Ritual"
-    ],
-    "partidas": 5,
-    "frec": 5.4,
-    "frecPrev": 5.5,
-    "delta": -0.1,
-    "w": 2,
-    "l": 1,
-    "n_": 3,
-    "wr": 67
-   },
-   {
     "n": "Izzet Prowess",
     "variantes": null,
     "partidas": 4,
@@ -397,6 +385,21 @@
     "l": 2,
     "n_": 3,
     "wr": 33
+   },
+   {
+    "n": "Golgari Yawgmoth",
+    "variantes": [
+     "Golgari Yawgmoth",
+     "GW Birthing Ritual"
+    ],
+    "partidas": 3,
+    "frec": 3.3,
+    "frecPrev": 5.5,
+    "delta": -2.2,
+    "w": 2,
+    "l": 1,
+    "n_": 3,
+    "wr": 67
    },
    {
     "n": "Grixis Reanimator",
@@ -483,6 +486,18 @@
     "wr": 100
    },
    {
+    "n": "Sultai Midrange",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 1.1,
+    "frecPrev": 1.1,
+    "delta": 0,
+    "w": 0,
+    "l": 1,
+    "n_": 1,
+    "wr": 0
+   },
+   {
     "n": "The Rack",
     "variantes": null,
     "partidas": 1,
@@ -493,6 +508,18 @@
     "l": 0,
     "n_": 1,
     "wr": 100
+   },
+   {
+    "n": "Oracle Combo",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 1.1,
+    "frecPrev": 1.1,
+    "delta": 0,
+    "w": 0,
+    "l": 0,
+    "n_": 0,
+    "wr": null
    },
    {
     "n": "Mono green Ouroboroid",
@@ -570,18 +597,6 @@
     "wr": 100
    },
    {
-    "n": "Sultai Midrange",
-    "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": 1.1,
-    "delta": -1.1,
-    "w": 0,
-    "l": 1,
-    "n_": 1,
-    "wr": 0
-   },
-   {
     "n": "Through the Breach",
     "variantes": null,
     "partidas": 0,
@@ -628,18 +643,6 @@
     "l": 0,
     "n_": 0,
     "wr": null
-   },
-   {
-    "n": "Oracle Combo",
-    "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": 1.1,
-    "delta": -1.1,
-    "w": 0,
-    "l": 0,
-    "n_": 0,
-    "wr": null
    }
   ]
  },
@@ -674,9 +677,9 @@
     "deltaLiga": 3.2,
     "campo": {
      "global": "Dimir Control",
-     "pct": 7,
+     "pct": 6,
      "pctPrev": 7,
-     "delta": 0
+     "delta": -1
     },
     "w": 1,
     "l": 2,
@@ -747,16 +750,16 @@
   {
    "nivel": "nuevo",
    "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 4% del campo global y nunca te lo has cruzado",
+   "titular": "4/5c Aggro: 3% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "4/5c Aggro",
-     "pct": 4,
+     "pct": 3,
      "pctPrev": 4,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,

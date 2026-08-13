@@ -1,7 +1,7 @@
 Rival,Matches,Récord,WR %,Mazo(s),Confianza media,Turnos medios,Cartas más vistas,Visto por
 41krid,2,2-0,100%,"Hollow One, Eldrazi",95%,4.5,"Nethergoyf, Faithless Looting, Lightning Bolt, Hollow One, Marauding Mako, Burning Inquiry, Talisman of Impulse, Utopia Sprawl, Malevolent Rumble, Sowing Mycospawn, Kozilek's Return, Trinisphere",4c_PolG
 Auripower,2,1-1,50%,"Boros Ponza, Neoform",90%,5.3,"Path to Exile, Galvanic Discharge, Ajani Vengeant, Wrath of the Skies, Solitude, Celestial Purge, Emergency Eject, Erode, Cleansing Wildfire, High Noon, Price of Freedom, Summoner's Pact",4c_PolG
-Boce,2,2-0,100%,"Oracle Combo, Chord Toolbox",50%,4.2,"Preordain x2, Impulse x2, Orim's Chant x2, Spell Snare, Talisman of Progress, Stock Up, Angel's Grace, Spoils of the Vault, Thassa's Oracle, Prismatic Ending, Pentad Prism",4c_PolG
+Boce,2,2-0,100%,Oracle Combo (2),50%,4.2,"Preordain x2, Impulse x2, Orim's Chant x2, Spell Snare, Talisman of Progress, Stock Up, Angel's Grace, Spoils of the Vault, Thassa's Oracle, Prismatic Ending, Pentad Prism",4c_PolG
 chylz,2,1-1,50%,"Neoform, Broodscale",96%,4.8,"Allosaurus Rider, Neoform, Summoner's Pact, Eldritch Evolution, Pact of Negation, Consign to Memory, Blade of the Bloodchief, Kozilek's Command, Soul-Guide Lantern, Malevolent Rumble, Ancient Stirrings, Glaring Fleshraker","4c_PolG, feralo77"
 Eyelash,2,1-1,50%,Izzet Affinity (2),65%,3.6,"Ornithopter x2, Mox Opal x2, Esper Sentinel x2, Puresteel Paladin x2, Colossus Hammer x2, Memnite, Kappa Cannoneer, Tormod's Crypt, Sanctifier en-Vec, Spell Pierce",4c_PolG
 Jijito,2,2-0,100%,"Neoform, Azorius Control",85%,6.6,"Summoner's Pact, Allosaurus Rider, Neoform, Pact of Negation, Endurance, Planar Genesis, Consign to Memory, Into the Flood Maw, Eldritch Evolution, Preordain, Spell Snare, Brainsurge","4c_PolG, feralo77"
@@ -40,7 +40,7 @@ Ch4ppy,1,1-0,100%,Ruby Storm,97%,3.7,"Desperate Ritual, Hex Magic, Ruby Medallio
 chagu,1,0-1,0%,Amulet Titan,94%,4.0,"Green Sun's Zenith, Scapeshift, Summoner's Pact, Cultivator Colossus, Aftermath Analyst, Amulet of Vigor, Trinisphere, Six, Primeval Titan",4c_PolG
 Chazure,1,1-0,100%,Ruby Storm,94%,3.7,"Artist's Talent, Manamorphose, Reckless Impulse, Ruby Medallion, Wrenn's Resolve, Desperate Ritual, Past in Flames, Pyretic Ritual, Wish",4c_PolG
 ChJet,1,1-0,100%,Eldrazi,64%,5.0,"Vexing Bauble, Chalice of the Void, Kozilek's Command, Trinisphere, Glaring Fleshraker, Expedition Map, Karn, the Great Creator",4c_PolG
-Ciraris,1,0-1,0%,Sultai Midrange,31%,5.7,"Fblthp, the Lost, Birthing Ritual, Force of Negation, Coiling Oracle, Shardless Agent, Ice-Fang Coatl, Abhorrent Oculus, Mystical Dispute, Endurance, Harbinger of the Seas",feralo77
+Ciraris,1,0-1,0%,Sultai Midrange,100%,5.7,"Fblthp, the Lost, Birthing Ritual, Force of Negation, Coiling Oracle, Shardless Agent, Ice-Fang Coatl, Abhorrent Oculus, Mystical Dispute, Endurance, Harbinger of the Seas",feralo77
 Ciridain,1,1-0,100%,Boros Ponza,85%,4.0,"Galvanic Discharge, Price of Freedom, Avengers Disassembled, Fin Fang Foom",4c_PolG
 claudioh,1,1-0,100%,Boros Energy,88%,7.3,"Guide of Souls, Spell Snare, Ranger-Captain of Eos, Solitude, Mockingbird, Quantum Riddler, Ephemerate, White Orchid Phantom, Ocelot Pride, Phelia, Exuberant Shepherd, Prismatic Ending, Skyclave Apparition",4c_PolG
 Coradorable,1,1-0,100%,Sam Combo,94%,7.0,"Birthing Ritual, Samwise Gamgee, Gilded Goose, Cauldron Familiar, High Noon, Crystal Barricade, Fatal Push, Endurance, Young Wolf, Carrion Feeder, Skyclave Apparition",4c_PolG
@@ -54,7 +54,7 @@ DeepDisherino,1,0-1,0%,Izzet Affinity,42%,5.0,"Lavaspur Boots, Ornithopter, Ston
 dolly_d84,1,0-1,0%,Neoform,100%,4.5,"Planar Genesis, Summoner's Pact, Allosaurus Rider, Neoform",4c_PolG
 don_mars,1,1-0,100%,Izzet Cori,88%,4.5,"Mishra's Bauble, Cori-Steel Cutter, Mox Opal, Tamiyo, Inquisitive Student, Soul-Guide Lantern, Mox Amber, Flame of Anor",4c_PolG
 DoubleHH,1,1-0,100%,Boros Energy,100%,6.0,"Ragavan, Nimble Pilferer, Ajani, Nacatl Pariah, Seasoned Pyromancer, Goblin Bombardment, Ranger-Captain of Eos, Guide of Souls, Solitude, Galvanic Discharge, Ocelot Pride, Lightning Bolt, Thraben Charm",4c_PolG
-dough_shack,1,1-0,100%,Birthing Ritual,100%,4.5,"Guide of Souls, Birthing Ritual, Ephemerate, Badgermole Cub, Skyclave Apparition, Solitude, Brightglass Gearhulk",4c_PolG
+dough_shack,1,1-0,100%,GW Birthing Ritual,100%,4.5,"Guide of Souls, Birthing Ritual, Ephemerate, Badgermole Cub, Skyclave Apparition, Solitude, Brightglass Gearhulk",4c_PolG
 DrPP,1,1-0,100%,Esper Goryo's,45%,4.0,"Thoughtseize, Solitude, Ephemerate, Force of Negation",feralo77
 DskBayWolf,1,0-1,0%,Dimir Frog,81%,4.0,"Thoughtseize, Psychic Frog, Spell Snare, Quantum Riddler, Ephemerate",4c_PolG
 Dudarudi,1,0-1,0%,Hollow One,100%,4.0,"Hardened Academic, Blazing Rootwalla, Burning Inquiry, Detective's Phoenix, Marauding Mako, Faithless Looting, Hollow One, Practiced Offense",4c_PolG
@@ -161,7 +161,7 @@ TSTOB,1,1-0,100%,Living End,86%,4.0,"Overlord of the Balemurk, Shardless Agent, 
 ulbabrabal,1,1-0,100%,Golgari Yawgmoth,42%,3.3,"Delighted Halfling, Green Sun's Zenith, Badgermole Cub, Devoted Druid, Vizier of Remedies, Karn, the Great Creator, Walking Ballista",feralo77
 Villhelm97,1,1-0,100%,Eldrazi,23%,5.0,"Slumbering Trudge, Fight Rigging, Malevolent Rumble, Trinisphere, Kozilek's Command, Dismember, Fanatic of Rhonas",4c_PolG
 vinnyrussian123,1,0-1,0%,Esper Goryo's,93%,4.7,"Thoughtseize, March of Otherworldly Light, Solitude, Force of Negation, Quantum Riddler, Ephemerate, Teferi, Time Raveler, Faithful Mending, Goryo's Vengeance, Psychic Frog",feralo77
-virp13,1,1-0,100%,Birthing Ritual,31%,5.3,"Ice-Fang Coatl, Birthing Ritual, Subtlety, Flare of Denial, Endurance, Abhorrent Oculus, Shardless Agent, Damping Sphere, Sink into Stupor, Dismember, Force of Vigor, Coiling Oracle",4c_PolG
+virp13,1,1-0,100%,Sultai Midrange,100%,5.3,"Ice-Fang Coatl, Birthing Ritual, Subtlety, Flare of Denial, Endurance, Abhorrent Oculus, Shardless Agent, Damping Sphere, Sink into Stupor, Dismember, Force of Vigor, Coiling Oracle",4c_PolG
 Wbez,1,0-1,0%,Boros Energy,100%,6.0,"Ragavan, Nimble Pilferer, Mishra's Bauble, Ranger-Captain of Eos, Monastery Swiftspear, Guide of Souls, Ocelot Pride, Ajani, Nacatl Pariah, Boomerang Basics, Galvanic Discharge, Voice of Victory, Wrath of the Skies, Goblin Bombardment",feralo77
 X_Why_Z,1,1-0,100%,Ruby Storm,94%,3.5,"Strike It Rich, Pyretic Ritual, Ral, Monsoon Mage, Desperate Ritual, Wish, Galvanic Relay, Manamorphose, Reckless Impulse, Wrenn's Resolve, Ruby Medallion, Hex Magic",4c_PolG
 xITDxxP985x,1,0-1,0%,Grixis Reanimator,47%,4.5,"Thoughtseize, Emperor of Bones, Inquisition of Kozilek, Fatal Push, Psychic Frog, Persist",4c_PolG
