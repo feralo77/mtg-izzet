@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-12",
+ "generado": "2026-08-13",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -19,15 +19,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-12",
   "proximo": "2026-08-16",
-  "diasDesde": 0,
+  "diasDesde": 1,
   "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-12",
+ "campoDesde": "2026-08-13",
  "campoError": null,
  "campo": {
-  "mazos": 662,
+  "mazos": 612,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -52,38 +52,38 @@
    },
    {
     "n": "Hollow One",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.8
+    "pct": 0.7
    },
    {
     "n": "Mardu Aggro",
-    "pct": 0.8
-   },
-   {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.6
+    "pct": 0.7
    },
    {
     "n": "Merfolk",
-    "pct": 0.6
-   },
-   {
-    "n": "Eldrazi Aggro",
-    "pct": 0.5
-   },
-   {
-    "n": "Mono Black Aggro",
-    "pct": 0.5
+    "pct": 0.7
    },
    {
     "n": "Death's Shadow",
     "pct": 0.5
    },
    {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.5
+   },
+   {
+    "n": "Mono Black Aggro",
+    "pct": 0.3
+   },
+   {
     "n": "Selesnya Aggro",
+    "pct": 0.3
+   },
+   {
+    "n": "Eldrazi Aggro",
     "pct": 0.3
    },
    {
@@ -132,7 +132,7 @@
    },
    {
     "n": "Boros Ponza",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "4/5c Control",
@@ -175,16 +175,16 @@
     "pct": 3
    },
    {
-    "n": "Amulet Titan",
-    "pct": 3
-   },
-   {
     "n": "Reanimator",
     "pct": 3
    },
    {
-    "n": "Ruby Storm",
+    "n": "Amulet Titan",
     "pct": 3
+   },
+   {
+    "n": "Ruby Storm",
+    "pct": 2
    },
    {
     "n": "Allosaurus Combo",
@@ -196,11 +196,11 @@
    },
    {
     "n": "Cosmogoyf",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Song of Creation",
-    "pct": 1
+    "pct": 0.8
    },
    {
     "n": "Infect",
