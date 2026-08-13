@@ -5,7 +5,7 @@ match_uuid,Fecha,Evento / Liga,Lista,Versión,Ronda,Mazo del Oponente,Arquetipo,
 46411b6d-7069-458c-991f-c7321dec3b00,09/07/2026,,Stock,Stock,,Eldrazi,Eldrazi,L,1,2,Robo,0,4,,,4c_PolG,log,icy195,85%
 c9769568-364b-46c6-a4ff-8928237c0896,09/07/2026,,Stock,Stock,,Grixis Reanimator,Grixis Reanimator,W,2,1,Salida,1,1,,,4c_PolG,log,BrentJ,47%
 0d961857-ede8-4aee-94c2-18506eb66105,09/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,Blindside09,100%
-76d5155d-ffc5-43c1-9510-1b2c27883f16,09/07/2026,,Stock,Stock,,Birthing Ritual,Birthing Ritual,W,2,0,Salida,1,1,,,4c_PolG,log,dough_shack,100%
+76d5155d-ffc5-43c1-9510-1b2c27883f16,09/07/2026,,Stock,Stock,,GW Birthing Ritual,GW Birthing Ritual,W,2,0,Salida,1,1,,,4c_PolG,log,dough_shack,100%
 6feaaca4-1e27-44c9-8f83-11d6f79d0f48,09/07/2026,,Stock,Stock,,Azorius Control,Azorius Control,W,2,0,Salida,0,1,,,4c_PolG,log,grenzos,100%
 0df787ad-a7df-4eca-a7d3-78f67bcc9704,09/07/2026,,Stock,Stock,,Azorius Control,Azorius Control,W,2,0,Salida,0,0,,,4c_PolG,log,nobrawn,100%
 ad6b65c9-af0f-4978-bdd6-c5cef80e7ad1,09/07/2026,,Stock,Stock,,Ruby Storm,Ruby Storm,W,2,1,Salida,0,0,,,4c_PolG,log,Gianlook,89%
@@ -25,7 +25,7 @@ df74357a-29ef-4326-af53-700f3e193060,12/07/2026,,Stock,Stock,,Boros Ponza,Boros 
 5169dd19-7379-43a3-acab-4fb65ad49b3d,12/07/2026,,Stock,Stock,,Izzet Affinity,Izzet Affinity,W,2,1,Salida,0,1,,,4c_PolG,log,annihilator8,93%
 477dc805-7cc1-4060-aace-f97412484124,11/07/2026,Liga 2,Stock,Stock,2,Desconocido,Desconocido,W,1,0,Salida,1,1,,Concede,feralo77,log,Zorro7x4,fer
 b3c6bda6-ea72-42b4-994b-3dec7ec09c21,11/07/2026,Liga 2,Stock,Stock,3,Boros,Boros Energy,W,2,1,Robo,0,0,Snare,,feralo77,log,Cesc_95,100%
-2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,Stock,4,Vivoras,Sultai Midrange,L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log,Ciraris,apunte
+2e4ceb70-379b-4be5-996b-2a7892581ae6,12/07/2026,Liga 2,Stock,Stock,4,Vivoras,Sultai Midrange,L,1,2,Robo,0,2,,Tercera no tercera tierra,feralo77,log,Ciraris,100%
 12341f9b-5f8f-46d6-83dc-45452ecc0109,12/07/2026,Liga 2,Stock,Stock,5,Izzet,Izzet Prowess,L,1,2,Salida,0,1,,Me gana las 2 con el doble strike,feralo77,log,beetea,92%
 3cb28fcf-16c3-4f3f-868f-6aa301955aa4,12/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,W,2,1,Robo,0,0,,,4c_PolG,log,claudioh,88%
 9a452380-38d2-4afe-95dd-41f5f2c6a482,13/07/2026,,Stock,Stock,,Boros Energy,Boros Energy,W,2,0,Salida,0,0,,,4c_PolG,log,zecarlonxo,88%
@@ -102,7 +102,7 @@ bc4fd619-5f52-4f6d-b849-051290198cf5,23/07/2026,Liga 6,Basics,Basics,2,Ponza,Bor
 a9df8904-b0f3-46ad-83e1-e5a8f11b6e71,23/07/2026,Liga 2,Pol 1 NF,Stock,2,Eldrazi PT,Eldrazi,W,2,0,Salida,0,0,,,4c_PolG,log,Villhelm97,apunte
 a4dcd953-1fd9-4509-931b-f2996cadfee4,23/07/2026,Liga 2,Pol 1 NF,Stock,3,Storm,Ruby Storm,W,2,1,Robo,1,0,,,4c_PolG,log,Ch4ppy,97%
 1788e343-d5ac-4ea0-867e-03d2c6473183,23/07/2026,Liga 2,Pol 1 NF,Stock,4,Yawgmoth,Golgari Yawgmoth,W,2,0,Salida,0,1,,En la guía que tenemos de side no mete Spell Snare. Yo los he jugado y me han ido de lujo para counter a Caldero.,4c_PolG,log,KingMotus,86%
-e17aad99-e134-49af-976a-94fe34e7b89a,23/07/2026,Liga 2,Pol 1 NF,Stock,5,Chord Toolbox,Chord Toolbox,W,2,0,Salida,0,1,,,4c_PolG,log,Boce,apunte
+e17aad99-e134-49af-976a-94fe34e7b89a,23/07/2026,Liga 2,Pol 1 NF,Stock,5,Chord Toolbox,Oracle Combo,W,2,0,Salida,0,1,,,4c_PolG,log,Boce,apunte
 26d69ccb-01ca-4680-b5df-ff259858bdcc,23/07/2026,Liga 6,Basics,Basics,3,URb,URb,W,2,1,Robo,0,1,,https://www.mtggoldfish.com/deck/7886860#online,feralo77,log,OafMcNamara,apunte
 167e6b9f-942f-4549-bd62-1232fdde806b,23/07/2026,Liga 3,Pol 1 NF,Stock,1,Boros Hollow One,Hollow One,L,1,2,Salida,0,0,,,4c_PolG,log,k2slice,93%
 b90c6633-7d11-46c8-8a09-c07b7ee677ab,23/07/2026,Liga 3,Pol 1 NF,Stock,2,Grixis Reanimator,Grixis Reanimator,L,0,2,Salida,0,0,,,4c_PolG,log,titan55,47%
@@ -122,7 +122,7 @@ a11f57aa-291d-4e30-9ddb-13e08daa205c,24/07/2026,,Stock,Stock,,Neoform,Neoform,L,
 de7a16dc-a805-498d-bcef-4b1ac8ef3ce3,25/07/2026,,Stock,Stock,,Izzet Prowess,Izzet Prowess,L,1,2,Robo,0,0,,,4c_PolG,log,TheRightStuff,92%
 d53964d3-095d-4b81-981b-4477c171089d,25/07/2026,,Stock,Stock,,Eldrazi,Eldrazi,W,2,0,Robo,1,1,,,4c_PolG,log,Joy1,fer
 c2475170-26ae-4a55-b751-974284b930c6,25/07/2026,,Stock,Stock,,Esper Goryo's,Esper Goryo's,W,2,0,Salida,0,2,,,4c_PolG,log,Bobone,47%
-6d98d09e-91df-4b55-97bc-450ea1207154,25/07/2026,,Stock,Stock,,Birthing Ritual,Birthing Ritual,W,2,1,Robo,0,2,,,4c_PolG,log,virp13,fer
+6d98d09e-91df-4b55-97bc-450ea1207154,25/07/2026,,Stock,Stock,,Sultai Midrange,Sultai Midrange,W,2,1,Robo,0,2,,,4c_PolG,log,virp13,fer
 432820ee-9461-4968-98fd-388fee185f79,25/07/2026,Liga 5,UR Aggro Flashback,Aggro,1,Hollow One,Hollow One,W,2,1,Salida,0,0,,Salir o no salir condiciona una barbaridad y hay que meter todos los Unholy dentro por Lava Dart.,4c_PolG,log,41krid,95%
 d7132d11-73e5-4ee3-9568-d168d3dd948f,25/07/2026,Liga 5,UR Aggro Flashback,Aggro,2,Eldrazi Tron,Eldrazi,L,1,2,Salida,0,0,,,4c_PolG,log,summersalt,88%
 0bbc9c4a-3c6e-4ba6-9c88-039954bf4ee4,25/07/2026,Liga 5,UR Aggro Flashback,Aggro,3,Storm,Ruby Storm,L,0,2,Robo,0,0,,,4c_PolG,log,kyporioth,92%
