@@ -1,6 +1,25 @@
 {
-  "comentario": "Ligas anuladas: apuntes que el robot descarta como si no existieran. Cada regla anula los apuntes de ese jugador y evento con fecha hasta el dia indicado (incluido) o sin fecha. Si la liga se retoma con partidas nuevas (fechas posteriores), esas SI cuentan. Motivo de la primera regla: Fer decidio no colgar los logs de su Liga 9 (11-ago-2026); las 5 rondas apuntadas sin resultado quedan anuladas y la liga se rejugara con otros rivales.",
+  "comentario": "Ligas anuladas: apuntes que el robot descarta como si no existieran. Cada regla anula los apuntes de ese jugador y evento con fecha hasta el dia indicado (incluido) o sin fecha. Si la liga se retoma con partidas nuevas (fechas posteriores), esas SI cuentan. Motivo de las reglas de 4c_PolG (13-ago-2026): sus Ligas 11, 12 y 14 llevan semanas apuntadas sin que aparezca ni un log; verificado tres veces en todo el Drive compartido (incluida su subcarpeta 'cargados'). Fer decidio dejar de perseguirlas y trabajar con los logs validos, asi que dejan de contar como pendientes. Si algun dia aparecen los .dat, las partidas entraran igual como practica. Motivo de la regla de feralo77: Fer decidio no colgar los logs de su Liga 9 (11-ago-2026); las 5 rondas apuntadas sin resultado quedan anuladas y la liga se rejugara con otros rivales.",
   "anuladas": [
-    { "jugador": "feralo77", "evento": "Liga 9", "hasta": "10/08/2026" }
+    {
+      "jugador": "feralo77",
+      "evento": "Liga 9",
+      "hasta": "10/08/2026"
+    },
+    {
+      "jugador": "4c_PolG",
+      "evento": "Liga 11",
+      "hasta": "05/08/2026"
+    },
+    {
+      "jugador": "4c_PolG",
+      "evento": "Liga 12",
+      "hasta": "05/08/2026"
+    },
+    {
+      "jugador": "4c_PolG",
+      "evento": "Liga 14",
+      "hasta": "10/08/2026"
+    }
   ]
 }

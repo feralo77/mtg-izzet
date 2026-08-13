@@ -231,7 +231,9 @@ SIG = [
     # 'Dead' es la mitad de Dead // Gone tal cual la emite el log (MV 3 en mazo, por eso la juega Living End).
     ('Living End', [('Living End',3),('Curator of Mysteries',3),('Shardless Agent',2),('Waker of Waves',2),('Dead',2),('Commandeer',1),('Foundation Breaker',1)]),
     ('Tameshi Belcher', [('Goblin Charbelcher',3)]),
-    ('Boros Ponza', [('High Noon',2),('Erode',2),('Demolition Field',1),('Cleansing Wildfire',2),('Magus of the Moon',2),('Price of Freedom',2)]),
+    # 'Avengers Disassembled' y 'Fin Fang Foom' añadidas el 13-ago: aparecen en 3 de los 5
+    # Ponza ya registrados y faltaban, por eso una partida corta se quedaba en '¿? (revisar)'.
+    ('Boros Ponza', [('High Noon',2),('Erode',2),('Demolition Field',1),('Cleansing Wildfire',2),('Magus of the Moon',2),('Price of Freedom',2),('Avengers Disassembled',2),('Fin Fang Foom',2)]),
     ('Through the Breach', [('Through the Breach',3),('Nulldrifter',2),("Kozilek's Return",2),('Talisman of Creativity',2)]),
     ('MonoR Artifacts', [('Legion Extruder',3),('Shrapnel Blast',2),('Galvanic Blast',1),('Kuldotha Rebirth',2)]),
     ('Neoform', [('Neoform',3),('Planar Genesis',3),('Allosaurus Rider',2),("Summoner's Pact",2)]),
