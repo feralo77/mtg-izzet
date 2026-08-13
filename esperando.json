@@ -188,14 +188,6 @@
   {
    "jugador": "4c_PolG",
    "fecha": "11/08/2026",
-   "evento": "Liga 16",
-   "ronda": "5",
-   "rival": "",
-   "mazo": ""
-  },
-  {
-   "jugador": "4c_PolG",
-   "fecha": "11/08/2026",
    "evento": "Liga 15",
    "ronda": "5",
    "rival": "akwz",
@@ -219,11 +211,11 @@
   },
   {
    "jugador": "feralo77",
-   "fecha": "",
+   "fecha": "13/08/2026",
    "evento": "Liga 10",
    "ronda": "3",
-   "rival": "",
-   "mazo": ""
+   "rival": "zeppelin016",
+   "mazo": "Ponza"
   },
   {
    "jugador": "feralo77",

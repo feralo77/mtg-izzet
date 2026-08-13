@@ -1,4 +1,13 @@
 match_uuid,Game,Arquetipo,Salida / Robo,Ganado,Turnos,Prowess,Monjes,Mulls yo,Mulls rival,Mano yo,Mano rival,Robos yo,Robos rival,Tierras yo,Tierras T1-3,Accion T1,Turno 1a amenaza,Turno Cutter,Hechizos yo,Removal yo,Descartes yo,Ficha turno Cutter,Criaturas yo,Turno 1a interaccion,Interaccion rival,Reportado por
+e76617a4-c5d5-4a28-9f83-7948288c074e,1,¿? (revisar),Robo,1,5,0,0,0,2,7,5,7,5,2,2,1,1,0,10,1,0,0,6,5,1,4c_PolG
+e76617a4-c5d5-4a28-9f83-7948288c074e,2,¿? (revisar),Robo,1,3,0,1,0,0,7,7,3,2,2,2,1,1,2,3,0,0,1,1,0,0,4c_PolG
+2b402dfb-c379-4b01-90ca-5f532c90b94d,1,Eldrazi,Robo,1,5,16,1,0,0,7,7,7,5,3,3,1,1,3,13,2,0,1,2,4,0,4c_PolG
+2b402dfb-c379-4b01-90ca-5f532c90b94d,2,Eldrazi,Robo,1,7,2,0,0,0,7,7,6,6,3,3,1,1,5,8,1,0,0,4,2,0,4c_PolG
+670265d7-507a-4cde-acb5-586611588468,1,Boros Energy,Robo,0,6,19,4,1,0,6,7,8,5,5,3,0,3,4,12,3,0,1,2,2,1,4c_PolG
+670265d7-507a-4cde-acb5-586611588468,2,Boros Energy,Salida,0,2,0,0,1,0,6,7,2,2,2,2,0,0,0,1,0,0,0,0,0,0,4c_PolG
+a327f1fb-62d5-42eb-bf36-70e17e0be6a8,1,Dimir Frog,Salida,0,3,0,0,0,1,7,6,3,2,2,2,0,2,2,2,0,0,0,0,0,0,4c_PolG
+bacb821d-a930-4f29-893f-ecbcf4542bc1,1,Dimir Frog,Robo,0,4,2,0,0,0,7,7,4,4,3,2,1,1,0,7,2,1,0,4,0,0,4c_PolG
+bacb821d-a930-4f29-893f-ecbcf4542bc1,2,Dimir Frog,Salida,0,4,0,2,1,0,6,7,3,10,4,3,0,2,2,4,0,0,0,0,4,0,4c_PolG
 7df980f5-df8a-43bf-b2f6-50a10a39e827,1,Esper Blink,Robo,0,9,1,1,1,0,6,7,11,11,4,2,1,1,2,12,4,1,0,2,3,1,4c_PolG
 7df980f5-df8a-43bf-b2f6-50a10a39e827,2,Esper Blink,Salida,1,16,5,3,0,0,7,7,18,18,7,3,1,1,9,27,5,0,1,7,5,3,4c_PolG
 7df980f5-df8a-43bf-b2f6-50a10a39e827,3,Esper Blink,Robo,0,6,2,1,1,0,6,7,7,5,4,3,1,1,5,10,2,0,1,3,3,1,4c_PolG
