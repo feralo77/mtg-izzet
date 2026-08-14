@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-13",
+ "generado": "2026-08-14",
  "rondas": [
   {
    "jugador": "4c_PolG",
@@ -72,46 +72,6 @@
    "ronda": "5",
    "rival": "akwz",
    "mazo": "Creatures Combo"
-  },
-  {
-   "jugador": "feralo77",
-   "fecha": "12/08/2026",
-   "evento": "Liga 10",
-   "ronda": "1",
-   "rival": "zhangkh",
-   "mazo": "neoform"
-  },
-  {
-   "jugador": "feralo77",
-   "fecha": "12/08/2026",
-   "evento": "Liga 10",
-   "ronda": "2",
-   "rival": "robotbc",
-   "mazo": "Dimir Frog"
-  },
-  {
-   "jugador": "feralo77",
-   "fecha": "13/08/2026",
-   "evento": "Liga 10",
-   "ronda": "3",
-   "rival": "zeppelin016",
-   "mazo": "Ponza"
-  },
-  {
-   "jugador": "feralo77",
-   "fecha": "",
-   "evento": "Liga 10",
-   "ronda": "4",
-   "rival": "",
-   "mazo": ""
-  },
-  {
-   "jugador": "feralo77",
-   "fecha": "",
-   "evento": "Liga 10",
-   "ronda": "5",
-   "rival": "",
-   "mazo": ""
   }
  ]
 }
