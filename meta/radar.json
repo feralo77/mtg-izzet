@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-14",
+ "generado": "2026-08-15",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -19,20 +19,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-12",
   "proximo": "2026-08-16",
-  "diasDesde": 2,
+  "diasDesde": 3,
   "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-14",
+ "campoDesde": "2026-08-15",
  "campoError": null,
  "campo": {
-  "mazos": 630,
+  "mazos": 674,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 8
+    "pct": 7
    },
    {
     "n": "Boros Aggro",
@@ -48,7 +48,7 @@
    },
    {
     "n": "4/5c Aggro",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "Hollow One",
@@ -72,11 +72,11 @@
    },
    {
     "n": "Death's Shadow",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Simic Birthing Ritual",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Selesnya Aggro",
@@ -88,31 +88,31 @@
    },
    {
     "n": "Aura Hexproof",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Arclight Phoenix",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Humans",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Goblins",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 7
+    "pct": 6
    },
    {
     "n": "Dimir Control",
@@ -124,7 +124,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Esper Control",
@@ -143,20 +143,20 @@
     "pct": 0.3
    },
    {
+    "n": "UR Control",
+    "pct": 0.3
+   },
+   {
     "n": "Mono Black Control",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Elementals",
-    "pct": 0.2
-   },
-   {
-    "n": "UR Control",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Creatures Toolbox",
@@ -168,7 +168,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 7
+    "pct": 8
    },
    {
     "n": "Living End",
@@ -187,11 +187,11 @@
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
-    "n": "Allosaurus Combo",
+    "n": "Landless",
     "pct": 2
    },
    {
@@ -200,7 +200,7 @@
    },
    {
     "n": "Song of Creation",
-    "pct": 1
+    "pct": 0.9
    },
    {
     "n": "Infect",
@@ -211,24 +211,24 @@
     "pct": 0.3
    },
    {
+    "n": "Dredge",
+    "pct": 0.3
+   },
+   {
     "n": "UB Mill",
     "pct": 0.3
    },
    {
     "n": "Twin Exarch",
-    "pct": 0.2
-   },
-   {
-    "n": "Dredge",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Hammer Time",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Combo",
-    "pct": 0.8
+    "pct": 1
    }
   ]
  },
@@ -653,9 +653,9 @@
     "deltaLiga": 1,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 7,
+     "pct": 8,
      "pctPrev": 7,
-     "delta": 0
+     "delta": 1
     },
     "w": 1,
     "l": 3,
@@ -713,9 +713,9 @@
     "deltaLiga": 7.4,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 7,
+     "pct": 6,
      "pctPrev": 7,
-     "delta": 0
+     "delta": -1
     },
     "w": 1,
     "l": 1,
@@ -746,16 +746,36 @@
   {
    "nivel": "nuevo",
    "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 3% del campo global y nunca te lo has cruzado",
+   "titular": "4/5c Aggro: 4% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "4/5c Aggro",
-     "pct": 3,
+     "pct": 4,
      "pctPrev": 3,
-     "delta": 0
+     "delta": 1
+    },
+    "w": 0,
+    "l": 0,
+    "wr": null,
+    "n": 0
+   }
+  },
+  {
+   "nivel": "nuevo",
+   "mazo": "UrzaTron",
+   "titular": "UrzaTron: 3% del campo global y nunca te lo has cruzado",
+   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
+   "datos": {
+    "frecLiga": 0,
+    "deltaLiga": null,
+    "campo": {
+     "global": "UrzaTron",
+     "pct": 3,
+     "pctPrev": 2,
+     "delta": 1
     },
     "w": 0,
     "l": 0,
