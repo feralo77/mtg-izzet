@@ -626,8 +626,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 8,
-     "pctPrev": 7,
-     "delta": 1
+     "pctPrev": 8,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -646,8 +646,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 7,
-     "pctPrev": 6,
-     "delta": 1
+     "pctPrev": 7,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -666,8 +666,8 @@
     "campo": {
      "global": "Allosaurus Combo",
      "pct": 3,
-     "pctPrev": 2,
-     "delta": 1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 0,
     "l": 3,
@@ -686,8 +686,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 5,
-     "pctPrev": 6,
-     "delta": -1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 1,
     "l": 1,
@@ -706,8 +706,8 @@
     "campo": {
      "global": "Blink",
      "pct": 6,
-     "pctPrev": 5,
-     "delta": 1
+     "pctPrev": 6,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -726,8 +726,8 @@
     "campo": {
      "global": "4/5c Aggro",
      "pct": 3,
-     "pctPrev": 4,
-     "delta": -1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -766,8 +766,8 @@
     "campo": {
      "global": "Esper Control",
      "pct": 3,
-     "pctPrev": 2,
-     "delta": 1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
