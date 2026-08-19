@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-18",
+ "generado": "2026-08-19",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -19,15 +19,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-12",
   "proximo": "2026-08-16",
-  "diasDesde": 6,
+  "diasDesde": 7,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-18",
+ "campoDesde": "2026-08-19",
  "campoError": null,
  "campo": {
-  "mazos": 598,
+  "mazos": 654,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -36,7 +36,7 @@
    },
    {
     "n": "Blink",
-    "pct": 5
+    "pct": 6
    },
    {
     "n": "Boros Aggro",
@@ -47,23 +47,27 @@
     "pct": 5
    },
    {
-    "n": "4/5c Aggro",
-    "pct": 3
-   },
-   {
     "n": "Hollow One",
     "pct": 3
    },
    {
-    "n": "Mardu Aggro",
-    "pct": 0.5
+    "n": "4/5c Aggro",
+    "pct": 3
+   },
+   {
+    "n": "Jeskai Aggro",
+    "pct": 0.6
    },
    {
     "n": "Simic Birthing Ritual",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
     "n": "Eldrazi Aggro",
+    "pct": 0.5
+   },
+   {
+    "n": "Death's Shadow",
     "pct": 0.5
    },
    {
@@ -71,19 +75,15 @@
     "pct": 0.5
    },
    {
-    "n": "Jeskai Aggro",
-    "pct": 0.3
+    "n": "Mono Black Aggro",
+    "pct": 0.5
    },
    {
-    "n": "Death's Shadow",
+    "n": "Mardu Aggro",
     "pct": 0.3
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.3
-   },
-   {
-    "n": "Mono Black Aggro",
     "pct": 0.3
    },
    {
@@ -95,12 +95,28 @@
     "pct": 0.2
    },
    {
+    "n": "Gruul Aggro",
+    "pct": 0.2
+   },
+   {
+    "n": "Jund",
+    "pct": 0.2
+   },
+   {
+    "n": "Other - Aggro",
+    "pct": 0.2
+   },
+   {
     "n": "Dimir Control",
     "pct": 6
    },
    {
     "n": "Eldrazi Ramp",
     "pct": 5
+   },
+   {
+    "n": "UW Control",
+    "pct": 3
    },
    {
     "n": "UrzaTron",
@@ -111,15 +127,15 @@
     "pct": 3
    },
    {
-    "n": "UW Control",
-    "pct": 3
-   },
-   {
     "n": "Boros Ponza",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Urza",
+    "pct": 0.3
+   },
+   {
+    "n": "Elementals",
     "pct": 0.3
    },
    {
@@ -135,11 +151,11 @@
     "pct": 0.2
    },
    {
-    "n": "Elementals",
+    "n": "Grixis Control",
     "pct": 0.2
    },
    {
-    "n": "Grixis Control",
+    "n": "Lantern Control",
     "pct": 0.2
    },
    {
@@ -151,12 +167,16 @@
     "pct": 11
    },
    {
-    "n": "Broodscale Bloodchief",
-    "pct": 9
-   },
-   {
     "n": "Instant Reanimator",
     "pct": 8
+   },
+   {
+    "n": "Broodscale Bloodchief",
+    "pct": 8
+   },
+   {
+    "n": "Reanimator",
+    "pct": 3
    },
    {
     "n": "Living End",
@@ -164,11 +184,7 @@
    },
    {
     "n": "Allosaurus Combo",
-    "pct": 3
-   },
-   {
-    "n": "Reanimator",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Ruby Storm",
@@ -179,11 +195,11 @@
     "pct": 2
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 2
+    "n": "Landless",
+    "pct": 1
    },
    {
-    "n": "Landless",
+    "n": "Cosmogoyf",
     "pct": 1
    },
    {
@@ -658,8 +674,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 6,
-     "pctPrev": 7,
-     "delta": -1
+     "pctPrev": 6,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -677,9 +693,9 @@
     "deltaLiga": 4.2,
     "campo": {
      "global": "Allosaurus Combo",
-     "pct": 3,
+     "pct": 2,
      "pctPrev": 3,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 3,
@@ -710,16 +726,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 5% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 6% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 5,
-     "pctPrev": 6,
-     "delta": -1
+     "pct": 6,
+     "pctPrev": 5,
+     "delta": 1
     },
     "w": 0,
     "l": 0,
