@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-19",
+ "generado": "2026-08-20",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -19,15 +19,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-12",
   "proximo": "2026-08-16",
-  "diasDesde": 7,
+  "diasDesde": 8,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-19",
+ "campoDesde": "2026-08-20",
  "campoError": null,
  "campo": {
-  "mazos": 654,
+  "mazos": 634,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -52,14 +52,14 @@
    },
    {
     "n": "4/5c Aggro",
-    "pct": 3
-   },
-   {
-    "n": "Jeskai Aggro",
-    "pct": 0.6
+    "pct": 2
    },
    {
     "n": "Simic Birthing Ritual",
+    "pct": 0.6
+   },
+   {
+    "n": "Jeskai Aggro",
     "pct": 0.6
    },
    {
@@ -108,7 +108,7 @@
    },
    {
     "n": "Dimir Control",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Eldrazi Ramp",
@@ -124,11 +124,11 @@
    },
    {
     "n": "Esper Control",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Boros Ponza",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Urza",
@@ -168,7 +168,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 8
+    "pct": 9
    },
    {
     "n": "Broodscale Bloodchief",
@@ -180,7 +180,7 @@
    },
    {
     "n": "Living End",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Allosaurus Combo",
@@ -195,12 +195,12 @@
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Cosmogoyf",
     "pct": 1
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 1
+    "n": "Landless",
+    "pct": 0.9
    },
    {
     "n": "Song of Creation",
@@ -228,7 +228,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 2
+    "pct": 1
    }
   ]
  },
@@ -653,9 +653,9 @@
     "deltaLiga": 1,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 8,
+     "pct": 9,
      "pctPrev": 8,
-     "delta": 0
+     "delta": 1
     },
     "w": 1,
     "l": 3,
@@ -673,9 +673,9 @@
     "deltaLiga": 2.1,
     "campo": {
      "global": "Dimir Control",
-     "pct": 6,
+     "pct": 5,
      "pctPrev": 6,
-     "delta": 0
+     "delta": -1
     },
     "w": 1,
     "l": 3,
@@ -694,8 +694,8 @@
     "campo": {
      "global": "Allosaurus Combo",
      "pct": 2,
-     "pctPrev": 3,
-     "delta": -1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 0,
     "l": 3,
@@ -734,27 +734,7 @@
     "campo": {
      "global": "Blink",
      "pct": 6,
-     "pctPrev": 5,
-     "delta": 1
-    },
-    "w": 0,
-    "l": 0,
-    "wr": null,
-    "n": 0
-   }
-  },
-  {
-   "nivel": "nuevo",
-   "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 3% del campo global y nunca te lo has cruzado",
-   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
-   "datos": {
-    "frecLiga": 0,
-    "deltaLiga": null,
-    "campo": {
-     "global": "4/5c Aggro",
-     "pct": 3,
-     "pctPrev": 3,
+     "pctPrev": 6,
      "delta": 0
     },
     "w": 0,
@@ -773,26 +753,6 @@
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 3,
-     "pctPrev": 3,
-     "delta": 0
-    },
-    "w": 0,
-    "l": 0,
-    "wr": null,
-    "n": 0
-   }
-  },
-  {
-   "nivel": "nuevo",
-   "mazo": "Esper Control",
-   "titular": "Esper Control: 3% del campo global y nunca te lo has cruzado",
-   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
-   "datos": {
-    "frecLiga": 0,
-    "deltaLiga": null,
-    "campo": {
-     "global": "Esper Control",
      "pct": 3,
      "pctPrev": 3,
      "delta": 0
