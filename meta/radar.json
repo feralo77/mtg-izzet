@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-21",
+ "generado": "2026-08-22",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -19,15 +19,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-12",
   "proximo": "2026-08-16",
-  "diasDesde": 9,
+  "diasDesde": 10,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-21",
+ "campoDesde": "2026-08-22",
  "campoError": null,
  "campo": {
-  "mazos": 659,
+  "mazos": 669,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -64,19 +64,19 @@
    },
    {
     "n": "Eldrazi Aggro",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Death's Shadow",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Merfolk",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Mardu Aggro",
@@ -87,24 +87,20 @@
     "pct": 0.3
    },
    {
-    "n": "Selesnya Aggro",
-    "pct": 0.2
-   },
-   {
     "n": "Goblins",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Gruul Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Jund",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Dimir Control",
@@ -116,7 +112,7 @@
    },
    {
     "n": "UW Control",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "UrzaTron",
@@ -132,7 +128,7 @@
    },
    {
     "n": "Jeskai Control",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
     "n": "Elementals",
@@ -147,16 +143,12 @@
     "pct": 0.3
    },
    {
-    "n": "4/5c Control",
-    "pct": 0.2
-   },
-   {
     "n": "Urza",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Lantern Control",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Control",
@@ -164,7 +156,7 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 11
+    "pct": 10
    },
    {
     "n": "Instant Reanimator",
@@ -180,6 +172,10 @@
    },
    {
     "n": "Allosaurus Combo",
+    "pct": 3
+   },
+   {
+    "n": "Living End",
     "pct": 2
    },
    {
@@ -187,12 +183,8 @@
     "pct": 2
    },
    {
-    "n": "Living End",
-    "pct": 2
-   },
-   {
     "n": "Amulet Titan",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Cosmogoyf",
@@ -204,7 +196,7 @@
    },
    {
     "n": "Song of Creation",
-    "pct": 0.8
+    "pct": 0.7
    },
    {
     "n": "UB Mill",
@@ -216,15 +208,15 @@
    },
    {
     "n": "Infect",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Dredge",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Creativity",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Combo",
@@ -713,9 +705,9 @@
     "deltaLiga": 4.2,
     "campo": {
      "global": "Allosaurus Combo",
-     "pct": 2,
+     "pct": 3,
      "pctPrev": 2,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 3,

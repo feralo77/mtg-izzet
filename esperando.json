@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-21",
+ "generado": "2026-08-22",
  "rondas": [
   {
    "jugador": "4c_PolG",
@@ -72,6 +72,22 @@
    "ronda": "5",
    "rival": "akwz",
    "mazo": "Creatures Combo"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "21/08/2026",
+   "evento": "Liga 11",
+   "ronda": "3",
+   "rival": "Williambax",
+   "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "21/08/2026",
+   "evento": "Liga 11",
+   "ronda": "4",
+   "rival": "reidq7",
+   "mazo": ""
   }
  ]
 }
