@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-23",
+ "generado": "2026-08-24",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -19,15 +19,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-12",
   "proximo": "2026-08-16",
-  "diasDesde": 11,
+  "diasDesde": 12,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-23",
+ "campoDesde": "2026-08-24",
  "campoError": null,
  "campo": {
-  "mazos": 594,
+  "mazos": 602,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -36,22 +36,22 @@
    },
    {
     "n": "Blink",
-    "pct": 7
-   },
-   {
-    "n": "Boros Aggro",
-    "pct": 5
+    "pct": 8
    },
    {
     "n": "Affinity",
     "pct": 5
    },
    {
-    "n": "Hollow One",
-    "pct": 3
+    "n": "Boros Aggro",
+    "pct": 5
    },
    {
     "n": "4/5c Aggro",
+    "pct": 2
+   },
+   {
+    "n": "Hollow One",
     "pct": 2
    },
    {
@@ -59,31 +59,27 @@
     "pct": 1
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.5
-   },
-   {
-    "n": "Merfolk",
-    "pct": 0.5
-   },
-   {
     "n": "Mono Black Aggro",
     "pct": 0.5
-   },
-   {
-    "n": "Eldrazi Aggro",
-    "pct": 0.3
    },
    {
     "n": "Death's Shadow",
     "pct": 0.3
    },
    {
-    "n": "Goblins",
+    "n": "Mardu Aggro",
+    "pct": 0.3
+   },
+   {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.3
+   },
+   {
+    "n": "Merfolk",
     "pct": 0.2
    },
    {
-    "n": "Mardu Aggro",
+    "n": "Eldrazi Aggro",
     "pct": 0.2
    },
    {
@@ -103,11 +99,11 @@
     "pct": 0.2
    },
    {
-    "n": "Dimir Control",
+    "n": "Eldrazi Ramp",
     "pct": 5
    },
    {
-    "n": "Eldrazi Ramp",
+    "n": "Dimir Control",
     "pct": 5
    },
    {
@@ -156,7 +152,7 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 11
+    "pct": 10
    },
    {
     "n": "Instant Reanimator",
@@ -164,7 +160,7 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 7
+    "pct": 6
    },
    {
     "n": "Reanimator",
@@ -183,32 +179,28 @@
     "pct": 2
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 1
-   },
-   {
     "n": "Amulet Titan",
     "pct": 1
    },
    {
+    "n": "Cosmogoyf",
+    "pct": 1
+   },
+   {
     "n": "Landless",
-    "pct": 0.8
+    "pct": 1
+   },
+   {
+    "n": "UB Mill",
+    "pct": 0.5
    },
    {
     "n": "Song of Creation",
     "pct": 0.5
    },
    {
-    "n": "UB Mill",
-    "pct": 0.3
-   },
-   {
     "n": "Hammer Time",
     "pct": 0.3
-   },
-   {
-    "n": "Infect",
-    "pct": 0.2
    },
    {
     "n": "Dredge",
@@ -220,7 +212,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 2
+    "pct": 1
    }
   ]
  },
@@ -706,8 +698,8 @@
     "campo": {
      "global": "Allosaurus Combo",
      "pct": 2,
-     "pctPrev": 3,
-     "delta": -1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 0,
     "l": 3,
@@ -718,16 +710,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 7% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 8% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 7,
+     "pct": 8,
      "pctPrev": 7,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
