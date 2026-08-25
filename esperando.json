@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-24",
+ "generado": "2026-08-25",
  "rondas": [
   {
    "jugador": "4c_PolG",
@@ -87,6 +87,14 @@
    "evento": "Liga 11",
    "ronda": "4",
    "rival": "reidq7",
+   "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "24/08/2026",
+   "evento": "Liga 11",
+   "ronda": "5",
+   "rival": "",
    "mazo": ""
   }
  ]

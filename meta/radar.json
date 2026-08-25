@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-24",
+ "generado": "2026-08-25",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -19,31 +19,31 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-12",
   "proximo": "2026-08-16",
-  "diasDesde": 12,
+  "diasDesde": 13,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-24",
+ "campoDesde": "2026-08-25",
  "campoError": null,
  "campo": {
-  "mazos": 602,
+  "mazos": 601,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 8
+    "pct": 9
    },
    {
     "n": "Blink",
     "pct": 8
    },
    {
-    "n": "Affinity",
+    "n": "Boros Aggro",
     "pct": 5
    },
    {
-    "n": "Boros Aggro",
+    "n": "Affinity",
     "pct": 5
    },
    {
@@ -63,15 +63,15 @@
     "pct": 0.5
    },
    {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.5
+   },
+   {
     "n": "Death's Shadow",
     "pct": 0.3
    },
    {
     "n": "Mardu Aggro",
-    "pct": 0.3
-   },
-   {
-    "n": "Simic Birthing Ritual",
     "pct": 0.3
    },
    {
@@ -104,11 +104,11 @@
    },
    {
     "n": "Dimir Control",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "UrzaTron",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "UW Control",
@@ -148,14 +148,14 @@
    },
    {
     "n": "Other - Control",
-    "pct": 1
-   },
-   {
-    "n": "Creatures Toolbox",
-    "pct": 10
+    "pct": 2
    },
    {
     "n": "Instant Reanimator",
+    "pct": 10
+   },
+   {
+    "n": "Creatures Toolbox",
     "pct": 10
    },
    {
@@ -183,15 +183,15 @@
     "pct": 1
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 1
-   },
-   {
     "n": "Landless",
     "pct": 1
    },
    {
-    "n": "UB Mill",
+    "n": "Cosmogoyf",
+    "pct": 0.8
+   },
+   {
+    "n": "Hammer Time",
     "pct": 0.5
    },
    {
@@ -199,7 +199,7 @@
     "pct": 0.5
    },
    {
-    "n": "Hammer Time",
+    "n": "UB Mill",
     "pct": 0.3
    },
    {
@@ -677,9 +677,9 @@
     "deltaLiga": 2.1,
     "campo": {
      "global": "Dimir Control",
-     "pct": 5,
+     "pct": 4,
      "pctPrev": 5,
-     "delta": 0
+     "delta": -1
     },
     "w": 1,
     "l": 3,
@@ -718,8 +718,8 @@
     "campo": {
      "global": "Blink",
      "pct": 8,
-     "pctPrev": 7,
-     "delta": 1
+     "pctPrev": 8,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -730,16 +730,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 3% del campo global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 4% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 3,
+     "pct": 4,
      "pctPrev": 3,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
