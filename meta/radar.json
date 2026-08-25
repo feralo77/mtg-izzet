@@ -678,8 +678,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 4,
-     "pctPrev": 5,
-     "delta": -1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -738,8 +738,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
