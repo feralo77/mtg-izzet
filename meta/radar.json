@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-28",
+ "generado": "2026-08-29",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -11,28 +11,29 @@
  },
  "brainstorm": {
   "ficheros": [
+   "docs/brainstorm/2026-08-28.md",
    "docs/brainstorm/2026-08-12.md",
    "docs/brainstorm/2026-08-07.md",
    "docs/brainstorm/2026-07-22.md",
    "docs/brainstorm/2026-07-21.md"
   ],
   "cadenciaDias": 4,
-  "ultimo": "2026-08-12",
-  "proximo": "2026-08-16",
-  "diasDesde": 16,
-  "toca": true
+  "ultimo": "2026-08-28",
+  "proximo": "2026-09-01",
+  "diasDesde": 1,
+  "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-28",
+ "campoDesde": "2026-08-29",
  "campoError": null,
  "campo": {
-  "mazos": 719,
+  "mazos": 679,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "Blink",
-    "pct": 9
+    "pct": 10
    },
    {
     "n": "UR Aggro",
@@ -47,15 +48,15 @@
     "pct": 4
    },
    {
-    "n": "Hollow One",
-    "pct": 2
-   },
-   {
     "n": "Jeskai Aggro",
     "pct": 2
    },
    {
     "n": "4/5c Aggro",
+    "pct": 2
+   },
+   {
+    "n": "Hollow One",
     "pct": 2
    },
    {
@@ -67,10 +68,6 @@
     "pct": 0.6
    },
    {
-    "n": "Merfolk",
-    "pct": 0.3
-   },
-   {
     "n": "Mardu Aggro",
     "pct": 0.3
    },
@@ -79,19 +76,11 @@
     "pct": 0.3
    },
    {
-    "n": "Eldrazi Aggro",
-    "pct": 0.1
-   },
-   {
     "n": "Red Deck Wins",
     "pct": 0.1
    },
    {
     "n": "Death's Shadow",
-    "pct": 0.1
-   },
-   {
-    "n": "Gruul Aggro",
     "pct": 0.1
    },
    {
@@ -103,8 +92,12 @@
     "pct": 0.1
    },
    {
+    "n": "Merfolk",
+    "pct": 0.1
+   },
+   {
     "n": "Other - Aggro",
-    "pct": 0.3
+    "pct": 0.1
    },
    {
     "n": "Eldrazi Ramp",
@@ -120,7 +113,7 @@
    },
    {
     "n": "UW Control",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Esper Control",
@@ -132,15 +125,7 @@
    },
    {
     "n": "Jeskai Control",
-    "pct": 0.6
-   },
-   {
-    "n": "Grixis Control",
-    "pct": 0.3
-   },
-   {
-    "n": "Urza",
-    "pct": 0.3
+    "pct": 0.4
    },
    {
     "n": "Elementals",
@@ -148,6 +133,14 @@
    },
    {
     "n": "Lantern Control",
+    "pct": 0.1
+   },
+   {
+    "n": "Grixis Control",
+    "pct": 0.1
+   },
+   {
+    "n": "Urza",
     "pct": 0.1
    },
    {
@@ -176,7 +169,7 @@
    },
    {
     "n": "Living End",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Allosaurus Combo",
@@ -187,20 +180,20 @@
     "pct": 2
    },
    {
-    "n": "Amulet Titan",
-    "pct": 1
-   },
-   {
     "n": "Landless",
     "pct": 1
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 0.6
+    "n": "Amulet Titan",
+    "pct": 1
    },
    {
     "n": "Hammer Time",
     "pct": 0.6
+   },
+   {
+    "n": "Cosmogoyf",
+    "pct": 0.4
    },
    {
     "n": "Song of Creation",
@@ -714,16 +707,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 9% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 10% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 9,
+     "pct": 10,
      "pctPrev": 9,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -742,8 +735,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 3,
-     "pctPrev": 4,
-     "delta": -1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
