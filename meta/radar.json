@@ -28,7 +28,7 @@
  "campoDesde": "2026-08-29",
  "campoError": null,
  "campo": {
-  "mazos": 679,
+  "mazos": 695,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -113,7 +113,7 @@
    },
    {
     "n": "UW Control",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Esper Control",
@@ -121,7 +121,7 @@
    },
    {
     "n": "Boros Ponza",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Jeskai Control",
@@ -157,7 +157,7 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 9
+    "pct": 8
    },
    {
     "n": "Broodscale Bloodchief",
@@ -188,12 +188,12 @@
     "pct": 1
    },
    {
-    "n": "Hammer Time",
+    "n": "Cosmogoyf",
     "pct": 0.6
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 0.4
+    "n": "Hammer Time",
+    "pct": 0.6
    },
    {
     "n": "Song of Creation",
@@ -715,8 +715,8 @@
     "campo": {
      "global": "Blink",
      "pct": 10,
-     "pctPrev": 9,
-     "delta": 1
+     "pctPrev": 10,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
