@@ -1,5 +1,5 @@
 {
- "generado": "2026-08-29",
+ "generado": "2026-08-30",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -20,24 +20,24 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-28",
   "proximo": "2026-09-01",
-  "diasDesde": 1,
+  "diasDesde": 2,
   "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-08-29",
+ "campoDesde": "2026-08-30",
  "campoError": null,
  "campo": {
-  "mazos": 695,
+  "mazos": 603,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "Blink",
-    "pct": 10
+    "pct": 11
    },
    {
     "n": "UR Aggro",
-    "pct": 9
+    "pct": 10
    },
    {
     "n": "Affinity",
@@ -45,10 +45,14 @@
    },
    {
     "n": "Boros Aggro",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Jeskai Aggro",
+    "pct": 3
+   },
+   {
+    "n": "Hollow One",
     "pct": 2
    },
    {
@@ -56,16 +60,12 @@
     "pct": 2
    },
    {
-    "n": "Hollow One",
-    "pct": 2
-   },
-   {
     "n": "Simic Birthing Ritual",
-    "pct": 0.6
+    "pct": 0.7
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.6
+    "pct": 0.7
    },
    {
     "n": "Mardu Aggro",
@@ -76,28 +76,24 @@
     "pct": 0.3
    },
    {
-    "n": "Red Deck Wins",
-    "pct": 0.1
-   },
-   {
-    "n": "Death's Shadow",
-    "pct": 0.1
-   },
-   {
     "n": "Jund",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Arclight Phoenix",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Merfolk",
-    "pct": 0.1
+    "pct": 0.2
+   },
+   {
+    "n": "Red Deck Wins",
+    "pct": 0.2
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Eldrazi Ramp",
@@ -116,36 +112,28 @@
     "pct": 2
    },
    {
-    "n": "Esper Control",
-    "pct": 2
-   },
-   {
     "n": "Boros Ponza",
     "pct": 2
    },
    {
+    "n": "Esper Control",
+    "pct": 2
+   },
+   {
     "n": "Jeskai Control",
-    "pct": 0.4
-   },
-   {
-    "n": "Elementals",
-    "pct": 0.1
-   },
-   {
-    "n": "Lantern Control",
-    "pct": 0.1
+    "pct": 0.5
    },
    {
     "n": "Grixis Control",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Urza",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Gruul Utopia",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Other - Control",
@@ -164,12 +152,12 @@
     "pct": 7
    },
    {
-    "n": "Reanimator",
+    "n": "Living End",
     "pct": 3
    },
    {
-    "n": "Living End",
-    "pct": 3
+    "n": "Reanimator",
+    "pct": 2
    },
    {
     "n": "Allosaurus Combo",
@@ -188,28 +176,24 @@
     "pct": 1
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 0.6
+    "n": "Song of Creation",
+    "pct": 0.5
    },
    {
     "n": "Hammer Time",
-    "pct": 0.6
+    "pct": 0.5
    },
    {
-    "n": "Song of Creation",
-    "pct": 0.4
+    "n": "Cosmogoyf",
+    "pct": 0.3
    },
    {
     "n": "UB Mill",
     "pct": 0.3
    },
    {
-    "n": "Creativity",
-    "pct": 0.1
-   },
-   {
     "n": "Other - Combo",
-    "pct": 1
+    "pct": 2
    }
   ]
  },
@@ -707,16 +691,36 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 10% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 11% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 10,
+     "pct": 11,
      "pctPrev": 10,
-     "delta": 0
+     "delta": 1
+    },
+    "w": 0,
+    "l": 0,
+    "wr": null,
+    "n": 0
+   }
+  },
+  {
+   "nivel": "nuevo",
+   "mazo": "Jeskai Aggro",
+   "titular": "Jeskai Aggro: 3% del campo global y nunca te lo has cruzado",
+   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
+   "datos": {
+    "frecLiga": 0,
+    "deltaLiga": null,
+    "campo": {
+     "global": "Jeskai Aggro",
+     "pct": 3,
+     "pctPrev": 2,
+     "delta": 1
     },
     "w": 0,
     "l": 0,
