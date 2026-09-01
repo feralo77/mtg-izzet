@@ -719,8 +719,8 @@
     "campo": {
      "global": "Blink",
      "pct": 10,
-     "pctPrev": 11,
-     "delta": -1
+     "pctPrev": 10,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
