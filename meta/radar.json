@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-01",
+ "generado": "2026-09-02",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -20,15 +20,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-28",
   "proximo": "2026-09-01",
-  "diasDesde": 4,
+  "diasDesde": 5,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-01",
+ "campoDesde": "2026-09-02",
  "campoError": null,
  "campo": {
-  "mazos": 716,
+  "mazos": 740,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -37,7 +37,7 @@
    },
    {
     "n": "Blink",
-    "pct": 10
+    "pct": 11
    },
    {
     "n": "Affinity",
@@ -45,7 +45,7 @@
    },
    {
     "n": "Boros Aggro",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "4/5c Aggro",
@@ -76,6 +76,10 @@
     "pct": 0.3
    },
    {
+    "n": "Temur Aggro",
+    "pct": 0.3
+   },
+   {
     "n": "Arclight Phoenix",
     "pct": 0.1
    },
@@ -89,10 +93,6 @@
    },
    {
     "n": "Mono Green Aggro",
-    "pct": 0.1
-   },
-   {
-    "n": "Temur Aggro",
     "pct": 0.1
    },
    {
@@ -117,7 +117,7 @@
    },
    {
     "n": "UW Control",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Esper Control",
@@ -126,10 +126,6 @@
    {
     "n": "Jeskai Control",
     "pct": 0.3
-   },
-   {
-    "n": "Grixis Control",
-    "pct": 0.1
    },
    {
     "n": "Urza",
@@ -144,8 +140,16 @@
     "pct": 0.1
    },
    {
+    "n": "UWx Midrange",
+    "pct": 0.1
+   },
+   {
+    "n": "Elementals",
+    "pct": 0.1
+   },
+   {
     "n": "Other - Control",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Instant Reanimator",
@@ -157,7 +161,7 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 7
+    "pct": 6
    },
    {
     "n": "Living End",
@@ -165,7 +169,7 @@
    },
    {
     "n": "Ruby Storm",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Allosaurus Combo",
@@ -176,24 +180,24 @@
     "pct": 2
    },
    {
-    "n": "Amulet Titan",
-    "pct": 1
-   },
-   {
     "n": "Landless",
     "pct": 1
    },
    {
-    "n": "Song of Creation",
-    "pct": 0.4
+    "n": "Amulet Titan",
+    "pct": 0.9
    },
    {
     "n": "UB Mill",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Hammer Time",
-    "pct": 0.4
+    "pct": 0.5
+   },
+   {
+    "n": "Song of Creation",
+    "pct": 0.3
    },
    {
     "n": "Cosmogoyf",
@@ -213,7 +217,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 1
+    "pct": 0.9
    }
   ]
  },
@@ -225,7 +229,7 @@
    "hasta": "2026-08-20"
   },
   "antes": {
-   "partidas": 94,
+   "partidas": 95,
    "desde": "2026-07-09",
    "hasta": "2026-07-22"
   },
@@ -249,8 +253,8 @@
     "variantes": null,
     "partidas": 8,
     "frec": 8.4,
-    "frecPrev": 6.4,
-    "delta": 2,
+    "frecPrev": 6.3,
+    "delta": 2.1,
     "w": 2,
     "l": 3,
     "n_": 5,
@@ -261,12 +265,24 @@
     "variantes": null,
     "partidas": 7,
     "frec": 7.4,
-    "frecPrev": 8.5,
-    "delta": -1.1,
+    "frecPrev": 8.4,
+    "delta": -1,
     "w": 3,
     "l": 1,
     "n_": 4,
     "wr": 75
+   },
+   {
+    "n": "Dimir Frog",
+    "variantes": null,
+    "partidas": 7,
+    "frec": 7.4,
+    "frecPrev": 5.3,
+    "delta": 2.1,
+    "w": 1,
+    "l": 3,
+    "n_": 4,
+    "wr": 25
    },
    {
     "n": "Neoform",
@@ -281,24 +297,12 @@
     "wr": 0
    },
    {
-    "n": "Dimir Frog",
-    "variantes": null,
-    "partidas": 7,
-    "frec": 7.4,
-    "frecPrev": 4.3,
-    "delta": 3.1,
-    "w": 0,
-    "l": 3,
-    "n_": 3,
-    "wr": 0
-   },
-   {
     "n": "Ruby Storm",
     "variantes": null,
     "partidas": 6,
     "frec": 6.3,
-    "frecPrev": 4.3,
-    "delta": 2,
+    "frecPrev": 4.2,
+    "delta": 2.1,
     "w": 2,
     "l": 0,
     "n_": 2,
@@ -360,8 +364,8 @@
     ],
     "partidas": 4,
     "frec": 4.2,
-    "frecPrev": 8.5,
-    "delta": -4.3,
+    "frecPrev": 8.4,
+    "delta": -4.2,
     "w": 0,
     "l": 2,
     "n_": 2,
@@ -423,8 +427,8 @@
     "variantes": null,
     "partidas": 1,
     "frec": 1.1,
-    "frecPrev": 6.4,
-    "delta": -5.3,
+    "frecPrev": 6.3,
+    "delta": -5.2,
     "w": 2,
     "l": 2,
     "n_": 4,
@@ -655,7 +659,7 @@
    "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
     "frecLiga": 8.4,
-    "deltaLiga": 2,
+    "deltaLiga": 2.1,
     "campo": {
      "global": "Instant Reanimator",
      "pct": 9,
@@ -671,21 +675,21 @@
   {
    "nivel": "adaptarse",
    "mazo": "Dimir Frog",
-   "titular": "Dimir Frog: está subiendo (+3.1 pts en tu liga) y vas 0-3 (0%)",
-   "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
+   "titular": "Dimir Frog: es el 7.4% de tu liga y vas 1-3 (25%)",
+   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
     "frecLiga": 7.4,
-    "deltaLiga": 3.1,
+    "deltaLiga": 2.1,
     "campo": {
      "global": "Dimir Control",
      "pct": 4,
      "pctPrev": 4,
      "delta": 0
     },
-    "w": 0,
+    "w": 1,
     "l": 3,
-    "wr": 0,
-    "n": 3
+    "wr": 25,
+    "n": 4
    }
   },
   {
@@ -711,16 +715,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 10% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 11% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 10,
+     "pct": 11,
      "pctPrev": 10,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
