@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-02",
+ "generado": "2026-09-03",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -20,32 +20,32 @@
   "cadenciaDias": 4,
   "ultimo": "2026-08-28",
   "proximo": "2026-09-01",
-  "diasDesde": 5,
+  "diasDesde": 6,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-02",
+ "campoDesde": "2026-09-03",
  "campoError": null,
  "campo": {
-  "mazos": 740,
+  "mazos": 755,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 11
+    "pct": 12
    },
    {
     "n": "Blink",
-    "pct": 11
+    "pct": 10
    },
    {
     "n": "Affinity",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Boros Aggro",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "4/5c Aggro",
@@ -61,19 +61,19 @@
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.7
+    "pct": 0.8
    },
    {
     "n": "Mardu Aggro",
     "pct": 0.4
    },
    {
-    "n": "Selesnya Aggro",
+    "n": "Simic Birthing Ritual",
     "pct": 0.4
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.3
+    "n": "Selesnya Aggro",
+    "pct": 0.4
    },
    {
     "n": "Temur Aggro",
@@ -96,6 +96,10 @@
     "pct": 0.1
    },
    {
+    "n": "Eldrazi Aggro",
+    "pct": 0.1
+   },
+   {
     "n": "Other - Aggro",
     "pct": 0.1
    },
@@ -105,7 +109,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 4
+    "pct": 5
    },
    {
     "n": "Dimir Control",
@@ -122,10 +126,6 @@
    {
     "n": "Esper Control",
     "pct": 1
-   },
-   {
-    "n": "Jeskai Control",
-    "pct": 0.3
    },
    {
     "n": "Urza",
@@ -172,12 +172,12 @@
     "pct": 3
    },
    {
-    "n": "Allosaurus Combo",
+    "n": "Reanimator",
     "pct": 2
    },
    {
-    "n": "Reanimator",
-    "pct": 2
+    "n": "Allosaurus Combo",
+    "pct": 1
    },
    {
     "n": "Landless",
@@ -197,7 +197,7 @@
    },
    {
     "n": "Song of Creation",
-    "pct": 0.3
+    "pct": 0.4
    },
    {
     "n": "Cosmogoyf",
@@ -229,7 +229,7 @@
    "hasta": "2026-08-20"
   },
   "antes": {
-   "partidas": 95,
+   "partidas": 94,
    "desde": "2026-07-09",
    "hasta": "2026-07-22"
   },
@@ -253,8 +253,8 @@
     "variantes": null,
     "partidas": 8,
     "frec": 8.4,
-    "frecPrev": 6.3,
-    "delta": 2.1,
+    "frecPrev": 6.4,
+    "delta": 2,
     "w": 2,
     "l": 3,
     "n_": 5,
@@ -265,24 +265,12 @@
     "variantes": null,
     "partidas": 7,
     "frec": 7.4,
-    "frecPrev": 8.4,
-    "delta": -1,
+    "frecPrev": 8.5,
+    "delta": -1.1,
     "w": 3,
     "l": 1,
     "n_": 4,
     "wr": 75
-   },
-   {
-    "n": "Dimir Frog",
-    "variantes": null,
-    "partidas": 7,
-    "frec": 7.4,
-    "frecPrev": 5.3,
-    "delta": 2.1,
-    "w": 1,
-    "l": 3,
-    "n_": 4,
-    "wr": 25
    },
    {
     "n": "Neoform",
@@ -297,12 +285,24 @@
     "wr": 0
    },
    {
+    "n": "Dimir Frog",
+    "variantes": null,
+    "partidas": 7,
+    "frec": 7.4,
+    "frecPrev": 4.3,
+    "delta": 3.1,
+    "w": 0,
+    "l": 3,
+    "n_": 3,
+    "wr": 0
+   },
+   {
     "n": "Ruby Storm",
     "variantes": null,
     "partidas": 6,
     "frec": 6.3,
-    "frecPrev": 4.2,
-    "delta": 2.1,
+    "frecPrev": 4.3,
+    "delta": 2,
     "w": 2,
     "l": 0,
     "n_": 2,
@@ -364,8 +364,8 @@
     ],
     "partidas": 4,
     "frec": 4.2,
-    "frecPrev": 8.4,
-    "delta": -4.2,
+    "frecPrev": 8.5,
+    "delta": -4.3,
     "w": 0,
     "l": 2,
     "n_": 2,
@@ -427,8 +427,8 @@
     "variantes": null,
     "partidas": 1,
     "frec": 1.1,
-    "frecPrev": 6.3,
-    "delta": -5.2,
+    "frecPrev": 6.4,
+    "delta": -5.3,
     "w": 2,
     "l": 2,
     "n_": 4,
@@ -659,7 +659,7 @@
    "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
     "frecLiga": 8.4,
-    "deltaLiga": 2.1,
+    "deltaLiga": 2,
     "campo": {
      "global": "Instant Reanimator",
      "pct": 9,
@@ -675,21 +675,21 @@
   {
    "nivel": "adaptarse",
    "mazo": "Dimir Frog",
-   "titular": "Dimir Frog: es el 7.4% de tu liga y vas 1-3 (25%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "titular": "Dimir Frog: está subiendo (+3.1 pts en tu liga) y vas 0-3 (0%)",
+   "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
    "datos": {
     "frecLiga": 7.4,
-    "deltaLiga": 2.1,
+    "deltaLiga": 3.1,
     "campo": {
      "global": "Dimir Control",
      "pct": 4,
      "pctPrev": 4,
      "delta": 0
     },
-    "w": 1,
+    "w": 0,
     "l": 3,
-    "wr": 25,
-    "n": 4
+    "wr": 0,
+    "n": 3
    }
   },
   {
@@ -702,9 +702,9 @@
     "deltaLiga": 4.2,
     "campo": {
      "global": "Allosaurus Combo",
-     "pct": 2,
+     "pct": 1,
      "pctPrev": 2,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 3,
@@ -715,16 +715,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 11% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 10% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 11,
-     "pctPrev": 10,
-     "delta": 1
+     "pct": 10,
+     "pctPrev": 11,
+     "delta": -1
     },
     "w": 0,
     "l": 0,
@@ -735,16 +735,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 4% del campo global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 5% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 4,
+     "pct": 5,
      "pctPrev": 4,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
