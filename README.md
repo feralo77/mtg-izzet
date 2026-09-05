@@ -52,12 +52,14 @@ mtg-izzet/
 │  ├─ mtgo_gamelog_parser.py   # decodifica los .dat de MTGO (con --selftest)
 │  └─ README.md
 ├─ scripts/
-│  └─ meta_mtgtop8.mjs         # recolector del meta (mtgtop8) → meta/prowess.json
+│  ├─ meta_mtgtop8.mjs         # recolector del meta (mtgtop8) → meta/prowess.json
+│  └─ extraer_guia.py          # guia.pages (guía premium de ethanmtg) → texto plano, para ver qué cambió
 ├─ meta/                       # mi-75.json (tu lista de referencia) + prowess.json (campo)
 ├─ .github/workflows/
 │  ├─ actualizar-tracker.yml   # robot de datos: diario + manual (Run workflow)
 │  └─ actualizar-meta.yml      # meta mtgtop8: cada 2 días + manual
 ├─ docs/                       # cuadernos de estrategia + instrucciones de jugadores
+│  ├─ guia-ethanmtg.md         # cómo se mantiene al día la guía premium (proceso de actualización)
 │  ├─ leeme-jugador.md         # plantilla del LEEME de cada carpeta de jugador
 │  └─ instrucciones-companeros.md
 └─ data/                       # (gitignored) material local sensible
