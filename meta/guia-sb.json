@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-08-07",
+  "fecha": "2026-09-05",
   "autor": "Criterio de Magic (brainstorm /mtg-expert). No lo calcula el robot: que carta responde a que mazo no sale de los datos.",
   "para": "La 75 Definitiva (7-ago-2026)",
   "orden": "Por frecuencia en la liga de Fer (scouting.csv, 164 rivales censados). Tu record sale de registro.csv filtrado por feralo77.",
@@ -20,6 +20,15 @@
       "clave": "Lava Dart se queda: mata Ocelot Pride y las fichas de gato. Mutagenic Growth tambien: su removal es Galvanic Discharge (dano), no exilio.",
       "aq": [
         "Boros Energy"
+      ],
+      "patrones": [
+        "Mulliganea buscando removal: sin el, Guide of Souls y Ocelot Pride ganan la carrera ellos solos.",
+        "Espera a que gasten uno o dos removal antes de bajar Slickshot Show-Off.",
+        "Prioriza Unholy Heat sobre Guide of Souls para dejar el Bolt libre para Voice of Victory.",
+        "Lava Dart a Ocelot Pride, y a Ragavan en el game 1 (suele salir de su mazo despues del primero).",
+        "Cori-Steel Cutter es tu mejor carta de late game: ni Wrath of the Skies ni Solitude lo tocan.",
+        "Truco: Lava Dart a la ficha de gato en su final de turno; si voltean Ajani, bajas Cori-Steel y con el flashback del Dart matas el planeswalker.",
+        "Cuida la vida al buscar con fetch y al pagar Steam Vents: este matchup se decide por 2-3 puntos."
       ]
     },
     {
@@ -41,6 +50,16 @@
         "Izzet Affinity",
         "UR Artifacts",
         "MonoR Artifacts"
+      ],
+      "patrones": [
+        "Leeles la mano por las tierras: Fiery Islet o Shivan Reef temprano suele significar que no les quedan mas tierras; un Spirebluff Canal de turno 1 no dice nada (es su mejor tierra).",
+        "Si son agresivos con Pinnacle Emissary, sospecha Kappa Cannoneer detras.",
+        "Sin artefacto en el turno 1: probable Weapons Manufacturing con Urza's Saga de tierra.",
+        "Meltdown despues de que bajen Pinnacle Emissary, o antes de que puedan lanzar Kappa Cannoneer. No con 5+ fichas de Munitions en mesa.",
+        "Guarda los Lava Dart para sus fichas de Drake: lanzalos lo mas tarde posible.",
+        "Baja DRC antes que Swiftspear, y juega los dos agresivos para provocar el Galvanic Blast.",
+        "Plotear el Slickshot esquiva el Galvanic Blast.",
+        "Con lista abierta: si llevan 3+ Galvanic Blast, quita las 4 Expressive Iteration y quedate TODOS los Mutagenic Growth. Si llevan Eidolon of the Great Revel, entran los 4 Unholy Heat."
       ]
     },
     {
@@ -87,6 +106,14 @@
         "Eldrazi Ramp",
         "Eldrazi PT",
         "Eldrazi Tron"
+      ],
+      "patrones": [
+        "Carrera pura: en cuanto llegan a 7 manas la partida es suya. Todo va a matarles antes.",
+        "Chalice of the Void a 1 y Trinisphere son lo peor que te puede pasar: objetivo numero uno del Consign.",
+        "Un Thought-Knot Seer temprano corre y bloquea muy bien: si tienen mesa vacia y lo lanzan, casi siempre toca Consign.",
+        "Solo Consign un Kozilek's Command si exilia una criatura que iba a pegar fuerte o si hace 3+ fichas de spawn.",
+        "Ugin es practicamente la partida: el unico plan es ir ancho y robarles el turno de antes.",
+        "Post-side juegas algo mas a tempo con Consign dentro, pero sigues teniendo que matarles antes de que lancen las cosas gordas."
       ]
     },
     {
@@ -105,6 +132,13 @@
       "clave": "Spell Pierce contesta el propio Neoform por 1 mana mientras tu sigues atacando. Consign contesta los triggers de entrada de lo que trampeen (Archon of Cruelty).",
       "aq": [
         "Neoform"
+      ],
+      "patrones": [
+        "Nota literal del autor: 'intenta esquivarlo'. Game 1 es carrera pura y vas por detras.",
+        "Wistfulness destruye Cori-Steel Cutter.",
+        "El doble golpe es obligatorio para ganar la carrera.",
+        "No juegues alrededor de Pact of Negation: no compensa.",
+        "Post-side, mulliganea buscando contrahechizos (Spell Pierce, Spell Snare)."
       ]
     },
     {
@@ -124,6 +158,16 @@
       "aq": [
         "Dimir Frog",
         "Grixis Frog/Reanimator"
+      ],
+      "patrones": [
+        "Criatura de 1 obligatoria: es lo que fuerza el primer Fatal Push.",
+        "Plotear el Slickshot les rompe la eficiencia de mana, que es donde se gana este matchup.",
+        "Cori-Steel Cutter es tu mejor amenaza aqui: solo lo contesta un contrahechizo.",
+        "Baja Swiftspear antes que DRC (matchup de desgaste, y Orcish Bowmasters pega al DRC).",
+        "Cuidado con Preordain y Mishra's Bauble si hay Orcish Bowmasters en mesa o en su mano.",
+        "Tamiyo sin contestar les da tiempo a estabilizar, y encima bloquea bien.",
+        "Lanza instantaneos en SU turno para que gasten mana mal; al primer contrahechizo suele salir a cuenta entrarle.",
+        "La version Oculus/Unearth es mas peligrosa que la de Murktide: contra esa entra odio de cementerio."
       ]
     },
     {
@@ -171,6 +215,14 @@
       "aq": [
         "Ruby Storm",
         "Storm"
+      ],
+      "patrones": [
+        "Bolt a Ral respondiendo al trigger de volteo.",
+        "Spell Snare a cualquier Ral o Ruby Medallion.",
+        "Spell Pierce casi nunca va a un ritual: cuenta cuanto mana les queda DESPUES. Si en el turno 2 hacen ritual + Ruby Medallion, contesta el Medallion, no el ritual.",
+        "Plotear el Slickshot esquiva el Prismatic Ending.",
+        "Crypt en respuesta al Past in Flames.",
+        "Si los dos corren perfecto, gana Storm: post-side la partida se alarga con los contrahechizos y eso te conviene."
       ]
     },
     {
@@ -188,6 +240,15 @@
       "clave": "Mutagenic Growth sale entero porque su removal EXILIA (Prismatic Ending, Solitude, Leyline Binding) y Growth no salva de eso. Spell Snare pega a Counterspell (coste 2).",
       "aq": [
         "Azorius Control"
+      ],
+      "patrones": [
+        "La seccion de la guia es Scepter Control (Isochron Scepter + Orim's Chant); el esqueleto vale para cualquier control blanco-azul.",
+        "Dos o tres criaturas ya obligan a que barran: no comprometas mas.",
+        "Guarda el Slickshot Show-Off para despues de haber bajado el resto de amenazas.",
+        "No pongas pump hasta que hayan gastado el Solitude o este claro que no lo tienen.",
+        "Narset apaga el Preordain.",
+        "Post-side, prioriza contestar Teferi, Time Raveler: con el en mesa juegan su interaccion gratis y en el momento perfecto (y te apaga los contrahechizos).",
+        "Apunta que interaccion han gastado ya: su abanico es amplio y jugar alrededor de todo a la vez es imposible."
       ]
     },
     {
@@ -206,6 +267,13 @@
       "clave": "Crypt en respuesta al hechizo de reanimacion. Consign contesta el trigger de entrada de lo que reanimen (Archon of Cruelty, Atraxa).",
       "aq": [
         "Grixis Reanimator"
+      ],
+      "patrones": [
+        "La guia no tiene seccion propia de Grixis Reanimator: esto viene de la de Goryo's, que comparte esqueleto (reanimar barato y temprano).",
+        "Game 1 ultra-agresivo pero sin sobreextender al Solitude.",
+        "Criatura de 1 en el turno 1 y Cori-Steel Cutter en el 2 es la mejor salida.",
+        "Fuerza que gasten interaccion jugando a la mesa, no esperando con el mana abierto.",
+        "Tormod's Crypt es la mejor carta de odio de cementerio del mazo: cero manas, dispara prowess y suma tipo de carta para el delirium."
       ]
     },
     {
@@ -224,6 +292,9 @@
       "clave": "Crypt en respuesta al trigger de retorno de Bloodghast o Flamewake Phoenix, no en tu turno 1.",
       "aq": [
         "Hollow One"
+      ],
+      "patrones": [
+        "La guia de ethanmtg no tiene seccion de Hollow One (no esta en su meta): aqui no hay cruce, el plan es el tuyo."
       ]
     },
     {
@@ -242,6 +313,16 @@
       "clave": "Spell Snare contrarresta Basking Broodscale en la pila (coste 2) y Consign contesta el trigger que hace el bucle. Las dos rompen el combo, no solo lo retrasan.",
       "aq": [
         "Broodscale"
+      ],
+      "patrones": [
+        "El autor avisa de que es el matchup que mas sigue probando: el rol agresivo cambia de manos a menudo y es dificil de fijar.",
+        "Juega tu interaccion lo MAS TARDE posible para que gasten recursos: si no tienen spawns en mesa, espera a que paguen el coste de adaptar del Basking Broodscale antes de matarlo.",
+        "Kozilek's Command es su mejor pieza: flexible y ademas les rampea.",
+        "Writhing Chrysalis deja bloqueadores muy buenos.",
+        "Dos Glaring Fleshraker te matan rapido: si tienes varios removal, uno va siempre al Fleshraker.",
+        "Lo que te mata: Fleshraker + Broodscale + Blade, Broodscale + Blade + Walking Ballista, Broodscale + Blade + Kozilek's Command. Y Emrakul.",
+        "Post-side, el Warping Wail se juega alrededor teniendo un Lava Dart en el cementerio.",
+        "Su Urza's Saga muchas veces no llega a hacer fichas de construct."
       ]
     },
     {
@@ -260,6 +341,16 @@
       "clave": "Consign to Memory contesta el trigger de Primeval Titan (el Titan resuelve pero no busca ninguna tierra) y el trigger de enderezar de Amulet of Vigor. Con replicate por 1 puedes contestar dos disparos del Amulet en el mismo turno.",
       "aq": [
         "Amulet Titan"
+      ],
+      "patrones": [
+        "Mulliganea agresivo buscando criatura de turno 1, incluso post-side con la interaccion en mano.",
+        "El mejor objetivo del Bolt es Arboreal Grazer: bloquea de maravilla al Slickshot. Guarda quemadura para el, o deja que una criatura de 3+ poder bloquee de chump.",
+        "Dryad of the Ilysian Grove tambien bloquea bien, y encima les enciende Valakut.",
+        "Cori-Steel Cutter es lento en el robo si no llevas mas amenazas detras.",
+        "La partida suele acabar con Slickshot o doble golpe: las fichas de Monje solas pierden la carrera contra Amulet.",
+        "Consign: al trigger de Amulet of Vigor, al de entrada de Primeval Titan, al ultimo capitulo de Urza's Saga (para que no busquen Amulet ni Zuran Orb) y al trigger de rebote que apunta a Tolaria West (quieren transmutarla por Summoner's Pact; les quitas un turno).",
+        "Contra Spelunking, Consign decepciona: lo que duele es que las tierras entren enderezadas, y eso no se contesta.",
+        "En la jugada, mejor bajar la criatura de 1 que dejar el Consign abierto (el autor lo marca como pendiente de seguir probando)."
       ]
     },
     {
@@ -276,6 +367,15 @@
       "clave": "OJO: Consign to Memory NO contesta la habilidad de Yawgmoth. Consign contrarresta habilidades DISPARADAS y hechizos incoloros; la de Yawgmoth es una habilidad ACTIVADA. Aqui Consign se queda en el banquillo.",
       "aq": [
         "Golgari Yawgmoth"
+      ],
+      "patrones": [
+        "Matchup favorable: necesitan vida para combear y tu les bajas la vida mas rapido de lo que ellos te matan a ti.",
+        "Siempre Bolt al Delighted Halfling en el turno 1.",
+        "Criatura de 1 y/o Bolt en el turno 1 es obligatorio: mulliganea todo lo demas.",
+        "Ataca sin parar. Aqui no quieres bloquear nunca.",
+        "Yawgmoth bloquea gratis a Monastery Swiftspear (proteccion contra humanos).",
+        "En el game 1 no juegues alrededor de Fatal Push: en las listas stock esta en el banquillo, no en el main.",
+        "Agatha's Soul Cauldron puede vaciarte el cementerio y apagarte el delirium."
       ]
     },
     {
@@ -293,6 +393,15 @@
       "clave": "Si sospechas Blood Moon o Magus of the Moon, crackea los fetch YA y busca Steam Vents mientras puedas: con Moon en juego todas tus tierras no basicas son Montanas y te quedas sin una sola fuente de azul (no llevas Island). Si Ponza crece en la liga, ese es el momento de meter 1 Island por 1 fetch.",
       "aq": [
         "Boros Ponza"
+      ],
+      "patrones": [
+        "Criatura en el turno 1 es lo mas importante: castiga que rampeen (la excepcion es Galvanic Discharge).",
+        "Deja mana de tierra BASICA sin gastar: asi, para romperte la tierra que tienes abierta, tienen que usar Cleansing Wildfire o Price of Freedom, no un Field of Ruin.",
+        "Ojo: Cleansing Wildfire y Price of Freedom si pegan a tierras basicas.",
+        "Price of Freedom al Cori-Steel Cutter duele: evita bajarlo antes de que hayan gastado Price of Freedom o Wrath of the Skies (excepcion: turno 2 con Bauble).",
+        "Fuerza su interaccion temprano (Path to Exile, Erode, Galvanic Discharge) para que el Wrath of the Skies les llegue sin nada detras.",
+        "Post-side y en el robo, guarda el Spell Pierce del turno 1 para su High Noon del turno 2.",
+        "Post-side el plan es mas de desgaste: cambia uno a uno en vez de buscar el golpe grande con pump."
       ]
     },
     {
@@ -312,8 +421,14 @@
       "clave": "Consign to Memory contrarresta el TRIGGER DE CASCADA: el Living End no llega a lanzarse. Es la respuesta mas limpia que existe. Alternativa: Tormod's Crypt en respuesta a la cascada, para que el Living End vuelva a poner cero criaturas.",
       "aq": [
         "Living End"
+      ],
+      "patrones": [
+        "Consign al trigger de CASCADA (no al Living End).",
+        "Baja el Slickshot despues de que resuelva el Living End, intentando esquivar el Generous Ent; si lo tienen, provocales el ataque primero.",
+        "Cuidado con lanzar criaturas despues del turno 1 si pueden tener Subtlety.",
+        "Wistfulness destruye Cori-Steel Cutter: no lo bajes en el turno 2 sin mas hechizos detras."
       ]
     }
   ],
-  "nota_patrones": "Campo 'patrones' (12-ago): patrones de juego migrados del cruce con la guia de ethanmtg (pestana Guia), matchup a matchup. Encargo de Fer del 27-jul; hechos mirror y Esper Goryo's, quedan 14."
+  "nota_patrones": "Campo 'patrones' (12-ago, ampliado 5-sep): patrones de juego migrados del cruce con la guia de ethanmtg (pestana Guia), matchup a matchup. Encargo de Fer del 27-jul, COMPLETADO: los 16 matchups cruzados. Hollow One no tiene seccion en la guia y Grixis Reanimator hereda la de Goryo's, ambos marcados en su propia lista. Fuente: foto de la guia del 26-jul-2026; el autor la actualizo el 6-sep y esa version aun no esta volcada."
 }
