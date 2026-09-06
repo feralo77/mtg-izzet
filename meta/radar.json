@@ -11,6 +11,7 @@
  },
  "brainstorm": {
   "ficheros": [
+   "docs/brainstorm/2026-09-06.md",
    "docs/brainstorm/2026-08-28.md",
    "docs/brainstorm/2026-08-12.md",
    "docs/brainstorm/2026-08-07.md",
@@ -18,22 +19,22 @@
    "docs/brainstorm/2026-07-21.md"
   ],
   "cadenciaDias": 4,
-  "ultimo": "2026-08-28",
-  "proximo": "2026-09-01",
-  "diasDesde": 9,
-  "toca": true
+  "ultimo": "2026-09-06",
+  "proximo": "2026-09-10",
+  "diasDesde": 0,
+  "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
  "campoDesde": "2026-09-06",
  "campoError": null,
  "campo": {
-  "mazos": 754,
+  "mazos": 794,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 12
+    "pct": 11
    },
    {
     "n": "Blink",
@@ -44,11 +45,11 @@
     "pct": 6
    },
    {
-    "n": "Boros Aggro",
+    "n": "4/5c Aggro",
     "pct": 3
    },
    {
-    "n": "4/5c Aggro",
+    "n": "Boros Aggro",
     "pct": 3
    },
    {
@@ -68,12 +69,12 @@
     "pct": 0.4
    },
    {
-    "n": "Red Deck Wins",
+    "n": "Simic Birthing Ritual",
     "pct": 0.4
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.3
+    "n": "Red Deck Wins",
+    "pct": 0.4
    },
    {
     "n": "Mardu Aggro",
@@ -116,20 +117,24 @@
     "pct": 4
    },
    {
-    "n": "Dimir Control",
-    "pct": 3
+    "n": "Boros Ponza",
+    "pct": 4
    },
    {
-    "n": "Boros Ponza",
-    "pct": 3
+    "n": "Dimir Control",
+    "pct": 4
    },
    {
     "n": "UW Control",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Esper Control",
     "pct": 0.8
+   },
+   {
+    "n": "Elementals",
+    "pct": 0.3
    },
    {
     "n": "Urza",
@@ -148,10 +153,6 @@
     "pct": 0.1
    },
    {
-    "n": "Elementals",
-    "pct": 0.1
-   },
-   {
     "n": "Other - Control",
     "pct": 1
    },
@@ -161,7 +162,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 9
+    "pct": 8
    },
    {
     "n": "Creatures Toolbox",
@@ -193,15 +194,15 @@
    },
    {
     "n": "UB Mill",
-    "pct": 0.7
+    "pct": 0.6
+   },
+   {
+    "n": "Hammer Time",
+    "pct": 0.4
    },
    {
     "n": "Song of Creation",
     "pct": 0.4
-   },
-   {
-    "n": "Hammer Time",
-    "pct": 0.3
    },
    {
     "n": "Cosmogoyf",
@@ -221,7 +222,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 0.9
+    "pct": 1
    }
   ]
  },
@@ -666,9 +667,9 @@
     "deltaLiga": 2.1,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 9,
+     "pct": 8,
      "pctPrev": 9,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 3,
@@ -686,9 +687,9 @@
     "deltaLiga": 2.1,
     "campo": {
      "global": "Dimir Control",
-     "pct": 3,
-     "pctPrev": 4,
-     "delta": -1
+     "pct": 4,
+     "pctPrev": 3,
+     "delta": 1
     },
     "w": 1,
     "l": 3,
@@ -707,8 +708,8 @@
     "campo": {
      "global": "Allosaurus Combo",
      "pct": 2,
-     "pctPrev": 1,
-     "delta": 1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 0,
     "l": 3,
@@ -727,8 +728,8 @@
     "campo": {
      "global": "Blink",
      "pct": 11,
-     "pctPrev": 10,
-     "delta": 1
+     "pctPrev": 11,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -747,8 +748,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 4,
-     "pctPrev": 5,
-     "delta": -1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
