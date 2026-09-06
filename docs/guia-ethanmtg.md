@@ -49,10 +49,11 @@ aparte. La foto que hay volcada aquí es la del **26-jul-2026**.
 | 26-jul-2026 | `data/guia-texto-2026-07-26.txt` | de `guia.pages` |
 | 6-sep-2026 | `data/guia-texto-2026-09-06.txt` | pegado de Fer (`data/guia-original-2026-09-06.rtf`) |
 
-**Pendiente de la revisión del 6-sep**: el pegado trae el capítulo principal (*Individual Card
-Choices*, *Play Pattern Guide*, *Play Pattern Deep-Dives* y *Matchup Guide*). Faltan por traer
-**Decklists**, **Other Prowess Variants**, **Mulligan Guide** y **Sideboard Guide** (las notas
-de meta del final). En el dashboard, esos capítulos siguen mostrando la versión de julio.
+**Alcance de la revisión del 6-sep**: el autor tocó el capítulo principal (*Individual Card
+Choices*, *Play Pattern Guide*, *Play Pattern Deep-Dives* y *Matchup Guide*), que es
+exactamente lo que trajo el pegado de Fer. **Decklists**, **Other Prowess Variants**,
+**Mulligan Guide** y **Sideboard Guide** los dejó igual, así que la versión de julio que hay
+volcada en el dashboard sigue vigente: no hay nada que copiar de ellos.
 
 ## Qué cambió el 6-sep-2026
 
