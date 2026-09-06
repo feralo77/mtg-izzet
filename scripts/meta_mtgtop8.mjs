@@ -33,6 +33,9 @@ const arg = (flag, def) => { const i = process.argv.indexOf(flag); return i > -1
 const outDir = arg('--out', 'meta');
 const miPath = arg('--milista', `${outDir}/mi-75.json`);
 const stamp = arg('--date', '');
+// Fecha que se graba en el JSON. Sin --date (lanzado a mano, no desde la Action)
+// se quedaba a null y el dashboard no podia decir de cuando son los datos.
+const generado = stamp || new Date().toISOString().slice(0, 10);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const norm = (n) => n.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -90,6 +93,11 @@ function readJSON(p) { try { return existsSync(p) ? JSON.parse(readFileSync(p, '
 const SEARCH_URL = 'https://mtgtop8.com/search';
 const WINDOW_DAYS = parseInt(arg('--days', '28'), 10);   // ventana temporal
 const MAX_DECKS   = parseInt(arg('--max', '60'), 10);    // tope de listas a agregar
+// --raw <fichero>: ademas del agregado, vuelca las listas UNA A UNA. El agregado dice
+// "el 30% juega Stormchaser's Talent", pero no si esas listas son las mismas que llevan
+// Boomerang Basics. Con las listas crudas se pueden agrupar en escuelas, que es la
+// pregunta del brainstorm ("que 75 son las mas tipicas"). Va a data/ (gitignored).
+const RAW_OUT     = arg('--raw', '');
 const endDate = stamp ? new Date(`${stamp}T12:00:00Z`) : new Date();
 const startDate = new Date(endDate.getTime() - WINDOW_DAYS * 864e5);
 const ddmmyyyy = (d) => `${String(d.getUTCDate()).padStart(2, '0')}/${String(d.getUTCMonth() + 1).padStart(2, '0')}/${d.getUTCFullYear()}`;
@@ -221,7 +229,7 @@ for (const t of tendencia.bajan) sug.push(`Baja ${t.n}: ${t.de}% → ${t.a}%.`);
 // --- 7) escribir ------------------------------------------------------------
 mkdirSync(outDir, { recursive: true });
 const out = {
-  generado: stamp || null,
+  generado,
   fuente: ARCH_URL,
   mazos: N,
   ventanaDias: WINDOW_DAYS,
@@ -234,4 +242,8 @@ const out = {
   sugerencias: sug,
 };
 writeFileSync(`${outDir}/prowess.json`, JSON.stringify(out, null, 2));
+if (RAW_OUT) {
+  writeFileSync(RAW_OUT, JSON.stringify({ generado, ventanaDias: WINDOW_DAYS, mazos: N, decks }, null, 2));
+  console.error(`   listas crudas -> ${RAW_OUT}`);
+}
 console.error(`OK -> ${outDir}/prowess.json  (${N} mazos · consenso ${consenso}% · ${sug.length} sugerencias)`);
