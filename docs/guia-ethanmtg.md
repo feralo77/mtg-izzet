@@ -16,25 +16,65 @@ aparte. La foto que hay volcada aquí es la del **26-jul-2026**.
 
 ## Cómo actualizarla (proceso)
 
-1. **Fer** abre la guía en Metafy con su cuenta y vuelve a guardar el documento como
-   `guia.pages` en la raíz del repo, encima del anterior. (Sin este paso no hay nada que
-   hacer: la web pide compra y Claude no puede leerla.)
+1. **Fer** abre la guía en Metafy con su cuenta y la trae al repo. Vale cualquiera de las dos
+   vías: guardar el documento como `guia.pages`, o **copiar y pegar** el texto en un
+   documento nuevo y dejarlo como `.rtf` o `.txt`. (Sin este paso no hay nada que hacer: la
+   web pide compra y Claude no puede leerla.)
 2. Sacar el texto y compararlo con la foto anterior:
 
    ```
-   python3 scripts/extraer_guia.py                       # -> data/guia-texto.txt
-   diff data/guia-texto-2026-07-26.txt data/guia-texto.txt
+   python3 scripts/extraer_guia.py                       # guia.pages -> data/guia-texto.txt
+   python3 scripts/extraer_guia.py pegado.rtf data/guia-texto.txt   # o desde un pegado
+   diff data/guia-texto-2026-09-06.txt data/guia-texto.txt
    ```
 
    El `diff` enseña **solo lo que cambió**, en vez de obligar a releer 11.000 palabras.
-3. Volcar lo nuevo a la pestaña Guía (traducido) y, si toca patrones de juego, al campo
-   `patrones` del matchup correspondiente en `meta/guia-sb.json`.
+   (Si las dos copias vienen de vías distintas, los saltos de línea no coinciden y el `diff`
+   crudo mete ruido: en ese caso se comparan las frases sueltas de cada fichero, que es lo
+   que se hizo el 6-sep.)
+3. Volcar lo nuevo a la pestaña Guía (traducido, marcando lo nuevo con una etiqueta de fecha)
+   y, si toca patrones de juego, al campo `patrones` del matchup correspondiente en
+   `meta/guia-sb.json`.
 4. Guardar la foto nueva como referencia para la siguiente vez:
    `cp data/guia-texto.txt data/guia-texto-<fecha>.txt`
 
 > El script existe porque un `.pages` es un zip con protobuf comprimido: sin él, la única
 > forma de leer la guía era abrir Pages a mano y copiar. Todo lo que produce va a `data/`,
 > que está gitignored.
+
+## Fotos guardadas
+
+| Fecha | Fichero | Cómo llegó |
+|---|---|---|
+| 26-jul-2026 | `data/guia-texto-2026-07-26.txt` | de `guia.pages` |
+| 6-sep-2026 | `data/guia-texto-2026-09-06.txt` | pegado de Fer (`data/guia-original-2026-09-06.rtf`) |
+
+**Pendiente de la revisión del 6-sep**: el pegado trae el capítulo principal (*Individual Card
+Choices*, *Play Pattern Guide*, *Play Pattern Deep-Dives* y *Matchup Guide*). Faltan por traer
+**Decklists**, **Other Prowess Variants**, **Mulligan Guide** y **Sideboard Guide** (las notas
+de meta del final). En el dashboard, esos capítulos siguen mostrando la versión de julio.
+
+## Qué cambió el 6-sep-2026
+
+- **ESPER BLINK**: matchup nuevo, no existía en julio. Favorable preboard.
+- **NECRODOMINANCE**: entrada abierta pero vacía (*coming soon*).
+- **GORYO'S**: el que más cambia. Pasa de "desfavorable" a "ligeramente desfavorable, depende
+  de tu build", y añade un bloque entero de cómo leerle la mano al rival. Cambia el
+  tratamiento del Psychic Frog: antes "difícil de matar, presiona por otro lado"; ahora
+  **Spell Snare es la respuesta y atacar contra el Frog es fuerte**.
+- **BROODSCALE**: reescrito. "Corre, pero respetando el combo", atacar a través del Writhing
+  Chrysalis, matar siempre al Glaring Fleshraker como jugada de tempo, y la versión
+  mono-verde marcada como más favorable.
+- **LIVING END**: cambia el veredicto a **desfavorable**; añade su lista de interacción
+  completa y el papel de Endurance (apaga el delirium en mitad del combate).
+- **NEOFORM**: desaparece el "intenta esquivarlo"; entra quemar al Griselbrand, el reparto
+  Spell Pierce/Spell Snare y el aviso de Endurance.
+- **Cartas nuevas fichadas**: Prismatic Ending, Soul-Guide Lantern (con la comparativa contra
+  Tormod's Crypt) e Island, que en julio estaba pendiente.
+- **Sección nueva de patrones**: *la fetchland como recurso* — cuándo NO romperla.
+- Retoques de veredicto en **Affinity** (manda quien esté en la jugada), **Boros Ponza**
+  (positivo preboard, más igualado post-side), **Burn** (protege la vida, busca solo básicas)
+  y **Belcher** (Into the Flood Maw es su mejor jugada de control).
 
 ## Estado del cruce con tu plan de sideboard
 
@@ -43,6 +83,10 @@ El encargo de Fer del 27-jul era cruzar la guía de ethanmtg contra su propio pl
 
 - **12-ago**: cruzados mirror y Esper Goryo's.
 - **5-sep**: cruzados los **14 restantes**. Los 16 matchups tienen ya su campo `patrones`.
+- **6-sep**: actualizados los cuatro que el autor reescribió (Goryo's, Broodscale, Living End
+  y Neoform). Cada uno arranca con una línea que dice qué cambió respecto a julio. Esper
+  Blink **no** se añade a esta guía: es de la pestaña Guía, pero no aparece ni una vez en el
+  censo de rivales de la liga (`scouting.csv`).
 
 Dos avisos honestos de ese cruce:
 

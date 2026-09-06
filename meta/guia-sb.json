@@ -1,5 +1,5 @@
 {
-  "fecha": "2026-09-05",
+  "fecha": "2026-09-06",
   "autor": "Criterio de Magic (brainstorm /mtg-expert). No lo calcula el robot: que carta responde a que mazo no sale de los datos.",
   "para": "La 75 Definitiva (7-ago-2026)",
   "orden": "Por frecuencia en la liga de Fer (scouting.csv, 164 rivales censados). Tu record sale de registro.csv filtrado por feralo77.",
@@ -81,10 +81,17 @@
         "Esper Goryo's"
       ],
       "patrones": [
+        "(Actualizado con la revision del 6-sep.) El veredicto del autor cambia: ya no es 'desfavorable' a secas sino LIGERAMENTE desfavorable, y depende de tu lista — cuanto mas pump lleves de main, peor.",
+        "CAMBIO IMPORTANTE: la mejor forma de tratar al Psychic Frog es Spell Snare. Unholy Heat tambien, pero necesita tiempo para el delirium. En julio la guia decia que el Frog era dificil de matar y que presionaras por otro lado; ahora dice que ATACAR contra el Frog es fuerte, porque la presion sobre su vida hace que se lo piensen antes de atacar con el.",
+        "Guarda el Spell Snare para el Frog o el Goryo's Vengeance. En la jugada y con mesa montada, pegarle al Fallaji Archaeologist es fuerte; al Faithful Mending solo si les matas el turno siguiente y no mueres a un Goryo's de respuesta.",
+        "Unholy Heat rompe Solitude/Ephemerate AUNQUE no tengas delirium. Guardalo para eso o para el Frog.",
         "G1 ultra-agresivo pero SIN sobreextender a Solitude: ve ancho, no con todo a la vez.",
-        "Sacales la primera Solitude antes de comprometer el golpe grande.",
+        "Sacales la primera Solitude antes de comprometer el golpe grande. Ojo: ir ancho te expone mas al Wrath of the Skies, que ahora es una de sus cartas clave.",
+        "El combo Quantum Riddler/Ephemerate te gana el desgaste: hay que atacar a traves de el.",
+        "Antes de arriesgar, evalua si un Goryo's el turno siguiente te hace perder seguro y si puedes contestarlo. Eso decide cuanto te comprometes.",
         "No te quedes sin mana contra Solitude + Ephemerate.",
-        "El Psychic Frog se protege solo: no gastes removal ahi, presiona por otro lado."
+        "Leerles la mano: si juegan tierra de surveil en el turno 2 dificilmente tienen mas tierras; apunta que surveilean (si mandan otra tierra al cementerio, les quedan 2+ en mano). Y apunta que exilian para pagar Solitude o Force: si pagan Solitude con Wrath of the Skies, no les queda otra carta blanca.",
+        "Los games post-side son bastante MAS LARGOS que el game 1: no sobreextiendas y cuida los tiempos."
       ]
     },
     {
@@ -134,10 +141,16 @@
         "Neoform"
       ],
       "patrones": [
-        "Nota literal del autor: 'intenta esquivarlo'. Game 1 es carrera pura y vas por detras.",
+        "(Actualizado con la revision del 6-sep.) Desaparece el 'intenta esquivarlo' de julio; ahora es preboard desfavorable y post-side un matchup de tempo.",
+        "Guarda el Spell Pierce para el Eldritch Evolution y prioriza el Spell Snare sobre el Neoform.",
+        "Despues de contrarrestar el primer Neoform o Eldritch Evolution, DA LA VUELTA YA: no juegues alrededor de que roben otra copia del combo.",
+        "Preboard, ataca su vida a saco: cada punto le quita activaciones de Griselbrand. Y quemar al Griselbrand es una linea valida, no ideal pero roba partidas.",
+        "Cuidado con Endurance: gran respuesta al Slickshot y te revienta el DRC / Violent Urge apagandote el delirium. Post-side meten mas.",
+        "Obligales a gastar su Consign to Memory en sus propios triggers de Pact.",
+        "Planifica como dar la vuelta SIN soltar la interaccion: Cutter con hechizo de coste 0, un turno de varios one-drops, dos Slickshot repartidos en dos turnos.",
         "Wistfulness destruye Cori-Steel Cutter.",
-        "El doble golpe es obligatorio para ganar la carrera.",
-        "No juegues alrededor de Pact of Negation: no compensa.",
+        "El doble golpe suele ser necesario para ganar la carrera.",
+        "No juegues alrededor de Pact of Negation.",
         "Post-side, mulliganea buscando contrahechizos (Spell Pierce, Spell Snare)."
       ]
     },
@@ -315,14 +328,15 @@
         "Broodscale"
       ],
       "patrones": [
-        "El autor avisa de que es el matchup que mas sigue probando: el rol agresivo cambia de manos a menudo y es dificil de fijar.",
-        "Juega tu interaccion lo MAS TARDE posible para que gasten recursos: si no tienen spawns en mesa, espera a que paguen el coste de adaptar del Basking Broodscale antes de matarlo.",
+        "(Actualizado con la revision del 6-sep.) El plan se resume ahora en una frase: CORRE, PERO RESPETANDO EL COMBO. Y ataca a traves del Writhing Chrysalis, no te quedes esperando.",
+        "Mata SIEMPRE al Glaring Fleshraker como jugada de tempo en los turnos tempranos (antes la guia decia que solo con varios removal en mano). Dos Fleshraker te matan rapido.",
+        "Kills que te matan: Broodscale + Blade + Glaring Fleshraker, Broodscale + Blade + Walking Ballista, Broodscale + Blade + Kozilek's Command. Y Emrakul casi siempre.",
+        "Post-side, Prowess tiene que seguir siendo el AGRESOR PRINCIPAL aunque juegues algo mas a tempo.",
+        "Su Urza's Saga rara vez hace fichas de construct, pero en algunas posiciones puede ganarte el desgaste igualmente.",
+        "Juega tu interaccion lo MAS TARDE posible: si no tienen spawns en mesa, espera a que paguen el coste de adaptar del Basking Broodscale antes de matarlo.",
         "Kozilek's Command es su mejor pieza: flexible y ademas les rampea.",
-        "Writhing Chrysalis deja bloqueadores muy buenos.",
-        "Dos Glaring Fleshraker te matan rapido: si tienes varios removal, uno va siempre al Fleshraker.",
-        "Lo que te mata: Fleshraker + Broodscale + Blade, Broodscale + Blade + Walking Ballista, Broodscale + Blade + Kozilek's Command. Y Emrakul.",
-        "Post-side, el Warping Wail se juega alrededor teniendo un Lava Dart en el cementerio.",
-        "Su Urza's Saga muchas veces no llega a hacer fichas de construct."
+        "La version MONO-VERDE es mas favorable para ti: sin Unholy Heat ni Writhing Chrysalis controlan mucho peor la mesa.",
+        "Post-side, el Warping Wail se juega alrededor teniendo un Lava Dart en el cementerio."
       ]
     },
     {
@@ -423,12 +437,18 @@
         "Living End"
       ],
       "patrones": [
+        "(Actualizado con la revision del 6-sep.) CAMBIO DE VEREDICTO: el autor lo marca ahora como DESFAVORABLE — su golpe de tempo en el turno 4 es demasiado consistente contra Prowess. Antes no le ponia etiqueta.",
         "Consign al trigger de CASCADA (no al Living End).",
+        "Endurance sobre el Slickshot es lo que les da tiempo: cuando ataques con Slickshot, asegurate al menos de poder intercambiar con una Endurance. Y ojo, la Endurance puede APAGARTE EL DELIRIUM en mitad del combate (Violent Urge, DRC).",
+        "Fuerzales a gastar interaccion: Force of Negation sobre tu Cutter es su mejor alineacion.",
+        "Toda su interaccion: Endurance, Subtlety, Colossal Skyturtle, Force of Negation, Sink into Stupor, Brotherhood's End, Mystical Dispute, Dismember y Wistfulness.",
+        "Mira que cartas mandan al fondo con la cascada o el Living End: te da rango de su mano.",
         "Baja el Slickshot despues de que resuelva el Living End, intentando esquivar el Generous Ent; si lo tienen, provocales el ataque primero.",
         "Cuidado con lanzar criaturas despues del turno 1 si pueden tener Subtlety.",
-        "Wistfulness destruye Cori-Steel Cutter: no lo bajes en el turno 2 sin mas hechizos detras."
+        "Wistfulness destruye Cori-Steel Cutter: no lo bajes en el turno 2 sin mas hechizos detras.",
+        "Post-side, la agresion manda igual: el one-drop es clave en la jugada Y en el robo."
       ]
     }
   ],
-  "nota_patrones": "Campo 'patrones' (12-ago, ampliado 5-sep): patrones de juego migrados del cruce con la guia de ethanmtg (pestana Guia), matchup a matchup. Encargo de Fer del 27-jul, COMPLETADO: los 16 matchups cruzados. Hollow One no tiene seccion en la guia y Grixis Reanimator hereda la de Goryo's, ambos marcados en su propia lista. Fuente: foto de la guia del 26-jul-2026; el autor la actualizo el 6-sep y esa version aun no esta volcada."
+  "nota_patrones": "Campo 'patrones' (12-ago, ampliado 5-sep, actualizado 6-sep con la revision nueva de la guia): patrones de juego migrados del cruce con la guia de ethanmtg (pestana Guia), matchup a matchup. Los 16 estan cruzados. Hollow One no tiene seccion en la guia y Grixis Reanimator hereda la de Goryo's, ambos marcados en su propia lista. El 6-sep el autor reescribio Goryo's, Broodscale, Living End y Neoform (y anadio Esper Blink, que no esta en la liga de Fer): esos cuatro llevan arriba una linea que dice que cambio."
 }

@@ -7,9 +7,13 @@ Cuando Fer vuelve a guardar guia.pages con la version nueva, este script saca
 el texto y se puede comparar con la foto anterior para ver SOLO lo que cambio,
 en vez de releer 11.000 palabras a mano.
 
+Acepta .pages (el documento guardado desde Metafy) y tambien .rtf o .txt, que es
+lo que sale de copiar y pegar la guia en un documento nuevo — la via que uso Fer
+el 6-sep y la mas comoda si solo cambia un capitulo.
+
 Uso:
     python3 scripts/extraer_guia.py                     # -> data/guia-texto.txt
-    python3 scripts/extraer_guia.py otra.pages salida.txt
+    python3 scripts/extraer_guia.py pegado.rtf salida.txt
 
 Y para ver los cambios respecto a la foto anterior:
     diff data/guia-texto-<fecha>.txt data/guia-texto.txt
@@ -20,7 +24,9 @@ Un .pages es un zip con los indices en formato IWA de Apple: protobuf comprimido
 con snappy en bloques con cabecera de 4 bytes. Aqui se descomprime a mano para no
 depender de librerias externas ni de tener Pages abierto.
 """
+import io
 import os
+import subprocess
 import sys
 import zipfile
 
@@ -129,10 +135,20 @@ def main():
     if not os.path.exists(origen):
         sys.exit('No encuentro %s. Guarda la guia como guia.pages en la raiz del repo.' % origen)
 
-    with zipfile.ZipFile(origen) as z:
-        raw = z.read('Index/Document.iwa')
+    ext = os.path.splitext(origen)[1].lower()
+    if ext in ('.rtf', '.rtfd', '.doc', '.docx'):
+        # Un pegado en Pages/TextEdit: textutil (de macOS) lo pasa a texto plano.
+        salida = subprocess.run(['textutil', '-convert', 'txt', '-encoding', 'UTF-8',
+                                 '-stdout', origen], capture_output=True)
+        lineas = [l for l in salida.stdout.decode('utf-8', 'replace').split('\n')]
+    elif ext == '.txt':
+        lineas = io.open(origen, encoding='utf-8', errors='replace').read().split('\n')
+    else:
+        with zipfile.ZipFile(origen) as z:
+            raw = z.read('Index/Document.iwa')
+        lineas = texto_utf8(iwa_descomprimir(raw))
 
-    lineas = texto_utf8(iwa_descomprimir(raw))
+    lineas = [l.rstrip() for l in lineas if l.strip()]
 
     # El documento arranca con metadatos de idioma y formatos de fecha del sistema:
     # el texto de verdad empieza en el indice.
@@ -142,7 +158,7 @@ def main():
             break
 
     os.makedirs(os.path.dirname(destino), exist_ok=True)
-    with open(destino, 'w', encoding='utf-8') as f:
+    with io.open(destino, 'w', encoding='utf-8') as f:
         f.write('\n'.join(lineas) + '\n')
 
     palabras = sum(len(l.split()) for l in lineas)
