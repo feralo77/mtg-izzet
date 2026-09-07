@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-06",
+ "generado": "2026-09-07",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,24 +21,24 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 0,
+  "diasDesde": 1,
   "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-06",
+ "campoDesde": "2026-09-07",
  "campoError": null,
  "campo": {
-  "mazos": 794,
+  "mazos": 780,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 11
+    "pct": 12
    },
    {
     "n": "Blink",
-    "pct": 11
+    "pct": 10
    },
    {
     "n": "Affinity",
@@ -65,15 +65,15 @@
     "pct": 0.8
    },
    {
-    "n": "Selesnya Aggro",
-    "pct": 0.4
-   },
-   {
     "n": "Simic Birthing Ritual",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Red Deck Wins",
+    "pct": 0.5
+   },
+   {
+    "n": "Selesnya Aggro",
     "pct": 0.4
    },
    {
@@ -93,10 +93,6 @@
     "pct": 0.1
    },
    {
-    "n": "Merfolk",
-    "pct": 0.1
-   },
-   {
     "n": "Mono Green Aggro",
     "pct": 0.1
    },
@@ -106,7 +102,7 @@
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.3
+    "pct": 0.1
    },
    {
     "n": "Eldrazi Ramp",
@@ -130,15 +126,11 @@
    },
    {
     "n": "Esper Control",
-    "pct": 0.8
+    "pct": 0.6
    },
    {
     "n": "Elementals",
     "pct": 0.3
-   },
-   {
-    "n": "Urza",
-    "pct": 0.1
    },
    {
     "n": "Gruul Utopia",
@@ -158,15 +150,15 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 10
+    "pct": 11
    },
    {
     "n": "Instant Reanimator",
-    "pct": 8
+    "pct": 7
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Living End",
@@ -181,15 +173,15 @@
     "pct": 2
    },
    {
-    "n": "Amulet Titan",
-    "pct": 1
-   },
-   {
     "n": "Landless",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Reanimator",
+    "pct": 1
+   },
+   {
+    "n": "Amulet Titan",
     "pct": 1
    },
    {
@@ -198,11 +190,11 @@
    },
    {
     "n": "Hammer Time",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Song of Creation",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Cosmogoyf",
@@ -667,8 +659,8 @@
     "deltaLiga": 2.1,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 8,
-     "pctPrev": 9,
+     "pct": 7,
+     "pctPrev": 8,
      "delta": -1
     },
     "w": 2,
@@ -688,8 +680,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -720,16 +712,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 11% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 10% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 11,
+     "pct": 10,
      "pctPrev": 11,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
