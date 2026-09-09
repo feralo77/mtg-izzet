@@ -652,8 +652,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 6,
-     "pctPrev": 5,
-     "delta": 1
+     "pctPrev": 6,
+     "delta": 0
     },
     "w": 1,
     "l": 2,
