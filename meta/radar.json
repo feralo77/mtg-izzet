@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-08",
+ "generado": "2026-09-09",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 2,
+  "diasDesde": 3,
   "toca": false
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-08",
+ "campoDesde": "2026-09-09",
  "campoError": null,
  "campo": {
-  "mazos": 897,
+  "mazos": 893,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -61,20 +61,16 @@
     "pct": 2
    },
    {
-    "n": "Mono Black Aggro",
+    "n": "Red Deck Wins",
     "pct": 0.7
+   },
+   {
+    "n": "Mono Black Aggro",
+    "pct": 0.6
    },
    {
     "n": "Simic Birthing Ritual",
     "pct": 0.6
-   },
-   {
-    "n": "Red Deck Wins",
-    "pct": 0.4
-   },
-   {
-    "n": "Selesnya Aggro",
-    "pct": 0.3
    },
    {
     "n": "Mardu Aggro",
@@ -85,16 +81,16 @@
     "pct": 0.3
    },
    {
+    "n": "Selesnya Aggro",
+    "pct": 0.2
+   },
+   {
     "n": "Mono Green Aggro",
     "pct": 0.2
    },
    {
     "n": "Temur Aggro",
     "pct": 0.2
-   },
-   {
-    "n": "Arclight Phoenix",
-    "pct": 0.1
    },
    {
     "n": "Gruul Aggro",
@@ -105,12 +101,16 @@
     "pct": 0.1
    },
    {
+    "n": "Rakdos Aggro",
+    "pct": 0.1
+   },
+   {
     "n": "Other - Aggro",
     "pct": 0.1
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 5
+    "pct": 6
    },
    {
     "n": "UrzaTron",
@@ -134,15 +134,11 @@
    },
    {
     "n": "Elementals",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "Grixis Control",
     "pct": 0.2
-   },
-   {
-    "n": "Gruul Utopia",
-    "pct": 0.1
    },
    {
     "n": "Lantern Control",
@@ -181,11 +177,11 @@
     "pct": 3
    },
    {
-    "n": "Allosaurus Combo",
+    "n": "Landless",
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
@@ -201,12 +197,12 @@
     "pct": 0.6
    },
    {
-    "n": "Hammer Time",
+    "n": "Song of Creation",
     "pct": 0.4
    },
    {
-    "n": "Song of Creation",
-    "pct": 0.4
+    "n": "Hammer Time",
+    "pct": 0.3
    },
    {
     "n": "Cosmogoyf",
@@ -655,9 +651,9 @@
     "deltaLiga": 6.3,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 5,
+     "pct": 6,
      "pctPrev": 5,
-     "delta": 0
+     "delta": 1
     },
     "w": 1,
     "l": 2,
@@ -676,8 +672,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 8,
-     "pctPrev": 7,
-     "delta": 1
+     "pctPrev": 8,
+     "delta": 0
     },
     "w": 2,
     "l": 3,
