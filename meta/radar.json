@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-09",
+ "generado": "2026-09-10",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,12 +21,12 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 3,
-  "toca": false
+  "diasDesde": 4,
+  "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-09",
+ "campoDesde": "2026-09-10",
  "campoError": null,
  "campo": {
   "mazos": 893,
@@ -42,7 +42,7 @@
    },
    {
     "n": "Affinity",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Boros Aggro",
@@ -53,11 +53,11 @@
     "pct": 3
    },
    {
-    "n": "Jeskai Aggro",
+    "n": "Hollow One",
     "pct": 2
    },
    {
-    "n": "Hollow One",
+    "n": "Jeskai Aggro",
     "pct": 2
    },
    {
@@ -65,11 +65,11 @@
     "pct": 0.7
    },
    {
-    "n": "Mono Black Aggro",
-    "pct": 0.6
+    "n": "Simic Birthing Ritual",
+    "pct": 0.7
    },
    {
-    "n": "Simic Birthing Ritual",
+    "n": "Mono Black Aggro",
     "pct": 0.6
    },
    {
@@ -81,16 +81,16 @@
     "pct": 0.3
    },
    {
-    "n": "Selesnya Aggro",
-    "pct": 0.2
-   },
-   {
     "n": "Mono Green Aggro",
     "pct": 0.2
    },
    {
     "n": "Temur Aggro",
     "pct": 0.2
+   },
+   {
+    "n": "Selesnya Aggro",
+    "pct": 0.1
    },
    {
     "n": "Gruul Aggro",
@@ -110,10 +110,10 @@
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 6
+    "pct": 5
    },
    {
-    "n": "UrzaTron",
+    "n": "Dimir Control",
     "pct": 4
    },
    {
@@ -121,7 +121,7 @@
     "pct": 4
    },
    {
-    "n": "Dimir Control",
+    "n": "UrzaTron",
     "pct": 4
    },
    {
@@ -129,16 +129,16 @@
     "pct": 2
    },
    {
+    "n": "Elementals",
+    "pct": 0.4
+   },
+   {
     "n": "Esper Control",
     "pct": 0.3
    },
    {
-    "n": "Elementals",
-    "pct": 0.3
-   },
-   {
     "n": "Grixis Control",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "Lantern Control",
@@ -154,11 +154,11 @@
    },
    {
     "n": "Other - Control",
-    "pct": 1
+    "pct": 0.9
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 10
+    "pct": 11
    },
    {
     "n": "Instant Reanimator",
@@ -185,11 +185,11 @@
     "pct": 2
    },
    {
-    "n": "Reanimator",
+    "n": "Amulet Titan",
     "pct": 1
    },
    {
-    "n": "Amulet Titan",
+    "n": "Reanimator",
     "pct": 1
    },
    {
@@ -197,11 +197,11 @@
     "pct": 0.6
    },
    {
-    "n": "Song of Creation",
-    "pct": 0.4
+    "n": "Hammer Time",
+    "pct": 0.3
    },
    {
-    "n": "Hammer Time",
+    "n": "Song of Creation",
     "pct": 0.3
    },
    {
@@ -238,7 +238,7 @@
    "hasta": "2026-08-20"
   },
   "antes": {
-   "partidas": 95,
+   "partidas": 94,
    "desde": "2026-07-09",
    "hasta": "2026-07-22"
   },
@@ -262,8 +262,8 @@
     "variantes": null,
     "partidas": 8,
     "frec": 8.4,
-    "frecPrev": 6.3,
-    "delta": 2.1,
+    "frecPrev": 6.4,
+    "delta": 2,
     "w": 2,
     "l": 3,
     "n_": 5,
@@ -274,24 +274,12 @@
     "variantes": null,
     "partidas": 7,
     "frec": 7.4,
-    "frecPrev": 8.4,
-    "delta": -1,
+    "frecPrev": 8.5,
+    "delta": -1.1,
     "w": 3,
     "l": 1,
     "n_": 4,
     "wr": 75
-   },
-   {
-    "n": "Dimir Frog",
-    "variantes": null,
-    "partidas": 7,
-    "frec": 7.4,
-    "frecPrev": 5.3,
-    "delta": 2.1,
-    "w": 1,
-    "l": 3,
-    "n_": 4,
-    "wr": 25
    },
    {
     "n": "Neoform",
@@ -306,12 +294,24 @@
     "wr": 0
    },
    {
+    "n": "Dimir Frog",
+    "variantes": null,
+    "partidas": 7,
+    "frec": 7.4,
+    "frecPrev": 4.3,
+    "delta": 3.1,
+    "w": 0,
+    "l": 3,
+    "n_": 3,
+    "wr": 0
+   },
+   {
     "n": "Ruby Storm",
     "variantes": null,
     "partidas": 6,
     "frec": 6.3,
-    "frecPrev": 4.2,
-    "delta": 2.1,
+    "frecPrev": 4.3,
+    "delta": 2,
     "w": 2,
     "l": 0,
     "n_": 2,
@@ -373,8 +373,8 @@
     ],
     "partidas": 4,
     "frec": 4.2,
-    "frecPrev": 8.4,
-    "delta": -4.2,
+    "frecPrev": 8.5,
+    "delta": -4.3,
     "w": 0,
     "l": 2,
     "n_": 2,
@@ -436,8 +436,8 @@
     "variantes": null,
     "partidas": 1,
     "frec": 1.1,
-    "frecPrev": 6.3,
-    "delta": -5.2,
+    "frecPrev": 6.4,
+    "delta": -5.3,
     "w": 2,
     "l": 2,
     "n_": 4,
@@ -651,9 +651,9 @@
     "deltaLiga": 6.3,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 6,
+     "pct": 5,
      "pctPrev": 6,
-     "delta": 0
+     "delta": -1
     },
     "w": 1,
     "l": 2,
@@ -668,7 +668,7 @@
    "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
     "frecLiga": 8.4,
-    "deltaLiga": 2.1,
+    "deltaLiga": 2,
     "campo": {
      "global": "Instant Reanimator",
      "pct": 8,
@@ -684,21 +684,21 @@
   {
    "nivel": "adaptarse",
    "mazo": "Dimir Frog",
-   "titular": "Dimir Frog: es el 7.4% de tu liga y vas 1-3 (25%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "titular": "Dimir Frog: está subiendo (+3.1 pts en tu liga) y vas 0-3 (0%)",
+   "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
    "datos": {
     "frecLiga": 7.4,
-    "deltaLiga": 2.1,
+    "deltaLiga": 3.1,
     "campo": {
      "global": "Dimir Control",
      "pct": 4,
      "pctPrev": 4,
      "delta": 0
     },
-    "w": 1,
+    "w": 0,
     "l": 3,
-    "wr": 25,
-    "n": 4
+    "wr": 0,
+    "n": 3
    }
   },
   {
