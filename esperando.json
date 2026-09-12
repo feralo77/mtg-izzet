@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-11",
+ "generado": "2026-09-12",
  "rondas": [
   {
    "jugador": "4c_PolG",
@@ -95,6 +95,22 @@
    "evento": "Liga 11",
    "ronda": "5",
    "rival": "",
+   "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "11/09/2026",
+   "evento": "Liga 12",
+   "ronda": "1",
+   "rival": "phryxiankill",
+   "mazo": "rhinos"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "11/09/2026",
+   "evento": "Liga 12",
+   "ronda": "2",
+   "rival": "chef_chuy",
    "mazo": ""
   }
  ]
