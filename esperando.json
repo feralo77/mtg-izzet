@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-12",
+ "generado": "2026-09-13",
  "rondas": [
   {
    "jugador": "4c_PolG",
@@ -111,6 +111,30 @@
    "evento": "Liga 12",
    "ronda": "2",
    "rival": "chef_chuy",
+   "mazo": "broodscale"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "12/09/2026",
+   "evento": "Liga 12",
+   "ronda": "3",
+   "rival": "yorionlover",
+   "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "12/09/2026",
+   "evento": "Liga 12",
+   "ronda": "4",
+   "rival": "rsax",
+   "mazo": "ponza"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "12/09/2026",
+   "evento": "Liga 12",
+   "ronda": "5",
+   "rival": "shadowfind69",
    "mazo": ""
   }
  ]
