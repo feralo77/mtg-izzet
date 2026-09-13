@@ -1,9 +1,9 @@
 {
-  "generado": "2026-09-11",
+  "generado": "2026-09-13",
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
   "mazos": 60,
   "ventanaDias": 28,
-  "consenso": 78,
+  "consenso": 82,
   "listaMedia": {
     "main": [
       {
@@ -47,12 +47,12 @@
         "q": 4
       },
       {
-        "n": "Fiery Islet",
-        "q": 2
+        "n": "Scalding Tarn",
+        "q": 3
       },
       {
-        "n": "Scalding Tarn",
-        "q": 4
+        "n": "Fiery Islet",
+        "q": 2
       },
       {
         "n": "Slickshot Show-Off",
@@ -63,12 +63,12 @@
         "q": 4
       },
       {
-        "n": "Expressive Iteration",
-        "q": 4
+        "n": "Bloodstained Mire",
+        "q": 2
       },
       {
-        "n": "Bloodstained Mire",
-        "q": 3
+        "n": "Expressive Iteration",
+        "q": 4
       },
       {
         "n": "Wooded Foothills",
@@ -86,7 +86,7 @@
     "side": [
       {
         "n": "Consign to Memory",
-        "q": 3
+        "q": 4
       },
       {
         "n": "Unholy Heat",
@@ -113,28 +113,28 @@
         "q": 2
       }
     ],
-    "totalMain": 63,
-    "totalSide": 16,
+    "totalMain": 61,
+    "totalSide": 17,
     "sideDisputa": [
       {
         "n": "Into the Flood Maw",
-        "pct": 27,
-        "q": 1
-      },
-      {
-        "n": "Expressive Iteration",
-        "pct": 22,
+        "pct": 23,
         "q": 1
       },
       {
         "n": "Mystical Dispute",
+        "pct": 20,
+        "q": 1
+      },
+      {
+        "n": "Expressive Iteration",
         "pct": 18,
         "q": 1
       },
       {
-        "n": "Murktide Regent",
+        "n": "Obsidian Charmaw",
         "pct": 15,
-        "q": 1
+        "q": 2
       }
     ]
   },
@@ -170,7 +170,7 @@
       "n": "Steam Vents",
       "decks": 60,
       "pct": 100,
-      "avg": 3.22,
+      "avg": 3.23,
       "typical": 3,
       "min": 2,
       "max": 4
@@ -230,28 +230,28 @@
       "max": 4
     },
     {
+      "n": "Scalding Tarn",
+      "decks": 57,
+      "pct": 95,
+      "avg": 3.07,
+      "typical": 3,
+      "min": 1,
+      "max": 4
+    },
+    {
       "n": "Fiery Islet",
-      "decks": 58,
-      "pct": 97,
-      "avg": 1.59,
+      "decks": 57,
+      "pct": 95,
+      "avg": 1.58,
       "typical": 2,
       "min": 1,
       "max": 3
     },
     {
-      "n": "Scalding Tarn",
-      "decks": 55,
-      "pct": 92,
-      "avg": 3.15,
-      "typical": 4,
-      "min": 1,
-      "max": 4
-    },
-    {
       "n": "Slickshot Show-Off",
       "decks": 54,
       "pct": 90,
-      "avg": 3.76,
+      "avg": 3.65,
       "typical": 4,
       "min": 2,
       "max": 4
@@ -260,9 +260,18 @@
       "n": "Mutagenic Growth",
       "decks": 54,
       "pct": 90,
-      "avg": 3.35,
+      "avg": 3.31,
       "typical": 4,
       "min": 2,
+      "max": 4
+    },
+    {
+      "n": "Bloodstained Mire",
+      "decks": 54,
+      "pct": 90,
+      "avg": 2.72,
+      "typical": 2,
+      "min": 1,
       "max": 4
     },
     {
@@ -275,103 +284,85 @@
       "max": 4
     },
     {
-      "n": "Bloodstained Mire",
-      "decks": 53,
-      "pct": 88,
-      "avg": 2.77,
-      "typical": 3,
-      "min": 1,
-      "max": 4
-    },
-    {
       "n": "Wooded Foothills",
       "decks": 50,
       "pct": 83,
-      "avg": 2.4,
+      "avg": 2.38,
       "typical": 2,
       "min": 1,
       "max": 4
     },
     {
       "n": "Arid Mesa",
-      "decks": 47,
-      "pct": 78,
-      "avg": 2.36,
+      "decks": 48,
+      "pct": 80,
+      "avg": 2.31,
       "typical": 3,
       "min": 1,
       "max": 4
     },
     {
       "n": "Violent Urge",
-      "decks": 36,
-      "pct": 60,
-      "avg": 1.67,
+      "decks": 34,
+      "pct": 57,
+      "avg": 1.68,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Unholy Heat",
-      "decks": 24,
-      "pct": 40,
-      "avg": 1.42,
+      "decks": 23,
+      "pct": 38,
+      "avg": 1.48,
       "typical": 1,
       "min": 1,
       "max": 4
     },
     {
       "n": "Stormchaser's Talent",
-      "decks": 19,
-      "pct": 32,
-      "avg": 2.37,
-      "typical": 4,
+      "decks": 21,
+      "pct": 35,
+      "avg": 2.43,
+      "typical": 2,
       "min": 1,
       "max": 4
     },
     {
       "n": "Boomerang Basics",
-      "decks": 14,
-      "pct": 23,
-      "avg": 3.43,
+      "decks": 17,
+      "pct": 28,
+      "avg": 3.53,
       "typical": 4,
       "min": 1,
       "max": 4
     },
     {
       "n": "Monstrous Rage",
-      "decks": 13,
-      "pct": 22,
-      "avg": 1.92,
+      "decks": 12,
+      "pct": 20,
+      "avg": 1.75,
       "typical": 2,
       "min": 1,
       "max": 3
     },
     {
+      "n": "Tormod's Crypt",
+      "decks": 9,
+      "pct": 15,
+      "avg": 1.89,
+      "typical": 2,
+      "min": 1,
+      "max": 2
+    },
+    {
       "n": "Assault Strobe",
-      "decks": 10,
-      "pct": 17,
+      "decks": 8,
+      "pct": 13,
       "avg": 2,
       "typical": 2,
       "min": 2,
       "max": 2
-    },
-    {
-      "n": "Tormod's Crypt",
-      "decks": 7,
-      "pct": 12,
-      "avg": 1.71,
-      "typical": 2,
-      "min": 1,
-      "max": 2
-    },
-    {
-      "n": "Stomping Ground",
-      "decks": 7,
-      "pct": 12,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
     },
     {
       "n": "Island",
@@ -383,7 +374,7 @@
       "max": 3
     },
     {
-      "n": "Flashback",
+      "n": "Stomping Ground",
       "decks": 6,
       "pct": 10,
       "avg": 1,
@@ -401,9 +392,9 @@
       "max": 4
     },
     {
-      "n": "Into the Flood Maw",
-      "decks": 3,
-      "pct": 5,
+      "n": "Flashback",
+      "decks": 4,
+      "pct": 7,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -438,6 +429,15 @@
     },
     {
       "n": "Blood Crypt",
+      "decks": 2,
+      "pct": 3,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Into the Flood Maw",
       "decks": 2,
       "pct": 3,
       "avg": 1,
@@ -568,8 +568,8 @@
       "n": "Consign to Memory",
       "decks": 60,
       "pct": 100,
-      "avg": 3.43,
-      "typical": 3,
+      "avg": 3.48,
+      "typical": 4,
       "min": 2,
       "max": 4
     },
@@ -577,33 +577,33 @@
       "n": "Unholy Heat",
       "decks": 58,
       "pct": 97,
-      "avg": 2.97,
+      "avg": 2.98,
       "typical": 3,
-      "min": 2,
+      "min": 1,
       "max": 4
     },
     {
       "n": "Meltdown",
-      "decks": 50,
-      "pct": 83,
-      "avg": 1.84,
+      "decks": 51,
+      "pct": 85,
+      "avg": 1.82,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Spell Pierce",
-      "decks": 48,
-      "pct": 80,
-      "avg": 1.67,
+      "decks": 49,
+      "pct": 82,
+      "avg": 1.69,
       "typical": 2,
       "min": 1,
-      "max": 3
+      "max": 2
     },
     {
       "n": "Spell Snare",
-      "decks": 47,
-      "pct": 78,
+      "decks": 48,
+      "pct": 80,
       "avg": 2.17,
       "typical": 2,
       "min": 1,
@@ -611,9 +611,9 @@
     },
     {
       "n": "Surgical Extraction",
-      "decks": 39,
-      "pct": 65,
-      "avg": 1.69,
+      "decks": 34,
+      "pct": 57,
+      "avg": 1.71,
       "typical": 2,
       "min": 1,
       "max": 4
@@ -622,73 +622,55 @@
       "n": "Tormod's Crypt",
       "decks": 25,
       "pct": 42,
-      "avg": 1.64,
+      "avg": 1.76,
       "typical": 2,
       "min": 1,
       "max": 3
     },
     {
       "n": "Into the Flood Maw",
-      "decks": 16,
-      "pct": 27,
-      "avg": 1.25,
+      "decks": 14,
+      "pct": 23,
+      "avg": 1.29,
       "typical": 1,
       "min": 1,
       "max": 2
-    },
-    {
-      "n": "Expressive Iteration",
-      "decks": 13,
-      "pct": 22,
-      "avg": 1.38,
-      "typical": 1,
-      "min": 1,
-      "max": 3
     },
     {
       "n": "Mystical Dispute",
-      "decks": 11,
-      "pct": 18,
-      "avg": 1.27,
+      "decks": 12,
+      "pct": 20,
+      "avg": 1.25,
       "typical": 1,
       "min": 1,
       "max": 3
     },
     {
-      "n": "Murktide Regent",
-      "decks": 9,
-      "pct": 15,
-      "avg": 1.44,
+      "n": "Expressive Iteration",
+      "decks": 11,
+      "pct": 18,
+      "avg": 1.36,
       "typical": 1,
       "min": 1,
-      "max": 2
+      "max": 3
     },
     {
       "n": "Obsidian Charmaw",
-      "decks": 7,
-      "pct": 12,
+      "decks": 9,
+      "pct": 15,
       "avg": 2,
       "typical": 2,
       "min": 2,
       "max": 2
     },
     {
-      "n": "Pick Your Poison",
+      "n": "Murktide Regent",
       "decks": 6,
       "pct": 10,
-      "avg": 1.33,
-      "typical": 1,
+      "avg": 1.5,
+      "typical": 2,
       "min": 1,
-      "max": 3
-    },
-    {
-      "n": "Fire Magic",
-      "decks": 6,
-      "pct": 10,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
+      "max": 2
     },
     {
       "n": "Assault Strobe",
@@ -703,6 +685,15 @@
       "n": "Heritage Reclamation",
       "decks": 5,
       "pct": 8,
+      "avg": 1.2,
+      "typical": 1,
+      "min": 1,
+      "max": 2
+    },
+    {
+      "n": "Pick Your Poison",
+      "decks": 5,
+      "pct": 8,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -710,8 +701,17 @@
     },
     {
       "n": "End the Festivities",
-      "decks": 3,
-      "pct": 5,
+      "decks": 4,
+      "pct": 7,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Fire Magic",
+      "decks": 4,
+      "pct": 7,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -764,6 +764,15 @@
     },
     {
       "n": "Nihil Spellbomb",
+      "decks": 1,
+      "pct": 2,
+      "avg": 2,
+      "typical": 2,
+      "min": 2,
+      "max": 2
+    },
+    {
+      "n": "Violent Urge",
       "decks": 1,
       "pct": 2,
       "avg": 2,
@@ -910,22 +919,17 @@
     "campoJuegaYoNo": [
       {
         "n": "Surgical Extraction",
-        "pct": 65,
-        "zona": "side"
-      },
-      {
-        "n": "Into the Flood Maw",
-        "pct": 27,
+        "pct": 57,
         "zona": "side"
       }
     ],
     "yoJuegoCampoNo": [],
     "desviaciones": [
       {
-        "n": "Scalding Tarn",
+        "n": "Bloodstained Mire",
         "mio": 3,
-        "campo": 4,
-        "pct": 92,
+        "campo": 2,
+        "pct": 90,
         "zona": "main",
         "menor": true
       },
@@ -933,24 +937,14 @@
         "n": "Arid Mesa",
         "mio": 1,
         "campo": 3,
-        "pct": 78,
+        "pct": 80,
         "zona": "main",
-        "menor": false
-      },
-      {
-        "n": "Consign to Memory",
-        "mio": 4,
-        "campo": 3,
-        "pct": 100,
-        "zona": "side",
         "menor": false
       }
     ]
   },
   "sugerencias": [
-    "El campo juega Surgical Extraction (65% · side) y tu lista no lo lleva.",
-    "El campo juega Into the Flood Maw (27% · side) y tu lista no lo lleva.",
-    "Arid Mesa (main): tu 1, el consenso 3.",
-    "Consign to Memory (side): tu 4, el consenso 3."
+    "El campo juega Surgical Extraction (57% · side) y tu lista no lo lleva.",
+    "Arid Mesa (main): tu 1, el consenso 3."
   ]
 }
