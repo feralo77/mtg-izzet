@@ -676,8 +676,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 5,
-     "pctPrev": 4,
-     "delta": 1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -716,8 +716,8 @@
     "campo": {
      "global": "Blink",
      "pct": 11,
-     "pctPrev": 10,
-     "delta": 1
+     "pctPrev": 11,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -736,8 +736,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 5,
-     "pctPrev": 4,
-     "delta": 1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -756,8 +756,8 @@
     "campo": {
      "global": "Landless",
      "pct": 3,
-     "pctPrev": 2,
-     "delta": 1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
