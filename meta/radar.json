@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-13",
+ "generado": "2026-09-14",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,24 +21,24 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 7,
+  "diasDesde": 8,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-13",
+ "campoDesde": "2026-09-14",
  "campoError": null,
  "campo": {
-  "mazos": 710,
+  "mazos": 694,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
-    "n": "Blink",
+    "n": "UR Aggro",
     "pct": 11
    },
    {
-    "n": "UR Aggro",
-    "pct": 11
+    "n": "Blink",
+    "pct": 10
    },
    {
     "n": "Affinity",
@@ -46,7 +46,7 @@
    },
    {
     "n": "Boros Aggro",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "4/5c Aggro",
@@ -54,7 +54,7 @@
    },
    {
     "n": "Hollow One",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Jeskai Aggro",
@@ -62,26 +62,26 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.8
+    "pct": 1
    },
    {
     "n": "Simic Birthing Ritual",
-    "pct": 0.8
+    "pct": 0.9
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.6
+    "pct": 0.4
    },
    {
     "n": "Eldrazi Aggro",
     "pct": 0.4
    },
    {
-    "n": "Selesnya Aggro",
-    "pct": 0.1
+    "n": "Rakdos Aggro",
+    "pct": 0.3
    },
    {
-    "n": "Temur Aggro",
+    "n": "Selesnya Aggro",
     "pct": 0.1
    },
    {
@@ -101,7 +101,7 @@
     "pct": 0.1
    },
    {
-    "n": "Rakdos Aggro",
+    "n": "Golgari Aggro",
     "pct": 0.1
    },
    {
@@ -113,20 +113,20 @@
     "pct": 5
    },
    {
-    "n": "UrzaTron",
-    "pct": 5
-   },
-   {
     "n": "Dimir Control",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "Boros Ponza",
     "pct": 4
    },
    {
-    "n": "UW Control",
+    "n": "UrzaTron",
     "pct": 3
+   },
+   {
+    "n": "UW Control",
+    "pct": 2
    },
    {
     "n": "Elementals",
@@ -134,11 +134,7 @@
    },
    {
     "n": "Grixis Control",
-    "pct": 0.4
-   },
-   {
-    "n": "Lantern Control",
-    "pct": 0.1
+    "pct": 0.6
    },
    {
     "n": "UWx Midrange",
@@ -149,8 +145,12 @@
     "pct": 0.1
    },
    {
+    "n": "Esper Control",
+    "pct": 0.1
+   },
+   {
     "n": "Other - Control",
-    "pct": 0.8
+    "pct": 0.7
    },
    {
     "n": "Broodscale Bloodchief",
@@ -161,11 +161,11 @@
     "pct": 8
    },
    {
-    "n": "Living End",
+    "n": "Creatures Toolbox",
     "pct": 4
    },
    {
-    "n": "Creatures Toolbox",
+    "n": "Living End",
     "pct": 4
    },
    {
@@ -181,19 +181,19 @@
     "pct": 2
    },
    {
-    "n": "Reanimator",
-    "pct": 1
-   },
-   {
     "n": "Amulet Titan",
     "pct": 1
    },
    {
-    "n": "UB Mill",
-    "pct": 0.6
+    "n": "Reanimator",
+    "pct": 1
    },
    {
     "n": "Hammer Time",
+    "pct": 0.4
+   },
+   {
+    "n": "UB Mill",
     "pct": 0.4
    },
    {
@@ -675,9 +675,9 @@
     "deltaLiga": 2.1,
     "campo": {
      "global": "Dimir Control",
-     "pct": 5,
+     "pct": 4,
      "pctPrev": 5,
-     "delta": 0
+     "delta": -1
     },
     "w": 1,
     "l": 3,
@@ -708,16 +708,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 11% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 10% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 11,
+     "pct": 10,
      "pctPrev": 11,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
@@ -728,16 +728,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 5% del campo global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 3% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 5,
+     "pct": 3,
      "pctPrev": 5,
-     "delta": 0
+     "delta": -2
     },
     "w": 0,
     "l": 0,
