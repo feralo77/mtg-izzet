@@ -16,6 +16,15 @@ Cada día, sin que nadie toque nada:
      apuntes históricos, con las mismas reglas de emparejamiento.
   5) Escribe registro.csv y games.csv en la raíz del repo. El workflow los commitea.
 
+ENFOQUE (2026-09-15, decisión de Fer): el dashboard analiza SOLO al jugador 'principal'
+de jugadores.json (feralo77). Los nicks de 'archivados' se siguen leyendo y guardando
+íntegros — NO se borra nada — pero sus partidas van a archivo/ y no entran en ninguna
+estadística de la raíz:
+    registro.csv / games.csv / esperando.json   -> solo el principal
+    archivo/registro.csv / games.csv / esperando.json -> los archivados
+scouting.csv se queda ENTERO y en la raíz: es una base de datos de RIVALES, no de
+jugadores. La columna 'Visto por' dice de quién salió cada avistamiento.
+
 El robot NO escribe en ningún Google Sheet: SOLO lee. Scopes: drive.readonly +
 spreadsheets.readonly. Por eso el 403 de escritura del flujo anterior desaparece por diseño.
 
@@ -777,7 +786,10 @@ def main():
     folder_id = os.environ.get('MTG_FOLDER_ID', '16WDaeVHuOtyTaJDrNlVlpgbcN39iVhY6')
     tracker_id = os.environ.get('TRACKER_SHEET_ID')
     legacy_gid = int(os.environ.get('TRACKER_LEGACY_GID', DEFAULT_LEGACY_GID))
-    players = json.loads((HERE / 'jugadores.json').read_text(encoding='utf-8')).get('players', [])
+    _cfg_jug = json.loads((HERE / 'jugadores.json').read_text(encoding='utf-8'))
+    players = _cfg_jug.get('players', [])
+    principal = _cfg_jug.get('principal') or LEGACY_PLAYER
+    archivados = set(_cfg_jug.get('archivados', []))
     anuladas = cargar_anuladas()
     drive, sheets = clients()
 
@@ -849,21 +861,44 @@ def main():
             vistos.add(uid)
         filas.append(r['row'])
 
-    escribir_csv(REPO / 'registro.csv', REGISTRO_COLS, filas)
-    escribir_csv(REPO / 'games.csv', GAMES_COLS, games_all)
+    # ---- reparto principal / archivo. Nada se descarta: lo que no es del principal
+    # se escribe igual, en archivo/, para que siga consultable y pueda volver.
+    ARCHIVO = REPO / 'archivo'
+    ARCHIVO.mkdir(exist_ok=True)
+    mias = [f for f in filas if f['Reportado por'] == principal]
+    otras = [f for f in filas if f['Reportado por'] != principal]
+    uuid_mios = {f['match_uuid'] for f in mias if f.get('match_uuid')}
+    games_mios = [g for g in games_all if g.get('match_uuid') in uuid_mios]
+    games_otros = [g for g in games_all if g.get('match_uuid') not in uuid_mios]
+    escribir_csv(REPO / 'registro.csv', REGISTRO_COLS, mias)
+    escribir_csv(REPO / 'games.csv', GAMES_COLS, games_mios)
+    escribir_csv(ARCHIVO / 'registro.csv', REGISTRO_COLS, otras)
+    escribir_csv(ARCHIVO / 'games.csv', GAMES_COLS, games_otros)
+    # scouting: ENTERO y en la raíz. Es sobre rivales, no sobre jugadores — de los 181
+    # nicks fichados, 129 solo los ha visto el archivo y siguen siendo scouting útil.
     scout = scouting_por_rival(scout_src)
     escribir_csv(REPO / 'scouting.csv', SCOUT_COLS, scout)
     # rondas apuntadas que esperan su log -> cartel en el dashboard (nada desaparece en silencio)
     esperando_all.sort(key=lambda a: (a['jugador'], _ts(day_key(a['fecha'])), _ronda_int(a)))
+    _hoy = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    _esp_mias = [a for a in esperando_all if a.get('jugador') == principal]
+    _esp_otras = [a for a in esperando_all if a.get('jugador') != principal]
     (REPO / 'esperando.json').write_text(
-        json.dumps({'generado': datetime.now(timezone.utc).strftime('%Y-%m-%d'),
-                    'rondas': esperando_all}, ensure_ascii=False, indent=1), encoding='utf-8')
+        json.dumps({'generado': _hoy, 'rondas': _esp_mias}, ensure_ascii=False, indent=1),
+        encoding='utf-8')
+    (ARCHIVO / 'esperando.json').write_text(
+        json.dumps({'generado': _hoy, 'rondas': _esp_otras}, ensure_ascii=False, indent=1),
+        encoding='utf-8')
     if esperando_all:
-        print(f"esperando.json -> {len(esperando_all)} ronda(s) apuntada(s) sin log")
+        print(f"esperando.json -> {len(_esp_mias)} ronda(s) tuyas sin log "
+              f"(+{len(_esp_otras)} del archivo)")
     logs = sum(1 for f in filas if f['Fuente'] == 'log')
     manual = sum(1 for f in filas if f['Fuente'] == 'manual')
-    print(f"OK: registro.csv -> {len(filas)} filas ({logs} log + {manual} manual) · "
-          f"games.csv -> {len(games_all)} games · scouting.csv -> {len(scout)} rivales.")
+    print(f"OK: registro.csv -> {len(mias)} filas tuyas ({logs} log + {manual} manual en total) · "
+          f"games.csv -> {len(games_mios)} games · scouting.csv -> {len(scout)} rivales.")
+    if otras:
+        print(f"    archivo/ -> {len(otras)} partidas y {len(games_otros)} games de "
+              f"{', '.join(sorted(archivados)) or 'otros jugadores'} (guardados, fuera del análisis).")
 
 if __name__ == '__main__':
     main()
