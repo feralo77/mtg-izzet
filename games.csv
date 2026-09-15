@@ -1,4 +1,12 @@
 match_uuid,Game,Arquetipo,Salida / Robo,Ganado,Turnos,Prowess,Monjes,Mulls yo,Mulls rival,Mano yo,Mano rival,Robos yo,Robos rival,Tierras yo,Tierras T1-3,Accion T1,Turno 1a amenaza,Turno Cutter,Hechizos yo,Removal yo,Descartes yo,Ficha turno Cutter,Criaturas yo,Turno 1a interaccion,Interaccion rival,Reportado por
+cae1e89a-fb8e-4b2a-8002-70596151513e,1,Broodscale,Salida,1,4,11,0,0,0,7,7,6,4,4,3,1,1,0,10,2,0,0,4,3,1,feralo77
+cae1e89a-fb8e-4b2a-8002-70596151513e,2,Broodscale,Robo,0,7,0,0,1,1,6,6,7,8,5,3,1,2,0,6,1,0,0,4,5,0,feralo77
+cae1e89a-fb8e-4b2a-8002-70596151513e,3,Broodscale,Salida,1,4,12,0,0,1,7,6,6,3,3,2,1,1,0,8,2,0,0,2,3,0,feralo77
+054ae6d2-c393-4bb9-8457-c41933f528db,1,Golgari Yawgmoth,Robo,1,4,7,3,0,0,7,7,5,3,2,2,0,2,2,6,3,0,1,0,4,0,feralo77
+054ae6d2-c393-4bb9-8457-c41933f528db,2,Golgari Yawgmoth,Robo,0,3,0,0,0,0,7,7,2,2,1,1,1,1,0,3,0,0,0,2,0,0,feralo77
+054ae6d2-c393-4bb9-8457-c41933f528db,3,Golgari Yawgmoth,Salida,1,4,3,0,0,1,7,6,5,3,4,3,1,1,0,8,2,0,0,2,2,0,feralo77
+79727fd4-6b5e-403b-9e78-ed52ec1867e6,1,Boros Energy,Robo,1,3,0,0,0,0,7,7,2,2,2,2,1,2,0,3,1,0,0,2,1,0,feralo77
+79727fd4-6b5e-403b-9e78-ed52ec1867e6,2,Boros Energy,Robo,1,5,3,3,0,1,7,6,7,4,4,3,1,2,2,8,1,0,1,3,3,1,feralo77
 a42a7a1e-fa91-4a14-b431-98aea3b4e97d,1,Necrodominance,Robo,1,9,3,1,0,0,7,7,12,25,5,3,1,1,3,15,2,1,1,4,3,2,feralo77
 a42a7a1e-fa91-4a14-b431-98aea3b4e97d,2,Necrodominance,Robo,1,4,4,0,0,0,7,7,5,4,3,3,1,2,0,7,0,0,0,1,3,0,feralo77
 09c2f6ff-e14f-494b-b973-a32722ff8c3d,1,Dimir Frog,Robo,0,4,6,3,0,0,7,7,4,5,4,3,0,2,2,6,3,0,1,0,4,0,feralo77
