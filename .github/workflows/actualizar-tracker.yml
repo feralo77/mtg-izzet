@@ -63,12 +63,18 @@ jobs:
       - name: Regenerar el radar de metajuego
         run: node scripts/radar_meta.mjs --out meta --hoy "$(date -u +%F)"
 
+      # OJO: la lista de rutas tiene que incluir TODO lo que escribe el pipeline. Si se
+      # queda algo fuera, ese fichero se queda sin commitear y el `git pull --rebase` de
+      # abajo aborta con "You have unstaged changes" — el robot parsea bien y luego no
+      # sube nada. Pasó el 15-sep-2026 al estrenar archivo/: se añadió al pipeline y no
+      # aquí. Al añadir una salida nueva al pipeline, añadirla también en estas dos líneas.
       - name: Commitear si hay cambios
         run: |
-          if [[ -n "$(git status --porcelain registro.csv games.csv scouting.csv esperando.json listas meta)" ]]; then
+          RUTAS="registro.csv games.csv scouting.csv esperando.json listas meta archivo"
+          if [[ -n "$(git status --porcelain -- $RUTAS)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add registro.csv games.csv scouting.csv esperando.json listas meta
+            git add -- $RUTAS
             git commit -m "Datos: registro, games, scouting, listas y meta desde el robot"
             # otro robot (p. ej. el de meta) puede haber subido mientras corríamos:
             # rebasar antes de empujar evita el push rechazado del 27-jul
@@ -77,4 +83,10 @@ jobs:
             echo "Datos actualizados y subidos."
           else
             echo "Sin cambios en los datos."
+          fi
+          # Red de seguridad: si el pipeline escribiera algo que no está en RUTAS, el
+          # rebase de arriba habría fallado. Que se vea en el log en vez de morir mudo.
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "::warning::El robot dejó ficheros sin commitear (fuera de RUTAS):"
+            git status --porcelain
           fi
