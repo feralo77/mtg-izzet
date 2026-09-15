@@ -1,4 +1,4 @@
-# 4c_PolG · Stock 2.0 (Drive, 2026-08-06)
+# 4c_PolG · Stock 2.0 (Drive, 2026-09-15)
 2 Arid Mesa
 3 Bloodstained Mire
 4 Cori-Steel Cutter
@@ -20,6 +20,7 @@
 2 Violent Urge
 2 Wooded Foothills
 
+Sideboard
 4 Consign to Memory
 2 Meltdown
 1 Soul-Guide Lantern

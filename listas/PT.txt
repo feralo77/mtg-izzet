@@ -1,4 +1,4 @@
-# feralo77 · PT
+# feralo77 · PT (Drive, 2026-09-15)
 1 Arid Mesa
 2 Assault Strobe
 3 Bloodstained Mire
@@ -20,6 +20,7 @@
 1 Thundering Falls
 2 Wooded Foothills
 
+Sideboard
 3 Consign to Memory
 3 Expressive Iteration
 1 Meltdown

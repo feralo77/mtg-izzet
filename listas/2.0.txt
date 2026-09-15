@@ -1,4 +1,4 @@
-# feralo77 · 2.0
+# feralo77 · 2.0 (Drive, 2026-09-15)
 3 Arid Mesa
 3 Bloodstained Mire
 4 Cori-Steel Cutter
@@ -18,6 +18,7 @@
 2 Violent Urge
 3 Wooded Foothills
 
+Sideboard
 4 Consign to Memory
 2 Meltdown
 1 Mystical Dispute

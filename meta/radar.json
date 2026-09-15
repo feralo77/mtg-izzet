@@ -454,7 +454,7 @@
     "wr": 100
    },
    {
-    "n": "rhinos",
+    "n": "Temur Rhinos",
     "variantes": null,
     "partidas": 1,
     "frec": 3.1,
@@ -637,8 +637,8 @@
   },
   {
    "nivel": "pinta-mal",
-   "mazo": "rhinos",
-   "titular": "rhinos: sube +3.1 pts y de 1 partida has ganado 0",
+   "mazo": "Temur Rhinos",
+   "titular": "Temur Rhinos: sube +3.1 pts y de 1 partida has ganado 0",
    "porQue": "Son 1 partidas, asi que no es una conclusion: es un aviso. Pero pesa en tu liga y todo lo que sabes de el es malo.",
    "datos": {
     "frecLiga": 3.1,
