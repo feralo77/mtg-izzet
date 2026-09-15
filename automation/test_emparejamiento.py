@@ -338,6 +338,11 @@ def test_listas_nombre_y_validez():
     assert PL._nombre_lista('Deck - Izzet Stock') == 'Stock'
     assert PL._nombre_lista('Izzet basics.txt') == 'Basics'
     assert PL._nombre_lista('Deck - Izzet PT.txt') == 'PT'
+    # ...pero SOLO para quien usa esa convención. Con canonico=False no se traduce: el mapa
+    # es de Fer, y aplicarlo a la carpeta de otro jugador hacía que su 'Deck - Izzet
+    # Prowess' se publicara como 'Stock' y pisara la lista de Fer (15-sep-2026).
+    assert PL._nombre_lista('Deck - Izzet Stock (1).txt', canonico=False) == 'Izzet Stock'
+    assert PL._nombre_lista('Deck - Izzet Prowess.txt', canonico=False) == 'Izzet Prowess'
     # al repo público solo pasan ficheros con pinta de mazo
     assert PL._es_lista_valida('\n'.join(f"4 Carta {i}" for i in range(10)))
     assert not PL._es_lista_valida('apuntes sueltos\nsin cartas\n1 linea suelta')
@@ -367,6 +372,13 @@ def test_normalizar_lista_de_documento_de_google():
     txt, n_main, n_side = PL._normalizar_lista("\n".join(main))
     assert (n_main, n_side) == (60, 0)
     assert "Sideboard" not in txt
+
+    # El export de un doc de Google empieza por BOM. Sin quitarlo, la primera carta no
+    # parsea y se pierde en silencio: la lista real de Fer salió 57/15 en vez de 60/15.
+    txt, n_main, n_side = PL._normalizar_lista("\ufeff" + gdoc)
+    assert (n_main, n_side) == (60, 15), (n_main, n_side)
+    assert "\ufeff" not in txt
+    assert txt.splitlines()[0] == "4 Carta M0"
     print("OK normalizar_lista_de_documento_de_google")
 
 
