@@ -382,6 +382,27 @@ def test_normalizar_lista_de_documento_de_google():
     print("OK normalizar_lista_de_documento_de_google")
 
 
+def test_lista_por_defecto_con_fecha():
+    """Una partida que sale de un log SIN apunte a mano se queda sin lista y, por tanto,
+    fuera de todas las estadisticas por version. Para Pol se asume Stock siempre; para Fer
+    solo DESDE la Liga 9 (11-ago-2026), porque hasta la Liga 8 alternaba tres listas y
+    asumir ahi seria inventar. Regla que dio Fer el 15-sep-2026."""
+    assert PL.lista_por_defecto('4c_PolG') == 'Stock'            # texto plano: siempre
+    assert PL.lista_por_defecto('4c_PolG', '11/07/2026') == 'Stock'
+    # Fer: antes de la Liga 9 no se asume nada
+    assert PL.lista_por_defecto('feralo77', '27/07/2026') == ''
+    assert PL.lista_por_defecto('feralo77', '10/08/2026') == ''
+    # ...desde el 11-ago (Liga 9), Stock
+    assert PL.lista_por_defecto('feralo77', '11/08/2026') == 'Stock'
+    assert PL.lista_por_defecto('feralo77', '15/09/2026') == 'Stock'
+    # sin fecha utilizable no se arriesga
+    assert PL.lista_por_defecto('feralo77') == ''
+    assert PL.lista_por_defecto('feralo77', 'no-es-fecha') == ''
+    # un jugador sin entrada sigue sin lista
+    assert PL.lista_por_defecto('Inkmaster', '15/09/2026') == ''
+    print("OK lista_por_defecto_con_fecha")
+
+
 def test_versiones_agrupan_el_mismo_maindeck():
     """Listas con el mismo maindeck y distinto sideboard son la MISMA versión.
     Medido el 2026-07-30: 'Ur Aggro Rage' (Pol) tiene 0 cartas de diferencia de

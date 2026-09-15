@@ -23,8 +23,12 @@
   "referencia": [
     "Definitiva"
   ],
-  "_defecto": "Partidas que salen de un log SIN apunte a mano se quedaban con la Lista vacía: 77 de las 168 (el 46%) eran así, todas de Pol, y quedaban fuera de cualquier estadística por lista. Fer confirmó (2026-07-30) que las de Pol son Stock. Si algún jugador no está aquí, sus partidas sin apunte siguen con Lista vacía (mejor vacío que inventado).",
+  "_defecto": "Partidas que salen de un log SIN apunte a mano se quedaban con la Lista vacía: 77 de las 168 (el 46%) eran así, todas de Pol, y quedaban fuera de cualquier estadística por lista. Fer confirmó (2026-07-30) que las de Pol son Stock. Si algún jugador no está aquí, sus partidas sin apunte siguen con Lista vacía (mejor vacío que inventado). AMPLIADO 15-sep-2026: el valor puede ser un texto (la lista de siempre de ese jugador) o un objeto {desde, lista} para decir 'a partir de esta fecha juega esta'. Fer dijo que lleva con la Stock desde la Liga 9 (11-ago-2026), asi que cualquier log suyo sin apunte a partir de esa fecha entra como Stock en vez de quedarse sin lista y fuera de todas las estadisticas. Antes de esa fecha alternaba Stock, Aggro y Basics, asi que ahi NO se asume nada: sin apunte, sin lista.",
   "defecto_por_jugador": {
-    "4c_PolG": "Stock"
+    "4c_PolG": "Stock",
+    "feralo77": {
+      "desde": "2026-08-11",
+      "lista": "Stock"
+    }
   }
 }

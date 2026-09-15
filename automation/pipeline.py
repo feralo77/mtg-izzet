@@ -256,10 +256,23 @@ def version_de(lista):
     return _VERSION_DE.get(k, '')
 
 
-def lista_por_defecto(nick):
+def lista_por_defecto(nick, fecha=''):
     """Lista que se asume cuando una partida sale de un log SIN apunte a mano.
-    Sin entrada para ese jugador se deja vacío (no se inventa)."""
-    return _LISTA_DEFECTO.get(nick, '')
+    Sin entrada para ese jugador se deja vacío: mejor vacío que inventado.
+
+    El valor puede ser un texto (la lista de siempre de ese jugador) o un objeto
+    {desde, lista}, que solo aplica a partir de esa fecha. Lo segundo es para Fer, que
+    alternaba tres listas hasta la Liga 8 y desde la Liga 9 (11-ago-2026) va siempre con
+    la Stock: antes de esa fecha no se asume nada, después sí. `fecha` llega como
+    DD/MM/AAAA, que es como la escribe el registro."""
+    v = _LISTA_DEFECTO.get(nick, '')
+    if isinstance(v, dict):
+        desde = v.get('desde', '')
+        if not fecha or len(fecha) != 10:
+            return ''
+        iso = f"{fecha[6:10]}-{fecha[3:5]}-{fecha[0:2]}"
+        return v.get('lista', '') if iso >= desde else ''
+    return v
 # El nombre crudo del export de MTGO ('Deck - Izzet Stock (1)') no es el nombre con el que
 # Fer apunta la lista en su hoja ('Stock'). Antes esos nombres estaban en una LISTA NEGRA y
 # se descartaban en silencio — lo que estaba bien en julio (eran copias de listas que ya
@@ -610,7 +623,7 @@ def _fila_practica(m, nick):
     # Sin apunte a mano no sabemos la lista por el log. Para los jugadores que lo tienen
     # declarado en listas.json se asume la suya (Pol -> Stock): 77 de sus partidas se
     # quedaban fuera de toda estadística por lista por esta casilla vacía.
-    lista = lista_por_defecto(nick)
+    lista = lista_por_defecto(nick, m['_fecha'])
     return {
         'match_uuid': m['match_uuid'], 'Fecha': m['_fecha'], 'Evento / Liga': '',
         'Lista': lista, 'Versión': version_de(lista),
