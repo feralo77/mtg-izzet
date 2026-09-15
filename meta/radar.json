@@ -29,12 +29,12 @@
  "campoDesde": "2026-09-15",
  "campoError": null,
  "campo": {
-  "mazos": 929,
+  "mazos": 945,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 10
+    "pct": 11
    },
    {
     "n": "Blink",
@@ -54,7 +54,7 @@
    },
    {
     "n": "Hollow One",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Jeskai Aggro",
@@ -62,7 +62,7 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.9
+    "pct": 0.8
    },
    {
     "n": "Simic Birthing Ritual",
@@ -121,11 +121,11 @@
     "pct": 5
    },
    {
-    "n": "Boros Ponza",
+    "n": "UrzaTron",
     "pct": 4
    },
    {
-    "n": "UrzaTron",
+    "n": "Boros Ponza",
     "pct": 4
    },
    {
@@ -166,7 +166,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.8
+    "pct": 0.7
    },
    {
     "n": "Broodscale Bloodchief",
@@ -198,7 +198,7 @@
    },
    {
     "n": "Amulet Titan",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Reanimator",
@@ -237,97 +237,73 @@
  "liga": {
   "modo": "dos mitades del histórico, por número de partidas",
   "ahora": {
-   "partidas": 26,
-   "desde": "2026-07-23",
-   "hasta": "2026-08-20"
+   "partidas": 32,
+   "desde": "2026-07-25",
+   "hasta": "2026-09-15"
   },
   "antes": {
-   "partidas": 26,
+   "partidas": 31,
    "desde": "2026-07-11",
-   "hasta": "2026-07-23"
+   "hasta": "2026-07-25"
   },
-  "hayBase": false,
-  "avisoBase": "Aún no se puede hablar de tendencias en tu liga: hacen falta 30 partidas en cada mitad y ahora hay 26 y 26. Mientras tanto las alarmas se basan en la frecuencia absoluta y en tu récord, que sí son fiables.",
+  "hayBase": true,
+  "avisoBase": null,
   "arquetipos": [
    {
     "n": "Esper Goryo's",
     "variantes": null,
-    "partidas": 3,
-    "frec": 11.5,
-    "frecPrev": null,
-    "delta": null,
+    "partidas": 5,
+    "frec": 15.6,
+    "frecPrev": 6.5,
+    "delta": 9.1,
     "w": 2,
-    "l": 3,
-    "n_": 5,
-    "wr": 40
+    "l": 5,
+    "n_": 7,
+    "wr": 29
    },
    {
-    "n": "Boros Energy",
+    "n": "Eldrazi",
+    "variantes": null,
+    "partidas": 4,
+    "frec": 12.5,
+    "frecPrev": 0,
+    "delta": 12.5,
+    "w": 2,
+    "l": 2,
+    "n_": 4,
+    "wr": 50
+   },
+   {
+    "n": "Dimir Frog",
     "variantes": null,
     "partidas": 3,
-    "frec": 11.5,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 9.4,
+    "frecPrev": 6.5,
+    "delta": 2.9,
+    "w": 1,
+    "l": 4,
+    "n_": 5,
+    "wr": 20
+   },
+   {
+    "n": "Boros Ponza",
+    "variantes": null,
+    "partidas": 2,
+    "frec": 6.3,
+    "frecPrev": 6.5,
+    "delta": -0.2,
     "w": 3,
     "l": 1,
     "n_": 4,
     "wr": 75
    },
    {
-    "n": "Eldrazi",
-    "variantes": null,
-    "partidas": 3,
-    "frec": 11.5,
-    "frecPrev": null,
-    "delta": null,
-    "w": 1,
-    "l": 2,
-    "n_": 3,
-    "wr": 33
-   },
-   {
-    "n": "Dimir Frog",
-    "variantes": null,
-    "partidas": 2,
-    "frec": 7.7,
-    "frecPrev": null,
-    "delta": null,
-    "w": 1,
-    "l": 3,
-    "n_": 4,
-    "wr": 25
-   },
-   {
-    "n": "Boros Ponza",
-    "variantes": null,
-    "partidas": 2,
-    "frec": 7.7,
-    "frecPrev": null,
-    "delta": null,
-    "w": 3,
-    "l": 0,
-    "n_": 3,
-    "wr": 100
-   },
-   {
-    "n": "Amulet Titan",
-    "variantes": null,
-    "partidas": 2,
-    "frec": 7.7,
-    "frecPrev": null,
-    "delta": null,
-    "w": 1,
-    "l": 2,
-    "n_": 3,
-    "wr": 33
-   },
-   {
     "n": "Neoform",
     "variantes": null,
     "partidas": 2,
-    "frec": 7.7,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 6.3,
+    "frecPrev": 3.2,
+    "delta": 3.1,
     "w": 0,
     "l": 3,
     "n_": 3,
@@ -337,9 +313,9 @@
     "n": "Golgari Yawgmoth",
     "variantes": null,
     "partidas": 2,
-    "frec": 7.7,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 6.3,
+    "frecPrev": 3.2,
+    "delta": 3.1,
     "w": 2,
     "l": 1,
     "n_": 3,
@@ -349,45 +325,105 @@
     "n": "Ruby Storm",
     "variantes": null,
     "partidas": 2,
-    "frec": 7.7,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 6.3,
+    "frecPrev": 0,
+    "delta": 6.3,
     "w": 2,
     "l": 0,
     "n_": 2,
     "wr": 100
    },
    {
+    "n": "Broodscale",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 3.1,
+    "frecPrev": 12.9,
+    "delta": -9.8,
+    "w": 2,
+    "l": 3,
+    "n_": 5,
+    "wr": 40
+   },
+   {
+    "n": "Boros Energy",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 3.1,
+    "frecPrev": 9.7,
+    "delta": -6.6,
+    "w": 3,
+    "l": 1,
+    "n_": 4,
+    "wr": 75
+   },
+   {
     "n": "Grixis Reanimator",
     "variantes": null,
     "partidas": 1,
-    "frec": 3.8,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 3.1,
+    "frecPrev": 9.7,
+    "delta": -6.6,
     "w": 2,
     "l": 2,
     "n_": 4,
     "wr": 50
    },
    {
-    "n": "URb",
+    "n": "Amulet Titan",
     "variantes": null,
     "partidas": 1,
-    "frec": 3.8,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 3.1,
+    "frecPrev": 6.5,
+    "delta": -3.4,
     "w": 1,
-    "l": 0,
-    "n_": 1,
-    "wr": 100
+    "l": 2,
+    "n_": 3,
+    "wr": 33
+   },
+   {
+    "n": "Izzet Prowess",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 3.1,
+    "frecPrev": 6.5,
+    "delta": -3.4,
+    "w": 1,
+    "l": 2,
+    "n_": 3,
+    "wr": 33
+   },
+   {
+    "n": "Azorius Control",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 3.1,
+    "frecPrev": 3.2,
+    "delta": -0.1,
+    "w": 1,
+    "l": 1,
+    "n_": 2,
+    "wr": 50
+   },
+   {
+    "n": "Sultai Midrange",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 3.1,
+    "frecPrev": 3.2,
+    "delta": -0.1,
+    "w": 0,
+    "l": 2,
+    "n_": 2,
+    "wr": 0
    },
    {
     "n": "Hollow One",
     "variantes": null,
     "partidas": 1,
-    "frec": 3.8,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 3.1,
+    "frecPrev": 0,
+    "delta": 3.1,
     "w": 1,
     "l": 0,
     "n_": 1,
@@ -397,9 +433,9 @@
     "n": "Living End",
     "variantes": null,
     "partidas": 1,
-    "frec": 3.8,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 3.1,
+    "frecPrev": 0,
+    "delta": 3.1,
     "w": 0,
     "l": 1,
     "n_": 1,
@@ -409,25 +445,37 @@
     "n": "The Rack",
     "variantes": null,
     "partidas": 1,
-    "frec": 3.8,
-    "frecPrev": null,
-    "delta": null,
+    "frec": 3.1,
+    "frecPrev": 0,
+    "delta": 3.1,
     "w": 1,
     "l": 0,
     "n_": 1,
     "wr": 100
    },
    {
-    "n": "Broodscale",
+    "n": "rhinos",
     "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": null,
-    "delta": null,
-    "w": 2,
-    "l": 2,
-    "n_": 4,
-    "wr": 50
+    "partidas": 1,
+    "frec": 3.1,
+    "frecPrev": 0,
+    "delta": 3.1,
+    "w": 0,
+    "l": 1,
+    "n_": 1,
+    "wr": 0
+   },
+   {
+    "n": "Necrodominance",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 3.1,
+    "frecPrev": 0,
+    "delta": 3.1,
+    "w": 1,
+    "l": 0,
+    "n_": 1,
+    "wr": 100
    },
    {
     "n": "Izzet Affinity",
@@ -437,20 +485,8 @@
     ],
     "partidas": 0,
     "frec": 0,
-    "frecPrev": null,
-    "delta": null,
-    "w": 0,
-    "l": 2,
-    "n_": 2,
-    "wr": 0
-   },
-   {
-    "n": "Izzet Prowess",
-    "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": null,
-    "delta": null,
+    "frecPrev": 6.5,
+    "delta": -6.5,
     "w": 0,
     "l": 2,
     "n_": 2,
@@ -461,8 +497,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": null,
-    "delta": null,
+    "frecPrev": 3.2,
+    "delta": -3.2,
     "w": 1,
     "l": 0,
     "n_": 1,
@@ -473,56 +509,44 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": null,
-    "delta": null,
+    "frecPrev": 3.2,
+    "delta": -3.2,
     "w": 1,
     "l": 0,
     "n_": 1,
     "wr": 100
-   },
-   {
-    "n": "Sultai Midrange",
-    "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": null,
-    "delta": null,
-    "w": 0,
-    "l": 1,
-    "n_": 1,
-    "wr": 0
    },
    {
     "n": "Sam Combo",
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": null,
-    "delta": null,
+    "frecPrev": 3.2,
+    "delta": -3.2,
     "w": 0,
     "l": 1,
     "n_": 1,
     "wr": 0
    },
    {
-    "n": "Azorius Control",
+    "n": "Through the Breach",
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": null,
-    "delta": null,
+    "frecPrev": 3.2,
+    "delta": -3.2,
     "w": 1,
     "l": 0,
     "n_": 1,
     "wr": 100
    },
    {
-    "n": "Through the Breach",
+    "n": "URb",
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": null,
-    "delta": null,
+    "frecPrev": 3.2,
+    "delta": -3.2,
     "w": 1,
     "l": 0,
     "n_": 1,
@@ -534,91 +558,51 @@
   {
    "nivel": "adaptarse",
    "mazo": "Esper Goryo's",
-   "titular": "Esper Goryo's: es el 11.5% de tu liga y vas 2-3 (40%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "titular": "Esper Goryo's: está subiendo (+9.1 pts en tu liga) y vas 2-5 (29%)",
+   "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
    "datos": {
-    "frecLiga": 11.5,
-    "deltaLiga": null,
+    "frecLiga": 15.6,
+    "deltaLiga": 9.1,
     "campo": {
      "global": "Instant Reanimator",
      "pct": 7,
-     "pctPrev": 8,
-     "delta": -1
-    },
-    "w": 2,
-    "l": 3,
-    "wr": 40,
-    "n": 5
-   }
-  },
-  {
-   "nivel": "adaptarse",
-   "mazo": "Eldrazi",
-   "titular": "Eldrazi: es el 11.5% de tu liga y vas 1-2 (33%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
-   "datos": {
-    "frecLiga": 11.5,
-    "deltaLiga": null,
-    "campo": {
-     "global": "Eldrazi Ramp",
-     "pct": 5,
-     "pctPrev": 5,
+     "pctPrev": 7,
      "delta": 0
     },
-    "w": 1,
-    "l": 2,
-    "wr": 33,
-    "n": 3
+    "w": 2,
+    "l": 5,
+    "wr": 29,
+    "n": 7
    }
   },
   {
    "nivel": "adaptarse",
    "mazo": "Dimir Frog",
-   "titular": "Dimir Frog: es el 7.7% de tu liga y vas 1-3 (25%)",
+   "titular": "Dimir Frog: es el 9.4% de tu liga y vas 1-4 (20%)",
    "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
-    "frecLiga": 7.7,
-    "deltaLiga": null,
+    "frecLiga": 9.4,
+    "deltaLiga": 2.9,
     "campo": {
      "global": "Dimir Control",
      "pct": 5,
-     "pctPrev": 4,
-     "delta": 1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 1,
-    "l": 3,
-    "wr": 25,
-    "n": 4
-   }
-  },
-  {
-   "nivel": "adaptarse",
-   "mazo": "Amulet Titan",
-   "titular": "Amulet Titan: es el 7.7% de tu liga y vas 1-2 (33%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
-   "datos": {
-    "frecLiga": 7.7,
-    "deltaLiga": null,
-    "campo": {
-     "global": "Amulet Titan",
-     "pct": 2,
-     "pctPrev": 1,
-     "delta": 1
-    },
-    "w": 1,
-    "l": 2,
-    "wr": 33,
-    "n": 3
+    "l": 4,
+    "wr": 20,
+    "n": 5
    }
   },
   {
    "nivel": "adaptarse",
    "mazo": "Neoform",
-   "titular": "Neoform: es el 7.7% de tu liga y vas 0-3 (0%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "titular": "Neoform: está subiendo (+3.1 pts en tu liga) y vas 0-3 (0%)",
+   "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
    "datos": {
-    "frecLiga": 7.7,
-    "deltaLiga": null,
+    "frecLiga": 6.3,
+    "deltaLiga": 3.1,
     "campo": {
      "global": "Allosaurus Combo",
      "pct": 2,
@@ -629,6 +613,41 @@
     "l": 3,
     "wr": 0,
     "n": 3
+   }
+  },
+  {
+   "nivel": "pinta-mal",
+   "mazo": "Living End",
+   "titular": "Living End: sube +3.1 pts y de 1 partida has ganado 0",
+   "porQue": "Son 1 partidas, asi que no es una conclusion: es un aviso. Pero pesa en tu liga y todo lo que sabes de el es malo.",
+   "datos": {
+    "frecLiga": 3.1,
+    "deltaLiga": 3.1,
+    "campo": {
+     "global": "Living End",
+     "pct": 3,
+     "pctPrev": 3,
+     "delta": 0
+    },
+    "w": 0,
+    "l": 1,
+    "wr": 0,
+    "n": 1
+   }
+  },
+  {
+   "nivel": "pinta-mal",
+   "mazo": "rhinos",
+   "titular": "rhinos: sube +3.1 pts y de 1 partida has ganado 0",
+   "porQue": "Son 1 partidas, asi que no es una conclusion: es un aviso. Pero pesa en tu liga y todo lo que sabes de el es malo.",
+   "datos": {
+    "frecLiga": 3.1,
+    "deltaLiga": 3.1,
+    "campo": null,
+    "w": 0,
+    "l": 1,
+    "wr": 0,
+    "n": 1
    }
   },
   {
@@ -662,8 +681,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -682,8 +701,8 @@
     "campo": {
      "global": "4/5c Aggro",
      "pct": 3,
-     "pctPrev": 2,
-     "delta": 1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
