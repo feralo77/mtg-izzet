@@ -272,15 +272,20 @@ LISTAS_CANONICAS = {
     'deck - izzet stock (1)': 'Stock',
     'deck - izzet pt': 'PT',
     'deck - izzet 2.0': '2.0',
-    'deck - izzet prowess': 'Stock',
 }
+# OJO: este mapa es la convención de nombres de FER y solo se aplica a su carpeta. Al
+# estrenarlo (15-sep-2026) incluía 'deck - izzet prowess' -> 'Stock', que es un fichero
+# de POL: su lista pisaba la de Fer en listas/Stock.txt y quién ganaba dependía del orden
+# en que Drive devolviera las carpetas. Un nombre solo se traduce para quien lo usa.
 
-def _nombre_lista(drive_name):
-    """Nombre canónico de lista a partir del nombre del fichero en Drive."""
+def _nombre_lista(drive_name, canonico=True):
+    """Nombre de lista a partir del nombre del fichero en Drive.
+    `canonico` traduce los nombres crudos del export de Fer; para otros jugadores va a
+    False, porque el mapa es SU convención y aplicarlo a todos provoca colisiones."""
     base = re.sub(r'\.txt$', '', norm(drive_name), flags=re.I).strip()
     if not base:
         return None
-    canon = LISTAS_CANONICAS.get(key(base))
+    canon = LISTAS_CANONICAS.get(key(base)) if canonico else None
     if canon:
         return canon
     base = re.sub(r'^deck\s*-\s*', '', base, flags=re.I)      # prefijo del export de MTGO
@@ -299,6 +304,7 @@ GDOC_MIME = 'application/vnd.google-apps.document'
 def _normalizar_lista(texto):
     """Texto de lista -> forma canónica 'main / blanco / Sideboard / side'.
     Devuelve (texto_normalizado, n_main, n_side)."""
+    texto = texto.replace('\ufeff', '')      # BOM del export de Google Docs
     lineas = [l.rstrip() for l in texto.splitlines()]
     bloques, actual, blancos = [], [], 0
     for l in lineas:
@@ -354,7 +360,7 @@ def _bajar_texto(drive, f):
         os.unlink(tpath)
 
 
-def sync_listas(drive, folder_id, nick, hoy=None):
+def sync_listas(drive, folder_id, nick, hoy=None, canonico=True):
     """Baja las listas de la RAÍZ de Logs_<nick> a listas/<nombre canónico>.txt.
 
     Acepta .txt y documentos de Google (se exportan a texto). Si dos ficheros
@@ -369,7 +375,7 @@ def sync_listas(drive, folder_id, nick, hoy=None):
     for f in list_children(drive, folder_id):
         if f.get('mimeType') not in ('text/plain', GDOC_MIME):
             continue
-        nombre = _nombre_lista(f.get('name', ''))
+        nombre = _nombre_lista(f.get('name', ''), canonico=canonico)
         if not nombre:
             print(f"    - '{f['name']}': sin nombre de lista utilizable, se ignora")
             continue
@@ -933,12 +939,16 @@ def main():
               f"apuntes: {len(sheet_apuntes)} hoja + {len(apuntes) - len(sheet_apuntes)} legacy "
               f"-> {len(reg)} filas de registro / {len(gm)} games")
         # 5) su lista (.txt en la raíz de la carpeta) -> listas/ del repo
-        try:
-            nuevas = sync_listas(drive, lf['id'], nick)
-            if nuevas:
-                print(f"    listas sincronizadas desde Drive: {', '.join(nuevas)}")
-        except Exception as e:
-            print(f"    ! listas de {nick}: {e}")
+        if nick != principal:
+            print(f"    (listas de {nick}: no se sincronizan, está archivado. "
+                  f"Las que ya hay en listas/ se quedan como referencia.)")
+        else:
+            try:
+                nuevas = sync_listas(drive, lf['id'], nick)
+                if nuevas:
+                    print(f"    listas sincronizadas desde Drive: {', '.join(nuevas)}")
+            except Exception as e:
+                print(f"    ! listas de {nick}: {e}")
 
     # dedupe por match_uuid (los manual sin uuid se conservan todos), orden cronológico
     registro_all.sort(key=lambda r: r['sort'])
