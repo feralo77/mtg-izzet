@@ -368,6 +368,36 @@
    ]
   },
   {
+   "mazo": "Devoted Combo",
+   "pctLocal": 6,
+   "rol": "Beatdown con una mano en el freno: corre, pero guarda la respuesta al turno de combo",
+   "in": [
+    "2 Spell Snare",
+    "3 Unholy Heat"
+   ],
+   "out": [
+    "3 Expressive Iteration",
+    "2 Violent Urge"
+   ],
+   "plan": "Ganan con Devoted Druid + Vizier of Remedies: el Druid se destapa poniendose un -1/-1, el Vizier previene ese contador, y eso es mana verde infinito que vacian en un Walking Ballista para matarte. Tambien hay una version sin Vizier que hace mana con Badgermole Cub (cada vez que tapan una criatura por mana anaden un verde de mas) y Tyvar, Jubilant Brawler (les da prisa para tapar el Druid el turno que cae). Todas sus piezas valen 2 o menos y todas mueren a cualquier cosa tuya: es un mazo de criaturas fragiles, no un combo a prueba de removal. Corre como siempre y guarda UNA respuesta para el turno que despliegan la segunda mitad. No gastes el removal en el primer bicho que veas si no es el Halfling.",
+   "clave": "OJO: Consign to Memory esta MUERTA aqui. Consign contrarresta habilidades DISPARADAS y hechizos incoloros; destapar el Devoted Druid es una habilidad ACTIVADA. Son 4 cartas de tu banquillo que no hacen nada, y por eso salen todas. Lo que si es oro es Spell Snare: Devoted Druid, Vizier of Remedies, Badgermole Cub y Duskwatch Recruiter valen los cuatro 2 de mana exacto.",
+   "aq": [
+    "Devoted Combo"
+   ],
+   "patrones": [
+    "Matchup favorable y tus numeros lo dicen: 3-1. Eres mas rapido y su combo necesita dos criaturas vivas a la vez.",
+    "Siempre Bolt (o Dart) al Delighted Halfling en el turno 1. Les quita el mana Y su unica forma de hacer incontrarrestable a Tyvar: el Halfling dice que el mana que produce hace que un hechizo legendario no pueda ser contrarrestado.",
+    "Lava Dart se queda DENTRO aunque sea un mazo verde: mata Delighted Halfling (1/1), Vizier of Remedies (2/1) y Birds of Paradise (0/1). Es gratis y con flashback son dos.",
+    "Unholy Heat con delirium tambien mata a Tyvar, Jubilant Brawler: el texto dice criatura O planeswalker.",
+    "Para romper el combo basta con matar UNA de las dos mitades en respuesta. Si ves Druid y Vizier en mesa, la respuesta se juega YA, no en su turno de combo.",
+    "Walking Ballista en mesa vale 0 de coste de mana: un Meltdown con X=0 lo destruye por un mana. No es motivo para dejar los Meltdown dentro, pero si lo tienes en la mano y han bajado Ballista como sumidero, es un mana bien gastado.",
+    "Spell Pierce es mediocre aqui: sus cartas clave son criaturas. Solo contesta Green Sun's Zenith, Nature's Rhythm y Tyvar, y a Tyvar solo si NO lo pagan con el Halfling.",
+    "Surgical Extraction es la carta condicional del matchup: despues de matar un Vizier o un Druid, quitarle los otros tres suele cerrar el tema. Si acabas la partida con la Surgical en la mano, sobraba: metela solo al robo o si les has visto la version con Vizier.",
+    "Aqui no bloqueas nunca. Sus criaturas son de mana, no de combate: cada punto que no les pegas es un turno mas que tienen para encontrar la pieza."
+   ],
+   "_origen": "Escrito el 15-sep-2026. Nacio de descubrir que las 4 partidas que el tracker llamaba 'Golgari Yawgmoth' eran en realidad Devoted Combo (el clasificador no tenia firma para este mazo). Textos de carta verificados en Scryfall."
+  },
+  {
    "mazo": "Golgari Yawgmoth",
    "pctLocal": 4,
    "rol": "Beatdown: mata a Yawgmoth en cuanto lo veas",
@@ -378,7 +408,7 @@
     "3 Mutagenic Growth"
    ],
    "plan": "Yawgmoth, Thran Physician es la carta. Guarda un removal para el, no lo gastes en Wall of Roots.",
-   "clave": "OJO: Consign to Memory NO contesta la habilidad de Yawgmoth. Consign contrarresta habilidades DISPARADAS y hechizos incoloros; la de Yawgmoth es una habilidad ACTIVADA. Aqui Consign se queda en el banquillo.",
+   "clave": "NO LO HAS JUGADO NUNCA (15-sep-2026): las 4 partidas que el tracker daba como Yawgmoth eran Devoted Combo, que tiene su propio plan arriba. Este se queda por si aparece uno de verdad. Se distinguen en una carta: el Yawgmoth de verdad juega Yawgmoth, Thran Physician y criaturas con undying; el Devoted juega Devoted Druid y Vizier of Remedies. El esqueleto verde (Badgermole Cub, Delighted Halfling, Green Sun's Zenith, Birds of Paradise) es el mismo en los dos y no te dice cual es. || OJO: Consign to Memory NO contesta la habilidad de Yawgmoth. Consign contrarresta habilidades DISPARADAS y hechizos incoloros; la de Yawgmoth es una habilidad ACTIVADA. Aqui Consign se queda en el banquillo.",
    "aq": [
     "Golgari Yawgmoth"
    ],
