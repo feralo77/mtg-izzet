@@ -226,7 +226,16 @@ SIG = [
     ('Izzet Cori', [('Tamiyo, Inquisitive Student',3),('Flame of Anor',3),('Emry, Lurker of the Loch',3),('Metallic Rebuke',2),('Aether Spellbomb',1)]),
     ('Eldrazi', [('Thought-Knot Seer',2),('Ugin',1),('Chalice of the Void',1),("Kozilek, the Broodmother",2),('Devourer of Destiny',2),('Karn, the Great Creator',1),('Expedition Map',1)]),
     ('Amulet Titan', [('Amulet of Vigor',3),('Primeval Titan',2),('Arboreal Grazer',2),("Green Sun's Zenith",1)]),
-    ('Golgari Yawgmoth', [('Yawgmoth, Thran Physician',3),("Agatha's Soul Cauldron",2),('Badgermole Cub',2),('Young Wolf',1),('Tyvar, Jubilant Brawler',1),('Wight of the Reliquary',1),('Ignoble Hierarch',1)]),
+    # Golgari Yawgmoth y Devoted Combo comparten TODO el esqueleto verde (Badgermole Cub,
+    # Delighted Halfling, Green Sun's Zenith, Birds of Paradise, Tyvar). Lo que los separa
+    # es la combinación que ganan: Yawgmoth + undying, o Devoted Druid + Vizier of Remedies
+    # -> mana infinito -> Walking Ballista. Hasta el 15-sep-2026 no había firma de Devoted,
+    # y sus cartas verdes puntuaban en Yawgmoth: las CUATRO partidas de Fer etiquetadas
+    # 'Golgari Yawgmoth' eran Devoted Combo, y él lo había apuntado bien en tres de ellas.
+    # No se ha visto ni un Yawgmoth, Thran Physician en todo el tracker. Por eso las cartas
+    # compartidas bajan de peso en Yawgmoth y su firma se ancla en las suyas de verdad.
+    ('Golgari Yawgmoth', [('Yawgmoth, Thran Physician',3),("Agatha's Soul Cauldron",2),('Young Wolf',1),('Wight of the Reliquary',1),('Ignoble Hierarch',1),('Badgermole Cub',1)]),
+    ('Devoted Combo', [('Devoted Druid',3),('Vizier of Remedies',3),('Walking Ballista',2),('Duskwatch Recruiter',2),("Nature's Rhythm",1),('Tyvar, Jubilant Brawler',1),('Delighted Halfling',1)]),
     ('Ruby Storm', [('Ruby Medallion',3),('Grapeshot',2),('Past in Flames',2),('Manamorphose',2),('Pyretic Ritual',2),('Desperate Ritual',2),('Ral, Monsoon Mage',2),('Reckless Impulse',1)]),
     # 'Dead' es la mitad de Dead // Gone tal cual la emite el log (MV 3 en mazo, por eso la juega Living End).
     ('Living End', [('Living End',3),('Curator of Mysteries',3),('Shardless Agent',2),('Waker of Waves',2),('Dead',2),('Commandeer',1),('Foundation Breaker',1)]),
@@ -616,6 +625,25 @@ def selftest():
     assert classify(['Psychic Frog','Namor the Sub-Mariner','Disrupting Shoal','Cryptic Command','Counterspell']) == 'Dimir Frog'  # el Frog manda sobre Dimir Merfolk
     assert classify(['Necrodominance','Soul Spike','March of Wretched Sorrow','Sheoldred, the Apocalypse']) == 'Necrodominance'
     assert classify(["Thassa's Oracle","Angel's Grace",'Spoils of the Vault','Stock Up']) == 'Oracle Combo'
+    # Devoted Combo vs Golgari Yawgmoth: comparten todo el esqueleto verde y hasta el
+    # 15-sep-2026 no habia firma de Devoted, asi que sus cartas puntuaban en Yawgmoth.
+    # Las 4 partidas de Fer etiquetadas 'Golgari Yawgmoth' eran Devoted Combo (el las
+    # habia apuntado bien en 3). Estos son sus cuatro rivales reales, carta por carta.
+    assert classify(["Agatha's Soul Cauldron",'Devoted Druid',"Nature's Rhythm",'Badgermole Cub',
+                     'Walking Ballista','Delighted Halfling','Endurance','Vizier of Remedies',
+                     "Green Sun's Zenith",'Craterhoof Behemoth']) == 'Devoted Combo'
+    assert classify(['Delighted Halfling',"Green Sun's Zenith",'Badgermole Cub','Devoted Druid',
+                     'Vizier of Remedies','Karn, the Great Creator','Walking Ballista']) == 'Devoted Combo'
+    assert classify(['Badgermole Cub','Tyvar, Jubilant Brawler','Devoted Druid','Delighted Halfling',
+                     'Duskwatch Recruiter',"Green Sun's Zenith","Nature's Rhythm",
+                     'Birds of Paradise']) == 'Devoted Combo'
+    # Muestra pobre (5 cartas, todas verdes genericas): aun asi cae del lado correcto.
+    assert classify(['Delighted Halfling','Birds of Paradise','Duskwatch Recruiter',
+                     "Green Sun's Zenith",'Badgermole Cub']) == 'Devoted Combo'
+    # ...y un Yawgmoth de verdad sigue siendo Yawgmoth: lo define SU carta, no el esqueleto.
+    assert classify(['Yawgmoth, Thran Physician','Young Wolf',"Agatha's Soul Cauldron",
+                     'Wight of the Reliquary','Ignoble Hierarch','Badgermole Cub',
+                     "Green Sun's Zenith"]) == 'Golgari Yawgmoth'
     # Birthing Ritual NO define arquetipo por si sola: la juegan tres mazos distintos
     assert classify(['Ice-Fang Coatl','Coiling Oracle','Shardless Agent','Birthing Ritual','Endurance']) == 'Sultai Midrange'
     assert classify(['Guide of Souls','Skyclave Apparition','Solitude','Badgermole Cub','Birthing Ritual']) != 'Sultai Midrange'
