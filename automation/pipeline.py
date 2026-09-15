@@ -190,7 +190,7 @@ def list_children(drive, parent_id, only_folders=False):
         q += " and mimeType='application/vnd.google-apps.folder'"
     out, tok = [], None
     while True:
-        r = drive.files().list(q=q, fields='nextPageToken,files(id,name,mimeType,createdTime)',
+        r = drive.files().list(q=q, fields='nextPageToken,files(id,name,mimeType,createdTime,modifiedTime)',
                                pageToken=tok, pageSize=1000).execute()
         out += r.get('files', [])
         tok = r.get('nextPageToken')
@@ -260,19 +260,73 @@ def lista_por_defecto(nick):
     """Lista que se asume cuando una partida sale de un log SIN apunte a mano.
     Sin entrada para ese jugador se deja vacío (no se inventa)."""
     return _LISTA_DEFECTO.get(nick, '')
-# Exports viejos que ya viven en listas/ con su nombre canónico (Stock, PT, 2.0, Basics):
-# re-publicarlos con el nombre crudo del export crearía listas duplicadas.
-LISTAS_IGNORAR = {'izzet basics', 'deck - izzet stock', 'deck - izzet stock (1)',
-                  'deck - izzet pt', 'deck - izzet 2.0', 'deck - izzet prowess'}
+# El nombre crudo del export de MTGO ('Deck - Izzet Stock (1)') no es el nombre con el que
+# Fer apunta la lista en su hoja ('Stock'). Antes esos nombres estaban en una LISTA NEGRA y
+# se descartaban en silencio — lo que estaba bien en julio (eran copias de listas que ya
+# vivían en listas/) y salió muy caro el 15-sep-2026: Fer subió su Stock NUEVA con ese mismo
+# nombre y el robot la tiró sin decir nada. Ahora se TRADUCEN al nombre canónico: una
+# subida nueva actualiza la lista que toca en vez de desaparecer o duplicarse.
+LISTAS_CANONICAS = {
+    'izzet basics': 'Basics',
+    'deck - izzet stock': 'Stock',
+    'deck - izzet stock (1)': 'Stock',
+    'deck - izzet pt': 'PT',
+    'deck - izzet 2.0': '2.0',
+    'deck - izzet prowess': 'Stock',
+}
 
 def _nombre_lista(drive_name):
-    """Nombre de lista a partir del nombre del fichero en Drive; None si se ignora."""
+    """Nombre canónico de lista a partir del nombre del fichero en Drive."""
     base = re.sub(r'\.txt$', '', norm(drive_name), flags=re.I).strip()
-    if not base or key(base) in LISTAS_IGNORAR:
+    if not base:
         return None
+    canon = LISTAS_CANONICAS.get(key(base))
+    if canon:
+        return canon
     base = re.sub(r'^deck\s*-\s*', '', base, flags=re.I)      # prefijo del export de MTGO
     base = re.sub(r'\s*\(\d+\)$', '', base).strip()           # sufijo "(1)" de duplicados
     return base or None
+
+
+# Una lista puede llegar como .txt o como DOCUMENTO DE GOOGLE (si al subirla se deja que
+# Drive la convierta, que es lo que pasó el 15-sep-2026). El doc exportado mete una línea
+# en blanco entre CADA carta, y comparar_listas.mjs corta main/side en la primera línea en
+# blanco: sin normalizar, la lista entera menos la primera carta acababa en el banquillo.
+# Por eso el fichero se guarda siempre en forma canónica, con cabecera 'Sideboard'
+# explícita, que es lo que el comparador respeta por encima de las líneas en blanco.
+GDOC_MIME = 'application/vnd.google-apps.document'
+
+def _normalizar_lista(texto):
+    """Texto de lista -> forma canónica 'main / blanco / Sideboard / side'.
+    Devuelve (texto_normalizado, n_main, n_side)."""
+    lineas = [l.rstrip() for l in texto.splitlines()]
+    bloques, actual, blancos = [], [], 0
+    for l in lineas:
+        if not l.strip():
+            blancos += 1
+            continue
+        if actual and blancos:
+            # Un doc de Google separa CADA carta con una línea en blanco, y el bloque
+            # main/side con dos o más. Un export .txt de MTGO usa una sola. Por eso el
+            # corte fuerte es >=2 blancos si los hay, y si no, el primer blanco.
+            bloques.append((actual, blancos)); actual = []
+        blancos = 0
+        actual.append(l)
+    if actual:
+        bloques.append((actual, 0))
+    def cuenta(ls):
+        return sum(int(m.group(1)) for m in (re.match(r'\s*(\d+)x?\s+\S', l) for l in ls) if m)
+    if len(bloques) <= 1:
+        cuerpo = [l for b, _ in bloques for l in b]
+        return '\n'.join(cuerpo) + '\n', cuenta(cuerpo), 0
+    fuerte = max((sep for _, sep in bloques[:-1]), default=1)
+    main, side, en_side = [], [], False
+    for i, (b, sep) in enumerate(bloques):
+        (side if en_side else main).extend(b)
+        if not en_side and sep >= fuerte:
+            en_side = True
+    txt = '\n'.join(main) + ('\n\nSideboard\n' + '\n'.join(side) if side else '') + '\n'
+    return txt, cuenta(main), cuenta(side)
 
 def _es_lista_valida(texto):
     """Al repo (público) solo pasan ficheros con pinta de mazo: 8+ líneas '<n> Carta'."""
@@ -280,28 +334,63 @@ def _es_lista_valida(texto):
         return False
     return sum(1 for l in texto.splitlines() if re.match(r'\s*\d+x?\s+\S', l)) >= 8
 
+def _bajar_texto(drive, f):
+    """Contenido de un fichero de lista: .txt tal cual, documento de Google exportado."""
+    fd, tpath = tempfile.mkstemp(suffix='.txt')
+    os.close(fd)
+    try:
+        if f.get('mimeType') == GDOC_MIME:
+            from googleapiclient.http import MediaIoBaseDownload
+            with open(tpath, 'wb') as fh:
+                dl = MediaIoBaseDownload(fh, drive.files().export_media(
+                    fileId=f['id'], mimeType='text/plain'))
+                done = False
+                while not done:
+                    _, done = dl.next_chunk()
+        else:
+            download(drive, f['id'], tpath)
+        return Path(tpath).read_text(encoding='utf-8', errors='replace')
+    finally:
+        os.unlink(tpath)
+
+
 def sync_listas(drive, folder_id, nick, hoy=None):
-    """Baja los ficheros de texto de la RAÍZ de Logs_<nick> a listas/<nombre>.txt.
-    Solo escribe si el contenido cambió (para no commitear a diario sin motivo).
+    """Baja las listas de la RAÍZ de Logs_<nick> a listas/<nombre canónico>.txt.
+
+    Acepta .txt y documentos de Google (se exportan a texto). Si dos ficheros
+    resuelven al mismo nombre de lista — el caso real: el export viejo en .txt y el
+    documento nuevo, ambos 'Deck - Izzet Stock (1)' — gana el MÁS RECIENTE y se dice
+    cuál. Solo escribe si el contenido cambió. Nada se descarta en silencio: cada
+    fichero que se ignora sale nombrado en el log.
     Devuelve los nombres de fichero escritos."""
     cambios = []
     existentes = {p.name.lower(): p for p in LISTAS_DIR.glob('*.txt')}
+    candidatos = {}
     for f in list_children(drive, folder_id):
-        if f.get('mimeType') != 'text/plain':
+        if f.get('mimeType') not in ('text/plain', GDOC_MIME):
             continue
         nombre = _nombre_lista(f.get('name', ''))
         if not nombre:
+            print(f"    - '{f['name']}': sin nombre de lista utilizable, se ignora")
             continue
-        fd, tpath = tempfile.mkstemp(suffix='.txt')
-        os.close(fd)
-        try:
-            download(drive, f['id'], tpath)
-            texto = Path(tpath).read_text(encoding='utf-8', errors='replace').strip() + '\n'
-        finally:
-            os.unlink(tpath)
+        prev = candidatos.get(nombre)
+        if prev and (prev.get('modifiedTime') or '') >= (f.get('modifiedTime') or ''):
+            print(f"    - '{f['name']}': hay otra '{nombre}' más reciente "
+                  f"('{prev['name']}'), se ignora esta")
+            continue
+        if prev:
+            print(f"    - '{prev['name']}': la reemplaza '{f['name']}', más reciente")
+        candidatos[nombre] = f
+
+    for nombre, f in sorted(candidatos.items()):
+        texto = _bajar_texto(drive, f)
         if not _es_lista_valida(texto):
             print(f"    ! '{f['name']}': no parece una lista de mazo, se ignora")
             continue
+        texto, n_main, n_side = _normalizar_lista(texto)
+        if (n_main, n_side) != (60, 15):
+            print(f"    ! aviso: '{f['name']}' -> {nombre}: {n_main} main / {n_side} side "
+                  f"(lo normal es 60/15). Se publica igual; revisar el fichero en Drive.")
         dest = existentes.get(f"{nombre.lower()}.txt", LISTAS_DIR / f"{nombre}.txt")
         if dest.exists():
             cuerpo = ''.join(l for l in dest.read_text(encoding='utf-8').splitlines(keepends=True)
@@ -310,6 +399,7 @@ def sync_listas(drive, folder_id, nick, hoy=None):
                 continue
         fecha = (hoy or datetime.now(MADRID)).strftime('%Y-%m-%d')
         dest.write_text(f"# {nick} · {nombre} (Drive, {fecha})\n{texto}", encoding='utf-8')
+        print(f"    lista '{f['name']}' -> listas/{dest.name} ({n_main}/{n_side})")
         cambios.append(dest.name)
     return cambios
 
