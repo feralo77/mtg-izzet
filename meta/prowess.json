@@ -3,7 +3,7 @@
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
   "mazos": 60,
   "ventanaDias": 28,
-  "consenso": 72,
+  "consenso": 82,
   "listaMedia": {
     "main": [
       {
@@ -47,12 +47,12 @@
         "q": 3
       },
       {
-        "n": "Scalding Tarn",
-        "q": 3
-      },
-      {
         "n": "Expressive Iteration",
         "q": 4
+      },
+      {
+        "n": "Scalding Tarn",
+        "q": 3
       },
       {
         "n": "Bloodstained Mire",
@@ -224,8 +224,17 @@
       "n": "Mountain",
       "decks": 58,
       "pct": 97,
-      "avg": 2.69,
+      "avg": 2.71,
       "typical": 3,
+      "min": 2,
+      "max": 4
+    },
+    {
+      "n": "Expressive Iteration",
+      "decks": 56,
+      "pct": 93,
+      "avg": 3.23,
+      "typical": 4,
       "min": 1,
       "max": 4
     },
@@ -233,17 +242,8 @@
       "n": "Scalding Tarn",
       "decks": 56,
       "pct": 93,
-      "avg": 2.95,
+      "avg": 2.91,
       "typical": 3,
-      "min": 1,
-      "max": 4
-    },
-    {
-      "n": "Expressive Iteration",
-      "decks": 55,
-      "pct": 92,
-      "avg": 3.25,
-      "typical": 4,
       "min": 1,
       "max": 4
     },
@@ -251,34 +251,34 @@
       "n": "Bloodstained Mire",
       "decks": 55,
       "pct": 92,
-      "avg": 2.65,
+      "avg": 2.67,
       "typical": 2,
       "min": 1,
       "max": 4
     },
     {
       "n": "Slickshot Show-Off",
-      "decks": 53,
-      "pct": 88,
-      "avg": 3.7,
+      "decks": 54,
+      "pct": 90,
+      "avg": 3.69,
       "typical": 4,
       "min": 2,
       "max": 4
     },
     {
       "n": "Fiery Islet",
-      "decks": 53,
-      "pct": 88,
-      "avg": 1.58,
+      "decks": 54,
+      "pct": 90,
+      "avg": 1.59,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Mutagenic Growth",
-      "decks": 52,
-      "pct": 87,
-      "avg": 3.38,
+      "decks": 53,
+      "pct": 88,
+      "avg": 3.36,
       "typical": 4,
       "min": 2,
       "max": 4
@@ -287,7 +287,7 @@
       "n": "Arid Mesa",
       "decks": 50,
       "pct": 83,
-      "avg": 2.14,
+      "avg": 2.18,
       "typical": 2,
       "min": 1,
       "max": 4
@@ -296,7 +296,7 @@
       "n": "Wooded Foothills",
       "decks": 49,
       "pct": 82,
-      "avg": 2.57,
+      "avg": 2.59,
       "typical": 3,
       "min": 1,
       "max": 4
@@ -312,9 +312,9 @@
     },
     {
       "n": "Unholy Heat",
-      "decks": 26,
-      "pct": 43,
-      "avg": 1.69,
+      "decks": 25,
+      "pct": 42,
+      "avg": 1.68,
       "typical": 1,
       "min": 1,
       "max": 4
@@ -323,7 +323,7 @@
       "n": "Stormchaser's Talent",
       "decks": 19,
       "pct": 32,
-      "avg": 2.26,
+      "avg": 2.16,
       "typical": 2,
       "min": 1,
       "max": 4
@@ -348,9 +348,9 @@
     },
     {
       "n": "Tormod's Crypt",
-      "decks": 10,
-      "pct": 17,
-      "avg": 1.8,
+      "decks": 11,
+      "pct": 18,
+      "avg": 1.82,
       "typical": 2,
       "min": 1,
       "max": 2
@@ -375,20 +375,20 @@
     },
     {
       "n": "Island",
-      "decks": 7,
-      "pct": 12,
-      "avg": 1.57,
+      "decks": 6,
+      "pct": 10,
+      "avg": 1.67,
       "typical": 1,
       "min": 1,
       "max": 3
     },
     {
       "n": "Polluted Delta",
-      "decks": 4,
-      "pct": 7,
-      "avg": 2,
+      "decks": 3,
+      "pct": 5,
+      "avg": 2.33,
       "typical": 2,
-      "min": 1,
+      "min": 2,
       "max": 3
     },
     {
@@ -518,24 +518,6 @@
       "max": 1
     },
     {
-      "n": "Quantum Riddler",
-      "decks": 1,
-      "pct": 2,
-      "avg": 4,
-      "typical": 4,
-      "min": 4,
-      "max": 4
-    },
-    {
-      "n": "Arena of Glory",
-      "decks": 1,
-      "pct": 2,
-      "avg": 3,
-      "typical": 3,
-      "min": 3,
-      "max": 3
-    },
-    {
       "n": "Consider",
       "decks": 1,
       "pct": 2,
@@ -563,15 +545,6 @@
       "max": 2
     },
     {
-      "n": "Flooded Strand",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
       "n": "Gut Shot",
       "decks": 1,
       "pct": 2,
@@ -595,7 +568,7 @@
       "n": "Unholy Heat",
       "decks": 56,
       "pct": 93,
-      "avg": 2.96,
+      "avg": 3,
       "typical": 3,
       "min": 1,
       "max": 4
@@ -604,7 +577,7 @@
       "n": "Meltdown",
       "decks": 55,
       "pct": 92,
-      "avg": 1.78,
+      "avg": 1.76,
       "typical": 2,
       "min": 1,
       "max": 2
@@ -613,7 +586,7 @@
       "n": "Spell Pierce",
       "decks": 51,
       "pct": 85,
-      "avg": 1.69,
+      "avg": 1.71,
       "typical": 2,
       "min": 1,
       "max": 2
@@ -629,9 +602,9 @@
     },
     {
       "n": "Surgical Extraction",
-      "decks": 35,
-      "pct": 58,
-      "avg": 1.49,
+      "decks": 34,
+      "pct": 57,
+      "avg": 1.47,
       "typical": 1,
       "min": 1,
       "max": 4
@@ -682,7 +655,7 @@
       "max": 2
     },
     {
-      "n": "Heritage Reclamation",
+      "n": "Assault Strobe",
       "decks": 6,
       "pct": 10,
       "avg": 1.33,
@@ -691,10 +664,10 @@
       "max": 2
     },
     {
-      "n": "Assault Strobe",
-      "decks": 5,
-      "pct": 8,
-      "avg": 1.2,
+      "n": "Heritage Reclamation",
+      "decks": 6,
+      "pct": 10,
+      "avg": 1.33,
       "typical": 1,
       "min": 1,
       "max": 2
@@ -809,15 +782,6 @@
     },
     {
       "n": "Eddymurk Crab",
-      "decks": 1,
-      "pct": 2,
-      "avg": 2,
-      "typical": 2,
-      "min": 2,
-      "max": 2
-    },
-    {
-      "n": "Force of Negation",
       "decks": 1,
       "pct": 2,
       "avg": 2,
@@ -982,7 +946,7 @@
     "campoJuegaYoNo": [
       {
         "n": "Surgical Extraction",
-        "pct": 58,
+        "pct": 57,
         "zona": "side"
       }
     ],
@@ -1015,6 +979,6 @@
     ]
   },
   "sugerencias": [
-    "El campo juega Surgical Extraction (58% · side) y tu lista no lo lleva."
+    "El campo juega Surgical Extraction (57% · side) y tu lista no lo lleva."
   ]
 }
