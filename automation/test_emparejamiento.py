@@ -326,19 +326,48 @@ def test_nick_con_errata():
 
 
 def test_listas_nombre_y_validez():
-    # El nombre del fichero en Drive ES el nombre de la lista; los exports viejos ya
-    # curados se ignoran y el prefijo "Deck - " del export de MTGO se limpia.
+    # El nombre del fichero en Drive ES el nombre de la lista; el prefijo "Deck - " del
+    # export de MTGO se limpia y el sufijo "(1)" de los duplicados de Drive también.
     assert PL._nombre_lista('UR Aggro Flashback') == 'UR Aggro Flashback'
     assert PL._nombre_lista('Pol 1 NF.txt') == 'Pol 1 NF'
     assert PL._nombre_lista('Deck - UR Twist (1).txt') == 'UR Twist'
-    assert PL._nombre_lista('Deck - Izzet Stock (1).txt') is None   # legacy curado
-    assert PL._nombre_lista('Izzet basics.txt') is None             # legacy curado
     assert PL._nombre_lista('') is None
+    # Los nombres crudos del export se TRADUCEN al nombre canónico con el que Fer apunta
+    # la lista en su hoja. Antes se descartaban, y el 15-sep-2026 eso tiró su Stock nueva.
+    assert PL._nombre_lista('Deck - Izzet Stock (1).txt') == 'Stock'
+    assert PL._nombre_lista('Deck - Izzet Stock') == 'Stock'
+    assert PL._nombre_lista('Izzet basics.txt') == 'Basics'
+    assert PL._nombre_lista('Deck - Izzet PT.txt') == 'PT'
     # al repo público solo pasan ficheros con pinta de mazo
     assert PL._es_lista_valida('\n'.join(f"4 Carta {i}" for i in range(10)))
     assert not PL._es_lista_valida('apuntes sueltos\nsin cartas\n1 linea suelta')
     assert not PL._es_lista_valida('4 Carta\n' * 20000)
     print("OK listas_nombre_y_validez")
+
+
+def test_normalizar_lista_de_documento_de_google():
+    """Un doc de Google exportado mete una línea en blanco entre CADA carta, y el
+    comparador corta main/side en la primera línea en blanco: sin normalizar, la lista
+    entera menos la primera carta acababa en el banquillo. Caso real del 15-sep-2026."""
+    main = ["4 Carta M%d" % i for i in range(15)]                      # 15*4 = 60
+    side = ["3 Carta S%d" % i for i in range(5)]                       # 5*3 = 15
+    # Así sale de Drive: doble salto entre cartas, y un separador más gordo entre bloques.
+    gdoc = "\n\n".join(main) + "\n\n  \n\n" + "\n\n".join(side) + "\n  "
+    txt, n_main, n_side = PL._normalizar_lista(gdoc)
+    assert (n_main, n_side) == (60, 15), (n_main, n_side)
+    assert "Sideboard" in txt                       # cabecera explícita: el comparador la respeta
+    assert txt.index("Carta M14") < txt.index("Sideboard") < txt.index("Carta S0")
+
+    # Un export .txt normal de MTGO (una sola línea en blanco) sigue funcionando igual.
+    mtgo = "\n".join(main) + "\n\n" + "\n".join(side) + "\n"
+    txt, n_main, n_side = PL._normalizar_lista(mtgo)
+    assert (n_main, n_side) == (60, 15), (n_main, n_side)
+
+    # Sin separador ninguno: todo es maindeck y no se inventa un banquillo.
+    txt, n_main, n_side = PL._normalizar_lista("\n".join(main))
+    assert (n_main, n_side) == (60, 0)
+    assert "Sideboard" not in txt
+    print("OK normalizar_lista_de_documento_de_google")
 
 
 def test_versiones_agrupan_el_mismo_maindeck():
