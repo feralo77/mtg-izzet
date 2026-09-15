@@ -1,6 +1,6 @@
 match_uuid,Fecha,Evento / Liga,Lista,Versión,Ronda,Mazo del Oponente,Arquetipo,Resultado (W/L),Juegos Ganados,Juegos Perdidos,Salida / Robo (G1),Mulligans (Yo),Mulligans (Rival),Cartas Clave / MVP,Notas de Match / Sideboard,Reportado por,Fuente,Rival,Confianza
 29dc7612-bb7c-4974-9ac8-7a475aa6f8d6,11/07/2026,Liga 1,Stock,Stock,1,Loki,Izzet Cori,W,2,0,Robo,0,0,,,feralo77,log,MNeon,85%
-0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,Stock,2,Devoted,Golgari Yawgmoth,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log,zturchan,84%
+0115af07-1f16-4850-8811-0e57e8a3d72b,11/07/2026,Liga 1,Stock,Stock,2,Devoted,Devoted Combo,L,0,2,Robo,0,0,,Soy un paquete,feralo77,log,zturchan,94%
 e4b090d8-9bf0-4a39-bcfe-703f18c56740,11/07/2026,Liga 1,Stock,Stock,3,Affinity,Izzet Affinity,L,0,2,Robo,0,0,,Paliza,feralo77,log,Dcal215,93%
 b27b88d4-d70c-465f-b832-1fb1f6217358,11/07/2026,Liga 1,Stock,Stock,4,Broodscale,Broodscale,W,2,1,Robo,0,0,,,feralo77,log,chylz,100%
 5f239dd1-82c8-4aa4-804b-ace012669679,11/07/2026,Liga 1,Stock,Stock,5,Dimir,Dimir Frog,W,2,0,Salida,0,0,,Se estanca en la segunda,feralo77,log,ilprofetaVDR,apunte
@@ -38,11 +38,11 @@ ad10d270-b2bf-46ce-b675-6e882ef35b68,27/07/2026,Liga 8,PT,Aggro,1,Neoform,Neofor
 187e18dd-196f-4024-bad1-1ababc699072,27/07/2026,Liga 8,PT,Aggro,2,Storm,Ruby Storm,W,2,0,Salida,0,0,,,feralo77,log,haoqinglangou,97%
 200fc873-e94c-4527-8d9b-abbabdb69a66,27/07/2026,Liga 8,PT,Aggro,3,Living End,Living End,L,0,2,Salida,0,0,,,feralo77,log,bellfy,62%
 830999b5-951e-4fc4-8bcb-e1e3626d07c8,27/07/2026,Liga 8,PT,Aggro,4,Storm,Ruby Storm,W,2,0,Robo,0,0,,,feralo77,log,liuyuchen,86%
-c848d8d2-0e77-401a-8e8b-51808077084b,27/07/2026,Liga 8,PT,Aggro,5,Devoted Combo,Golgari Yawgmoth,W,2,1,Salida,0,0,,,feralo77,log,ulbabrabal,42%
+c848d8d2-0e77-401a-8e8b-51808077084b,27/07/2026,Liga 8,PT,Aggro,5,Devoted Combo,Devoted Combo,W,2,1,Salida,0,0,,,feralo77,log,ulbabrabal,92%
 147a9da5-439e-4d46-b6a3-0f81f4b600fc,11/08/2026,Liga 9,Stock,Stock,1,The Rack,The Rack,W,2,1,Salida,0,0,,,feralo77,log,Jsnyder207,apunte
 fc820546-7345-414f-855c-20f161079428,11/08/2026,Liga 9,Stock,Stock,2,Goryos,Esper Goryo's,L,0,2,Salida,0,2,,,feralo77,log,Grischdl,93%
 1f2cf4d9-12e1-46cc-b506-0da6d3098782,11/08/2026,Liga 9,Stock,Stock,3,Eldrazi,Eldrazi,L,0,2,Robo,0,0,,,feralo77,log,Lurch7034,93%
-9746d38e-00cf-40ab-a45f-9b3570c27ee3,11/08/2026,Liga 9,Stock,Stock,4,Sam,Golgari Yawgmoth,W,2,0,Salida,0,0,,,feralo77,log,Trailovsky,42%
+9746d38e-00cf-40ab-a45f-9b3570c27ee3,11/08/2026,Liga 9,Stock,Stock,4,Sam,Devoted Combo,W,2,0,Salida,0,0,,,feralo77,log,Trailovsky,62%
 5a27067b-f93f-4603-b4a7-18bdf1b19249,11/08/2026,Liga 9,Stock,Stock,5,Goryos,Esper Goryo's,W,1,0,Robo,0,0,,,feralo77,log,DrPP,45%
 5d6eea44-6a64-476b-b83b-e4c258e43189,12/08/2026,Liga 10,Stock,Stock,1,neoform,Neoform,L,0,2,Robo,1,1,,,feralo77,log,zhangkh,93%
 25da27c0-600b-40bb-bf8a-93d63e5836f1,12/08/2026,Liga 10,Stock,Stock,2,Dimir Frog,Grixis Reanimator,L,1,2,Salida,0,0,,,feralo77,log,robotbc,93%
@@ -63,5 +63,5 @@ da946d3a-c85d-4e01-ba85-b0dc0d087533,11/09/2026,Liga 12,Stock,Stock,2,broodscale
 09c2f6ff-e14f-494b-b973-a32722ff8c3d,15/09/2026,Liga 13,Stock,Stock,1,dimir,Dimir Frog,L,1,2,Robo,0,0,,,feralo77,log,Dopedafi,56%
 a42a7a1e-fa91-4a14-b431-98aea3b4e97d,15/09/2026,Liga 13,Stock,Stock,2,necrodominance,Necrodominance,W,2,0,Robo,0,0,,,feralo77,log,Jinroon,100%
 79727fd4-6b5e-403b-9e78-ed52ec1867e6,15/09/2026,Liga 13,Stock,Stock,3,boros,Boros Energy,W,2,0,Robo,0,0,,,feralo77,log,Grxss,85%
-054ae6d2-c393-4bb9-8457-c41933f528db,15/09/2026,Liga 13,Stock,Stock,4,devoted,Golgari Yawgmoth,W,2,1,Robo,0,0,,,feralo77,log,moreno13,63%
+054ae6d2-c393-4bb9-8457-c41933f528db,15/09/2026,Liga 13,Stock,Stock,4,devoted,Devoted Combo,W,2,1,Robo,0,0,,,feralo77,log,moreno13,90%
 cae1e89a-fb8e-4b2a-8002-70596151513e,15/09/2026,Liga 13,Stock,Stock,5,broodscale,Broodscale,W,2,1,Salida,0,0,,,feralo77,log,Hayseed,100%

@@ -51,7 +51,7 @@ Counter_Magic,1,0-1,0%,Boros Energy,100%,3.7,"Ragavan, Nimble Pilferer, Guide of
 CrusherBotBG,1,0-1,0%,MonoR Artifacts,94%,5.0,"Shadowspear, Tormod's Crypt, Lightning Bolt, Galvanic Blast, Shrapnel Blast, Mox Opal, Mishra's Bauble, Vexing Bauble, Legion Extruder, Cori-Steel Cutter",feralo77
 DB_BaaL,1,0-1,0%,Broodscale,100%,7.0,"Blade of the Bloodchief, Glaring Fleshraker, Soul-Guide Lantern, Kozilek's Command, Emrakul, the Promised End, Walking Ballista, Haywire Mite, Malevolent Rumble, Basking Broodscale",feralo77
 DB_cntrlfreak_ttv,1,0-1,0%,Esper Goryo's,93%,7.3,"Quantum Riddler, Ephemerate, Force of Negation, Faithful Mending, Goryo's Vengeance, Solitude, Prismatic Ending, Psychic Frog, Nihil Spellbomb",4c_PolG
-DB_Control4Daze,1,0-1,0%,Golgari Yawgmoth,86%,5.5,"Green Sun's Zenith, Badgermole Cub, Endurance, Vexing Bauble, Wight of the Reliquary, Tyvar, Jubilant Brawler, Ignoble Hierarch, Haywire Mite, Soul-Guide Lantern",4c_PolG
+DB_Control4Daze,1,0-1,0%,Golgari Yawgmoth,65%,5.5,"Green Sun's Zenith, Badgermole Cub, Endurance, Vexing Bauble, Wight of the Reliquary, Tyvar, Jubilant Brawler, Ignoble Hierarch, Haywire Mite, Soul-Guide Lantern",4c_PolG
 Dcal215,1,0-1,0%,Izzet Affinity,93%,4.0,"Weapons Manufacturing, Mox Opal, Mishra's Bauble, Tormod's Crypt, Engineered Explosives, Pinnacle Emissary, Arcbound Ravager, Skateboard, Kappa Cannoneer",feralo77
 DeepDisherino,1,0-1,0%,Izzet Affinity,42%,5.0,"Lavaspur Boots, Ornithopter, Stoneforge Mystic, Mox Opal, Cryptic Coat, Puresteel Paladin, Colossus Hammer, Shadowspear, Portable Hole",4c_PolG
 Deitrock,1,0-1,0%,Esper Goryo's,93%,5.0,"Thoughtseize, Prismatic Ending, Otherworldly Gaze, Quantum Riddler, Ephemerate, Force of Negation, Faithful Mending, Psychic Frog, March of Otherworldly Light, Goryo's Vengeance",feralo77
@@ -129,13 +129,13 @@ MKC,1,0-1,0%,Esper Goryo's,47%,5.5,"Prismatic Ending, Psychic Frog, Thoughtseize
 MNeon,1,1-0,100%,Izzet Cori,85%,4.5,"Thoughtseize, Mox Opal, Metallic Rebuke, Loki, God of Mischief, Mishra's Bauble, Asmoranomardicadaistinaculdacar, Relic of Progenitus, The Underworld Cookbook, Emry, Lurker of the Loch",feralo77
 mommydom_manifesto,1,1-0,100%,Izzet Cori,88%,4.5,"Mox Opal, Mox Amber, Mishra's Bauble, Emry, Lurker of the Loch, Malevolent Rumble, Tamiyo, Inquisitive Student, Tormod's Crypt, Skateboard, Engineered Explosives, Jace, Wielder of Mysteries",4c_PolG
 Monkmerlin,1,0-1,0%,Ruby Storm,100%,4.0,"Ruby Medallion, Reckless Impulse, Desperate Ritual, Valakut Awakening, Ral, Monsoon Mage, Wrenn's Resolve, Manamorphose, Hex Magic, Grapeshot, Pyretic Ritual, Past in Flames, Fire Magic",4c_PolG
-moreno13,1,1-0,100%,Golgari Yawgmoth,63%,3.7,"Badgermole Cub, Tyvar, Jubilant Brawler, Devoted Druid, Shang-Chi, Master of Kung Fu, Delighted Halfling, Duskwatch Recruiter, Green Sun's Zenith, Nature's Rhythm, Birds of Paradise, Formidable Speaker, Vexing Bauble",feralo77
+moreno13,1,1-0,100%,Devoted Combo,90%,3.7,"Badgermole Cub, Tyvar, Jubilant Brawler, Devoted Druid, Shang-Chi, Master of Kung Fu, Delighted Halfling, Duskwatch Recruiter, Green Sun's Zenith, Nature's Rhythm, Birds of Paradise, Formidable Speaker, Vexing Bauble",feralo77
 neatpete8,1,1-0,100%,Amulet Titan,100%,3.7,"Arboreal Grazer, Amulet of Vigor, Scapeshift, Summoner's Pact, Cultivator Colossus, Green Sun's Zenith, Zuran Orb, Primeval Titan, Malevolent Rumble, Spelunking",4c_PolG
 Niroval,1,0-1,0%,Eldrazi,96%,5.5,"Utopia Sprawl, Icetill Explorer, Mole Man, Moloid Master, Ancient Stirrings, Sire of Seven Deaths, Fatal Push, Malevolent Rumble, Talisman of Resilience, Nihil Spellbomb, Kozilek's Command, Culling Ritual, Sowing Mycospawn",4c_PolG
 NJGB1,1,0-1,0%,Neoform,100%,5.0,"Planar Genesis, Allosaurus Rider, Eldritch Evolution, Neoform, Pact of Negation, Consign to Memory, Summoner's Pact, Mystical Dispute, Nourishing Shoal",feralo77
 nobrawn,1,1-0,100%,Azorius Control,100%,9.0,"Leyline Binding, Lightning Bolt, Aang, Swift Savior, Wrenn and Six, Counterspell, Ragavan, Nimble Pilferer, Galvanic Discharge, Mishra's Bauble, Wrath of the Skies, Teferi, Time Raveler, Omnath, Locus of Creation",4c_PolG
-Nytrox,1,0-1,0%,Golgari Yawgmoth,63%,4.0,"Young Wolf, Fatal Push, Endurance, Malevolent Rumble, Agatha's Soul Cauldron, Formidable Speaker, Sephiroth, Fabled SOLDIER, Strangleroot Geist",4c_PolG
-OafMcNamara,1,1-0,100%,URb,28%,6.3,"Unholy Heat, Proft's Eidetic Memory, Faithless Looting, Kid Loki, Spell Pierce, Fear of Missing Out, Quantum Riddler, Walking Ballista, Vexing Bauble, Marauding Mako, Agatha's Soul Cauldron",feralo77
+Nytrox,1,0-1,0%,Golgari Yawgmoth,65%,4.0,"Young Wolf, Fatal Push, Endurance, Malevolent Rumble, Agatha's Soul Cauldron, Formidable Speaker, Sephiroth, Fabled SOLDIER, Strangleroot Geist",4c_PolG
+OafMcNamara,1,1-0,100%,URb,30%,6.3,"Unholy Heat, Proft's Eidetic Memory, Faithless Looting, Kid Loki, Spell Pierce, Fear of Missing Out, Quantum Riddler, Walking Ballista, Vexing Bauble, Marauding Mako, Agatha's Soul Cauldron",feralo77
 Orpheus819,1,1-0,100%,Elves,80%,2.5,"Llanowar Elves, Elvish Visionary, Heritage Druid",4c_PolG
 Pascal3000,1,1-0,100%,Neoform,88%,3.0,"Allosaurus Rider, Eldritch Evolution, Neoform, Consign to Memory",4c_PolG
 pastelZero,1,1-0,100%,Eldrazi,69%,4.3,"Slumbering Trudge, Fanatic of Rhonas, Trinisphere, Green Sun's Zenith, Sire of Seven Deaths, Kozilek's Command, Endurance",4c_PolG
@@ -173,9 +173,9 @@ Tirifolix92,1,0-1,0%,Merfolk,100%,7.0,"Cryptic Command, Svyelun of Sea and Sky, 
 titan55,1,0-1,0%,Grixis Reanimator,47%,5.0,"Faithless Looting, Persist, Unearth, Gran-Gran, Psychic Frog, Emperor of Bones",4c_PolG
 toondoslav,1,0-1,0%,Izzet Prowess,100%,4.0,"Dragon's Rage Channeler, Mishra's Bauble, Cori-Steel Cutter, Preordain, Monastery Swiftspear, Lava Dart, Expressive Iteration, Mutagenic Growth, Lightning Bolt, Slickshot Show-Off",4c_PolG
 TOP_AI,1,0-1,0%,Boros Energy,88%,5.5,"Guide of Souls, Phelia, Exuberant Shepherd, Solitude, Witch Enchanter, Overlord of the Balemurk, Fatal Push, Ocelot Pride, Ephemerate",4c_PolG
-Trailovsky,1,1-0,100%,Golgari Yawgmoth,42%,3.5,"Delighted Halfling, Birds of Paradise, Duskwatch Recruiter, Green Sun's Zenith, Badgermole Cub",feralo77
+Trailovsky,1,1-0,100%,Devoted Combo,62%,3.5,"Delighted Halfling, Birds of Paradise, Duskwatch Recruiter, Green Sun's Zenith, Badgermole Cub",feralo77
 TSTOB,1,1-0,100%,Living End,86%,4.0,"Overlord of the Balemurk, Shardless Agent, Living End, Force of Negation, Formidable Speaker, Wistfulness, Deceit, Foundation Breaker",4c_PolG
-ulbabrabal,1,1-0,100%,Golgari Yawgmoth,42%,3.3,"Delighted Halfling, Green Sun's Zenith, Badgermole Cub, Devoted Druid, Vizier of Remedies, Karn, the Great Creator, Walking Ballista",feralo77
+ulbabrabal,1,1-0,100%,Devoted Combo,92%,3.3,"Delighted Halfling, Green Sun's Zenith, Badgermole Cub, Devoted Druid, Vizier of Remedies, Karn, the Great Creator, Walking Ballista",feralo77
 Villhelm97,1,1-0,100%,Eldrazi,23%,5.0,"Slumbering Trudge, Fight Rigging, Malevolent Rumble, Trinisphere, Kozilek's Command, Dismember, Fanatic of Rhonas",4c_PolG
 vinnyrussian123,1,0-1,0%,Esper Goryo's,93%,4.7,"Thoughtseize, March of Otherworldly Light, Solitude, Force of Negation, Quantum Riddler, Ephemerate, Teferi, Time Raveler, Faithful Mending, Goryo's Vengeance, Psychic Frog",feralo77
 virp13,1,1-0,100%,Sultai Midrange,100%,5.3,"Ice-Fang Coatl, Birthing Ritual, Subtlety, Flare of Denial, Endurance, Abhorrent Oculus, Shardless Agent, Damping Sphere, Sink into Stupor, Dismember, Force of Vigor, Coiling Oracle",4c_PolG
@@ -192,5 +192,5 @@ zeppelin016,1,1-0,100%,Boros Ponza,82%,4.0,"Path to Exile, Avengers Disassembled
 zhangkh,1,0-1,0%,Neoform,93%,4.0,"Summoner's Pact, Allosaurus Rider, Eldritch Evolution, Neoform, Preordain",feralo77
 Zores,1,1-0,100%,Grixis Reanimator,67%,4.7,"Thoughtseize, Stitcher's Supplier, Emperor of Bones, Orcish Bowmasters, Flare of Malice, Force of Despair, Eyetwitch, Persist, Overlord of the Balemurk, Dauthi Voidwalker",feralo77
 Zorro7x4,1,1-0,100%,Desconocido,0%,3.0,"Ragavan, Nimble Pilferer, Lightning Bolt",feralo77
-zturchan,1,0-1,0%,Golgari Yawgmoth,84%,3.5,"Agatha's Soul Cauldron, Devoted Druid, Nature's Rhythm, Badgermole Cub, Walking Ballista, Delighted Halfling, Endurance, Vizier of Remedies, Green Sun's Zenith, Craterhoof Behemoth",feralo77
+zturchan,1,0-1,0%,Devoted Combo,94%,3.5,"Agatha's Soul Cauldron, Devoted Druid, Nature's Rhythm, Badgermole Cub, Walking Ballista, Delighted Halfling, Endurance, Vizier of Remedies, Green Sun's Zenith, Craterhoof Behemoth",feralo77
 zutoSamuel,1,0-1,0%,Esper Goryo's,93%,6.0,"Pest Control, Force of Negation, Faithful Mending, Thoughtseize, Prismatic Ending, Celestial Purge, Solitude, Goryo's Vengeance, Ephemerate",4c_PolG

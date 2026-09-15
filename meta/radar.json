@@ -286,7 +286,7 @@
     "wr": 20
    },
    {
-    "n": "Golgari Yawgmoth",
+    "n": "Devoted Combo",
     "variantes": null,
     "partidas": 3,
     "frec": 9.1,
@@ -662,6 +662,26 @@
      "global": "Blink",
      "pct": 10,
      "pctPrev": 10,
+     "delta": 0
+    },
+    "w": 0,
+    "l": 0,
+    "wr": null,
+    "n": 0
+   }
+  },
+  {
+   "nivel": "nuevo",
+   "mazo": "Creatures Toolbox",
+   "titular": "Creatures Toolbox: 5% del campo global y nunca te lo has cruzado",
+   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
+   "datos": {
+    "frecLiga": 0,
+    "deltaLiga": null,
+    "campo": {
+     "global": "Creatures Toolbox",
+     "pct": 5,
+     "pctPrev": 5,
      "delta": 0
     },
     "w": 0,
