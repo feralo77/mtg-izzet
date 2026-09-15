@@ -5,9 +5,17 @@
 // Lo que hace: cada corrida cruza TRES cosas y saca alarmas.
 //   1. El campo global de Modern (mtgtop8, página de metajuego): qué arquetipos
 //      hay y con qué peso, y cuánto han subido o bajado desde la corrida anterior.
-//   2. La liga de Fer (registro.csv, todos los jugadores): con qué se cruza de
-//      verdad, en la ventana reciente frente a la anterior.
-//   3. Su récord real contra cada uno (registro.csv filtrado por él).
+//   2. Lo que Fer se cruza de verdad (registro.csv), en la ventana reciente
+//      frente a la anterior.
+//   3. Su récord real contra cada uno.
+//
+// DESDE EL 15-SEP-2026 registro.csv trae SOLO las partidas de Fer (las de sus
+// compañeros están enteras en archivo/registro.csv y no entran aquí). Eso hace
+// que la frecuencia sea la SUYA de verdad — antes la marcaban las 138 partidas
+// de Pol — pero a cambio la muestra baja de 190 a ~52. Consecuencia práctica:
+// la mitad de "tendencia en tu liga" queda dormida hasta que junte ~60 partidas
+// (MIN_BASE = 30 por mitad) y NO se baja el listón para encenderla antes. Las
+// alarmas que sí funcionan mientras tanto son las de frecuencia absoluta y récord.
 //
 // La regla que pidió Fer: si un mazo SUBE y nuestro winrate contra él es BAJO,
 // hay que adaptarse. Eso es lo que produce este script.
@@ -144,8 +152,10 @@ function liga(registro, jugador, mapa) {
   const hayBase = previo.total >= MIN_BASE && reciente.total >= MIN_BASE;
 
   // Tu récord por arquetipo (todas tus partidas, no solo la ventana: n ya es escaso)
+  // registro.csv ya es solo de Fer; el filtro se queda como red de seguridad por si
+  // algún día vuelve a haber más de un jugador en el fichero.
   const mio = {};
-  util.filter(r => r['Reportado por'] === jugador).forEach(r => {
+  util.filter(r => !r['Reportado por'] || r['Reportado por'] === jugador).forEach(r => {
     const k = r.Arquetipo; mio[k] = mio[k] || { w: 0, l: 0 };
     if (r['Resultado (W/L)'] === 'W') mio[k].w++; else if (r['Resultado (W/L)'] === 'L') mio[k].l++;
   });
@@ -310,7 +320,7 @@ const cad = cadencia('docs/brainstorm');
 // El campo se compara con la corrida anterior; si es la primera, no hay deltas y se dice.
 const salida = {
   generado: hoyISO,
-  comoFunciona: 'Cruza el campo global de Modern (mtgtop8), la frecuencia real en la liga de Fer (registro.csv) y su récord contra cada mazo. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.',
+  comoFunciona: 'Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord contra cada uno. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.',
   umbrales: { winrateMalo: WR_MALO, partidasMinimas: N_MINIMO, frecuenciaAlta: FREC_ALTA, subeLiga: SUBE_LIGA, subeCampo: SUBE_CAMPO, campoRelevante: CAMPO_RELEVANTE },
   brainstorm: cad,
   hayComparacionCampo: campoFresco && !!previo?.campo?.arquetipos,
