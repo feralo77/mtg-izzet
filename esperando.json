@@ -7,7 +7,15 @@
    "evento": "Liga 15",
    "ronda": "1",
    "rival": "rameison",
-   "mazo": ""
+   "mazo": "uw"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "16/09/2026",
+   "evento": "Liga 15",
+   "ronda": "2",
+   "rival": "beitianjav",
+   "mazo": "broodscale"
   }
  ]
 }
