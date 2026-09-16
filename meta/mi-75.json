@@ -10,34 +10,134 @@
   },
   "porQueEsteMain": "Es tu maindeck real, el que llevas jugando desde la Liga 9 (11-ago-2026) y sobre el que estan calculadas TODAS las estadisticas del dashboard. Coincide con la escuela Clasica del campo (52% de las listas de mtgtop8) salvo en una carta: juegas 3 Expressive Iteration y 1 Unholy Heat en el main, donde el campo lleva 4 Iteration. Los 9 fetchlands son los tuyos (3 Arid Mesa, 3 Scalding Tarn, 3 Wooded Foothills): buscan lo mismo y son intercambiables.",
   "main": [
-    { "n": "Dragon's Rage Channeler", "q": 4, "z": "criatura" },
-    { "n": "Monastery Swiftspear", "q": 4, "z": "criatura" },
-    { "n": "Slickshot Show-Off", "q": 4, "z": "criatura" },
-    { "n": "Cori-Steel Cutter", "q": 4, "z": "hechizo" },
-    { "n": "Mishra's Bauble", "q": 4, "z": "hechizo" },
-    { "n": "Lightning Bolt", "q": 4, "z": "hechizo" },
-    { "n": "Lava Dart", "q": 4, "z": "hechizo" },
-    { "n": "Preordain", "q": 4, "z": "hechizo" },
-    { "n": "Mutagenic Growth", "q": 4, "z": "hechizo" },
-    { "n": "Expressive Iteration", "q": 3, "z": "hechizo" },
-    { "n": "Violent Urge", "q": 2, "z": "hechizo" },
-    { "n": "Unholy Heat", "q": 1, "z": "hechizo" },
-    { "n": "Steam Vents", "q": 3, "z": "tierra" },
-    { "n": "Mountain", "q": 3, "z": "tierra" },
-    { "n": "Fiery Islet", "q": 2, "z": "tierra" },
-    { "n": "Thundering Falls", "q": 1, "z": "tierra" },
-    { "n": "Arid Mesa", "q": 3, "z": "tierra" },
-    { "n": "Scalding Tarn", "q": 3, "z": "tierra" },
-    { "n": "Wooded Foothills", "q": 3, "z": "tierra" }
+    {
+      "n": "Dragon's Rage Channeler",
+      "q": 4,
+      "z": "criatura"
+    },
+    {
+      "n": "Monastery Swiftspear",
+      "q": 4,
+      "z": "criatura"
+    },
+    {
+      "n": "Slickshot Show-Off",
+      "q": 4,
+      "z": "criatura"
+    },
+    {
+      "n": "Cori-Steel Cutter",
+      "q": 4,
+      "z": "hechizo"
+    },
+    {
+      "n": "Mishra's Bauble",
+      "q": 4,
+      "z": "hechizo"
+    },
+    {
+      "n": "Lightning Bolt",
+      "q": 4,
+      "z": "hechizo"
+    },
+    {
+      "n": "Lava Dart",
+      "q": 4,
+      "z": "hechizo"
+    },
+    {
+      "n": "Preordain",
+      "q": 4,
+      "z": "hechizo"
+    },
+    {
+      "n": "Mutagenic Growth",
+      "q": 4,
+      "z": "hechizo"
+    },
+    {
+      "n": "Expressive Iteration",
+      "q": 3,
+      "z": "hechizo"
+    },
+    {
+      "n": "Violent Urge",
+      "q": 2,
+      "z": "hechizo"
+    },
+    {
+      "n": "Unholy Heat",
+      "q": 1,
+      "z": "hechizo"
+    },
+    {
+      "n": "Steam Vents",
+      "q": 3,
+      "z": "tierra"
+    },
+    {
+      "n": "Mountain",
+      "q": 3,
+      "z": "tierra"
+    },
+    {
+      "n": "Fiery Islet",
+      "q": 2,
+      "z": "tierra"
+    },
+    {
+      "n": "Thundering Falls",
+      "q": 1,
+      "z": "tierra"
+    },
+    {
+      "n": "Arid Mesa",
+      "q": 3,
+      "z": "tierra"
+    },
+    {
+      "n": "Scalding Tarn",
+      "q": 3,
+      "z": "tierra"
+    },
+    {
+      "n": "Wooded Foothills",
+      "q": 3,
+      "z": "tierra"
+    }
   ],
   "notaTierras": "Los 9 fetch son intercambiables: todos buscan Steam Vents, Mountain y Thundering Falls. Estos son los que tienes; el campo reparte igual pero con otros nombres, y eso no cambia ni una decision de juego.",
   "side": [
-    { "n": "Consign to Memory", "q": 4, "para": "El 37% de tu liga son mazos de trigger. Contrarresta habilidades DISPARADAS y hechizos INCOLOROS (todo el Eldrazi). OJO: contra Devoted Combo esta muerta (destapar el Devoted Druid es habilidad ACTIVADA)." },
-    { "n": "Unholy Heat", "q": 3, "para": "Boros Energy, Dimir Frog, el mirror, Yawgmoth. Con delirium mata cualquier cosa del formato. Llevas una cuarta copia en el main." },
-    { "n": "Surgical Extraction", "q": 2, "para": "Cementerio (23% de tu liga) y combo: a diferencia de la Tormod's Crypt que llevabas antes, ademas de limpiar te arranca las copias del mazo. Coste 0 real (Phyrexian): no te cuesta el turno cuando vas en el robo." },
-    { "n": "Meltdown", "q": 2, "para": "Izzet Affinity (8% de tu liga) y el resto de artefactos. Cuidado: tambien mata tus Cutter y tus Bauble." },
-    { "n": "Spell Pierce", "q": 2, "para": "Goryo's Vengeance, Neoform (contra el Eldritch Evolution), Storm, Azorius. Por 1 mana y sigues atacando el mismo turno." },
-    { "n": "Spell Snare", "q": 2, "para": "Todo lo que cuesta 2 exacto: su Cori-Steel Cutter en el mirror, Basking Broodscale, Psychic Frog, Orcish Bowmasters, Counterspell, el Neoform, y las cuatro piezas del Devoted Combo (Devoted Druid, Vizier of Remedies, Badgermole Cub, Duskwatch Recruiter)." }
+    {
+      "n": "Consign to Memory",
+      "q": 4,
+      "para": "El 37% de tu liga son mazos de trigger. Contrarresta habilidades DISPARADAS y hechizos INCOLOROS (todo el Eldrazi). OJO: contra Devoted Combo esta muerta (destapar el Devoted Druid es habilidad ACTIVADA)."
+    },
+    {
+      "n": "Unholy Heat",
+      "q": 3,
+      "para": "Boros Energy, Dimir Frog, el mirror, Yawgmoth. Con delirium mata cualquier cosa del formato. Llevas una cuarta copia en el main."
+    },
+    {
+      "n": "Surgical Extraction",
+      "q": 2,
+      "para": "Cementerio (23% de tu liga) y combo. No limpia el cementerio entero: se lleva UN nombre, pero se lo lleva tambien de su mano y de su mazo, asi que contra reanimacion y combo cierra la puerta del todo. Es un hechizo, dispara prowess, y cuesta 2 vidas porque no haces mana negro: cuenta la vida antes de buscar con fetch."
+    },
+    {
+      "n": "Meltdown",
+      "q": 2,
+      "para": "Izzet Affinity (8% de tu liga) y el resto de artefactos. Cuidado: tambien mata tus Cutter y tus Bauble."
+    },
+    {
+      "n": "Spell Pierce",
+      "q": 2,
+      "para": "Goryo's Vengeance, Neoform (contra el Eldritch Evolution), Storm, Azorius. Por 1 mana y sigues atacando el mismo turno."
+    },
+    {
+      "n": "Spell Snare",
+      "q": 2,
+      "para": "Todo lo que cuesta 2 exacto: su Cori-Steel Cutter en el mirror, Basking Broodscale, Psychic Frog, Orcish Bowmasters, Counterspell, el Neoform, y las cuatro piezas del Devoted Combo (Devoted Druid, Vizier of Remedies, Badgermole Cub, Duskwatch Recruiter)."
+    }
   ],
   "cambiosRespectoALaDefinitivaDe7Ago": [
     "Main: -1 Expressive Iteration, +1 Unholy Heat. Es tu desviacion, no la del campo: una respuesta mas de maindeck a cambio de una carta de cartas.",

@@ -1,0 +1,41 @@
+IZZET PROWESS — PLANTILLA DE SIDEBOARD
+"Mi 75 (la Stock que juego, 15-sep-2026). Columnas ordenadas por lo que MAS te cruzas (51 partidas con esta lista)."
+"Cada celda = cuantas copias. En el bloque de arriba, las que SALEN; abajo, las que ENTRAN. La fila 'DESCUADRE' tiene que dar 0: si da otra cosa, no salen las mismas cartas que entran."
+"Lo que esta en blanco es lo que falta por decidir. Generado por scripts/plantilla_sb.py — no se edita a mano en el repo, se rellena en la copia de Drive."
+
+CARTA,Nº,Esper Goryo's,Broodscale,Eldrazi,Dimir Frog,Izzet Prowess,Boros Ponza,Devoted Combo,Grixis Reanimator,Azorius Control,Boros Energy,Neoform,Sultai Midrange,Izzet Affinity,Izzet Cori,Jund,MonoR Artifacts,Necrodominance,Temur Rhinos,The Rack,Through the Breach,Ruby Storm,Amulet Titan,Living End,Golgari Yawgmoth,Hollow One,(libre 1),(libre 2)
+TU RECORD,,2-5,2-3,3-2,1-3,2-2,2-1,2-1,1-2,1-1,2-0,0-2,0-2,0-1,1-0,1-0,0-1,1-0,0-1,1-0,1-0,sin partidas,sin partidas,sin partidas,sin partidas,sin partidas,,
+% DE LO QUE TE CRUZAS,,14%,10%,10%,8%,8%,6%,6%,6%,4%,4%,4%,4%,2%,2%,2%,2%,2%,2%,2%,2%,—,—,—,—,—,,
+TU PAPEL,,BEATDOWN PURO. Aqui pierdes por jugar de control,Beatdown con disrupcion,Beatdown: cierra en 4-5 turnos,Beatdown: a la larga te supera en cartas,Es beatdown el que resuelve Cori-Steel Cutter primero,Beatdown,"Beatdown con una mano en el freno: corre, pero guarda la respuesta al turno de combo",Beatdown,"Beatdown, pero sin sobreextenderte","Eres el beatdown, pero por el aire",Beatdown maximo,,Beatdown con disrupcion,,,Beatdown con disrupcion,,,,,Beatdown absoluto: mata en el turno 4,Beatdown: turno 4 o nada,Beatdown: mata en el turno 4,Beatdown: mata a Yawgmoth en cuanto lo veas,Beatdown,,
+
+EL MOTOR — no sale nunca,
+Dragon's Rage Channeler,4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Monastery Swiftspear,4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Cori-Steel Cutter,4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Mishra's Bauble,4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Preordain,4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Tierras,18,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+QUE SALE — los 22 flexibles,
+Slickshot Show-Off,4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Lightning Bolt,4,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Lava Dart,4,2,,4,,,1,,,,,2,,,,,,,,,,4,4,4,,,,
+Mutagenic Growth,4,4,4,,4,2,,,4,4,,4,,1,,,1,,,,,4,,4,1,4,,
+Expressive Iteration,3,,,,,3,,3,,,1,,,3,,,3,,,,,,,,,1,,
+Violent Urge,2,2,2,2,2,2,2,2,2,,2,2,,2,,,2,,,,,,2,,2,,,
+Unholy Heat,1,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+QUE ENTRA — banquillo (15),
+Consign to Memory,4,4,4,4,1,2,,,4,,,4,,4,,,4,,,,,4,4,4,,,,
+Unholy Heat,3,,,,3,3,3,3,,,3,,,,,,,,,,,,,,3,3,,
+Surgical Extraction,2,2,,,,,,,2,,,,,,,,,,,,,,,2,,2,,
+Meltdown,2,,,,,,,,,,,,,2,,,2,,,,,2,,,,,,
+Spell Pierce,2,2,,2,,,,,,2,,2,,,,,,,,,,2,2,2,,,,
+Spell Snare,2,,2,,2,2,,2,,2,,2,,,,,,,,,,,,,,,,
+
+FUERA (total),,=SUM(C12:C17)+SUM(C20:C26),=SUM(D12:D17)+SUM(D20:D26),=SUM(E12:E17)+SUM(E20:E26),=SUM(F12:F17)+SUM(F20:F26),=SUM(G12:G17)+SUM(G20:G26),=SUM(H12:H17)+SUM(H20:H26),=SUM(I12:I17)+SUM(I20:I26),=SUM(J12:J17)+SUM(J20:J26),=SUM(K12:K17)+SUM(K20:K26),=SUM(L12:L17)+SUM(L20:L26),=SUM(M12:M17)+SUM(M20:M26),=SUM(N12:N17)+SUM(N20:N26),=SUM(O12:O17)+SUM(O20:O26),=SUM(P12:P17)+SUM(P20:P26),=SUM(Q12:Q17)+SUM(Q20:Q26),=SUM(R12:R17)+SUM(R20:R26),=SUM(S12:S17)+SUM(S20:S26),=SUM(T12:T17)+SUM(T20:T26),=SUM(U12:U17)+SUM(U20:U26),=SUM(V12:V17)+SUM(V20:V26),=SUM(W12:W17)+SUM(W20:W26),=SUM(X12:X17)+SUM(X20:X26),=SUM(Y12:Y17)+SUM(Y20:Y26),=SUM(Z12:Z17)+SUM(Z20:Z26),=SUM(AA12:AA17)+SUM(AA20:AA26),,
+DENTRO (total),,=SUM(C29:C34),=SUM(D29:D34),=SUM(E29:E34),=SUM(F29:F34),=SUM(G29:G34),=SUM(H29:H34),=SUM(I29:I34),=SUM(J29:J34),=SUM(K29:K34),=SUM(L29:L34),=SUM(M29:M34),=SUM(N29:N34),=SUM(O29:O34),=SUM(P29:P34),=SUM(Q29:Q34),=SUM(R29:R34),=SUM(S29:S34),=SUM(T29:T34),=SUM(U29:U34),=SUM(V29:V34),=SUM(W29:W34),=SUM(X29:X34),=SUM(Y29:Y34),=SUM(Z29:Z34),=SUM(AA29:AA34),,
+DESCUADRE (0 = bien),,=C37-C36,=D37-D36,=E37-E36,=F37-F36,=G37-G36,=H37-H36,=I37-I36,=J37-J36,=K37-K36,=L37-L36,=M37-M36,=N37-N36,=O37-O36,=P37-P36,=Q37-Q36,=R37-R36,=S37-S36,=T37-T36,=U37-U36,=V37-V36,=W37-W36,=X37-X36,=Y37-Y36,=Z37-Z36,=AA37-AA36,,
+
+QUE CAMBIA EN EL ROBO,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+NOTAS / POR QUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,
