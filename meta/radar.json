@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-15",
+ "generado": "2026-09-16",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord contra cada uno. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 9,
+  "diasDesde": 10,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-15",
+ "campoDesde": "2026-09-16",
  "campoError": null,
  "campo": {
-  "mazos": 1001,
+  "mazos": 957,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 11
+    "pct": 10
    },
    {
     "n": "Blink",
@@ -73,12 +73,12 @@
     "pct": 0.5
    },
    {
-    "n": "Mono Black Aggro",
+    "n": "Rakdos Aggro",
     "pct": 0.3
    },
    {
-    "n": "Rakdos Aggro",
-    "pct": 0.3
+    "n": "Mono Black Aggro",
+    "pct": 0.2
    },
    {
     "n": "Gruul Aggro",
@@ -126,7 +126,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Boros Ponza",
@@ -137,20 +137,16 @@
     "pct": 3
    },
    {
-    "n": "Elementals",
-    "pct": 0.4
-   },
-   {
     "n": "Grixis Control",
     "pct": 0.4
    },
    {
-    "n": "Esper Control",
+    "n": "Elementals",
     "pct": 0.3
    },
    {
-    "n": "UWx Midrange",
-    "pct": 0.1
+    "n": "Esper Control",
+    "pct": 0.3
    },
    {
     "n": "4/5c Control",
@@ -170,7 +166,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.8
+    "pct": 0.7
    },
    {
     "n": "Broodscale Bloodchief",
@@ -206,15 +202,7 @@
    },
    {
     "n": "Reanimator",
-    "pct": 1
-   },
-   {
-    "n": "Hammer Time",
-    "pct": 0.3
-   },
-   {
-    "n": "UB Mill",
-    "pct": 0.3
+    "pct": 0.8
    },
    {
     "n": "Song of Creation",
@@ -223,6 +211,14 @@
    {
     "n": "Dredge",
     "pct": 0.3
+   },
+   {
+    "n": "UB Mill",
+    "pct": 0.2
+   },
+   {
+    "n": "Hammer Time",
+    "pct": 0.2
    },
    {
     "n": "Heliod Life",
@@ -582,8 +578,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 8,
-     "pctPrev": 7,
-     "delta": 1
+     "pctPrev": 8,
+     "delta": 0
     },
     "w": 2,
     "l": 5,
@@ -642,8 +638,8 @@
     "campo": {
      "global": "Blink",
      "pct": 9,
-     "pctPrev": 10,
-     "delta": -1
+     "pctPrev": 9,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -673,26 +669,6 @@
   },
   {
    "nivel": "nuevo",
-   "mazo": "UrzaTron",
-   "titular": "UrzaTron: 4% del campo global y nunca te lo has cruzado",
-   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
-   "datos": {
-    "frecLiga": 0,
-    "deltaLiga": null,
-    "campo": {
-     "global": "UrzaTron",
-     "pct": 4,
-     "pctPrev": 4,
-     "delta": 0
-    },
-    "w": 0,
-    "l": 0,
-    "wr": null,
-    "n": 0
-   }
-  },
-  {
-   "nivel": "nuevo",
    "mazo": "4/5c Aggro",
    "titular": "4/5c Aggro: 3% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
@@ -704,6 +680,26 @@
      "pct": 3,
      "pctPrev": 3,
      "delta": 0
+    },
+    "w": 0,
+    "l": 0,
+    "wr": null,
+    "n": 0
+   }
+  },
+  {
+   "nivel": "nuevo",
+   "mazo": "UrzaTron",
+   "titular": "UrzaTron: 3% del campo global y nunca te lo has cruzado",
+   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
+   "datos": {
+    "frecLiga": 0,
+    "deltaLiga": null,
+    "campo": {
+     "global": "UrzaTron",
+     "pct": 3,
+     "pctPrev": 4,
+     "delta": -1
     },
     "w": 0,
     "l": 0,
