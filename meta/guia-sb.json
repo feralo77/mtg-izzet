@@ -40,9 +40,9 @@
     "4 Consign to Memory"
    ],
    "out": [
+    "3 Expressive Iteration",
     "2 Violent Urge",
-    "2 Mutagenic Growth",
-    "2 Expressive Iteration"
+    "1 Mutagenic Growth"
    ],
    "plan": "Consign contesta el trigger de construct de Urza's Saga y el robo de Thought Monitor. Meltdown limpia la mesa barata.",
    "clave": "CUIDADO: Meltdown destruye TODOS los artefactos de coste igual o menor a X, incluidos los tuyos. A X=2 te matas tus propios Cori-Steel Cutter (coste 2) y tus Mishra's Bauble. Juegalo a X=1 salvo que ya no tengas Cutter en mesa y necesites barrer lo suyo.",
@@ -67,16 +67,17 @@
    "pctLocal": 7,
    "rol": "BEATDOWN PURO. Aqui pierdes por jugar de control",
    "in": [
-    "2 Tormod's Crypt",
-    "2 Spell Pierce",
-    "2 Consign to Memory"
+    "4 Consign to Memory",
+    "2 Surgical Extraction",
+    "2 Spell Pierce"
    ],
    "out": [
     "4 Mutagenic Growth",
-    "2 Violent Urge"
+    "2 Violent Urge",
+    "2 Lava Dart"
    ],
    "plan": "Combinan en el turno 2-3. O eres mas rapido o los interrumpes; no hay tercera opcion. Mutagenic Growth no hace nada contra criaturas de 10 puntos.",
-   "clave": "La Tormod's Crypt se activa EN RESPUESTA al Goryo's Vengeance, nunca antes: Goryo's apunta a una criatura legendaria del cementerio, y si vacias el cementerio el hechizo se contrarresta solo por falta de objetivo. Consign contesta el trigger de entrada de Atraxa y el de Not Dead After All.",
+   "clave": "Consign to Memory es tu mejor carta aqui y por eso entran las cuatro: contesta el trigger de entrada del Grief (el que te ve la mano y te descarta), el de vuelta del Not Dead After All y el de entrada de Atraxa o Archon of Cruelty. Lo que NO contesta es el Goryo's Vengeance, que es un hechizo negro: eso es Spell Pierce. Surgical Extraction se lanza EN RESPUESTA al Goryo's, apuntando a la misma criatura del cementerio: al exiliarla el hechizo se queda sin objetivo y ademas te llevas las otras copias de su mano y su mazo. Ojo a como se juega: no vacia el cementerio, se lleva UN nombre, y te cuesta 2 vidas porque no haces mana negro — cuida la vida al buscar con fetch. Salen 2 Lava Dart porque no tienen ni una criatura de 1 de resistencia: Grief es 3/2 y el Dauthi Voidwalker tambien.",
    "aq": [
     "Esper Goryo's"
    ],
@@ -128,15 +129,17 @@
    "pctLocal": 5,
    "rol": "Beatdown maximo",
    "in": [
-    "2 Spell Pierce",
-    "4 Consign to Memory"
+    "4 Consign to Memory",
+    "2 Spell Snare",
+    "2 Spell Pierce"
    ],
    "out": [
     "4 Mutagenic Growth",
-    "2 Violent Urge"
+    "2 Violent Urge",
+    "2 Lava Dart"
    ],
    "plan": "Mulliganea buscando manos que cierren en el turno 4 o que tengan interaccion en el 2. Una mano lenta contra Neoform es una derrota escrita.",
-   "clave": "Spell Pierce contesta el propio Neoform por 1 mana mientras tu sigues atacando. Consign contesta los triggers de entrada de lo que trampeen (Archon of Cruelty).",
+   "clave": "Tres respuestas y cada una a una cosa distinta: Spell Snare contrarresta el propio Neoform (cuesta 2 exacto), Spell Pierce contesta el Eldritch Evolution por 1 mana mientras tu sigues atacando, y Consign to Memory contesta el trigger de entrada de lo que trampeen (Archon of Cruelty, Griselbrand). Salen solo 2 Lava Dart, no las cuatro: el Allosaurus Shepherd es 1/1 y el Dart se lo lleva. Y tras contrarrestar el primer intento, da la vuelta sin jugar alrededor del segundo: no te da tiempo.",
    "aq": [
     "Neoform"
    ],
@@ -160,11 +163,12 @@
    "rol": "Beatdown: a la larga te supera en cartas",
    "in": [
     "3 Unholy Heat",
-    "2 Spell Snare"
+    "2 Spell Snare",
+    "1 Consign to Memory"
    ],
    "out": [
     "4 Mutagenic Growth",
-    "1 Violent Urge"
+    "2 Violent Urge"
    ],
    "plan": "Unholy Heat con delirium mata Psychic Frog y Murktide Regent. Spell Snare pega a Psychic Frog y a Orcish Bowmasters, ambos de coste 2.",
    "clave": "Orcish Bowmasters castiga cada Preordain y cada Mishra's Bauble que juegues: si esta en mesa o lo sospechas, guarda los cantrips para cuando el dano de 1 ya no cambie nada. Mutagenic Growth no salva de Fatal Push.",
@@ -190,11 +194,12 @@
    "in": [
     "2 Spell Snare",
     "3 Unholy Heat",
-    "1 Consign to Memory"
+    "2 Consign to Memory"
    ],
    "out": [
-    "4 Expressive Iteration",
-    "2 Mutagenic Growth"
+    "3 Expressive Iteration",
+    "2 Mutagenic Growth",
+    "2 Violent Urge"
    ],
    "plan": "Expressive Iteration sale: 3 manas a velocidad de conjuro en un mirror de tempo es medio turno regalado. Quieres el mana abierto para Snare y Consign.",
    "clave": "Los dos trucos del mirror: (1) Spell Snare contrarresta su Cori-Steel Cutter y su Slickshot Show-Off, los dos de coste 2; (2) Consign to Memory contesta el trigger Flurry del Cutter, asi que su ficha de Monje no llega a existir. Bolt y Heat NO matan el Cutter (es un equipo): guardalos para el Dragon's Rage Channeler y los Monjes. Deja 2 Mutagenic Growth para ganar combates y salvar del Bolt.",
@@ -234,7 +239,7 @@
     "Spell Snare a cualquier Ral o Ruby Medallion.",
     "Spell Pierce casi nunca va a un ritual: cuenta cuanto mana les queda DESPUES. Si en el turno 2 hacen ritual + Ruby Medallion, contesta el Medallion, no el ritual.",
     "Plotear el Slickshot esquiva el Prismatic Ending.",
-    "Crypt en respuesta al Past in Flames.",
+    "Consign to Memory contrarresta el TRIGGER de tormenta: las copias del Grapeshot no llegan a existir. Esa es tu respuesta, no el odio a cementerio — la Surgical Extraction solo se lleva un nombre y aqui no llega a tiempo.",
     "Si los dos corren perfecto, gana Storm: post-side la partida se alarga con los contrahechizos y eso te conviene."
    ]
   },
@@ -269,7 +274,7 @@
    "pctLocal": 5,
    "rol": "Beatdown",
    "in": [
-    "2 Tormod's Crypt",
+    "2 Surgical Extraction",
     "4 Consign to Memory"
    ],
    "out": [
@@ -277,7 +282,7 @@
     "2 Violent Urge"
    ],
    "plan": "Mismo esquema que Esper Goryo's: reloj rapido y odio de cementerio en el momento justo.",
-   "clave": "Crypt en respuesta al hechizo de reanimacion. Consign contesta el trigger de entrada de lo que reanimen (Archon of Cruelty, Atraxa).",
+   "clave": "Surgical Extraction en respuesta al hechizo de reanimacion, apuntando a la criatura a la que apunta: se queda sin objetivo y ademas pierde las copias que le queden. Consign contesta el trigger de entrada de lo que reanimen (Archon of Cruelty, Atraxa).",
    "aq": [
     "Grixis Reanimator"
    ],
@@ -286,7 +291,7 @@
     "Game 1 ultra-agresivo pero sin sobreextender al Solitude.",
     "Criatura de 1 en el turno 1 y Cori-Steel Cutter en el 2 es la mejor salida.",
     "Fuerza que gasten interaccion jugando a la mesa, no esperando con el mana abierto.",
-    "Tormod's Crypt es la mejor carta de odio de cementerio del mazo: cero manas, dispara prowess y suma tipo de carta para el delirium."
+    "Surgical Extraction es tu odio de cementerio: no lo vacia, pero arranca las cuatro copias del bicho gordo de su mano y de su mazo, y eso cierra el matchup entero. Es un hechizo, asi que dispara prowess, y te cuesta 2 vidas (no haces mana negro)."
    ]
   },
   {
@@ -294,7 +299,7 @@
    "pctLocal": 4,
    "rol": "Beatdown",
    "in": [
-    "2 Tormod's Crypt",
+    "2 Surgical Extraction",
     "3 Unholy Heat"
    ],
    "out": [
@@ -302,7 +307,7 @@
     "1 Expressive Iteration"
    ],
    "plan": "Su explosividad viene del cementerio. Unholy Heat mata Hollow One y Flamewake Phoenix.",
-   "clave": "Crypt en respuesta al trigger de retorno de Bloodghast o Flamewake Phoenix, no en tu turno 1.",
+   "clave": "Surgical Extraction en respuesta al trigger de retorno de Bloodghast o Flamewake Phoenix: al exiliar la criatura te llevas tambien las otras copias, que contra este mazo es mejor que vaciarle el cementerio una vez. No la gastes en tu turno 1 sin objetivo que merezca la pena.",
    "aq": [
     "Hollow One"
    ],
@@ -405,7 +410,8 @@
     "3 Unholy Heat"
    ],
    "out": [
-    "3 Mutagenic Growth"
+    "2 Violent Urge",
+    "1 Mutagenic Growth"
    ],
    "plan": "Yawgmoth, Thran Physician es la carta. Guarda un removal para el, no lo gastes en Wall of Roots.",
    "clave": "NO LO HAS JUGADO NUNCA (15-sep-2026): las 4 partidas que el tracker daba como Yawgmoth eran Devoted Combo, que tiene su propio plan arriba. Este se queda por si aparece uno de verdad. Se distinguen en una carta: el Yawgmoth de verdad juega Yawgmoth, Thran Physician y criaturas con undying; el Devoted juega Devoted Druid y Vizier of Remedies. El esqueleto verde (Badgermole Cub, Delighted Halfling, Green Sun's Zenith, Birds of Paradise) es el mismo en los dos y no te dice cual es. || OJO: Consign to Memory NO contesta la habilidad de Yawgmoth. Consign contrarresta habilidades DISPARADAS y hechizos incoloros; la de Yawgmoth es una habilidad ACTIVADA. Aqui Consign se queda en el banquillo.",
@@ -454,7 +460,7 @@
    "rol": "Beatdown: mata en el turno 4",
    "in": [
     "4 Consign to Memory",
-    "2 Tormod's Crypt",
+    "2 Surgical Extraction",
     "2 Spell Pierce"
    ],
    "out": [
@@ -462,7 +468,7 @@
     "4 Lava Dart"
    ],
    "plan": "Todo su mazo es un hechizo. Growth y Dart no tienen a quien apuntar hasta que ya es tarde.",
-   "clave": "Consign to Memory contrarresta el TRIGGER DE CASCADA: el Living End no llega a lanzarse. Es la respuesta mas limpia que existe. Alternativa: Tormod's Crypt en respuesta a la cascada, para que el Living End vuelva a poner cero criaturas.",
+   "clave": "Consign to Memory contrarresta el TRIGGER DE CASCADA: el Living End no llega a lanzarse. Es la respuesta mas limpia que existe y es la principal. Surgical Extraction juega otro papel: no vacia cementerios, asi que no sirve para apagar la cascada — su momento es despues de que resuelva el primer Living End, exiliandolo de su cementerio para llevarte las otras copias del mazo.",
    "aq": [
     "Living End"
    ],

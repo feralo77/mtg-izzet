@@ -339,7 +339,7 @@
     <div class="insight" id="insight"></div>
     <div class="grid"><div class="panel full"><h3>Cómo acaban las rondas — Salida vs Robo <span>(nº de matches por resultado)</span></h3><div class="cwrap"><canvas id="chSR"></canvas></div></div></div>
     <div class="grid">
-      <div class="panel"><h3>Win rate por matchup <span>(V-D · orden por WR)</span></h3><div class="cwrap"><canvas id="chArq"></canvas></div></div>
+      <div class="panel"><h3>Win rate por matchup <span>(V-D · orden por WR)</span></h3><div class="cwrap" id="wrapArq"><canvas id="chArq"></canvas></div></div>
       <div class="panel"><h3>Evolución por liga <span>(WR match %)</span></h3><div class="cwrap"><canvas id="chEvo"></canvas></div></div>
     </div>
     <div class="grid">
@@ -1890,7 +1890,7 @@ function renderPlay(){
   }
 }
 function initPlaySel(){
-  msFill('fpArq',[...new Set(G().map(g=>g.aq).filter(Boolean))].sort());
+  msFill('fpArq',ordNat([...new Set(G().map(g=>g.aq).filter(Boolean))]));
 }
 
 // Tabs
@@ -1992,7 +1992,12 @@ function refreshAll(){
   else if(v==='meta')renderMetaTab();
 }
 
-function uniq(f){return [...new Set(M().map(d=>d[f]))].filter(Boolean);}
+// Orden natural: lo que hay dentro de "Liga 10" es un NUMERO, y ordenarlo como texto
+// pone la 10 antes que la 2. Se comparan los trozos numericos como numeros y el resto
+// como texto, asi que "Liga 2" < "Liga 10" y "Eldrazi" sigue donde debe.
+const cmpNat=(a,b)=>String(a).localeCompare(String(b),'es',{numeric:true,sensitivity:'base'});
+const ordNat=arr=>[...arr].sort(cmpNat);
+function uniq(f){return ordNat([...new Set(M().map(d=>d[f]))].filter(Boolean));}
 function filtered(){
   return M().filter(d=>msOk('fLiga',d.ev)&&msOk('fSR',d.sr)&&msOk('fArq',d.aq));}
 
@@ -2040,9 +2045,16 @@ function chartArq(D){const m={};D.forEach(d=>{(m[d.aq]=m[d.aq]||{w:0,l:0})[d.r==
   // en gris: están ahí para que veas a quién te has cruzado, no para leerles el WR.
   const N_MATCHUP=3;
   const col=x=>x.n<N_MATCHUP?cssv('--text-muted'):x.wr>=60?C.grn:x.wr>=45?C.W2_1:x.wr>=30?C.L1_2:C.red;
+  // La caja crece con el numero de barras, pero lo justo. Con altura fija, Chart.js deja
+  // de pintar las etiquetas que no le caben y las que quedan se desalinean de su barra:
+  // parece que el nombre corresponde a otro mazo (avisado por Fer, 16-sep-2026). Y con
+  // 22px por barra el panel se iba a 500px y rompia la reticula de dos columnas. 14px por
+  // barra con la etiqueta a 9px entra de sobra y deja el panel compacto (Fer, 16-sep:
+  // "ponlo compacto, me da igual en winrate").
+  const cajaArq=$('wrapArq'); if(cajaArq) cajaArq.style.height=Math.max(288,r.length*14+36)+'px';
   charts.arq=new Chart($('chArq'),{type:'bar',data:{labels:r.map(x=>`${x.k} (${x.w}-${x.l})${x.n<N_MATCHUP?' ·':''}`),datasets:[{data:r.map(x=>x.wr),backgroundColor:r.map(col),borderRadius:0}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{x:{max:100,ticks:{callback:v=>v+'%'}},y:{grid:{display:false},ticks:{font:{size:10}}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.x}% · ${r[c.dataIndex].n} partida(s)`+(r[c.dataIndex].n<N_MATCHUP?' — muestra mínima, no concluyas':'')}}}}});}
-function chartEvo(D){const lg=[...new Set(D.map(d=>d.ev))].sort();const wr=lg.map(l=>{const g=D.filter(d=>d.ev===l);return pct(g.filter(d=>d.r==='W').length,g.filter(d=>d.r!=='D').length);});
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{x:{max:100,ticks:{callback:v=>v+'%'}},y:{grid:{display:false},ticks:{font:{size:9},autoSkip:false,padding:2}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.x}% · ${r[c.dataIndex].n} partida(s)`+(r[c.dataIndex].n<N_MATCHUP?' — muestra mínima, no concluyas':'')}}}}});}
+function chartEvo(D){const lg=ordNat([...new Set(D.map(d=>d.ev))].filter(Boolean));const wr=lg.map(l=>{const g=D.filter(d=>d.ev===l);return pct(g.filter(d=>d.r==='W').length,g.filter(d=>d.r!=='D').length);});
   charts.evo=new Chart($('chEvo'),{type:'line',data:{labels:lg,datasets:[{data:wr,borderColor:C.blue,backgroundColor:C.blue,fill:false,tension:.25,borderWidth:3,pointRadius:4,pointBackgroundColor:C.blue,pointBorderColor:C.blue}]},
     options:{responsive:true,maintainAspectRatio:false,animation:{duration:400},scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`WR ${c.parsed.y}%`}}}}});}
 function chartPie(D){const m={};D.forEach(d=>m[d.aq]=(m[d.aq]||0)+1);const r=Object.entries(m).sort((a,b)=>b[1]-a[1]);
@@ -2355,7 +2367,7 @@ function renderCmp(){
   cmpBar(gr);cmpRadar(gr);cmpMatrix(gr);
 }
 function initCmpSelectors(){
-  const uni=f=>[...new Set(M().map(d=>d[f]).filter(v=>v&&v!=='—'&&v!=='N/A (bye/concede)'))].sort();
+  const uni=f=>ordNat([...new Set(M().map(d=>d[f]).filter(v=>v&&v!=='—'&&v!=='N/A (bye/concede)'))]);
   msFill('cfLiga',uni('ev'));
   msFill('cfSR',uni('sr'));msFill('cfArq',uni('aq'));
   const ms=$('cmpMetric');if(ms){const prev=ms.value||cmpMetricKey;ms.innerHTML='';CMP_METRICS.filter(m=>m.bar).forEach(m=>ms.add(new Option(m.lab,m.k)));ms.value=CMP_METRICS.some(m=>m.bar&&m.k===prev)?prev:'wrMatch';cmpMetricKey=ms.value;ms.onchange=()=>{cmpMetricKey=ms.value;cmpBar(cmpLastGroups);};}
