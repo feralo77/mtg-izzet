@@ -454,7 +454,7 @@
     "wr": 100
    },
    {
-    "n": "jund",
+    "n": "Jund",
     "variantes": null,
     "partidas": 1,
     "frec": 2.8,
@@ -698,8 +698,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 3,
-     "pctPrev": 4,
-     "delta": -1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 0,
     "l": 0,

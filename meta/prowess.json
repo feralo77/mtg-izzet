@@ -952,43 +952,59 @@
     "fuera": []
   },
   "deltas": {
-    "lista": "La 75 Definitiva (7-ago-2026)",
+    "lista": "Mi 75 (la Stock que juego, 15-sep-2026)",
     "campoJuegaYoNo": [
       {
-        "n": "Surgical Extraction",
-        "pct": 52,
+        "n": "Bloodstained Mire",
+        "pct": 92,
+        "zona": "main"
+      },
+      {
+        "n": "Tormod's Crypt",
+        "pct": 38,
         "zona": "side"
       }
     ],
-    "yoJuegoCampoNo": [],
+    "yoJuegoCampoNo": [
+      {
+        "n": "Unholy Heat",
+        "mio": 1,
+        "pct": 40,
+        "zona": "main"
+      }
+    ],
     "desviaciones": [
       {
-        "n": "Bloodstained Mire",
+        "n": "Expressive Iteration",
         "mio": 3,
-        "campo": 2,
+        "campo": 4,
         "pct": 92,
         "zona": "main",
-        "menor": true
+        "menor": false
       },
       {
         "n": "Arid Mesa",
-        "mio": 1,
+        "mio": 3,
         "campo": 2,
         "pct": 85,
         "zona": "main",
         "menor": true
       },
       {
-        "n": "Wooded Foothills",
+        "n": "Surgical Extraction",
         "mio": 2,
-        "campo": 3,
-        "pct": 77,
-        "zona": "main",
-        "menor": true
+        "campo": 1,
+        "pct": 52,
+        "zona": "side",
+        "menor": false
       }
     ]
   },
   "sugerencias": [
-    "El campo juega Surgical Extraction (52% · side) y tu lista no lo lleva."
+    "El campo juega Bloodstained Mire (92% · main) y tu lista no lo lleva.",
+    "El campo juega Tormod's Crypt (38% · side) y tu lista no lo lleva.",
+    "Expressive Iteration (main): tu 3, el consenso 4.",
+    "Surgical Extraction (side): tu 2, el consenso 1.",
+    "Llevas Unholy Heat (main) pero solo el 40% del campo lo juega."
   ]
 }
