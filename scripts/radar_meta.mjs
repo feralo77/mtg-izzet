@@ -49,6 +49,17 @@ const SUBE_CAMPO = 2;      // puntos de subida en el campo global
 const CAMPO_RELEVANTE = 3; // % del campo global para avisar de un mazo que nunca has visto
 const MIN_BASE = 30;       // partidas mínimas en CADA mitad para afirmar una tendencia
 
+// LA VERSION QUE MIDE EL PROYECTO. Desde el 16-sep-2026 el dashboard no *abre* en una
+// lista: mide UNA, la que Fer juega (index.html, VERSION_UNICA). El radar hacia lo
+// contrario y sumaba las partidas de la Aggro y la Basics al record, asi que decia
+// "Dimir Frog 1-5" cuando con la lista que juega es 1-3. Se separa en dos:
+//   - FRECUENCIA (que te cruzas en la liga): TODAS tus partidas. Lo que sale enfrente
+//     no depende de que mazo lleves tu, asi que tirar 20 observaciones seria perder
+//     senal — y ademas dejaria las dos mitades por debajo de MIN_BASE.
+//   - RECORD (como te va): SOLO la version que juegas. Un winrate de otra lista no
+//     dice nada de la que llevas, y es el numero del que cuelgan las alarmas.
+const VERSION_UNICA = 'Stock';
+
 // ---------------------------------------------------------------------------
 // Utilidades
 // ---------------------------------------------------------------------------
@@ -152,10 +163,13 @@ function liga(registro, jugador, mapa) {
   const hayBase = previo.total >= MIN_BASE && reciente.total >= MIN_BASE;
 
   // Tu récord por arquetipo (todas tus partidas, no solo la ventana: n ya es escaso)
-  // registro.csv ya es solo de Fer; el filtro se queda como red de seguridad por si
-  // algún día vuelve a haber más de un jugador en el fichero.
+  // registro.csv ya es solo de Fer; el filtro de jugador se queda como red de seguridad
+  // por si algún día vuelve a haber más de uno en el fichero. El filtro de VERSIÓN sí
+  // manda: el récord es el de la lista que juega, como todo el resto del proyecto.
+  const mias = util.filter(r => !r['Reportado por'] || r['Reportado por'] === jugador);
+  const conLaLista = mias.filter(r => (r['Versión'] || '').trim() === VERSION_UNICA);
   const mio = {};
-  util.filter(r => !r['Reportado por'] || r['Reportado por'] === jugador).forEach(r => {
+  conLaLista.forEach(r => {
     const k = r.Arquetipo; mio[k] = mio[k] || { w: 0, l: 0 };
     if (r['Resultado (W/L)'] === 'W') mio[k].w++; else if (r['Resultado (W/L)'] === 'L') mio[k].l++;
   });
@@ -174,6 +188,12 @@ function liga(registro, jugador, mapa) {
 
   return {
     modo: 'dos mitades del histórico, por número de partidas',
+    muestra: {
+      version: VERSION_UNICA,
+      frecuencia: mias.length,        // todas tus partidas: lo que te cruzas
+      record: conLaLista.length,      // solo con la lista que juegas: cómo te va
+      nota: `La frecuencia sale de tus ${mias.length} partidas (lo que te cruzas no depende del mazo que lleves). El récord sale solo de las ${conLaLista.length} con la ${VERSION_UNICA}, que es la lista que juegas y la que mide todo el dashboard.`,
+    },
     ahora: { partidas: reciente.total, desde: reciente.desde, hasta: reciente.hasta },
     antes: { partidas: previo.total, desde: previo.desde, hasta: previo.hasta },
     hayBase,
@@ -320,7 +340,7 @@ const cad = cadencia('docs/brainstorm');
 // El campo se compara con la corrida anterior; si es la primera, no hay deltas y se dice.
 const salida = {
   generado: hoyISO,
-  comoFunciona: 'Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord contra cada uno. Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.',
+  comoFunciona: 'Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.',
   umbrales: { winrateMalo: WR_MALO, partidasMinimas: N_MINIMO, frecuenciaAlta: FREC_ALTA, subeLiga: SUBE_LIGA, subeCampo: SUBE_CAMPO, campoRelevante: CAMPO_RELEVANTE },
   brainstorm: cad,
   hayComparacionCampo: campoFresco && !!previo?.campo?.arquetipos,

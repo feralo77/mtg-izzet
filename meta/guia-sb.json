@@ -1,8 +1,8 @@
 {
- "fecha": "2026-09-06",
+ "fecha": "2026-09-16",
  "autor": "Criterio de Magic (brainstorm /mtg-expert). No lo calcula el robot: que carta responde a que mazo no sale de los datos.",
- "para": "La 75 Definitiva (7-ago-2026)",
- "orden": "Por frecuencia en la liga de Fer (scouting.csv, 164 rivales censados). Tu record sale de registro.csv filtrado por feralo77.",
+ "para": "Tu 75 real: la Stock que juegas desde la Liga 9 (11-ago-2026), que es tambien la 75 de referencia del dashboard",
+ "orden": "Por frecuencia en la liga de Fer. Tu record y ese % se recalculan solos desde registro.csv, contando solo tus partidas con la lista que juegas (la misma muestra que el resto del dashboard).",
  "reglaGeneral": "Nunca bajes de 4 Cori-Steel Cutter, 4 Dragon's Rage Channeler, 4 Monastery Swiftspear, 4 Mishra's Bauble ni 4 Preordain: son el motor. Lo que sale es siempre pump que sobra (Mutagenic Growth, Violent Urge), Expressive Iteration cuando el matchup es de carrera, o Lava Dart cuando el rival no tiene criaturas de 1 de resistencia.",
  "matchups": [
   {
