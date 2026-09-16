@@ -2473,7 +2473,7 @@ async function renderBrain() {
     Último el <b>${esc(B.ultimo || '—')}</b>${B.diasDesde != null ? ` (hace ${B.diasDesde} día${B.diasDesde === 1 ? '' : 's'})` : ''} ·
     cadencia cada <b>${B.cadenciaDias} días</b> · siguiente <b>${esc(B.proximo || '—')}</b>.
     <span style="color:var(--tx2)">Para lanzarlo, pídemelo: <span style="font-family:var(--mono)">/mtg-expert</span>. El robot detecta, pero qué carta responde a qué mazo es criterio de Magic y no se calcula.</span>
-    <div style="margin-top:8px;font-size:11.5px;color:var(--tx3)">Radar recalculado el ${esc(R.generado)} · campo: ${R.campo.mazos} mazos de Modern en mtgtop8 · tu liga: ${R.liga.ahora.partidas} partidas (${esc(R.liga.ahora.desde)} → ${esc(R.liga.ahora.hasta)}) frente a las ${R.liga.antes.partidas} anteriores.</div>
+    <div style="margin-top:8px;font-size:11.5px;color:var(--tx3)">Radar recalculado el ${esc(R.generado)} · campo: ${R.campo.mazos} mazos de Modern en mtgtop8 · tu liga: ${R.liga.ahora.partidas} partidas (${esc(R.liga.ahora.desde)} → ${esc(R.liga.ahora.hasta)}) frente a las ${R.liga.antes.partidas} anteriores.${R.liga.muestra ? ' ' + esc(R.liga.muestra.nota) : ''}</div>
   </div>`;
 
   const CLS = { 'adaptarse': 'des', 'pinta-mal': 'des', 'vigilar': 'par', 'nuevo': 'fav' };
@@ -2514,7 +2514,7 @@ async function renderBrain() {
         <td style="text-align:center">${a.n_ ? `${a.w}-${a.l} <span class="hq-cell ${a.wr >= 60 ? 'hq-cell--good' : a.wr >= 45 ? 'hq-cell--mid' : 'hq-cell--bad'}">${a.wr}%</span>` : '<span style="color:var(--tx3)">sin datos</span>'}</td></tr>`;
     }).join('')}
     </tbody></table></div>
-    <div style="font-size:11px;color:var(--tx3);margin-top:8px">"Antes" y "ahora" son las dos mitades de tu histórico de liga, partidas por número de partidas. El récord es solo tuyo, no de la liga. Las variantes del mismo mazo se agrupan (Eldrazi, Eldrazi Ramp y Eldrazi PT son el mismo rival): si no, cada etiqueta saldría con una partida y el récord no diría nada. El mapa está en <span style="font-family:var(--mono)">meta/arquetipos.json</span>.</div>
+    <div style="font-size:11px;color:var(--tx3);margin-top:8px">"Antes" y "ahora" son las dos mitades de tu histórico de liga, partidas por número de partidas. El récord es solo tuyo, no de la liga, y cuenta solo tus partidas con la lista que juegas: lo que te cruzas no depende del mazo que lleves, pero cómo te va sí. Las variantes del mismo mazo se agrupan (Eldrazi, Eldrazi Ramp y Eldrazi PT son el mismo rival): si no, cada etiqueta saldría con una partida y el récord no diría nada. El mapa está en <span style="font-family:var(--mono)">meta/arquetipos.json</span>.</div>
   </div>`;
 
   // La última reflexión, renderizada desde el .md del repo
