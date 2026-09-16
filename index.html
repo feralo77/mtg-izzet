@@ -2542,7 +2542,7 @@ async function renderDef75(){
 
   const lista=`
     <div class="grid">
-      <div class="panel"><h3>Maindeck (${mainN}) <span>&middot; el consenso del campo, sin desviaciones</span></h3>
+      <div class="panel"><h3>Maindeck (${mainN}) <span>&middot; tu lista real, la que miden todas las estad&iacute;sticas</span></h3>
         <div class="dl">${zona('criatura','Criaturas')}${zona('hechizo','Hechizos')}${zona('tierra','Tierras')}</div>
         <div style="font-size:11.5px;color:var(--tx2);margin-top:10px">${esc(MI75.notaTierras||'')}</div>
         <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">${esc(MI75.porQueEsteMain||'')}</div>
@@ -2682,7 +2682,12 @@ async function loadRemote(){
 function updateSource(remote){
   const el=$('srcInfo');if(!el)return;
   const label=remote==='local'?'registro.csv (auto)':'snapshot local';
-  el.innerHTML=`<span class="dot ${remote?'on':''}"></span>${label} \u00b7 ${MATCHES.length} partidas`;
+  // Dos numeros distintos y los dos ciertos: lo que hay en el fichero y lo que mide el
+  // dashboard (la version unica). Si no coinciden se dice, para que nadie se pregunte
+  // por que el chip de muestra de al lado ensena menos partidas que el registro.
+  const n=MATCHES.length, m=_BASE().length;
+  const detalle = n===m ? `${n} partidas` : `${n} partidas en el registro \u00b7 ${m} con la ${VERSION_UNICA}`;
+  el.innerHTML=`<span class="dot ${remote?'on':''}"></span>${label} \u00b7 ${detalle}`;
 }
 
 // ---- Versiones del mazo ----------------------------------------------------
