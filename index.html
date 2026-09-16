@@ -319,7 +319,6 @@
   <nav class="tabs">
     <div class="tab on" data-v="stats">Estadisticas</div>
     <div class="tab" data-v="play">Cómo juegas</div>
-    <div class="tab" data-v="lists">Listas</div>
     <div class="tab" data-v="scout">Scouting</div>
     <div class="tab" data-v="cmp">Comparativa</div>
     <div class="tab" data-v="guia">Guía</div>
@@ -332,7 +331,6 @@
   <section class="view on" id="v-stats">
     <div class="insight" id="waitNote" style="display:none"></div>
     <div class="filters">
-      <div class="fg"><label>Lista</label><div id="fLista"></div></div>
       <div class="fg"><label>Liga / Evento</label><div id="fLiga"></div></div>
       <div class="fg"><label>Salida / Robo</label><div id="fSR"></div></div>
       <div class="fg"><label>Mazo rival</label><div id="fArq"></div></div>
@@ -353,9 +351,8 @@
 
   <!-- ===== CÓMO JUEGAS (análisis profundo de los logs) ===== -->
   <section class="view" id="v-play">
-    <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — análisis game a game de tus logs de MTGO. No solo el resultado: cuándo aterriza tu juego, tu línea explosiva del Cutter, cuánto te interrumpen. Filtra por <b>lista</b> y por <b>mazo rival</b>; arriba las 5 claves, y el resto en "Ver más". Todo sale del log real de cada partida.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Cómo juegas</b> — análisis game a game de tus logs de MTGO. No solo el resultado: cuándo aterriza tu juego, tu línea explosiva del Cutter, cuánto te interrumpen. Filtra por <b>mazo rival</b>; arriba las 5 claves, y el resto en "Ver más". Todo sale del log real de cada partida.</div></div>
     <div class="filters">
-      <div class="fg"><label>Versión</label><div id="fpLista"></div></div>
       <div class="fg"><label>Mazo rival</label><div id="fpArq"></div></div>
     </div>
     <div class="note-lg" id="playMuestra"></div>
@@ -409,38 +406,6 @@
     </div>
   </section>
 
-  <!-- ===== LISTAS ===== -->
-  <section class="view" id="v-lists">
-    <div class="author"><span class="ic"></span><div><b>Tus listas</b> — cada versión que <b>tú</b> has jugado y su rendimiento real, cruzado con partidas y games. El dashboard abre en la <b>Stock</b>, que es la que estás midiendo; la Aggro y la Basics siguen en el desplegable, a un clic. Una versión se identifica por su <b>maindeck</b>, no por el nombre: dos listas con las mismas 60 cartas y sideboard distinto son la <b>misma versión</b> y sus estadísticas se <b>suman</b> (la "Ur Aggro Rage" de Pol tiene el maindeck idéntico a tu "Aggro"). Los fetchlands cuentan como intercambiables. Los nombres exactos que hay dentro de cada versión salen en su ficha. La síntesis carta a carta y el porqué de cada slot viven en <b>La 75 Definitiva</b>; el campo global, en <b>Meta · mtgtop8</b>. Las partidas de tus compañeros de liga ya no se mezclan aquí: están guardadas enteras en <span style="font-family:var(--mono)">archivo/</span> del repo.</div></div>
-    <div class="gwrap">
-      <nav class="gmenu" id="lMenu"></nav>
-      <div>
-        <!-- Resumen: las 3 versiones de un vistazo -->
-        <div class="gsec on" id="l-resumen">
-          <h3 class="secH" style="margin-top:2px">Las versiones <span class="q" style="font-size:12px;font-weight:400">(mismo maindeck = misma versión)</span></h3>
-          <div class="decks" id="myLists"></div>
-          <div class="panel full" style="margin:16px 0"><h3>Win rate por versión <span>(mismo maindeck = misma versión, aunque cambie el sideboard)</span></h3><div id="wrByList"></div></div>
-          <div class="panel full"><h3>Versión × mazo rival <span>(récord V-D de cada versión · verde ≥60%, ámbar 40-59%, rojo &lt;40%)</span></h3><div style="overflow-x:auto"><table id="lxm"></table></div></div>
-        </div>
-
-        <!-- Una sección por versión: variantes y cartas que cambian. Se generan en JS. -->
-        <div id="lVersionPanes"></div>
-
-        <!-- Comparador carta a carta (por LISTA: aquí sí interesa la 75 exacta) -->
-        <div class="gsec" id="l-comparador">
-          <h3 class="secH" style="margin-top:2px">Comparador de listas — carta a carta</h3>
-          <div class="author"><span class="ic"></span><div><b>Comparador de listas</b> — la 75 real y completa de cada lista (las tuyas, y las de los compañeros que se quedan en <span style="font-family:var(--mono)">listas/</span> como referencia), comparadas contra <b>La 75 Definitiva</b> y contra el consenso del <b>Meta</b>. Aquí se compara <b>por lista</b>, no por versión: el interés es justo la 75 exacta de cada una. Los logs solo enseñan lo que se jugó; esto es el mazo entero, pegado en <span style="font-family:var(--mono)">listas/&lt;nombre&gt;.txt</span>.</div></div>
-          <div id="listWaiting" class="note-lg" style="display:none"></div>
-          <div class="decks" id="playerLists"></div>
-          <div class="insight" id="listNotas" style="display:none"></div>
-          <div class="panel full" style="margin-top:16px"><h3>Comparador carta a carta <span>(nº de copias · <span style="color:var(--winL)">verde</span> = más que la Definitiva · <span style="color:var(--loss)">rojo</span> = menos o no la lleva · <span style="color:var(--u2)">azul</span> = carta que la Definitiva no tiene)</span></h3>
-            <div style="overflow-x:auto"><table id="listMatrix"></table></div>
-            <div style="font-size:11px;color:var(--tx3);margin-top:8px" id="listMatrixNote"></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== SCOUTING (rivales de MTGO · nicks públicos por decisión de Fer, 22-jul-2026) ===== -->
   <section class="view" id="v-scout">
     <div class="author"><span class="ic"></span><div><b>Scouting de rivales</b> — a quién te has cruzado en las <b>ligas de Magic Online</b>, con qué mazo y las cartas que le has visto. Sale solo de los logs, sin apuntar nada: útil para preparar la ronda cuando te repite un nick. Es la única tabla que <b>sigue incluyendo lo que vieron tus compañeros</b>, y a propósito: es una base de datos de <b>rivales</b>, no de jugadores, y 129 de los 181 nicks fichados solo los vio el archivo. La columna <b>Visto por</b> dice de quién salió cada avistamiento. (Nada que ver con la liga presencial de Lleida, que es en papel y no genera logs.)</div></div>
@@ -453,20 +418,18 @@
       <div style="font-size:11.5px;color:var(--tx2);margin-top:8px" id="scoutNote"></div></div>
   </section>
 
-  <!-- ===== COMPARATIVA (jugadores / listas / mazos rivales / salida-robo) ===== -->
+  <!-- ===== COMPARATIVA (mazos rivales / salida-robo) ===== -->
   <section class="view" id="v-cmp">
-    <div class="author"><span class="ic"></span><div><b>Comparativa</b> — pon lo que quieras codo con codo. Elige <b>por qué comparar</b> (versión, mazo rival o salida/robo) y afina con los filtros: la tabla, las barras y el radar se rehacen al vuelo. Para el duelo directo tienes el <b>Cara a cara</b>: elige dos y ves cada métrica lado a lado, con la mejor en verde. Una versión es su maindeck: dos listas con las mismas 60 cartas y sideboard distinto cuentan como una (sus partidas se suman). Todo lo que se compara aquí son <b>partidas tuyas</b>: la dimensión "Jugador" desapareció el 15-sep-2026 con el cambio de enfoque. Ojo con la muestra — la Stock son 32 partidas, así que cualquier corte por debajo de 10 partidas es orientativo.</div></div>
+    <div class="author"><span class="ic"></span><div><b>Comparativa</b> — pon lo que quieras codo con codo. Elige <b>por qué comparar</b> (mazo rival o salida/robo) y afina con los filtros: la tabla, las barras y el radar se rehacen al vuelo. Para el duelo directo tienes el <b>Cara a cara</b>: elige dos y ves cada métrica lado a lado, con la mejor en verde. Todo lo que se compara aquí son <b>tus partidas con una sola lista</b>, la que juegas: la dimensión "Jugador" se fue el 15-sep-2026 y la de "Versión" el 16-sep-2026, porque comparar una lista contra sí misma no dice nada. Ojo con la muestra: cualquier corte por debajo de 10 partidas es orientativo.</div></div>
 
     <div class="segwrap"><label>Comparar por</label>
       <div class="seg" id="cmpDim">
-        <div class="opt on" data-d="li">Versión</div>
-        <div class="opt" data-d="aq">Mazo rival</div>
+        <div class="opt on" data-d="aq">Mazo rival</div>
         <div class="opt" data-d="sr">Salida / Robo</div>
       </div>
     </div>
     <div class="filters" id="cmpFilters">
       <div class="fg" id="wf-liga"><label>Liga / Evento</label><div id="cfLiga"></div></div>
-      <div class="fg" id="wf-lista"><label>Versión</label><div id="cfLista"></div></div>
       <div class="fg" id="wf-sr"><label>Salida / Robo</label><div id="cfSR"></div></div>
       <div class="fg" id="wf-arq"><label>Mazo rival</label><div id="cfArq"></div></div>
     </div>
@@ -1801,9 +1764,9 @@ function renderPlay(){
   if(playDone) return; playDone=true;
   renderMuestra();
   Object.values(playCharts).forEach(c=>c&&c.destroy());playCharts={};
-  // Filtros locales de la pestaña: Lista (cruce con el registro por match_uuid) y Mazo rival (directo)
-  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=verLab(d);});
-  const D=G().filter(g=>msOk('fpLista',lim[g.uid])&&msOk('fpArq',g.aq)), N=D.length;
+  // Filtro local de la pestaña: Mazo rival. El de versión desapareció el 16-sep-2026:
+  // el dashboard mide una sola lista, así que no hay nada que elegir.
+  const D=G().filter(g=>msOk('fpArq',g.aq)), N=D.length;
   const avg=(a,d=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**d)/10**d:0;
   const wins=D.filter(g=>g.w), losses=D.filter(g=>!g.w);
   const sal=D.filter(g=>g.sr==='Salida'), rob=D.filter(g=>g.sr==='Robo');
@@ -1835,11 +1798,10 @@ function renderPlay(){
   // hecho todo y, cuando la muestra es corta, cuáles de los cortes de abajo se quedan sin
   // aval. Nació del cambio de enfoque del 15-sep-2026: con solo Fer y solo la Stock el
   // dashboard pasó de 469 games a 76, y varios gráficos parten eso en grupos de 4.
-  const vsel=msVal('fpLista'), vtxt=!vsel?'todas tus versiones':[...vsel].join(' + ');
   const grupitos=[['por criaturas desplegadas',g=>g.cy!==undefined],['por turno de tu primera interacción',g=>g.fi!==undefined]];
   $('playMuestra').innerHTML = !N
     ? '<b>Sin games en esta selección.</b> Quita algún filtro.'
-    : `<b>Estás mirando ${N} games</b> (${vtxt}, solo partidas tuyas). `+
+    : `<b>Estás mirando ${N} games</b> (tus partidas con la ${VERSION_UNICA}). `+
       (N<80
         ? `Con esta muestra, los cortes de arriba (5 claves) reparten esos ${N} games en grupos de 3 a 25: <b>las barras grises no llegan a ${N_GAME_MIN} games</b> y están ahí para mirarlas, no para decidir con ellas. Lo que sí aguanta una lectura son los cortes gordos — duración del game y salida/robo — donde cada lado pasa de 20.`
         : `Muestra suficiente para leer los cortes principales; las barras grises siguen siendo grupos de menos de ${N_GAME_MIN} games.`);
@@ -1928,8 +1890,6 @@ function renderPlay(){
   }
 }
 function initPlaySel(){
-  const lim={};M().forEach(d=>{if(d.uid)lim[d.uid]=verLab(d);});
-  msFill('fpLista',[...new Set(G().map(g=>lim[g.uid]).filter(Boolean))].sort());
   msFill('fpArq',[...new Set(G().map(g=>g.aq).filter(Boolean))].sort());
 }
 
@@ -1938,7 +1898,6 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   $('v-'+t.dataset.v).classList.add('on');
-  if(t.dataset.v==='lists'){renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();}
   if(t.dataset.v==='stats')render();
   if(t.dataset.v==='play')renderPlay();
   if(t.dataset.v==='scout')renderScout();
@@ -1994,17 +1953,19 @@ function msFill(id,vals){
 }
 function msVal(id){const m=MS[id];return m&&m.sel.size?m.sel:null;}
 function msOk(id,v){const s=msVal(id);return !s||s.has(v);}
-// ===== EL FOCO: una sola versión del mazo =====
-// Decisión de Fer (15-sep-2026): la única lista que le interesa analizar ahora es la
-// Stock. No se borra nada — la Aggro y la Basics siguen en los datos y en el desplegable,
-// a un clic — pero el dashboard ABRE en Stock, que es lo que él está jugando y midiendo.
-// Cambiar el foco es cambiar esta constante (o desmarcarla en cualquier filtro).
-const VERSION_FOCO='Stock';
+// ===== UNA SOLA VERSIÓN =====
+// Decisión de Fer (16-sep-2026): el dashboard ya no ABRE en una versión y deja las otras
+// a un clic — directamente MIDE una sola, la que juega. Todo lo que se pinta (KPIs, gráficos,
+// Cómo juegas, Comparativa, la guía de sideboard) sale de esas partidas y de ninguna más.
+// No se borra nada: la Aggro y la Basics siguen enteras en registro.csv y en games.csv,
+// y volver a verlas es cambiar esta constante (o quitar el filtro de _BASE).
+// La 75 de referencia (meta/mi-75.json) es exactamente esta misma lista, carta a carta.
+const VERSION_UNICA='Stock';
 const playRefresh=()=>{playDone=false;renderPlay();};
-msInit('fLista','Todas las versiones',render,VERSION_FOCO);msInit('fLiga','Todas las ligas',render);
+msInit('fLiga','Todas las ligas',render);
 msInit('fSR','Salida + Robo',render);msInit('fArq','Todos los mazos',render);
-msInit('fpLista','Todas las versiones',playRefresh,VERSION_FOCO);msInit('fpArq','Todos los mazos',playRefresh);
-msInit('cfLiga','Todas las ligas',renderCmp);msInit('cfLista','Todas las versiones',renderCmp,VERSION_FOCO);
+msInit('fpArq','Todos los mazos',playRefresh);
+msInit('cfLiga','Todas las ligas',renderCmp);
 msInit('cfSR','Salida + Robo',renderCmp);msInit('cfArq','Todos los mazos',renderCmp);
 
 // ===== Filtros GLOBALES: fecha (últimos N días) + jugador. Todo el dashboard mira a
@@ -2012,8 +1973,11 @@ msInit('cfSR','Salida + Robo',renderCmp);msInit('cfArq','Todos los mazos',render
 // por jugador, que ignora el filtro de jugador pero no debe ignorar el de fecha).
 let DIAS=0;
 const _dts=f=>{const m=/^(\d{2})\/(\d{2})\/(\d{4})$/.exec(f||'');return m?Date.UTC(+m[3],+m[2]-1,+m[1]):0;};
-const MD=()=>{if(!DIAS)return MATCHES;const c=Date.now()-DIAS*864e5;return MATCHES.filter(d=>_dts(d.f)>=c);};
-const GD=()=>{if(!DIAS)return GAMES;const ok=new Set(MD().map(d=>d.uid).filter(Boolean));return GAMES.filter(g=>ok.has(g.uid));};
+// _BASE() es la muestra del dashboard: TUS partidas con la versión única. Todo lo demás
+// (el filtro de días, los filtros de cada pestaña) se aplica encima de esto.
+const _BASE=()=>MATCHES.filter(d=>verLab(d)===VERSION_UNICA);
+const MD=()=>{const B=_BASE();if(!DIAS)return B;const c=Date.now()-DIAS*864e5;return B.filter(d=>_dts(d.f)>=c);};
+const GD=()=>{const ok=new Set(MD().map(d=>d.uid).filter(Boolean));return GAMES.filter(g=>ok.has(g.uid));};
 // Un solo jugador: M() y G() son ya el histórico completo acotado por fecha. Se conservan
 // como funciones porque las llaman ~40 sitios y porque el filtro de días sigue vivo.
 const M=MD, G=GD;
@@ -2023,17 +1987,14 @@ function refreshAll(){
   const cur=document.querySelector('.tab.on');const v=cur&&cur.dataset.v;
   if(v==='stats')render();
   else if(v==='play')renderPlay();
-  else if(v==='lists'){renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();}
   else if(v==='scout')renderScout();
   else if(v==='cmp')renderCmp();
   else if(v==='meta')renderMetaTab();
 }
 
-// 'li' se resuelve por VERSIÓN del mazo (no por nombre de lista): filtrar por "Aggro" trae
-// también las partidas apuntadas como "Ur Aggro Rage", que es el mismo maindeck.
-function uniq(f){return [...new Set(M().map(d=>f==='li'?verLab(d):d[f]))].filter(Boolean);}
+function uniq(f){return [...new Set(M().map(d=>d[f]))].filter(Boolean);}
 function filtered(){
-  return M().filter(d=>msOk('fLista',verLab(d))&&msOk('fLiga',d.ev)&&msOk('fSR',d.sr)&&msOk('fArq',d.aq));}
+  return M().filter(d=>msOk('fLiga',d.ev)&&msOk('fSR',d.sr)&&msOk('fArq',d.aq));}
 
 function kpis(D){
   const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
@@ -2110,8 +2071,7 @@ function renderMuestra(){
   const el=$('muestra'); if(!el) return;
   const D=filtered(); const uid=new Set(D.map(d=>d.uid).filter(Boolean));
   const gn=G().filter(g=>uid.has(g.uid)).length;
-  const vs=msVal('fLista'); const que=!vs?'todas las versiones':[...vs].join(' + ');
-  el.textContent=`Muestra: ${D.length} partidas · ${gn} games · ${que}`;
+  el.textContent=`Muestra: ${D.length} partidas · ${gn} games · ${VERSION_UNICA}`;
   el.classList.toggle('flaca',D.length<MUESTRA_CORTA);
   el.title=D.length<MUESTRA_CORTA
     ? `Muestra corta (${D.length} partidas, ${gn} games). Los cortes finos — matchup a matchup, turno a turno — caen a grupos de 5 o menos: sirven para levantar la ceja, no para concluir.`
@@ -2121,212 +2081,6 @@ function render(){const D=filtered(),all=M();
   $('subtitle').textContent=all.length?`Modern · MTGO · ${D.length} rondas · ${all[0].f} → ${all[all.length-1].f}`:'Modern · MTGO';
   renderMuestra();kpis(D);insight(D);destroy();if(D.length){chartSR(D);chartArq(D);chartEvo(D);chartPie(D);chartPD(D);}table(D);}
 
-// ---- Listas por NOMBRE: una lista = su nombre; suma a todos los que la juegan ----
-// Respeta el filtro global de jugador (M()): con "todos" suma; con un jugador, su parte.
-// Agrupa por VERSIÓN del mazo, no por nombre de lista: la "Ur Aggro Rage" de Pol y la
-// "Aggro" de Fer son el mismo maindeck con distinto sideboard, y contarlas aparte partía
-// las muestras en trozos sin significado (la "2.0" llegó a 5 partidas). `listas` guarda
-// los nombres exactos que hay dentro de cada versión, para poder enseñarlos.
-function listGroups(){
-  const g={};
-  M().forEach(d=>{const v=verLab(d); if(!v||v==='—')return;
-    (g[v]=g[v]||{li:v,key:v,D:[],players:new Set(),listas:new Set()}).D.push(d);
-    if(d.by) g[v].players.add(d.by);
-    if(d.li&&d.li!=='—') g[v].listas.add(d.li);});
-  return Object.values(g).map(o=>{
-    const W=o.D.filter(d=>d.r==='W').length,L=o.D.filter(d=>d.r==='L').length;
-    const gw=o.D.reduce((a,d)=>a+d.jg,0),gl=o.D.reduce((a,d)=>a+d.jp,0);
-    const mm={};o.D.forEach(d=>{(mm[d.aq]=mm[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
-    return {...o,players:[...o.players].sort(),listas:[...o.listas].sort(),W,L,n:W+L,gw,gl,wr:pct(W,W+L),mm};
-  }).sort((a,b)=> b.n-a.n || a.li.localeCompare(b.li));
-}
-// ---- Menú lateral de la pestaña Listas + una sección por versión --------------
-// Dentro de una versión el maindeck es el MISMO, así que lo único que cambia entre sus
-// variantes es el sideboard (y algún flex del main). Eso hace que la comparación sea
-// limpia: la diferencia de récord es atribuible a esas cartas y no al mazo.
-// Ojo con la lectura: son muestras pequeñas y cada variante la ha jugado quien la ha
-// jugado, así que el jugador es un factor. Se avisa en la propia sección.
-let lSecActual='l-resumen';
-
-function variantesDe(v){
-  // récord de cada nombre de lista dentro de la versión v
-  const out={};
-  M().forEach(d=>{ if(verLab(d)!==v) return; const li=d.li||'—';
-    const o=out[li]=out[li]||{li,W:0,L:0,players:new Set()};
-    if(d.r==='W')o.W++; else if(d.r==='L')o.L++;
-    if(d.by)o.players.add(d.by); });
-  return Object.values(out).map(o=>({...o,players:[...o.players].sort(),n:o.W+o.L,wr:pct(o.W,o.W+o.L)}))
-    .sort((a,b)=>b.n-a.n);
-}
-
-function cartasQueCambian(v,listas){
-  // Cruza las matrices de comparativa.json (nº de copias por lista) con el récord de las
-  // partidas de cada lista. Solo entra la carta cuyas copias NO son iguales en todas.
-  const D=LISTAS_DATA||LISTAS_SNAPSHOT; if(!D) return [];
-  const rec=Object.fromEntries(variantesDe(v).map(x=>[x.li,x]));
-  const conDatos=listas.filter(l=>rec[l]);            // listas con partidas jugadas
-  const filas=[];
-  // El nombre de la lista en la hoja y el del .txt no coinciden en mayúsculas ("UR Aggro
-  // Rage" en el apunte de Pol, "Ur Aggro Rage.txt" en su Drive). Buscar la clave tal cual
-  // devolvía "0 copias" para una lista que sí lleva la carta, que es peor que no enseñarla.
-  const kk=s=>(s||'').trim().toLowerCase();
-  const busca=(j,l)=>{ if(!j)return undefined; if(j[l]!==undefined)return j[l];
-    const hit=Object.keys(j).find(k=>kk(k)===kk(l)); return hit===undefined?undefined:j[hit]; };
-  [['main',D.matrizMain||[]],['side',D.matrizSide||[]]].forEach(([zona,rows])=>{
-    rows.forEach(r=>{
-      const q={}; let hay=false, faltan=false;
-      listas.forEach(l=>{ const val=busca(r.j,l);
-        if(val!==undefined){q[l]=val;hay=true;} else faltan=true; });
-      if(!hay||faltan) return;   // si a alguna variante le falta su .txt, no se compara
-      const vals=[...new Set(Object.values(q))];
-      if(vals.length<2) return;                        // igual en todas: no diferencia
-      // Dos casos distintos, y mezclarlos engaña:
-      //  - PRESENCIA: alguna variante la lleva a 0 -> el récord con/sin significa algo.
-      //  - COPIAS: todas la llevan, solo cambia el número -> "con ella" serían TODAS las
-      //    partidas y "sin ella" ninguna, así que el récord no dice nada. Se marca.
-      const presencia=Object.values(q).some(x=>x===0);
-      const con=conDatos.filter(l=>(q[l]||0)>0), sin=conDatos.filter(l=>!(q[l]||0));
-      const sum=ls=>ls.reduce((a,l)=>({W:a.W+rec[l].W,L:a.L+rec[l].L}),{W:0,L:0});
-      const cw=sum(con), sw=sum(sin);
-      filas.push({n:r.n,zona,presencia,copias:listas.map(l=>`${l}: ${q[l]}`).join(' · '),
-        conN:presencia?cw.W+cw.L:0,conRec:`${cw.W}-${cw.L}`,conWr:presencia&&(cw.W+cw.L)?pct(cw.W,cw.W+cw.L):null,
-        sinN:presencia?sw.W+sw.L:0,sinRec:`${sw.W}-${sw.L}`,sinWr:presencia&&(sw.W+sw.L)?pct(sw.W,sw.W+sw.L):null});
-    });
-  });
-  return filas.sort((a,b)=>(b.presencia-a.presencia)||((b.conN+b.sinN)-(a.conN+a.sinN)));
-}
-
-function renderListsMenu(){
-  const gs=listGroups();
-  const item=(id,lab,sub)=>`<div class="gmi${id===lSecActual?' on':''}" data-l="${id}">${lab}${sub?`<span style="display:block;font-weight:400;text-transform:none;letter-spacing:0;font-size:10.5px;color:${id===lSecActual?'var(--on-primary)':'var(--tx3)'};margin-top:2px">${sub}</span>`:''}</div>`;
-  $('lMenu').innerHTML = item('l-resumen','Resumen',`${gs.length} versiones`)
-    + gs.map(g=>item('l-v-'+slug(g.li),g.li,`${g.n} partidas · ${g.wr}%`)).join('')
-    + item('l-comparador','Comparador','carta a carta');
-
-  $('lVersionPanes').innerHTML = gs.map(g=>{
-    const vs=variantesDe(g.li), cc=cartasQueCambian(g.li,g.listas);
-    const wrCell=w=>w===null?'<td style="text-align:center;color:var(--tx3)">·</td>'
-      :`<td style="text-align:center"><span class="hq-cell ${w>=60?'hq-cell--good':w>=40?'hq-cell--mid':'hq-cell--bad'}">${w}%</span></td>`;
-    const tablaVar = vs.length
-      ? `<div style="overflow-x:auto"><table><thead><tr><th>Variante</th><th>Quién la juega</th><th style="text-align:center">Partidas</th><th style="text-align:center">Récord</th><th style="text-align:center">WR</th></tr></thead><tbody>`
-        + vs.map(x=>`<tr><td><b>${x.li}</b></td><td>${x.players.join(' + ')||'—'}</td><td style="text-align:center">${x.n}</td><td style="text-align:center;font-family:var(--mono)">${x.W}-${x.L}</td>${wrCell(x.wr)}</tr>`).join('')
-        + '</tbody></table></div>'
-      : '<div style="color:var(--tx2);font-size:12.5px">Todavía no hay partidas apuntadas con esta versión.</div>';
-    const tablaCC = cc.length
-      ? `<div style="overflow-x:auto"><table><thead><tr><th>Carta</th><th>Zona</th><th>Copias por variante</th><th style="text-align:center">Con ella</th><th style="text-align:center">WR</th><th style="text-align:center">Sin ella</th><th style="text-align:center">WR</th></tr></thead><tbody>`
-        + cc.map(x=>x.presencia
-            ? `<tr><td><b>${x.n}</b></td><td><span class="tag">${x.zona}</span></td><td style="font-family:var(--mono);font-size:11px">${x.copias}</td><td style="text-align:center;font-family:var(--mono)">${x.conN?x.conRec:'—'}</td>${wrCell(x.conWr)}<td style="text-align:center;font-family:var(--mono)">${x.sinN?x.sinRec:'—'}</td>${wrCell(x.sinWr)}</tr>`
-            : `<tr><td>${x.n}</td><td><span class="tag">${x.zona}</span></td><td style="font-family:var(--mono);font-size:11px">${x.copias}</td><td colspan="4" style="color:var(--tx3);font-size:11.5px">Todas las variantes la llevan, solo cambia el nº de copias — el récord con/sin no dice nada aquí.</td></tr>`).join('')
-        + '</tbody></table></div>'
-      : '<div style="color:var(--tx2);font-size:12.5px">Las variantes de esta versión no difieren en ninguna carta, o falta su .txt en <span style="font-family:var(--mono)">listas/</span>.</div>';
-    return `<div class="gsec" id="l-v-${slug(g.li)}">
-      <h3 class="secH" style="margin-top:2px">${g.li} <span class="q" style="font-size:12px;font-weight:400">· ${g.W}-${g.L} (${g.wr}%) en ${g.n} partidas</span></h3>
-      <div class="author"><span class="ic"></span><div><b>${g.li}</b> — ${(LIST_META[g.li]||{}).desc||'Versión del mazo.'} Dentro de esta versión el <b>maindeck es el mismo</b>, así que entre sus variantes solo cambia el sideboard (y algún flex). Eso hace la comparación limpia: la diferencia de récord no viene del mazo. <b>Pero ojo</b>: las muestras son pequeñas y cada variante la juega quien la juega, así que el jugador también pesa — no lo leas como causa-efecto.</div></div>
-      <div class="panel full" style="margin-bottom:var(--gap)"><h3>Variantes <span>(mismo maindeck, distinto sideboard)</span></h3>${tablaVar}</div>
-      <div class="panel full"><h3>Cartas que cambian dentro de la versión <span>(récord de las partidas jugadas con y sin cada carta)</span></h3>${tablaCC}
-        <div style="font-size:11px;color:var(--tx3);margin-top:8px">"Con ella" suma las partidas de las variantes que llevan la carta; "sin ella", las de las que no. Copias sacadas de <span style="font-family:var(--mono)">listas/&lt;nombre&gt;.txt</span> vía el comparador.</div></div>
-    </div>`;
-  }).join('');
-
-  document.querySelectorAll('#lMenu .gmi').forEach(m=>m.onclick=()=>{
-    lSecActual=m.dataset.l;
-    document.querySelectorAll('#v-lists .gsec').forEach(s=>s.classList.remove('on'));
-    const s=$(lSecActual); if(s)s.classList.add('on');
-    renderListsMenu();                                  // repinta el menú (marca activo)
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-  document.querySelectorAll('#v-lists .gsec').forEach(s=>s.classList.toggle('on',s.id===lSecActual));
-}
-const slug=s=>(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'x';
-function renderMyLists(){
-  // por-lista también a nivel de GAME: se cruza games.csv con el registro por match_uuid
-  const li_by_uid={};M().forEach(d=>{if(d.uid)li_by_uid[d.uid]=verLab(d);});
-  const groups=listGroups();
-  $('myLists').innerHTML=groups.map(l=>{
-    const meta=LIST_META[l.key]||{};
-    const gg=G().filter(g=>g.uid&&li_by_uid[g.uid]===l.key);
-    const gw=gg.filter(g=>g.w).length;
-    const avg=(a,d=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**d)/10**d:0;
-    const best=Object.entries(l.mm).filter(([k,v])=>v.w>v.l).map(([k])=>k);
-    const worst=Object.entries(l.mm).filter(([k,v])=>v.l>v.w).map(([k])=>k);
-    const quien=l.players.length?`<span class="badge you">${l.players.join(' + ')}</span>`:'';
-    return `<div class="deck">
-      <div class="dh"><span class="dn">${l.li}</span>${quien}</div>
-      ${meta.desc?`<div class="dt">${meta.desc}</div>`:''}
-      <div class="io" style="grid-template-columns:1fr 1fr;margin:10px 0">
-        <div><span class="lbl">Récord</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${l.W}-${l.L}</span></div>
-        <div><span class="lbl">Win rate</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${l.wr}%</span> <span class="q" style="font-size:11px">· ${l.gw}-${l.gl} juegos</span></div>
-      </div>
-      ${l.players.length>1?`<div style="font-size:11px;color:var(--tx3);margin-bottom:8px">Estadísticas sumadas de ${l.players.length} jugadores.</div>`:''}
-      ${l.listas.length>1?`<div style="font-size:11px;color:var(--tx3);margin-bottom:8px">Mismo mazo con distinto sideboard: ${l.listas.join(' · ')}.</div>`:''}
-      ${gg.length?`<div style="font-size:12px;color:var(--tx2);margin-bottom:8px;font-family:var(--mono)">En los logs: ${gg.length} games (${gw}-${gg.length-gw}) · ${avg(gg.map(g=>g.t))} turnos · ${avg(gg.map(g=>g.pw))} prowess/game</div>`:''}
-      <div style="font-size:12px"><span style="color:var(--winL);font-weight:600">Gana a:</span> ${best.join(', ')||'—'}<br><span style="color:var(--loss);font-weight:600">Pierde con:</span> ${worst.join(', ')||'—'}</div>
-      ${meta.url?`<div style="margin-top:10px"><a href="${meta.url}" target="_blank">Abrir lista en mtggoldfish →</a></div>`:''}
-    </div>`;
-  }).join('')||'<div style="color:var(--tx2)">Todavía no hay ninguna versión con partidas registradas. Aparecen aquí en cuanto el robot cruza un apunte con columna «Lista» y su log.</div>';
-}
-// ---- Lista x mazo rival + win rate por lista (por nombre) ----
-function renderLxM(){
-  const groups=listGroups(), byKey=Object.fromEntries(groups.map(g=>[g.key,g]));
-  const keys=groups.map(g=>g.key);
-  const aqs=[...new Set(M().map(d=>d.aq))].filter(a=>a&&a!=='N/A (bye/concede)').sort();
-  const cell=(aq,key)=>{const D=byKey[key].D.filter(d=>d.aq===aq);if(!D.length)return '<td style="text-align:center;color:var(--tx3)">·</td>';
-    const w=D.filter(d=>d.r==='W').length,l=D.filter(d=>d.r==='L').length,wr=pct(w,w+l);
-    const cls=wr>=60?'hq-cell--good':wr>=40?'hq-cell--mid':'hq-cell--bad';
-    return `<td style="text-align:center"><span class="hq-cell ${cls}">${w}-${l}</span></td>`;};
-  const th=k=>`<th style="text-align:center">${byKey[k].li}</th>`;
-  let h='<thead><tr><th>Mazo rival</th>'+keys.map(th).join('')+'</tr></thead><tbody>';
-  h+=aqs.map(aq=>`<tr><td>${aq}</td>${keys.map(k=>cell(aq,k)).join('')}</tr>`).join('')+'</tbody>';
-  $('lxm').innerHTML=h || '';
-  $('wrByList').innerHTML=groups.map(l=>{const w=l.wr;
-    return `<div class="lrow"><div style="min-width:90px;font-weight:600">${l.li}</div><div class="lbar" style="width:${Math.max(w*1.6,6)}px;background:${w>=50?'var(--win)':'var(--loss)'}"></div><div style="font-family:var(--mono);color:var(--tx2)">${l.wr}% · ${l.W}-${l.L}</div></div>`;
-  }).join('');
-}
-// ---- Comparador de listas de los jugadores (75 real · listas/<nombre>.txt) ----
-// Fuente viva: listas/comparativa.json (lo genera scripts/comparar_listas.mjs a partir
-// de los .txt de la carpeta listas/). Si no carga, cae a este snapshot embebido.
-const LISTAS_SNAPSHOT = {"generado":"2026-07-27","referencia":"La 75 Definitiva v2 (22-jul-2026)","jugadores":[{"nick":"2.0","owner":"feralo77","titulo":"feralo77 · 2.0","esRef":false,"mainN":60,"sideN":15,"overlapMain":60,"overlapSide":13,"pctSim":97,"soloEl":{"main":[],"side":[{"n":"Soul-Guide Lantern","q":1}]},"soloRef":{"main":[],"side":[{"n":"Murktide Regent","q":1}]},"distintos":{"main":[],"side":[{"n":"Spell Pierce","suyo":2,"ref":1},{"n":"Tormod's Crypt","suyo":1,"ref":2}]}},{"nick":"Basics","owner":"feralo77","titulo":"feralo77 · Basics (Liga 6, 23-jul-2026) — https://www.mtggoldfish.com/deck/7885257#online","esRef":false,"mainN":60,"sideN":15,"overlapMain":55,"overlapSide":12,"pctSim":89,"soloEl":{"main":[{"n":"Boomerang Basics","q":2},{"n":"Stormchaser's Talent","q":2},{"n":"Island","q":1}],"side":[{"n":"Prismari Charm","q":1}]},"soloRef":{"main":[],"side":[{"n":"Murktide Regent","q":1},{"n":"Mystical Dispute","q":1}]},"distintos":{"main":[{"n":"Expressive Iteration","suyo":3,"ref":4},{"n":"Fiery Islet","suyo":1,"ref":2},{"n":"Mutagenic Growth","suyo":3,"ref":4},{"n":"Slickshot Show-Off","suyo":3,"ref":4},{"n":"Violent Urge","suyo":1,"ref":2}],"side":[{"n":"Consign to Memory","suyo":3,"ref":4},{"n":"Spell Pierce","suyo":2,"ref":1},{"n":"Spell Snare","suyo":2,"ref":1}]}},{"nick":"Definitiva","owner":"feralo77","titulo":"feralo77 · La 75 Definitiva v2 (22-jul-2026)","esRef":true,"mainN":60,"sideN":15,"overlapMain":60,"overlapSide":15,"pctSim":100,"soloEl":{"main":[],"side":[]},"soloRef":{"main":[],"side":[]},"distintos":{"main":[],"side":[]}},{"nick":"PT","owner":"feralo77","titulo":"feralo77 · PT","esRef":false,"mainN":60,"sideN":15,"overlapMain":54,"overlapSide":9,"pctSim":84,"soloEl":{"main":[{"n":"Monstrous Rage","q":3},{"n":"Assault Strobe","q":2},{"n":"Stormchaser's Talent","q":1}],"side":[{"n":"Expressive Iteration","q":3}]},"soloRef":{"main":[{"n":"Expressive Iteration","q":4},{"n":"Violent Urge","q":2}],"side":[{"n":"Tormod's Crypt","q":2},{"n":"Murktide Regent","q":1},{"n":"Mystical Dispute","q":1}]},"distintos":{"main":[],"side":[{"n":"Consign to Memory","suyo":3,"ref":4},{"n":"Meltdown","suyo":1,"ref":2},{"n":"Spell Snare","suyo":3,"ref":1},{"n":"Unholy Heat","suyo":4,"ref":3}]}},{"nick":"Pol 1 NF","owner":"4c_PolG","titulo":"4c_PolG · Pol 1 NF","esRef":false,"mainN":60,"sideN":15,"overlapMain":60,"overlapSide":10,"pctSim":93,"soloEl":{"main":[],"side":[{"n":"Assault Strobe","q":1},{"n":"Prismari Charm","q":1},{"n":"Surgical Extraction","q":1}]},"soloRef":{"main":[],"side":[{"n":"Tormod's Crypt","q":2},{"n":"Murktide Regent","q":1},{"n":"Mystical Dispute","q":1}]},"distintos":{"main":[],"side":[{"n":"Consign to Memory","suyo":3,"ref":4},{"n":"Spell Pierce","suyo":2,"ref":1},{"n":"Spell Snare","suyo":2,"ref":1}]}},{"nick":"Stock","owner":"feralo77","titulo":"feralo77 · Stock","esRef":false,"mainN":60,"sideN":15,"overlapMain":59,"overlapSide":10,"pctSim":92,"soloEl":{"main":[{"n":"Flashback","q":1}],"side":[{"n":"Assault Strobe","q":1},{"n":"Prismari Charm","q":1},{"n":"Surgical Extraction","q":1}]},"soloRef":{"main":[],"side":[{"n":"Tormod's Crypt","q":2},{"n":"Murktide Regent","q":1},{"n":"Mystical Dispute","q":1}]},"distintos":{"main":[{"n":"Violent Urge","suyo":1,"ref":2}],"side":[{"n":"Consign to Memory","suyo":3,"ref":4},{"n":"Spell Pierce","suyo":2,"ref":1},{"n":"Spell Snare","suyo":2,"ref":1}]}},{"nick":"UR Aggro Flashback","owner":"4c_PolG","titulo":"4c_PolG · UR Aggro Flashback (Drive, 2026-07-27)","esRef":false,"mainN":60,"sideN":15,"overlapMain":54,"overlapSide":9,"pctSim":84,"soloEl":{"main":[{"n":"Monstrous Rage","q":3},{"n":"Assault Strobe","q":2},{"n":"Flashback","q":1}],"side":[{"n":"Expressive Iteration","q":3}]},"soloRef":{"main":[{"n":"Expressive Iteration","q":4},{"n":"Violent Urge","q":2}],"side":[{"n":"Tormod's Crypt","q":2},{"n":"Murktide Regent","q":1},{"n":"Mystical Dispute","q":1}]},"distintos":{"main":[],"side":[{"n":"Consign to Memory","suyo":3,"ref":4},{"n":"Meltdown","suyo":1,"ref":2},{"n":"Spell Pierce","suyo":2,"ref":1},{"n":"Spell Snare","suyo":3,"ref":1}]}}],"esperando":["Inkmaster"],"matrizMain":[{"n":"Fetchlands","ref":9,"meta":13,"metaPct":null,"j":{"2.0":9,"Basics":9,"Definitiva":9,"PT":9,"Pol 1 NF":9,"Stock":9,"UR Aggro Flashback":9}},{"n":"Cori-Steel Cutter","ref":4,"meta":4,"metaPct":97,"j":{"2.0":4,"Basics":4,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Dragon's Rage Channeler","ref":4,"meta":4,"metaPct":98,"j":{"2.0":4,"Basics":4,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Lava Dart","ref":4,"meta":4,"metaPct":98,"j":{"2.0":4,"Basics":4,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Lightning Bolt","ref":4,"meta":4,"metaPct":98,"j":{"2.0":4,"Basics":4,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Mishra's Bauble","ref":4,"meta":4,"metaPct":98,"j":{"2.0":4,"Basics":4,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Monastery Swiftspear","ref":4,"meta":4,"metaPct":98,"j":{"2.0":4,"Basics":4,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Preordain","ref":4,"meta":4,"metaPct":98,"j":{"2.0":4,"Basics":4,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Mutagenic Growth","ref":4,"meta":4,"metaPct":95,"j":{"2.0":4,"Basics":3,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Slickshot Show-Off","ref":4,"meta":4,"metaPct":95,"j":{"2.0":4,"Basics":3,"Definitiva":4,"PT":4,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":4}},{"n":"Expressive Iteration","ref":4,"meta":4,"metaPct":75,"j":{"2.0":4,"Basics":3,"Definitiva":4,"PT":0,"Pol 1 NF":4,"Stock":4,"UR Aggro Flashback":0}},{"n":"Mountain","ref":3,"meta":3,"metaPct":100,"j":{"2.0":3,"Basics":3,"Definitiva":3,"PT":3,"Pol 1 NF":3,"Stock":3,"UR Aggro Flashback":3}},{"n":"Steam Vents","ref":3,"meta":3,"metaPct":100,"j":{"2.0":3,"Basics":3,"Definitiva":3,"PT":3,"Pol 1 NF":3,"Stock":3,"UR Aggro Flashback":3}},{"n":"Fiery Islet","ref":2,"meta":2,"metaPct":95,"j":{"2.0":2,"Basics":1,"Definitiva":2,"PT":2,"Pol 1 NF":2,"Stock":2,"UR Aggro Flashback":2}},{"n":"Violent Urge","ref":2,"meta":1,"metaPct":72,"j":{"2.0":2,"Basics":1,"Definitiva":2,"PT":0,"Pol 1 NF":2,"Stock":1,"UR Aggro Flashback":0}},{"n":"Thundering Falls","ref":1,"meta":1,"metaPct":98,"j":{"2.0":1,"Basics":1,"Definitiva":1,"PT":1,"Pol 1 NF":1,"Stock":1,"UR Aggro Flashback":1}},{"n":"Monstrous Rage","ref":0,"meta":3,"metaPct":25,"j":{"2.0":0,"Basics":0,"Definitiva":0,"PT":3,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":3}},{"n":"Assault Strobe","ref":0,"meta":2,"metaPct":25,"j":{"2.0":0,"Basics":0,"Definitiva":0,"PT":2,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":2}},{"n":"Stormchaser's Talent","ref":0,"meta":1,"metaPct":42,"j":{"2.0":0,"Basics":2,"Definitiva":0,"PT":1,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":0}},{"n":"Boomerang Basics","ref":0,"meta":2,"metaPct":22,"j":{"2.0":0,"Basics":2,"Definitiva":0,"PT":0,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":0}},{"n":"Flashback","ref":0,"meta":1,"metaPct":15,"j":{"2.0":0,"Basics":0,"Definitiva":0,"PT":0,"Pol 1 NF":0,"Stock":1,"UR Aggro Flashback":1}},{"n":"Island","ref":0,"meta":1,"metaPct":20,"j":{"2.0":0,"Basics":1,"Definitiva":0,"PT":0,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":0}}],"matrizSide":[{"n":"Consign to Memory","ref":4,"meta":3,"metaPct":98,"j":{"2.0":4,"Basics":3,"Definitiva":4,"PT":3,"Pol 1 NF":3,"Stock":3,"UR Aggro Flashback":3}},{"n":"Unholy Heat","ref":3,"meta":3,"metaPct":97,"j":{"2.0":3,"Basics":3,"Definitiva":3,"PT":4,"Pol 1 NF":3,"Stock":3,"UR Aggro Flashback":3}},{"n":"Meltdown","ref":2,"meta":2,"metaPct":93,"j":{"2.0":2,"Basics":2,"Definitiva":2,"PT":1,"Pol 1 NF":2,"Stock":2,"UR Aggro Flashback":1}},{"n":"Tormod's Crypt","ref":2,"meta":2,"metaPct":62,"j":{"2.0":1,"Basics":2,"Definitiva":2,"PT":0,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":0}},{"n":"Spell Snare","ref":1,"meta":2,"metaPct":77,"j":{"2.0":1,"Basics":2,"Definitiva":1,"PT":3,"Pol 1 NF":2,"Stock":2,"UR Aggro Flashback":3}},{"n":"Spell Pierce","ref":1,"meta":1,"metaPct":90,"j":{"2.0":2,"Basics":2,"Definitiva":1,"PT":1,"Pol 1 NF":2,"Stock":2,"UR Aggro Flashback":2}},{"n":"Mystical Dispute","ref":1,"meta":1,"metaPct":17,"j":{"2.0":1,"Basics":0,"Definitiva":1,"PT":0,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":0}},{"n":"Murktide Regent","ref":1,"meta":1,"metaPct":23,"j":{"2.0":0,"Basics":0,"Definitiva":1,"PT":0,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":0}},{"n":"Expressive Iteration","ref":0,"meta":4,"metaPct":22,"j":{"2.0":0,"Basics":0,"Definitiva":0,"PT":3,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":3}},{"n":"Prismari Charm","ref":0,"meta":1,"metaPct":12,"j":{"2.0":0,"Basics":1,"Definitiva":0,"PT":0,"Pol 1 NF":1,"Stock":1,"UR Aggro Flashback":0}},{"n":"Assault Strobe","ref":0,"meta":1,"metaPct":15,"j":{"2.0":0,"Basics":0,"Definitiva":0,"PT":0,"Pol 1 NF":1,"Stock":1,"UR Aggro Flashback":0}},{"n":"Surgical Extraction","ref":0,"meta":1,"metaPct":27,"j":{"2.0":0,"Basics":0,"Definitiva":0,"PT":0,"Pol 1 NF":1,"Stock":1,"UR Aggro Flashback":0}},{"n":"Soul-Guide Lantern","ref":0,"meta":1,"metaPct":8,"j":{"2.0":1,"Basics":0,"Definitiva":0,"PT":0,"Pol 1 NF":0,"Stock":0,"UR Aggro Flashback":0}}],"notas":["Núcleo común a las 7 listas: 14 cartas distintas (51 copias) que todas llevan en el mazo principal.","Cartas de main que solo lleva una lista: Boomerang Basics, Island."]};
-let LISTAS_DATA=null;
-async function renderPlayerLists(){
-  if(!LISTAS_DATA){
-    try{const r=await fetch('listas/comparativa.json',{cache:'no-store'});LISTAS_DATA=(r&&r.ok)?await r.json():LISTAS_SNAPSHOT;}
-    catch(e){LISTAS_DATA=LISTAS_SNAPSHOT;}
-  }
-  paintPlayerLists(LISTAS_DATA);
-}
-function paintPlayerLists(j){
-  const J=j.jugadores||[];
-  $('playerLists').innerHTML=J.map(p=>{
-    const badge=p.esRef?'<span class="badge you">referencia</span>':`<span class="badge" style="background:var(--surface-2);color:var(--tx2)">${p.pctSim}% igual a la Def</span>`;
-    const flat=z=>[...((p[z]||{}).main||[]),...((p[z]||{}).side||[])];
-    const solo=p.esRef?[]:flat('soloEl');
-    const dist=p.esRef?[]:[...(p.distintos.main||[]),...(p.distintos.side||[])];
-    const soloTxt=solo.length?`<div style="font-size:12px;margin-top:6px"><span style="color:var(--u2);font-weight:600">Solo suyas (vs Def):</span> ${solo.map(c=>c.q+' '+c.n).join(', ')}</div>`:'';
-    const distTxt=dist.length?`<div style="font-size:12px;margin-top:6px"><span style="color:var(--mid);font-weight:600">Distinto nº:</span> ${dist.map(c=>`${c.n} (${c.suyo}/${c.ref})`).join(', ')}</div>`:'';
-    return `<div class="deck">
-      <div class="dh"><span class="dn">${p.nick}</span>${badge}</div>
-      <div class="dt">${p.titulo}</div>
-      <div class="io" style="grid-template-columns:1fr 1fr;margin:10px 0">
-        <div><span class="lbl">Main</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${p.mainN}</span></div>
-        <div><span class="lbl">Sideboard</span><span style="font-family:var(--mono);font-size:21px;font-weight:600">${p.sideN}</span></div>
-      </div>${soloTxt}${distTxt}</div>`;
-  }).join('')||'<div style="color:var(--tx2)">Aún no hay ninguna lista cargada en <span style="font-family:var(--mono)">listas/</span>.</div>';
-  const w=$('listWaiting');
-  if(j.esperando&&j.esperando.length){w.style.display='';w.innerHTML=`Esperando la lista de: <b>${j.esperando.join(', ')}</b>. Pásame su export o dejadlo en <span style="font-family:var(--mono)">listas/&lt;nombre&gt;.txt</span> y aparece aquí.`;}
-  else w.style.display='none';
-  const nz=$('listNotas');
-  if(j.notas&&j.notas.length){nz.style.display='';nz.innerHTML='<div class="ic"></div><div>'+j.notas.map(n=>`<div>${n}</div>`).join('')+'</div>';}
-  else nz.style.display='none';
-  const cols=J.map(p=>p.nick);
-  const cell=(v,ref)=>{if(!v)return `<td style="text-align:center;color:var(--tx3)">·</td>`;
-    let st=''; if(!ref)st='color:var(--u2);font-weight:700'; else if(v>ref)st='color:var(--winL);font-weight:700'; else if(v<ref)st='color:var(--loss);font-weight:700';
-    return `<td style="text-align:center;font-family:var(--mono);${st}">${v}</td>`;};
-  const head=`<thead><tr><th>Carta</th><th style="text-align:center;color:var(--accent)">Def</th><th style="text-align:center">Meta</th>${cols.map(c=>`<th style="text-align:center">${c}</th>`).join('')}</tr></thead>`;
-  const rows=arr=>arr.map(r=>`<tr><td>${r.n}</td><td style="text-align:center;font-family:var(--mono);color:var(--accent)">${r.ref||'·'}</td><td style="text-align:center;font-family:var(--mono);color:var(--tx3)">${r.meta!=null?r.meta:'·'}</td>${cols.map(c=>cell(r.j[c]||0,r.ref)).join('')}</tr>`).join('');
-  const sec=t=>`<tr><td colspan="${3+cols.length}" style="font-family:var(--mono);color:var(--tx2);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding-top:14px">${t}</td></tr>`;
-  $('listMatrix').innerHTML=head+'<tbody>'+sec('Mazo principal')+rows(j.matrizMain||[])+sec('Sideboard')+rows(j.matrizSide||[])+'</tbody>';
-  $('listMatrixNote').innerHTML=`Columna <b style="color:var(--accent)">Def</b> = La 75 Definitiva (referencia) · <b>Meta</b> = copias típicas del consenso mtgtop8${j.generado?` · generado ${j.generado}`:''}.`;
-}
 // ---- Scouting por rival (nicks públicos por decisión de Fer, 22-jul-2026) ----
 // Récord y mazos salen del registro en vivo (columna Rival); las cartas vistas y el
 // "visto por", de scouting.csv (lo escribe el robot en cada carga).
@@ -2393,10 +2147,11 @@ function renderScout(){
 // Motor de comparación codo con codo. Reutiliza M()/G() y los mismos datos que el resto del
 // dashboard. Al comparar POR JUGADOR usa todos los jugadores (ignora el filtro global de cabecera);
 // en el resto respeta ese filtro. La tabla, las barras y el radar se rehacen con cada cambio.
-let cmpDim='li', cmpMetricKey='wrMatch', cmpCharts={}, cmpLastGroups=[], cmpSort={col:'n',dir:-1};
+let cmpDim='aq', cmpMetricKey='wrMatch', cmpCharts={}, cmpLastGroups=[], cmpSort={col:'n',dir:-1};
 // Solo hay un jugador (Fer): la dimensión 'Jugador' desapareció el 15-sep-2026 junto con el
-// filtro global de jugador. Las partidas de los compañeros viven en archivo/ y no se comparan aquí.
-const CMP_DIMS={li:{label:'Versión',wf:'wf-lista'},aq:{label:'Mazo rival',wf:'wf-arq'},sr:{label:'Salida / Robo',wf:'wf-sr'}};
+// filtro global de jugador. Y solo hay una versión: la dimensión 'Versión' se fue el 16-sep-2026,
+// porque comparar una lista contra sí misma no dice nada. Quedan las dos que sí comparan algo.
+const CMP_DIMS={aq:{label:'Mazo rival',wf:'wf-arq'},sr:{label:'Salida / Robo',wf:'wf-sr'}};
 const cmean=(a,dec=1)=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length*10**dec)/10**dec:0;
 // Columnas de la tabla (grp res=resultados, play=cómo juega; deep=sólo con games profundos; bar=elegible en barras;
 // dir: en el Cara a cara, quién gana la métrica — 1 = mayor mejor, -1 = menor mejor, sin dir = neutra, no se puntúa)
@@ -2429,17 +2184,14 @@ const CMP_METRICS=[
   {k:'wrG1Rob',lab:'WR G1 robo',kind:'wr',hb:true,bar:true,dir:1},
 ];
 // Dimensión "Lista": la identidad es la VERSIÓN del mazo (mismo maindeck), no el nombre.
-// Así la "Aggro" de Fer y la "Ur Aggro Rage" de Pol cuentan como una: son el mismo mazo con
-// distinto sideboard, y separarlas dejaba muestras de 5 partidas sin significado.
-function cmpValM(d,liByUid){return cmpDim==='aq'?d.aq:cmpDim==='sr'?d.sr:verLab(d);}
-function cmpValG(g,liByUid){return cmpDim==='aq'?g.aq:cmpDim==='sr'?g.sr:(liByUid[g.uid]||'—');}
+function cmpValM(d){return cmpDim==='aq'?d.aq:d.sr;}
+function cmpValG(g){return cmpDim==='aq'?g.aq:g.sr;}
 function cmpBase(){
   const mAll=M(), gAll=G();
-  const liByUid={},evByUid={};mAll.forEach(d=>{if(d.uid){liByUid[d.uid]=verLab(d);evByUid[d.uid]=d.ev;}});
-  const mF=mAll.filter(d=>(cmpDim==='li'||msOk('cfLista',verLab(d)))&&msOk('cfLiga',d.ev)&&(cmpDim==='sr'||msOk('cfSR',d.sr))&&(cmpDim==='aq'||msOk('cfArq',d.aq)));
-  const gF=gAll.filter(g=>{const li=liByUid[g.uid],ev=evByUid[g.uid];
-    return (cmpDim==='li'||msOk('cfLista',li))&&msOk('cfLiga',ev)&&(cmpDim==='sr'||msOk('cfSR',g.sr))&&(cmpDim==='aq'||msOk('cfArq',g.aq));});
-  return {mF,gF,liByUid};
+  const evByUid={};mAll.forEach(d=>{if(d.uid)evByUid[d.uid]=d.ev;});
+  const mF=mAll.filter(d=>msOk('cfLiga',d.ev)&&(cmpDim==='sr'||msOk('cfSR',d.sr))&&(cmpDim==='aq'||msOk('cfArq',d.aq)));
+  const gF=gAll.filter(g=>msOk('cfLiga',evByUid[g.uid])&&(cmpDim==='sr'||msOk('cfSR',g.sr))&&(cmpDim==='aq'||msOk('cfArq',g.aq)));
+  return {mF,gF};
 }
 function cmpGroupStats(D,GG){
   const W=D.filter(d=>d.r==='W').length,L=D.filter(d=>d.r==='L').length;
@@ -2475,15 +2227,15 @@ function cmpGroupStats(D,GG){
     deep,v2};
 }
 function cmpGroups(){
-  const {mF,gF,liByUid}=cmpBase();
-  const keys=[...new Set([...mF.map(d=>cmpValM(d,liByUid)),...gF.map(g=>cmpValG(g,liByUid))])].filter(k=>k&&k!=='—'&&k!=='N/A (bye/concede)'&&k!=='NA');
+  const {mF,gF}=cmpBase();
+  const keys=[...new Set([...mF.map(cmpValM),...gF.map(cmpValG)])].filter(k=>k&&k!=='—'&&k!=='N/A (bye/concede)'&&k!=='NA');
   return keys.map(key=>{
-    const D=mF.filter(d=>cmpValM(d,liByUid)===key),GG=gF.filter(g=>cmpValG(g,liByUid)===key);
+    const D=mF.filter(d=>cmpValM(d)===key),GG=gF.filter(g=>cmpValG(g)===key);
     return {key,D,GG,...cmpGroupStats(D,GG)};
   }).sort((a,b)=>b.n-a.n||b.ng-a.ng);
 }
 function cmpSyncFilters(){
-  ['wf-lista','wf-sr','wf-arq','wf-player'].forEach(id=>{const e=$(id);if(e)e.style.display='';});
+  ['wf-sr','wf-arq'].forEach(id=>{const e=$(id);if(e)e.style.display='';});
   const e=$(CMP_DIMS[cmpDim].wf);if(e)e.style.display='none';
 }
 function cmpKpisRender(gr){
@@ -2547,7 +2299,7 @@ function cmpRadar(gr){
 }
 function cmpMatrix(gr){
   const panel=$('cmpMxPanel');
-  if(cmpDim!=='li'){panel.style.display='none';return;}
+  if(cmpDim!=='sr'){panel.style.display='none';return;}
   panel.style.display='';
   const aqs=[...new Set(gr.flatMap(g=>g.D.map(d=>d.aq)))].filter(a=>a&&a!=='N/A (bye/concede)'&&a!=='NA');
   const tot={};gr.forEach(g=>g.D.forEach(d=>{if(d.aq)tot[d.aq]=(tot[d.aq]||0)+1;}));
@@ -2603,9 +2355,8 @@ function renderCmp(){
   cmpBar(gr);cmpRadar(gr);cmpMatrix(gr);
 }
 function initCmpSelectors(){
-  const uni=f=>[...new Set(MATCHES.map(d=>d[f]).filter(v=>v&&v!=='—'&&v!=='N/A (bye/concede)'))].sort();
-  const uniVer=[...new Set(MATCHES.map(verLab).filter(v=>v&&v!=='—'))].sort();
-  msFill('cfLiga',uni('ev'));msFill('cfLista',uniVer);
+  const uni=f=>[...new Set(M().map(d=>d[f]).filter(v=>v&&v!=='—'&&v!=='N/A (bye/concede)'))].sort();
+  msFill('cfLiga',uni('ev'));
   msFill('cfSR',uni('sr'));msFill('cfArq',uni('aq'));
   const ms=$('cmpMetric');if(ms){const prev=ms.value||cmpMetricKey;ms.innerHTML='';CMP_METRICS.filter(m=>m.bar).forEach(m=>ms.add(new Option(m.lab,m.k)));ms.value=CMP_METRICS.some(m=>m.bar&&m.k===prev)?prev:'wrMatch';cmpMetricKey=ms.value;ms.onchange=()=>{cmpMetricKey=ms.value;cmpBar(cmpLastGroups);};}
 }
@@ -2806,9 +2557,11 @@ async function renderDef75(){
 
   // --- Guia de sideboard: record en vivo por arquetipo ---
   // El récord y el "% de tu liga" salen EN VIVO de tus partidas, así que no envejecen.
-  // Se calculan sobre TODAS tus partidas (52), no solo las de la Stock: con la Stock sola
-  // casi todos los matchups tendrían 1-2 partidas y la guía dejaría de decir nada. El plan
-  // de sideboard depende del mazo rival, no de qué versión tuya llevabas — por eso suma.
+  // Desde el 16-sep-2026 se calculan sobre la MISMA muestra que todo el dashboard: tus
+  // partidas con la versión única. Antes sumaban también la Aggro y la Basics (el plan de
+  // sideboard depende del rival, no de tu versión), pero tener dos números distintos de
+  // "tus partidas" en la misma página confundía más de lo que sumaba. Se paga en muestra:
+  // varios matchups bajan de 3 partidas y salen marcados "muestra minima".
   const misM=M();
   const wr={}; misM.forEach(d=>{ if(!d.aq) return; (wr[d.aq]=wr[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++; });
   const recDe=aqs=>{ let w=0,l=0; (aqs||[]).forEach(a=>{ if(wr[a]){w+=wr[a].w;l+=wr[a].l;} }); return {w,l,n:w+l}; };
@@ -2817,7 +2570,7 @@ async function renderDef75(){
     <div class="panel full" style="margin-top:var(--gap)">
       <h3>Guia de sideboard <span>&middot; ${GUIASB.matchups.length} matchups, ordenados por lo que mas te cruzas</span></h3>
       <div class="note-lg" style="margin-bottom:var(--gap)"><b>Regla general.</b> ${esc(GUIASB.reglaGeneral)}</div>
-      <div class="note-lg" style="margin-bottom:var(--gap)">El <b>% y el récord</b> de cada matchup se recalculan solos sobre <b>tus ${misM.length} partidas</b> (todas tus versiones: el plan depende del mazo rival, no de la tuya). Con esa muestra, la mayoría de matchups tienen <b>2 partidas o menos</b> — van marcados como <i>muestra minima</i>. El plan de cada uno es criterio, no estadistica: viene del brainstorm y de la guia de ethanmtg, y sigue valiendo aunque no hayas jugado el matchup.</div>
+      <div class="note-lg" style="margin-bottom:var(--gap)">El <b>% y el récord</b> de cada matchup se recalculan solos sobre <b>tus ${misM.length} partidas</b> con la lista que juegas — la misma muestra que el resto del dashboard. Con esa muestra, la mayoría de matchups tienen <b>2 partidas o menos</b> — van marcados como <i>muestra minima</i>. El plan de cada uno es criterio, no estadistica: viene del brainstorm y de la guia de ethanmtg, y sigue valiendo aunque no hayas jugado el matchup.</div>
       <div class="sb">
       ${[...GUIASB.matchups].sort((a,b)=>frecDe(b.aq)-frecDe(a.aq)||recDe(b.aq).n-recDe(a.aq).n).map(m=>{
         const r=recDe(m.aq);
@@ -3058,7 +2811,7 @@ async function loadEsperando(){
   }catch(e){}
 }
 
-function initSelectors(){msFill('fLista',uniq('li'));msFill('fLiga',uniq('ev'));msFill('fSR',uniq('sr'));msFill('fArq',uniq('aq'));}
+function initSelectors(){msFill('fLiga',uniq('ev'));msFill('fSR',uniq('sr'));msFill('fArq',uniq('aq'));}
 
 // init
 (async function(){
@@ -3072,7 +2825,7 @@ function initSelectors(){msFill('fLista',uniq('li'));msFill('fLiga',uniq('ev'));
   const remote = await loadRemote();
   await loadGames();await loadScout();   // "Cómo juegas" desde games.csv (GAMES incrustado = último recurso)
   if(!remote) MATCHES.forEach(m=>{if(!m.by)m.by='feralo77';});
-  initSelectors();initCmpSelectors();initPlaySel();initDias();initScoutCtrl();renderMyLists();renderLxM();renderPlayerLists().then(renderListsMenu);renderListsMenu();renderDef75();renderBrain();
+  initSelectors();initCmpSelectors();initPlaySel();initDias();initScoutCtrl();renderDef75();renderBrain();
   render();
   updateSource(remote);
   freshness();loadEsperando();
