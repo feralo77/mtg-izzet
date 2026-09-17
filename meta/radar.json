@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-16",
+ "generado": "2026-09-17",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 10,
+  "diasDesde": 11,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-16",
+ "campoDesde": "2026-09-17",
  "campoError": null,
  "campo": {
-  "mazos": 957,
+  "mazos": 941,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -38,7 +38,7 @@
    },
    {
     "n": "Blink",
-    "pct": 9
+    "pct": 8
    },
    {
     "n": "Affinity",
@@ -62,7 +62,7 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "Simic Birthing Ritual",
@@ -166,11 +166,11 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.7
+    "pct": 0.9
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 14
+    "pct": 15
    },
    {
     "n": "Instant Reanimator",
@@ -189,11 +189,11 @@
     "pct": 3
    },
    {
-    "n": "Landless",
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
-    "n": "Allosaurus Combo",
+    "n": "Landless",
     "pct": 2
    },
    {
@@ -202,11 +202,7 @@
    },
    {
     "n": "Reanimator",
-    "pct": 0.8
-   },
-   {
-    "n": "Song of Creation",
-    "pct": 0.3
+    "pct": 0.9
    },
    {
     "n": "Dredge",
@@ -214,6 +210,10 @@
    },
    {
     "n": "UB Mill",
+    "pct": 0.2
+   },
+   {
+    "n": "Song of Creation",
     "pct": 0.2
    },
    {
@@ -226,6 +226,10 @@
    },
    {
     "n": "Jeskai Ascendancy",
+    "pct": 0.1
+   },
+   {
+    "n": "Creativity",
     "pct": 0.1
    },
    {
@@ -623,9 +627,9 @@
     "deltaLiga": -5.8,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 14,
+     "pct": 15,
      "pctPrev": 14,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 3,
@@ -696,16 +700,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Blink",
-   "titular": "Blink: 9% del campo global y nunca te lo has cruzado",
+   "titular": "Blink: 8% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Blink",
-     "pct": 9,
+     "pct": 8,
      "pctPrev": 9,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
