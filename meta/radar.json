@@ -628,8 +628,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 15,
-     "pctPrev": 14,
-     "delta": 1
+     "pctPrev": 15,
+     "delta": 0
     },
     "w": 2,
     "l": 3,
@@ -708,8 +708,8 @@
     "campo": {
      "global": "Blink",
      "pct": 8,
-     "pctPrev": 9,
-     "delta": -1
+     "pctPrev": 8,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
