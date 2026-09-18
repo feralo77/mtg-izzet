@@ -530,6 +530,34 @@ def test_liga_anulada_descarta_apuntes():
     print("OK liga_anulada_descarta_apuntes")
 
 
+def test_ronda_anulada_borra_apunte_y_log():
+    # Una ronda suelta anulada (Liga 16 R5, 17-sep-2026: se le cayó el PC a Fer y no se
+    # jugó). La regla lleva 'ronda' y 'match_uuid', y tiene que llevarse las DOS cosas:
+    # el apunte -para que no quede esperando log eternamente- y el log -para que no se
+    # cuele como partida de práctica-. Las otras rondas de esa misma liga, y del mismo
+    # día, siguen enteras: por eso la regla de ronda no mira la fecha.
+    reglas = [{'jugador': 'feralo77', 'evento': 'Liga 16', 'ronda': '5',
+               'match_uuid': 'rota'}]
+    aps = [apunte('17/09/2026', evento='Liga 16', ronda='4', mazo='Boros Ponza'),
+           apunte('17/09/2026', evento='Liga 16', ronda='5', mazo='no se jugo'),
+           apunte('17/09/2026', evento='Liga 15', ronda='5', mazo='Eldrazi')]
+    out = PL.filtrar_anuladas(aps, 'feralo77', reglas)
+    assert [(a['evento'], a['ronda']) for a in out] == \
+        [('Liga 16', '4'), ('Liga 15', '5')], out
+
+    # y el log, fuera del lote antes de emparejar
+    ms = [match('buena', utc(2026, 9, 17, 19, 0), 'Boros Ponza', opp='CobraDiMorte'),
+          match('rota', utc(2026, 9, 17, 20, 0), 'Desconocido', opp='vladnire')]
+    quedan = PL.filtrar_partidas_anuladas(ms, PL.uuids_anulados(reglas))
+    assert [m['match_uuid'] for m in quedan] == ['buena'], quedan
+
+    # una regla de liga (sin 'ronda') no aporta uuids y no toca los logs
+    solo_liga = [{'jugador': 'feralo77', 'evento': 'Liga 9', 'hasta': '10/08/2026'}]
+    assert PL.uuids_anulados(solo_liga) == set()
+    assert PL.filtrar_partidas_anuladas(ms, PL.uuids_anulados(solo_liga)) == ms
+    print("OK ronda_anulada_borra_apunte_y_log")
+
+
 def test_version_esta_en_las_columnas_del_registro():
     assert 'Versión' in PL.REGISTRO_COLS
     assert PL.REGISTRO_COLS.index('Versión') == PL.REGISTRO_COLS.index('Lista') + 1
@@ -562,5 +590,6 @@ if __name__ == '__main__':
     test_mazo_corregido_manda()
     test_alias_de_arquetipo_unifica()
     test_liga_anulada_descarta_apuntes()
+    test_ronda_anulada_borra_apunte_y_log()
     test_version_esta_en_las_columnas_del_registro()
     print("\nTodos los autotests del emparejamiento OK")

@@ -544,7 +544,8 @@ def apuntes_de_valores(values, origen, nick):
     return out
 
 def cargar_anuladas():
-    """Reglas de automation/anuladas.json: ligas que se dan por no existentes."""
+    """Reglas de automation/anuladas.json: ligas -o rondas sueltas- que se dan por
+    no existentes."""
     p = HERE / 'anuladas.json'
     if not p.exists():
         return []
@@ -555,14 +556,27 @@ def cargar_anuladas():
         return []
 
 def filtrar_anuladas(apuntes, nick, reglas):
-    """Descarta los apuntes que caen en una liga anulada: mismo jugador y evento,
-    con fecha hasta el corte (incluido) o sin fecha. Un apunte posterior al corte
-    pasa — así la liga puede retomarse con partidas nuevas sin tocar la regla."""
+    """Descarta los apuntes que caen en una regla anulada. Hay dos clases de regla:
+
+    - LIGA (la regla no lleva 'ronda'): mismo jugador y evento, con fecha hasta el
+      corte (incluido) o sin fecha. Un apunte posterior al corte pasa — así la liga
+      puede retomarse con partidas nuevas sin tocar la regla.
+    - RONDA (la regla lleva 'ronda'): mismo jugador, evento y ronda, y NO mira la
+      fecha. Es a propósito: las cinco rondas de una liga suelen caer el mismo día,
+      así que un corte por fecha se llevaría la liga entera por delante. Nació de la
+      Liga 16 R5 (17-sep-2026), la que se le cayó el PC a Fer.
+    """
     out = []
     for a in apuntes:
         anulado = False
         for r in reglas:
             if key(r.get('jugador')) != key(nick) or key(r.get('evento')) != key(a.get('evento')):
+                continue
+            ronda_regla = str(r.get('ronda', '')).strip()
+            if ronda_regla:
+                if ronda_regla == str(a.get('ronda', '')).strip():
+                    anulado = True
+                    break
                 continue
             corte = day_key(norm_fecha(r.get('hasta', '')))
             fecha = day_key(a.get('fecha', ''))
@@ -574,7 +588,25 @@ def filtrar_anuladas(apuntes, nick, reglas):
         out.append(a)
     n = len(apuntes) - len(out)
     if n:
-        print(f"    anuladas: {n} apunte(s) descartado(s) por liga anulada")
+        print(f"    anuladas: {n} apunte(s) descartado(s) por regla anulada")
+    return out
+
+def uuids_anulados(reglas):
+    """Los 'match_uuid' que nombren las reglas de anuladas.json. Anular el apunte NO
+    basta: el log seguiría en la carpeta y, al quedarse sin apunte con el que casar,
+    entraría como partida de práctica — contando igual en récord, games y scouting."""
+    return {str(r.get('match_uuid', '')).strip() for r in reglas
+            if str(r.get('match_uuid', '')).strip()}
+
+def filtrar_partidas_anuladas(matches, uuids):
+    """Quita del lote las partidas anuladas a mano, antes de emparejar. Con esto el
+    log desaparece de registro.csv, de games.csv y del scouting a la vez."""
+    if not uuids:
+        return matches
+    out = [m for m in matches if str(m.get('match_uuid', '')).strip() not in uuids]
+    n = len(matches) - len(out)
+    if n:
+        print(f"    anuladas: {n} partida(s) descartada(s) por match_uuid")
     return out
 
 def combinar_apuntes(base, override):
@@ -900,6 +932,7 @@ def main():
     principal = _cfg_jug.get('principal') or LEGACY_PLAYER
     archivados = set(_cfg_jug.get('archivados', []))
     anuladas = cargar_anuladas()
+    anulados_uuid = uuids_anulados(anuladas)
     drive, sheets = clients()
 
     # apuntes legacy (tracker viejo), solo lectura, solo para feralo77
@@ -929,6 +962,8 @@ def main():
         for g in gl:
             download(drive, g['id'], pdir / g['name'])
         matches = parse_player(pdir, nick)
+        # 1.5) partidas anuladas a mano (anuladas.json): el log no existe para nadie
+        matches = filtrar_partidas_anuladas(matches, anulados_uuid)
         # 2) apuntes de la hoja "Partidas — <nick>"
         sheet_apuntes = []
         ps = find_partidas_sheet(drive, lf['id'])
@@ -941,7 +976,7 @@ def main():
         apuntes = sheet_apuntes
         if nick == LEGACY_PLAYER:
             apuntes = combinar_apuntes(legacy_apuntes, sheet_apuntes)
-        # 3.5) ligas anuladas (automation/anuladas.json): esos apuntes no existen
+        # 3.5) ligas y rondas anuladas (automation/anuladas.json): esos apuntes no existen
         apuntes = filtrar_anuladas(apuntes, nick, anuladas)
         # 4) emparejar
         reg, gm = emparejar(matches, apuntes, nick, esperando=esperando_all)
