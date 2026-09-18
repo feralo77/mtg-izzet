@@ -55,6 +55,7 @@ mtg-izzet/
 │  ├─ pipeline.py              # el robot: Drive → parsear → emparejar → CSVs
 │  ├─ test_emparejamiento.py   # autotests del emparejamiento (sin tocar Google)
 │  ├─ jugadores.json           # nicks de alta + quién es el 'principal' y quién está 'archivado'
+│  ├─ anuladas.json            # ligas y rondas que no cuentan (p. ej. la que se cortó por un cuelgue)
 │  └─ GUIA.md                  # cómo se montó la cuenta robot y los secretos
 ├─ parser/
 │  ├─ mtgo_gamelog_parser.py   # decodifica los .dat de MTGO (con --selftest)
