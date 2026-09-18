@@ -1,5 +1,5 @@
 {
-  "comentario": "Ligas anuladas: apuntes que el robot descarta como si no existieran. Cada regla anula los apuntes de ese jugador y evento con fecha hasta el dia indicado (incluido) o sin fecha. Si la liga se retoma con partidas nuevas (fechas posteriores), esas SI cuentan. Motivo de las reglas de 4c_PolG (13-ago-2026): sus Ligas 11, 12 y 14 llevan semanas apuntadas sin que aparezca ni un log; verificado tres veces en todo el Drive compartido (incluida su subcarpeta 'cargados'). Fer decidio dejar de perseguirlas y trabajar con los logs validos, asi que dejan de contar como pendientes. Si algun dia aparecen los .dat, las partidas entraran igual como practica. Motivo de la regla de feralo77: Fer decidio no colgar los logs de su Liga 9 (11-ago-2026); las 5 rondas apuntadas sin resultado quedan anuladas y la liga se rejugara con otros rivales.",
+  "comentario": "Apuntes y partidas que el robot descarta como si no existieran. Hay dos clases de regla. (1) LIGA: sin campo 'ronda'; anula los apuntes de ese jugador y evento con fecha hasta el dia de 'hasta' (incluido) o sin fecha. Si la liga se retoma con partidas nuevas (fechas posteriores), esas SI cuentan. (2) RONDA: con campo 'ronda'; anula solo esa ronda de ese evento y no mira la fecha (las cinco rondas de una liga suelen caer el mismo dia, asi que un corte por fecha se llevaria la liga entera). Cualquier regla puede llevar ademas 'match_uuid': eso borra tambien el LOG de esa partida, que si no seguiria colandose como partida de practica en registro, games y scouting. Motivo de las reglas de 4c_PolG (13-ago-2026): sus Ligas 11, 12 y 14 llevan semanas apuntadas sin que aparezca ni un log; verificado tres veces en todo el Drive compartido (incluida su subcarpeta 'cargados'). Fer decidio dejar de perseguirlas y trabajar con los logs validos, asi que dejan de contar como pendientes. Si algun dia aparecen los .dat, las partidas entraran igual como practica. Motivo de la regla de feralo77 Liga 9: Fer decidio no colgar los logs de su Liga 9 (11-ago-2026); las 5 rondas apuntadas sin resultado quedan anuladas y la liga se rejugara con otros rivales. Motivo de la regla de feralo77 Liga 16 R5 (17-sep-2026): se le cayo el PC a mitad y la ronda no se jugo. El log quedo a 0-0 con un game de 2 turnos y un mulligan, basura que contaminaba justo las dos lecturas grandes del tracker (el reloj y el mulligan); Fer lo dejo escrito en la hoja ('no cuenta').",
   "anuladas": [
     {
       "jugador": "feralo77",
@@ -20,6 +20,12 @@
       "jugador": "4c_PolG",
       "evento": "Liga 14",
       "hasta": "10/08/2026"
+    },
+    {
+      "jugador": "feralo77",
+      "evento": "Liga 16",
+      "ronda": "5",
+      "match_uuid": "c878653c-a0b3-4838-a3e2-f381ab9b4dd7"
     }
   ]
 }
