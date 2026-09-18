@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-17",
+ "generado": "2026-09-18",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 11,
+  "diasDesde": 12,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-17",
+ "campoDesde": "2026-09-18",
  "campoError": null,
  "campo": {
-  "mazos": 941,
+  "mazos": 936,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -117,12 +117,12 @@
     "pct": 0.2
    },
    {
-    "n": "Eldrazi Ramp",
+    "n": "Dimir Control",
     "pct": 5
    },
    {
-    "n": "Dimir Control",
-    "pct": 5
+    "n": "Eldrazi Ramp",
+    "pct": 4
    },
    {
     "n": "UrzaTron",
@@ -138,7 +138,7 @@
    },
    {
     "n": "Grixis Control",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Elementals",
@@ -189,15 +189,15 @@
     "pct": 3
    },
    {
-    "n": "Allosaurus Combo",
-    "pct": 2
-   },
-   {
     "n": "Landless",
     "pct": 2
    },
    {
     "n": "Amulet Titan",
+    "pct": 2
+   },
+   {
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
@@ -242,101 +242,113 @@
   "modo": "dos mitades del histórico, por número de partidas",
   "muestra": {
    "version": "Stock",
-   "frecuencia": 71,
-   "record": 51,
-   "nota": "La frecuencia sale de tus 71 partidas (lo que te cruzas no depende del mazo que lleves). El récord sale solo de las 51 con la Stock, que es la lista que juegas y la que mide todo el dashboard."
+   "frecuencia": 83,
+   "record": 63,
+   "nota": "La frecuencia sale de tus 83 partidas (lo que te cruzas no depende del mazo que lleves). El récord sale solo de las 63 con la Stock, que es la lista que juegas y la que mide todo el dashboard."
   },
   "ahora": {
-   "partidas": 36,
-   "desde": "2026-07-27",
-   "hasta": "2026-09-15"
+   "partidas": 42,
+   "desde": "2026-08-11",
+   "hasta": "2026-09-18"
   },
   "antes": {
-   "partidas": 35,
+   "partidas": 41,
    "desde": "2026-07-11",
-   "hasta": "2026-07-26"
+   "hasta": "2026-08-11"
   },
   "hayBase": true,
   "avisoBase": null,
   "arquetipos": [
    {
+    "n": "Eldrazi",
+    "variantes": null,
+    "partidas": 7,
+    "frec": 16.7,
+    "frecPrev": 0,
+    "delta": 16.7,
+    "w": 3,
+    "l": 4,
+    "n_": 7,
+    "wr": 43
+   },
+   {
     "n": "Esper Goryo's",
     "variantes": null,
     "partidas": 5,
-    "frec": 13.9,
-    "frecPrev": 5.7,
-    "delta": 8.2,
+    "frec": 11.9,
+    "frecPrev": 4.9,
+    "delta": 7,
     "w": 2,
     "l": 5,
     "n_": 7,
     "wr": 29
    },
    {
-    "n": "Eldrazi",
-    "variantes": null,
-    "partidas": 5,
-    "frec": 13.9,
-    "frecPrev": 0,
-    "delta": 13.9,
-    "w": 3,
-    "l": 2,
-    "n_": 5,
-    "wr": 60
-   },
-   {
-    "n": "Dimir Frog",
-    "variantes": null,
-    "partidas": 3,
-    "frec": 8.3,
-    "frecPrev": 8.6,
-    "delta": -0.3,
-    "w": 1,
-    "l": 3,
-    "n_": 4,
-    "wr": 25
-   },
-   {
-    "n": "Devoted Combo",
-    "variantes": null,
-    "partidas": 3,
-    "frec": 8.3,
-    "frecPrev": 2.9,
-    "delta": 5.4,
-    "w": 2,
-    "l": 1,
-    "n_": 3,
-    "wr": 67
-   },
-   {
     "n": "Broodscale",
     "variantes": null,
-    "partidas": 2,
-    "frec": 5.6,
-    "frecPrev": 11.4,
-    "delta": -5.8,
+    "partidas": 3,
+    "frec": 7.1,
+    "frecPrev": 9.8,
+    "delta": -2.7,
+    "w": 2,
+    "l": 4,
+    "n_": 6,
+    "wr": 33
+   },
+   {
+    "n": "Izzet Prowess",
+    "variantes": null,
+    "partidas": 3,
+    "frec": 7.1,
+    "frecPrev": 4.9,
+    "delta": 2.2,
     "w": 2,
     "l": 3,
     "n_": 5,
     "wr": 40
    },
    {
-    "n": "Izzet Prowess",
+    "n": "Boros Ponza",
     "variantes": null,
-    "partidas": 2,
-    "frec": 5.6,
-    "frecPrev": 5.7,
-    "delta": -0.1,
+    "partidas": 3,
+    "frec": 7.1,
+    "frecPrev": 4.9,
+    "delta": 2.2,
     "w": 2,
     "l": 2,
     "n_": 4,
     "wr": 50
    },
    {
-    "n": "Boros Ponza",
+    "n": "Dimir Frog",
+    "variantes": null,
+    "partidas": 3,
+    "frec": 7.1,
+    "frecPrev": 7.3,
+    "delta": -0.2,
+    "w": 1,
+    "l": 3,
+    "n_": 4,
+    "wr": 25
+   },
+   {
+    "n": "Azorius Control",
+    "variantes": null,
+    "partidas": 3,
+    "frec": 7.1,
+    "frecPrev": 2.4,
+    "delta": 4.7,
+    "w": 2,
+    "l": 1,
+    "n_": 3,
+    "wr": 67
+   },
+   {
+    "n": "Devoted Combo",
     "variantes": null,
     "partidas": 2,
-    "frec": 5.6,
-    "frecPrev": 5.7,
+    "frec": 4.8,
+    "frecPrev": 4.9,
     "delta": -0.1,
     "w": 2,
     "l": 1,
@@ -344,60 +356,51 @@
     "wr": 67
    },
    {
-    "n": "Neoform",
-    "variantes": null,
+    "n": "MonoB Coffers",
+    "variantes": [
+     "MonoB Coffers",
+     "Necrodominance"
+    ],
     "partidas": 2,
-    "frec": 5.6,
-    "frecPrev": 2.9,
-    "delta": 2.7,
-    "w": 0,
-    "l": 2,
-    "n_": 2,
-    "wr": 0
-   },
-   {
-    "n": "Azorius Control",
-    "variantes": null,
-    "partidas": 2,
-    "frec": 5.6,
-    "frecPrev": 2.9,
-    "delta": 2.7,
-    "w": 1,
-    "l": 1,
-    "n_": 2,
-    "wr": 50
-   },
-   {
-    "n": "Ruby Storm",
-    "variantes": null,
-    "partidas": 2,
-    "frec": 5.6,
+    "frec": 4.8,
     "frecPrev": 0,
-    "delta": 5.6,
-    "w": 0,
+    "delta": 4.8,
+    "w": 2,
     "l": 0,
-    "n_": 0,
-    "wr": null
+    "n_": 2,
+    "wr": 100
    },
    {
     "n": "Grixis Reanimator",
     "variantes": null,
     "partidas": 1,
-    "frec": 2.8,
-    "frecPrev": 8.6,
-    "delta": -5.8,
+    "frec": 2.4,
+    "frecPrev": 7.3,
+    "delta": -4.9,
     "w": 1,
     "l": 2,
     "n_": 3,
     "wr": 33
    },
    {
+    "n": "Neoform",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 2.4,
+    "frecPrev": 4.9,
+    "delta": -2.5,
+    "w": 0,
+    "l": 2,
+    "n_": 2,
+    "wr": 0
+   },
+   {
     "n": "Sultai Midrange",
     "variantes": null,
     "partidas": 1,
-    "frec": 2.8,
-    "frecPrev": 2.9,
-    "delta": -0.1,
+    "frec": 2.4,
+    "frecPrev": 2.4,
+    "delta": 0,
     "w": 0,
     "l": 2,
     "n_": 2,
@@ -407,69 +410,93 @@
     "n": "Boros Energy",
     "variantes": null,
     "partidas": 1,
-    "frec": 2.8,
-    "frecPrev": 11.4,
-    "delta": -8.6,
+    "frec": 2.4,
+    "frecPrev": 9.8,
+    "delta": -7.4,
     "w": 2,
     "l": 0,
     "n_": 2,
     "wr": 100
    },
    {
-    "n": "The Rack",
-    "variantes": null,
-    "partidas": 1,
-    "frec": 2.8,
-    "frecPrev": 0,
-    "delta": 2.8,
-    "w": 1,
-    "l": 0,
-    "n_": 1,
-    "wr": 100
-   },
-   {
     "n": "Temur Rhinos",
     "variantes": null,
     "partidas": 1,
-    "frec": 2.8,
+    "frec": 2.4,
     "frecPrev": 0,
-    "delta": 2.8,
+    "delta": 2.4,
     "w": 0,
     "l": 1,
     "n_": 1,
     "wr": 0
    },
    {
-    "n": "Necrodominance",
+    "n": "Jund",
     "variantes": null,
     "partidas": 1,
-    "frec": 2.8,
+    "frec": 2.4,
     "frecPrev": 0,
-    "delta": 2.8,
+    "delta": 2.4,
     "w": 1,
     "l": 0,
     "n_": 1,
     "wr": 100
    },
    {
-    "n": "Jund",
+    "n": "eldrazi combo",
     "variantes": null,
     "partidas": 1,
-    "frec": 2.8,
+    "frec": 2.4,
     "frecPrev": 0,
-    "delta": 2.8,
-    "w": 1,
-    "l": 0,
+    "delta": 2.4,
+    "w": 0,
+    "l": 1,
     "n_": 1,
-    "wr": 100
+    "wr": 0
+   },
+   {
+    "n": "Ruby Storm",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 2.4,
+    "frecPrev": 4.9,
+    "delta": -2.5,
+    "w": 0,
+    "l": 1,
+    "n_": 1,
+    "wr": 0
    },
    {
     "n": "Living End",
     "variantes": null,
     "partidas": 1,
-    "frec": 2.8,
+    "frec": 2.4,
+    "frecPrev": 2.4,
+    "delta": 0,
+    "w": 1,
+    "l": 0,
+    "n_": 1,
+    "wr": 100
+   },
+   {
+    "n": "WB Blink",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 2.4,
     "frecPrev": 0,
-    "delta": 2.8,
+    "delta": 2.4,
+    "w": 1,
+    "l": 0,
+    "n_": 1,
+    "wr": 100
+   },
+   {
+    "n": "se rompio el juego no se jugo , no cuenta",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 2.4,
+    "frecPrev": 0,
+    "delta": 2.4,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -483,8 +510,8 @@
     ],
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 5.7,
-    "delta": -5.7,
+    "frecPrev": 4.9,
+    "delta": -4.9,
     "w": 0,
     "l": 2,
     "n_": 2,
@@ -495,8 +522,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.9,
-    "delta": -2.9,
+    "frecPrev": 2.4,
+    "delta": -2.4,
     "w": 1,
     "l": 0,
     "n_": 1,
@@ -507,8 +534,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.9,
-    "delta": -2.9,
+    "frecPrev": 2.4,
+    "delta": -2.4,
     "w": 1,
     "l": 0,
     "n_": 1,
@@ -519,8 +546,20 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.9,
-    "delta": -2.9,
+    "frecPrev": 2.4,
+    "delta": -2.4,
+    "w": 1,
+    "l": 0,
+    "n_": 1,
+    "wr": 100
+   },
+   {
+    "n": "The Rack",
+    "variantes": null,
+    "partidas": 0,
+    "frec": 0,
+    "frecPrev": 2.4,
+    "delta": -2.4,
     "w": 1,
     "l": 0,
     "n_": 1,
@@ -531,8 +570,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.9,
-    "delta": -2.9,
+    "frecPrev": 2.4,
+    "delta": -2.4,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -543,8 +582,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 8.6,
-    "delta": -8.6,
+    "frecPrev": 7.3,
+    "delta": -7.3,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -555,8 +594,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.9,
-    "delta": -2.9,
+    "frecPrev": 2.4,
+    "delta": -2.4,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -567,8 +606,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.9,
-    "delta": -2.9,
+    "frecPrev": 2.4,
+    "delta": -2.4,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -579,12 +618,32 @@
  "alarmas": [
   {
    "nivel": "adaptarse",
-   "mazo": "Esper Goryo's",
-   "titular": "Esper Goryo's: está subiendo (+8.2 pts en tu liga) y vas 2-5 (29%)",
+   "mazo": "Eldrazi",
+   "titular": "Eldrazi: está subiendo (+16.7 pts en tu liga) y vas 3-4 (43%)",
    "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
    "datos": {
-    "frecLiga": 13.9,
-    "deltaLiga": 8.2,
+    "frecLiga": 16.7,
+    "deltaLiga": 16.7,
+    "campo": {
+     "global": "Eldrazi Ramp",
+     "pct": 4,
+     "pctPrev": 5,
+     "delta": -1
+    },
+    "w": 3,
+    "l": 4,
+    "wr": 43,
+    "n": 7
+   }
+  },
+  {
+   "nivel": "adaptarse",
+   "mazo": "Esper Goryo's",
+   "titular": "Esper Goryo's: está subiendo (+7 pts en tu liga) y vas 2-5 (29%)",
+   "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
+   "datos": {
+    "frecLiga": 11.9,
+    "deltaLiga": 7,
     "campo": {
      "global": "Instant Reanimator",
      "pct": 8,
@@ -599,12 +658,52 @@
   },
   {
    "nivel": "adaptarse",
-   "mazo": "Dimir Frog",
-   "titular": "Dimir Frog: es el 8.3% de tu liga y vas 1-3 (25%)",
+   "mazo": "Broodscale",
+   "titular": "Broodscale: es el 7.1% de tu liga y vas 2-4 (33%)",
    "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
-    "frecLiga": 8.3,
-    "deltaLiga": -0.3,
+    "frecLiga": 7.1,
+    "deltaLiga": -2.7,
+    "campo": {
+     "global": "Broodscale Bloodchief",
+     "pct": 15,
+     "pctPrev": 15,
+     "delta": 0
+    },
+    "w": 2,
+    "l": 4,
+    "wr": 33,
+    "n": 6
+   }
+  },
+  {
+   "nivel": "adaptarse",
+   "mazo": "Izzet Prowess",
+   "titular": "Izzet Prowess: es el 7.1% de tu liga y vas 2-3 (40%)",
+   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "datos": {
+    "frecLiga": 7.1,
+    "deltaLiga": 2.2,
+    "campo": {
+     "global": "UR Aggro",
+     "pct": 10,
+     "pctPrev": 10,
+     "delta": 0
+    },
+    "w": 2,
+    "l": 3,
+    "wr": 40,
+    "n": 5
+   }
+  },
+  {
+   "nivel": "adaptarse",
+   "mazo": "Dimir Frog",
+   "titular": "Dimir Frog: es el 7.1% de tu liga y vas 1-3 (25%)",
+   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "datos": {
+    "frecLiga": 7.1,
+    "deltaLiga": -0.2,
     "campo": {
      "global": "Dimir Control",
      "pct": 5,
@@ -615,86 +714,6 @@
     "l": 3,
     "wr": 25,
     "n": 4
-   }
-  },
-  {
-   "nivel": "adaptarse",
-   "mazo": "Broodscale",
-   "titular": "Broodscale: es el 5.6% de tu liga y vas 2-3 (40%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
-   "datos": {
-    "frecLiga": 5.6,
-    "deltaLiga": -5.8,
-    "campo": {
-     "global": "Broodscale Bloodchief",
-     "pct": 15,
-     "pctPrev": 15,
-     "delta": 0
-    },
-    "w": 2,
-    "l": 3,
-    "wr": 40,
-    "n": 5
-   }
-  },
-  {
-   "nivel": "pinta-mal",
-   "mazo": "Neoform",
-   "titular": "Neoform: 5.6% de tu liga y de 2 partidas has ganado 0",
-   "porQue": "Son 2 partidas, asi que no es una conclusion: es un aviso. Pero pesa en tu liga y todo lo que sabes de el es malo.",
-   "datos": {
-    "frecLiga": 5.6,
-    "deltaLiga": 2.7,
-    "campo": {
-     "global": "Allosaurus Combo",
-     "pct": 2,
-     "pctPrev": 2,
-     "delta": 0
-    },
-    "w": 0,
-    "l": 2,
-    "wr": 0,
-    "n": 2
-   }
-  },
-  {
-   "nivel": "vigilar",
-   "mazo": "Azorius Control",
-   "titular": "Azorius Control: 5.6% de tu liga y solo 2 partidas tuyas",
-   "porQue": "No es que vayas mal: es que no hay datos. Te lo vas a cruzar y no sabes como va el matchup.",
-   "datos": {
-    "frecLiga": 5.6,
-    "deltaLiga": 2.7,
-    "campo": {
-     "global": "UW Control",
-     "pct": 3,
-     "pctPrev": 3,
-     "delta": 0
-    },
-    "w": 1,
-    "l": 1,
-    "wr": 50,
-    "n": 2
-   }
-  },
-  {
-   "nivel": "vigilar",
-   "mazo": "Ruby Storm",
-   "titular": "Ruby Storm: 5.6% de tu liga y ni una partida tuya",
-   "porQue": "No es que vayas mal: es que no hay datos. Te lo vas a cruzar y no sabes como va el matchup.",
-   "datos": {
-    "frecLiga": 5.6,
-    "deltaLiga": 5.6,
-    "campo": {
-     "global": "Ruby Storm",
-     "pct": 3,
-     "pctPrev": 3,
-     "delta": 0
-    },
-    "w": 0,
-    "l": 0,
-    "wr": null,
-    "n": 0
    }
   },
   {
