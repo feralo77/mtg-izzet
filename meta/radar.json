@@ -29,7 +29,7 @@
  "campoDesde": "2026-09-18",
  "campoError": null,
  "campo": {
-  "mazos": 936,
+  "mazos": 960,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -73,12 +73,12 @@
     "pct": 0.5
    },
    {
-    "n": "Rakdos Aggro",
+    "n": "Mono Black Aggro",
     "pct": 0.3
    },
    {
-    "n": "Mono Black Aggro",
-    "pct": 0.2
+    "n": "Rakdos Aggro",
+    "pct": 0.3
    },
    {
     "n": "Gruul Aggro",
@@ -165,8 +165,12 @@
     "pct": 0.1
    },
    {
+    "n": "Gruul Utopia",
+    "pct": 0.1
+   },
+   {
     "n": "Other - Control",
-    "pct": 0.9
+    "pct": 0.8
    },
    {
     "n": "Broodscale Bloodchief",
@@ -174,7 +178,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 8
+    "pct": 7
    },
    {
     "n": "Creatures Toolbox",
@@ -189,11 +193,11 @@
     "pct": 3
    },
    {
-    "n": "Landless",
+    "n": "Amulet Titan",
     "pct": 2
    },
    {
-    "n": "Amulet Titan",
+    "n": "Landless",
     "pct": 2
    },
    {
@@ -202,7 +206,7 @@
    },
    {
     "n": "Reanimator",
-    "pct": 0.9
+    "pct": 0.8
    },
    {
     "n": "Dredge",
@@ -627,8 +631,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 4,
-     "pctPrev": 5,
-     "delta": -1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 3,
     "l": 4,
@@ -646,9 +650,9 @@
     "deltaLiga": 7,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 8,
+     "pct": 7,
      "pctPrev": 8,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 5,
