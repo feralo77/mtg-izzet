@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-18",
+ "generado": "2026-09-19",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 12,
+  "diasDesde": 13,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-18",
+ "campoDesde": "2026-09-19",
  "campoError": null,
  "campo": {
-  "mazos": 960,
+  "mazos": 909,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 10
+    "pct": 11
    },
    {
     "n": "Blink",
@@ -42,7 +42,7 @@
    },
    {
     "n": "Affinity",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Boros Aggro",
@@ -65,12 +65,12 @@
     "pct": 1
    },
    {
-    "n": "Simic Birthing Ritual",
+    "n": "Eldrazi Aggro",
     "pct": 0.6
    },
    {
-    "n": "Eldrazi Aggro",
-    "pct": 0.5
+    "n": "Simic Birthing Ritual",
+    "pct": 0.6
    },
    {
     "n": "Mono Black Aggro",
@@ -79,10 +79,6 @@
    {
     "n": "Rakdos Aggro",
     "pct": 0.3
-   },
-   {
-    "n": "Gruul Aggro",
-    "pct": 0.1
    },
    {
     "n": "Mono Green Aggro",
@@ -114,7 +110,7 @@
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Dimir Control",
@@ -126,7 +122,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "Boros Ponza",
@@ -138,22 +134,22 @@
    },
    {
     "n": "Grixis Control",
-    "pct": 0.5
-   },
-   {
-    "n": "Elementals",
-    "pct": 0.3
+    "pct": 0.6
    },
    {
     "n": "Esper Control",
     "pct": 0.3
    },
    {
-    "n": "4/5c Control",
-    "pct": 0.1
+    "n": "Elementals",
+    "pct": 0.2
    },
    {
     "n": "Jeskai Control",
+    "pct": 0.2
+   },
+   {
+    "n": "4/5c Control",
     "pct": 0.1
    },
    {
@@ -193,11 +189,11 @@
     "pct": 3
    },
    {
-    "n": "Amulet Titan",
+    "n": "Landless",
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Amulet Titan",
     "pct": 2
    },
    {
@@ -213,16 +209,12 @@
     "pct": 0.3
    },
    {
-    "n": "UB Mill",
-    "pct": 0.2
-   },
-   {
     "n": "Song of Creation",
     "pct": 0.2
    },
    {
     "n": "Hammer Time",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Heliod Life",
@@ -651,8 +643,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 7,
-     "pctPrev": 8,
-     "delta": -1
+     "pctPrev": 7,
+     "delta": 0
     },
     "w": 2,
     "l": 5,
@@ -690,9 +682,9 @@
     "deltaLiga": 2.2,
     "campo": {
      "global": "UR Aggro",
-     "pct": 10,
+     "pct": 11,
      "pctPrev": 10,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 3,
@@ -762,17 +754,17 @@
   },
   {
    "nivel": "nuevo",
-   "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 3% del campo global y nunca te lo has cruzado",
+   "mazo": "UrzaTron",
+   "titular": "UrzaTron: 4% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
-     "global": "4/5c Aggro",
-     "pct": 3,
+     "global": "UrzaTron",
+     "pct": 4,
      "pctPrev": 3,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -782,14 +774,14 @@
   },
   {
    "nivel": "nuevo",
-   "mazo": "UrzaTron",
-   "titular": "UrzaTron: 3% del campo global y nunca te lo has cruzado",
+   "mazo": "4/5c Aggro",
+   "titular": "4/5c Aggro: 3% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
-     "global": "UrzaTron",
+     "global": "4/5c Aggro",
      "pct": 3,
      "pctPrev": 3,
      "delta": 0

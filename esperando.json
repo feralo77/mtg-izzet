@@ -1,4 +1,29 @@
 {
- "generado": "2026-09-18",
- "rondas": []
+ "generado": "2026-09-19",
+ "rondas": [
+  {
+   "jugador": "feralo77",
+   "fecha": "18/09/2026",
+   "evento": "Liga 17",
+   "ronda": "3",
+   "rival": "dushan179",
+   "mazo": "goryos"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "18/09/2026",
+   "evento": "Liga 17",
+   "ronda": "4",
+   "rival": "mattorenticopedro1",
+   "mazo": "ponza"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "18/09/2026",
+   "evento": "Liga 17",
+   "ronda": "5",
+   "rival": "kpasatio",
+   "mazo": "esper blink"
+  }
+ ]
 }
