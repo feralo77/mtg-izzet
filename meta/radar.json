@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-19",
+ "generado": "2026-09-20",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 13,
+  "diasDesde": 14,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-19",
+ "campoDesde": "2026-09-20",
  "campoError": null,
  "campo": {
-  "mazos": 909,
+  "mazos": 813,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -42,7 +42,7 @@
    },
    {
     "n": "Affinity",
-    "pct": 5
+    "pct": 6
    },
    {
     "n": "Boros Aggro",
@@ -57,32 +57,28 @@
     "pct": 1
    },
    {
-    "n": "Jeskai Aggro",
+    "n": "Red Deck Wins",
     "pct": 1
    },
    {
-    "n": "Red Deck Wins",
-    "pct": 1
+    "n": "Jeskai Aggro",
+    "pct": 0.7
    },
    {
     "n": "Eldrazi Aggro",
     "pct": 0.6
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.6
+    "n": "Mono Black Aggro",
+    "pct": 0.4
    },
    {
-    "n": "Mono Black Aggro",
-    "pct": 0.3
+    "n": "Simic Birthing Ritual",
+    "pct": 0.4
    },
    {
     "n": "Rakdos Aggro",
-    "pct": 0.3
-   },
-   {
-    "n": "Mono Green Aggro",
-    "pct": 0.1
+    "pct": 0.4
    },
    {
     "n": "Aura Hexproof",
@@ -114,7 +110,7 @@
    },
    {
     "n": "Dimir Control",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "Eldrazi Ramp",
@@ -130,27 +126,23 @@
    },
    {
     "n": "UW Control",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Grixis Control",
-    "pct": 0.6
+    "pct": 0.5
    },
    {
     "n": "Esper Control",
-    "pct": 0.3
+    "pct": 0.5
+   },
+   {
+    "n": "Jeskai Control",
+    "pct": 0.4
    },
    {
     "n": "Elementals",
     "pct": 0.2
-   },
-   {
-    "n": "Jeskai Control",
-    "pct": 0.2
-   },
-   {
-    "n": "4/5c Control",
-    "pct": 0.1
    },
    {
     "n": "Bant Control",
@@ -166,15 +158,15 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.8
+    "pct": 1
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 15
+    "pct": 16
    },
    {
     "n": "Instant Reanimator",
-    "pct": 7
+    "pct": 8
    },
    {
     "n": "Creatures Toolbox",
@@ -202,23 +194,11 @@
    },
    {
     "n": "Reanimator",
-    "pct": 0.8
+    "pct": 0.6
    },
    {
     "n": "Dredge",
-    "pct": 0.3
-   },
-   {
-    "n": "Song of Creation",
-    "pct": 0.2
-   },
-   {
-    "n": "Hammer Time",
-    "pct": 0.1
-   },
-   {
-    "n": "Heliod Life",
-    "pct": 0.1
+    "pct": 0.4
    },
    {
     "n": "Jeskai Ascendancy",
@@ -226,6 +206,18 @@
    },
    {
     "n": "Creativity",
+    "pct": 0.1
+   },
+   {
+    "n": "Song of Creation",
+    "pct": 0.1
+   },
+   {
+    "n": "Twin Exarch",
+    "pct": 0.1
+   },
+   {
+    "n": "Heliod Life",
     "pct": 0.1
    },
    {
@@ -642,9 +634,9 @@
     "deltaLiga": 7,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 7,
+     "pct": 8,
      "pctPrev": 7,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 5,
@@ -662,9 +654,9 @@
     "deltaLiga": -2.7,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 15,
+     "pct": 16,
      "pctPrev": 15,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 4,
@@ -683,8 +675,8 @@
     "campo": {
      "global": "UR Aggro",
      "pct": 11,
-     "pctPrev": 10,
-     "delta": 1
+     "pctPrev": 11,
+     "delta": 0
     },
     "w": 2,
     "l": 3,
@@ -702,9 +694,9 @@
     "deltaLiga": -0.2,
     "campo": {
      "global": "Dimir Control",
-     "pct": 5,
+     "pct": 4,
      "pctPrev": 5,
-     "delta": 0
+     "delta": -1
     },
     "w": 1,
     "l": 3,
@@ -763,8 +755,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
