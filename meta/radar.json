@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-21",
+ "generado": "2026-09-22",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 15,
+  "diasDesde": 16,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-21",
+ "campoDesde": "2026-09-22",
  "campoError": null,
  "campo": {
-  "mazos": 833,
+  "mazos": 817,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -46,19 +46,19 @@
    },
    {
     "n": "Boros Aggro",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "4/5c Aggro",
     "pct": 3
    },
    {
-    "n": "Red Deck Wins",
+    "n": "Hollow One",
     "pct": 1
    },
    {
-    "n": "Hollow One",
-    "pct": 1
+    "n": "Red Deck Wins",
+    "pct": 0.9
    },
    {
     "n": "Jeskai Aggro",
@@ -69,11 +69,11 @@
     "pct": 0.5
    },
    {
-    "n": "Simic Birthing Ritual",
+    "n": "Rakdos Aggro",
     "pct": 0.4
    },
    {
-    "n": "Rakdos Aggro",
+    "n": "Simic Birthing Ritual",
     "pct": 0.4
    },
    {
@@ -98,7 +98,7 @@
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "UrzaTron",
@@ -110,7 +110,7 @@
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Boros Ponza",
@@ -165,11 +165,11 @@
     "pct": 5
    },
    {
-    "n": "Ruby Storm",
+    "n": "Living End",
     "pct": 3
    },
    {
-    "n": "Living End",
+    "n": "Ruby Storm",
     "pct": 3
    },
    {
@@ -190,7 +190,11 @@
    },
    {
     "n": "Dredge",
-    "pct": 0.4
+    "pct": 0.5
+   },
+   {
+    "n": "Cosmogoyf",
+    "pct": 0.2
    },
    {
     "n": "Jeskai Ascendancy",
@@ -213,12 +217,8 @@
     "pct": 0.1
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 0.1
-   },
-   {
     "n": "Other - Combo",
-    "pct": 0.8
+    "pct": 0.7
    }
   ]
  },
@@ -586,9 +586,9 @@
     "deltaLiga": 19.5,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 4,
+     "pct": 3,
      "pctPrev": 4,
-     "delta": 0
+     "delta": -1
     },
     "w": 3,
     "l": 5,
@@ -627,8 +627,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 18,
-     "pctPrev": 17,
-     "delta": 1
+     "pctPrev": 18,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
