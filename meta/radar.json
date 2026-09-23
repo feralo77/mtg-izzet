@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-22",
+ "generado": "2026-09-23",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 16,
+  "diasDesde": 17,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-22",
+ "campoDesde": "2026-09-23",
  "campoError": null,
  "campo": {
-  "mazos": 817,
+  "mazos": 766,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -46,7 +46,7 @@
    },
    {
     "n": "Boros Aggro",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "4/5c Aggro",
@@ -54,31 +54,27 @@
    },
    {
     "n": "Hollow One",
-    "pct": 1
-   },
-   {
-    "n": "Red Deck Wins",
     "pct": 0.9
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 0.7
+    "pct": 0.8
+   },
+   {
+    "n": "Red Deck Wins",
+    "pct": 0.8
    },
    {
     "n": "Eldrazi Aggro",
     "pct": 0.5
    },
    {
-    "n": "Rakdos Aggro",
-    "pct": 0.4
-   },
-   {
     "n": "Simic Birthing Ritual",
-    "pct": 0.4
+    "pct": 0.3
    },
    {
-    "n": "Mono Black Aggro",
-    "pct": 0.2
+    "n": "Rakdos Aggro",
+    "pct": 0.3
    },
    {
     "n": "Golgari Aggro",
@@ -97,8 +93,12 @@
     "pct": 0.1
    },
    {
+    "n": "Mono Black Aggro",
+    "pct": 0.1
+   },
+   {
     "n": "Other - Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "UrzaTron",
@@ -113,16 +113,16 @@
     "pct": 3
    },
    {
-    "n": "Boros Ponza",
-    "pct": 3
-   },
-   {
     "n": "UW Control",
     "pct": 2
    },
    {
+    "n": "Boros Ponza",
+    "pct": 2
+   },
+   {
     "n": "Esper Control",
-    "pct": 0.6
+    "pct": 0.7
    },
    {
     "n": "Jeskai Control",
@@ -131,10 +131,6 @@
    {
     "n": "Grixis Control",
     "pct": 0.4
-   },
-   {
-    "n": "Elementals",
-    "pct": 0.2
    },
    {
     "n": "Bant Control",
@@ -162,14 +158,14 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 5
-   },
-   {
-    "n": "Living End",
-    "pct": 3
+    "pct": 6
    },
    {
     "n": "Ruby Storm",
+    "pct": 3
+   },
+   {
+    "n": "Living End",
     "pct": 3
    },
    {
@@ -185,16 +181,16 @@
     "pct": 1
    },
    {
-    "n": "Reanimator",
-    "pct": 0.6
-   },
-   {
     "n": "Dredge",
     "pct": 0.5
    },
    {
+    "n": "Reanimator",
+    "pct": 0.5
+   },
+   {
     "n": "Cosmogoyf",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "Jeskai Ascendancy",
@@ -218,7 +214,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 0.7
+    "pct": 0.8
    }
   ]
  },
@@ -587,8 +583,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 3,
-     "pctPrev": 4,
-     "delta": -1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 3,
     "l": 5,
@@ -679,16 +675,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Creatures Toolbox",
-   "titular": "Creatures Toolbox: 5% del campo global y nunca te lo has cruzado",
+   "titular": "Creatures Toolbox: 6% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Creatures Toolbox",
-     "pct": 5,
+     "pct": 6,
      "pctPrev": 5,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
