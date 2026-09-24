@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-23",
+ "generado": "2026-09-24",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 17,
+  "diasDesde": 18,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-23",
+ "campoDesde": "2026-09-24",
  "campoError": null,
  "campo": {
-  "mazos": 766,
+  "mazos": 814,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -38,7 +38,7 @@
    },
    {
     "n": "Blink",
-    "pct": 8
+    "pct": 7
    },
    {
     "n": "Affinity",
@@ -53,28 +53,28 @@
     "pct": 3
    },
    {
-    "n": "Hollow One",
+    "n": "Red Deck Wins",
     "pct": 0.9
    },
    {
-    "n": "Jeskai Aggro",
-    "pct": 0.8
+    "n": "Hollow One",
+    "pct": 0.7
    },
    {
-    "n": "Red Deck Wins",
-    "pct": 0.8
+    "n": "Jeskai Aggro",
+    "pct": 0.6
    },
    {
     "n": "Eldrazi Aggro",
     "pct": 0.5
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.3
+    "n": "Mardu Aggro",
+    "pct": 0.5
    },
    {
     "n": "Rakdos Aggro",
-    "pct": 0.3
+    "pct": 0.2
    },
    {
     "n": "Golgari Aggro",
@@ -94,6 +94,10 @@
    },
    {
     "n": "Mono Black Aggro",
+    "pct": 0.1
+   },
+   {
+    "n": "Simic Birthing Ritual",
     "pct": 0.1
    },
    {
@@ -122,7 +126,7 @@
    },
    {
     "n": "Esper Control",
-    "pct": 0.7
+    "pct": 0.6
    },
    {
     "n": "Jeskai Control",
@@ -130,7 +134,7 @@
    },
    {
     "n": "Grixis Control",
-    "pct": 0.4
+    "pct": 0.2
    },
    {
     "n": "Bant Control",
@@ -150,7 +154,7 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 18
+    "pct": 19
    },
    {
     "n": "Instant Reanimator",
@@ -173,24 +177,24 @@
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
-    "n": "Allosaurus Combo",
+    "n": "Landless",
     "pct": 1
    },
    {
-    "n": "Dredge",
-    "pct": 0.5
-   },
-   {
     "n": "Reanimator",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
     "n": "Cosmogoyf",
-    "pct": 0.3
+    "pct": 0.5
+   },
+   {
+    "n": "Dredge",
+    "pct": 0.4
    },
    {
     "n": "Jeskai Ascendancy",
@@ -214,7 +218,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 0.8
+    "pct": 0.6
    }
   ]
  },
@@ -622,9 +626,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 18,
+     "pct": 19,
      "pctPrev": 18,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 4,
@@ -683,8 +687,8 @@
     "campo": {
      "global": "Creatures Toolbox",
      "pct": 6,
-     "pctPrev": 5,
-     "delta": 1
+     "pctPrev": 6,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
