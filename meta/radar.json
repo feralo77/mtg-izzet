@@ -647,8 +647,8 @@
     "campo": {
      "global": "UR Aggro",
      "pct": 11,
-     "pctPrev": 12,
-     "delta": -1
+     "pctPrev": 11,
+     "delta": 0
     },
     "w": 2,
     "l": 3,
