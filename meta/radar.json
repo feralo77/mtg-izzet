@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-24",
+ "generado": "2026-09-25",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 18,
+  "diasDesde": 19,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-24",
+ "campoDesde": "2026-09-25",
  "campoError": null,
  "campo": {
-  "mazos": 814,
+  "mazos": 820,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 12
+    "pct": 11
    },
    {
     "n": "Blink",
@@ -46,7 +46,7 @@
    },
    {
     "n": "Boros Aggro",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "4/5c Aggro",
@@ -54,7 +54,7 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.9
+    "pct": 0.7
    },
    {
     "n": "Hollow One",
@@ -117,11 +117,11 @@
     "pct": 3
    },
    {
-    "n": "UW Control",
+    "n": "Boros Ponza",
     "pct": 2
    },
    {
-    "n": "Boros Ponza",
+    "n": "UW Control",
     "pct": 2
    },
    {
@@ -194,7 +194,7 @@
    },
    {
     "n": "Dredge",
-    "pct": 0.4
+    "pct": 0.2
    },
    {
     "n": "Jeskai Ascendancy",
@@ -627,8 +627,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 19,
-     "pctPrev": 18,
-     "delta": 1
+     "pctPrev": 19,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -646,9 +646,9 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 12,
+     "pct": 11,
      "pctPrev": 12,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 3,
