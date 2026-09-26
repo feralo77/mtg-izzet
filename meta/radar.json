@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-25",
+ "generado": "2026-09-26",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 19,
+  "diasDesde": 20,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-25",
+ "campoDesde": "2026-09-26",
  "campoError": null,
  "campo": {
-  "mazos": 820,
+  "mazos": 817,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 11
+    "pct": 12
    },
    {
     "n": "Blink",
@@ -42,11 +42,11 @@
    },
    {
     "n": "Affinity",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Boros Aggro",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "4/5c Aggro",
@@ -58,14 +58,10 @@
    },
    {
     "n": "Hollow One",
-    "pct": 0.7
-   },
-   {
-    "n": "Jeskai Aggro",
     "pct": 0.6
    },
    {
-    "n": "Eldrazi Aggro",
+    "n": "Jeskai Aggro",
     "pct": 0.5
    },
    {
@@ -73,16 +69,12 @@
     "pct": 0.5
    },
    {
+    "n": "Eldrazi Aggro",
+    "pct": 0.4
+   },
+   {
     "n": "Rakdos Aggro",
     "pct": 0.2
-   },
-   {
-    "n": "Golgari Aggro",
-    "pct": 0.1
-   },
-   {
-    "n": "Goblins",
-    "pct": 0.1
    },
    {
     "n": "The Underworld Cookbook",
@@ -102,27 +94,27 @@
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "UrzaTron",
-    "pct": 4
+    "pct": 5
    },
    {
     "n": "Dimir Control",
     "pct": 4
    },
    {
+    "n": "Boros Ponza",
+    "pct": 3
+   },
+   {
     "n": "Eldrazi Ramp",
     "pct": 3
    },
    {
-    "n": "Boros Ponza",
-    "pct": 2
-   },
-   {
     "n": "UW Control",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Esper Control",
@@ -130,7 +122,7 @@
    },
    {
     "n": "Jeskai Control",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
     "n": "Grixis Control",
@@ -158,7 +150,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 7
+    "pct": 6
    },
    {
     "n": "Creatures Toolbox",
@@ -173,16 +165,16 @@
     "pct": 3
    },
    {
-    "n": "Amulet Titan",
-    "pct": 2
-   },
-   {
     "n": "Allosaurus Combo",
     "pct": 2
    },
    {
+    "n": "Amulet Titan",
+    "pct": 2
+   },
+   {
     "n": "Landless",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Reanimator",
@@ -197,15 +189,15 @@
     "pct": 0.2
    },
    {
+    "n": "Song of Creation",
+    "pct": 0.2
+   },
+   {
     "n": "Jeskai Ascendancy",
     "pct": 0.1
    },
    {
     "n": "Creativity",
-    "pct": 0.1
-   },
-   {
-    "n": "Song of Creation",
     "pct": 0.1
    },
    {
@@ -218,7 +210,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 0.6
+    "pct": 0.5
    }
   ]
  },
@@ -606,9 +598,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 7,
+     "pct": 6,
      "pctPrev": 7,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 5,
@@ -646,9 +638,9 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 11,
+     "pct": 12,
      "pctPrev": 11,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 3,
@@ -699,16 +691,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 4% del campo global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 5% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 4,
+     "pct": 5,
      "pctPrev": 4,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
