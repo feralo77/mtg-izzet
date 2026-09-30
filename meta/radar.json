@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-29",
+ "generado": "2026-09-30",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 23,
+  "diasDesde": 24,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-29",
+ "campoDesde": "2026-09-30",
  "campoError": null,
  "campo": {
-  "mazos": 692,
+  "mazos": 680,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 12
+    "pct": 11
    },
    {
     "n": "Blink",
@@ -66,7 +66,7 @@
    },
    {
     "n": "Rakdos Aggro",
-    "pct": 0.4
+    "pct": 0.6
    },
    {
     "n": "Hollow One",
@@ -90,7 +90,7 @@
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.3
+    "pct": 0.1
    },
    {
     "n": "UrzaTron",
@@ -101,11 +101,11 @@
     "pct": 3
    },
    {
-    "n": "Dimir Control",
+    "n": "Boros Ponza",
     "pct": 3
    },
    {
-    "n": "Boros Ponza",
+    "n": "Dimir Control",
     "pct": 3
    },
    {
@@ -118,7 +118,7 @@
    },
    {
     "n": "Esper Control",
-    "pct": 0.6
+    "pct": 0.7
    },
    {
     "n": "Grixis Control",
@@ -142,7 +142,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Ruby Storm",
@@ -158,7 +158,7 @@
    },
    {
     "n": "Landless",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Amulet Titan",
@@ -173,15 +173,11 @@
     "pct": 0.6
    },
    {
-    "n": "Song of Creation",
-    "pct": 0.3
-   },
-   {
     "n": "UB Mill",
     "pct": 0.3
    },
    {
-    "n": "Creativity",
+    "n": "Song of Creation",
     "pct": 0.1
    },
    {
@@ -198,6 +194,10 @@
    },
    {
     "n": "Hammer Time",
+    "pct": 0.1
+   },
+   {
+    "n": "Creativity",
     "pct": 0.1
    },
    {
@@ -590,9 +590,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 6,
+     "pct": 5,
      "pctPrev": 6,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 5,
@@ -630,9 +630,9 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 12,
+     "pct": 11,
      "pctPrev": 12,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 3,
@@ -671,8 +671,8 @@
     "campo": {
      "global": "Creatures Toolbox",
      "pct": 6,
-     "pctPrev": 5,
-     "delta": 1
+     "pctPrev": 6,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -711,8 +711,8 @@
     "campo": {
      "global": "4/5c Aggro",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
