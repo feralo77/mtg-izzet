@@ -599,8 +599,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 19,
-     "pctPrev": 20,
-     "delta": -1
+     "pctPrev": 19,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -619,8 +619,8 @@
     "campo": {
      "global": "UR Aggro",
      "pct": 10,
-     "pctPrev": 11,
-     "delta": -1
+     "pctPrev": 10,
+     "delta": 0
     },
     "w": 2,
     "l": 3,
