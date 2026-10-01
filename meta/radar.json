@@ -1,5 +1,5 @@
 {
- "generado": "2026-09-30",
+ "generado": "2026-10-01",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,12 +21,12 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 24,
+  "diasDesde": 25,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-09-30",
+ "campoDesde": "2026-10-01",
  "campoError": null,
  "campo": {
   "mazos": 680,
@@ -34,7 +34,7 @@
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 11
+    "pct": 10
    },
    {
     "n": "Blink",
@@ -54,11 +54,11 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 1
+    "pct": 0.7
    },
    {
-    "n": "Jeskai Aggro",
-    "pct": 0.7
+    "n": "Hollow One",
+    "pct": 0.6
    },
    {
     "n": "Mardu Aggro",
@@ -69,7 +69,7 @@
     "pct": 0.6
    },
    {
-    "n": "Hollow One",
+    "n": "Jeskai Aggro",
     "pct": 0.4
    },
    {
@@ -79,10 +79,6 @@
    {
     "n": "Simic Birthing Ritual",
     "pct": 0.3
-   },
-   {
-    "n": "Mono Black Aggro",
-    "pct": 0.1
    },
    {
     "n": "Death's Shadow",
@@ -101,11 +97,11 @@
     "pct": 3
    },
    {
-    "n": "Boros Ponza",
+    "n": "Dimir Control",
     "pct": 3
    },
    {
-    "n": "Dimir Control",
+    "n": "Boros Ponza",
     "pct": 3
    },
    {
@@ -113,20 +109,12 @@
     "pct": 2
    },
    {
+    "n": "Esper Control",
+    "pct": 0.9
+   },
+   {
     "n": "Jeskai Control",
     "pct": 0.7
-   },
-   {
-    "n": "Esper Control",
-    "pct": 0.7
-   },
-   {
-    "n": "Grixis Control",
-    "pct": 0.1
-   },
-   {
-    "n": "Gruul Utopia",
-    "pct": 0.1
    },
    {
     "n": "Other - Control",
@@ -134,7 +122,7 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 20
+    "pct": 19
    },
    {
     "n": "Creatures Toolbox",
@@ -153,11 +141,11 @@
     "pct": 3
    },
    {
-    "n": "Allosaurus Combo",
+    "n": "Landless",
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
@@ -591,8 +579,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 5,
-     "pctPrev": 6,
-     "delta": -1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 2,
     "l": 5,
@@ -610,9 +598,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 20,
+     "pct": 19,
      "pctPrev": 20,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 4,
@@ -630,8 +618,8 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 11,
-     "pctPrev": 12,
+     "pct": 10,
+     "pctPrev": 11,
      "delta": -1
     },
     "w": 2,
