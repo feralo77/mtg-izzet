@@ -1,9 +1,9 @@
 {
-  "generado": "2026-09-29",
+  "generado": "2026-10-01",
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
   "mazos": 60,
   "ventanaDias": 28,
-  "consenso": 37,
+  "consenso": 38,
   "listaMedia": {
     "main": [
       {
@@ -63,16 +63,16 @@
         "q": 2
       },
       {
-        "n": "Slickshot Show-Off",
-        "q": 4
+        "n": "Arid Mesa",
+        "q": 2
       },
       {
         "n": "Wooded Foothills",
         "q": 2
       },
       {
-        "n": "Arid Mesa",
-        "q": 2
+        "n": "Slickshot Show-Off",
+        "q": 4
       },
       {
         "n": "Mutagenic Growth",
@@ -81,10 +81,6 @@
       {
         "n": "Unholy Heat",
         "q": 1
-      },
-      {
-        "n": "Violent Urge",
-        "q": 2
       }
     ],
     "side": [
@@ -111,25 +107,24 @@
       {
         "n": "Surgical Extraction",
         "q": 2
-      }
-    ],
-    "totalMain": 62,
-    "totalSide": 15,
-    "sideDisputa": [
-      {
-        "n": "Obsidian Charmaw",
-        "pct": 38,
-        "q": 2
       },
       {
+        "n": "Obsidian Charmaw",
+        "q": 2
+      }
+    ],
+    "totalMain": 60,
+    "totalSide": 17,
+    "sideDisputa": [
+      {
         "n": "Tormod's Crypt",
-        "pct": 27,
+        "pct": 28,
         "q": 2
       },
       {
         "n": "Mystical Dispute",
-        "pct": 25,
-        "q": 1
+        "pct": 23,
+        "q": 3
       },
       {
         "n": "Into the Flood Maw",
@@ -215,9 +210,9 @@
       "n": "Monastery Swiftspear",
       "decks": 53,
       "pct": 88,
-      "avg": 4,
+      "avg": 3.98,
       "typical": 4,
-      "min": 4,
+      "min": 3,
       "max": 4
     },
     {
@@ -251,7 +246,7 @@
       "n": "Bloodstained Mire",
       "decks": 49,
       "pct": 82,
-      "avg": 2.8,
+      "avg": 2.76,
       "typical": 3,
       "min": 1,
       "max": 4
@@ -260,88 +255,88 @@
       "n": "Fiery Islet",
       "decks": 49,
       "pct": 82,
-      "avg": 1.59,
+      "avg": 1.61,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
-      "n": "Slickshot Show-Off",
-      "decks": 44,
-      "pct": 73,
-      "avg": 3.52,
-      "typical": 4,
-      "min": 2,
-      "max": 4
-    },
-    {
-      "n": "Wooded Foothills",
-      "decks": 44,
-      "pct": 73,
-      "avg": 2.34,
-      "typical": 2,
-      "min": 1,
-      "max": 4
-    },
-    {
       "n": "Arid Mesa",
-      "decks": 44,
-      "pct": 73,
+      "decks": 45,
+      "pct": 75,
       "avg": 2.2,
       "typical": 2,
       "min": 1,
       "max": 4
     },
     {
+      "n": "Wooded Foothills",
+      "decks": 44,
+      "pct": 73,
+      "avg": 2.32,
+      "typical": 2,
+      "min": 1,
+      "max": 4
+    },
+    {
+      "n": "Slickshot Show-Off",
+      "decks": 43,
+      "pct": 72,
+      "avg": 3.51,
+      "typical": 4,
+      "min": 2,
+      "max": 4
+    },
+    {
       "n": "Mutagenic Growth",
-      "decks": 42,
-      "pct": 70,
-      "avg": 3.29,
+      "decks": 41,
+      "pct": 68,
+      "avg": 3.32,
       "typical": 4,
       "min": 2,
       "max": 4
     },
     {
       "n": "Unholy Heat",
-      "decks": 31,
-      "pct": 52,
-      "avg": 1.87,
+      "decks": 30,
+      "pct": 50,
+      "avg": 1.9,
       "typical": 1,
       "min": 1,
       "max": 4
     },
     {
       "n": "Violent Urge",
-      "decks": 30,
-      "pct": 50,
-      "avg": 1.77,
+      "decks": 29,
+      "pct": 48,
+      "avg": 1.76,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Boomerang Basics",
-      "decks": 19,
-      "pct": 32,
-      "avg": 3.79,
+      "decks": 20,
+      "pct": 33,
+      "avg": 3.8,
       "typical": 4,
       "min": 3,
       "max": 4
     },
     {
       "n": "Stormchaser's Talent",
-      "decks": 19,
-      "pct": 32,
-      "avg": 3,
+      "decks": 20,
+      "pct": 33,
+      "avg": 3.05,
       "typical": 4,
       "min": 2,
       "max": 4
     },
     {
       "n": "Island",
-      "decks": 18,
-      "pct": 30,
-      "avg": 1.72,
+      "decks": 19,
+      "pct": 32,
+      "avg": 1.68,
       "typical": 1,
       "min": 1,
       "max": 3
@@ -474,8 +469,8 @@
     },
     {
       "n": "Stomping Ground",
-      "decks": 6,
-      "pct": 10,
+      "decks": 5,
+      "pct": 8,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -483,10 +478,10 @@
     },
     {
       "n": "Surgical Extraction",
-      "decks": 5,
-      "pct": 8,
-      "avg": 1.4,
-      "typical": 1,
+      "decks": 4,
+      "pct": 7,
+      "avg": 1.5,
+      "typical": 2,
       "min": 1,
       "max": 2
     },
@@ -561,6 +556,15 @@
       "typical": 1,
       "min": 1,
       "max": 1
+    },
+    {
+      "n": "Pompous Battlemage",
+      "decks": 1,
+      "pct": 2,
+      "avg": 3,
+      "typical": 3,
+      "min": 3,
+      "max": 3
     },
     {
       "n": "Snow-Covered Island",
@@ -667,7 +671,7 @@
       "n": "Consign to Memory",
       "decks": 60,
       "pct": 100,
-      "avg": 3.53,
+      "avg": 3.55,
       "typical": 4,
       "min": 3,
       "max": 4
@@ -676,7 +680,7 @@
       "n": "Meltdown",
       "decks": 56,
       "pct": 93,
-      "avg": 1.77,
+      "avg": 1.75,
       "typical": 2,
       "min": 1,
       "max": 3
@@ -692,8 +696,8 @@
     },
     {
       "n": "Spell Pierce",
-      "decks": 46,
-      "pct": 77,
+      "decks": 45,
+      "pct": 75,
       "avg": 1.67,
       "typical": 2,
       "min": 1,
@@ -701,26 +705,26 @@
     },
     {
       "n": "Spell Snare",
-      "decks": 43,
-      "pct": 72,
-      "avg": 1.88,
+      "decks": 44,
+      "pct": 73,
+      "avg": 1.86,
       "typical": 2,
       "min": 1,
       "max": 3
     },
     {
       "n": "Surgical Extraction",
-      "decks": 40,
-      "pct": 67,
-      "avg": 1.52,
+      "decks": 39,
+      "pct": 65,
+      "avg": 1.54,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Obsidian Charmaw",
-      "decks": 23,
-      "pct": 38,
+      "decks": 24,
+      "pct": 40,
       "avg": 2.04,
       "typical": 2,
       "min": 2,
@@ -728,19 +732,19 @@
     },
     {
       "n": "Tormod's Crypt",
-      "decks": 16,
-      "pct": 27,
-      "avg": 1.56,
+      "decks": 17,
+      "pct": 28,
+      "avg": 1.53,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Mystical Dispute",
-      "decks": 15,
-      "pct": 25,
-      "avg": 1.93,
-      "typical": 1,
+      "decks": 14,
+      "pct": 23,
+      "avg": 2,
+      "typical": 3,
       "min": 1,
       "max": 3
     },
@@ -799,30 +803,30 @@
       "max": 2
     },
     {
-      "n": "Heritage Reclamation",
-      "decks": 4,
-      "pct": 7,
-      "avg": 1.5,
+      "n": "Force of Negation",
+      "decks": 3,
+      "pct": 5,
+      "avg": 2.33,
       "typical": 2,
-      "min": 1,
-      "max": 2
+      "min": 2,
+      "max": 3
     },
     {
       "n": "Pick Your Poison",
-      "decks": 4,
-      "pct": 7,
-      "avg": 1.5,
+      "decks": 3,
+      "pct": 5,
+      "avg": 1.67,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
-      "n": "Force of Negation",
-      "decks": 2,
-      "pct": 3,
-      "avg": 2,
-      "typical": 2,
-      "min": 2,
+      "n": "Heritage Reclamation",
+      "decks": 3,
+      "pct": 5,
+      "avg": 1.33,
+      "typical": 1,
+      "min": 1,
       "max": 2
     },
     {
@@ -1059,21 +1063,23 @@
       },
       {
         "n": "Obsidian Charmaw",
-        "pct": 38,
+        "pct": 40,
         "zona": "side"
       },
       {
         "n": "Tormod's Crypt",
-        "pct": 27,
-        "zona": "side"
-      },
-      {
-        "n": "Mystical Dispute",
-        "pct": 25,
+        "pct": 28,
         "zona": "side"
       }
     ],
-    "yoJuegoCampoNo": [],
+    "yoJuegoCampoNo": [
+      {
+        "n": "Violent Urge",
+        "mio": 2,
+        "pct": 48,
+        "zona": "main"
+      }
+    ],
     "desviaciones": [
       {
         "n": "Expressive Iteration",
@@ -1084,15 +1090,15 @@
         "menor": false
       },
       {
-        "n": "Wooded Foothills",
+        "n": "Arid Mesa",
         "mio": 3,
         "campo": 2,
-        "pct": 73,
+        "pct": 75,
         "zona": "main",
         "menor": true
       },
       {
-        "n": "Arid Mesa",
+        "n": "Wooded Foothills",
         "mio": 3,
         "campo": 2,
         "pct": 73,
@@ -1103,9 +1109,9 @@
   },
   "sugerencias": [
     "El campo juega Bloodstained Mire (82% · main) y tu lista no lo lleva.",
-    "El campo juega Obsidian Charmaw (38% · side) y tu lista no lo lleva.",
-    "El campo juega Tormod's Crypt (27% · side) y tu lista no lo lleva.",
-    "El campo juega Mystical Dispute (25% · side) y tu lista no lo lleva.",
-    "Expressive Iteration (main): tu 3, el consenso 4."
+    "El campo juega Obsidian Charmaw (40% · side) y tu lista no lo lleva.",
+    "El campo juega Tormod's Crypt (28% · side) y tu lista no lo lleva.",
+    "Expressive Iteration (main): tu 3, el consenso 4.",
+    "Llevas Violent Urge (main) pero solo el 48% del campo lo juega."
   ]
 }
