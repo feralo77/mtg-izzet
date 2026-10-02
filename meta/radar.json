@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-01",
+ "generado": "2026-10-02",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 25,
+  "diasDesde": 26,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-01",
+ "campoDesde": "2026-10-02",
  "campoError": null,
  "campo": {
-  "mazos": 680,
+  "mazos": 700,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -53,16 +53,12 @@
     "pct": 4
    },
    {
-    "n": "Red Deck Wins",
+    "n": "Mardu Aggro",
     "pct": 0.7
    },
    {
-    "n": "Hollow One",
-    "pct": 0.6
-   },
-   {
-    "n": "Mardu Aggro",
-    "pct": 0.6
+    "n": "Red Deck Wins",
+    "pct": 0.7
    },
    {
     "n": "Rakdos Aggro",
@@ -73,15 +69,23 @@
     "pct": 0.4
    },
    {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.4
+   },
+   {
+    "n": "Hollow One",
+    "pct": 0.4
+   },
+   {
     "n": "Eldrazi Aggro",
     "pct": 0.3
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.3
+    "n": "Death's Shadow",
+    "pct": 0.1
    },
    {
-    "n": "Death's Shadow",
+    "n": "Merfolk",
     "pct": 0.1
    },
    {
@@ -102,19 +106,23 @@
    },
    {
     "n": "Boros Ponza",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Eldrazi Ramp",
     "pct": 2
    },
    {
+    "n": "Jeskai Control",
+    "pct": 0.9
+   },
+   {
     "n": "Esper Control",
     "pct": 0.9
    },
    {
-    "n": "Jeskai Control",
-    "pct": 0.7
+    "n": "4/5c Control",
+    "pct": 0.3
    },
    {
     "n": "Other - Control",
@@ -130,7 +138,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 5
+    "pct": 6
    },
    {
     "n": "Ruby Storm",
@@ -138,7 +146,7 @@
    },
    {
     "n": "Living End",
-    "pct": 3
+    "pct": 2
    },
    {
     "n": "Landless",
@@ -150,23 +158,23 @@
    },
    {
     "n": "Amulet Titan",
-    "pct": 1
+    "pct": 2
+   },
+   {
+    "n": "Cosmogoyf",
+    "pct": 0.7
    },
    {
     "n": "Reanimator",
     "pct": 0.7
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 0.6
-   },
-   {
     "n": "UB Mill",
-    "pct": 0.3
+    "pct": 0.4
    },
    {
-    "n": "Song of Creation",
-    "pct": 0.1
+    "n": "Hammer Time",
+    "pct": 0.3
    },
    {
     "n": "Twin Exarch",
@@ -181,11 +189,15 @@
     "pct": 0.1
    },
    {
-    "n": "Hammer Time",
+    "n": "Creativity",
     "pct": 0.1
    },
    {
-    "n": "Creativity",
+    "n": "Song of Creation",
+    "pct": 0.1
+   },
+   {
+    "n": "Valakut",
     "pct": 0.1
    },
    {
@@ -578,9 +590,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 5,
+     "pct": 6,
      "pctPrev": 5,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 5,
