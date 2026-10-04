@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-03",
+ "generado": "2026-10-04",
  "comoFunciona": "Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 27,
+  "diasDesde": 28,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-03",
+ "campoDesde": "2026-10-04",
  "campoError": null,
  "campo": {
-  "mazos": 700,
+  "mazos": 597,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 10
+    "pct": 9
    },
    {
     "n": "Blink",
@@ -45,60 +45,60 @@
     "pct": 5
    },
    {
-    "n": "Boros Aggro",
-    "pct": 4
-   },
-   {
     "n": "4/5c Aggro",
-    "pct": 4
-   },
-   {
-    "n": "Mardu Aggro",
-    "pct": 0.7
-   },
-   {
-    "n": "Red Deck Wins",
-    "pct": 0.7
-   },
-   {
-    "n": "Rakdos Aggro",
-    "pct": 0.6
-   },
-   {
-    "n": "Jeskai Aggro",
-    "pct": 0.4
-   },
-   {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.4
-   },
-   {
-    "n": "Hollow One",
-    "pct": 0.4
-   },
-   {
-    "n": "Eldrazi Aggro",
-    "pct": 0.3
-   },
-   {
-    "n": "Death's Shadow",
-    "pct": 0.1
-   },
-   {
-    "n": "Merfolk",
-    "pct": 0.1
-   },
-   {
-    "n": "Other - Aggro",
-    "pct": 0.1
-   },
-   {
-    "n": "UrzaTron",
     "pct": 5
    },
    {
+    "n": "Boros Aggro",
+    "pct": 5
+   },
+   {
+    "n": "Mardu Aggro",
+    "pct": 0.8
+   },
+   {
+    "n": "Red Deck Wins",
+    "pct": 0.8
+   },
+   {
+    "n": "Rakdos Aggro",
+    "pct": 0.7
+   },
+   {
+    "n": "Hollow One",
+    "pct": 0.5
+   },
+   {
+    "n": "Jeskai Aggro",
+    "pct": 0.3
+   },
+   {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.3
+   },
+   {
+    "n": "Eldrazi Aggro",
+    "pct": 0.2
+   },
+   {
+    "n": "Death's Shadow",
+    "pct": 0.2
+   },
+   {
+    "n": "Merfolk",
+    "pct": 0.2
+   },
+   {
+    "n": "Other - Aggro",
+    "pct": 0.2
+   },
+   {
+    "n": "UrzaTron",
+    "pct": 6
+   },
+   {
     "n": "UW Control",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "Dimir Control",
@@ -106,19 +106,19 @@
    },
    {
     "n": "Boros Ponza",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Eldrazi Ramp",
     "pct": 2
    },
    {
-    "n": "Esper Control",
-    "pct": 0.9
+    "n": "Jeskai Control",
+    "pct": 0.8
    },
    {
-    "n": "Jeskai Control",
-    "pct": 0.6
+    "n": "Esper Control",
+    "pct": 0.8
    },
    {
     "n": "4/5c Control",
@@ -126,7 +126,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 1
+    "pct": 0.3
    },
    {
     "n": "Broodscale Bloodchief",
@@ -134,7 +134,7 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 6
+    "pct": 7
    },
    {
     "n": "Instant Reanimator",
@@ -153,24 +153,24 @@
     "pct": 2
    },
    {
-    "n": "Allosaurus Combo",
-    "pct": 2
-   },
-   {
     "n": "Amulet Titan",
     "pct": 2
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 0.7
+    "n": "Allosaurus Combo",
+    "pct": 2
    },
    {
     "n": "Reanimator",
-    "pct": 0.7
+    "pct": 0.8
+   },
+   {
+    "n": "Cosmogoyf",
+    "pct": 0.5
    },
    {
     "n": "UB Mill",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Hammer Time",
@@ -181,28 +181,16 @@
     "pct": 0.3
    },
    {
-    "n": "Twin Exarch",
-    "pct": 0.1
-   },
-   {
-    "n": "Heliod Life",
-    "pct": 0.1
-   },
-   {
-    "n": "Dredge",
-    "pct": 0.1
-   },
-   {
     "n": "Creativity",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Song of Creation",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Other - Combo",
-    "pct": 0.4
+    "pct": 0.3
    }
   ]
  },
@@ -630,9 +618,9 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 10,
+     "pct": 9,
      "pctPrev": 10,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 3,
@@ -663,16 +651,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Creatures Toolbox",
-   "titular": "Creatures Toolbox: 6% del campo global y nunca te lo has cruzado",
+   "titular": "Creatures Toolbox: 7% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Creatures Toolbox",
-     "pct": 6,
+     "pct": 7,
      "pctPrev": 6,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -683,16 +671,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 5% del campo global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 6% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 5,
+     "pct": 6,
      "pctPrev": 5,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -703,16 +691,16 @@
   {
    "nivel": "nuevo",
    "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 4% del campo global y nunca te lo has cruzado",
+   "titular": "4/5c Aggro: 5% del campo global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "4/5c Aggro",
-     "pct": 4,
+     "pct": 5,
      "pctPrev": 4,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
