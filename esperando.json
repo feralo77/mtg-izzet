@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-04",
+ "generado": "2026-10-05",
  "rondas": [
   {
    "jugador": "feralo77",
@@ -24,6 +24,30 @@
    "ronda": "5",
    "rival": "kpasatio",
    "mazo": "esper blink"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "04/10/2026",
+   "evento": "Liga 18",
+   "ronda": "1",
+   "rival": "oeni",
+   "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "04/10/2026",
+   "evento": "Liga 18",
+   "ronda": "2",
+   "rival": "chocapic",
+   "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "04/10/2026",
+   "evento": "Liga 18",
+   "ronda": "3",
+   "rival": "ARCBOUND_PAPI",
+   "mazo": ""
   }
  ]
 }
