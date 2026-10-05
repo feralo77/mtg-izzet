@@ -216,11 +216,11 @@ if (mi && mi.main && mi.side) {
 const sug = [];
 if (deltas) {
   for (const c of deltas.campoJuegaYoNo)
-    sug.push(`El campo juega ${c.n} (${c.pct}% · ${c.zona}) y tu lista no lo lleva.`);
+    sug.push(`Las listas de Izzet juegan ${c.n} (${c.pct}% · ${c.zona}) y tu lista no lo lleva.`);
   for (const d of deltas.desviaciones) if (!d.menor)
     sug.push(`${d.n} (${d.zona}): tu ${d.mio}, el consenso ${d.campo}.`);
   for (const y of deltas.yoJuegoCampoNo)
-    sug.push(`Llevas ${y.n} (${y.zona}) pero solo el ${y.pct}% del campo lo juega.`);
+    sug.push(`Llevas ${y.n} (${y.zona}) pero solo el ${y.pct}% de las listas de Izzet lo juega.`);
 }
 for (const t of tendencia.nuevas) sug.push(`Nuevo en el meta: ${t.n} (${t.pct}%).`);
 for (const t of tendencia.suben) sug.push(`Sube ${t.n}: ${t.de}% → ${t.a}%.`);
