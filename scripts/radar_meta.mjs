@@ -229,7 +229,7 @@ function alarmas(lg, campo, mapa, previoCampo) {
     const frecuente = a.frec >= FREC_ALTA;
     if (a.n_ >= N_MINIMO && a.wr !== null && a.wr < WR_MALO && (sube || frecuente)) {
       const motivo = sube
-        ? `está subiendo (${a.delta !== null && a.delta >= SUBE_LIGA ? `+${a.delta} pts en tu liga` : `+${c.delta} pts en el campo global`})`
+        ? `está subiendo (${a.delta !== null && a.delta >= SUBE_LIGA ? `+${a.delta} pts en tu liga` : `+${c.delta} pts en el metajuego global`})`
         : `es el ${a.frec}% de tu liga`;
       out.push({
         nivel: 'adaptarse', mazo: a.n,
@@ -283,7 +283,7 @@ function alarmas(lg, campo, mapa, previoCampo) {
     const pp = prevPorNombre.get(g.n);
     out.push({
       nivel: 'nuevo', mazo: g.n,
-      titular: `${g.n}: ${g.pct}% del campo global y nunca te lo has cruzado`,
+      titular: `${g.n}: ${g.pct}% del metajuego global y nunca te lo has cruzado`,
       porQue: `Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.`,
       datos: { frecLiga: 0, deltaLiga: null, campo: { global: g.n, pct: g.pct, pctPrev: pp ?? null, delta: pp === undefined ? null : Math.round((g.pct - pp) * 10) / 10 }, w: 0, l: 0, wr: null, n: 0 },
     });
@@ -340,7 +340,7 @@ const cad = cadencia('docs/brainstorm');
 // El campo se compara con la corrida anterior; si es la primera, no hay deltas y se dice.
 const salida = {
   generado: hoyISO,
-  comoFunciona: 'Cruza el campo global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.',
+  comoFunciona: 'Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.',
   umbrales: { winrateMalo: WR_MALO, partidasMinimas: N_MINIMO, frecuenciaAlta: FREC_ALTA, subeLiga: SUBE_LIGA, subeCampo: SUBE_CAMPO, campoRelevante: CAMPO_RELEVANTE },
   brainstorm: cad,
   hayComparacionCampo: campoFresco && !!previo?.campo?.arquetipos,
@@ -358,6 +358,6 @@ writeFileSync(rutaSalida, JSON.stringify(salida, null, 1));
 const cuenta = n => al.filter(a => a.nivel === n).length;
 console.log(`radar.json escrito · campo: ${campo.mazos} mazos, ${campo.arquetipos.length} arquetipos · liga: ${lg.antes.partidas} partidas antes (${lg.antes.desde}→${lg.antes.hasta}) vs ${lg.ahora.partidas} ahora (${lg.ahora.desde}→${lg.ahora.hasta})`);
 if (!lg.hayBase) console.log(`  aviso: ${lg.avisoBase}`);
-console.log(`alarmas: ${cuenta('adaptarse')} adaptarse · ${cuenta('pinta-mal')} pinta mal · ${cuenta('vigilar')} vigilar · ${cuenta('nuevo')} nuevo en el campo`);
+console.log(`alarmas: ${cuenta('adaptarse')} adaptarse · ${cuenta('pinta-mal')} pinta mal · ${cuenta('vigilar')} vigilar · ${cuenta('nuevo')} nuevo en el metajuego`);
 console.log(`brainstorm: último ${cad.ultimo || '(ninguno)'} · ${cad.toca ? 'TOCA YA' : `siguiente ${cad.proximo}`}`);
 al.filter(a => a.nivel === 'adaptarse' || a.nivel === 'pinta-mal').forEach(a => console.log(`  [${a.nivel.toUpperCase()}] ${a.titular}`));

@@ -8,7 +8,7 @@
     "consenso": 68,
     "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO"
   },
-  "porQueEsteMain": "Es tu maindeck real, el que llevas jugando desde la Liga 9 (11-ago-2026) y sobre el que estan calculadas TODAS las estadisticas del dashboard. Coincide con la escuela Clasica del campo (52% de las listas de mtgtop8) salvo en una carta: juegas 3 Expressive Iteration y 1 Unholy Heat en el main, donde el campo lleva 4 Iteration. Los 9 fetchlands son los tuyos (3 Arid Mesa, 3 Scalding Tarn, 3 Wooded Foothills): buscan lo mismo y son intercambiables.",
+  "porQueEsteMain": "Es tu maindeck real, el que llevas jugando desde la Liga 9 (11-ago-2026) y sobre el que estan calculadas TODAS las estadisticas del dashboard. Coincide con la escuela Clasica de las listas de Izzet (52% de las listas de mtgtop8) salvo en una carta: juegas 3 Expressive Iteration y 1 Unholy Heat en el main, donde las listas de Izzet llevan 4 Iteration. Los 9 fetchlands son los tuyos (3 Arid Mesa, 3 Scalding Tarn, 3 Wooded Foothills): buscan lo mismo y son intercambiables.",
   "main": [
     {
       "n": "Dragon's Rage Channeler",
@@ -106,7 +106,7 @@
       "z": "tierra"
     }
   ],
-  "notaTierras": "Los 9 fetch son intercambiables: todos buscan Steam Vents, Mountain y Thundering Falls. Estos son los que tienes; el campo reparte igual pero con otros nombres, y eso no cambia ni una decision de juego.",
+  "notaTierras": "Los 9 fetch son intercambiables: todos buscan Steam Vents, Mountain y Thundering Falls. Estos son los que tienes; las listas de Izzet reparten igual pero con otros nombres, y eso no cambia ni una decision de juego.",
   "side": [
     {
       "n": "Consign to Memory",
@@ -140,10 +140,10 @@
     }
   ],
   "cambiosRespectoALaDefinitivaDe7Ago": [
-    "Main: -1 Expressive Iteration, +1 Unholy Heat. Es tu desviacion, no la del campo: una respuesta mas de maindeck a cambio de una carta de cartas.",
+    "Main: -1 Expressive Iteration, +1 Unholy Heat. Es tu desviacion, no la de las listas de Izzet: una respuesta mas de maindeck a cambio de una carta de cartas.",
     "Banquillo: -2 Tormod's Crypt, +2 Surgical Extraction. Misma funcion (cementerio) pero la Surgical ademas arranca las copias del mazo; a cambio te cuesta 2 vidas si no tienes mana negro.",
     "Manabase: los 9 fetch pasan a ser 3 Arid Mesa / 3 Scalding Tarn / 3 Wooded Foothills (antes 3 Bloodstained Mire / 3 Scalding Tarn / 2 Wooded Foothills / 1 Arid Mesa). Cambio cosmetico: buscan lo mismo."
   ],
-  "pendienteDeDecidir": "El cambio propuesto en el brainstorm del 6-sep-2026 sigue SIN aplicar: -1 Consign to Memory, +1 Spell Snare (de 4/2 a 3/3). Cuatro senales apuntan ahi (el campo sube Spell Snare 60->83%, la guia de ethanmtg lo nombra la respuesta al Psychic Frog, el 41% del meta local juega una amenaza clave de coste 2, y tres de las cuatro alarmas del radar se contestan con Snare). Esperando el OK de Fer.",
+  "pendienteDeDecidir": "El cambio propuesto en el brainstorm del 6-sep-2026 sigue SIN aplicar: -1 Consign to Memory, +1 Spell Snare (de 4/2 a 3/3). Cuatro senales apuntan ahi (las listas de Izzet suben Spell Snare 60->83%, la guia de ethanmtg lo nombra la respuesta al Psychic Frog, el 41% del meta local juega una amenaza clave de coste 2, y tres de las cuatro alarmas del radar se contestan con Snare). Esperando el OK de Fer.",
   "loQueNoEntra": "Stormchaser's Talent, Monstrous Rage, Assault Strobe y Boomerang Basics son la variante burn: otro mazo, no una mejora de este. Tus listas Basics y Aggro lo llevaban y viven en los datos, pero desde la Liga 9 no las juegas y el dashboard ya no las mide."
 }

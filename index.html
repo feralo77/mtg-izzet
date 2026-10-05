@@ -474,7 +474,7 @@
 
   <!-- ===== BRAINSTORM — el radar de metajuego y la ultima reflexion =====
        El radar lo calcula el robot (scripts/radar_meta.mjs, cron cada 4 dias):
-       cruza el campo global de Modern, la frecuencia real en la liga y el record
+       cruza el metajuego global de Modern, la frecuencia real en la liga y el record
        de Fer, y avisa cuando un mazo sube y el winrate contra el es bajo.
        La reflexion la escribe Claude en el brainstorm y se pinta desde el .md
        del repo, asi que un brainstorm nuevo aparece aqui solo. -->
@@ -488,9 +488,9 @@
     <div class="author"><span class="ic"></span><div><b>Meta del arquetipo &middot; mtgtop8</b> — la "lista media" de UR / Izzet Prowess sobre <b>60 listas recientes</b> (ventana de 28 días), con varianzas, tendencia (se refresca solo cada 2 días), cómo se compara con tu <b>75 v2</b> y la <b>lectura del coach</b>: qué significa cada divergencia y cómo pesa en TU liga. Fuente: <span id="metaFuente"></span>.</div></div>
     <div class="kpis" id="metaKpis"></div>
     <div class="insight" id="metaSug"></div>
-    <div class="panel full" style="margin-bottom:16px"><h3>Tu 75 vs el campo <span>&middot; qué juega el campo que tú no &middot; dónde te desvías</span></h3><div id="metaDeltas"></div></div>
+    <div class="panel full" style="margin-bottom:16px"><h3>Tu 75 vs las listas de Izzet <span>&middot; qué llevan las demás listas de Izzet que tú no &middot; dónde te desvías</span></h3><div id="metaDeltas"></div></div>
     <div class="panel full" style="margin-bottom:16px"><h3>Lectura del coach <span>&middot; qué significan las divergencias y cómo pesan en tu liga &middot; Claude, 22-jul-2026</span></h3><div id="metaCoach"></div></div>
-    <div class="panel full" style="margin-bottom:16px"><h3>Tu meta local vs el campo global <span>&middot; lo que de verdad te juegas (récords en vivo, cruzados con tu guía de sideboard)</span></h3><div style="overflow-x:auto"><table id="metaLocal"></table></div>
+    <div class="panel full" style="margin-bottom:16px"><h3>Tu meta local vs el metajuego global <span>&middot; lo que de verdad te juegas (récords en vivo, cruzados con tu guía de sideboard)</span></h3><div style="overflow-x:auto"><table id="metaLocal"></table></div>
       <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">El sideboard se construye para lo que TE juegas, no para el top 8 de otros: esta tabla es tu meta real, ordenada por frecuencia, con el plan de la pestaña <b>La 75 Definitiva</b> al lado.</div></div>
     <div class="grid">
       <div class="panel"><h3>Lista media — Main <span>(consenso &middot; copias típicas &middot; rango)</span></h3><div id="metaMain"></div></div>
@@ -549,7 +549,7 @@
               <li><b>Team Cosmos Prowess</b> — <a href="https://www.mtggoldfish.com/deck/7881436" target="_blank" rel="noopener">mtggoldfish.com/deck/7881436</a></li>
               <li><b>One-of spread</b> (copias sueltas) — <a href="https://www.mtggoldfish.com/deck/7809957" target="_blank" rel="noopener">mtggoldfish.com/deck/7809957</a></li>
             </ul>
-            <p class="gp" style="margin-top:10px;color:var(--text-muted)">Del cierre de la guía: "jugar la build stock es la mejor forma de atacar este meta — el campo es muy diverso. Céntrate en el plan primario de correr el game 1; el mainboard stock maximiza la consistencia".</p>
+            <p class="gp" style="margin-top:10px;color:var(--text-muted)">Del cierre de la guía: "jugar la build stock es la mejor forma de atacar este meta — el metajuego es muy diverso. Céntrate en el plan primario de correr el game 1; el mainboard stock maximiza la consistencia".</p>
           </div>
           <div class="gcard">
             <h4>Flex slots del mainboard</h4>
@@ -2392,7 +2392,7 @@ function setTheme(t){
 // ---- BRAINSTORM: el radar de metajuego y la última reflexión ----------------
 // Dos piezas con dueños distintos, y la pestaña lo dice:
 //   - EL RADAR lo calcula el robot (scripts/radar_meta.mjs, cron cada 4 días).
-//     Cruza el campo global de Modern, la frecuencia real en la liga y el récord
+//     Cruza el metajuego global de Modern, la frecuencia real en la liga y el récord
 //     de Fer. Si un mazo sube y el winrate es bajo, salta la alarma.
 //   - LA REFLEXIÓN la escribo yo en el brainstorm. Qué carta responde a qué mazo
 //     no sale de los datos, así que el robot no se lo inventa: solo avisa de
@@ -2473,18 +2473,18 @@ async function renderBrain() {
     Último el <b>${esc(B.ultimo || '—')}</b>${B.diasDesde != null ? ` (hace ${B.diasDesde} día${B.diasDesde === 1 ? '' : 's'})` : ''} ·
     cadencia cada <b>${B.cadenciaDias} días</b> · siguiente <b>${esc(B.proximo || '—')}</b>.
     <span style="color:var(--tx2)">Para lanzarlo, pídemelo: <span style="font-family:var(--mono)">/mtg-expert</span>. El robot detecta, pero qué carta responde a qué mazo es criterio de Magic y no se calcula.</span>
-    <div style="margin-top:8px;font-size:11.5px;color:var(--tx3)">Radar recalculado el ${esc(R.generado)} · campo: ${R.campo.mazos} mazos de Modern en mtgtop8 · tu liga: ${R.liga.ahora.partidas} partidas (${esc(R.liga.ahora.desde)} → ${esc(R.liga.ahora.hasta)}) frente a las ${R.liga.antes.partidas} anteriores.${R.liga.muestra ? ' ' + esc(R.liga.muestra.nota) : ''}</div>
+    <div style="margin-top:8px;font-size:11.5px;color:var(--tx3)">Radar recalculado el ${esc(R.generado)} · metajuego: ${R.campo.mazos} mazos de Modern en mtgtop8 · tu liga: ${R.liga.ahora.partidas} partidas (${esc(R.liga.ahora.desde)} → ${esc(R.liga.ahora.hasta)}) frente a las ${R.liga.antes.partidas} anteriores.${R.liga.muestra ? ' ' + esc(R.liga.muestra.nota) : ''}</div>
   </div>`;
 
   const CLS = { 'adaptarse': 'des', 'pinta-mal': 'des', 'vigilar': 'par', 'nuevo': 'fav' };
-  const ETI = { 'adaptarse': 'ADAPTARSE', 'pinta-mal': 'PINTA MAL', 'vigilar': 'VIGILAR', 'nuevo': 'NUEVO EN EL CAMPO' };
+  const ETI = { 'adaptarse': 'ADAPTARSE', 'pinta-mal': 'PINTA MAL', 'vigilar': 'VIGILAR', 'nuevo': 'NUEVO EN EL METAJUEGO' };
   const alarmas = !R.alarmas.length
     ? '<div class="note-lg">Sin alarmas: nada ha subido lo suficiente como para obligarte a cambiar el banquillo.</div>'
     : `<div class="sb">${R.alarmas.map(a => {
       const d = a.datos, c = d.campo;
       const trozos = [];
       trozos.push(`tu liga ${d.frecLiga}%${d.deltaLiga != null ? ` (${d.deltaLiga >= 0 ? '+' : ''}${d.deltaLiga})` : ''}`);
-      if (c) trozos.push(`campo ${c.pct}%${c.delta != null ? ` (${c.delta >= 0 ? '+' : ''}${c.delta})` : ''} · "${esc(c.global)}"`);
+      if (c) trozos.push(`metajuego ${c.pct}%${c.delta != null ? ` (${c.delta >= 0 ? '+' : ''}${c.delta})` : ''} · "${esc(c.global)}"`);
       trozos.push(d.n ? `tu récord ${d.w}-${d.l} (${d.wr}%, n=${d.n})` : 'sin partidas tuyas');
       return `<div class="mc ${CLS[a.nivel]}">
         <div class="mh"><span class="mn">${esc(a.mazo)}</span><span class="mmeta">${ETI[a.nivel]}</span></div>
@@ -2497,12 +2497,12 @@ async function renderBrain() {
   const avisoBase = R.liga.hayBase ? '' :
     `<div class="insight" style="margin-top:var(--gap)"><div class="ic"></div><div>${esc(R.liga.avisoBase)}</div></div>`;
   const avisoStale = R.campoFresco === false ?
-    `<div class="insight" style="margin-top:var(--gap)"><div class="ic"></div><div><b>El campo global no se ha podido refrescar.</b> mtgtop8 no respondió, así que los porcentajes de fuera son los del ${esc(R.campoDesde)}. Tu liga y tu récord sí están al día.</div></div>` : '';
+    `<div class="insight" style="margin-top:var(--gap)"><div class="ic"></div><div><b>El metajuego global no se ha podido refrescar.</b> mtgtop8 no respondió, así que los porcentajes de fuera son los del ${esc(R.campoDesde)}. Tu liga y tu récord sí están al día.</div></div>` : '';
   const avisoCampo = (R.campoFresco === false || R.hayComparacionCampo) ? '' :
-    `<div class="insight" style="margin-top:var(--gap)"><div class="ic"></div><div>Primera corrida del radar: todavía no hay con qué comparar el campo global. Las subidas y bajadas de fuera aparecerán en la siguiente.</div></div>`;
+    `<div class="insight" style="margin-top:var(--gap)"><div class="ic"></div><div>Primera corrida del radar: todavía no hay con qué comparar el metajuego global. Las subidas y bajadas de fuera aparecerán en la siguiente.</div></div>`;
 
   const tabla = `<div class="panel full" style="margin-top:var(--gap)">
-    <h3>Tu liga frente al campo <span>· ordenado por lo que más te cruzas</span></h3>
+    <h3>Tu liga frente al metajuego <span>· ordenado por lo que más te cruzas</span></h3>
     <div style="overflow-x:auto"><table><thead><tr><th>Mazo</th><th style="text-align:center">Tu liga ahora</th><th style="text-align:center">Antes</th><th style="text-align:center">Cambio</th><th style="text-align:center">Tu récord</th></tr></thead><tbody>
     ${R.liga.arquetipos.filter(a => a.frec > 0 || a.n_ > 0).slice(0, 18).map(a => {
       const d = a.delta;
@@ -2559,7 +2559,7 @@ async function renderDef75(){
         <div style="font-size:11.5px;color:var(--tx2);margin-top:10px">${esc(MI75.notaTierras||'')}</div>
         <div style="font-size:11.5px;color:var(--tx2);margin-top:8px">${esc(MI75.porQueEsteMain||'')}</div>
       </div>
-      <div class="panel"><h3>Banquillo (${sideN}) <span>&middot; ponderado a tu liga, no al campo</span></h3>
+      <div class="panel"><h3>Banquillo (${sideN}) <span>&middot; ponderado a tu liga, no al metajuego</span></h3>
         <table style="margin-top:2px"><tbody>
         ${MI75.side.map(x=>`<tr><td style="width:1%;white-space:nowrap;font-family:var(--mono);font-weight:800;color:var(--mid)">${x.q}</td><td style="width:1%;white-space:nowrap"><b>${esc(x.n)}</b></td><td style="white-space:normal;color:var(--tx2);font-size:11.5px">${esc(x.para||'')}</td></tr>`).join('')}
         </tbody></table>
@@ -2623,15 +2623,15 @@ async function renderMetaTab(){
 function renderCoach(){
   const rows=[
     ["El núcleo está cerrado; la edición vive en la manabase y el sideboard","El 82% del main es fijo en las 60 listas: 4 DRC, 4 Swiftspear, 4 Slickshot, 4 Cutter, 4 Bolt, 4 Dart, 4 Bauble, 4 Preordain, 4 Growth. Ahí no se inventa. Lo que se discute es Expressive Iteration vs el paquete burn, la 2ª Violent Urge, la manabase (Bloodstained Mire) y el sideboard — eso es lo que ajusta tu 75 v2."],
-    ["Bloodstained Mire (97% del campo): ya está en tu v2","Un mes atrás dudabas; hoy es casi unánime. Cada fetch alimenta el delirium del Dragon's Rage Channeler (con Bauble ya llevas artefacto) y lo hace pegar como 3/3 volador antes. La v2 ya lleva 2. Mide una cosa en tus games: en cuántos tu DRC entra en delirium para el turno 3."],
-    ["Murktide Regent: la palanca de tu mirror (0-2), ya en tu SB","El campo la juega al 22% en el sideboard justo para esto. Vas 0-2 en el mirror; post-side se alarga (los dos lleváis removal barato) y un volador enorme que sus Bolt no matan decide solo. Entra en el mirror, vs Dimir/Grixis Frog y vs midrange lento; nunca vs combo."],
-    ["Tormod's Crypt (a 2) antes que Surgical Extraction","El campo global se reparte (Crypt 68% típico 1, Surgical 35%); en TU meta la familia Goryo's/Reanimator es tu peor matchup y ahí Crypt gana: coste 0 (medio turno cuando vas al robo, tu agujero) y se activa en respuesta al trigger de reanimación. Por eso tu v2 sube a 2 Crypt y no lleva Surgical."],
-    ["Mystical Dispute (15% del campo): tu liga la justifica","El dato global la infravalora porque el campo juega menos azul que tu liga (Dimir Frog, Azorius, el propio mirror). Contra mazo azul cuesta 1: coge su Cutter, su Counterspell o su Frog a precio de saldo. Se queda mientras tu meta local sea así de azul."],
+    ["Bloodstained Mire (97% de las listas de Izzet): ya está en tu v2","Un mes atrás dudabas; hoy es casi unánime. Cada fetch alimenta el delirium del Dragon's Rage Channeler (con Bauble ya llevas artefacto) y lo hace pegar como 3/3 volador antes. La v2 ya lleva 2. Mide una cosa en tus games: en cuántos tu DRC entra en delirium para el turno 3."],
+    ["Murktide Regent: la palanca de tu mirror (0-2), ya en tu SB","Las listas de Izzet la juegan al 22% en el sideboard justo para esto. Vas 0-2 en el mirror; post-side se alarga (los dos lleváis removal barato) y un volador enorme que sus Bolt no matan decide solo. Entra en el mirror, vs Dimir/Grixis Frog y vs midrange lento; nunca vs combo."],
+    ["Tormod's Crypt (a 2) antes que Surgical Extraction","Las listas de Izzet se reparten (Crypt 68% típico 1, Surgical 35%); en TU meta la familia Goryo's/Reanimator es tu peor matchup y ahí Crypt gana: coste 0 (medio turno cuando vas al robo, tu agujero) y se activa en respuesta al trigger de reanimación. Por eso tu v2 sube a 2 Crypt y no lleva Surgical."],
+    ["Mystical Dispute (15% de las listas de Izzet): tu liga la justifica","El dato global la infravalora porque el metajuego global juega menos azul que tu liga (Dimir Frog, Azorius, el propio mirror). Contra mazo azul cuesta 1: coge su Cutter, su Counterspell o su Frog a precio de saldo. Se queda mientras tu meta local sea así de azul."],
     ["Cómo leer esta pestaña","La lista media es señal direccional (60 listas, ventana 28 días, meta global). El orden correcto de decisión: (1) tu récord real por mazo (tabla de abajo), (2) qué te vas a jugar la próxima liga, (3) el consenso global. Un slot del sideboard se gana el sitio contra un problema real y frecuente TUYO — no contra el top 8 de otros. Tu 75 v2 ya aplica esto."],
   ];
   $('metaCoach').innerHTML=rows.map(r=>`<div class="idea"><span class="n"></span><div><b>${r[0]}.</b> ${r[1]}</div></div>`).join('');
 }
-// ---- Tu meta local vs el campo (récords en vivo + plan del SB) ----
+// ---- Tu meta local vs el metajuego global (récords en vivo + plan del SB) ----
 function renderMetaLocal(){
   const m={};M().forEach(d=>{if(!d.aq||d.aq.startsWith('N/A'))return;(m[d.aq]=m[d.aq]||{w:0,l:0})[d.r==='W'?'w':'l']++;});
   const sb={};((GUIASB&&GUIASB.matchups)||[]).forEach(m=>(m.aq||[]).forEach(a=>sb[a]={in:(m.in||[]).join(' \u00b7 ')}));
@@ -2661,11 +2661,11 @@ function paintMeta(j){
 function paintDeltas(d){
   if(!d){$('metaDeltas').innerHTML='<div style="color:var(--tx2)">Sin lista de referencia. Crea <b>meta/mi-75.json</b> con tu 75.</div>';return;}
   const tag=z=>`<span class="tag">${z}</span>`;
-  const A=d.campoJuegaYoNo.map(c=>`<div>· <b style="color:var(--winL)">${c.n}</b> — campo ${c.pct}% ${tag(c.zona)}</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
-  const Cc=d.yoJuegoCampoNo.map(c=>`<div>· <b>${c.n}</b> ${tag(c.zona)} — solo ${c.pct}% del campo</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
+  const A=d.campoJuegaYoNo.map(c=>`<div>· <b style="color:var(--winL)">${c.n}</b> — listas de Izzet ${c.pct}% ${tag(c.zona)}</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
+  const Cc=d.yoJuegoCampoNo.map(c=>`<div>· <b>${c.n}</b> ${tag(c.zona)} — solo ${c.pct}% de las listas de Izzet</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
   const B=d.desviaciones.filter(x=>!x.menor).map(c=>`<div>· <b>${c.n}</b> ${tag(c.zona)} — tú ${c.mio}, consenso ${c.campo}</div>`).join('')||'<div style="color:var(--tx3)">nada</div>';
   const Bm=d.desviaciones.filter(x=>x.menor).map(c=>`${c.n} (${c.mio}/${c.campo})`).join(' · ');
-  $('metaDeltas').innerHTML=`<div class="io" style="grid-template-columns:1fr 1fr;gap:18px"><div><span style="${MLBL}">El campo juega y tú no · ${d.lista}</span><div style="font-size:12.5px;line-height:1.75">${A}</div></div><div><span style="${MLBL}">Tú juegas y el campo apenas</span><div style="font-size:12.5px;line-height:1.75">${Cc}</div></div></div><div style="margin-top:14px"><span style="${MLBL}">Desvíos de conteo</span><div style="font-size:12.5px;line-height:1.75">${B}</div>${Bm?`<div style="font-size:11px;color:var(--tx3);margin-top:5px">Manabase (ruido ±1, no accionable): ${Bm}</div>`:''}</div>`;
+  $('metaDeltas').innerHTML=`<div class="io" style="grid-template-columns:1fr 1fr;gap:18px"><div><span style="${MLBL}">Las listas de Izzet lo llevan y tú no · ${d.lista}</span><div style="font-size:12.5px;line-height:1.75">${A}</div></div><div><span style="${MLBL}">Tú lo juegas y las listas de Izzet apenas</span><div style="font-size:12.5px;line-height:1.75">${Cc}</div></div></div><div style="margin-top:14px"><span style="${MLBL}">Desvíos de conteo</span><div style="font-size:12.5px;line-height:1.75">${B}</div>${Bm?`<div style="font-size:11px;color:var(--tx3);margin-top:5px">Manabase (ruido ±1, no accionable): ${Bm}</div>`:''}</div>`;
 }
 function paintTrend(t){
   if(!t||!t.hayPrevio){$('metaTrend').innerHTML='<div style="color:var(--tx2)">Primera tirada: aún no hay con qué comparar. En la próxima (cada 2 días) verás aquí qué sube, qué baja y qué entra nuevo en el meta.</div>';return;}
