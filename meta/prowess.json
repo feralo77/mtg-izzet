@@ -1,9 +1,9 @@
 {
-  "generado": "2026-10-03",
+  "generado": "2026-10-05",
   "fuente": "https://mtgtop8.com/archetype?a=351&meta=54&f=MO",
   "mazos": 60,
   "ventanaDias": 28,
-  "consenso": 38,
+  "consenso": 45,
   "listaMedia": {
     "main": [
       {
@@ -27,12 +27,12 @@
         "q": 4
       },
       {
-        "n": "Thundering Falls",
-        "q": 1
-      },
-      {
         "n": "Scalding Tarn",
         "q": 3
+      },
+      {
+        "n": "Thundering Falls",
+        "q": 1
       },
       {
         "n": "Expressive Iteration",
@@ -43,7 +43,7 @@
         "q": 4
       },
       {
-        "n": "Monastery Swiftspear",
+        "n": "Lava Dart",
         "q": 4
       },
       {
@@ -51,36 +51,32 @@
         "q": 3
       },
       {
-        "n": "Lava Dart",
-        "q": 4
-      },
-      {
         "n": "Fiery Islet",
         "q": 2
+      },
+      {
+        "n": "Monastery Swiftspear",
+        "q": 4
       },
       {
         "n": "Bloodstained Mire",
         "q": 3
       },
       {
-        "n": "Wooded Foothills",
-        "q": 2
-      },
-      {
         "n": "Arid Mesa",
         "q": 3
-      },
-      {
-        "n": "Slickshot Show-Off",
-        "q": 4
       },
       {
         "n": "Mutagenic Growth",
         "q": 4
       },
       {
-        "n": "Unholy Heat",
-        "q": 1
+        "n": "Slickshot Show-Off",
+        "q": 4
+      },
+      {
+        "n": "Wooded Foothills",
+        "q": 2
       }
     ],
     "side": [
@@ -89,15 +85,11 @@
         "q": 3
       },
       {
-        "n": "Meltdown",
-        "q": 2
-      },
-      {
         "n": "Unholy Heat",
         "q": 3
       },
       {
-        "n": "Spell Pierce",
+        "n": "Meltdown",
         "q": 2
       },
       {
@@ -105,40 +97,49 @@
         "q": 2
       },
       {
-        "n": "Surgical Extraction",
-        "q": 1
+        "n": "Spell Pierce",
+        "q": 2
       },
       {
         "n": "Obsidian Charmaw",
         "q": 2
+      },
+      {
+        "n": "Surgical Extraction",
+        "q": 1
       }
     ],
-    "totalMain": 61,
+    "totalMain": 60,
     "totalSide": 15,
     "sideDisputa": [
       {
+        "n": "Tormod's Crypt",
+        "pct": 35,
+        "q": 1
+      },
+      {
         "n": "Mystical Dispute",
-        "pct": 30,
+        "pct": 28,
         "q": 3
       },
       {
-        "n": "Tormod's Crypt",
-        "pct": 30,
-        "q": 2
+        "n": "Murktide Regent",
+        "pct": 23,
+        "q": 1
       },
       {
         "n": "Into the Flood Maw",
-        "pct": 23,
+        "pct": 22,
         "q": 2
       },
       {
         "n": "Blood Moon",
-        "pct": 17,
+        "pct": 22,
         "q": 1
       },
       {
         "n": "Stern Scolding",
-        "pct": 15,
+        "pct": 18,
         "q": 1
       }
     ]
@@ -157,16 +158,16 @@
       "n": "Preordain",
       "decks": 60,
       "pct": 100,
-      "avg": 4,
+      "avg": 3.97,
       "typical": 4,
-      "min": 4,
+      "min": 2,
       "max": 4
     },
     {
       "n": "Lightning Bolt",
       "decks": 60,
       "pct": 100,
-      "avg": 3.85,
+      "avg": 3.82,
       "typical": 4,
       "min": 3,
       "max": 4
@@ -175,107 +176,98 @@
       "n": "Steam Vents",
       "decks": 60,
       "pct": 100,
-      "avg": 3.17,
+      "avg": 3.22,
       "typical": 3,
       "min": 2,
       "max": 4
     },
     {
       "n": "Dragon's Rage Channeler",
-      "decks": 59,
-      "pct": 98,
+      "decks": 58,
+      "pct": 97,
       "avg": 4,
       "typical": 4,
       "min": 4,
       "max": 4
     },
     {
-      "n": "Thundering Falls",
-      "decks": 59,
-      "pct": 98,
-      "avg": 1.02,
-      "typical": 1,
-      "min": 1,
-      "max": 2
-    },
-    {
       "n": "Scalding Tarn",
-      "decks": 57,
-      "pct": 95,
+      "decks": 58,
+      "pct": 97,
       "avg": 3.02,
       "typical": 3,
       "min": 1,
       "max": 4
     },
     {
+      "n": "Thundering Falls",
+      "decks": 58,
+      "pct": 97,
+      "avg": 1.03,
+      "typical": 1,
+      "min": 1,
+      "max": 2
+    },
+    {
       "n": "Expressive Iteration",
-      "decks": 53,
-      "pct": 88,
-      "avg": 3.43,
+      "decks": 55,
+      "pct": 92,
+      "avg": 3.42,
       "typical": 4,
       "min": 2,
       "max": 4
     },
     {
       "n": "Cori-Steel Cutter",
-      "decks": 51,
-      "pct": 85,
+      "decks": 48,
+      "pct": 80,
       "avg": 4,
       "typical": 4,
       "min": 4,
       "max": 4
     },
     {
-      "n": "Monastery Swiftspear",
-      "decks": 51,
-      "pct": 85,
-      "avg": 3.98,
+      "n": "Lava Dart",
+      "decks": 48,
+      "pct": 80,
+      "avg": 4,
       "typical": 4,
-      "min": 3,
+      "min": 4,
       "max": 4
     },
     {
       "n": "Mountain",
-      "decks": 51,
-      "pct": 85,
-      "avg": 2.45,
+      "decks": 47,
+      "pct": 78,
+      "avg": 2.57,
       "typical": 3,
-      "min": 1,
+      "min": 2,
       "max": 3
-    },
-    {
-      "n": "Lava Dart",
-      "decks": 50,
-      "pct": 83,
-      "avg": 4,
-      "typical": 4,
-      "min": 4,
-      "max": 4
     },
     {
       "n": "Fiery Islet",
       "decks": 47,
       "pct": 78,
-      "avg": 1.64,
+      "avg": 1.57,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
-      "n": "Bloodstained Mire",
-      "decks": 45,
-      "pct": 75,
-      "avg": 2.76,
-      "typical": 3,
-      "min": 1,
+      "n": "Monastery Swiftspear",
+      "decks": 46,
+      "pct": 77,
+      "avg": 3.89,
+      "typical": 4,
+      "min": 2,
       "max": 4
     },
     {
-      "n": "Wooded Foothills",
-      "decks": 43,
-      "pct": 72,
-      "avg": 2.35,
-      "typical": 2,
+      "n": "Bloodstained Mire",
+      "decks": 44,
+      "pct": 73,
+      "avg": 2.7,
+      "typical": 3,
       "min": 1,
       "max": 4
     },
@@ -283,43 +275,52 @@
       "n": "Arid Mesa",
       "decks": 41,
       "pct": 68,
-      "avg": 2.32,
+      "avg": 2.29,
       "typical": 3,
       "min": 1,
-      "max": 4
-    },
-    {
-      "n": "Slickshot Show-Off",
-      "decks": 40,
-      "pct": 67,
-      "avg": 3.58,
-      "typical": 4,
-      "min": 2,
       "max": 4
     },
     {
       "n": "Mutagenic Growth",
       "decks": 40,
       "pct": 67,
-      "avg": 3.4,
+      "avg": 3.42,
       "typical": 4,
       "min": 2,
       "max": 4
     },
     {
+      "n": "Slickshot Show-Off",
+      "decks": 37,
+      "pct": 62,
+      "avg": 3.38,
+      "typical": 4,
+      "min": 2,
+      "max": 4
+    },
+    {
+      "n": "Wooded Foothills",
+      "decks": 37,
+      "pct": 62,
+      "avg": 2.32,
+      "typical": 2,
+      "min": 1,
+      "max": 4
+    },
+    {
       "n": "Unholy Heat",
-      "decks": 33,
-      "pct": 55,
-      "avg": 2,
+      "decks": 27,
+      "pct": 45,
+      "avg": 2.33,
       "typical": 1,
       "min": 1,
       "max": 4
     },
     {
       "n": "Violent Urge",
-      "decks": 29,
-      "pct": 48,
-      "avg": 1.76,
+      "decks": 25,
+      "pct": 42,
+      "avg": 1.6,
       "typical": 2,
       "min": 1,
       "max": 2
@@ -328,123 +329,123 @@
       "n": "Island",
       "decks": 20,
       "pct": 33,
-      "avg": 1.85,
-      "typical": 1,
+      "avg": 2.05,
+      "typical": 3,
       "min": 1,
       "max": 3
     },
     {
+      "n": "Tormod's Crypt",
+      "decks": 19,
+      "pct": 32,
+      "avg": 1.26,
+      "typical": 1,
+      "min": 1,
+      "max": 2
+    },
+    {
       "n": "Boomerang Basics",
-      "decks": 18,
-      "pct": 30,
-      "avg": 3.83,
+      "decks": 17,
+      "pct": 28,
+      "avg": 3.65,
       "typical": 4,
       "min": 3,
       "max": 4
     },
     {
+      "n": "Pompous Battlemage",
+      "decks": 17,
+      "pct": 28,
+      "avg": 3.29,
+      "typical": 4,
+      "min": 1,
+      "max": 4
+    },
+    {
       "n": "Stormchaser's Talent",
-      "decks": 18,
-      "pct": 30,
-      "avg": 3.17,
+      "decks": 16,
+      "pct": 27,
+      "avg": 3.06,
       "typical": 4,
       "min": 2,
       "max": 4
     },
     {
-      "n": "Tormod's Crypt",
-      "decks": 13,
-      "pct": 22,
-      "avg": 1.62,
-      "typical": 2,
-      "min": 1,
-      "max": 2
-    },
-    {
       "n": "Spirebluff Canal",
-      "decks": 12,
-      "pct": 20,
+      "decks": 15,
+      "pct": 25,
       "avg": 3.33,
       "typical": 4,
       "min": 1,
       "max": 4
     },
     {
-      "n": "Polluted Delta",
-      "decks": 11,
-      "pct": 18,
-      "avg": 1.73,
-      "typical": 2,
-      "min": 1,
-      "max": 2
-    },
-    {
       "n": "Spell Snare",
-      "decks": 10,
-      "pct": 17,
-      "avg": 2.9,
+      "decks": 14,
+      "pct": 23,
+      "avg": 2.86,
       "typical": 3,
       "min": 2,
       "max": 3
     },
     {
       "n": "Ragavan, Nimble Pilferer",
-      "decks": 9,
-      "pct": 15,
-      "avg": 4,
+      "decks": 13,
+      "pct": 22,
+      "avg": 3.85,
       "typical": 4,
-      "min": 4,
+      "min": 2,
       "max": 4
     },
     {
       "n": "Counterspell",
-      "decks": 9,
-      "pct": 15,
-      "avg": 3.89,
+      "decks": 12,
+      "pct": 20,
+      "avg": 3.83,
       "typical": 4,
       "min": 3,
       "max": 4
     },
     {
       "n": "Murktide Regent",
-      "decks": 9,
-      "pct": 15,
-      "avg": 3,
+      "decks": 12,
+      "pct": 20,
+      "avg": 2.92,
       "typical": 3,
-      "min": 3,
+      "min": 2,
+      "max": 3
+    },
+    {
+      "n": "Polluted Delta",
+      "decks": 12,
+      "pct": 20,
+      "avg": 2.08,
+      "typical": 2,
+      "min": 1,
       "max": 3
     },
     {
       "n": "Subtlety",
-      "decks": 9,
-      "pct": 15,
+      "decks": 12,
+      "pct": 20,
       "avg": 2,
       "typical": 2,
       "min": 2,
       "max": 2
     },
     {
-      "n": "Misty Rainforest",
-      "decks": 9,
-      "pct": 15,
-      "avg": 1.89,
-      "typical": 2,
+      "n": "Force of Negation",
+      "decks": 12,
+      "pct": 20,
+      "avg": 1.08,
+      "typical": 1,
       "min": 1,
       "max": 2
     },
     {
       "n": "Consign to Memory",
-      "decks": 9,
-      "pct": 15,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Force of Negation",
-      "decks": 9,
-      "pct": 15,
+      "decks": 12,
+      "pct": 20,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -452,69 +453,51 @@
     },
     {
       "n": "Spell Pierce",
-      "decks": 9,
-      "pct": 15,
+      "decks": 12,
+      "pct": 20,
       "avg": 1,
       "typical": 1,
       "min": 1,
       "max": 1
     },
     {
-      "n": "Experimental Synthesizer",
-      "decks": 6,
-      "pct": 10,
-      "avg": 3,
-      "typical": 4,
-      "min": 2,
-      "max": 4
+      "n": "Misty Rainforest",
+      "decks": 11,
+      "pct": 18,
+      "avg": 2,
+      "typical": 2,
+      "min": 1,
+      "max": 3
     },
     {
       "n": "Flooded Strand",
-      "decks": 6,
-      "pct": 10,
-      "avg": 1.33,
+      "decks": 5,
+      "pct": 8,
+      "avg": 1.4,
       "typical": 1,
       "min": 1,
       "max": 2
     },
     {
-      "n": "Surgical Extraction",
+      "n": "Experimental Synthesizer",
       "decks": 4,
       "pct": 7,
-      "avg": 1.5,
-      "typical": 2,
-      "min": 1,
-      "max": 2
-    },
-    {
-      "n": "Stomping Ground",
-      "decks": 4,
-      "pct": 7,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Pompous Battlemage",
-      "decks": 3,
-      "pct": 5,
-      "avg": 3.67,
-      "typical": 4,
+      "avg": 3.25,
+      "typical": 3,
       "min": 3,
       "max": 4
     },
     {
-      "n": "Heroes' Hangout",
-      "decks": 3,
-      "pct": 5,
-      "avg": 1.67,
-      "typical": 2,
+      "n": "Sacred Foundry",
+      "decks": 4,
+      "pct": 7,
+      "avg": 1,
+      "typical": 1,
       "min": 1,
-      "max": 2
+      "max": 1
     },
     {
-      "n": "Flashback",
+      "n": "Assault Strobe",
       "decks": 3,
       "pct": 5,
       "avg": 1,
@@ -523,25 +506,43 @@
       "max": 1
     },
     {
-      "n": "Quantum Riddler",
+      "n": "Ajani's Anguish",
       "decks": 2,
       "pct": 3,
-      "avg": 4,
-      "typical": 4,
-      "min": 4,
-      "max": 4
-    },
-    {
-      "n": "Arena of Glory",
-      "decks": 2,
-      "pct": 3,
-      "avg": 1.5,
-      "typical": 2,
+      "avg": 1,
+      "typical": 1,
       "min": 1,
-      "max": 2
+      "max": 1
     },
     {
-      "n": "Assault Strobe",
+      "n": "Flashback",
+      "decks": 2,
+      "pct": 3,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Heroes' Hangout",
+      "decks": 2,
+      "pct": 3,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Siege Smash",
+      "decks": 2,
+      "pct": 3,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Sink into Stupor",
       "decks": 2,
       "pct": 3,
       "avg": 1,
@@ -551,6 +552,15 @@
     },
     {
       "n": "Tarfire",
+      "decks": 2,
+      "pct": 3,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Theorist's Sanctum",
       "decks": 2,
       "pct": 3,
       "avg": 1,
@@ -577,7 +587,25 @@
       "max": 3
     },
     {
+      "n": "Snow-Covered Mountain",
+      "decks": 1,
+      "pct": 2,
+      "avg": 3,
+      "typical": 3,
+      "min": 3,
+      "max": 3
+    },
+    {
       "n": "Boltwave",
+      "decks": 1,
+      "pct": 2,
+      "avg": 2,
+      "typical": 2,
+      "min": 2,
+      "max": 2
+    },
+    {
+      "n": "Consider",
       "decks": 1,
       "pct": 2,
       "avg": 2,
@@ -593,15 +621,6 @@
       "typical": 2,
       "min": 2,
       "max": 2
-    },
-    {
-      "n": "Ajani's Anguish",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
     },
     {
       "n": "Barbarian Ring",
@@ -622,7 +641,7 @@
       "max": 1
     },
     {
-      "n": "Brazen Borrower",
+      "n": "Nova Hellkite",
       "decks": 1,
       "pct": 2,
       "avg": 1,
@@ -631,7 +650,7 @@
       "max": 1
     },
     {
-      "n": "Nova Hellkite",
+      "n": "Quantum Riddler",
       "decks": 1,
       "pct": 2,
       "avg": 1,
@@ -649,43 +668,7 @@
       "max": 1
     },
     {
-      "n": "Sacred Foundry",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Seal of Fire",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Siege Smash",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Sink into Stupor",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Theorist's Sanctum",
+      "n": "Stomping Ground",
       "decks": 1,
       "pct": 2,
       "avg": 1,
@@ -699,96 +682,105 @@
       "n": "Consign to Memory",
       "decks": 60,
       "pct": 100,
-      "avg": 3.47,
+      "avg": 3.4,
       "typical": 3,
-      "min": 3,
+      "min": 2,
+      "max": 4
+    },
+    {
+      "n": "Unholy Heat",
+      "decks": 48,
+      "pct": 80,
+      "avg": 2.96,
+      "typical": 3,
+      "min": 1,
       "max": 4
     },
     {
       "n": "Meltdown",
-      "decks": 56,
-      "pct": 93,
-      "avg": 1.7,
+      "decks": 47,
+      "pct": 78,
+      "avg": 1.64,
       "typical": 2,
       "min": 1,
       "max": 3
-    },
-    {
-      "n": "Unholy Heat",
-      "decks": 50,
-      "pct": 83,
-      "avg": 2.98,
-      "typical": 3,
-      "min": 1,
-      "max": 4
-    },
-    {
-      "n": "Spell Pierce",
-      "decks": 45,
-      "pct": 75,
-      "avg": 1.62,
-      "typical": 2,
-      "min": 1,
-      "max": 2
     },
     {
       "n": "Spell Snare",
       "decks": 44,
       "pct": 73,
-      "avg": 1.82,
+      "avg": 1.93,
       "typical": 2,
       "min": 1,
       "max": 3
     },
     {
-      "n": "Surgical Extraction",
-      "decks": 42,
-      "pct": 70,
-      "avg": 1.48,
-      "typical": 1,
+      "n": "Spell Pierce",
+      "decks": 37,
+      "pct": 62,
+      "avg": 1.7,
+      "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Obsidian Charmaw",
-      "decks": 26,
-      "pct": 43,
-      "avg": 2.15,
+      "decks": 36,
+      "pct": 60,
+      "avg": 2.17,
       "typical": 2,
-      "min": 2,
+      "min": 1,
       "max": 4
     },
     {
+      "n": "Surgical Extraction",
+      "decks": 35,
+      "pct": 58,
+      "avg": 1.31,
+      "typical": 1,
+      "min": 1,
+      "max": 2
+    },
+    {
+      "n": "Tormod's Crypt",
+      "decks": 21,
+      "pct": 35,
+      "avg": 1.38,
+      "typical": 1,
+      "min": 1,
+      "max": 2
+    },
+    {
       "n": "Mystical Dispute",
-      "decks": 18,
-      "pct": 30,
-      "avg": 2,
+      "decks": 17,
+      "pct": 28,
+      "avg": 2.35,
       "typical": 3,
       "min": 1,
       "max": 3
     },
     {
-      "n": "Tormod's Crypt",
-      "decks": 18,
-      "pct": 30,
-      "avg": 1.5,
-      "typical": 2,
+      "n": "Murktide Regent",
+      "decks": 14,
+      "pct": 23,
+      "avg": 1.21,
+      "typical": 1,
       "min": 1,
       "max": 2
     },
     {
       "n": "Into the Flood Maw",
-      "decks": 14,
-      "pct": 23,
-      "avg": 1.5,
+      "decks": 13,
+      "pct": 22,
+      "avg": 1.69,
       "typical": 2,
       "min": 1,
       "max": 2
     },
     {
       "n": "Blood Moon",
-      "decks": 10,
-      "pct": 17,
+      "decks": 13,
+      "pct": 22,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -796,8 +788,8 @@
     },
     {
       "n": "Stern Scolding",
-      "decks": 9,
-      "pct": 15,
+      "decks": 11,
+      "pct": 18,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -805,8 +797,8 @@
     },
     {
       "n": "Fire Magic",
-      "decks": 7,
-      "pct": 12,
+      "decks": 8,
+      "pct": 13,
       "avg": 1,
       "typical": 1,
       "min": 1,
@@ -814,48 +806,39 @@
     },
     {
       "n": "Hurkyl's Recall",
-      "decks": 7,
-      "pct": 12,
+      "decks": 8,
+      "pct": 13,
       "avg": 1,
       "typical": 1,
       "min": 1,
       "max": 1
     },
     {
-      "n": "Murktide Regent",
-      "decks": 6,
-      "pct": 10,
-      "avg": 1.33,
-      "typical": 1,
-      "min": 1,
+      "n": "Wear/Tear",
+      "decks": 4,
+      "pct": 7,
+      "avg": 2,
+      "typical": 2,
+      "min": 2,
       "max": 2
     },
     {
-      "n": "Force of Negation",
-      "decks": 3,
-      "pct": 5,
-      "avg": 2.33,
-      "typical": 2,
-      "min": 2,
-      "max": 3
-    },
-    {
-      "n": "Pick Your Poison",
+      "n": "Siege Smash",
       "decks": 3,
       "pct": 5,
       "avg": 1.67,
-      "typical": 2,
-      "min": 1,
-      "max": 2
-    },
-    {
-      "n": "Heritage Reclamation",
-      "decks": 3,
-      "pct": 5,
-      "avg": 1.33,
       "typical": 1,
       "min": 1,
-      "max": 2
+      "max": 3
+    },
+    {
+      "n": "Chandra, Chill of Compliance",
+      "decks": 3,
+      "pct": 5,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
     },
     {
       "n": "Expressive Iteration",
@@ -867,6 +850,42 @@
       "max": 1
     },
     {
+      "n": "Test of Talents",
+      "decks": 3,
+      "pct": 5,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Brazen Borrower",
+      "decks": 2,
+      "pct": 3,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Soul-Guide Lantern",
+      "decks": 2,
+      "pct": 3,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Force of Negation",
+      "decks": 1,
+      "pct": 2,
+      "avg": 3,
+      "typical": 3,
+      "min": 3,
+      "max": 3
+    },
+    {
       "n": "Thoughtseize",
       "decks": 1,
       "pct": 2,
@@ -876,7 +895,7 @@
       "max": 3
     },
     {
-      "n": "Assault Strobe",
+      "n": "Celestial Purge",
       "decks": 1,
       "pct": 2,
       "avg": 2,
@@ -894,7 +913,7 @@
       "max": 2
     },
     {
-      "n": "Redirect Lightning",
+      "n": "Heritage Reclamation",
       "decks": 1,
       "pct": 2,
       "avg": 2,
@@ -910,24 +929,6 @@
       "typical": 2,
       "min": 2,
       "max": 2
-    },
-    {
-      "n": "Wear/Tear",
-      "decks": 1,
-      "pct": 2,
-      "avg": 2,
-      "typical": 2,
-      "min": 2,
-      "max": 2
-    },
-    {
-      "n": "Abandon Attachments",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
     },
     {
       "n": "Abhorrent Oculus",
@@ -948,6 +949,15 @@
       "max": 1
     },
     {
+      "n": "Assault Strobe",
+      "decks": 1,
+      "pct": 2,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
       "n": "Boomerang Basics",
       "decks": 1,
       "pct": 2,
@@ -957,34 +967,7 @@
       "max": 1
     },
     {
-      "n": "Brazen Borrower",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Brotherhood's End",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
       "n": "Case of the Crimson Pulse",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Chandra, Chill of Compliance",
       "decks": 1,
       "pct": 2,
       "avg": 1,
@@ -1020,6 +1003,24 @@
       "max": 1
     },
     {
+      "n": "Flow State",
+      "decks": 1,
+      "pct": 2,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Iroh's Demonstration",
+      "decks": 1,
+      "pct": 2,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
       "n": "It'll Quench Ya!",
       "decks": 1,
       "pct": 2,
@@ -1029,16 +1030,7 @@
       "max": 1
     },
     {
-      "n": "Origin of Metalbending",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Price of Freedom",
+      "n": "Octopus Form",
       "decks": 1,
       "pct": 2,
       "avg": 1,
@@ -1056,43 +1048,34 @@
       "max": 1
     },
     {
+      "n": "Prismatic Ending",
+      "decks": 1,
+      "pct": 2,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Pyroclasm",
+      "decks": 1,
+      "pct": 2,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
+      "n": "Redirect Lightning",
+      "decks": 1,
+      "pct": 2,
+      "avg": 1,
+      "typical": 1,
+      "min": 1,
+      "max": 1
+    },
+    {
       "n": "Rough/Tumble",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Siege Smash",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Soul-Guide Lantern",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Test of Talents",
-      "decks": 1,
-      "pct": 2,
-      "avg": 1,
-      "typical": 1,
-      "min": 1,
-      "max": 1
-    },
-    {
-      "n": "Violent Urge",
       "decks": 1,
       "pct": 2,
       "avg": 1,
@@ -1103,8 +1086,28 @@
   ],
   "tendencia": {
     "hayPrevio": true,
-    "suben": [],
-    "bajan": [],
+    "suben": [
+      {
+        "n": "Pompous Battlemage",
+        "de": 5,
+        "a": 28,
+        "zona": "main"
+      },
+      {
+        "n": "Obsidian Charmaw",
+        "de": 43,
+        "a": 60,
+        "zona": "side"
+      }
+    ],
+    "bajan": [
+      {
+        "n": "Meltdown",
+        "de": 93,
+        "a": 78,
+        "zona": "side"
+      }
+    ],
     "nuevas": [],
     "fuera": []
   },
@@ -1113,22 +1116,22 @@
     "campoJuegaYoNo": [
       {
         "n": "Bloodstained Mire",
-        "pct": 75,
+        "pct": 73,
         "zona": "main"
       },
       {
         "n": "Obsidian Charmaw",
-        "pct": 43,
-        "zona": "side"
-      },
-      {
-        "n": "Mystical Dispute",
-        "pct": 30,
+        "pct": 60,
         "zona": "side"
       },
       {
         "n": "Tormod's Crypt",
-        "pct": 30,
+        "pct": 35,
+        "zona": "side"
+      },
+      {
+        "n": "Mystical Dispute",
+        "pct": 28,
         "zona": "side"
       }
     ],
@@ -1136,7 +1139,13 @@
       {
         "n": "Violent Urge",
         "mio": 2,
-        "pct": 48,
+        "pct": 42,
+        "zona": "main"
+      },
+      {
+        "n": "Unholy Heat",
+        "mio": 1,
+        "pct": 45,
         "zona": "main"
       }
     ],
@@ -1145,7 +1154,7 @@
         "n": "Expressive Iteration",
         "mio": 3,
         "campo": 4,
-        "pct": 88,
+        "pct": 92,
         "zona": "main",
         "menor": false
       },
@@ -1153,7 +1162,7 @@
         "n": "Wooded Foothills",
         "mio": 3,
         "campo": 2,
-        "pct": 72,
+        "pct": 62,
         "zona": "main",
         "menor": true
       },
@@ -1169,20 +1178,24 @@
         "n": "Surgical Extraction",
         "mio": 2,
         "campo": 1,
-        "pct": 70,
+        "pct": 58,
         "zona": "side",
         "menor": false
       }
     ]
   },
   "sugerencias": [
-    "Las listas de Izzet juegan Bloodstained Mire (75% · main) y tu lista no lo lleva.",
-    "Las listas de Izzet juegan Obsidian Charmaw (43% · side) y tu lista no lo lleva.",
-    "Las listas de Izzet juegan Mystical Dispute (30% · side) y tu lista no lo lleva.",
-    "Las listas de Izzet juegan Tormod's Crypt (30% · side) y tu lista no lo lleva.",
+    "Las listas de Izzet juegan Bloodstained Mire (73% · main) y tu lista no lo lleva.",
+    "Las listas de Izzet juegan Obsidian Charmaw (60% · side) y tu lista no lo lleva.",
+    "Las listas de Izzet juegan Tormod's Crypt (35% · side) y tu lista no lo lleva.",
+    "Las listas de Izzet juegan Mystical Dispute (28% · side) y tu lista no lo lleva.",
     "Expressive Iteration (main): tu 3, el consenso 4.",
     "Consign to Memory (side): tu 4, el consenso 3.",
     "Surgical Extraction (side): tu 2, el consenso 1.",
-    "Llevas Violent Urge (main) pero solo el 48% de las listas de Izzet lo juega."
+    "Llevas Violent Urge (main) pero solo el 42% de las listas de Izzet lo juega.",
+    "Llevas Unholy Heat (main) pero solo el 45% de las listas de Izzet lo juega.",
+    "Sube Pompous Battlemage: 5% → 28%.",
+    "Sube Obsidian Charmaw: 43% → 60%.",
+    "Baja Meltdown: 93% → 78%."
   ]
 }
