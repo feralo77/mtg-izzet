@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-05",
+ "generado": "2026-10-06",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 29,
+  "diasDesde": 30,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-05",
+ "campoDesde": "2026-10-06",
  "campoError": null,
  "campo": {
-  "mazos": 749,
+  "mazos": 747,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -37,15 +37,15 @@
     "pct": 10
    },
    {
-    "n": "Blink",
-    "pct": 7
-   },
-   {
-    "n": "Affinity",
+    "n": "4/5c Aggro",
     "pct": 6
    },
    {
-    "n": "4/5c Aggro",
+    "n": "Blink",
+    "pct": 6
+   },
+   {
+    "n": "Affinity",
     "pct": 6
    },
    {
@@ -54,27 +54,31 @@
    },
    {
     "n": "Hollow One",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "Rakdos Aggro",
     "pct": 0.9
    },
    {
-    "n": "Mardu Aggro",
-    "pct": 0.7
-   },
-   {
     "n": "Red Deck Wins",
-    "pct": 0.7
+    "pct": 0.8
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 0.7
+    "pct": 0.8
+   },
+   {
+    "n": "Mardu Aggro",
+    "pct": 0.5
    },
    {
     "n": "Simic Birthing Ritual",
     "pct": 0.4
+   },
+   {
+    "n": "Merfolk",
+    "pct": 0.3
    },
    {
     "n": "Eldrazi Aggro",
@@ -85,11 +89,7 @@
     "pct": 0.1
    },
    {
-    "n": "Merfolk",
-    "pct": 0.1
-   },
-   {
-    "n": "Other - Aggro",
+    "n": "Golgari Aggro",
     "pct": 0.1
    },
    {
@@ -118,19 +118,23 @@
    },
    {
     "n": "Jeskai Control",
+    "pct": 0.7
+   },
+   {
+    "n": "Grixis Control",
     "pct": 0.5
    },
    {
     "n": "4/5c Control",
-    "pct": 0.3
-   },
-   {
-    "n": "Other - Control",
     "pct": 0.4
    },
    {
+    "n": "Other - Control",
+    "pct": 0.5
+   },
+   {
     "n": "Broodscale Bloodchief",
-    "pct": 20
+    "pct": 19
    },
    {
     "n": "Creatures Toolbox",
@@ -138,26 +142,26 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "Ruby Storm",
     "pct": 3
    },
    {
-    "n": "Living End",
-    "pct": 2
-   },
-   {
     "n": "Amulet Titan",
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Living End",
     "pct": 2
    },
    {
     "n": "Allosaurus Combo",
+    "pct": 2
+   },
+   {
+    "n": "Landless",
     "pct": 2
    },
    {
@@ -177,15 +181,19 @@
     "pct": 0.4
    },
    {
+    "n": "Creativity",
+    "pct": 0.3
+   },
+   {
     "n": "Valakut",
     "pct": 0.3
    },
    {
-    "n": "Creativity",
+    "n": "Song of Creation",
     "pct": 0.1
    },
    {
-    "n": "Song of Creation",
+    "n": "Infect",
     "pct": 0.1
    },
    {
@@ -578,9 +586,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 5,
+     "pct": 4,
      "pctPrev": 5,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 5,
@@ -598,9 +606,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 20,
+     "pct": 19,
      "pctPrev": 20,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 4,
