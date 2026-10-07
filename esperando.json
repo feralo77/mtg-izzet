@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-06",
+ "generado": "2026-10-07",
  "rondas": [
   {
    "jugador": "feralo77",
@@ -31,7 +31,7 @@
    "evento": "Liga 18",
    "ronda": "1",
    "rival": "oeni",
-   "mazo": ""
+   "mazo": "Zoo"
   },
   {
    "jugador": "feralo77",
@@ -39,7 +39,7 @@
    "evento": "Liga 18",
    "ronda": "2",
    "rival": "chocapic",
-   "mazo": ""
+   "mazo": "zoo"
   },
   {
    "jugador": "feralo77",
@@ -48,6 +48,62 @@
    "ronda": "3",
    "rival": "ARCBOUND_PAPI",
    "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "06/10/2026",
+   "evento": "Liga 18",
+   "ronda": "4",
+   "rival": "collinismo",
+   "mazo": "broodscale"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "06/10/2026",
+   "evento": "Liga 18",
+   "ronda": "5",
+   "rival": "kellanved0",
+   "mazo": ""
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "07/10/2026",
+   "evento": "Liga 20",
+   "ronda": "1",
+   "rival": "robinbanks",
+   "mazo": "Neoform"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "07/10/2026",
+   "evento": "Liga 20",
+   "ronda": "2",
+   "rival": "",
+   "mazo": "UW Cetro"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "07/10/2026",
+   "evento": "Liga 20",
+   "ronda": "3",
+   "rival": "",
+   "mazo": "UR Murktide"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "07/10/2026",
+   "evento": "Liga 20",
+   "ronda": "4",
+   "rival": "",
+   "mazo": "breach"
+  },
+  {
+   "jugador": "feralo77",
+   "fecha": "07/10/2026",
+   "evento": "Liga 20",
+   "ronda": "5",
+   "rival": "chapter",
+   "mazo": "hollowone"
   }
  ]
 }
