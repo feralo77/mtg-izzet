@@ -116,6 +116,13 @@
     "Eldrazi Tron"
    ],
    "patrones": [
+    "(Actualizado con la revision del 7-oct.) OJO: los 'Eldrazi' de tu liga son casi todos TRUDGE TRON (Slumbering Trudge, Fight Rigging, Fanatic of Rhonas, Green Sun's Zenith), y el autor acaba de escribirle seccion propia: muy desfavorable. Lo de abajo junta las dos secciones.",
+    "Trudge: mulligan agresivo buscando one-drop. Consign sin amenaza de 1 es demasiado incomodo de aguantar, y con 1-2 tierras no puedes presionar y aguantarlo a la vez.",
+    "Trudge: es un matchup de ASUMIR RIESGOS. Sobre-extiendete algo mas de lo normal y juega contra Kozilek's Command (sin pasarte). Trinisphere es la peor carta: congela la mesa y les da tiempo.",
+    "Trudge: Endurance (sobre todo con Green Sun's Zenith) es su respuesta al Slickshot y tambien a tu Consign. Guarda el Mutagenic Growth para proteger el Slickshot.",
+    "Trudge: Slickshot es tu reloj mas rapido y pasa por encima de un Chalice a 1. Que no se lo coma un Kozilek's Command importa mucho.",
+    "Trudge: no gastes dos hechizos de dano en un Fanatic of Rhonas. Prioriza parar el trigger de Fight Rigging. Six tiene alcance (cuidado al atacar con Slickshot). Sire of Seven Deaths es imbatible sin Consign o Boomerang Basics.",
+    "Resumen del autor (Eldrazi Tron): preboard carrera pura y girate entero cada turno. Post-side, en la jugada el one-drop es obligatorio (respuesta a Trinisphere sin amenaza pierde); en el robo vale Consign/Pierce en el turno 1 y amenaza despues. Cutter + hechizos en el turno 3 o Slickshot + varios hechizos dan tempo suficiente.",
     "Carrera pura: en cuanto llegan a 7 manas la partida es suya. Todo va a matarles antes.",
     "Chalice of the Void a 1 y Trinisphere son lo peor que te puede pasar: objetivo numero uno del Consign.",
     "Un Thought-Knot Seer temprano corre y bloquea muy bien: si tienen mesa vacia y lo lanzan, casi siempre toca Consign.",
@@ -341,7 +348,9 @@
     "Juega tu interaccion lo MAS TARDE posible: si no tienen spawns en mesa, espera a que paguen el coste de adaptar del Basking Broodscale antes de matarlo.",
     "Kozilek's Command es su mejor pieza: flexible y ademas les rampea.",
     "La version MONO-VERDE es mas favorable para ti: sin Unholy Heat ni Writhing Chrysalis controlan mucho peor la mesa.",
-    "Post-side, el Warping Wail se juega alrededor teniendo un Lava Dart en el cementerio."
+    "Post-side, el Warping Wail se juega alrededor teniendo un Lava Dart en el cementerio.",
+    "(Nuevo 7-oct.) Mata activamente los Spawns con Lava Dart: su plan contra ti es acelerar mana (salvo que necesites el Dart para defenderte del combo el turno siguiente).",
+    "(Nuevo 7-oct.) SPRINGLEAF DRUM es en secreto su mejor carta contra ti: Urza's Saga en el turno 1, fuente verde, Kozilek's Command al Slickshot un turno antes. El autor ha perdido todas las partidas con Drum en el turno 1 (8+). Si lo bajan pronto, prioriza meter criaturas en mesa, no quemar. Spell Pierce, Boomerang Basics y Meltdown no lo pelean bien."
    ]
   },
   {
@@ -390,6 +399,9 @@
     "Devoted Combo"
    ],
    "patrones": [
+    "(Nuevo 7-oct: el autor le ha escrito seccion, 'Devoted Druid', y lo da como favorable.) Su enfoque: aqui Prowess hace de CONTROL metiendo presion constante. Prioriza quemar las criaturas de mana, no el Badgermole (salvo que ya haya demasiadas). En la jugada, one-drop + hechizo de dano; en el robo, negacion de mana: amenaza y dano a una criatura de mana en el mismo turno. Busca manos con varios hechizos de dano.",
+    "(Nuevo 7-oct.) Lava Dart a Tyvar cuando baja lealtad apuntando al cementerio, y Lava Dart a la tierra animada del Badgermole en su mantenimiento. Guarda antes el Unholy Heat que el Dart o el Bolt: post-side meten Crystal Barricade.",
+    "(Nuevo 7-oct.) Si se llevan el Devoted Druid con Agatha's Soul Cauldron, deja de controlar y corre a cerrar. Post-side cuidado con Kraul Harpooner y Endurance contra el Slickshot (y Endurance/Cauldron te pueden quitar el delirium).",
     "Matchup favorable y tus numeros lo dicen: 3-1. Eres mas rapido y su combo necesita dos criaturas vivas a la vez.",
     "Siempre Bolt (o Dart) al Delighted Halfling en el turno 1. Les quita el mana Y su unica forma de hacer incontrarrestable a Tyvar: el Halfling dice que el mana que produce hace que un hechizo legendario no pueda ser contrarrestado.",
     "Lava Dart se queda DENTRO aunque sea un mazo verde: mata Delighted Halfling (1/1), Vizier of Remedies (2/1) y Birds of Paradise (0/1). Es gratis y con flashback son dos.",
@@ -486,6 +498,6 @@
    ]
   }
  ],
- "nota_patrones": "Campo 'patrones' (12-ago, ampliado 5-sep, actualizado 6-sep con la revision nueva de la guia): patrones de juego migrados del cruce con la guia de ethanmtg (pestana Guia), matchup a matchup. Los 16 estan cruzados. Hollow One no tiene seccion en la guia y Grixis Reanimator hereda la de Goryo's, ambos marcados en su propia lista. El 6-sep el autor reescribio Goryo's, Broodscale, Living End y Neoform (y anadio Esper Blink, que no esta en la liga de Fer): esos cuatro llevan arriba una linea que dice que cambio.",
+ "nota_patrones": "Campo 'patrones' (12-ago, ampliado 5-sep, actualizado 6-sep con la revision nueva de la guia): patrones de juego migrados del cruce con la guia de ethanmtg (pestana Guia), matchup a matchup. Los 16 estan cruzados. Hollow One no tiene seccion en la guia y Grixis Reanimator hereda la de Goryo's, ambos marcados en su propia lista. El 6-sep el autor reescribio Goryo's, Broodscale, Living End y Neoform (y anadio Esper Blink, que no esta en la liga de Fer): esos cuatro llevan arriba una linea que dice que cambio. El 7-oct el autor anadio Devoted Druid y Trudge Tron (este ultimo es lo que tu liga llama 'Eldrazi') y amplio Broodscale (Springleaf Drum) y Eldrazi Tron: esas tres entradas llevan las lineas marcadas con 7-oct.",
  "_pctLocal": "OBSOLETO desde el 15-sep-2026: el porcentaje se calcula EN VIVO en el dashboard sobre las partidas de Fer (registro.csv), igual que el record. Los valores que quedan aqui se computaron cuando el registro sumaba a los tres jugadores y ya no se leen. Se dejan por trazabilidad."
 }

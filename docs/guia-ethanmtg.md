@@ -12,7 +12,7 @@ externa del proyecto. Fer la tiene comprada; el contenido **es de pago y no se s
 
 Es un documento vivo: el autor la actualiza y avisa a los compradores ("this guide will be
 constantly updated"). Además publica cada 2 semanas planes de sideboard nuevos como guías
-aparte. La foto que hay volcada aquí es la del **26-jul-2026**.
+aparte. La foto que hay volcada aquí es la del **7-oct-2026** (ver tabla de fotos).
 
 ## Cómo actualizarla (proceso)
 
@@ -25,7 +25,7 @@ aparte. La foto que hay volcada aquí es la del **26-jul-2026**.
    ```
    python3 scripts/extraer_guia.py                       # guia.pages -> data/guia-texto.txt
    python3 scripts/extraer_guia.py pegado.rtf data/guia-texto.txt   # o desde un pegado
-   diff data/guia-texto-2026-09-06.txt data/guia-texto.txt
+   diff data/guia-texto-2026-10-07.txt data/guia-texto.txt
    ```
 
    El `diff` enseña **solo lo que cambió**, en vez de obligar a releer 11.000 palabras.
@@ -48,6 +48,7 @@ aparte. La foto que hay volcada aquí es la del **26-jul-2026**.
 |---|---|---|
 | 26-jul-2026 | `data/guia-texto-2026-07-26.txt` | de `guia.pages` |
 | 6-sep-2026 | `data/guia-texto-2026-09-06.txt` | pegado de Fer (`data/guia-original-2026-09-06.rtf`) |
+| 7-oct-2026 | `data/guia-texto-2026-10-07.txt` | pegado de Fer en el chat, por secciones (la de septiembre con la *Matchup Guide* sustituida) |
 
 **Alcance de la revisión del 6-sep**: el autor tocó el capítulo principal (*Individual Card
 Choices*, *Play Pattern Guide*, *Play Pattern Deep-Dives* y *Matchup Guide*), que es
@@ -76,6 +77,27 @@ volcada en el dashboard sigue vigente: no hay nada que copiar de ellos.
 - Retoques de veredicto en **Affinity** (manda quien esté en la jugada), **Boros Ponza**
   (positivo preboard, más igualado post-side), **Burn** (protege la vida, busca solo básicas)
   y **Belcher** (Into the Flood Maw es su mejor jugada de control).
+
+## Qué cambió el 7-oct-2026
+
+Fer pegó en el chat *Play Pattern Guide*, *Play Pattern Deep-Dives* y *Matchup Guide*. Las dos
+primeras salen **idénticas** a septiembre. *Individual Card Choices*, mulligan y sideboard no se
+revisaron esta vez (quedan como en septiembre). En la *Matchup Guide*:
+
+- **DEVOTED DRUID**: matchup nuevo, favorable. Prowess hace de control: quemar las criaturas de
+  maná metiendo presión. En la liga es "Devoted Combo".
+- **TRUDGE TRON**: matchup nuevo, muy desfavorable. Mulligan a one-drop, Trinisphere la peor
+  carta, Mutagenic Growth para proteger el Slickshot de Endurance. **En la liga los "Eldrazi" son
+  casi todos Trudge** (Slumbering Trudge, Fight Rigging en `scouting.csv`).
+- **ELDRAZI TRON**: pasa a "desfavorable, por poco" y gana un *Deep-dive summary*.
+- **BROODSCALE**: deja de llamarse "(Gruul)"; vuelve la línea de matar Spawns con Lava Dart y se
+  añade el bloque "Springleaf Drum es en secreto la mejor carta contra Izzet Prowess".
+- Retoques: Affinity (Meltdown cuando entran las fichas de Munitions), Domain Zoo (el problema es
+  Leyline + Scion), Esper Blink (Spell Snare *temprano* para High Noon), Dimir Frog ("practica"),
+  Rhinos (sin la nota de "en pruebas post-ban").
+
+Volcado a la pestaña Guía con la etiqueta `nuevo 7-oct`, y a `meta/guia-sb.json` en Eldrazi,
+Broodscale y Devoted Combo.
 
 ## Estado del cruce con tu plan de sideboard
 
