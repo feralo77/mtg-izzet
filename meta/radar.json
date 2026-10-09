@@ -571,8 +571,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 1,
-     "pctPrev": 2,
-     "delta": -1
+     "pctPrev": 1,
+     "delta": 0
     },
     "w": 3,
     "l": 5,
@@ -671,8 +671,8 @@
     "campo": {
      "global": "4/5c Aggro",
      "pct": 7,
-     "pctPrev": 6,
-     "delta": 1
+     "pctPrev": 7,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
