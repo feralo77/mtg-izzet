@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-12",
+ "generado": "2026-10-13",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 36,
+  "diasDesde": 37,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-12",
+ "campoDesde": "2026-10-13",
  "campoError": null,
  "campo": {
-  "mazos": 997,
+  "mazos": 973,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 8
+    "pct": 9
    },
    {
     "n": "4/5c Aggro",
@@ -65,11 +65,11 @@
     "pct": 1
    },
    {
-    "n": "Red Deck Wins",
-    "pct": 0.5
+    "n": "Simic Birthing Ritual",
+    "pct": 0.4
    },
    {
-    "n": "Simic Birthing Ritual",
+    "n": "Red Deck Wins",
     "pct": 0.4
    },
    {
@@ -126,7 +126,7 @@
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Jeskai Control",
@@ -138,7 +138,7 @@
    },
    {
     "n": "Esper Control",
-    "pct": 0.9
+    "pct": 0.8
    },
    {
     "n": "Grixis Control",
@@ -193,12 +193,12 @@
     "pct": 1
    },
    {
-    "n": "Creativity",
-    "pct": 1
+    "n": "Allosaurus Combo",
+    "pct": 0.9
    },
    {
-    "n": "Allosaurus Combo",
-    "pct": 0.8
+    "n": "Creativity",
+    "pct": 0.9
    },
    {
     "n": "Reanimator",
@@ -209,11 +209,11 @@
     "pct": 0.7
    },
    {
-    "n": "Cosmogoyf",
-    "pct": 0.3
+    "n": "Dredge",
+    "pct": 0.4
    },
    {
-    "n": "Dredge",
+    "n": "Cosmogoyf",
     "pct": 0.3
    },
    {
@@ -610,9 +610,9 @@
     "deltaLiga": 19.5,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 2,
-     "pctPrev": 1,
-     "delta": 1
+     "pct": 1,
+     "pctPrev": 2,
+     "delta": -1
     },
     "w": 3,
     "l": 5,
@@ -631,8 +631,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 3,
-     "pctPrev": 4,
-     "delta": -1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 2,
     "l": 5,
@@ -670,9 +670,9 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 8,
-     "pctPrev": 9,
-     "delta": -1
+     "pct": 9,
+     "pctPrev": 8,
+     "delta": 1
     },
     "w": 2,
     "l": 3,
@@ -691,8 +691,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 3,
-     "pctPrev": 2,
-     "delta": 1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -731,8 +731,8 @@
     "campo": {
      "global": "Creatures Toolbox",
      "pct": 5,
-     "pctPrev": 6,
-     "delta": -1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -751,8 +751,8 @@
     "campo": {
      "global": "Rakdos Aggro",
      "pct": 4,
-     "pctPrev": 2,
-     "delta": 2
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
