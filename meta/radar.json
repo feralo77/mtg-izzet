@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-13",
+ "generado": "2026-10-14",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 37,
+  "diasDesde": 38,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-13",
+ "campoDesde": "2026-10-14",
  "campoError": null,
  "campo": {
-  "mazos": 973,
+  "mazos": 1120,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -42,18 +42,18 @@
    },
    {
     "n": "Affinity",
-    "pct": 6
-   },
-   {
-    "n": "Blink",
-    "pct": 5
+    "pct": 7
    },
    {
     "n": "Boros Aggro",
-    "pct": 4
+    "pct": 5
    },
    {
     "n": "Rakdos Aggro",
+    "pct": 4
+   },
+   {
+    "n": "Blink",
     "pct": 4
    },
    {
@@ -62,15 +62,19 @@
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 1
+    "pct": 0.9
+   },
+   {
+    "n": "Red Deck Wins",
+    "pct": 0.5
    },
    {
     "n": "Simic Birthing Ritual",
     "pct": 0.4
    },
    {
-    "n": "Red Deck Wins",
-    "pct": 0.4
+    "n": "Jund",
+    "pct": 0.3
    },
    {
     "n": "Merfolk",
@@ -81,19 +85,15 @@
     "pct": 0.2
    },
    {
+    "n": "Goblins",
+    "pct": 0.2
+   },
+   {
     "n": "Mardu Aggro",
     "pct": 0.2
    },
    {
-    "n": "Jund",
-    "pct": 0.2
-   },
-   {
     "n": "Golgari Aggro",
-    "pct": 0.1
-   },
-   {
-    "n": "Goblins",
     "pct": 0.1
    },
    {
@@ -114,11 +114,11 @@
    },
    {
     "n": "UW Control",
-    "pct": 6
+    "pct": 7
    },
    {
     "n": "UrzaTron",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Dimir Control",
@@ -133,16 +133,16 @@
     "pct": 1
    },
    {
-    "n": "Boros Ponza",
-    "pct": 0.9
-   },
-   {
     "n": "Esper Control",
     "pct": 0.8
    },
    {
     "n": "Grixis Control",
-    "pct": 0.8
+    "pct": 0.7
+   },
+   {
+    "n": "Boros Ponza",
+    "pct": 0.6
    },
    {
     "n": "4/5c Control",
@@ -162,7 +162,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Broodscale Bloodchief",
@@ -177,11 +177,11 @@
     "pct": 4
    },
    {
-    "n": "Instant Reanimator",
+    "n": "Amulet Titan",
     "pct": 3
    },
    {
-    "n": "Amulet Titan",
+    "n": "Instant Reanimator",
     "pct": 3
    },
    {
@@ -193,28 +193,28 @@
     "pct": 1
    },
    {
-    "n": "Allosaurus Combo",
-    "pct": 0.9
-   },
-   {
     "n": "Creativity",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "Reanimator",
-    "pct": 0.8
+    "pct": 1
    },
    {
     "n": "Hammer Time",
-    "pct": 0.7
+    "pct": 0.8
+   },
+   {
+    "n": "Allosaurus Combo",
+    "pct": 0.8
+   },
+   {
+    "n": "Cosmogoyf",
+    "pct": 0.4
    },
    {
     "n": "Dredge",
     "pct": 0.4
-   },
-   {
-    "n": "Cosmogoyf",
-    "pct": 0.3
    },
    {
     "n": "Valakut",
@@ -242,7 +242,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 0.3
+    "pct": 0.4
    }
   ]
  },
@@ -763,16 +763,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 4% del metajuego global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 3% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 4,
+     "pct": 3,
      "pctPrev": 4,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
