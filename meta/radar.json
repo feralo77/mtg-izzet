@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-15",
+ "generado": "2026-10-16",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 39,
+  "diasDesde": 40,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-15",
+ "campoDesde": "2026-10-16",
  "campoError": null,
  "campo": {
-  "mazos": 1200,
+  "mazos": 1212,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "UR Aggro",
-    "pct": 10
+    "pct": 9
    },
    {
     "n": "4/5c Aggro",
@@ -42,7 +42,7 @@
    },
    {
     "n": "Affinity",
-    "pct": 6
+    "pct": 7
    },
    {
     "n": "Rakdos Aggro",
@@ -54,7 +54,7 @@
    },
    {
     "n": "Blink",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Hollow One",
@@ -65,20 +65,20 @@
     "pct": 0.8
    },
    {
-    "n": "Simic Birthing Ritual",
-    "pct": 0.6
-   },
-   {
     "n": "Red Deck Wins",
     "pct": 0.6
    },
    {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.5
+   },
+   {
     "n": "Jund",
-    "pct": 0.3
+    "pct": 0.2
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.3
+    "pct": 0.2
    },
    {
     "n": "Merfolk",
@@ -106,6 +106,10 @@
    },
    {
     "n": "Death's Shadow",
+    "pct": 0.1
+   },
+   {
+    "n": "Eldrazi Aggro",
     "pct": 0.1
    },
    {
@@ -166,7 +170,7 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 20
+    "pct": 19
    },
    {
     "n": "Creatures Toolbox",
@@ -189,6 +193,10 @@
     "pct": 2
    },
    {
+    "n": "Reanimator",
+    "pct": 1
+   },
+   {
     "n": "Creativity",
     "pct": 1
    },
@@ -197,16 +205,12 @@
     "pct": 1
    },
    {
-    "n": "Reanimator",
-    "pct": 1
+    "n": "Allosaurus Combo",
+    "pct": 0.8
    },
    {
     "n": "Hammer Time",
-    "pct": 0.8
-   },
-   {
-    "n": "Allosaurus Combo",
-    "pct": 0.8
+    "pct": 0.7
    },
    {
     "n": "Cosmogoyf",
@@ -218,11 +222,7 @@
    },
    {
     "n": "Valakut",
-    "pct": 0.3
-   },
-   {
-    "n": "Song of Creation",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Infect",
@@ -242,7 +242,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 0.3
+    "pct": 0.4
    }
   ]
  },
@@ -650,9 +650,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 20,
-     "pctPrev": 19,
-     "delta": 1
+     "pct": 19,
+     "pctPrev": 20,
+     "delta": -1
     },
     "w": 2,
     "l": 4,
@@ -670,9 +670,9 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 10,
-     "pctPrev": 9,
-     "delta": 1
+     "pct": 9,
+     "pctPrev": 10,
+     "delta": -1
     },
     "w": 2,
     "l": 3,
@@ -691,8 +691,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 2,
-     "pctPrev": 3,
-     "delta": -1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -731,8 +731,8 @@
     "campo": {
      "global": "Rakdos Aggro",
      "pct": 5,
-     "pctPrev": 4,
-     "delta": 1
+     "pctPrev": 5,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
