@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-16",
+ "generado": "2026-10-17",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 40,
+  "diasDesde": 41,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-16",
+ "campoDesde": "2026-10-17",
  "campoError": null,
  "campo": {
-  "mazos": 1212,
+  "mazos": 1180,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -46,7 +46,7 @@
    },
    {
     "n": "Rakdos Aggro",
-    "pct": 5
+    "pct": 6
    },
    {
     "n": "Boros Aggro",
@@ -74,11 +74,11 @@
    },
    {
     "n": "Jund",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "Merfolk",
@@ -146,7 +146,7 @@
    },
    {
     "n": "Boros Ponza",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "4/5c Control",
@@ -174,7 +174,7 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "Ruby Storm",
@@ -651,8 +651,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 19,
-     "pctPrev": 20,
-     "delta": -1
+     "pctPrev": 19,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -671,8 +671,8 @@
     "campo": {
      "global": "UR Aggro",
      "pct": 9,
-     "pctPrev": 10,
-     "delta": -1
+     "pctPrev": 9,
+     "delta": 0
     },
     "w": 2,
     "l": 3,
@@ -723,16 +723,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Rakdos Aggro",
-   "titular": "Rakdos Aggro: 5% del metajuego global y nunca te lo has cruzado",
+   "titular": "Rakdos Aggro: 6% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Rakdos Aggro",
-     "pct": 5,
+     "pct": 6,
      "pctPrev": 5,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -743,16 +743,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Creatures Toolbox",
-   "titular": "Creatures Toolbox: 5% del metajuego global y nunca te lo has cruzado",
+   "titular": "Creatures Toolbox: 4% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Creatures Toolbox",
-     "pct": 5,
+     "pct": 4,
      "pctPrev": 5,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
