@@ -731,8 +731,8 @@
     "campo": {
      "global": "Rakdos Aggro",
      "pct": 6,
-     "pctPrev": 5,
-     "delta": 1
+     "pctPrev": 6,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -751,8 +751,8 @@
     "campo": {
      "global": "Creatures Toolbox",
      "pct": 4,
-     "pctPrev": 5,
-     "delta": -1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
