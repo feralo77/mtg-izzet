@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-17",
+ "generado": "2026-10-18",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 41,
+  "diasDesde": 42,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-17",
+ "campoDesde": "2026-10-18",
  "campoError": null,
  "campo": {
-  "mazos": 1180,
+  "mazos": 1036,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -41,11 +41,11 @@
     "pct": 7
    },
    {
-    "n": "Affinity",
+    "n": "Rakdos Aggro",
     "pct": 7
    },
    {
-    "n": "Rakdos Aggro",
+    "n": "Affinity",
     "pct": 6
    },
    {
@@ -61,12 +61,12 @@
     "pct": 1
    },
    {
-    "n": "Jeskai Aggro",
-    "pct": 0.8
+    "n": "Red Deck Wins",
+    "pct": 0.7
    },
    {
-    "n": "Red Deck Wins",
-    "pct": 0.6
+    "n": "Jeskai Aggro",
+    "pct": 0.7
    },
    {
     "n": "Simic Birthing Ritual",
@@ -122,7 +122,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "Dimir Control",
@@ -137,23 +137,23 @@
     "pct": 1
    },
    {
-    "n": "Esper Control",
+    "n": "Grixis Control",
     "pct": 0.8
    },
    {
-    "n": "Grixis Control",
-    "pct": 0.7
+    "n": "Esper Control",
+    "pct": 0.6
    },
    {
     "n": "Boros Ponza",
     "pct": 0.4
    },
    {
-    "n": "4/5c Control",
-    "pct": 0.2
+    "n": "Mono Black Control",
+    "pct": 0.3
    },
    {
-    "n": "Mono Black Control",
+    "n": "4/5c Control",
     "pct": 0.2
    },
    {
@@ -166,19 +166,19 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 19
+    "pct": 18
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 4
+    "pct": 5
    },
    {
     "n": "Ruby Storm",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "Amulet Titan",
@@ -193,10 +193,6 @@
     "pct": 2
    },
    {
-    "n": "Reanimator",
-    "pct": 1
-   },
-   {
     "n": "Creativity",
     "pct": 1
    },
@@ -205,19 +201,23 @@
     "pct": 1
    },
    {
+    "n": "Reanimator",
+    "pct": 1
+   },
+   {
     "n": "Allosaurus Combo",
-    "pct": 0.8
+    "pct": 0.9
    },
    {
     "n": "Hammer Time",
-    "pct": 0.7
-   },
-   {
-    "n": "Cosmogoyf",
-    "pct": 0.3
+    "pct": 0.8
    },
    {
     "n": "Dredge",
+    "pct": 0.4
+   },
+   {
+    "n": "Cosmogoyf",
     "pct": 0.3
    },
    {
@@ -650,9 +650,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 19,
+     "pct": 18,
      "pctPrev": 19,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 4,
@@ -723,16 +723,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Rakdos Aggro",
-   "titular": "Rakdos Aggro: 6% del metajuego global y nunca te lo has cruzado",
+   "titular": "Rakdos Aggro: 7% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Rakdos Aggro",
-     "pct": 6,
+     "pct": 7,
      "pctPrev": 6,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -743,16 +743,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Creatures Toolbox",
-   "titular": "Creatures Toolbox: 4% del metajuego global y nunca te lo has cruzado",
+   "titular": "Creatures Toolbox: 5% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Creatures Toolbox",
-     "pct": 4,
+     "pct": 5,
      "pctPrev": 4,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -763,16 +763,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 3% del metajuego global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 4% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 3,
+     "pct": 4,
      "pctPrev": 3,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
