@@ -29,7 +29,7 @@
  "campoDesde": "2026-10-21",
  "campoError": null,
  "campo": {
-  "mazos": 1082,
+  "mazos": 1138,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -38,7 +38,7 @@
    },
    {
     "n": "UR Aggro",
-    "pct": 9
+    "pct": 8
    },
    {
     "n": "4/5c Aggro",
@@ -58,7 +58,7 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.8
+    "pct": 0.9
    },
    {
     "n": "Hollow One",
@@ -70,7 +70,7 @@
    },
    {
     "n": "Simic Birthing Ritual",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Jund",
@@ -134,7 +134,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Dimir Control",
@@ -154,11 +154,11 @@
    },
    {
     "n": "Grixis Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Mono Black Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Boros Ponza",
@@ -178,7 +178,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Broodscale Bloodchief",
@@ -623,8 +623,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 0.8,
-     "pctPrev": 1,
-     "delta": -0.2
+     "pctPrev": 0.8,
+     "delta": 0
     },
     "w": 3,
     "l": 5,
@@ -663,8 +663,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 16,
-     "pctPrev": 17,
-     "delta": -1
+     "pctPrev": 16,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -682,9 +682,9 @@
     "deltaLiga": 2.4,
     "campo": {
      "global": "UR Aggro",
-     "pct": 9,
-     "pctPrev": 8,
-     "delta": 1
+     "pct": 8,
+     "pctPrev": 9,
+     "delta": -1
     },
     "w": 2,
     "l": 3,
@@ -723,8 +723,8 @@
     "campo": {
      "global": "Rakdos Aggro",
      "pct": 9,
-     "pctPrev": 8,
-     "delta": 1
+     "pctPrev": 9,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -754,14 +754,14 @@
   },
   {
    "nivel": "nuevo",
-   "mazo": "UrzaTron",
-   "titular": "UrzaTron: 4% del metajuego global y nunca te lo has cruzado",
+   "mazo": "Creatures Toolbox",
+   "titular": "Creatures Toolbox: 4% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
-     "global": "UrzaTron",
+     "global": "Creatures Toolbox",
      "pct": 4,
      "pctPrev": 4,
      "delta": 0
@@ -774,16 +774,16 @@
   },
   {
    "nivel": "nuevo",
-   "mazo": "Creatures Toolbox",
-   "titular": "Creatures Toolbox: 4% del metajuego global y nunca te lo has cruzado",
+   "mazo": "UrzaTron",
+   "titular": "UrzaTron: 3% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
-     "global": "Creatures Toolbox",
-     "pct": 4,
-     "pctPrev": 5,
+     "global": "UrzaTron",
+     "pct": 3,
+     "pctPrev": 4,
      "delta": -1
     },
     "w": 0,
