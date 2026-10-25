@@ -631,8 +631,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 2,
-     "pctPrev": 3,
-     "delta": -1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 2,
     "l": 5,
@@ -651,8 +651,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 12,
-     "pctPrev": 15,
-     "delta": -3
+     "pctPrev": 12,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -671,8 +671,8 @@
     "campo": {
      "global": "UR Aggro",
      "pct": 6,
-     "pctPrev": 8,
-     "delta": -2
+     "pctPrev": 6,
+     "delta": 0
     },
     "w": 2,
     "l": 3,
@@ -711,8 +711,8 @@
     "campo": {
      "global": "Rakdos Aggro",
      "pct": 14,
-     "pctPrev": 11,
-     "delta": 3
+     "pctPrev": 14,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -731,8 +731,8 @@
     "campo": {
      "global": "4/5c Aggro",
      "pct": 7,
-     "pctPrev": 6,
-     "delta": 1
+     "pctPrev": 7,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -751,8 +751,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
