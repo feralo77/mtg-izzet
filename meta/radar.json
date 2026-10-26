@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-25",
+ "generado": "2026-10-26",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 49,
+  "diasDesde": 50,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-10-25",
+ "campoDesde": "2026-10-26",
  "campoError": null,
  "campo": {
-  "mazos": 685,
+  "mazos": 591,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "Rakdos Aggro",
-    "pct": 14
+    "pct": 15
    },
    {
     "n": "Affinity",
@@ -42,14 +42,14 @@
    },
    {
     "n": "4/5c Aggro",
-    "pct": 7
-   },
-   {
-    "n": "UR Aggro",
     "pct": 6
    },
    {
     "n": "Boros Aggro",
+    "pct": 6
+   },
+   {
+    "n": "UR Aggro",
     "pct": 6
    },
    {
@@ -62,63 +62,59 @@
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.7
+    "pct": 0.8
    },
    {
     "n": "Hollow One",
-    "pct": 0.6
+    "pct": 0.7
    },
    {
     "n": "Eldrazi Aggro",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 0.4
-   },
-   {
-    "n": "Jund",
-    "pct": 0.3
+    "pct": 0.5
    },
    {
     "n": "Simic Birthing Ritual",
     "pct": 0.3
    },
    {
-    "n": "Death's Shadow",
-    "pct": 0.1
-   },
-   {
     "n": "Goblins",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Scepter",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Golgari Aggro",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Merfolk",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Orzhov Midrange",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Mono Green Aggro",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Weenie White",
-    "pct": 0.1
+    "pct": 0.2
+   },
+   {
+    "n": "Jund",
+    "pct": 0.2
    },
    {
     "n": "Selesnya Aggro",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Other - Aggro",
@@ -138,43 +134,35 @@
    },
    {
     "n": "Esper Control",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 0.9
+    "pct": 0.8
    },
    {
     "n": "Jeskai Control",
-    "pct": 0.9
+    "pct": 0.8
    },
    {
     "n": "Mono Black Control",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Grixis Control",
-    "pct": 0.4
-   },
-   {
-    "n": "Urza",
-    "pct": 0.1
-   },
-   {
-    "n": "Boros Ponza",
-    "pct": 0.1
+    "pct": 0.5
    },
    {
     "n": "UR Control",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "4/5c Control",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Other - Control",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Broodscale Bloodchief",
@@ -186,7 +174,7 @@
    },
    {
     "n": "Creatures Toolbox",
-    "pct": 4
+    "pct": 3
    },
    {
     "n": "Living End",
@@ -194,7 +182,7 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Ruby Storm",
@@ -205,23 +193,23 @@
     "pct": 2
    },
    {
-    "n": "Creativity",
-    "pct": 1
-   },
-   {
     "n": "Allosaurus Combo",
     "pct": 1
    },
    {
-    "n": "Landless",
-    "pct": 0.9
-   },
-   {
-    "n": "Dredge",
-    "pct": 0.7
+    "n": "Creativity",
+    "pct": 1
    },
    {
     "n": "Valakut",
+    "pct": 0.8
+   },
+   {
+    "n": "Landless",
+    "pct": 0.8
+   },
+   {
+    "n": "Dredge",
     "pct": 0.7
    },
    {
@@ -230,19 +218,19 @@
    },
    {
     "n": "Infect",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Twin Exarch",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "UR Storm",
-    "pct": 0.1
+    "pct": 0.2
    },
    {
     "n": "Other - Combo",
-    "pct": 0.7
+    "pct": 0.8
    }
   ]
  },
@@ -610,9 +598,9 @@
     "deltaLiga": 19.5,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 0.9,
+     "pct": 0.8,
      "pctPrev": 0.9,
-     "delta": 0
+     "delta": -0.1
     },
     "w": 3,
     "l": 5,
@@ -630,9 +618,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 2,
+     "pct": 3,
      "pctPrev": 2,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 5,
@@ -703,16 +691,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Rakdos Aggro",
-   "titular": "Rakdos Aggro: 14% del metajuego global y nunca te lo has cruzado",
+   "titular": "Rakdos Aggro: 15% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Rakdos Aggro",
-     "pct": 14,
+     "pct": 15,
      "pctPrev": 14,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
@@ -723,16 +711,16 @@
   {
    "nivel": "nuevo",
    "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 7% del metajuego global y nunca te lo has cruzado",
+   "titular": "4/5c Aggro: 6% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "4/5c Aggro",
-     "pct": 7,
+     "pct": 6,
      "pctPrev": 7,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
@@ -763,16 +751,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Creatures Toolbox",
-   "titular": "Creatures Toolbox: 4% del metajuego global y nunca te lo has cruzado",
+   "titular": "Creatures Toolbox: 3% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Creatures Toolbox",
-     "pct": 4,
+     "pct": 3,
      "pctPrev": 4,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
