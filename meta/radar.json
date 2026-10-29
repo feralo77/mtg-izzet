@@ -29,7 +29,7 @@
  "campoDesde": "2026-10-29",
  "campoError": null,
  "campo": {
-  "mazos": 777,
+  "mazos": 785,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -54,7 +54,7 @@
    },
    {
     "n": "Blink",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Red Deck Wins",
@@ -114,7 +114,7 @@
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.8
+    "pct": 0.5
    },
    {
     "n": "UW Control",
@@ -134,11 +134,11 @@
    },
    {
     "n": "Jeskai Control",
-    "pct": 0.6
+    "pct": 0.8
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 0.6
+    "pct": 0.8
    },
    {
     "n": "Mono Black Control",
@@ -178,7 +178,7 @@
    },
    {
     "n": "Amulet Titan",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "Living End",
@@ -610,9 +610,9 @@
     "deltaLiga": 19.5,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 0.6,
-     "pctPrev": 0.5,
-     "delta": 0.1
+     "pct": 0.8,
+     "pctPrev": 0.6,
+     "delta": 0.2
     },
     "w": 3,
     "l": 5,
@@ -691,8 +691,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 2,
-     "pctPrev": 1,
-     "delta": 1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -711,8 +711,8 @@
     "campo": {
      "global": "Rakdos Aggro",
      "pct": 15,
-     "pctPrev": 16,
-     "delta": -1
+     "pctPrev": 15,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -751,8 +751,8 @@
     "campo": {
      "global": "UrzaTron",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
