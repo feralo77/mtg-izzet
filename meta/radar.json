@@ -29,12 +29,12 @@
  "campoDesde": "2026-11-01",
  "campoError": null,
  "campo": {
-  "mazos": 657,
+  "mazos": 689,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "Rakdos Aggro",
-    "pct": 15
+    "pct": 14
    },
    {
     "n": "Affinity",
@@ -50,7 +50,7 @@
    },
    {
     "n": "4/5c Aggro",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "Blink",
@@ -58,7 +58,7 @@
    },
    {
     "n": "Red Deck Wins",
-    "pct": 2
+    "pct": 1
    },
    {
     "n": "Mono Black Aggro",
@@ -66,14 +66,18 @@
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "Weenie White",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Eldrazi Aggro",
+    "pct": 0.3
+   },
+   {
+    "n": "Selesnya Aggro",
     "pct": 0.3
    },
    {
@@ -86,23 +90,23 @@
    },
    {
     "n": "Jund",
-    "pct": 0.2
-   },
-   {
-    "n": "Selesnya Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Mardu Aggro",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Goblins",
-    "pct": 0.2
+    "pct": 0.1
+   },
+   {
+    "n": "Hardened Scales",
+    "pct": 0.1
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "UW Control",
@@ -130,31 +134,31 @@
    },
    {
     "n": "Grixis Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "4/5c Control",
-    "pct": 0.5
+    "pct": 0.4
    },
    {
     "n": "Mono Black Control",
     "pct": 0.3
    },
    {
+    "n": "Boros Ponza",
+    "pct": 0.3
+   },
+   {
     "n": "UR Control",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Urza",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Gruul Utopia",
-    "pct": 0.2
-   },
-   {
-    "n": "Boros Ponza",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Control",
@@ -162,7 +166,7 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 14
+    "pct": 13
    },
    {
     "n": "Amulet Titan",
@@ -186,14 +190,14 @@
    },
    {
     "n": "Reanimator",
-    "pct": 2
-   },
-   {
-    "n": "Landless",
     "pct": 1
    },
    {
     "n": "Allosaurus Combo",
+    "pct": 1
+   },
+   {
+    "n": "Landless",
     "pct": 1
    },
    {
@@ -214,19 +218,19 @@
    },
    {
     "n": "Infect",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "UR Storm",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Hammer Time",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Elves",
-    "pct": 0.2
+    "pct": 0.1
    },
    {
     "n": "Other - Combo",
@@ -599,8 +603,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 0.9,
-     "pctPrev": 0.8,
-     "delta": 0.1
+     "pctPrev": 0.9,
+     "delta": 0
     },
     "w": 3,
     "l": 5,
@@ -638,9 +642,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 14,
-     "pctPrev": 13,
-     "delta": 1
+     "pct": 13,
+     "pctPrev": 14,
+     "delta": -1
     },
     "w": 2,
     "l": 4,
@@ -691,16 +695,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Rakdos Aggro",
-   "titular": "Rakdos Aggro: 15% del metajuego global y nunca te lo has cruzado",
+   "titular": "Rakdos Aggro: 14% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Rakdos Aggro",
-     "pct": 15,
+     "pct": 14,
      "pctPrev": 15,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
@@ -711,16 +715,16 @@
   {
    "nivel": "nuevo",
    "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 5% del metajuego global y nunca te lo has cruzado",
+   "titular": "4/5c Aggro: 4% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "4/5c Aggro",
-     "pct": 5,
+     "pct": 4,
      "pctPrev": 5,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
