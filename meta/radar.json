@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-01",
+ "generado": "2026-11-02",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 56,
+  "diasDesde": 57,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-11-01",
+ "campoDesde": "2026-11-02",
  "campoError": null,
  "campo": {
-  "mazos": 689,
+  "mazos": 677,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -50,11 +50,15 @@
    },
    {
     "n": "4/5c Aggro",
-    "pct": 4
+    "pct": 5
    },
    {
     "n": "Blink",
     "pct": 2
+   },
+   {
+    "n": "Jeskai Aggro",
+    "pct": 1
    },
    {
     "n": "Red Deck Wins",
@@ -62,15 +66,7 @@
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 1
-   },
-   {
-    "n": "Jeskai Aggro",
-    "pct": 1
-   },
-   {
-    "n": "Weenie White",
-    "pct": 0.4
+    "pct": 0.9
    },
    {
     "n": "Eldrazi Aggro",
@@ -82,6 +78,10 @@
    },
    {
     "n": "Hollow One",
+    "pct": 0.3
+   },
+   {
+    "n": "Weenie White",
     "pct": 0.3
    },
    {
@@ -130,10 +130,6 @@
    },
    {
     "n": "Esper Control",
-    "pct": 0.6
-   },
-   {
-    "n": "Grixis Control",
     "pct": 0.4
    },
    {
@@ -141,7 +137,15 @@
     "pct": 0.4
    },
    {
+    "n": "Grixis Control",
+    "pct": 0.3
+   },
+   {
     "n": "Mono Black Control",
+    "pct": 0.3
+   },
+   {
+    "n": "Urza",
     "pct": 0.3
    },
    {
@@ -149,20 +153,12 @@
     "pct": 0.3
    },
    {
-    "n": "UR Control",
-    "pct": 0.1
-   },
-   {
-    "n": "Urza",
-    "pct": 0.1
-   },
-   {
     "n": "Gruul Utopia",
     "pct": 0.1
    },
    {
     "n": "Other - Control",
-    "pct": 1
+    "pct": 0.9
    },
    {
     "n": "Broodscale Bloodchief",
@@ -170,7 +166,7 @@
    },
    {
     "n": "Amulet Titan",
-    "pct": 6
+    "pct": 5
    },
    {
     "n": "Creatures Toolbox",
@@ -181,19 +177,15 @@
     "pct": 3
    },
    {
+    "n": "Instant Reanimator",
+    "pct": 3
+   },
+   {
     "n": "Living End",
     "pct": 3
    },
    {
-    "n": "Instant Reanimator",
-    "pct": 2
-   },
-   {
     "n": "Reanimator",
-    "pct": 1
-   },
-   {
-    "n": "Allosaurus Combo",
     "pct": 1
    },
    {
@@ -201,8 +193,12 @@
     "pct": 1
    },
    {
+    "n": "Allosaurus Combo",
+    "pct": 1
+   },
+   {
     "n": "Dredge",
-    "pct": 0.9
+    "pct": 0.7
    },
    {
     "n": "Creativity",
@@ -215,10 +211,6 @@
    {
     "n": "Twin Exarch",
     "pct": 0.3
-   },
-   {
-    "n": "Infect",
-    "pct": 0.1
    },
    {
     "n": "UR Storm",
@@ -622,9 +614,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 2,
+     "pct": 3,
      "pctPrev": 2,
-     "delta": 0
+     "delta": 1
     },
     "w": 2,
     "l": 5,
@@ -643,8 +635,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 13,
-     "pctPrev": 14,
-     "delta": -1
+     "pctPrev": 13,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -703,8 +695,8 @@
     "campo": {
      "global": "Rakdos Aggro",
      "pct": 14,
-     "pctPrev": 15,
-     "delta": -1
+     "pctPrev": 14,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
@@ -715,16 +707,16 @@
   {
    "nivel": "nuevo",
    "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 4% del metajuego global y nunca te lo has cruzado",
+   "titular": "4/5c Aggro: 5% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "4/5c Aggro",
-     "pct": 4,
-     "pctPrev": 5,
-     "delta": -1
+     "pct": 5,
+     "pctPrev": 4,
+     "delta": 1
     },
     "w": 0,
     "l": 0,
