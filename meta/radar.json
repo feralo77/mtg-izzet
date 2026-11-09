@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-08",
+ "generado": "2026-11-09",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,20 +21,20 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 63,
+  "diasDesde": 64,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-11-08",
+ "campoDesde": "2026-11-09",
  "campoError": null,
  "campo": {
-  "mazos": 579,
+  "mazos": 630,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
     "n": "Rakdos Aggro",
-    "pct": 13
+    "pct": 10
    },
    {
     "n": "Affinity",
@@ -65,11 +65,15 @@
     "pct": 1
    },
    {
+    "n": "Hardened Scales",
+    "pct": 0.8
+   },
+   {
     "n": "Red Deck Wins",
     "pct": 0.5
    },
    {
-    "n": "Hardened Scales",
+    "n": "The Underworld Cookbook",
     "pct": 0.5
    },
    {
@@ -81,16 +85,8 @@
     "pct": 0.3
    },
    {
-    "n": "The Underworld Cookbook",
-    "pct": 0.3
-   },
-   {
-    "n": "Eldrazi Aggro",
-    "pct": 0.2
-   },
-   {
     "n": "Mardu Aggro",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "Jund",
@@ -98,6 +94,10 @@
    },
    {
     "n": "Hollow One",
+    "pct": 0.2
+   },
+   {
+    "n": "Simic Birthing Ritual",
     "pct": 0.2
    },
    {
@@ -110,7 +110,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 5
+    "pct": 6
    },
    {
     "n": "Dimir Control",
@@ -118,22 +118,22 @@
    },
    {
     "n": "Esper Control",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 0.5
-   },
-   {
-    "n": "Jeskai Control",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
     "n": "Boros Ponza",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
-    "n": "4/5c Control",
+    "n": "Mono Black Control",
+    "pct": 0.3
+   },
+   {
+    "n": "Jeskai Control",
     "pct": 0.3
    },
    {
@@ -145,7 +145,7 @@
     "pct": 0.2
    },
    {
-    "n": "Mono Black Control",
+    "n": "4/5c Control",
     "pct": 0.2
    },
    {
@@ -154,7 +154,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.9
+    "pct": 0.8
    },
    {
     "n": "Broodscale Bloodchief",
@@ -165,20 +165,20 @@
     "pct": 7
    },
    {
+    "n": "Living End",
+    "pct": 4
+   },
+   {
     "n": "Creatures Toolbox",
     "pct": 4
    },
    {
     "n": "Ruby Storm",
-    "pct": 4
-   },
-   {
-    "n": "Living End",
     "pct": 3
    },
    {
     "n": "Reanimator",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Landless",
@@ -186,30 +186,34 @@
    },
    {
     "n": "Instant Reanimator",
-    "pct": 2
-   },
-   {
-    "n": "Dredge",
     "pct": 1
    },
    {
+    "n": "Dredge",
+    "pct": 0.8
+   },
+   {
     "n": "Allosaurus Combo",
-    "pct": 0.7
+    "pct": 0.8
    },
    {
     "n": "Creativity",
-    "pct": 0.5
-   },
-   {
-    "n": "Elves",
-    "pct": 0.2
+    "pct": 0.6
    },
    {
     "n": "Twin Exarch",
-    "pct": 0.2
+    "pct": 0.5
+   },
+   {
+    "n": "Song of Creation",
+    "pct": 0.5
    },
    {
     "n": "Hammer Time",
+    "pct": 0.3
+   },
+   {
+    "n": "Elves",
     "pct": 0.2
    },
    {
@@ -217,12 +221,8 @@
     "pct": 0.2
    },
    {
-    "n": "Song of Creation",
-    "pct": 0.2
-   },
-   {
     "n": "Other - Combo",
-    "pct": 0.3
+    "pct": 0.5
    }
   ]
  },
@@ -590,9 +590,9 @@
     "deltaLiga": 19.5,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 0.5,
-     "pctPrev": 0.7,
-     "delta": -0.2
+     "pct": 0.6,
+     "pctPrev": 0.5,
+     "delta": 0.1
     },
     "w": 3,
     "l": 5,
@@ -610,9 +610,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 2,
+     "pct": 1,
      "pctPrev": 2,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 5,
@@ -631,8 +631,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 13,
-     "pctPrev": 14,
-     "delta": -1
+     "pctPrev": 13,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -671,8 +671,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 3,
-     "pctPrev": 2,
-     "delta": 1
+     "pctPrev": 3,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
@@ -683,16 +683,16 @@
   {
    "nivel": "nuevo",
    "mazo": "Rakdos Aggro",
-   "titular": "Rakdos Aggro: 13% del metajuego global y nunca te lo has cruzado",
+   "titular": "Rakdos Aggro: 10% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "Rakdos Aggro",
-     "pct": 13,
+     "pct": 10,
      "pctPrev": 13,
-     "delta": 0
+     "delta": -3
     },
     "w": 0,
     "l": 0,
@@ -703,16 +703,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 5% del metajuego global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 6% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 5,
+     "pct": 6,
      "pctPrev": 5,
-     "delta": 0
+     "delta": 1
     },
     "w": 0,
     "l": 0,
