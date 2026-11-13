@@ -591,8 +591,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 0.3,
-     "pctPrev": 0.5,
-     "delta": -0.2
+     "pctPrev": 0.3,
+     "delta": 0
     },
     "w": 3,
     "l": 5,
@@ -611,8 +611,8 @@
     "campo": {
      "global": "Instant Reanimator",
      "pct": 2,
-     "pctPrev": 1,
-     "delta": 1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 2,
     "l": 5,
@@ -631,8 +631,8 @@
     "campo": {
      "global": "Broodscale Bloodchief",
      "pct": 13,
-     "pctPrev": 12,
-     "delta": 1
+     "pctPrev": 13,
+     "delta": 0
     },
     "w": 2,
     "l": 4,
@@ -671,8 +671,8 @@
     "campo": {
      "global": "Dimir Control",
      "pct": 2,
-     "pctPrev": 3,
-     "delta": -1
+     "pctPrev": 2,
+     "delta": 0
     },
     "w": 1,
     "l": 3,
