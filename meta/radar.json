@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-13",
+ "generado": "2026-11-14",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 68,
+  "diasDesde": 69,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-11-13",
+ "campoDesde": "2026-11-14",
  "campoError": null,
  "campo": {
-  "mazos": 638,
+  "mazos": 610,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -37,11 +37,11 @@
     "pct": 11
    },
    {
-    "n": "UR Aggro",
+    "n": "Affinity",
     "pct": 5
    },
    {
-    "n": "Affinity",
+    "n": "UR Aggro",
     "pct": 5
    },
    {
@@ -58,15 +58,15 @@
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 3
-   },
-   {
-    "n": "Hardened Scales",
-    "pct": 0.8
+    "pct": 2
    },
    {
     "n": "Mono Black Aggro",
     "pct": 0.8
+   },
+   {
+    "n": "Hardened Scales",
+    "pct": 0.7
    },
    {
     "n": "Red Deck Wins",
@@ -81,16 +81,16 @@
     "pct": 0.5
    },
    {
-    "n": "Selesnya Aggro",
-    "pct": 0.3
-   },
-   {
     "n": "Weenie White",
     "pct": 0.3
    },
    {
     "n": "Hollow One",
     "pct": 0.3
+   },
+   {
+    "n": "Selesnya Aggro",
+    "pct": 0.2
    },
    {
     "n": "Jund",
@@ -126,7 +126,7 @@
    },
    {
     "n": "Esper Control",
-    "pct": 0.9
+    "pct": 1
    },
    {
     "n": "Urza",
@@ -158,7 +158,7 @@
    },
    {
     "n": "Other - Control",
-    "pct": 0.5
+    "pct": 0.3
    },
    {
     "n": "Broodscale Bloodchief",
@@ -169,51 +169,51 @@
     "pct": 7
    },
    {
-    "n": "Living End",
-    "pct": 4
-   },
-   {
     "n": "Creatures Toolbox",
     "pct": 4
    },
    {
+    "n": "Living End",
+    "pct": 4
+   },
+   {
     "n": "Reanimator",
-    "pct": 3
+    "pct": 4
    },
    {
     "n": "Ruby Storm",
     "pct": 3
    },
    {
-    "n": "Instant Reanimator",
-    "pct": 2
-   },
-   {
-    "n": "Allosaurus Combo",
-    "pct": 2
-   },
-   {
     "n": "Landless",
     "pct": 1
    },
    {
-    "n": "Dredge",
-    "pct": 0.6
+    "n": "Instant Reanimator",
+    "pct": 1
+   },
+   {
+    "n": "Allosaurus Combo",
+    "pct": 1
    },
    {
     "n": "Creativity",
-    "pct": 0.6
-   },
-   {
-    "n": "Twin Exarch",
-    "pct": 0.5
+    "pct": 0.7
    },
    {
     "n": "Song of Creation",
     "pct": 0.5
    },
    {
+    "n": "Dredge",
+    "pct": 0.3
+   },
+   {
     "n": "Hammer Time",
+    "pct": 0.3
+   },
+   {
+    "n": "Twin Exarch",
     "pct": 0.3
    },
    {
@@ -610,9 +610,9 @@
     "deltaLiga": 7.3,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 2,
+     "pct": 1,
      "pctPrev": 2,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 5,
@@ -750,26 +750,6 @@
     "deltaLiga": null,
     "campo": {
      "global": "4/5c Aggro",
-     "pct": 3,
-     "pctPrev": 3,
-     "delta": 0
-    },
-    "w": 0,
-    "l": 0,
-    "wr": null,
-    "n": 0
-   }
-  },
-  {
-   "nivel": "nuevo",
-   "mazo": "Jeskai Aggro",
-   "titular": "Jeskai Aggro: 3% del metajuego global y nunca te lo has cruzado",
-   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
-   "datos": {
-    "frecLiga": 0,
-    "deltaLiga": null,
-    "campo": {
-     "global": "Jeskai Aggro",
      "pct": 3,
      "pctPrev": 3,
      "delta": 0
