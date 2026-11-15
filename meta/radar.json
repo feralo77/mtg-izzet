@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-14",
+ "generado": "2026-11-15",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 69,
+  "diasDesde": 70,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-11-14",
+ "campoDesde": "2026-11-15",
  "campoError": null,
  "campo": {
-  "mazos": 610,
+  "mazos": 588,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -37,12 +37,12 @@
     "pct": 11
    },
    {
-    "n": "Affinity",
+    "n": "UR Aggro",
     "pct": 5
    },
    {
-    "n": "UR Aggro",
-    "pct": 5
+    "n": "Affinity",
+    "pct": 4
    },
    {
     "n": "Boros Aggro",
@@ -58,14 +58,18 @@
    },
    {
     "n": "Jeskai Aggro",
-    "pct": 2
+    "pct": 3
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.8
+    "pct": 0.9
    },
    {
     "n": "Hardened Scales",
+    "pct": 0.7
+   },
+   {
+    "n": "The Underworld Cookbook",
     "pct": 0.7
    },
    {
@@ -74,10 +78,6 @@
    },
    {
     "n": "Mardu Aggro",
-    "pct": 0.5
-   },
-   {
-    "n": "The Underworld Cookbook",
     "pct": 0.5
    },
    {
@@ -106,7 +106,7 @@
    },
    {
     "n": "Other - Aggro",
-    "pct": 0.3
+    "pct": 0.5
    },
    {
     "n": "UW Control",
@@ -186,15 +186,15 @@
    },
    {
     "n": "Landless",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Instant Reanimator",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Allosaurus Combo",
-    "pct": 1
+    "pct": 2
    },
    {
     "n": "Creativity",
@@ -230,9 +230,9 @@
   "modo": "dos mitades del histórico, por número de partidas",
   "muestra": {
    "version": "Stock",
-   "frecuencia": 82,
-   "record": 62,
-   "nota": "La frecuencia sale de tus 82 partidas (lo que te cruzas no depende del mazo que lleves). El récord sale solo de las 62 con la Stock, que es la lista que juegas y la que mide todo el dashboard."
+   "frecuencia": 81,
+   "record": 43,
+   "nota": "La frecuencia sale de tus 81 partidas (lo que te cruzas no depende del mazo que lleves). El récord sale solo de las 43 con la Stock, que es la lista que juegas y la que mide todo el dashboard."
   },
   "ahora": {
    "partidas": 41,
@@ -240,7 +240,7 @@
    "hasta": "2026-09-18"
   },
   "antes": {
-   "partidas": 41,
+   "partidas": 40,
    "desde": "2026-07-11",
    "hasta": "2026-08-11"
   },
@@ -264,68 +264,68 @@
     "variantes": null,
     "partidas": 5,
     "frec": 12.2,
-    "frecPrev": 4.9,
-    "delta": 7.3,
-    "w": 2,
-    "l": 5,
-    "n_": 7,
-    "wr": 29
-   },
-   {
-    "n": "Broodscale",
-    "variantes": null,
-    "partidas": 3,
-    "frec": 7.3,
-    "frecPrev": 9.8,
-    "delta": -2.5,
-    "w": 2,
-    "l": 4,
-    "n_": 6,
-    "wr": 33
-   },
-   {
-    "n": "Izzet Prowess",
-    "variantes": null,
-    "partidas": 3,
-    "frec": 7.3,
-    "frecPrev": 4.9,
-    "delta": 2.4,
+    "frecPrev": 5,
+    "delta": 7.2,
     "w": 2,
     "l": 3,
     "n_": 5,
     "wr": 40
    },
    {
-    "n": "Boros Ponza",
+    "n": "Broodscale",
     "variantes": null,
     "partidas": 3,
     "frec": 7.3,
-    "frecPrev": 4.9,
-    "delta": 2.4,
-    "w": 2,
-    "l": 2,
-    "n_": 4,
-    "wr": 50
-   },
-   {
-    "n": "Dimir Frog",
-    "variantes": null,
-    "partidas": 3,
-    "frec": 7.3,
-    "frecPrev": 7.3,
-    "delta": 0,
+    "frecPrev": 10,
+    "delta": -2.7,
     "w": 1,
     "l": 3,
     "n_": 4,
     "wr": 25
    },
    {
+    "n": "Boros Ponza",
+    "variantes": null,
+    "partidas": 3,
+    "frec": 7.3,
+    "frecPrev": 5,
+    "delta": 2.3,
+    "w": 1,
+    "l": 2,
+    "n_": 3,
+    "wr": 33
+   },
+   {
+    "n": "Dimir Frog",
+    "variantes": null,
+    "partidas": 3,
+    "frec": 7.3,
+    "frecPrev": 5,
+    "delta": 2.3,
+    "w": 0,
+    "l": 3,
+    "n_": 3,
+    "wr": 0
+   },
+   {
+    "n": "Izzet Prowess",
+    "variantes": null,
+    "partidas": 3,
+    "frec": 7.3,
+    "frecPrev": 5,
+    "delta": 2.3,
+    "w": 2,
+    "l": 1,
+    "n_": 3,
+    "wr": 67
+   },
+   {
     "n": "Azorius Control",
     "variantes": null,
     "partidas": 3,
     "frec": 7.3,
-    "frecPrev": 2.4,
-    "delta": 4.9,
+    "frecPrev": 2.5,
+    "delta": 4.8,
     "w": 2,
     "l": 1,
     "n_": 3,
@@ -336,12 +336,12 @@
     "variantes": null,
     "partidas": 2,
     "frec": 4.9,
-    "frecPrev": 4.9,
-    "delta": 0,
+    "frecPrev": 5,
+    "delta": -0.1,
     "w": 2,
-    "l": 1,
-    "n_": 3,
-    "wr": 67
+    "l": 0,
+    "n_": 2,
+    "wr": 100
    },
    {
     "n": "MonoB Coffers",
@@ -359,52 +359,28 @@
     "wr": 100
    },
    {
-    "n": "Grixis Reanimator",
-    "variantes": null,
-    "partidas": 1,
-    "frec": 2.4,
-    "frecPrev": 7.3,
-    "delta": -4.9,
-    "w": 1,
-    "l": 2,
-    "n_": 3,
-    "wr": 33
-   },
-   {
     "n": "Neoform",
     "variantes": null,
     "partidas": 1,
     "frec": 2.4,
-    "frecPrev": 4.9,
-    "delta": -2.5,
+    "frecPrev": 5,
+    "delta": -2.6,
     "w": 0,
-    "l": 2,
-    "n_": 2,
+    "l": 1,
+    "n_": 1,
     "wr": 0
    },
    {
-    "n": "Sultai Midrange",
+    "n": "Grixis Reanimator",
     "variantes": null,
     "partidas": 1,
     "frec": 2.4,
-    "frecPrev": 2.4,
-    "delta": 0,
+    "frecPrev": 7.5,
+    "delta": -5.1,
     "w": 0,
-    "l": 2,
-    "n_": 2,
+    "l": 1,
+    "n_": 1,
     "wr": 0
-   },
-   {
-    "n": "Boros Energy",
-    "variantes": null,
-    "partidas": 1,
-    "frec": 2.4,
-    "frecPrev": 9.8,
-    "delta": -7.4,
-    "w": 2,
-    "l": 0,
-    "n_": 2,
-    "wr": 100
    },
    {
     "n": "Temur Rhinos",
@@ -417,6 +393,30 @@
     "l": 1,
     "n_": 1,
     "wr": 0
+   },
+   {
+    "n": "Sultai Midrange",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 2.4,
+    "frecPrev": 2.5,
+    "delta": -0.1,
+    "w": 0,
+    "l": 1,
+    "n_": 1,
+    "wr": 0
+   },
+   {
+    "n": "Boros Energy",
+    "variantes": null,
+    "partidas": 1,
+    "frec": 2.4,
+    "frecPrev": 10,
+    "delta": -7.6,
+    "w": 1,
+    "l": 0,
+    "n_": 1,
+    "wr": 100
    },
    {
     "n": "Jund",
@@ -435,8 +435,8 @@
     "variantes": null,
     "partidas": 1,
     "frec": 2.4,
-    "frecPrev": 4.9,
-    "delta": -2.5,
+    "frecPrev": 5,
+    "delta": -2.6,
     "w": 0,
     "l": 1,
     "n_": 1,
@@ -447,8 +447,8 @@
     "variantes": null,
     "partidas": 1,
     "frec": 2.4,
-    "frecPrev": 2.4,
-    "delta": 0,
+    "frecPrev": 2.5,
+    "delta": -0.1,
     "w": 1,
     "l": 0,
     "n_": 1,
@@ -467,6 +467,30 @@
     "wr": 100
    },
    {
+    "n": "The Rack",
+    "variantes": null,
+    "partidas": 0,
+    "frec": 0,
+    "frecPrev": 2.5,
+    "delta": -2.5,
+    "w": 1,
+    "l": 0,
+    "n_": 1,
+    "wr": 100
+   },
+   {
+    "n": "Izzet Cori",
+    "variantes": null,
+    "partidas": 0,
+    "frec": 0,
+    "frecPrev": 2.5,
+    "delta": -2.5,
+    "w": 0,
+    "l": 0,
+    "n_": 0,
+    "wr": null
+   },
+   {
     "n": "Izzet Affinity",
     "variantes": [
      "Izzet Affinity",
@@ -474,68 +498,44 @@
     ],
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 4.9,
-    "delta": -4.9,
+    "frecPrev": 5,
+    "delta": -5,
     "w": 0,
-    "l": 2,
-    "n_": 2,
-    "wr": 0
-   },
-   {
-    "n": "Izzet Cori",
-    "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": 2.4,
-    "delta": -2.4,
-    "w": 1,
     "l": 0,
-    "n_": 1,
-    "wr": 100
+    "n_": 0,
+    "wr": null
    },
    {
     "n": "Desconocido",
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.4,
-    "delta": -2.4,
-    "w": 1,
+    "frecPrev": 2.5,
+    "delta": -2.5,
+    "w": 0,
     "l": 0,
-    "n_": 1,
-    "wr": 100
-   },
-   {
-    "n": "Through the Breach",
-    "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": 2.4,
-    "delta": -2.4,
-    "w": 1,
-    "l": 0,
-    "n_": 1,
-    "wr": 100
-   },
-   {
-    "n": "The Rack",
-    "variantes": null,
-    "partidas": 0,
-    "frec": 0,
-    "frecPrev": 2.4,
-    "delta": -2.4,
-    "w": 1,
-    "l": 0,
-    "n_": 1,
-    "wr": 100
+    "n_": 0,
+    "wr": null
    },
    {
     "n": "Sam Combo",
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.4,
-    "delta": -2.4,
+    "frecPrev": 2.5,
+    "delta": -2.5,
+    "w": 0,
+    "l": 0,
+    "n_": 0,
+    "wr": null
+   },
+   {
+    "n": "Through the Breach",
+    "variantes": null,
+    "partidas": 0,
+    "frec": 0,
+    "frecPrev": 2.5,
+    "delta": -2.5,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -546,8 +546,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 7.3,
-    "delta": -7.3,
+    "frecPrev": 7.5,
+    "delta": -7.5,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -558,8 +558,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.4,
-    "delta": -2.4,
+    "frecPrev": 2.5,
+    "delta": -2.5,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -570,8 +570,8 @@
     "variantes": null,
     "partidas": 0,
     "frec": 0,
-    "frecPrev": 2.4,
-    "delta": -2.4,
+    "frecPrev": 2.5,
+    "delta": -2.5,
     "w": 0,
     "l": 0,
     "n_": 0,
@@ -603,56 +603,16 @@
   {
    "nivel": "adaptarse",
    "mazo": "Esper Goryo's",
-   "titular": "Esper Goryo's: está subiendo (+7.3 pts en tu liga) y vas 2-5 (29%)",
+   "titular": "Esper Goryo's: está subiendo (+7.2 pts en tu liga) y vas 2-3 (40%)",
    "porQue": "Sube y lo pierdes: las dos condiciones a la vez. Es donde un cambio de banquillo se paga solo.",
    "datos": {
     "frecLiga": 12.2,
-    "deltaLiga": 7.3,
+    "deltaLiga": 7.2,
     "campo": {
      "global": "Instant Reanimator",
-     "pct": 1,
-     "pctPrev": 2,
-     "delta": -1
-    },
-    "w": 2,
-    "l": 5,
-    "wr": 29,
-    "n": 7
-   }
-  },
-  {
-   "nivel": "adaptarse",
-   "mazo": "Broodscale",
-   "titular": "Broodscale: es el 7.3% de tu liga y vas 2-4 (33%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
-   "datos": {
-    "frecLiga": 7.3,
-    "deltaLiga": -2.5,
-    "campo": {
-     "global": "Broodscale Bloodchief",
-     "pct": 13,
-     "pctPrev": 13,
-     "delta": 0
-    },
-    "w": 2,
-    "l": 4,
-    "wr": 33,
-    "n": 6
-   }
-  },
-  {
-   "nivel": "adaptarse",
-   "mazo": "Izzet Prowess",
-   "titular": "Izzet Prowess: es el 7.3% de tu liga y vas 2-3 (40%)",
-   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
-   "datos": {
-    "frecLiga": 7.3,
-    "deltaLiga": 2.4,
-    "campo": {
-     "global": "UR Aggro",
-     "pct": 5,
-     "pctPrev": 5,
-     "delta": 0
+     "pct": 2,
+     "pctPrev": 1,
+     "delta": 1
     },
     "w": 2,
     "l": 3,
@@ -662,22 +622,62 @@
   },
   {
    "nivel": "adaptarse",
-   "mazo": "Dimir Frog",
-   "titular": "Dimir Frog: es el 7.3% de tu liga y vas 1-3 (25%)",
+   "mazo": "Broodscale",
+   "titular": "Broodscale: es el 7.3% de tu liga y vas 1-3 (25%)",
    "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
    "datos": {
     "frecLiga": 7.3,
-    "deltaLiga": 0,
+    "deltaLiga": -2.7,
     "campo": {
-     "global": "Dimir Control",
-     "pct": 2,
-     "pctPrev": 2,
+     "global": "Broodscale Bloodchief",
+     "pct": 13,
+     "pctPrev": 13,
      "delta": 0
     },
     "w": 1,
     "l": 3,
     "wr": 25,
     "n": 4
+   }
+  },
+  {
+   "nivel": "adaptarse",
+   "mazo": "Dimir Frog",
+   "titular": "Dimir Frog: es el 7.3% de tu liga y vas 0-3 (0%)",
+   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "datos": {
+    "frecLiga": 7.3,
+    "deltaLiga": 2.3,
+    "campo": {
+     "global": "Dimir Control",
+     "pct": 2,
+     "pctPrev": 2,
+     "delta": 0
+    },
+    "w": 0,
+    "l": 3,
+    "wr": 0,
+    "n": 3
+   }
+  },
+  {
+   "nivel": "adaptarse",
+   "mazo": "Boros Ponza",
+   "titular": "Boros Ponza: es el 7.3% de tu liga y vas 1-2 (33%)",
+   "porQue": "No es que esté subiendo — es que ya pesa en tu liga y lo pierdes. Merece un plan aunque el metajuego no se mueva.",
+   "datos": {
+    "frecLiga": 7.3,
+    "deltaLiga": 2.3,
+    "campo": {
+     "global": "Boros Ponza",
+     "pct": 1,
+     "pctPrev": 1,
+     "delta": 0
+    },
+    "w": 1,
+    "l": 2,
+    "wr": 33,
+    "n": 3
    }
   },
   {
@@ -753,6 +753,26 @@
      "pct": 3,
      "pctPrev": 3,
      "delta": 0
+    },
+    "w": 0,
+    "l": 0,
+    "wr": null,
+    "n": 0
+   }
+  },
+  {
+   "nivel": "nuevo",
+   "mazo": "Jeskai Aggro",
+   "titular": "Jeskai Aggro: 3% del metajuego global y nunca te lo has cruzado",
+   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
+   "datos": {
+    "frecLiga": 0,
+    "deltaLiga": null,
+    "campo": {
+     "global": "Jeskai Aggro",
+     "pct": 3,
+     "pctPrev": 2,
+     "delta": 1
     },
     "w": 0,
     "l": 0,
