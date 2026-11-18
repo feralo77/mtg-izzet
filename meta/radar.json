@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-17",
+ "generado": "2026-11-18",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 72,
+  "diasDesde": 73,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-11-17",
+ "campoDesde": "2026-11-18",
  "campoError": null,
  "campo": {
-  "mazos": 624,
+  "mazos": 616,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -41,11 +41,11 @@
     "pct": 6
    },
    {
-    "n": "Boros Aggro",
+    "n": "UR Aggro",
     "pct": 5
    },
    {
-    "n": "UR Aggro",
+    "n": "Boros Aggro",
     "pct": 5
    },
    {
@@ -81,11 +81,11 @@
     "pct": 0.5
    },
    {
-    "n": "Mardu Aggro",
-    "pct": 0.3
+    "n": "Weenie White",
+    "pct": 0.5
    },
    {
-    "n": "Weenie White",
+    "n": "Mardu Aggro",
     "pct": 0.3
    },
    {
@@ -109,12 +109,16 @@
     "pct": 0.2
    },
    {
+    "n": "Martyr Life",
+    "pct": 0.2
+   },
+   {
     "n": "Other - Aggro",
     "pct": 0.3
    },
    {
     "n": "UW Control",
-    "pct": 9
+    "pct": 10
    },
    {
     "n": "UrzaTron",
@@ -130,14 +134,6 @@
    },
    {
     "n": "Eldrazi Ramp",
-    "pct": 0.5
-   },
-   {
-    "n": "4/5c Control",
-    "pct": 0.3
-   },
-   {
-    "n": "UR Control",
     "pct": 0.3
    },
    {
@@ -161,16 +157,24 @@
     "pct": 0.2
    },
    {
+    "n": "4/5c Control",
+    "pct": 0.2
+   },
+   {
+    "n": "UR Control",
+    "pct": 0.2
+   },
+   {
     "n": "Lantern Control",
     "pct": 0.2
    },
    {
     "n": "Other - Control",
-    "pct": 0.5
+    "pct": 0.6
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 13
+    "pct": 12
    },
    {
     "n": "Amulet Titan",
@@ -197,16 +201,12 @@
     "pct": 2
    },
    {
-    "n": "Landless",
-    "pct": 2
-   },
-   {
     "n": "Allosaurus Combo",
     "pct": 1
    },
    {
-    "n": "Dredge",
-    "pct": 0.6
+    "n": "Landless",
+    "pct": 1
    },
    {
     "n": "Creativity",
@@ -214,6 +214,10 @@
    },
    {
     "n": "Song of Creation",
+    "pct": 0.5
+   },
+   {
+    "n": "Dredge",
     "pct": 0.5
    },
    {
@@ -246,7 +250,7 @@
    },
    {
     "n": "Other - Combo",
-    "pct": 0.5
+    "pct": 0.6
    }
   ]
  },
@@ -614,9 +618,9 @@
     "deltaLiga": 19.5,
     "campo": {
      "global": "Eldrazi Ramp",
-     "pct": 0.5,
+     "pct": 0.3,
      "pctPrev": 0.5,
-     "delta": 0
+     "delta": -0.2
     },
     "w": 3,
     "l": 5,
@@ -654,9 +658,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 13,
+     "pct": 12,
      "pctPrev": 13,
-     "delta": 0
+     "delta": -1
     },
     "w": 2,
     "l": 4,
