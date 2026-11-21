@@ -619,8 +619,8 @@
     "campo": {
      "global": "Eldrazi Ramp",
      "pct": 0.7,
-     "pctPrev": 0.5,
-     "delta": 0.2
+     "pctPrev": 0.7,
+     "delta": 0
     },
     "w": 3,
     "l": 5,
@@ -779,8 +779,8 @@
     "campo": {
      "global": "Creatures Toolbox",
      "pct": 4,
-     "pctPrev": 3,
-     "delta": 1
+     "pctPrev": 4,
+     "delta": 0
     },
     "w": 0,
     "l": 0,
