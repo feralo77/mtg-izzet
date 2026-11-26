@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-25",
+ "generado": "2026-11-26",
  "comoFunciona": "Cruza el metajuego global de Modern (mtgtop8), la frecuencia con la que Fer se cruza cada mazo en SUS partidas (registro.csv, solo suyas desde el 15-sep-2026) y su récord con la lista que juega (solo las partidas con la Stock, como el resto del dashboard desde el 16-sep-2026). Si algo sube y el récord es malo, salta la alarma. Lo que NO hace: decidir qué carta responde a qué mazo — eso sale del brainstorm con /mtg-expert. El radar dice cuándo hace falta uno y por qué.",
  "umbrales": {
   "winrateMalo": 45,
@@ -21,15 +21,15 @@
   "cadenciaDias": 4,
   "ultimo": "2026-09-06",
   "proximo": "2026-09-10",
-  "diasDesde": 80,
+  "diasDesde": 81,
   "toca": true
  },
  "hayComparacionCampo": true,
  "campoFresco": true,
- "campoDesde": "2026-11-25",
+ "campoDesde": "2026-11-26",
  "campoError": null,
  "campo": {
-  "mazos": 504,
+  "mazos": 626,
   "fuente": "https://mtgtop8.com/format?f=MO&meta=54",
   "arquetipos": [
    {
@@ -42,7 +42,7 @@
    },
    {
     "n": "Affinity",
-    "pct": 7
+    "pct": 8
    },
    {
     "n": "UR Aggro",
@@ -50,10 +50,6 @@
    },
    {
     "n": "Blink",
-    "pct": 4
-   },
-   {
-    "n": "4/5c Aggro",
     "pct": 3
    },
    {
@@ -61,28 +57,28 @@
     "pct": 3
    },
    {
-    "n": "Weenie White",
-    "pct": 0.6
+    "n": "4/5c Aggro",
+    "pct": 2
    },
    {
     "n": "Mono Black Aggro",
-    "pct": 0.4
+    "pct": 0.8
    },
    {
     "n": "Death's Shadow",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Red Deck Wins",
-    "pct": 0.4
+    "pct": 0.5
+   },
+   {
+    "n": "Weenie White",
+    "pct": 0.5
    },
    {
     "n": "Martyr Life",
-    "pct": 0.4
-   },
-   {
-    "n": "Mardu Aggro",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "The Underworld Cookbook",
@@ -101,8 +97,28 @@
     "pct": 0.2
    },
    {
-    "n": "Other - Aggro",
+    "n": "Cascade Crash",
     "pct": 0.2
+   },
+   {
+    "n": "Simic Birthing Ritual",
+    "pct": 0.2
+   },
+   {
+    "n": "Selesnya Aggro",
+    "pct": 0.2
+   },
+   {
+    "n": "Merfolk",
+    "pct": 0.2
+   },
+   {
+    "n": "Mono Green Aggro",
+    "pct": 0.2
+   },
+   {
+    "n": "Other - Aggro",
+    "pct": 0.3
    },
    {
     "n": "UW Control",
@@ -110,7 +126,7 @@
    },
    {
     "n": "UrzaTron",
-    "pct": 5
+    "pct": 4
    },
    {
     "n": "Dimir Control",
@@ -130,23 +146,19 @@
    },
    {
     "n": "Grixis Control",
-    "pct": 0.4
+    "pct": 0.5
    },
    {
     "n": "Lantern Control",
-    "pct": 0.4
+    "pct": 0.3
    },
    {
     "n": "Mono Black Control",
-    "pct": 0.4
+    "pct": 0.3
    },
    {
     "n": "Jeskai Control",
-    "pct": 0.4
-   },
-   {
-    "n": "UR Control",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
     "n": "Other - Control",
@@ -154,7 +166,7 @@
    },
    {
     "n": "Broodscale Bloodchief",
-    "pct": 11
+    "pct": 9
    },
    {
     "n": "Amulet Titan",
@@ -181,32 +193,36 @@
     "pct": 2
    },
    {
-    "n": "Landless",
+    "n": "Allosaurus Combo",
     "pct": 2
    },
    {
-    "n": "Allosaurus Combo",
+    "n": "Landless",
     "pct": 1
    },
    {
-    "n": "Dredge",
+    "n": "CopyCat",
     "pct": 0.8
    },
    {
     "n": "Cosmogoyf",
+    "pct": 0.8
+   },
+   {
+    "n": "Dredge",
     "pct": 0.6
    },
    {
-    "n": "Creativity",
-    "pct": 0.4
-   },
-   {
     "n": "UB Mill",
-    "pct": 0.2
+    "pct": 0.3
    },
    {
-    "n": "CopyCat",
-    "pct": 0.2
+    "n": "Twin Exarch",
+    "pct": 0.3
+   },
+   {
+    "n": "Creativity",
+    "pct": 0.3
    },
    {
     "n": "Elves",
@@ -217,12 +233,8 @@
     "pct": 0.2
    },
    {
-    "n": "Twin Exarch",
-    "pct": 0.2
-   },
-   {
     "n": "Other - Combo",
-    "pct": 0.8
+    "pct": 1
    }
   ]
  },
@@ -630,9 +642,9 @@
     "deltaLiga": -2.5,
     "campo": {
      "global": "Broodscale Bloodchief",
-     "pct": 11,
+     "pct": 9,
      "pctPrev": 11,
-     "delta": 0
+     "delta": -2
     },
     "w": 2,
     "l": 4,
@@ -703,36 +715,16 @@
   {
    "nivel": "nuevo",
    "mazo": "UrzaTron",
-   "titular": "UrzaTron: 5% del metajuego global y nunca te lo has cruzado",
+   "titular": "UrzaTron: 4% del metajuego global y nunca te lo has cruzado",
    "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
    "datos": {
     "frecLiga": 0,
     "deltaLiga": null,
     "campo": {
      "global": "UrzaTron",
-     "pct": 5,
+     "pct": 4,
      "pctPrev": 5,
-     "delta": 0
-    },
-    "w": 0,
-    "l": 0,
-    "wr": null,
-    "n": 0
-   }
-  },
-  {
-   "nivel": "nuevo",
-   "mazo": "4/5c Aggro",
-   "titular": "4/5c Aggro: 3% del metajuego global y nunca te lo has cruzado",
-   "porQue": "Existe fuera con peso real. Si aparece en la liga, hoy irías a ciegas.",
-   "datos": {
-    "frecLiga": 0,
-    "deltaLiga": null,
-    "campo": {
-     "global": "4/5c Aggro",
-     "pct": 3,
-     "pctPrev": 3,
-     "delta": 0
+     "delta": -1
     },
     "w": 0,
     "l": 0,
